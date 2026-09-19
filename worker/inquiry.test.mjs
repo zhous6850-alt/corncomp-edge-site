@@ -24,13 +24,13 @@ test('silently accepts honeypot submissions without sending email', async () => 
   assert.equal(sent, false);
 });
 
-test('sends a valid inquiry from inquiry@corncomp.com to the fixed mailbox', async () => {
+test('sends a valid inquiry from inquiry@corn-comp.com to the fixed mailbox', async () => {
   let message;
   const response = await worker.fetch(request({ name: 'Buyer', email: 'buyer@example.com', phone: '+1 555', message: 'Need bowls' }), {
     EMAIL: { send: async (value) => { message = value; return { messageId: 'test' }; } },
   });
   assert.equal(response.status, 200);
-  assert.equal(message.from, 'inquiry@corncomp.com');
+  assert.equal(message.from, 'inquiry@corn-comp.com');
   assert.equal(message.to, 'zhous6850@gmail.com');
   assert.equal(message.replyTo, 'buyer@example.com');
   assert.match(message.text, /Need bowls/);

@@ -1,5 +1,5 @@
 const RECIPIENT = 'zhous6850@gmail.com';
-const SENDER = 'inquiry@corncomp.com';
+const SENDER = 'inquiry@corn-comp.com';
 
 function json(body, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8' } });
