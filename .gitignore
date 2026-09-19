@@ -3,4 +3,5 @@ site/dist/
 site/.astro/
 site/.dev.vars
 .superpowers/
+.npm-cache/
 

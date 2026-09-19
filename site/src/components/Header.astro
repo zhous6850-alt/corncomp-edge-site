@@ -1,0 +1,24 @@
+---
+const { language = 'en' } = Astro.props;
+---
+<header class="site-header">
+  <a href={language === 'en' ? '/' : `/${language}/`} aria-label="Corncomp home">
+    <img src="/media/corncomp-logo.png" width="111" height="104" alt="Corncomp">
+  </a>
+  <nav aria-label="Primary navigation">
+    <a href="/">Home</a>
+    <a href="/about-us/">About Us</a>
+    <a href="/shop/">Product</a>
+    <a href="/certifications/">Certifications</a>
+    <a href="/contact-us/">Contact Us</a>
+  </nav>
+</header>
+
+<style>
+  .site-header { min-height: 72px; padding: 10px max(20px, calc((100% - 1180px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #e3e8e4; background: #fff; }
+  img { width: 84px; height: 50px; object-fit: contain; }
+  nav { display: flex; gap: 22px; font-size: .8rem; color: var(--corncomp-deep-green); }
+  nav a { text-decoration: none; }
+  @media (max-width: 760px) { nav { display: none; } .site-header::after { content: "Menu"; color: var(--corncomp-green); font-weight: 700; } }
+</style>
+

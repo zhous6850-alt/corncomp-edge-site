@@ -1,0 +1,15 @@
+:root {
+  --corncomp-green: #2f6543;
+  --corncomp-deep-green: #123823;
+  --corncomp-cream: #f4f0e5;
+  --corncomp-paper: #fffef9;
+  --corncomp-ink: #172018;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--corncomp-paper); color: var(--corncomp-ink); font-family: Arial, "Segoe UI", sans-serif; }
+body { margin: 0; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+.container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+
