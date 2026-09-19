@@ -18,6 +18,7 @@ export function normalizeRecord(record) {
     body: record.content?.rendered || '',
     excerpt: record.excerpt?.rendered || '',
     featuredMediaId: record.featured_media || 0,
+    categoryIds: record.product_cat || [],
     seo: {
       title: record.meta?.rank_math_title || '',
       description: record.meta?.rank_math_description || '',

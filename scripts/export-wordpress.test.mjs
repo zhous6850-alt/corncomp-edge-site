@@ -29,6 +29,7 @@ test('normalizes a translated WordPress record without changing its route or con
     body: '<h2>المواد</h2><p>النص الأصلي</p>',
     excerpt: '<p>ملخص</p>',
     featuredMediaId: 99,
+    categoryIds: [],
     seo: {
       title: 'PLA مقابل الباغاس',
       description: 'وصف الصفحة',
@@ -68,6 +69,23 @@ test('infers a translated language from the preserved route prefix', () => {
   });
 
   assert.equal(record.language, 'es');
+});
+
+test('preserves product category relationships', () => {
+  const record = normalizeRecord({
+    id: 72,
+    type: 'product',
+    slug: 'kraft-paper-bowl',
+    link: 'https://corn-comp.com/product/kraft-paper-bowl/',
+    title: { rendered: 'Kraft Paper Bowl' },
+    content: { rendered: '<p>Product copy</p>' },
+    excerpt: { rendered: '' },
+    featured_media: 261,
+    product_cat: [20, 25],
+    meta: {},
+  });
+
+  assert.deepEqual(record.categoryIds, [20, 25]);
 });
 
 test('fetches every REST page exactly once', async () => {
