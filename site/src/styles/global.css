@@ -29,3 +29,8 @@ h1 { color: var(--corncomp-deep-green); font-size: clamp(2.25rem, 5vw, 4.6rem); 
 .wordpress-content th, .wordpress-content td { padding: 12px; border: 1px solid #d9dfda; text-align: start; }
 .wordpress-content .wp-block-button__link { display: inline-block; padding: 12px 20px; border-radius: 999px; background: var(--corncomp-green); color: white; text-decoration: none; }
 @media (max-width: 760px) { .content-shell { width: min(100% - 28px, 1120px); padding-top: 34px; } }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.product-card { border: 1px solid #dfe5df; border-radius: 14px; overflow: hidden; background: white; }
+.product-card a { display: block; height: 100%; padding: 18px; text-decoration: none; }
+.product-card img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+.product-card h2 { margin: 16px 0 0; color: var(--corncomp-deep-green); font-size: 1.15rem; line-height: 1.3; }

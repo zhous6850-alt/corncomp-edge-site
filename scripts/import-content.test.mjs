@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { embeddedAssetLocalPath, extractEmbeddedAssets, groupMeta, importRecord, mediaLocalPath, rewriteMediaUrls } from './import-content.mjs';
+import { embeddedAssetLocalPath, extractEmbeddedAssets, groupMeta, importCategory, importRecord, mediaLocalPath, rewriteMediaUrls } from './import-content.mjs';
 
 test('groups WordPress meta rows by numeric object id', () => {
   assert.deepEqual(groupMeta([
@@ -77,4 +77,15 @@ test('extracts unregistered uploads and assigns stable local paths', () => {
   assert.equal(assets[0].source_url, url);
   assert.equal(assets[0].localPath, embeddedAssetLocalPath(url));
   assert.match(assets[0].localPath, /^\/media\/embedded\/[a-f0-9]{8}-legacy-photo\.jpg$/);
+});
+
+test('imports Rank Math metadata for product categories', () => {
+  const category = importCategory({ id: 20, slug: 'paper-bowl', name: 'Paper Bowl', link: 'https://corn-comp.com/product-category/paper-bowl/' }, new Map([[20, {
+    rank_math_title: 'Paper Bowl Manufacturer',
+    rank_math_description: 'Bulk paper bowls.',
+    rank_math_focus_keyword: 'paper bowl manufacturer',
+  }]]));
+  assert.equal(category.route, '/product-category/paper-bowl/');
+  assert.equal(category.seo.title, 'Paper Bowl Manufacturer');
+  assert.equal(category.seo.focusKeyword, 'paper bowl manufacturer');
 });

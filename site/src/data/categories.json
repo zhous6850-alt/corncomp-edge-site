@@ -43,6 +43,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/assiette-en-papier/",
+    "seo": {
+      "title": "Assiette en Papier",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -89,6 +96,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/boite-a-hamburger-wrap-sandwich-pizza/",
+    "seo": {
+      "title": "Boîte à Hamburger | Boîte à Wrap | Boîte à Sandwich | Part de Pizza",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -135,6 +149,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/boite-a-salade/",
+    "seo": {
+      "title": "Boîte à Salade",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -181,6 +202,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/boite-menu-boite-a-repas-ronde/",
+    "seo": {
+      "title": "Boîte Menu | Boîte à Repas Ronde",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -227,6 +255,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/bol-a-salade/",
+    "seo": {
+      "title": "Bol à Salade",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -273,6 +308,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/caja-de-ensalada/",
+    "seo": {
+      "title": "Cajas de Papel Kraft para Ensalada con Ventana de PLA - Corncomp",
+      "description": "Cajas de papel kraft compostables para ensalada con ventanas transparentes de PLA para exhibir alimentos frescos. Certificadas FSC, tamaños personalizados disponibles. Solicite una cotización a Corncomp.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -319,6 +361,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/caja-de-menu-caja-de-comida-redonda/",
+    "seo": {
+      "title": "Cajas de Menú de Papel Kraft para Comidas para Llevar - Corncomp",
+      "description": "Cajas de menú de papel kraft compostables para comidas completas para llevar, varios tamaños. Certificadas FSC. Impresión personalizada y cotizaciones al por mayor de Corncomp.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -365,6 +414,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/caja-para-hamburguesa-wrap-sandwich-pizza/",
+    "seo": {
+      "title": "Caja para Hamburguesa | Caja para Wrap | Caja para Sándwich | Porción de Pizza",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -411,6 +467,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/couverts/",
+    "seo": {
+      "title": "Couverts",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -457,6 +520,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/cubiertos/",
+    "seo": {
+      "title": "Cubiertos",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -503,6 +573,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/cuenco-para-ensalada/",
+    "seo": {
+      "title": "Cuencos de Papel Kraft para Ensalada con Tapa - Corncomp",
+      "description": "Cuencos de papel kraft certificados FSC para ensalada con tapas transparentes, varios tamaños disponibles al por mayor. Compostables, seguros para alimentos, ideales para comida para llevar. Solicite precios.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -549,6 +626,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/cutlery/",
+    "seo": {
+      "title": "Cutlery",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -595,6 +679,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/gobelet-en-papier/",
+    "seo": {
+      "title": "Gobelet en Papier",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -641,6 +732,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/gobelet-bol-a-soupe/",
+    "seo": {
+      "title": "Gobelet/Bol à Soupe",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -687,6 +785,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/hamburger-box-wrap-box-sandwich-box-pizza-slice/",
+    "seo": {
+      "title": "Hamburger Box | Wrap Box | Sandwich Box | Pizza Slice",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -733,6 +838,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/menu-box/",
+    "seo": {
+      "title": "Paper Food Box Manufacturer and Supplier | Custom and Wholesale Food Boxes | Corncomp",
+      "description": "Paper food box manufacturer and wholesale supplier in China. FSC-certified kraft and cardboard takeaway food boxes, custom printing available. MOQ 30,000. Get a quote.",
+      "focusKeyword": "paper food box manufacturer",
+      "canonical": ""
     }
   },
   {
@@ -779,6 +891,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/fr/product-category/paille-en-papier/",
+    "seo": {
+      "title": "Paille en Papier",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -825,6 +944,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/pajitas-de-papel/",
+    "seo": {
+      "title": "Fabricante de Pajitas de Papel | Biodegradables e Impresión Personalizada - Corncomp",
+      "description": "Compre pajitas de papel biodegradables al por mayor de Corncomp: rayas, lunares, colores lisos, impresión personalizada disponible. Certificado FSC, cumple con FDA y LFGB. Solicite una cotización.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -871,6 +997,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/paper-cup/",
+    "seo": {
+      "title": "Paper Cup Manufacturers - Wholesale Paper Cups | Corncomp",
+      "description": "Corncomp supplies wholesale paper cups, including single, double and ripple wall options. Custom printing available. Request samples and MOQ details.",
+      "focusKeyword": "paper cup manufacturers",
+      "canonical": ""
     }
   },
   {
@@ -917,6 +1050,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/paper-plate/",
+    "seo": {
+      "title": "Bulk Paper Plates - Wholesale Supplier | Corncomp",
+      "description": "Corncomp supplies bulk paper plates in round and oval shapes with seven size options. Request samples, wholesale details, MOQ and lead time.",
+      "focusKeyword": "bulk paper plates",
+      "canonical": ""
     }
   },
   {
@@ -963,6 +1103,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/paper-straw/",
+    "seo": {
+      "title": "Paper Straw Manufacturer | Wholesale Paper Straws | Corncomp",
+      "description": "Paper straw manufacturer and wholesale supplier in Ningbo, China. Explore paper straws for bulk orders, available sizes, printing and packaging options.",
+      "focusKeyword": "paper straw manufacturer",
+      "canonical": ""
     }
   },
   {
@@ -1009,6 +1156,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/plato-de-papel/",
+    "seo": {
+      "title": "Plato de Papel",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1055,6 +1209,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/salad-bowl/",
+    "seo": {
+      "title": "Paper Bowl Manufacturer and Supplier | Wholesale Paper Bowls | Corncomp",
+      "description": "Paper bowl manufacturer and wholesale supplier in China. FSC-certified kraft paper salad bowls with PET, PP, or PLA lids. MOQ 30,000. Get a quote.",
+      "focusKeyword": "paper bowl manufacturer",
+      "canonical": ""
     }
   },
   {
@@ -1101,6 +1262,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/salad-box/",
+    "seo": {
+      "title": "Kraft Paper Salad Boxes with PLA Window - Corncomp",
+      "description": "Compostable kraft paper salad boxes with clear PLA windows for fresh food display. FSC certified, custom sizes available. Get a quote from Corncomp.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1147,6 +1315,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/soup-cup-bowl/",
+    "seo": {
+      "title": "Paper Soup Cups &amp; Bowls with Lids - Corncomp",
+      "description": "Insulated kraft paper soup cups and bowls, various sizes with secure lids. FSC &amp; SGS certified, safe for hot foods. Bulk orders welcome.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1193,6 +1368,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/product-category/uncategorized/",
+    "seo": {
+      "title": "Uncategorized",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1239,6 +1421,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/vaso-de-papel/",
+    "seo": {
+      "title": "Vaso de Papel",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1285,6 +1474,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/es/product-category/vaso-cuenco-para-sopa/",
+    "seo": {
+      "title": "Vasos y Cuencos de Papel para Sopa con Tapa - Corncomp",
+      "description": "Vasos y cuencos de papel kraft aislados para sopa, varios tamaños con tapas seguras. Certificados FSC y SGS, seguros para alimentos calientes. Pedidos al por mayor bienvenidos.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1331,6 +1527,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d8%a3%d8%af%d9%88%d8%a7%d8%aa-%d9%85%d8%a7%d8%a6%d8%af%d8%a9/",
+    "seo": {
+      "title": "أدوات مائدة",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1377,6 +1580,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d8%a3%d8%b7%d8%a8%d8%a7%d9%82-%d9%88%d8%b1%d9%82%d9%8a%d8%a9/",
+    "seo": {
+      "title": "أطباق ورقية",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1423,6 +1633,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d8%a3%d9%83%d9%88%d8%a7%d8%a8-%d9%88%d8%b1%d9%82%d9%8a%d8%a9/",
+    "seo": {
+      "title": "أكواب ورقية",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1469,6 +1686,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d8%a3%d9%83%d9%88%d8%a7%d8%a8-%d8%a3%d9%88%d8%b9%d9%8a%d8%a9-%d9%88%d8%b1%d9%82%d9%8a%d8%a9-%d9%84%d9%84%d8%ad%d8%b3%d8%a7%d8%a1/",
+    "seo": {
+      "title": "أكواب وأوعية ورقية للحساء مع أغطية - Corncomp",
+      "description": "أكواب وأوعية ورقية كرافت معزولة للحساء، بمقاسات متعددة مع أغطية محكمة. معتمدة من FSC وSGS، وآمنة للأطعمة الساخنة. الطلبات بالجملة مرحّب بها.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1515,6 +1739,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d8%a3%d9%88%d8%b9%d9%8a%d8%a9-%d9%88%d8%b1%d9%82%d9%8a%d8%a9-%d9%84%d9%84%d8%b3%d9%84%d8%b7%d8%a9/",
+    "seo": {
+      "title": "أوعية ورقية من الكرافت للسلطة مع أغطية - Corncomp",
+      "description": "أوعية ورقية كرافت معتمدة FSC للسلطة مع أغطية شفافة، بمقاسات متعددة ومتوفرة بالجملة. قابلة للتسميد وآمنة لملامسة الأغذية، مثالية لأطعمة الطلبات الخارجية. اطلب عرض سعر.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1561,6 +1792,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d8%b9%d9%84%d8%a8-%d8%a7%d9%84%d9%88%d8%ac%d8%a8%d8%a7%d8%aa-%d8%b9%d9%84%d8%a8-%d8%b7%d8%b9%d8%a7%d9%85-%d8%af%d8%a7%d8%a6%d8%b1%d9%8a%d8%a9/",
+    "seo": {
+      "title": "علب ورقية من الكرافت للوجبات الجاهزة - Corncomp",
+      "description": "علب وجبات ورقية كرافت قابلة للتسميد لوجبات كاملة جاهزة للطلبات الخارجية، بمقاسات متعددة. معتمدة FSC. طباعة مخصصة وعروض أسعار بالجملة من Corncomp.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1607,6 +1845,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d8%b9%d9%84%d8%a8-%d8%a8%d8%b1%d8%ba%d8%b1-%d8%b9%d9%84%d8%a8-%d8%b1%d8%a7%d8%a8-%d8%b9%d9%84%d8%a8-%d8%b3%d8%a7%d9%86%d8%af%d9%88%d9%8a%d8%aa%d8%b4-%d9%82%d8%b7%d8%b9%d8%a9-%d8%a8%d9%8a%d8%aa/",
+    "seo": {
+      "title": "علب برغر | علب راب | علب ساندويتش | قطعة بيتزا",
+      "description": "",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1653,6 +1898,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d8%b9%d9%84%d8%a8-%d9%88%d8%b1%d9%82%d9%8a%d8%a9-%d9%84%d9%84%d8%b3%d9%84%d8%b7%d8%a9/",
+    "seo": {
+      "title": "علب ورقية من الكرافت للسلطة بنافذة PLA - Corncomp",
+      "description": "علب ورقية كرافت قابلة للتسميد للسلطة بنوافذ PLA شفافة لعرض الأطعمة الطازجة. معتمدة FSC، ومتوفرة بمقاسات مخصصة. اطلب عرض سعر من Corncomp.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   },
   {
@@ -1699,6 +1951,13 @@
           "templated": true
         }
       ]
+    },
+    "route": "/ar/product-category/%d9%85%d8%b5%d8%a7%d8%b5%d8%a7%d8%aa-%d9%88%d8%b1%d9%82%d9%8a%d8%a9/",
+    "seo": {
+      "title": "مُصنّع مصاصات ورقية | قابلة للتحلل الحيوي وطباعة مخصصة - Corncomp",
+      "description": "تسوّق مصاصات ورقية قابلة للتحلل الحيوي بالجملة من Corncomp - مقلمة ومنقطة وألوان موحدة، مع إمكانية الطباعة المخصصة. معتمدة FSC ومتوافقة مع معايير FDA وLFGB. اطلب عرض سعر.",
+      "focusKeyword": "",
+      "canonical": ""
     }
   }
 ]

@@ -1,32 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import categories from '../data/categories.json';
 import records from '../data/records.json';
-import { contentPath, contentTitle } from '../lib/content-routes.mjs';
+import { categoryLanguage, contentPath, contentTitle } from '../lib/content-routes.mjs';
 
 export function getStaticPaths() {
-  return records
+  const contentPaths = records
     .filter((record) => contentPath(record.route) !== null)
     .map((record) => ({ params: { path: contentPath(record.route) }, props: { record } }));
+  const allProducts = records.filter((record) => record.type === 'product');
+  const categoryPaths = categories.map((category) => {
+    const products = allProducts.filter((product) => product.categoryIds.includes(category.id));
+    return {
+      params: { path: contentPath(category.route) },
+      props: { category, products, language: categoryLanguage(products) },
+    };
+  });
+  return [...contentPaths, ...categoryPaths];
 }
 
-const { record } = Astro.props;
+const { record, category, products = [], language = 'en' } = Astro.props;
 ---
-<BaseLayout
-  title={contentTitle(record)}
-  description={record.seo.description}
-  language={record.language}
-  pathname={record.route}
->
-  <article class:list={['content-shell', `content-${record.type}`]}>
-    <header class="content-heading">
-      <p class="content-kind">{record.type === 'product' ? 'Product' : record.type === 'post' ? 'Insight' : 'Corncomp'}</p>
-      <h1 set:html={record.title} />
-    </header>
-    {record.featuredMedia && (
-      <figure class="featured-media">
-        <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
-      </figure>
-    )}
-    <div class="wordpress-content" set:html={record.body} />
-  </article>
-</BaseLayout>
+{record ? (
+  <BaseLayout title={contentTitle(record)} description={record.seo.description} language={record.language} pathname={record.route}>
+    <article class:list={['content-shell', `content-${record.type}`]}>
+      <header class="content-heading">
+        <p class="content-kind">{record.type === 'product' ? 'Product' : record.type === 'post' ? 'Insight' : 'Corncomp'}</p>
+        <h1 set:html={record.title} />
+      </header>
+      {record.featuredMedia && (
+        <figure class="featured-media">
+          <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
+        </figure>
+      )}
+      <div class="wordpress-content" set:html={record.body} />
+    </article>
+  </BaseLayout>
+) : (
+  <BaseLayout title={category.seo.title} description={category.seo.description} language={language} pathname={category.route}>
+    <section class="content-shell category-archive">
+      <header class="content-heading">
+        <p class="content-kind">Product category</p>
+        <h1 set:html={category.name} />
+        {category.description && <div set:html={category.description} />}
+      </header>
+      <div class="product-grid">
+        {products.map((product) => (
+          <article class="product-card">
+            <a href={product.route}>
+              {product.featuredMedia && <img src={product.featuredMedia.localPath} alt={product.featuredMedia.alt} loading="lazy" decoding="async">}
+              <h2 set:html={product.title} />
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </BaseLayout>
+)}

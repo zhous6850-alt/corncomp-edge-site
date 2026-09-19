@@ -88,16 +88,31 @@ export function importRecord(record, metaById, mediaById, mediaItems = []) {
   };
 }
 
+export function importCategory(category, metaById) {
+  const meta = metaById.get(category.id) || {};
+  return {
+    ...category,
+    route: new URL(category.link).pathname,
+    seo: {
+      title: meta.rank_math_title || category.name,
+      description: meta.rank_math_description || category.description || '',
+      focusKeyword: meta.rank_math_focus_keyword || '',
+      canonical: meta.rank_math_canonical_url || '',
+    },
+  };
+}
+
 async function readJson(file) {
   return JSON.parse(await readFile(file, 'utf8'));
 }
 
 async function run(sourceDirectory, outputDirectory) {
-  const [records, media, terms, rankMath, custom] = await Promise.all([
+  const [records, media, terms, rankMath, termRankMath, custom] = await Promise.all([
     readJson(path.join(sourceDirectory, 'records.json')),
     readJson(path.join(sourceDirectory, 'media.json')),
     readJson(path.join(sourceDirectory, 'terms.json')),
     readJson(path.join(sourceDirectory, 'rank-math-postmeta.json')),
+    readJson(path.join(sourceDirectory, 'rank-math-termmeta.json')),
     readJson(path.join(sourceDirectory, 'custom-postmeta.json')),
   ]);
   const metaById = groupMeta([...rankMath, ...custom]);
@@ -105,10 +120,11 @@ async function run(sourceDirectory, outputDirectory) {
   const initiallyImported = records.map((record) => importRecord(record, metaById, mediaById, media));
   const embeddedAssets = extractEmbeddedAssets(initiallyImported);
   const imported = initiallyImported.map((record) => rewriteEmbeddedAssets(record, embeddedAssets));
+  const importedCategories = terms.map((category) => importCategory(category, groupMeta(termRankMath)));
   await mkdir(outputDirectory, { recursive: true });
   await Promise.all([
     writeFile(path.join(outputDirectory, 'records.json'), `${JSON.stringify(imported, null, 2)}\n`),
-    writeFile(path.join(outputDirectory, 'categories.json'), `${JSON.stringify(terms, null, 2)}\n`),
+    writeFile(path.join(outputDirectory, 'categories.json'), `${JSON.stringify(importedCategories, null, 2)}\n`),
     writeFile(path.join(outputDirectory, 'media.json'), `${JSON.stringify(media.map((item) => ({ ...item, localPath: mediaLocalPath(item) })), null, 2)}\n`),
     writeFile(path.join(outputDirectory, 'embedded-assets.json'), `${JSON.stringify(embeddedAssets, null, 2)}\n`),
   ]);

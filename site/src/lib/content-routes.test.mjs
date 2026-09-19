@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { contentPath, contentTitle } from './content-routes.mjs';
+import { categoryLanguage, contentPath, contentTitle } from './content-routes.mjs';
 
 test('converts a preserved route into an Astro catch-all parameter', () => {
   assert.equal(contentPath('/es/producto/'), 'es/producto');
@@ -14,4 +14,9 @@ test('excludes the homepage from the catch-all route', () => {
 test('prefers the stored SEO title and falls back to the visible title', () => {
   assert.equal(contentTitle({ title: 'Visible', seo: { title: 'SEO title' } }), 'SEO title');
   assert.equal(contentTitle({ title: 'Visible', seo: { title: '' } }), 'Visible');
+});
+
+test('uses the language shared by products in a category', () => {
+  assert.equal(categoryLanguage([{ language: 'es' }, { language: 'es' }, { language: 'en' }]), 'es');
+  assert.equal(categoryLanguage([]), 'en');
 });
