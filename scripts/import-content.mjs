@@ -55,6 +55,15 @@ export function extractEmbeddedAssets(records) {
   }));
 }
 
+export function rewriteInquiryForms(html) {
+  return html
+    .replace(/<form\s+action="[^"]*wp-json[^"]*"([^>]*)class="([^"]*wpcf7-form[^"]*)"/g, '<form action="/api/inquiry"$1class="$2 corncomp-inquiry-form"')
+    .replace(/<fieldset class="hidden-fields-container">[\s\S]*?<\/fieldset>/g, '<input class="inquiry-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">')
+    .replace(/value="([^"]*)" (type="(?:text|email|tel)" name="your-(?:name|email|phone)")/g, 'value="" placeholder="$1" $2')
+    .replace(/<textarea([^>]*name="your-message"[^>]*)>([\s\S]*?)<\/textarea>/g, '<textarea$1 placeholder="$2"></textarea>')
+    .replace(/(<form[^>]*corncomp-inquiry-form[\s\S]*?)(<\/form>)/g, '$1<p id="inquiry-sent" class="inquiry-success" role="status">Thank you. Your inquiry has been sent.</p>$2');
+}
+
 function rewriteEmbeddedAssets(record, assets) {
   let body = record.body;
   let excerpt = record.excerpt;
@@ -70,7 +79,7 @@ export function importRecord(record, metaById, mediaById, mediaItems = []) {
   const media = mediaById.get(record.featuredMediaId);
   return {
     ...record,
-    body: rewriteMediaUrls(record.body, mediaItems),
+    body: rewriteInquiryForms(rewriteMediaUrls(record.body, mediaItems)),
     excerpt: rewriteMediaUrls(record.excerpt, mediaItems),
     seo: {
       title: meta.rank_math_title || record.seo.title || '',

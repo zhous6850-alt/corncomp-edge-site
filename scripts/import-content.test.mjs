@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { embeddedAssetLocalPath, extractEmbeddedAssets, groupMeta, importCategory, importRecord, mediaLocalPath, rewriteMediaUrls } from './import-content.mjs';
+import { embeddedAssetLocalPath, extractEmbeddedAssets, groupMeta, importCategory, importRecord, mediaLocalPath, rewriteInquiryForms, rewriteMediaUrls } from './import-content.mjs';
 
 test('groups WordPress meta rows by numeric object id', () => {
   assert.deepEqual(groupMeta([
@@ -88,4 +88,16 @@ test('imports Rank Math metadata for product categories', () => {
   assert.equal(category.route, '/product-category/paper-bowl/');
   assert.equal(category.seo.title, 'Paper Bowl Manufacturer');
   assert.equal(category.seo.focusKeyword, 'paper bowl manufacturer');
+});
+
+test('replaces WordPress form actions and hidden plugin state', () => {
+  const html = '<form action="/wp-json/wp/v2/pages#form" class="wpcf7-form"><fieldset class="hidden-fields-container"><input name="_wpcf7"></fieldset><input value="Your name" type="text" name="your-name"><textarea name="your-message">Tell us more</textarea></form>';
+  const rewritten = rewriteInquiryForms(html);
+  assert.match(rewritten, /action="\/api\/inquiry"/);
+  assert.match(rewritten, /corncomp-inquiry-form/);
+  assert.match(rewritten, /name="website"/);
+  assert.match(rewritten, /value="" placeholder="Your name"/);
+  assert.match(rewritten, /placeholder="Tell us more"><\/textarea>/);
+  assert.match(rewritten, /id="inquiry-sent"/);
+  assert.doesNotMatch(rewritten, /_wpcf7|wp-json/);
 });

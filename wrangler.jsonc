@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "corncomp-edge-site",
+  "main": "worker/index.mjs",
+  "compatibility_date": "2026-09-19",
+  "assets": {
+    "directory": "./site/dist",
+    "binding": "ASSETS"
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "zhous6850@gmail.com",
+      "allowed_sender_addresses": ["inquiry@corncomp.com"]
+    }
+  ]
+}
