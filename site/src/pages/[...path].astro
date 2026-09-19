@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import records from '../data/records.json';
+import { contentPath, contentTitle } from '../lib/content-routes.mjs';
+
+export function getStaticPaths() {
+  return records
+    .filter((record) => contentPath(record.route) !== null)
+    .map((record) => ({ params: { path: contentPath(record.route) }, props: { record } }));
+}
+
+const { record } = Astro.props;
+---
+<BaseLayout
+  title={contentTitle(record)}
+  description={record.seo.description}
+  language={record.language}
+  pathname={record.route}
+>
+  <article class:list={['content-shell', `content-${record.type}`]}>
+    <header class="content-heading">
+      <p class="content-kind">{record.type === 'product' ? 'Product' : record.type === 'post' ? 'Insight' : 'Corncomp'}</p>
+      <h1 set:html={record.title} />
+    </header>
+    {record.featuredMedia && (
+      <figure class="featured-media">
+        <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
+      </figure>
+    )}
+    <div class="wordpress-content" set:html={record.body} />
+  </article>
+</BaseLayout>

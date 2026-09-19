@@ -1,15 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
----
-<BaseLayout title="Corncomp" pathname="/">
-  <section class="container hero">
-    <p>Biodegradable Food Packaging</p>
-    <h1>Leading manufacturer of biodegradable paper straws &amp; food packaging</h1>
-  </section>
-</BaseLayout>
+import records from '../data/records.json';
+import { contentTitle } from '../lib/content-routes.mjs';
 
-<style>
-  .hero { min-height: 55vh; padding-block: 90px; }
-  p { color: var(--corncomp-green); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
-  h1 { max-width: 900px; margin: 0; font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: .98; color: var(--corncomp-deep-green); }
-</style>
+const record = records.find((item) => item.route === '/');
+---
+<BaseLayout title={contentTitle(record)} description={record.seo.description} language={record.language} pathname="/">
+  <article class="content-shell content-page">
+    <div class="wordpress-content" set:html={record.body} />
+  </article>
+</BaseLayout>

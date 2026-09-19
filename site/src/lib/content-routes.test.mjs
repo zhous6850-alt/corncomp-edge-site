@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { contentPath, contentTitle } from './content-routes.mjs';
+
+test('converts a preserved route into an Astro catch-all parameter', () => {
+  assert.equal(contentPath('/es/producto/'), 'es/producto');
+  assert.equal(contentPath('/ar/%d9%85%d9%86%d8%aa%d8%ac/'), 'ar/منتج');
+});
+
+test('excludes the homepage from the catch-all route', () => {
+  assert.equal(contentPath('/'), null);
+});
+
+test('prefers the stored SEO title and falls back to the visible title', () => {
+  assert.equal(contentTitle({ title: 'Visible', seo: { title: 'SEO title' } }), 'SEO title');
+  assert.equal(contentTitle({ title: 'Visible', seo: { title: '' } }), 'Visible');
+});

@@ -1,4 +1,5 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -19,11 +20,58 @@ export function mediaLocalPath(media) {
   return `/media/wp/${media.id}-${safeName}`;
 }
 
-export function importRecord(record, metaById, mediaById) {
+export function rewriteMediaUrls(html, mediaItems) {
+  let rewritten = html;
+  for (const media of mediaItems) {
+    const localPath = mediaLocalPath(media);
+    const urls = [
+      media.source_url,
+      ...Object.values(media.media_details?.sizes || {}).map((size) => size.source_url),
+    ].filter(Boolean);
+    for (const url of urls) rewritten = rewritten.replaceAll(url, localPath);
+  }
+  return rewritten;
+}
+
+export function embeddedAssetLocalPath(url) {
+  const rawName = decodeURIComponent(new URL(url).pathname.split('/').pop() || 'asset');
+  const safeName = rawName.toLowerCase().replace(/[^a-z0-9._-]+/g, '-').replace(/^-|-$/g, '');
+  const fingerprint = createHash('sha256').update(url).digest('hex').slice(0, 8);
+  return `/media/embedded/${fingerprint}-${safeName}`;
+}
+
+export function extractEmbeddedAssets(records) {
+  const urls = new Set();
+  const pattern = /https:\/\/corn-comp\.com\/wp-content\/(?:uploads|uploads-webpc\/uploads)\/[^\s"'<>\)]+/g;
+  for (const record of records) {
+    for (const field of [record.body, record.excerpt]) {
+      for (const match of (field || '').matchAll(pattern)) urls.add(match[0]);
+    }
+  }
+  return [...urls].sort().map((url) => ({
+    id: `embedded-${createHash('sha256').update(url).digest('hex').slice(0, 8)}`,
+    source_url: url,
+    localPath: embeddedAssetLocalPath(url),
+  }));
+}
+
+function rewriteEmbeddedAssets(record, assets) {
+  let body = record.body;
+  let excerpt = record.excerpt;
+  for (const asset of assets) {
+    body = body.replaceAll(asset.source_url, asset.localPath);
+    excerpt = excerpt.replaceAll(asset.source_url, asset.localPath);
+  }
+  return { ...record, body, excerpt };
+}
+
+export function importRecord(record, metaById, mediaById, mediaItems = []) {
   const meta = metaById.get(record.id) || {};
   const media = mediaById.get(record.featuredMediaId);
   return {
     ...record,
+    body: rewriteMediaUrls(record.body, mediaItems),
+    excerpt: rewriteMediaUrls(record.excerpt, mediaItems),
     seo: {
       title: meta.rank_math_title || record.seo.title || '',
       description: meta.rank_math_description || record.seo.description || '',
@@ -54,14 +102,17 @@ async function run(sourceDirectory, outputDirectory) {
   ]);
   const metaById = groupMeta([...rankMath, ...custom]);
   const mediaById = new Map(media.map((item) => [item.id, item]));
-  const imported = records.map((record) => importRecord(record, metaById, mediaById));
+  const initiallyImported = records.map((record) => importRecord(record, metaById, mediaById, media));
+  const embeddedAssets = extractEmbeddedAssets(initiallyImported);
+  const imported = initiallyImported.map((record) => rewriteEmbeddedAssets(record, embeddedAssets));
   await mkdir(outputDirectory, { recursive: true });
   await Promise.all([
     writeFile(path.join(outputDirectory, 'records.json'), `${JSON.stringify(imported, null, 2)}\n`),
     writeFile(path.join(outputDirectory, 'categories.json'), `${JSON.stringify(terms, null, 2)}\n`),
     writeFile(path.join(outputDirectory, 'media.json'), `${JSON.stringify(media.map((item) => ({ ...item, localPath: mediaLocalPath(item) })), null, 2)}\n`),
+    writeFile(path.join(outputDirectory, 'embedded-assets.json'), `${JSON.stringify(embeddedAssets, null, 2)}\n`),
   ]);
-  console.log(`Imported ${imported.length} records and ${media.length} media entries.`);
+  console.log(`Imported ${imported.length} records, ${media.length} media entries, and ${embeddedAssets.length} embedded assets.`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

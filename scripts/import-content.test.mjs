@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { groupMeta, importRecord, mediaLocalPath } from './import-content.mjs';
+import { embeddedAssetLocalPath, extractEmbeddedAssets, groupMeta, importRecord, mediaLocalPath, rewriteMediaUrls } from './import-content.mjs';
 
 test('groups WordPress meta rows by numeric object id', () => {
   assert.deepEqual(groupMeta([
@@ -58,4 +58,23 @@ test('maps media URLs to deterministic collision-safe local paths', () => {
     mediaLocalPath({ id: 261, source_url: 'https://corn-comp.com/wp-content/uploads/2026/07/Bowl%20Photo.jpg' }),
     '/media/wp/261-bowl-photo.jpg',
   );
+});
+
+test('rewrites original and generated WordPress media URLs to the local original', () => {
+  const media = {
+    id: 261,
+    source_url: 'https://corn-comp.com/wp-content/uploads/2026/07/bowl.jpg',
+    media_details: { sizes: { medium: { source_url: 'https://corn-comp.com/wp-content/uploads/2026/07/bowl-300x300.jpg' } } },
+  };
+  const html = '<img src="https://corn-comp.com/wp-content/uploads/2026/07/bowl-300x300.jpg"><a href="https://corn-comp.com/wp-content/uploads/2026/07/bowl.jpg">Open</a>';
+  assert.equal(rewriteMediaUrls(html, [media]), '<img src="/media/wp/261-bowl.jpg"><a href="/media/wp/261-bowl.jpg">Open</a>');
+});
+
+test('extracts unregistered uploads and assigns stable local paths', () => {
+  const url = 'https://corn-comp.com/wp-content/uploads/2026/07/Legacy%20Photo.jpg';
+  const assets = extractEmbeddedAssets([{ body: `<img src="${url}">`, excerpt: '' }]);
+  assert.equal(assets.length, 1);
+  assert.equal(assets[0].source_url, url);
+  assert.equal(assets[0].localPath, embeddedAssetLocalPath(url));
+  assert.match(assets[0].localPath, /^\/media\/embedded\/[a-f0-9]{8}-legacy-photo\.jpg$/);
 });

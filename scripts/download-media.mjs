@@ -122,9 +122,13 @@ async function downloadAll(mediaItems, publicRoot, concurrency = 4) {
 async function main() {
   const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const mediaPath = path.join(projectRoot, 'site', 'src', 'data', 'media.json');
+  const embeddedPath = path.join(projectRoot, 'site', 'src', 'data', 'embedded-assets.json');
   const publicRoot = path.join(projectRoot, 'site', 'public');
   const manifestPath = path.join(projectRoot, 'migration', 'source', 'media-downloads.json');
-  const mediaItems = JSON.parse(await readFile(mediaPath, 'utf8'));
+  const mediaItems = [
+    ...JSON.parse(await readFile(mediaPath, 'utf8')),
+    ...JSON.parse(await readFile(embeddedPath, 'utf8')),
+  ];
   const results = await downloadAll(mediaItems, publicRoot);
   await writeFile(manifestPath, `${JSON.stringify(results, null, 2)}\n`);
   console.log(`Saved ${results.length} files to ${path.join(publicRoot, 'media', 'wp')}`);

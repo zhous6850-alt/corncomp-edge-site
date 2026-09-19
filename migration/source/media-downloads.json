@@ -1048,5 +1048,96 @@
     "relativePath": "media/wp/6--2026-07-13-085050.png",
     "bytes": 46808,
     "sha256": "eeb35805b11f0e662753a4900cc023cc9d63e11838b9b587aa58a9e6dbc1946b"
+  },
+  {
+    "id": "embedded-cecc3c5c",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads-webpc/uploads/2026/08/BPI-Compostable-Logo-150x150.png.webp",
+    "relativePath": "media/embedded/cecc3c5c-bpi-compostable-logo-150x150.png.webp",
+    "bytes": 2664,
+    "sha256": "dcca5e0635b6bf62f83a3b5e2f0df3a61dca7f8fa91d0a5a7d8eb3603ab1b5a4"
+  },
+  {
+    "id": "embedded-128e4bb8",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads-webpc/uploads/2026/08/BRCGS-Logo-150x150.png.webp",
+    "relativePath": "media/embedded/128e4bb8-brcgs-logo-150x150.png.webp",
+    "bytes": 2510,
+    "sha256": "99e5285b501d47b8efb89e53bfcace138d41c1b86d5f721f4b5953f47c326264"
+  },
+  {
+    "id": "embedded-94f86812",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads-webpc/uploads/2026/08/Corncomp-Hero-Slide-Picnic-Friends.jpg.webp",
+    "relativePath": "media/embedded/94f86812-corncomp-hero-slide-picnic-friends.jpg.webp",
+    "bytes": 122858,
+    "sha256": "cfe2ea48b7f1d4c274a1cd039996c3d883513baa4602e45ed425422130ff6b56"
+  },
+  {
+    "id": "embedded-619136d2",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads-webpc/uploads/2026/08/LFGB-Logo-150x150.png.webp",
+    "relativePath": "media/embedded/619136d2-lfgb-logo-150x150.png.webp",
+    "bytes": 2820,
+    "sha256": "3bf0c4318933d5dda7324992ed474ec7383ba8c7ead3f8e16c70fd24ee2581ee"
+  },
+  {
+    "id": "embedded-cf7d2459",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads-webpc/uploads/2026/08/SGS-Logo-190x300.png.webp",
+    "relativePath": "media/embedded/cf7d2459-sgs-logo-190x300.png.webp",
+    "bytes": 7550,
+    "sha256": "9f82de0f5bbb3e1ae50209ccafcfa3616b86996feeb6cdd34a26dd7c6f957157"
+  },
+  {
+    "id": "embedded-4f925559",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads-webpc/uploads/2026/09/Corncomp-hero-cocktail-optimized-copy.jpg.webp",
+    "relativePath": "media/embedded/4f925559-corncomp-hero-cocktail-optimized-copy.jpg.webp",
+    "bytes": 117568,
+    "sha256": "1f7fd66703a98a226f5a3bbe5ae30239fd6559f485e5136491212c95a16581d4"
+  },
+  {
+    "id": "embedded-c97a5896",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads-webpc/uploads/2026/09/Corncomp-homepage-hero-drink-compressed-copy.jpg.webp",
+    "relativePath": "media/embedded/c97a5896-corncomp-homepage-hero-drink-compressed-copy.jpg.webp",
+    "bytes": 33090,
+    "sha256": "406def3304f18c9efa3a289e6ba242f5da819a54e5128ebe236a4a7f1631a7c4"
+  },
+  {
+    "id": "embedded-be53f20b",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads/2026/07/Facility-Showcase-1.jpg",
+    "relativePath": "media/embedded/be53f20b-facility-showcase-1.jpg",
+    "bytes": 558736,
+    "sha256": "c28556a19a916987b9949477300586f16d99b8caec9f6a4ca03ae569f4e6e75d"
+  },
+  {
+    "id": "embedded-a8e98b2c",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads/2026/07/Menu-Box-New.png",
+    "relativePath": "media/embedded/a8e98b2c-menu-box-new.png",
+    "bytes": 162547,
+    "sha256": "3445189ba637885aff25734b32c9d9491a28128e7a460ec3fc57c2fc96cf9ae0"
+  },
+  {
+    "id": "embedded-c40ead7a",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads/2026/07/Salad-Bowl-Real-Photo.jpg",
+    "relativePath": "media/embedded/c40ead7a-salad-bowl-real-photo.jpg",
+    "bytes": 3664001,
+    "sha256": "aa9812bcd94adc40628861804be981d44ee97a8c96270365bb1b4fc78b4fd847"
+  },
+  {
+    "id": "embedded-9aabd497",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads/2026/07/Soup-Cup-Bowl-New-2.jpg",
+    "relativePath": "media/embedded/9aabd497-soup-cup-bowl-new-2.jpg",
+    "bytes": 83961,
+    "sha256": "e2def79945754526624c6741e75d9c6fc8606caf25915ea3e43a0eabf82cc222"
+  },
+  {
+    "id": "embedded-c516b3f7",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-0f7fcdc8.woff2",
+    "relativePath": "media/embedded/c516b3f7-roboto-0f7fcdc8.woff2",
+    "bytes": 43136,
+    "sha256": "1404ca348bd75ef836f4dd8b6f2cc719458642d1237c368296b2fc652dca47dc"
+  },
+  {
+    "id": "embedded-63ade1d7",
+    "sourceUrl": "https://corn-comp.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-da69b94e.woff2",
+    "relativePath": "media/embedded/63ade1d7-roboto-da69b94e.woff2",
+    "bytes": 20556,
+    "sha256": "2addf2d86d7a5778653b36d551e97a39da52855f82fac7461cfc1bd86d460aed"
   }
 ]
