@@ -23,7 +23,24 @@ const { record, category, products = [], language = 'en' } = Astro.props;
 const isShop = record?.route === '/shop/';
 const isBlog = record?.route === '/blog/';
 const isInquiryPage = record?.body.includes('corncomp-inquiry-form');
-const shopProducts = isShop ? records.filter((item) => item.type === 'product' && item.language === record.language) : [];
+const shopCategoryRoutes = [
+  '/product-category/paper-straw/',
+  '/product-category/salad-bowl/',
+  '/product-category/soup-cup-bowl/',
+  '/product-category/salad-box/',
+  '/product-category/cutlery/',
+  '/product-category/paper-cup/',
+  '/product-category/hamburger-box-wrap-box-sandwich-box-pizza-slice/',
+  '/product-category/paper-plate/',
+  '/product-category/menu-box/',
+];
+const shopCategories = isShop ? shopCategoryRoutes.map((route) => {
+  const item = categories.find((category) => category.route === route);
+  const categoryProducts = item
+    ? records.filter((product) => product.type === 'product' && product.language === 'en' && product.categoryIds.includes(item.id))
+    : [];
+  return { ...item, products: categoryProducts, image: categoryProducts.find((product) => product.featuredMedia)?.featuredMedia };
+}).filter((item) => item.route) : [];
 const insightPosts = isBlog ? records.filter((item) => item.type === 'post' && item.language === record.language) : [];
 ---
 {record ? (
@@ -49,17 +66,30 @@ const insightPosts = isBlog ? records.filter((item) => item.type === 'post' && i
           <header class="content-heading archive-heading">
             <p class="content-kind">Corncomp</p>
             <h1 id="shop-title" set:html={record.title} />
+            <p>Corncomp is a leading manufacturer of biodegradable paper straws, bowls and food packaging in China. Browse our full range by category below.</p>
           </header>
-          <div class="product-grid">
-            {shopProducts.map((product) => (
-              <article class="product-card">
-                <a href={product.route}>
-                  {product.featuredMedia && <img src={product.featuredMedia.localPath} alt={product.featuredMedia.alt} loading="lazy" decoding="async">}
-                  <h2 set:html={product.title} />
-                </a>
-              </article>
-            ))}
+          <div class="shop-directory">
+            <aside class="shop-category-list" aria-label="Product categories">
+              <h2>Categories</h2>
+              <ul>
+                {shopCategories.map((item) => <li><a href={item.route} set:html={item.name} /></li>)}
+              </ul>
+            </aside>
+            <div class="shop-category-grid">
+              {shopCategories.map((item) => (
+                <article class="shop-category-card">
+                  <a href={item.route}>
+                    {item.image && <img src={item.image.localPath} alt={item.name} loading="lazy" decoding="async">}
+                    <div>
+                      <h2 set:html={item.name} />
+                      <p>{item.products.length} Products</p>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
+          <div class="wordpress-content archive-source" set:html={record.body} />
         </section>
       ) : isBlog ? (
         <section class="insight-archive" aria-labelledby="blog-title">
