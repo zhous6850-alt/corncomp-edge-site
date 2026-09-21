@@ -4,7 +4,9 @@ export function contentPath(route) {
 }
 
 export function contentTitle(record) {
-  return record.seo?.title || record.title;
+  return (record.seo?.title || record.title)
+    .replaceAll('%sep%', '|')
+    .replaceAll('%sitename%', 'Corncomp');
 }
 
 export function categoryLanguage(products) {
@@ -12,3 +14,4 @@ export function categoryLanguage(products) {
   for (const product of products) counts.set(product.language, (counts.get(product.language) || 0) + 1);
   return [...counts].sort((a, b) => b[1] - a[1])[0]?.[0] || 'en';
 }
+
