@@ -15,6 +15,32 @@ test('the built homepage includes an accessible mobile navigation control', asyn
   assert.match(html, /<nav[^>]+id="primary-navigation"/);
 });
 
+test('the global navigation exposes every migrated primary section and language choice', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  for (const route of ['/shop/', '/case-studies/', '/blog/', '/faq/', '/contact-us/']) {
+    assert.match(html, new RegExp(`href="${route}"`));
+  }
+  for (const language of ['English', 'Français', 'Español', 'العربية']) assert.match(html, new RegExp(language));
+  assert.match(html, /class="[^\"]*product-menu[^\"]*"/);
+});
+
+test('the footer preserves company contact, social, copyright and floating inquiry actions', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /No\.2 Building, No\.3 Wanquanhe Road/);
+  assert.match(html, /0086-574-86961222/);
+  assert.match(html, /\+65 8160 3123/);
+  assert.match(html, /\+86 138 0663 2002/);
+  assert.match(html, /inquiry@corncomp\.com/);
+  assert.match(html, /facebook\.com\/profile\.php/);
+  assert.match(html, /instagram\.com\/zxh_0927/);
+  assert.match(html, /linkedin\.com\/in\/sam-zhou-431ab9424/);
+  assert.match(html, /Copyright © 2026 Ningbo Corncomp Tech Co\., Ltd\. All rights reserved\./);
+  assert.match(html, /class="[^\"]*floating-whatsapp[^\"]*"/);
+  assert.match(html, /class="[^\"]*floating-contact[^\"]*"/);
+});
+
 test('product pages group the title and image in a responsive lead', async () => {
   const html = await readFile(
     new URL('../../dist/product/cardboard-open-wrap-cup/index.html', import.meta.url),

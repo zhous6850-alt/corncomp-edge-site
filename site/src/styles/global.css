@@ -52,6 +52,15 @@ h1 { margin: 0; color: var(--corncomp-deep-green); font-size: clamp(2.45rem, 5.4
 .product-media { min-height: 420px; margin: 0; display: grid; place-items: center; padding: clamp(26px, 4vw, 54px); background: #fff; border: 1px solid var(--corncomp-line); box-shadow: var(--corncomp-shadow); }
 .product-media img { width: 100%; max-height: 510px; object-fit: contain; }
 .content-product > .wordpress-content { padding-top: 68px; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; color: var(--corncomp-muted); font-size: .82rem; }
+.breadcrumbs a { color: var(--corncomp-green); text-decoration: none; }
+.product-excerpt { margin-top: 24px; color: var(--corncomp-muted); font-size: 1rem; line-height: 1.65; }
+.product-excerpt p { margin: 0; }
+.product-categories { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.product-categories a { padding: 6px 10px; border: 1px solid var(--corncomp-line); border-radius: 999px; color: var(--corncomp-green); font-size: .78rem; text-decoration: none; }
+.related-products { padding-top: 76px; }
+.related-products > h2 { margin: 0 0 30px; color: var(--corncomp-deep-green); font-size: clamp(1.7rem, 3vw, 2.5rem); }
+.related-products .product-card h3 { margin: 18px 2px 5px; color: var(--corncomp-deep-green); font-size: 1.03rem; line-height: 1.35; }
 
 /* Imported WordPress copy remains intact; this layer only formats it. */
 .wordpress-content { color: #364039; font-size: 1.03rem; line-height: 1.78; }

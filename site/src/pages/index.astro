@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import records from '../data/records.json';
-import { contentTitle } from '../lib/content-routes.mjs';
+import { contentTitle, localizeInternalLinks } from '../lib/content-routes.mjs';
 
 const record = records.find((item) => item.route === '/');
 ---
 <BaseLayout title={contentTitle(record)} description={record.seo.description} language={record.language} pathname="/" bodyClass="home">
   <article class="content-shell content-page">
-    <div class="wordpress-content" set:html={record.body} />
+    <div class="wordpress-content" set:html={localizeInternalLinks(record.body)} />
   </article>
 </BaseLayout>

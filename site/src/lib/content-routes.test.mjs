@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { categoryLanguage, contentPath, contentTitle } from './content-routes.mjs';
+import { categoryLanguage, contentPath, contentTitle, localizeInternalLinks } from './content-routes.mjs';
 
 test('converts a preserved route into an Astro catch-all parameter', () => {
   assert.equal(contentPath('/es/producto/'), 'es/producto');
@@ -26,4 +26,9 @@ test('expands preserved Rank Math title variables for static pages', () => {
 test('uses the language shared by products in a category', () => {
   assert.equal(categoryLanguage([{ language: 'es' }, { language: 'es' }, { language: 'en' }]), 'es');
   assert.equal(categoryLanguage([]), 'en');
+});
+
+test('rewrites Corncomp absolute links to preview-safe internal links', () => {
+  const html = '<a href="https://corn-comp.com/shop/">Shop</a><a href="https://example.com/">External</a>';
+  assert.equal(localizeInternalLinks(html), '<a href="/shop/">Shop</a><a href="https://example.com/">External</a>');
 });

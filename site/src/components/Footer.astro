@@ -1,25 +1,52 @@
+---
+import { navigationFor } from '../lib/site-config.mjs';
+const { language = 'en' } = Astro.props;
+const nav = navigationFor(language);
+---
 <footer>
   <div class="container footer-inner">
     <div class="footer-brand">
-      <strong>Ningbo Corncomp Tech Co., Ltd</strong>
-      <p>Biodegradable paper straws, bowls and food packaging.</p>
+      <img src="/media/corncomp-logo.png" width="111" height="104" alt="Corncomp">
+      <div class="social-links" aria-label="Corncomp social media">
+        <a href="https://www.facebook.com/profile.php?id=61592477933421" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/zxh_0927" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/sam-zhou-431ab9424/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/6581603123" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-address">
+      <strong>Our Address</strong>
+      <p>No.2 Building, No.3 Wanquanhe Road, Xiapu Street,<br>Beilun District, Ningbo City, Zhejiang Province, China</p>
+      <a href="tel:008657486961222">Tel: 0086-574-86961222</a>
+      <a href="https://wa.me/6581603123">WhatsApp: +65 8160 3123</a>
+      <a href="https://wa.me/8613806632002">WhatsApp: +86 138 0663 2002</a>
+      <a href="mailto:inquiry@corncomp.com">inquiry@corncomp.com</a>
     </div>
     <nav aria-label="Footer navigation">
-      <a href="/about-us/">About Us</a>
-      <a href="/shop/">Product</a>
-      <a href="/certifications/">Certifications</a>
-      <a href="/contact-us/">Contact Us</a>
+      {Object.values(nav).map(([label, route]) => <a href={route}>{label}</a>)}
     </nav>
   </div>
+  <div class="container footer-bottom">Copyright © 2026 Ningbo Corncomp Tech Co., Ltd. All rights reserved.</div>
 </footer>
+<a class="floating-whatsapp" href="https://wa.me/6581603123?text=Hello%20I%20would%20like%20to%20inquire%20about%20paper%20packaging%20products" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+<a class="floating-contact" href={nav.contact[1]}>Contact Us</a>
 
 <style>
   footer { padding: 56px 0; background: var(--corncomp-deep-green); color: #fff; }
-  .footer-inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
+  .footer-inner { display: grid; grid-template-columns: .8fr 1.4fr .8fr; align-items: start; gap: 50px; }
+  .footer-brand img { width: 90px; height: 84px; object-fit: contain; filter: brightness(0) invert(1); }
   strong { font-size: 1.1rem; letter-spacing: .01em; }
   p { max-width: 440px; margin: 10px 0 0; color: rgba(255, 255, 255, .7); }
-  nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px 24px; font-size: .82rem; font-weight: 700; }
+  .social-links { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 22px; }
+  .footer-address { display: grid; gap: 8px; }
+  .footer-address p { margin: 8px 0; line-height: 1.6; }
+  nav { display: flex; flex-direction: column; gap: 12px; font-size: .82rem; font-weight: 700; }
   a { color: rgba(255, 255, 255, .84); text-decoration: none; }
   a:hover, a:focus-visible { color: white; text-decoration: underline; text-underline-offset: 5px; }
-  @media (max-width: 700px) { footer { padding: 42px 0; } .footer-inner { align-items: flex-start; flex-direction: column; } nav { justify-content: flex-start; } }
+  .footer-bottom { margin-top: 42px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.72); font-size: .8rem; }
+  .floating-whatsapp, .floating-contact { position: fixed; right: 20px; z-index: 40; padding: 12px 18px; border-radius: 999px; color: #fff; font-size: .82rem; font-weight: 800; text-decoration: none; box-shadow: 0 5px 18px rgba(18,56,35,.22); }
+  .floating-whatsapp { bottom: 76px; background: #168942; }
+  .floating-contact { bottom: 20px; background: var(--corncomp-green); }
+  @media (max-width: 800px) { footer { padding: 42px 0; } .footer-inner { grid-template-columns: 1fr; gap: 34px; } nav { flex-flow: row wrap; } }
+  @media (max-width: 600px) { .floating-whatsapp, .floating-contact { right: 12px; padding: 11px 14px; font-size: .74rem; } }
 </style>

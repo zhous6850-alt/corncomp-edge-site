@@ -47,3 +47,21 @@ test('redirects a browser form submission back to its language contact page', as
   assert.equal(response.status, 303);
   assert.equal(response.headers.get('location'), 'https://corncomp.com/es/contactenos/#inquiry-sent');
 });
+
+test('redirects retired commerce pages to the product directory', async () => {
+  const response = await worker.fetch(new Request('https://corncomp.com/cart/'), { ASSETS: { fetch: () => new Response('asset') } });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corncomp.com/shop/');
+});
+
+test('redirects legacy translated aliases to the preserved localized route', async () => {
+  const response = await worker.fetch(new Request('https://corncomp.com/fr/faq/'), { ASSETS: { fetch: () => new Response('asset') } });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corncomp.com/fr/faq-corncomp/');
+});
+
+test('redirects legacy translated article aliases to the migrated article', async () => {
+  const response = await worker.fetch(new Request('https://corncomp.com/es/pla-vs-bagasse-vs-fsc-paper/'), { ASSETS: { fetch: () => new Response('asset') } });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corncomp.com/es/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/');
+});

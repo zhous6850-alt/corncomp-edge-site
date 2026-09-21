@@ -14,3 +14,7 @@ export function categoryLanguage(products) {
   for (const product of products) counts.set(product.language, (counts.get(product.language) || 0) + 1);
   return [...counts].sort((a, b) => b[1] - a[1])[0]?.[0] || 'en';
 }
+
+export function localizeInternalLinks(html = '') {
+  return html.replace(/https?:\/\/(?:www\.)?corn-comp\.com(?=[/'"])/gi, '');
+}
