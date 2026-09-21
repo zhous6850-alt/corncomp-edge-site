@@ -36,3 +36,32 @@ test('category pages expose a labelled responsive product archive', async () => 
   assert.match(html, /<h1 id="category-title"/);
 });
 
+test('the shop restores the English product catalogue', async () => {
+  const html = await readFile(new URL('../../dist/shop/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /class="[^"]*shop-archive[^"]*"/);
+  assert.match(html, /href="\/product\/cardboard-open-wrap-cup\/"/);
+  assert.doesNotMatch(html, /href="\/fr\/product\//);
+});
+
+test('the blog restores the English insight archive', async () => {
+  const html = await readFile(new URL('../../dist/blog/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /class="insight-grid"/);
+  assert.match(html, /href="\/bpi-vs-fsc-certification\/"/);
+  assert.doesNotMatch(html, /href="\/fr\/quest-ce-que/);
+});
+
+test('blog cards stack their image above the title on phones', async () => {
+  const css = await readFile(new URL('../styles/global.css', import.meta.url), 'utf8');
+
+  assert.match(css, /@media \(max-width: 700px\)[\s\S]*?\.insight-card a \{ display: flex; flex-direction: column; \}/);
+});
+
+test('the contact page presents the migrated inquiry form in a responsive layout', async () => {
+  const html = await readFile(new URL('../../dist/contact-us/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /class="contact-layout"/);
+  assert.match(html, /<form[^>]+action="\/api\/inquiry"[^>]+method="post"/);
+});
+
