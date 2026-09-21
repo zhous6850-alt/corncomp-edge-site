@@ -16,6 +16,13 @@ test('prefers the stored SEO title and falls back to the visible title', () => {
   assert.equal(contentTitle({ title: 'Visible', seo: { title: '' } }), 'Visible');
 });
 
+test('expands preserved Rank Math title variables for static pages', () => {
+  assert.equal(
+    contentTitle({ title: 'Visible', seo: { title: 'Contact Us %sep% %sitename%' } }),
+    'Contact Us | Corncomp',
+  );
+});
+
 test('uses the language shared by products in a category', () => {
   assert.equal(categoryLanguage([{ language: 'es' }, { language: 'es' }, { language: 'en' }]), 'es');
   assert.equal(categoryLanguage([]), 'en');

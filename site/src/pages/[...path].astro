@@ -20,21 +20,75 @@ export function getStaticPaths() {
 }
 
 const { record, category, products = [], language = 'en' } = Astro.props;
+const isShop = record?.route === '/shop/';
+const isBlog = record?.route === '/blog/';
+const isInquiryPage = record?.body.includes('corncomp-inquiry-form');
+const shopProducts = isShop ? records.filter((item) => item.type === 'product' && item.language === record.language) : [];
+const insightPosts = isBlog ? records.filter((item) => item.type === 'post' && item.language === record.language) : [];
 ---
 {record ? (
   <BaseLayout title={contentTitle(record)} description={record.seo.description} language={record.language} pathname={record.route}>
-    <article class:list={['content-shell', `content-${record.type}`]}>
+    <article class:list={['content-shell', `content-${record.type}`, { 'has-inquiry-form': isInquiryPage }]}>
       {record.type === 'product' ? (
-        <div class="product-lead">
-          <header class="content-heading product-summary">
-            <p class="content-kind">Product</p>
+        <>
+          <div class="product-lead">
+            <header class="content-heading product-summary">
+              <p class="content-kind">Product</p>
+              <h1 set:html={record.title} />
+            </header>
+            {record.featuredMedia && (
+              <figure class="featured-media product-media">
+                <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
+              </figure>
+            )}
+          </div>
+          <div class="wordpress-content" set:html={record.body} />
+        </>
+      ) : isShop ? (
+        <section class="shop-archive" aria-labelledby="shop-title">
+          <header class="content-heading archive-heading">
+            <p class="content-kind">Corncomp</p>
+            <h1 id="shop-title" set:html={record.title} />
+          </header>
+          <div class="product-grid">
+            {shopProducts.map((product) => (
+              <article class="product-card">
+                <a href={product.route}>
+                  {product.featuredMedia && <img src={product.featuredMedia.localPath} alt={product.featuredMedia.alt} loading="lazy" decoding="async">}
+                  <h2 set:html={product.title} />
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : isBlog ? (
+        <section class="insight-archive" aria-labelledby="blog-title">
+          <header class="content-heading archive-heading">
+            <p class="content-kind">Corncomp</p>
+            <h1 id="blog-title" set:html={record.title} />
+          </header>
+          <div class="insight-grid">
+            {insightPosts.map((post) => (
+              <article class="insight-card">
+                <a href={post.route}>
+                  {post.featuredMedia && <img src={post.featuredMedia.localPath} alt={post.featuredMedia.alt} loading="lazy" decoding="async">}
+                  <div>
+                    <p class="content-kind">Insight</p>
+                    <h2 set:html={post.title} />
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+          <div class="wordpress-content archive-source" set:html={record.body} />
+        </section>
+      ) : isInquiryPage ? (
+        <div class="contact-layout">
+          <header class="content-heading">
+            <p class="content-kind">Corncomp</p>
             <h1 set:html={record.title} />
           </header>
-          {record.featuredMedia && (
-            <figure class="featured-media product-media">
-              <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
-            </figure>
-          )}
+          <div class="wordpress-content" set:html={record.body} />
         </div>
       ) : (
         <>
@@ -47,9 +101,9 @@ const { record, category, products = [], language = 'en' } = Astro.props;
               <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
             </figure>
           )}
+          <div class="wordpress-content" set:html={record.body} />
         </>
       )}
-      <div class="wordpress-content" set:html={record.body} />
     </article>
   </BaseLayout>
 ) : (
