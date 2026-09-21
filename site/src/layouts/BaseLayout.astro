@@ -4,7 +4,7 @@ import Footer from '../components/Footer.astro';
 import globalCss from '../styles/global.css?raw';
 import { canonicalUrl, documentDirection } from '../lib/routes.mjs';
 
-const { title, description = '', language = 'en', pathname = Astro.url.pathname } = Astro.props;
+const { title, description = '', language = 'en', pathname = Astro.url.pathname, bodyClass = '' } = Astro.props;
 ---
 <!doctype html>
 <html lang={language} dir={documentDirection(language)}>
@@ -16,9 +16,10 @@ const { title, description = '', language = 'en', pathname = Astro.url.pathname 
     <link rel="canonical" href={canonicalUrl(pathname)}>
     <style is:inline set:html={globalCss} />
   </head>
-  <body>
+  <body class={bodyClass}>
     <Header language={language} />
     <main><slot /></main>
     <Footer />
   </body>
 </html>
+
