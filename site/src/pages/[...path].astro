@@ -24,24 +24,40 @@ const { record, category, products = [], language = 'en' } = Astro.props;
 {record ? (
   <BaseLayout title={contentTitle(record)} description={record.seo.description} language={record.language} pathname={record.route}>
     <article class:list={['content-shell', `content-${record.type}`]}>
-      <header class="content-heading">
-        <p class="content-kind">{record.type === 'product' ? 'Product' : record.type === 'post' ? 'Insight' : 'Corncomp'}</p>
-        <h1 set:html={record.title} />
-      </header>
-      {record.featuredMedia && (
-        <figure class="featured-media">
-          <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
-        </figure>
+      {record.type === 'product' ? (
+        <div class="product-lead">
+          <header class="content-heading product-summary">
+            <p class="content-kind">Product</p>
+            <h1 set:html={record.title} />
+          </header>
+          {record.featuredMedia && (
+            <figure class="featured-media product-media">
+              <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
+            </figure>
+          )}
+        </div>
+      ) : (
+        <>
+          <header class="content-heading">
+            <p class="content-kind">{record.type === 'post' ? 'Insight' : 'Corncomp'}</p>
+            <h1 set:html={record.title} />
+          </header>
+          {record.featuredMedia && (
+            <figure class="featured-media">
+              <img src={record.featuredMedia.localPath} alt={record.featuredMedia.alt} loading="eager" decoding="async">
+            </figure>
+          )}
+        </>
       )}
       <div class="wordpress-content" set:html={record.body} />
     </article>
   </BaseLayout>
 ) : (
   <BaseLayout title={category.seo.title} description={category.seo.description} language={language} pathname={category.route}>
-    <section class="content-shell category-archive">
+    <section class="content-shell category-archive" aria-labelledby="category-title">
       <header class="content-heading">
         <p class="content-kind">Product category</p>
-        <h1 set:html={category.name} />
+        <h1 id="category-title" set:html={category.name} />
         {category.description && <div set:html={category.description} />}
       </header>
       <div class="product-grid">
@@ -57,3 +73,4 @@ const { record, category, products = [], language = 'en' } = Astro.props;
     </section>
   </BaseLayout>
 )}
+
