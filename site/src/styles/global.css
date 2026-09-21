@@ -82,6 +82,44 @@ h1 { margin: 0; color: var(--corncomp-deep-green); font-size: clamp(2.45rem, 5.4
 .product-card img { width: 100%; aspect-ratio: 1 / 1; background: #faf9f4; object-fit: contain; }
 .product-card h2 { margin: 18px 2px 5px; color: var(--corncomp-deep-green); font-size: 1.03rem; line-height: 1.35; letter-spacing: -.01em; }
 
+/* Dynamic WordPress archives restored as static, edge-served indexes. */
+.archive-heading { max-width: 920px; margin-bottom: 58px; }
+.shop-archive .product-grid { row-gap: 26px; }
+.insight-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.insight-card { min-width: 0; background: #fff; border: 1px solid var(--corncomp-line); transition: transform .2s ease, box-shadow .2s ease; }
+.insight-card:hover { transform: translateY(-4px); box-shadow: var(--corncomp-shadow); }
+.insight-card a { height: 100%; display: flex; flex-direction: column; text-decoration: none; }
+.insight-card img { width: 100%; aspect-ratio: 16 / 10; background: #f4f4ef; object-fit: cover; }
+.insight-card a > div { padding: 24px; }
+.insight-card .content-kind { margin-bottom: 10px; }
+.insight-card h2 { margin: 0; color: var(--corncomp-deep-green); font-size: clamp(1.25rem, 2vw, 1.7rem); line-height: 1.2; letter-spacing: -.025em; }
+.archive-source { display: none; }
+
+/* Inquiry pages use the preserved form fields and endpoint. */
+.contact-layout { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(460px, 1.3fr); align-items: start; gap: clamp(48px, 8vw, 112px); }
+.contact-layout > .content-heading { position: sticky; top: 40px; }
+.contact-layout > .content-heading::after,
+.content-page:not(.has-inquiry-form) > .content-heading::after { width: 72px; height: 3px; margin-top: 30px; display: block; background: var(--corncomp-green); content: ""; }
+.has-inquiry-form .wordpress-content { width: 100%; padding: clamp(26px, 4vw, 46px); background: #fff; border: 1px solid var(--corncomp-line); box-shadow: var(--corncomp-shadow); }
+.has-inquiry-form .wordpress-content > * { max-width: none; }
+.has-inquiry-form .elementor,
+.has-inquiry-form .e-con-inner { width: 100%; }
+.corncomp-inquiry-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.corncomp-inquiry-form > p { margin: 0; }
+.corncomp-inquiry-form > p:nth-of-type(n + 3),
+.corncomp-inquiry-form > .wpcf7-response-output { grid-column: 1 / -1; }
+.corncomp-inquiry-form label { color: var(--corncomp-deep-green); font-size: .82rem; font-weight: 800; letter-spacing: .02em; }
+.corncomp-inquiry-form .wpcf7-form-control-wrap { display: block; margin-top: 9px; }
+.corncomp-inquiry-form input:not([type="submit"]),
+.corncomp-inquiry-form textarea { width: 100%; border: 1px solid #cfd8d1; border-radius: 3px; background: var(--corncomp-paper); color: var(--corncomp-ink); }
+.corncomp-inquiry-form input:not([type="submit"]) { min-height: 48px; padding: 10px 13px; }
+.corncomp-inquiry-form textarea { min-height: 178px; padding: 13px; resize: vertical; }
+.corncomp-inquiry-form input:focus,
+.corncomp-inquiry-form textarea:focus { border-color: var(--corncomp-green); outline: 3px solid rgba(47, 101, 67, .14); }
+.corncomp-inquiry-form input[type="submit"] { min-width: 160px; min-height: 48px; padding: 12px 22px; border: 0; border-radius: 3px; background: var(--corncomp-green); color: white; font-weight: 800; cursor: pointer; }
+.corncomp-inquiry-form input[type="submit"]:hover { background: var(--corncomp-deep-green); }
+.screen-reader-response { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
 /* Homepage: retain the original media and copy while restoring Elementor layout. */
 body.home .content-shell { width: 100%; max-width: none; padding: 0; }
 body.home .wordpress-content { font-size: 1rem; line-height: 1.65; }
@@ -132,6 +170,9 @@ body.home .elementor-element-prodcatw1 { padding-inline: max(48px, calc((100% - 
 @media (max-width: 980px) {
   .product-lead { grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr); gap: 40px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .insight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-layout { grid-template-columns: 1fr; gap: 10px; }
+  .contact-layout > .content-heading { position: static; }
   body.home .elementor-element-cccompany { grid-template-columns: 1fr; }
 }
 
@@ -149,6 +190,15 @@ body.home .elementor-element-prodcatw1 { padding-inline: max(48px, calc((100% - 
   .product-grid { grid-template-columns: 1fr; gap: 16px; }
   .product-card a { display: grid; grid-template-columns: 116px minmax(0, 1fr); align-items: center; gap: 18px; }
   .product-card h2 { margin: 0; }
+  .archive-heading { margin-bottom: 38px; }
+  .insight-grid { grid-template-columns: 1fr; gap: 16px; }
+  .insight-card a { display: flex; flex-direction: column; }
+  .insight-card img { height: auto; aspect-ratio: 16 / 10; }
+  .insight-card a > div { padding: 18px; }
+  .insight-card h2 { font-size: 1.12rem; }
+  .has-inquiry-form .wordpress-content { padding: 22px 18px; }
+  .corncomp-inquiry-form { grid-template-columns: 1fr; gap: 18px; }
+  .corncomp-inquiry-form > p { grid-column: 1 / -1; }
 
   body.home .elementor-element-cchero01 { min-height: 670px; padding: 72px 24px; justify-content: flex-end; }
   body.home .elementor-element-cchero01::after { background: linear-gradient(0deg, rgba(9, 31, 18, .88) 0%, rgba(9, 31, 18, .46) 60%, rgba(9, 31, 18, .12) 100%); }
