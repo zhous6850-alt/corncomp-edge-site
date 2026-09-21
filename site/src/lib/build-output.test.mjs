@@ -36,12 +36,23 @@ test('category pages expose a labelled responsive product archive', async () => 
   assert.match(html, /<h1 id="category-title"/);
 });
 
-test('the shop restores the English product catalogue', async () => {
+test('the shop restores the nine English product categories', async () => {
   const html = await readFile(new URL('../../dist/shop/index.html', import.meta.url), 'utf8');
 
   assert.match(html, /class="[^"]*shop-archive[^"]*"/);
-  assert.match(html, /href="\/product\/cardboard-open-wrap-cup\/"/);
-  assert.doesNotMatch(html, /href="\/fr\/product\//);
+  assert.match(html, /Browse our full range by category below\./);
+  assert.equal((html.match(/class="shop-category-card"/g) || []).length, 9);
+  for (const route of [
+    '/product-category/paper-straw/',
+    '/product-category/salad-bowl/',
+    '/product-category/soup-cup-bowl/',
+    '/product-category/salad-box/',
+    '/product-category/cutlery/',
+    '/product-category/paper-cup/',
+    '/product-category/hamburger-box-wrap-box-sandwich-box-pizza-slice/',
+    '/product-category/paper-plate/',
+    '/product-category/menu-box/',
+  ]) assert.match(html, new RegExp(`href="${route}"`));
 });
 
 test('the blog restores the English insight archive', async () => {
