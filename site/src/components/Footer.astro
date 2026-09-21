@@ -1,12 +1,26 @@
 <footer>
-  <div class="container">
-    <strong>Ningbo Corncomp Tech Co., Ltd</strong>
-    <p>Biodegradable paper straws, bowls and food packaging.</p>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <strong>Ningbo Corncomp Tech Co., Ltd</strong>
+      <p>Biodegradable paper straws, bowls and food packaging.</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <a href="/about-us/">About Us</a>
+      <a href="/shop/">Product</a>
+      <a href="/certifications/">Certifications</a>
+      <a href="/contact-us/">Contact Us</a>
+    </nav>
   </div>
 </footer>
 
 <style>
-  footer { padding: 42px 0; background: var(--corncomp-deep-green); color: #fff; }
-  p { margin: 8px 0 0; opacity: .76; }
+  footer { padding: 56px 0; background: var(--corncomp-deep-green); color: #fff; }
+  .footer-inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
+  strong { font-size: 1.1rem; letter-spacing: .01em; }
+  p { max-width: 440px; margin: 10px 0 0; color: rgba(255, 255, 255, .7); }
+  nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px 24px; font-size: .82rem; font-weight: 700; }
+  a { color: rgba(255, 255, 255, .84); text-decoration: none; }
+  a:hover, a:focus-visible { color: white; text-decoration: underline; text-underline-offset: 5px; }
+  @media (max-width: 700px) { footer { padding: 42px 0; } .footer-inner { align-items: flex-start; flex-direction: column; } nav { justify-content: flex-start; } }
 </style>
 
