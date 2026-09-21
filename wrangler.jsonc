@@ -11,7 +11,7 @@
     {
       "name": "EMAIL",
       "destination_address": "zhous6850@gmail.com",
-      "allowed_sender_addresses": ["inquiry@corn-comp.com"]
+      "allowed_sender_addresses": ["inquiry@corncomp.com"]
     }
   ]
 }

@@ -1,5 +1,5 @@
 const RECIPIENT = 'zhous6850@gmail.com';
-const SENDER = 'inquiry@corn-comp.com';
+const SENDER = 'inquiry@corncomp.com';
 const REDIRECTS = new Map([
   ['/cart/', '/shop/'],
   ['/checkout/', '/shop/'],
