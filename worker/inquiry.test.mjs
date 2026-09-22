@@ -1,6 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import worker from './index.mjs';
+
+test('runs the Worker before static assets so canonical redirects execute', () => {
+  const config = JSON.parse(readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
+  assert.equal(config.assets.run_worker_first, true);
+});
 
 function request(body, method = 'POST') {
   return new Request('https://corn-comp.com/api/inquiry', {
@@ -9,6 +15,12 @@ function request(body, method = 'POST') {
     body: method === 'POST' ? JSON.stringify(body) : undefined,
   });
 }
+
+test('redirects www requests to the canonical root domain', async () => {
+  const response = await worker.fetch(new Request('https://www.corn-comp.com/shop/?source=www'), { ASSETS: { fetch: () => new Response('asset') } });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corn-comp.com/shop/?source=www');
+});
 
 test('rejects invalid inquiry data without sending email', async () => {
   let sent = false;
