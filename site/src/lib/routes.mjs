@@ -10,6 +10,5 @@ export function documentDirection(language) {
 }
 
 export function canonicalUrl(pathname) {
-  return new URL(pathname, 'https://corn-comp.com').href;
+  return new URL(pathname, 'https://corn-comp.com').href.replace(/%[0-9a-f]{2}/g, (value) => value.toUpperCase());
 }
-
