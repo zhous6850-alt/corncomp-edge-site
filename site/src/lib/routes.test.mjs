@@ -19,4 +19,5 @@ test('marks only Arabic documents as right-to-left', () => {
 test('builds a stable production canonical URL', () => {
   assert.equal(canonicalUrl('/es/contacto/'), 'https://corn-comp.com/es/contacto/');
   assert.equal(canonicalUrl('/'), 'https://corn-comp.com/');
+  assert.equal(canonicalUrl('/ar/%d9%85%d9%86%d8%aa%d8%ac/'), 'https://corn-comp.com/ar/%D9%85%D9%86%D8%AA%D8%AC/');
 });
