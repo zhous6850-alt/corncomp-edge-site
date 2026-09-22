@@ -72,6 +72,19 @@ test('redirects retired commerce pages to the product directory', async () => {
   assert.equal(response.headers.get('location'), 'https://corn-comp.com/shop/');
 });
 
+test('redirects preserved WordPress category archives to the matching language blog', async () => {
+  for (const [source, target] of [
+    ['/category/company-industry/', '/blog/'],
+    ['/category/material-guides-fr/', '/fr/blog/'],
+    ['/es/category/compliance-regulations-es/', '/es/blog/'],
+    ['/ar/category/compliance-regulations-ar/', '/ar/blog/'],
+  ]) {
+    const response = await worker.fetch(new Request(`https://corn-comp.com${source}`), { ASSETS: { fetch: () => new Response('asset') } });
+    assert.equal(response.status, 301);
+    assert.equal(response.headers.get('location'), `https://corn-comp.com${target}`);
+  }
+});
+
 test('redirects legacy translated aliases to the preserved localized route', async () => {
   const response = await worker.fetch(new Request('https://corn-comp.com/fr/faq/'), { ASSETS: { fetch: () => new Response('asset') } });
   assert.equal(response.status, 301);

@@ -32,13 +32,20 @@ test('the footer preserves company contact, social, copyright and floating inqui
   assert.match(html, /0086-574-86961222/);
   assert.match(html, /\+65 8160 3123/);
   assert.match(html, /\+86 138 0663 2002/);
-  assert.match(html, /inquiry@corncomp\.com/);
+  assert.match(html, /inquiry@corn-comp\.com/);
+  assert.doesNotMatch(html, /inquiry@corncomp\.com/);
   assert.match(html, /facebook\.com\/profile\.php/);
   assert.match(html, /instagram\.com\/zxh_0927/);
   assert.match(html, /linkedin\.com\/in\/sam-zhou-431ab9424/);
   assert.match(html, /Copyright © 2026 Ningbo Corncomp Tech Co\., Ltd\. All rights reserved\./);
   assert.match(html, /class="[^\"]*floating-whatsapp[^\"]*"/);
   assert.match(html, /class="[^\"]*floating-contact[^\"]*"/);
+});
+
+test('the homepage publishes the current inquiry address in organization schema', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /"email":"inquiry@corn-comp\.com"/);
 });
 
 test('product pages group the title and image in a responsive lead', async () => {

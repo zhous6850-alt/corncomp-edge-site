@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import categories from '../data/categories.json';
 import records from '../data/records.json';
-import { categoryLanguage, contentPath, contentTitle, localizeInternalLinks } from '../lib/content-routes.mjs';
+import { categoryLanguage, contentDescription, contentPath, contentTitle, localizeInternalLinks, normalizeBodyHeadings } from '../lib/content-routes.mjs';
 import { categoryIdsByLanguage, navigationFor } from '../lib/site-config.mjs';
 
 export function getStaticPaths() {
@@ -32,16 +32,17 @@ const shopCategories = isShop ? categoryIdsByLanguage[currentLanguage].map((id) 
 const insightPosts = isBlog ? records.filter((item) => item.type === 'post' && item.language === currentLanguage) : [];
 const recordCategories = record?.type === 'product' ? categories.filter((item) => record.categoryIds.includes(item.id)) : [];
 const relatedProducts = record?.type === 'product' ? records.filter((item) => item.type === 'product' && item.id !== record.id && item.language === record.language && item.categoryIds.some((id) => record.categoryIds.includes(id))).slice(0, 4) : [];
-const bodyHtml = localizeInternalLinks(record?.body || '');
+const bodyHtml = normalizeBodyHeadings(localizeInternalLinks(record?.body || ''));
 const copy = {
-  en: { shop: ['Product', 'Browse our full range by category below.', 'Categories', 'Products'], blog: 'Blog', home: 'Home', related: 'Related Products', sent: 'Thank you. Your inquiry has been sent successfully.' },
-  fr: { shop: ['Produits', 'Parcourez notre gamme complète par catégorie.', 'Catégories', 'Produits'], blog: 'Blog', home: 'Accueil', related: 'Produits associés', sent: 'Merci. Votre demande a bien été envoyée.' },
-  es: { shop: ['Productos', 'Explore nuestra gama completa por categoría.', 'Categorías', 'Productos'], blog: 'Blog', home: 'Inicio', related: 'Productos relacionados', sent: 'Gracias. Su consulta se ha enviado correctamente.' },
-  ar: { shop: ['المنتجات', 'تصفح مجموعتنا الكاملة حسب الفئة.', 'الفئات', 'منتجات'], blog: 'المدونة', home: 'الرئيسية', related: 'منتجات ذات صلة', sent: 'شكرًا لك. تم إرسال استفسارك بنجاح.' },
+  en: { shop: ['Product', 'Browse our full range by category below.', 'Categories', 'Products'], blog: 'Blog', home: 'Home', related: 'Related Products', sent: 'Thank you. Your inquiry has been sent successfully.', description: 'Explore Corncomp products, manufacturing information and sustainable food packaging insights.' },
+  fr: { shop: ['Produits', 'Parcourez notre gamme complète par catégorie.', 'Catégories', 'Produits'], blog: 'Blog', home: 'Accueil', related: 'Produits associés', sent: 'Merci. Votre demande a bien été envoyée.', description: 'Découvrez les produits Corncomp, notre fabrication et nos conseils sur les emballages alimentaires durables.' },
+  es: { shop: ['Productos', 'Explore nuestra gama completa por categoría.', 'Categorías', 'Productos'], blog: 'Blog', home: 'Inicio', related: 'Productos relacionados', sent: 'Gracias. Su consulta se ha enviado correctamente.', description: 'Explore los productos Corncomp, nuestra fabricación y recursos sobre envases alimentarios sostenibles.' },
+  ar: { shop: ['المنتجات', 'تصفح مجموعتنا الكاملة حسب الفئة.', 'الفئات', 'منتجات'], blog: 'المدونة', home: 'الرئيسية', related: 'منتجات ذات صلة', sent: 'شكرًا لك. تم إرسال استفسارك بنجاح.', description: 'استكشف منتجات Corncomp ومعلومات التصنيع وموارد تغليف الأغذية المستدامة.' },
 }[currentLanguage];
 const nav = navigationFor(currentLanguage);
 const pageTitle = record ? contentTitle(record) : `${archive === 'shop' ? copy.shop[0] : copy.blog} | Corncomp`;
 const pagePath = record?.route || `/${currentLanguage}/${archive}/`;
+const pageDescription = contentDescription(record, copy.description);
 const structuredData = record?.type === 'product' ? {
   '@context': 'https://schema.org', '@type': 'Product', name: record.title.replace(/<[^>]+>/g, ''), url: `https://corn-comp.com${record.route}`,
   image: record.featuredMedia ? new URL(record.featuredMedia.localPath, 'https://corn-comp.com').href : undefined,
@@ -50,7 +51,7 @@ const structuredData = record?.type === 'product' ? {
 } : undefined;
 ---
 {record || archive ? (
-  <BaseLayout title={pageTitle} description={record?.seo.description || ''} language={currentLanguage} pathname={pagePath} image={record?.featuredMedia?.localPath} structuredData={structuredData}>
+  <BaseLayout title={pageTitle} description={pageDescription} language={currentLanguage} pathname={pagePath} image={record?.featuredMedia?.localPath} structuredData={structuredData}>
     <article class:list={['content-shell', `content-${record?.type || archive}`, { 'has-inquiry-form': isInquiryPage }]}>
       {record?.type === 'product' ? (
         <>
@@ -74,7 +75,7 @@ const structuredData = record?.type === 'product' ? {
     </article>
   </BaseLayout>
 ) : (
-  <BaseLayout title={category.seo.title} description={category.seo.description} language={language} pathname={category.route}>
+  <BaseLayout title={category.seo.title} description={contentDescription({ seo: category.seo, excerpt: category.description }, `${category.name.replace(/<[^>]+>/g, '')} products from Corncomp for wholesale food packaging buyers.`)} language={language} pathname={category.route}>
     <section class="content-shell category-archive" aria-labelledby="category-title"><header class="content-heading"><p class="content-kind">Product category</p><h1 id="category-title" set:html={category.name} />{category.description && <div set:html={localizeInternalLinks(category.description)} />}</header><div class="product-grid">{products.map((product) => <article class="product-card"><a href={product.route}>{product.featuredMedia && <img src={product.featuredMedia.localPath} alt={product.featuredMedia.alt} loading="lazy" decoding="async" />}<h2 set:html={product.title} /></a></article>)}</div></section>
   </BaseLayout>
 )}
