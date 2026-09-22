@@ -6,3 +6,4 @@ site/.dev.vars
 .npm-cache/
 .wrangler/
 .wrangler-config/
+.gh-cli/
