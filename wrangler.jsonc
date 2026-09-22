@@ -6,12 +6,5 @@
   "assets": {
     "directory": "./site/dist",
     "binding": "ASSETS"
-  },
-  "send_email": [
-    {
-      "name": "EMAIL",
-      "destination_address": "zhous6850@gmail.com",
-      "allowed_sender_addresses": ["inquiry@corncomp.com"]
-    }
-  ]
+  }
 }

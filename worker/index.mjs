@@ -1,5 +1,5 @@
 const RECIPIENT = 'zhous6850@gmail.com';
-const SENDER = 'inquiry@corncomp.com';
+const SENDER = 'Corncomp <inquiry@corn-comp.com>';
 const REDIRECTS = new Map([
   ['/cart/', '/shop/'],
   ['/checkout/', '/shop/'],
@@ -68,14 +68,19 @@ export default {
 
     const source = request.headers.get('referer') || 'Unknown page';
     const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nPage: ${source}\n\n${message || 'No message provided'}`;
-    await env.EMAIL.send({
-      to: RECIPIENT,
-      from: SENDER,
-      replyTo: email,
-      subject: `Corncomp inquiry from ${name}`,
-      text,
-      html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p><p><strong>Page:</strong> ${escapeHtml(source)}</p><p>${escapeHtml(message || 'No message provided').replace(/\n/g, '<br>')}</p>`,
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
+      body: JSON.stringify({
+        to: [RECIPIENT],
+        from: SENDER,
+        reply_to: email,
+        subject: `Corncomp inquiry from ${name}`,
+        text,
+        html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p><p><strong>Page:</strong> ${escapeHtml(source)}</p><p>${escapeHtml(message || 'No message provided').replace(/\n/g, '<br>')}</p>`,
+      }),
     });
+    if (!emailResponse.ok) return json({ ok: false, error: 'Unable to send inquiry.' }, 502);
     if ((request.headers.get('content-type') || '').includes('application/json')) return json({ ok: true });
     const page = new URL(source, request.url);
     return new Response(null, { status: 303, headers: { location: `${url.origin}${page.pathname}#inquiry-sent` } });
