@@ -15,6 +15,12 @@ test('the built homepage includes an accessible mobile navigation control', asyn
   assert.match(html, /<nav[^>]+id="primary-navigation"/);
 });
 
+test('the compact navigation covers tablet widths where desktop labels wrap', async () => {
+  const header = await readFile(new URL('../components/Header.astro', import.meta.url), 'utf8');
+
+  assert.match(header, /@media \(max-width: 980px\)/);
+});
+
 test('the global navigation exposes every migrated primary section and language choice', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
 
