@@ -92,6 +92,7 @@ test('the shop restores the nine English product categories', async () => {
     '/product-category/paper-plate/',
     '/product-category/menu-box/',
   ]) assert.match(html, new RegExp(`href="${route}"`));
+  assert.match(html, /href="\/product-category\/salad-bowl\/"><img src="\/media\/wp\/76--2026-07-14-085703\.png"/);
 });
 
 test('the blog restores the English insight archive', async () => {
