@@ -62,6 +62,10 @@ function escapeHtml(value) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.hostname === 'www.corn-comp.com') {
+      url.hostname = 'corn-comp.com';
+      return Response.redirect(url, 301);
+    }
     let decodedPath = url.pathname;
     try { decodedPath = decodeURI(decodedPath); } catch {}
     const redirect = REDIRECTS.get(decodedPath);
