@@ -27,7 +27,8 @@ const isInquiryPage = record?.body.includes('corncomp-inquiry-form');
 const shopCategories = isShop ? categoryIdsByLanguage[currentLanguage].map((id) => {
   const item = categories.find((category) => category.id === id);
   const categoryProducts = item ? records.filter((product) => product.type === 'product' && product.language === currentLanguage && product.categoryIds.includes(item.id)) : [];
-  return { ...item, products: categoryProducts, image: categoryProducts.find((product) => product.featuredMedia)?.featuredMedia };
+  const imageProduct = categoryProducts.find((product) => product.featuredMedia && !/\blid\b/i.test(product.title)) || categoryProducts.find((product) => product.featuredMedia);
+  return { ...item, products: categoryProducts, image: imageProduct?.featuredMedia };
 }).filter((item) => item.route) : [];
 const insightPosts = isBlog ? records.filter((item) => item.type === 'post' && item.language === currentLanguage) : [];
 const recordCategories = record?.type === 'product' ? categories.filter((item) => record.categoryIds.includes(item.id)) : [];
