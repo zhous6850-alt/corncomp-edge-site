@@ -2,6 +2,14 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
+function metaContent(html, name) {
+  return html.match(new RegExp(`<meta name="${name}" content="([^"]*)">`))?.[1] || '';
+}
+
+function structuredData(html) {
+  return html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)?.[1] || '';
+}
+
 test('the built homepage includes the global site styles', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
 
@@ -68,6 +76,28 @@ test('new product pages group the title, image, breadcrumb and contextual quote 
   assert.match(html, /"@type":"Product"/);
 });
 
+test('product schema publishes readable names and only truthful item identifiers', async () => {
+  const singleItemHtml = await readFile(
+    new URL('../../dist/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/index.html', import.meta.url),
+    'utf8',
+  );
+  const multiItemHtml = await readFile(
+    new URL('../../dist/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/index.html', import.meta.url),
+    'utf8',
+  );
+  const singleItemSchema = structuredData(singleItemHtml);
+  const multiItemSchema = structuredData(multiItemHtml);
+
+  assert.match(singleItemSchema, /"sku":"CC01TRIWINK"/);
+  assert.match(singleItemSchema, /"name":"Item number","value":"CC01TRIWINK"/);
+  assert.match(multiItemSchema, /"name":"Kraft Burrito Sleeve – 4 Sizes"/);
+  assert.doesNotMatch(multiItemSchema, /&#8211;/);
+  for (const itemNumber of ['CC01OWC100K', 'CC01OWC5.5K', 'CC01OWC135K', 'CC01OWC160K']) {
+    assert.match(multiItemSchema, new RegExp(`"name":"Item number","value":"${itemNumber.replaceAll('.', '\\.')}"`));
+  }
+  assert.doesNotMatch(multiItemSchema, /"sku":"CC01OWC/);
+});
+
 test('new category pages expose a labelled responsive product archive and buying guidance', async () => {
   const html = await readFile(
     new URL('../../dist/products/foodservice-supplies/disposable-cutlery/index.html', import.meta.url),
@@ -98,6 +128,31 @@ test('the blog restores the English insight archive', async () => {
   assert.match(html, /class="insight-grid"/);
   assert.match(html, /href="\/bpi-vs-fsc-certification\/"/);
   assert.doesNotMatch(html, /href="\/fr\/quest-ce-que/);
+});
+
+test('blog articles publish article, breadcrumb and social metadata', async () => {
+  const html = await readFile(
+    new URL('../../dist/eu-single-use-plastics-directive-explained/index.html', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(html, /<meta property="og:type" content="article">/);
+  assert.match(html, /"@type":"Article"/);
+  assert.match(html, /"@type":"BreadcrumbList"/);
+  assert.match(html, /"mainEntityOfPage":"https:\/\/corn-comp\.com\/eu-single-use-plastics-directive-explained\/"/);
+  assert.match(html, /"publisher":\{"@id":"https:\/\/corn-comp\.com\/#organization"\}/);
+});
+
+test('localized blog archives have distinct titles and descriptions from shop archives', async () => {
+  for (const language of ['fr', 'es', 'ar']) {
+    const blogHtml = await readFile(new URL(`../../dist/${language}/blog/index.html`, import.meta.url), 'utf8');
+    const shopHtml = await readFile(new URL(`../../dist/${language}/shop/index.html`, import.meta.url), 'utf8');
+    const blogTitle = blogHtml.match(/<title>([^<]*)<\/title>/)?.[1] || '';
+    const shopTitle = shopHtml.match(/<title>([^<]*)<\/title>/)?.[1] || '';
+
+    assert.notEqual(blogTitle, shopTitle);
+    assert.notEqual(metaContent(blogHtml, 'description'), metaContent(shopHtml, 'description'));
+  }
 });
 
 test('blog cards stack their image above the title on phones', async () => {

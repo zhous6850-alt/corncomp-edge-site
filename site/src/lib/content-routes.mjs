@@ -4,9 +4,9 @@ export function contentPath(route) {
 }
 
 export function contentTitle(record) {
-  return (record.seo?.title || record.title)
+  return contentText((record.seo?.title || record.title)
     .replaceAll('%sep%', '|')
-    .replaceAll('%sitename%', 'Corncomp');
+    .replaceAll('%sitename%', 'Corncomp'));
 }
 
 export function categoryLanguage(products) {
@@ -47,17 +47,23 @@ export function localizeInternalLinks(html = '') {
   return localized;
 }
 
-export function contentDescription(record = {}, fallback = '') {
-  const value = record.seo?.description || record.excerpt || fallback;
+export function contentText(value = '') {
   return value
     .replace(/<[^>]+>/g, ' ')
     .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([\da-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)))
     .replace(/&amp;/g, '&')
     .replace(/&quot;/g, '"')
     .replace(/&#39;|&apos;/g, "'")
     .replace(/&nbsp;/g, ' ')
+    .replace(/&ndash;/g, '–')
+    .replace(/&mdash;/g, '—')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+export function contentDescription(record = {}, fallback = '') {
+  return contentText(record.seo?.description || record.excerpt || fallback);
 }
 
 export function normalizeBodyHeadings(html = '') {
