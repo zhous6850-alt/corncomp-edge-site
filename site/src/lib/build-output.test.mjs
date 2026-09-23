@@ -143,6 +143,23 @@ test('blog articles publish article, breadcrumb and social metadata', async () =
   assert.match(html, /"publisher":\{"@id":"https:\/\/corn-comp\.com\/#organization"\}/);
 });
 
+test('buyer guides publish reviewed evidence tables and official sources', async () => {
+  const guides = [
+    ['paper-cup-sizes', 'Cup size specification checklist'],
+    ['custom-printed-paper-cups', 'Custom print approval checklist'],
+    ['food-packaging-certifications', 'Certificate review checklist'],
+  ];
+
+  for (const [slug, caption] of guides) {
+    const html = await readFile(new URL(`../../dist/resources/guides/${slug}/index.html`, import.meta.url), 'utf8');
+    assert.match(html, /Prepared by Corncomp/);
+    assert.match(html, /Last reviewed: 23 September 2026/);
+    assert.match(html, new RegExp(`<caption>${caption}</caption>`));
+    assert.match(html, /class="guide-sources"/);
+    assert.match(html, /"dateModified":"2026-09-23"/);
+  }
+});
+
 test('localized blog archives have distinct titles and descriptions from shop archives', async () => {
   for (const language of ['fr', 'es', 'ar']) {
     const blogHtml = await readFile(new URL(`../../dist/${language}/blog/index.html`, import.meta.url), 'utf8');

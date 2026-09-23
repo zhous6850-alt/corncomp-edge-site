@@ -148,7 +148,7 @@ const standardSections = [
   { title: 'Verify the required documentation', text: 'Company certificates and test reports do not automatically apply to every SKU or construction. Ask which documents cover the item you plan to order.' },
 ];
 
-const page = (route, kind, title, description, intro, sections = standardSections, links = []) => ({ route, kind, title, description, intro, sections, links });
+const page = (route, kind, title, description, intro, sections = standardSections, links = [], details = {}) => ({ route, kind, title, description, intro, sections, links, ...details });
 
 const link = (title, route, text) => ({ title, route, text });
 
@@ -182,19 +182,83 @@ export const ARCHITECTURE_PAGES = [
     { title: 'Measure rim and height', text: 'Rim diameter affects lid fit. Height and base diameter affect dispensers, carton packing and service equipment.' },
     { title: 'Confirm wall construction', text: 'Single, double and ripple wall cups handle heat and branding differently. Match construction to the actual drink and service.' },
     { title: 'Treat lids as matched components', text: 'Do not assume every lid with the same nominal size fits. Confirm the exact cup and lid item combination.' },
-  ], [link('Browse Paper Cups', '/products/cups-bowls/paper-cups/', 'Compare catalogue products and accessories.'), link('Request a Quote', '/contact/', 'Send the target size and quantity.')]),
+  ], [link('Browse Paper Cups', '/products/cups-bowls/paper-cups/', 'Compare catalogue products and accessories.'), link('Request a Quote', '/contact/', 'Send the target size and quantity.')], {
+    preparedBy: 'Corncomp',
+    reviewedDate: '2026-09-23',
+    reviewedLabel: '23 September 2026',
+    table: {
+      caption: 'Cup size specification checklist',
+      headers: ['Check', 'Why it matters', 'What to send'],
+      rows: [
+        ['Nominal volume', 'Helps shortlist a cup, but does not define its dimensions.', 'Target volume in ml or oz.'],
+        ['Rim diameter', 'Determines compatibility with the selected lid.', 'Top diameter and exact lid item.'],
+        ['Height and base diameter', 'Affect dispensers, service equipment and carton packing.', 'Dimension drawing or approved sample.'],
+        ['Wall construction', 'Changes heat handling, feel and printable surface.', 'Single, double or ripple wall plus drink temperature.'],
+        ['Unit and carton packing', 'Affects storage, freight and handling.', 'Units per sleeve and carton, plus carton dimensions.'],
+      ],
+    },
+    sourceIntro: 'These official resources cover food-contact requirements. Cup dimensions and lid fit still need to be confirmed against the selected item.',
+    sources: [
+      { title: 'European Commission: food contact materials legislation', url: 'https://food.ec.europa.eu/food-safety/chemical-safety/food-contact-materials/legislation_en' },
+      { title: 'US FDA: packaging and food-contact substances', url: 'https://www.fda.gov/food/food-ingredients-packaging/packaging-food-contact-substances-fcs' },
+    ],
+  }),
   page('/resources/guides/custom-printed-paper-cups/', 'guide', 'Custom Printed Paper Cups Guide', 'Prepare artwork, size, quantity, sample and packing requirements for printed paper cup sourcing.', 'A useful quotation starts with a complete specification: cup type, size, quantity, print coverage, artwork format, packing and destination.', [
     { title: 'Write the sourcing brief', text: 'List the cup construction, size, quantity, drink use, matching lid, packing and destination before requesting price.' },
     { title: 'Prepare artwork correctly', text: 'Supply editable artwork and color references. Confirm print area, seam allowance and mandatory marks on the approved dieline.' },
     { title: 'Choose the right sample', text: 'A stock sample checks construction; a printed proof checks artwork; a production sample may require more time and cost.' },
     { title: 'Approve before production', text: 'Treat the final specification, artwork, sample, carton marks and documents as one approval package.' },
-  ], [link('Custom Printed Paper Cups', '/custom-packaging/custom-printed-paper-cups/', 'Start a custom cup project.'), link('Paper Cups', '/products/cups-bowls/paper-cups/', 'Choose a base cup format.')]),
+  ], [link('Custom Printed Paper Cups', '/custom-packaging/custom-printed-paper-cups/', 'Start a custom cup project.'), link('Paper Cups', '/products/cups-bowls/paper-cups/', 'Choose a base cup format.')], {
+    preparedBy: 'Corncomp',
+    reviewedDate: '2026-09-23',
+    reviewedLabel: '23 September 2026',
+    table: {
+      caption: 'Custom print approval checklist',
+      headers: ['Stage', 'Confirm', 'Approval record'],
+      rows: [
+        ['Product brief', 'Cup construction, size, drink use, lid, quantity, packing and destination.', 'Written sourcing specification.'],
+        ['Artwork', 'Editable file, dieline, print area, seam allowance and color references.', 'Approved artwork revision.'],
+        ['Sample', 'Stock sample, printed proof or production sample, chosen for the decision needed.', 'Signed or written sample approval.'],
+        ['Market marks', 'Required food-contact, sorting or disposal marks for the destination market.', 'Compliance review before artwork release.'],
+        ['Production release', 'Final product, artwork, packing, carton marks and documents.', 'One approved release package.'],
+      ],
+    },
+    sourceIntro: 'Use the applicable rules for the destination market when preparing artwork and the release specification.',
+    sources: [
+      { title: 'EUR-Lex: Regulation (EU) 2025/40 on packaging and packaging waste', url: 'https://eur-lex.europa.eu/eli/reg/2025/40/oj/eng' },
+      { title: 'European Commission: food contact materials legislation', url: 'https://food.ec.europa.eu/food-safety/chemical-safety/food-contact-materials/legislation_en' },
+      { title: 'US FDA: packaging and food-contact substances', url: 'https://www.fda.gov/food/food-ingredients-packaging/packaging-food-contact-substances-fcs' },
+    ],
+  }),
   page('/resources/guides/food-packaging-certifications/', 'guide', 'Food Packaging Certifications Guide', 'Understand how to review company certificates, food-contact reports and product-specific certification scope.', 'Check the certificate holder, standard, scope, expiry date and exact product construction. A company certificate is not automatic proof for every SKU.', [
     { title: 'Check the certificate holder', text: 'The legal entity and production site should match the supplier and factory relevant to your order.' },
     { title: 'Read the scope and expiry', text: 'Confirm the standard, covered activity or material, issuing body and current validity instead of relying on a logo.' },
     { title: 'Separate systems from products', text: 'Management-system certificates describe processes. Food-contact tests and compostability claims may apply only to specific materials or constructions.' },
     { title: 'Request item-level evidence', text: 'Name the exact SKU, material, coating, ink and destination regulation so the supplier can identify the applicable report.' },
-  ], [link('Quality & Certifications', '/quality/', 'Review Corncomp’s verification approach.'), link('Contact Corncomp', '/contact/', 'Ask for documents for a selected item.')]),
+  ], [link('Quality & Certifications', '/quality/', 'Review Corncomp’s verification approach.'), link('Contact Corncomp', '/contact/', 'Ask for documents for a selected item.')], {
+    preparedBy: 'Corncomp',
+    reviewedDate: '2026-09-23',
+    reviewedLabel: '23 September 2026',
+    table: {
+      caption: 'Certificate review checklist',
+      headers: ['Check', 'Question', 'Evidence'],
+      rows: [
+        ['Holder and site', 'Does the legal entity and factory match the order?', 'Certificate holder and site address.'],
+        ['Standard and status', 'Is the correct standard current?', 'Certificate number, issue or expiry date, and status.'],
+        ['Scope', 'Does the activity, material or product fall within scope?', 'Scope statement and annexes.'],
+        ['Item match', 'Does the evidence cover the exact SKU, material, coating and ink?', 'Product listing or applicable report.'],
+        ['Independent verification', 'Can the status be checked in the issuer or official directory?', 'Direct database record.'],
+      ],
+    },
+    sourceIntro: 'Check the certificate or product record in the official directory, then match its holder, site and scope to the item you plan to buy.',
+    sources: [
+      { title: 'FSC certificate and licence search', url: 'https://search.fsc.org/' },
+      { title: 'BPI certified product catalogue', url: 'https://products.bpiworld.org/' },
+      { title: 'BRCGS Directory', url: 'https://directory.brcgs.com/' },
+      { title: 'European Commission: food contact materials legislation', url: 'https://food.ec.europa.eu/food-safety/chemical-safety/food-contact-materials/legislation_en' },
+      { title: 'US FDA: packaging and food-contact substances', url: 'https://www.fda.gov/food/food-ingredients-packaging/packaging-food-contact-substances-fcs' },
+    ],
+  }),
   page('/about/', 'trust', 'About Corncomp', 'Learn about Corncomp, its Ningbo manufacturing base and export food packaging programs.', 'Corncomp develops and supplies paper food packaging for distributors, restaurant groups and custom programs, with production and export support based in Ningbo, China.', [
     { title: 'Foodservice focus', text: 'The catalogue covers paper cups, bowls, food boxes, paper straws, cutlery and paper plates.' },
     { title: 'Manufacturing base', text: 'Corncomp states an 8,000 m² manufacturing base, including a 6,000 m² GMP-standard dust-free workshop and 60 production lines.' },
