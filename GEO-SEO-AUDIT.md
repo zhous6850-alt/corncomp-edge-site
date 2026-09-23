@@ -118,7 +118,7 @@ No live Semrush or mirror metrics were available in this run. Database/country, 
 
 ## 6. Verified remediation status
 
-Local build verification on 2026-09-23 (not yet deployed at the time of this report update):
+Build and production verification on 2026-09-23 (Worker version `49f683d2-9145-4efb-bb84-5ac6a54cc2ff`):
 
 - Product schema names with encoded HTML entities: **33 → 0**.
 - Product nodes with a truthful single `sku`: **0 → 3**. Multi-item pages intentionally do not claim one SKU.
@@ -128,6 +128,7 @@ Local build verification on 2026-09-23 (not yet deployed at the time of this rep
 - French, Spanish and Arabic blog archive metadata is now distinct from the corresponding shop archive.
 - Verified hreflang coverage: **32 → 75 pages**. The 297 emitted language links have zero missing targets and zero non-reciprocal clusters.
 - All 241 generated HTML files retain valid JSON-LD; the build completed and all 41 automated tests passed.
+- Representative English, French, Spanish and Arabic article/product alternates returned direct 200 responses and reciprocal clusters in production; the partial three-language article cluster also passed.
 
 No prices, offers, ratings, reviews or publication dates were invented. Inquiry conversion tracking remains pending because no verified analytics provider or measurement ID is currently configured.
 
