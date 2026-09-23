@@ -27,8 +27,8 @@ Top actions, in dependency order:
 | E2 | Observed | GSC sitemap screenshot supplied by user | URL-prefix property, 2026-09-23 | Sitemap status was Success and 241 pages were discovered; the final zero was discovered videos, not indexed pages. |
 | E3 | Observed | Production sitemap and robots | 2026-09-23 | Sitemap contains 241 `<loc>` entries; robots allows public crawling, disallows `/api/`, and points to the production sitemap. |
 | E4 | Observed | Full generated-HTML scan | 241 HTML files, 2026-09-23 | Missing title 0; missing description 0; missing canonical 0; pages without exactly one H1 0; noindex pages 0; invalid JSON-LD blocks 0. |
-| E5 | Observed | Full generated-HTML scan | 2026-09-23 | 209 of 241 pages have no hreflang. There are 91 English, 18 French, 66 Spanish and 66 Arabic documents. |
-| E6 | Derived | E4-E5 | 2026-09-23 | 86.7% of generated HTML pages have no hreflang cluster (`209 / 241`). This is not automatically wrong where no equivalent translation exists, but verified equivalents are currently under-described. |
+| E5 | Observed | Full generated-HTML scan | 2026-09-23 | 75 pages now belong to verified hreflang clusters; 166 of 241 pages have no hreflang. There are 91 English, 18 French, 66 Spanish and 66 Arabic documents. |
+| E6 | Derived | E4-E5 | 2026-09-23 | 68.9% of generated HTML pages have no hreflang cluster (`166 / 241`). This is expected where no verified equivalent exists; the new clusters cover top-level pages, five article topics and six products with one unambiguous source record per language. |
 | E7 | Observed | Parser-based metadata scan | 2026-09-23 | French and Spanish blog archives share the title `Blog | Corncomp`; the French, Spanish and Arabic blog descriptions duplicate their corresponding shop descriptions; canonical URLs are unique. An earlier regex-only scan incorrectly truncated descriptions containing apostrophes and has been discarded. |
 | E8 | Observed | Full schema scan | 2026-09-23 | Types found: Organization 244, Product 138, BreadcrumbList 79, ItemList 15, FAQPage 4 and Article 3. All JSON-LD parsed successfully. |
 | E9 | Observed | Product schema scan | 138 Product nodes, 2026-09-23 | 33 Product names retain HTML entities such as `&#8211;`; zero Product nodes contain `sku`; zero contain `offers`. Visible product content often contains exact item numbers and specification tables. |
@@ -48,7 +48,7 @@ Top actions, in dependency order:
 
 **Core production discovery is healthy (E1-E4, E17).** Sitemap, robots, canonicals, HTTP status and edge delivery passed. Priority: completed. Verification: continue monitoring GSC Page indexing and Crawl stats.
 
-**Deep multilingual equivalence is incomplete (E5-E6).** Missing hreflang does not hurt an English-only page, but translated products/articles that are genuine equivalents should form reciprocal language clusters with `x-default`. Recommended change: build a verified route map and emit reciprocal hreflang only for true equivalents; do not mechanically pair pages by slug. Priority: P1. Effort: M. Confidence: high. Verification: every emitted target returns 200, is canonical and links back to the full cluster.
+**Verified deep multilingual equivalence is partially implemented (E5-E6).** Reciprocal clusters now cover the unambiguous article and product groups, and every emitted target exists and links back to the same cluster. Remaining legacy product/category translations should not be paired until their incorrect WordPress language labels and broader category mismatches are resolved. Priority: P2. Effort: M. Confidence: high.
 
 **Conversion measurement was not observed (E16, E18).** GSC can measure search queries, but not the complete inquiry journey. Recommended change: add an approved analytics tool and fire a conversion only after `/api/inquiry` succeeds; document consent requirements for target markets. Priority: P1. Effort: S-M. Confidence: medium because edge-injected analytics was not inspected. Verification: one test inquiry appears once in analytics debug/realtime reporting.
 
@@ -126,7 +126,8 @@ Local build verification on 2026-09-23 (not yet deployed at the time of this rep
 - Article nodes: **3 → 22**.
 - BreadcrumbList nodes: **79 → 98**.
 - French, Spanish and Arabic blog archive metadata is now distinct from the corresponding shop archive.
-- All 241 generated HTML files retain valid JSON-LD; the build completed and all 38 automated tests passed.
+- Verified hreflang coverage: **32 → 75 pages**. The 297 emitted language links have zero missing targets and zero non-reciprocal clusters.
+- All 241 generated HTML files retain valid JSON-LD; the build completed and all 41 automated tests passed.
 
 No prices, offers, ratings, reviews or publication dates were invented. Inquiry conversion tracking remains pending because no verified analytics provider or measurement ID is currently configured.
 

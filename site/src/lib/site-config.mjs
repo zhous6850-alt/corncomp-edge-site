@@ -1,3 +1,6 @@
+import records from '../data/records.json' with { type: 'json' };
+import { PRODUCT_CATEGORY_BY_SLUG, canonicalProductRoute } from './site-architecture.mjs';
+
 export const languageHomes = {
   en: '/',
   fr: '/fr/corncomp-pailles-en-papier-et-emballages-alimentaires-biodegradables/',
@@ -23,7 +26,9 @@ export function navigationFor(language = 'en') {
   return navigation[language] || navigation.en;
 }
 
-const alternateGroups = [
+const languageOrder = ['en', 'fr', 'es', 'ar'];
+
+const staticAlternateGroups = [
   ['/', languageHomes.fr, languageHomes.es, languageHomes.ar],
   ['/about/', navigation.fr.about[1], navigation.es.about[1], navigation.ar.about[1]],
   ['/products/', '/fr/shop/', '/es/shop/', '/ar/shop/'],
@@ -32,9 +37,40 @@ const alternateGroups = [
   ['/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/'],
   ['/faq/', navigation.fr.faq[1], navigation.es.faq[1], navigation.ar.faq[1]],
   ['/contact/', navigation.fr.contact[1], navigation.es.contact[1], navigation.ar.contact[1]],
+].map((routes) => routes.map((route, index) => ({ language: languageOrder[index], route })));
+
+function verifiedMediaGroups(type) {
+  const byMedia = new Map();
+  for (const record of records.filter((item) => item.type === type && item.featuredMediaId)) {
+    if (!byMedia.has(record.featuredMediaId)) byMedia.set(record.featuredMediaId, []);
+    byMedia.get(record.featuredMediaId).push(record);
+  }
+
+  return [...byMedia.values()].flatMap((group) => {
+    const byLanguage = Object.fromEntries(languageOrder.map((language) => [language, group.filter((item) => item.language === language)]));
+    if (!languageOrder.every((language) => byLanguage[language].length === 1)) return [];
+    const english = byLanguage.en[0];
+    if (type === 'product' && !PRODUCT_CATEGORY_BY_SLUG[english.slug]) return [];
+    return [languageOrder.map((language) => ({
+      language,
+      route: type === 'product' && language === 'en' ? canonicalProductRoute(english.slug) : byLanguage[language][0].route,
+    }))];
+  });
+}
+
+const partialArticleGroups = [[
+  { language: 'en', route: '/us-state-plastic-packaging-laws-explained/' },
+  { language: 'es', route: '/es/leyes-estatales-eeuu-empaques-plasticos/' },
+  { language: 'ar', route: '/ar/qwanin-tbyt-lblastyk-alwlayat-almthdt/' },
+]];
+
+const alternateGroups = [
+  ...staticAlternateGroups,
+  ...verifiedMediaGroups('post'),
+  ...verifiedMediaGroups('product'),
+  ...partialArticleGroups,
 ];
 
 export function pageAlternates(pathname) {
-  const group = alternateGroups.find((routes) => routes.includes(pathname));
-  return group ? ['en', 'fr', 'es', 'ar'].map((language, index) => ({ language, route: group[index] })) : [];
+  return alternateGroups.find((group) => group.some((item) => item.route === pathname)) || [];
 }
