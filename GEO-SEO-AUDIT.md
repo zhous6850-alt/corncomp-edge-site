@@ -9,14 +9,14 @@ Business goal: product discovery, trust evidence and qualified inquiry; no ecomm
 
 The production migration and core technical SEO are complete enough to remain live. The site is crawlable, the 241-URL sitemap was accepted by Google Search Console, representative pages return the expected status codes, legacy English routes redirect in one hop, and every generated HTML page has a title, description, canonical and exactly one H1.
 
-SEO and GEO are not finished. The highest-value remaining work is to complete multilingual hreflang mapping, correct and enrich structured data without inventing prices or reviews, add measurement for inquiry conversions, improve the evidence and update signals on resource pages, and decide whether Cloudflare should allow ClaudeBot.
+SEO and GEO are not finished. The highest-value remaining work is to add measurement for inquiry conversions, strengthen visible factory and certification evidence, create page-specific social images for priority guides, and decide whether Cloudflare should allow ClaudeBot.
 
 Top actions, in dependency order:
 
 1. Add measurement: GA4/GTM or an approved alternative plus a successful-inquiry conversion event.
-2. Repair structured data: decode Product names, add truthful SKU/variant properties, and add Article/Breadcrumb schema to blog articles.
-3. Add verified hreflang clusters to equivalent deep product, category and article pages.
-4. Give each localized blog archive distinct metadata and enrich guides with dates, authors, images, tables and authoritative sources.
+2. Strengthen visible factory and certification evidence without extending claims beyond the supporting records.
+3. Create page-specific social images for the highest-priority guides.
+4. Monitor verified hreflang clusters and do not map pages without a true translated equivalent.
 5. Review Cloudflare AI crawler controls; allow ClaudeBot if Claude visibility is desired.
 
 ## 2. Evidence ledger
@@ -41,6 +41,7 @@ Top actions, in dependency order:
 | E16 | Observed | Static source scan | 2026-09-23 | No exact GA4, GTM, Google Analytics or Microsoft Clarity tag was found in the generated HTML/source inspected. Search Console search-performance data was not available in this audit. |
 | E17 | Observed | Live cache headers | Representative pages, 2026-09-23 | Cloudflare returned `CF-Cache-Status: HIT` on key pages; HTML uses `public, max-age=0, must-revalidate`. |
 | E18 | Observed | Inquiry delivery test and user confirmation | 2026-09-23 | Production `/api/inquiry` returned `200 {"ok":true}` and the user confirmed receipt of the test email. |
+| E19 | Observed | Production buyer-guide checks | Three guides, Worker `16457987-79e5-42e5-8918-22531a35e479`, 2026-09-23 | All three returned direct 200 responses and expose visible Corncomp authorship, a 23 September 2026 review date, buyer checklist tables, official primary-source links, contextual inquiry links and Article `dateModified`. A post-deployment inquiry test returned `200 {"ok":true}`. |
 
 ## 3. Findings
 
@@ -78,7 +79,7 @@ Top actions, in dependency order:
 
 **Product pages are the strongest answer assets (E10).** Specifications, item numbers, applications, documentation caveats and FAQs create quote-sized factual passages. Preserve these facts and expand only from verified catalog or factory evidence. Priority: maintain. Confidence: high.
 
-**New buyer guides are too brief to become strong reference pages (E11).** Expand the size, customization and certification guides with comparison tables, worked buyer examples, concise answer-first summaries, author/reviewer identity, last-reviewed date and primary-source citations. Avoid keyword padding. Priority: P1. Effort: M-L. Confidence: high for observed content depth; impact is heuristic.
+**The three buyer guides now expose stronger evidence and decision support (E11, E19).** Each guide has a buyer checklist table, visible authorship and review date, official primary-source links, Article `dateModified` and a contextual inquiry route. Worked examples and guide-specific social images remain optional depth improvements; add them only where they answer a real buyer question. Priority: completed for the evidence baseline. Confidence: high for implementation; citation impact remains heuristic.
 
 **Authority sourcing is inconsistent (E12).** The EU article links to European Commission/EUR-Lex; the certification-verification article does not link to the official FSC, BPI or BRC verification sources it tells buyers to use. Add primary links beside the relevant claims and show a reviewed date. Priority: P1. Effort: S-M. Confidence: high.
 
@@ -105,7 +106,6 @@ No live Semrush or mirror metrics were available in this run. Database/country, 
 ### Days 4-10
 
 - Build verified reciprocal hreflang clusters for true multilingual equivalents.
-- Expand the three buyer guides with tables, primary sources, authorship and reviewed dates.
 - Add official verification links and evidence scope to quality/certification content.
 - Create page-specific social images for the highest-priority guides.
 
@@ -118,7 +118,7 @@ No live Semrush or mirror metrics were available in this run. Database/country, 
 
 ## 6. Verified remediation status
 
-Build and production verification on 2026-09-23 (Worker version `49f683d2-9145-4efb-bb84-5ac6a54cc2ff`):
+Build and production verification on 2026-09-23 (Worker version `16457987-79e5-42e5-8918-22531a35e479`):
 
 - Product schema names with encoded HTML entities: **33 → 0**.
 - Product nodes with a truthful single `sku`: **0 → 3**. Multi-item pages intentionally do not claim one SKU.
@@ -127,8 +127,10 @@ Build and production verification on 2026-09-23 (Worker version `49f683d2-9145-4
 - BreadcrumbList nodes: **79 → 98**.
 - French, Spanish and Arabic blog archive metadata is now distinct from the corresponding shop archive.
 - Verified hreflang coverage: **32 → 75 pages**. The 297 emitted language links have zero missing targets and zero non-reciprocal clusters.
-- All 241 generated HTML files retain valid JSON-LD; the build completed and all 41 automated tests passed.
+- All 241 generated HTML files retain valid JSON-LD; the build completed and all 42 automated tests passed.
 - Representative English, French, Spanish and Arabic article/product alternates returned direct 200 responses and reciprocal clusters in production; the partial three-language article cluster also passed.
+- The three English buyer guides now expose visible Corncomp authorship, a reviewed date, responsive specification checklists, official primary sources, contextual inquiry links and Article `dateModified`.
+- All three guide URLs returned direct 200 responses with the expected live markup, and the post-deployment inquiry test returned `200 {"ok":true}`.
 
 No prices, offers, ratings, reviews or publication dates were invented. Inquiry conversion tracking remains pending because no verified analytics provider or measurement ID is currently configured.
 
