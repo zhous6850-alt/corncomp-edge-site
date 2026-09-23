@@ -19,6 +19,8 @@ test('verified translated articles expose reciprocal deep-page alternatives', ()
 
   assert.deepEqual(alternatives.map((item) => item.language), ['en', 'fr', 'es', 'ar']);
   assert.equal(alternatives[1].route, '/fr/directive-europeenne-sur-les-plastiques-a-usage-unique-ce-quelle-signifie-pour-les-acheteurs-demballages/');
+  assert.match(alternatives[3].route, /%D8/);
+  assert.doesNotMatch(alternatives[3].route, /%d8/);
   for (const alternate of alternatives) assert.deepEqual(pageAlternates(alternate.route), alternatives);
 });
 

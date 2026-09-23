@@ -27,6 +27,7 @@ export function navigationFor(language = 'en') {
 }
 
 const languageOrder = ['en', 'fr', 'es', 'ar'];
+const normalizeRoute = (route) => route.replace(/%[\da-f]{2}/gi, (escape) => escape.toUpperCase());
 
 const staticAlternateGroups = [
   ['/', languageHomes.fr, languageHomes.es, languageHomes.ar],
@@ -37,7 +38,7 @@ const staticAlternateGroups = [
   ['/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/'],
   ['/faq/', navigation.fr.faq[1], navigation.es.faq[1], navigation.ar.faq[1]],
   ['/contact/', navigation.fr.contact[1], navigation.es.contact[1], navigation.ar.contact[1]],
-].map((routes) => routes.map((route, index) => ({ language: languageOrder[index], route })));
+].map((routes) => routes.map((route, index) => ({ language: languageOrder[index], route: normalizeRoute(route) })));
 
 function verifiedMediaGroups(type) {
   const byMedia = new Map();
@@ -53,15 +54,15 @@ function verifiedMediaGroups(type) {
     if (type === 'product' && !PRODUCT_CATEGORY_BY_SLUG[english.slug]) return [];
     return [languageOrder.map((language) => ({
       language,
-      route: type === 'product' && language === 'en' ? canonicalProductRoute(english.slug) : byLanguage[language][0].route,
+      route: normalizeRoute(type === 'product' && language === 'en' ? canonicalProductRoute(english.slug) : byLanguage[language][0].route),
     }))];
   });
 }
 
 const partialArticleGroups = [[
-  { language: 'en', route: '/us-state-plastic-packaging-laws-explained/' },
-  { language: 'es', route: '/es/leyes-estatales-eeuu-empaques-plasticos/' },
-  { language: 'ar', route: '/ar/qwanin-tbyt-lblastyk-alwlayat-almthdt/' },
+  { language: 'en', route: normalizeRoute('/us-state-plastic-packaging-laws-explained/') },
+  { language: 'es', route: normalizeRoute('/es/leyes-estatales-eeuu-empaques-plasticos/') },
+  { language: 'ar', route: normalizeRoute('/ar/qwanin-tbyt-lblastyk-alwlayat-almthdt/') },
 ]];
 
 const alternateGroups = [
@@ -72,5 +73,6 @@ const alternateGroups = [
 ];
 
 export function pageAlternates(pathname) {
-  return alternateGroups.find((group) => group.some((item) => item.route === pathname)) || [];
+  const route = normalizeRoute(pathname);
+  return alternateGroups.find((group) => group.some((item) => item.route === route)) || [];
 }
