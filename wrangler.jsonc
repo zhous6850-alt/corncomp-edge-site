@@ -3,15 +3,13 @@
   "name": "corncomp-edge-site",
   "main": "worker/index.mjs",
   "compatibility_date": "2026-09-19",
+  "routes": [
+    { "pattern": "corn-comp.com/*", "zone_name": "corn-comp.com" },
+    { "pattern": "www.corn-comp.com/*", "zone_name": "corn-comp.com" }
+  ],
   "assets": {
     "directory": "./site/dist",
-    "binding": "ASSETS"
-  },
-  "send_email": [
-    {
-      "name": "EMAIL",
-      "destination_address": "zhous6850@gmail.com",
-      "allowed_sender_addresses": ["inquiry@corn-comp.com"]
-    }
-  ]
+    "binding": "ASSETS",
+    "run_worker_first": true
+  }
 }

@@ -1,14 +1,26 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import worker from './index.mjs';
 
+test('runs the Worker before static assets so canonical redirects execute', () => {
+  const config = JSON.parse(readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
+  assert.equal(config.assets.run_worker_first, true);
+});
+
 function request(body, method = 'POST') {
-  return new Request('https://corncomp.com/api/inquiry', {
+  return new Request('https://corn-comp.com/api/inquiry', {
     method,
-    headers: { 'content-type': 'application/json', referer: 'https://corncomp.com/contact-us/' },
+    headers: { 'content-type': 'application/json', referer: 'https://corn-comp.com/contact-us/' },
     body: method === 'POST' ? JSON.stringify(body) : undefined,
   });
 }
+
+test('redirects www requests to the canonical root domain', async () => {
+  const response = await worker.fetch(new Request('https://www.corn-comp.com/shop/?source=www'), { ASSETS: { fetch: () => new Response('asset') } });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corn-comp.com/shop/?source=www');
+});
 
 test('rejects invalid inquiry data without sending email', async () => {
   let sent = false;
@@ -24,26 +36,94 @@ test('silently accepts honeypot submissions without sending email', async () => 
   assert.equal(sent, false);
 });
 
-test('sends a valid inquiry from inquiry@corn-comp.com to the fixed mailbox', async () => {
-  let message;
-  const response = await worker.fetch(request({ name: 'Buyer', email: 'buyer@example.com', phone: '+1 555', message: 'Need bowls' }), {
-    EMAIL: { send: async (value) => { message = value; return { messageId: 'test' }; } },
-  });
-  assert.equal(response.status, 200);
-  assert.equal(message.from, 'inquiry@corn-comp.com');
-  assert.equal(message.to, 'zhous6850@gmail.com');
-  assert.equal(message.replyTo, 'buyer@example.com');
-  assert.match(message.text, /Need bowls/);
+test('sends a valid contextual inquiry through Resend from inquiry@corn-comp.com', async () => {
+  const originalFetch = globalThis.fetch;
+  let call;
+  globalThis.fetch = async (url, options) => {
+    call = { url, options };
+    return Response.json({ id: 'test' });
+  };
+  try {
+    const response = await worker.fetch(request({ name: 'Buyer', email: 'buyer@example.com', phone: '+1 555', company: 'Buyer Co', country: 'DE', productName: 'Kraft Paper Bowl', productSku: 'CC01KB500', category: 'Salad Bowls', quantity: '50,000', sourcePath: '/products/cups-bowls/salad-bowls/kraft-paper-bowl/', message: 'Need bowls' }), {
+      RESEND_API_KEY: 're_test',
+    });
+    const message = JSON.parse(call.options.body);
+    assert.equal(response.status, 200);
+    assert.equal(call.url, 'https://api.resend.com/emails');
+    assert.equal(call.options.headers.authorization, 'Bearer re_test');
+    assert.equal(message.from, 'Corncomp <inquiry@corn-comp.com>');
+    assert.deepEqual(message.to, ['zhous6850@gmail.com']);
+    assert.equal(message.reply_to, 'buyer@example.com');
+    assert.match(message.text, /Need bowls/);
+    assert.match(message.text, /Buyer Co/);
+    assert.match(message.text, /CC01KB500/);
+    assert.match(message.text, /Salad Bowls/);
+    assert.match(message.text, /50,000/);
+    assert.match(message.text, /\/products\/cups-bowls\/salad-bowls\/kraft-paper-bowl\//);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('redirects legacy English product URLs in one hop and preserves query parameters', async () => {
+  const response = await worker.fetch(new Request('https://corn-comp.com/product/single-wall-white-cardboard-paper-cup/?utm_source=legacy'), { ASSETS: { fetch: () => new Response('asset') } });
+
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corn-comp.com/products/cups-bowls/paper-cups/single-wall-white-cardboard-paper-cup/?utm_source=legacy');
+});
+
+test('redirects misplaced French-root duplicates to their canonical English products', async () => {
+  const response = await worker.fetch(new Request('https://corn-comp.com/product/gobelet-en-papier-simple-paroi-carton-blanc/'), { ASSETS: { fetch: () => new Response('asset') } });
+
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corn-comp.com/products/cups-bowls/paper-cups/single-wall-white-cardboard-paper-cup/');
 });
 
 test('redirects a browser form submission back to its language contact page', async () => {
   const form = new URLSearchParams({ 'your-name': 'Buyer', 'your-email': 'buyer@example.com' });
-  const formRequest = new Request('https://corncomp.com/api/inquiry', {
+  const formRequest = new Request('https://corn-comp.com/api/inquiry', {
     method: 'POST',
-    headers: { 'content-type': 'application/x-www-form-urlencoded', referer: 'https://corncomp.com/es/contactenos/' },
+    headers: { 'content-type': 'application/x-www-form-urlencoded', referer: 'https://corn-comp.com/es/contactenos/' },
     body: form,
   });
-  const response = await worker.fetch(formRequest, { EMAIL: { send: async () => ({ messageId: 'test' }) } });
-  assert.equal(response.status, 303);
-  assert.equal(response.headers.get('location'), 'https://corncomp.com/es/contactenos/#inquiry-sent');
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => Response.json({ id: 'test' });
+  try {
+    const response = await worker.fetch(formRequest, { RESEND_API_KEY: 're_test' });
+    assert.equal(response.status, 303);
+    assert.equal(response.headers.get('location'), 'https://corn-comp.com/es/contactenos/#inquiry-sent');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('redirects retired commerce pages to the product directory', async () => {
+  const response = await worker.fetch(new Request('https://corn-comp.com/cart/'), { ASSETS: { fetch: () => new Response('asset') } });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corn-comp.com/products/');
+});
+
+test('redirects preserved WordPress category archives to the matching language blog', async () => {
+  for (const [source, target] of [
+    ['/category/company-industry/', '/blog/'],
+    ['/category/material-guides-fr/', '/fr/blog/'],
+    ['/es/category/compliance-regulations-es/', '/es/blog/'],
+    ['/ar/category/compliance-regulations-ar/', '/ar/blog/'],
+  ]) {
+    const response = await worker.fetch(new Request(`https://corn-comp.com${source}`), { ASSETS: { fetch: () => new Response('asset') } });
+    assert.equal(response.status, 301);
+    assert.equal(response.headers.get('location'), `https://corn-comp.com${target}`);
+  }
+});
+
+test('redirects legacy translated aliases to the preserved localized route', async () => {
+  const response = await worker.fetch(new Request('https://corn-comp.com/fr/faq/'), { ASSETS: { fetch: () => new Response('asset') } });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corn-comp.com/fr/faq-corncomp/');
+});
+
+test('redirects legacy translated article aliases to the migrated article', async () => {
+  const response = await worker.fetch(new Request('https://corn-comp.com/es/pla-vs-bagasse-vs-fsc-paper/'), { ASSETS: { fetch: () => new Response('asset') } });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), 'https://corn-comp.com/es/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/');
 });

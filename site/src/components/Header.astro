@@ -1,10 +1,16 @@
 ---
+import categories from '../data/categories.json';
+import { categoryIdsByLanguage, languageHomes, navigationFor } from '../lib/site-config.mjs';
+import { PRODUCT_CATEGORIES, PRODUCT_GROUPS } from '../lib/site-architecture.mjs';
+
 const { language = 'en' } = Astro.props;
-const homePath = language === 'en' ? '/' : `/${language}/`;
+const nav = navigationFor(language);
+const productCategories = categoryIdsByLanguage[language].map((id) => categories.find((item) => item.id === id)).filter(Boolean);
+const languages = [['en', 'English'], ['fr', 'Français'], ['es', 'Español'], ['ar', 'العربية']];
 ---
 <header class="site-header" data-site-header>
   <div class="header-inner">
-    <a class="brand" href={homePath} aria-label="Corncomp home">
+    <a class="brand" href={nav.home[1]} aria-label="Corncomp home">
       <img src="/media/corncomp-logo.png" width="111" height="104" alt="Corncomp">
     </a>
     <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false">
@@ -12,11 +18,45 @@ const homePath = language === 'en' ? '/' : `/${language}/`;
       <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
     </button>
     <nav id="primary-navigation" aria-label="Primary navigation">
-      <a href="/">Home</a>
-      <a href="/about-us/">About Us</a>
-      <a href="/shop/">Product</a>
-      <a href="/certifications/">Certifications</a>
-      <a class="nav-contact" href="/contact-us/">Contact Us</a>
+      <a href={nav.home[1]}>{nav.home[0]}</a>
+      {language === 'en' ? (
+        <>
+          <details class="product-menu">
+            <summary>{nav.product[0]}</summary>
+            <div class="nav-submenu product-mega-menu">
+              <a href={nav.product[1]}>All Products</a>
+              {PRODUCT_GROUPS.map((group) => <div class="nav-product-group"><a class="nav-group-link" href={group.route}>{group.title}</a>{PRODUCT_CATEGORIES.filter((category) => category.group === group.slug).map((category) => <a href={category.route}>{category.title}</a>)}</div>)}
+            </div>
+          </details>
+          <a href={nav.custom[1]}>{nav.custom[0]}</a>
+          <a href={nav.applications[1]}>{nav.applications[0]}</a>
+          <a href={nav.certifications[1]}>{nav.certifications[0]}</a>
+          <a href={nav.resources[1]}>{nav.resources[0]}</a>
+          <a href={nav.about[1]}>{nav.about[0]}</a>
+        </>
+      ) : (
+        <>
+          <a href={nav.about[1]}>{nav.about[0]}</a>
+          <details class="product-menu">
+            <summary>{nav.product[0]}</summary>
+            <div class="nav-submenu">
+              <a href={nav.product[1]}>All {nav.product[0]}</a>
+              {productCategories.map((category) => <a href={category.route} set:html={category.name} />)}
+            </div>
+          </details>
+          <a href={nav.certifications[1]}>{nav.certifications[0]}</a>
+          <a href={nav.cases[1]}>{nav.cases[0]}</a>
+          <a href={nav.blog[1]}>{nav.blog[0]}</a>
+          <a href={nav.faq[1]}>{nav.faq[0]}</a>
+        </>
+      )}
+      <details class="language-menu">
+        <summary>{language.toUpperCase()}</summary>
+        <div class="nav-submenu language-submenu">
+          {languages.map(([code, label]) => <a href={languageHomes[code]} lang={code} aria-current={code === language ? 'page' : undefined}>{label}</a>)}
+        </div>
+      </details>
+      <a class="nav-contact" href={nav.contact[1]}>{nav.contact[0]}</a>
     </nav>
   </div>
 </header>
@@ -51,23 +91,38 @@ const homePath = language === 'en' ? '/' : `/${language}/`;
   .header-inner { width: min(1200px, calc(100% - 48px)); min-height: 84px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
   .brand { display: inline-flex; flex: 0 0 auto; }
   .brand img { width: 92px; height: 58px; object-fit: contain; }
-  nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); color: var(--corncomp-deep-green); font-size: .82rem; font-weight: 700; letter-spacing: .025em; }
+  nav { display: flex; align-items: center; gap: clamp(10px, 1.15vw, 18px); color: var(--corncomp-deep-green); font-size: .76rem; font-weight: 700; letter-spacing: .02em; }
   nav a { position: relative; text-decoration: none; }
   nav a:not(.nav-contact)::after { position: absolute; right: 0; bottom: -8px; left: 0; height: 2px; background: var(--corncomp-green); content: ''; transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
   nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
   .nav-contact { padding: 11px 17px; border: 1px solid var(--corncomp-green); border-radius: 4px; color: var(--corncomp-green); }
+  details { position: relative; }
+  summary { cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { margin-inline-start: 6px; content: '▾'; font-size: .7em; }
+  .nav-submenu { position: absolute; top: calc(100% + 14px); left: -18px; min-width: 260px; padding: 10px; border: 1px solid var(--corncomp-line); border-radius: 4px; background: #fff; box-shadow: var(--corncomp-shadow); }
+  .nav-submenu a { display: block; padding: 9px 10px; line-height: 1.25; }
+  .language-submenu { right: 0; left: auto; min-width: 140px; }
+  .product-mega-menu { display: grid; grid-template-columns: repeat(3, minmax(190px, 1fr)); width: min(760px, calc(100vw - 48px)); }
+  .nav-product-group { padding: 8px; }
+  .nav-product-group .nav-group-link { color: var(--corncomp-green); font-weight: 900; }
   .menu-toggle { display: none; align-items: center; gap: 10px; padding: 10px 0; border: 0; background: transparent; color: var(--corncomp-deep-green); font: inherit; font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; cursor: pointer; }
   .menu-icon { position: relative; width: 22px; height: 16px; display: block; }
   .menu-icon i { position: absolute; left: 0; width: 22px; height: 2px; background: currentColor; transition: transform .2s ease, top .2s ease; }
   .menu-icon i:first-child { top: 3px; }
   .menu-icon i:last-child { top: 11px; }
 
-  @media (max-width: 760px) {
+  @media (max-width: 980px) {
     .header-inner { width: min(100% - 32px, 1200px); min-height: 72px; }
     .brand img { width: 78px; height: 48px; }
     .menu-toggle { display: inline-flex; }
     nav { position: absolute; top: 100%; right: 0; left: 0; display: grid; gap: 0; padding: 10px 16px 22px; border-bottom: 1px solid var(--corncomp-line); background: var(--corncomp-paper); box-shadow: 0 18px 34px rgba(18, 56, 35, .1); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
     nav a { padding: 15px 8px; border-bottom: 1px solid var(--corncomp-line); font-size: .95rem; }
+    nav details { border-bottom: 1px solid var(--corncomp-line); }
+    nav summary { padding: 15px 8px; font-size: .95rem; }
+    .nav-submenu { position: static; min-width: 0; padding: 0 0 10px 14px; border: 0; box-shadow: none; }
+    .product-mega-menu { display: block; width: auto; }
+    .nav-submenu a { padding: 9px 8px; border: 0; font-size: .86rem; }
     nav a::after { display: none; }
     .nav-contact { margin-top: 12px; padding: 13px 16px; border: 0; border-radius: 3px; background: var(--corncomp-green); color: white; text-align: center; }
     [data-menu-open] nav { opacity: 1; visibility: visible; transform: translateY(0); }
@@ -75,4 +130,3 @@ const homePath = language === 'en' ? '/' : `/${language}/`;
     [data-menu-open] .menu-icon i:last-child { top: 7px; transform: rotate(-45deg); }
   }
 </style>
-
