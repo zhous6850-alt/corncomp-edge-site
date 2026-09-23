@@ -1,0 +1,238 @@
+export const PRODUCT_GROUPS = [
+  { slug: 'cups-bowls', title: 'Cups & Bowls', route: '/products/cups-bowls/', description: 'Paper cups and bowls for beverages, prepared food, takeaway service and branded foodservice programs.' },
+  { slug: 'food-boxes-containers', title: 'Food Boxes & Containers', route: '/products/food-boxes-containers/', description: 'Paper food boxes for meals, sandwiches, sushi, salads, burgers, wraps, pizza slices and fried food.' },
+  { slug: 'foodservice-supplies', title: 'Foodservice Supplies', route: '/products/foodservice-supplies/', description: 'Paper straws, disposable cutlery and paper plates for distributors, restaurant groups and private-label programs.' },
+];
+
+export const PRODUCT_CATEGORIES = [
+  { group: 'cups-bowls', slug: 'paper-cups', title: 'Paper Cups', description: 'Paper cups and matching accessories for wholesale beverage service, custom printing and private-label supply.' },
+  { group: 'cups-bowls', slug: 'salad-bowls', title: 'Salad Bowls', description: 'Kraft and white paper bowls with matching paper, PLA, PP and PET lid options.' },
+  { group: 'cups-bowls', slug: 'soup-cups', title: 'Soup Cups', description: 'Paper soup cups and matching lids in multiple sizes for hot food and takeaway service.' },
+  { group: 'cups-bowls', slug: 'ice-cream-cups', title: 'Ice Cream Cups', description: 'Paper ice cream cups in six catalogue sizes for dessert shops, distributors and custom programs.' },
+  { group: 'food-boxes-containers', slug: 'paper-food-boxes', title: 'Paper Food Boxes', description: 'Meal boxes, food pails and handled paper containers for prepared food and takeaway programs.' },
+  { group: 'food-boxes-containers', slug: 'sandwich-boxes', title: 'Sandwich Boxes', description: 'Kraft sandwich boxes with clear windows for chilled displays and takeaway counters.' },
+  { group: 'food-boxes-containers', slug: 'sushi-boxes', title: 'Sushi Boxes', description: 'Paper sushi boxes with PLA windows in multiple catalogue sizes.' },
+  { group: 'food-boxes-containers', slug: 'salad-boxes', title: 'Salad Boxes', description: 'Kraft paper salad boxes with a clear window for fresh food display.' },
+  { group: 'food-boxes-containers', slug: 'burger-boxes', title: 'Burger Boxes', description: 'Kraft burger boxes in five catalogue sizes for fast-food and takeaway service.' },
+  { group: 'food-boxes-containers', slug: 'wrap-boxes', title: 'Wrap Boxes & Sleeves', description: 'Wrap boxes and open sleeves for burritos, wraps and handheld meals.' },
+  { group: 'food-boxes-containers', slug: 'pizza-slice-boxes', title: 'Pizza Slice Boxes', description: 'Triangle kraft boxes with a clear window for individual pizza slices.' },
+  { group: 'food-boxes-containers', slug: 'cone-fry-packaging', title: 'Cone & Fry Packaging', description: 'Paper cones and closed-top fry cups for fries, snacks and street-food service.' },
+  { group: 'foodservice-supplies', slug: 'paper-straws', title: 'Paper Straws', description: 'Paper straws in standard and custom formats, including wrapped, printed and multiple-diameter options.' },
+  { group: 'foodservice-supplies', slug: 'disposable-cutlery', title: 'Disposable Cutlery', description: 'Wooden and CPLA forks, knives and spoons for foodservice supply programs.' },
+  { group: 'foodservice-supplies', slug: 'paper-plates', title: 'Paper Plates', description: 'Round and oval paper plates in multiple catalogue sizes.' },
+].map((category) => ({ ...category, route: `/products/${category.group}/${category.slug}/` }));
+
+export const PRODUCT_CATEGORY_BY_SLUG = {
+  'bamboo-paper-soup-cup': 'soup-cups',
+  bendy: 'paper-straws',
+  'pla-lid-for-coffee-cup-black': 'paper-cups',
+  'frite-cone-black': 'cone-fry-packaging',
+  'cardboard-lid': 'soup-cups',
+  'cardboard-soup-cup': 'soup-cups',
+  'corrugated-board-cup-sleeve-8-12-16-20oz': 'paper-cups',
+  'cpla-cutlery': 'disposable-cutlery',
+  'double-wall-white-cardboard-paper-cup': 'paper-cups',
+  'frite-cone-kraft': 'cone-fry-packaging',
+  'natural-kraft-hamburger-box': 'burger-boxes',
+  'cardboard-open-wrap-cup': 'wrap-boxes',
+  'kraft-square-food-bow-pp-handle': 'paper-food-boxes',
+  'natural-kraft-closed-snack-cup': 'cone-fry-packaging',
+  'kraft-colour-ice-cream-cup': 'ice-cream-cups',
+  'natural-kraft-menu-box': 'paper-food-boxes',
+  'kraft-paper-bowl': 'salad-bowls',
+  'kraft-paper-box-pet-window': 'paper-food-boxes',
+  'brown-triangle-box-pla-window': 'pizza-slice-boxes',
+  'kraft-paper-salad-box-pla-window': 'salad-boxes',
+  'natural-kraft-sandwich-box-pla-window': 'sandwich-boxes',
+  'natural-kraft-lid': 'soup-cups',
+  'natural-kraft-soup-cup': 'soup-cups',
+  'oval-paper-plate': 'paper-plates',
+  'white-cardboard-box-wire-handle': 'paper-food-boxes',
+  'doner-box': 'paper-food-boxes',
+  'paper-lid': 'salad-bowls',
+  'black-white-cardboard-sushi-box-pla-window': 'sushi-boxes',
+  'pet-lid': 'salad-bowls',
+  'pla-lid': 'salad-bowls',
+  'pla-lid-2': 'soup-cups',
+  'pp-lid': 'salad-bowls',
+  'ripple-natural-kraft-paper-cup-horizon-style': 'paper-cups',
+  'ripple-natural-kraft-paper-cup-vertical-style': 'paper-cups',
+  'round-paper-plate': 'paper-plates',
+  'cardboard-wrap-box-pla-window': 'wrap-boxes',
+  'sharp-edge': 'paper-straws',
+  'single-wall-white-cardboard-paper-cup': 'paper-cups',
+  'solid-colors-with-bamboo-fiber-wooden-fiber': 'paper-straws',
+  'stripe-colors': 'paper-straws',
+  'stripe-colors-2': 'paper-straws',
+  'cardboard-bamboo-bowl': 'salad-bowls',
+  'pla-lid-for-coffee-cup-white': 'paper-cups',
+  'wooden-bamboo-cutlery': 'disposable-cutlery',
+};
+
+export const DUPLICATE_PRODUCT_ALIASES = {
+  'bol-en-carton-blanc-bambou': 'cardboard-bamboo-bowl',
+  'couvercle-pla-pour-bol-a-salade': 'pla-lid',
+  'couvercle-en-papier-pour-bol-a-salade': 'paper-lid',
+  'couvercle-en-carton-pour-gobelet-a-soupe': 'cardboard-lid',
+  'couvercle-kraft-naturel': 'natural-kraft-lid',
+  'paille-en-papier-rayee': 'stripe-colors',
+  'paille-en-papier-couleur-unie-avec-fibre-de-bambou': 'solid-colors-with-bamboo-fiber-wooden-fiber',
+  'boite-a-sandwich-kraft-naturel-fenetre-pla': 'natural-kraft-sandwich-box-pla-window',
+  'gobelet-en-papier-simple-paroi-carton-blanc': 'single-wall-white-cardboard-paper-cup',
+  'couvercle-pla-pour-gobelet-a-cafe-blanc': 'pla-lid-for-coffee-cup-white',
+  'assiette-en-papier-ronde': 'round-paper-plate',
+  'gobelet-en-papier-paroi-ondulee-style-horizon-kraft-naturel': 'ripple-natural-kraft-paper-cup-horizon-style',
+  'boite-a-hamburger-en-kraft-naturel': 'natural-kraft-hamburger-box',
+  'couvercle-en-pla-pour-gobelet-a-soupe': 'pla-lid-2',
+  'coupe-a-glace-kraft-coloree': 'kraft-colour-ice-cream-cup',
+  'boite-menu-en-kraft-naturel': 'natural-kraft-menu-box',
+  'bol-a-soupe-en-bagasse-papier-de-bambou': 'bamboo-paper-soup-cup',
+  'couverts-en-cpla': 'cpla-cutlery',
+  'boite-a-part-de-pizza-triangle-kraft-brun-avec-fenetre-en-pla': 'brown-triangle-box-pla-window',
+  'boite-alimentaire-carree-avec-poignee-metallique-carton-blanc': 'white-cardboard-box-wire-handle',
+  'gobelet-a-soupe-en-kraft-naturel': 'natural-kraft-soup-cup',
+  'gobelet-a-snack-ferme-en-kraft-naturel': 'natural-kraft-closed-snack-cup',
+  'couverts-en-bois-bambou': 'wooden-bamboo-cutlery',
+  'boite-alimentaire-en-kraft-avec-poignee-en-pp': 'kraft-square-food-bow-pp-handle',
+  'couvercle-en-pp-pour-bol-a-salade': 'pp-lid',
+  'cone-a-frites-noir': 'frite-cone-black',
+  'boite-a-salade-en-papier-kraft-avec-fenetre-pla': 'kraft-paper-salad-box-pla-window',
+  'manchon-en-carton-ondule-pour-gobelet-8-12-16-20oz': 'corrugated-board-cup-sleeve-8-12-16-20oz',
+  'paille-en-papier-bendy': 'bendy',
+  'couvercle-en-pet-pour-bol-a-salade': 'pet-lid',
+  'couvercle-de-gobelet-a-cafe-en-pla-noir': 'pla-lid-for-coffee-cup-black',
+  'boite-a-wrap-en-carton-fenetre-en-pla': 'cardboard-wrap-box-pla-window',
+  'paille-en-papier-sharp-edge': 'sharp-edge',
+  'bol-en-papier-kraft-certifie-fsc': 'kraft-paper-bowl',
+  'gobelet-a-soupe-en-carton-blanc': 'cardboard-soup-cup',
+  'assiette-en-papier-ovale': 'oval-paper-plate',
+  'gobelet-en-papier-double-paroi-carton-blanc': 'double-wall-white-cardboard-paper-cup',
+  'support-ouvert-en-carton-pour-wrap': 'cardboard-open-wrap-cup',
+};
+
+export function categoryForProduct(slug) {
+  return PRODUCT_CATEGORIES.find((category) => category.slug === PRODUCT_CATEGORY_BY_SLUG[slug]);
+}
+
+export function canonicalProductRoute(slug) {
+  const category = categoryForProduct(slug);
+  return category ? `${category.route}${slug}/` : null;
+}
+
+const PAGE_COPY = {
+  products: {
+    title: 'Paper Food Packaging for Wholesale & Custom Programs',
+    description: 'Browse Corncomp paper cups, bowls, food boxes, paper straws, cutlery and paper plates for foodservice distribution and custom packaging programs.',
+    intro: 'Find products by format, compare catalogue specifications and send the selected item with your inquiry. Corncomp supports wholesale supply, custom printing and private-label food packaging programs from its Ningbo manufacturing base.',
+  },
+  custom: {
+    title: 'Custom Printed Food Packaging',
+    description: 'Plan custom printed paper cups, straws and food packaging with artwork review, samples, production and export support from Corncomp.',
+    intro: 'Start with the product format, size, quantity, print artwork, packing method and destination. Corncomp reviews the specification before confirming feasibility, price, sample requirements and production timing.',
+  },
+  applications: {
+    title: 'Food Packaging by Application',
+    description: 'Compare Corncomp packaging for takeaway, restaurant, fast-food, ice cream and dessert service.',
+    intro: 'Different menus need different barrier, closure, display and transport choices. Use these application guides to narrow the product format, then confirm the final construction against your food, service temperature and delivery conditions.',
+  },
+  resources: {
+    title: 'Food Packaging Resources',
+    description: 'Practical guides for paper cup sizes, custom printing, certification review, materials and food packaging procurement.',
+    intro: 'Use these guides to prepare specifications, compare options and ask better questions before requesting samples or quotations.',
+  },
+};
+
+const standardSections = [
+  { title: 'Built for B2B sourcing', text: 'Product pages show catalogue sizes, item references and matching components where the source data supports them. Final material, certification, packing, MOQ and lead time are confirmed for the selected order.' },
+  { title: 'Custom and private-label support', text: 'Share the target product, quantity, artwork, packing and destination. Corncomp reviews the complete specification before production.' },
+  { title: 'Verify the required documentation', text: 'Company certificates and test reports do not automatically apply to every SKU or construction. Ask which documents cover the item you plan to order.' },
+];
+
+const page = (route, kind, title, description, intro, sections = standardSections, links = []) => ({ route, kind, title, description, intro, sections, links });
+
+const link = (title, route, text) => ({ title, route, text });
+
+export const ARCHITECTURE_PAGES = [
+  page('/products/', 'products', PAGE_COPY.products.title, PAGE_COPY.products.description, PAGE_COPY.products.intro),
+  ...PRODUCT_GROUPS.map((group) => page(group.route, 'product-group', group.title, group.description, group.description)),
+  ...PRODUCT_CATEGORIES.map((category) => page(category.route, 'product-category', category.title, category.description, category.description)),
+  page('/custom-packaging/', 'custom', PAGE_COPY.custom.title, PAGE_COPY.custom.description, PAGE_COPY.custom.intro, [
+    { title: '1. Define the product', text: 'Confirm the format, catalogue size or target dimensions, food-contact construction and expected use before artwork begins.' },
+    { title: '2. Review artwork and samples', text: 'Share editable artwork, print coverage, colors and brand controls. Sample type and approval steps depend on the project.' },
+    { title: '3. Confirm production details', text: 'MOQ, unit packing, cartons, destination, documents and timing are reviewed together before the order is released.' },
+  ], [link('Custom Printed Paper Cups', '/custom-packaging/custom-printed-paper-cups/', 'Plan cup construction, size, artwork and packing.'), link('Custom Paper Straws', '/custom-packaging/custom-paper-straws/', 'Plan diameter, length, print, wrapping and packing.')]),
+  page('/custom-packaging/custom-printed-paper-cups/', 'custom', 'Custom Printed Paper Cups', 'Custom printed paper cups for wholesale, private-label and foodservice programs.', 'Choose the cup construction and size first, then share the quantity, artwork, print requirements, packing and destination for review.', [
+    { title: 'Choose the cup construction', text: 'Start with single wall, double wall or ripple wall based on the drink, serving temperature and handling requirement.' },
+    { title: 'Match cup and lid', text: 'Volume is not enough. Confirm rim diameter, height and the exact lid or accessory needed for the selected item.' },
+    { title: 'Prepare print-ready inputs', text: 'Provide editable artwork, print coverage, color references and required legal marks. Production follows approved files and samples.' },
+  ], [link('Browse Paper Cups', '/products/cups-bowls/paper-cups/', 'Compare existing cup and accessory formats.'), link('Paper Cup Sizes Guide', '/resources/guides/paper-cup-sizes/', 'Check the measurements that affect fit.')]),
+  page('/custom-packaging/custom-paper-straws/', 'custom', 'Custom Paper Straws', 'Custom paper straws with print, color, size, wrapping and packing options.', 'Choose the diameter, length, color, artwork and wrapping format, then confirm the final specification and certification requirements before production.', [
+    { title: 'Size for the drink', text: 'Confirm diameter and length against the beverage, lid opening, cup height and intended drinking experience.' },
+    { title: 'Select the presentation', text: 'Choose color, stripe or print direction together with individual wrapping and outer packing requirements.' },
+    { title: 'Verify the order scope', text: 'MOQ, ink, paper construction, packing, test reports and destination requirements are confirmed for the final specification.' },
+  ], [link('Browse Paper Straws', '/products/foodservice-supplies/paper-straws/', 'Review existing paper straw formats.')]),
+  page('/applications/', 'applications', PAGE_COPY.applications.title, PAGE_COPY.applications.description, PAGE_COPY.applications.intro, standardSections, [link('Takeaway & Delivery', '/applications/takeaway-packaging/', 'Plan for closure, transport and holding time.'), link('Restaurant & Foodservice', '/applications/restaurant-packaging/', 'Build ranges for service and multi-site supply.'), link('Fast Food', '/applications/fast-food-packaging/', 'Match boxes and sleeves to handheld meals.'), link('Ice Cream & Dessert', '/applications/ice-cream-dessert-packaging/', 'Select cups around portion and temperature.')]),
+  page('/applications/takeaway-packaging/', 'application', 'Takeaway & Delivery Packaging', 'Paper food packaging for takeaway and delivery menus.', 'Compare packaging by food type, holding time, closure, leak resistance, presentation and transport conditions.', standardSections, [link('Paper Food Boxes', '/products/food-boxes-containers/paper-food-boxes/', 'Meal boxes and handled containers.'), link('Salad Bowls', '/products/cups-bowls/salad-bowls/', 'Bowls with matching lid choices.'), link('Soup Cups', '/products/cups-bowls/soup-cups/', 'Hot-food cups and matching lids.')]),
+  page('/applications/restaurant-packaging/', 'application', 'Restaurant & Foodservice Packaging', 'Food packaging for restaurants, caterers, distributors and multi-site foodservice operators.', 'Build a consistent packaging range around menu formats, service temperature, packing speed, storage and delivery requirements.', standardSections, [link('Cups & Bowls', '/products/cups-bowls/', 'Beverage, soup, salad and dessert formats.'), link('Foodservice Supplies', '/products/foodservice-supplies/', 'Straws, cutlery and plates.')]),
+  page('/applications/fast-food-packaging/', 'application', 'Fast Food Packaging', 'Paper packaging for burgers, fries, wraps, sandwiches and pizza slices.', 'Combine boxes, sleeves, cones and food cups around the menu instead of forcing every item into one container format.', standardSections, [link('Burger Boxes', '/products/food-boxes-containers/burger-boxes/', 'Kraft formats for burgers.'), link('Wrap Boxes & Sleeves', '/products/food-boxes-containers/wrap-boxes/', 'Open sleeves and windowed wrap boxes.'), link('Cone & Fry Packaging', '/products/food-boxes-containers/cone-fry-packaging/', 'Cones and snack cups for fried food.')]),
+  page('/applications/ice-cream-dessert-packaging/', 'application', 'Ice Cream & Dessert Packaging', 'Paper ice cream cups and dessert packaging for wholesale and custom programs.', 'Start with serving size, temperature, topping space, lid needs and print coverage, then select a suitable cup and packing format.', standardSections, [link('Ice Cream Cups', '/products/cups-bowls/ice-cream-cups/', 'Compare current catalogue cup sizes.'), link('Custom Packaging', '/custom-packaging/', 'Prepare artwork and packing requirements.')]),
+  page('/resources/', 'resources', PAGE_COPY.resources.title, PAGE_COPY.resources.description, PAGE_COPY.resources.intro, standardSections, [link('Paper Cup Sizes Guide', '/resources/guides/paper-cup-sizes/', 'Compare volume, dimensions and lid fit.'), link('Custom Printed Paper Cups Guide', '/resources/guides/custom-printed-paper-cups/', 'Prepare a complete custom cup brief.'), link('Food Packaging Certifications Guide', '/resources/guides/food-packaging-certifications/', 'Review certificate and report scope.')]),
+  page('/resources/guides/paper-cup-sizes/', 'guide', 'Paper Cup Sizes Guide', 'Compare common paper cup sizes and the measurements buyers should confirm.', 'Cup volume alone does not define fit. Confirm the rim diameter, height, wall construction, lid compatibility, drink temperature and packing requirement.', [
+    { title: 'Volume is only the starting point', text: 'Nominal ounces or millilitres help shortlist a cup, but dimensions can vary between constructions and suppliers.' },
+    { title: 'Measure rim and height', text: 'Rim diameter affects lid fit. Height and base diameter affect dispensers, carton packing and service equipment.' },
+    { title: 'Confirm wall construction', text: 'Single, double and ripple wall cups handle heat and branding differently. Match construction to the actual drink and service.' },
+    { title: 'Treat lids as matched components', text: 'Do not assume every lid with the same nominal size fits. Confirm the exact cup and lid item combination.' },
+  ], [link('Browse Paper Cups', '/products/cups-bowls/paper-cups/', 'Compare catalogue products and accessories.'), link('Request a Quote', '/contact/', 'Send the target size and quantity.')]),
+  page('/resources/guides/custom-printed-paper-cups/', 'guide', 'Custom Printed Paper Cups Guide', 'Prepare artwork, size, quantity, sample and packing requirements for printed paper cup sourcing.', 'A useful quotation starts with a complete specification: cup type, size, quantity, print coverage, artwork format, packing and destination.', [
+    { title: 'Write the sourcing brief', text: 'List the cup construction, size, quantity, drink use, matching lid, packing and destination before requesting price.' },
+    { title: 'Prepare artwork correctly', text: 'Supply editable artwork and color references. Confirm print area, seam allowance and mandatory marks on the approved dieline.' },
+    { title: 'Choose the right sample', text: 'A stock sample checks construction; a printed proof checks artwork; a production sample may require more time and cost.' },
+    { title: 'Approve before production', text: 'Treat the final specification, artwork, sample, carton marks and documents as one approval package.' },
+  ], [link('Custom Printed Paper Cups', '/custom-packaging/custom-printed-paper-cups/', 'Start a custom cup project.'), link('Paper Cups', '/products/cups-bowls/paper-cups/', 'Choose a base cup format.')]),
+  page('/resources/guides/food-packaging-certifications/', 'guide', 'Food Packaging Certifications Guide', 'Understand how to review company certificates, food-contact reports and product-specific certification scope.', 'Check the certificate holder, standard, scope, expiry date and exact product construction. A company certificate is not automatic proof for every SKU.', [
+    { title: 'Check the certificate holder', text: 'The legal entity and production site should match the supplier and factory relevant to your order.' },
+    { title: 'Read the scope and expiry', text: 'Confirm the standard, covered activity or material, issuing body and current validity instead of relying on a logo.' },
+    { title: 'Separate systems from products', text: 'Management-system certificates describe processes. Food-contact tests and compostability claims may apply only to specific materials or constructions.' },
+    { title: 'Request item-level evidence', text: 'Name the exact SKU, material, coating, ink and destination regulation so the supplier can identify the applicable report.' },
+  ], [link('Quality & Certifications', '/quality/', 'Review Corncomp’s verification approach.'), link('Contact Corncomp', '/contact/', 'Ask for documents for a selected item.')]),
+  page('/about/', 'trust', 'About Corncomp', 'Learn about Corncomp, its Ningbo manufacturing base and export food packaging programs.', 'Corncomp develops and supplies paper food packaging for distributors, restaurant groups and custom programs, with production and export support based in Ningbo, China.', [
+    { title: 'Foodservice focus', text: 'The catalogue covers paper cups, bowls, food boxes, paper straws, cutlery and paper plates.' },
+    { title: 'Manufacturing base', text: 'Corncomp states an 8,000 m² manufacturing base, including a 6,000 m² GMP-standard dust-free workshop and 60 production lines.' },
+    { title: 'Specification-led export support', text: 'Product, artwork, packing, destination and document requirements are reviewed together for wholesale and private-label programs.' },
+  ], [link('Factory & Manufacturing', '/about/factory/', 'Review facility and production context.'), link('Quality & Certifications', '/quality/', 'Understand document scope and verification.')]),
+  page('/about/factory/', 'trust', 'Factory & Manufacturing', 'See Corncomp manufacturing capabilities, production workflow and quality-control responsibilities.', 'Review the factory, process and capacity evidence behind the products, then confirm the line, material and documentation relevant to your order.', [
+    { title: '8,000 m² manufacturing base', text: 'The site presents an 8,000 m² base in Ningbo, including a 6,000 m² GMP-standard dust-free workshop.' },
+    { title: '60 production lines', text: 'Production capacity spans paper straws and multiple paper food packaging formats. Capacity must still be confirmed for the selected item and timing.' },
+    { title: '2.5 billion paper straws annually', text: 'This stated annual paper-straw capacity is a factory-level figure, not a promise for every size, print or delivery window.' },
+    { title: 'Production release controls', text: 'Final specification, artwork, sample, packing and documentation are confirmed before mass production.' },
+  ], [link('Browse Products', '/products/', 'Choose a catalogue item or product family.'), link('Request a Quote', '/contact/', 'Send quantity, destination and timing.')]),
+  page('/quality/', 'trust', 'Quality & Certifications', 'Review Corncomp quality systems, company certificates and product-document verification guidance.', 'Use this page to identify available documentation and its scope. Confirm the exact certificate or test report needed for the selected item before ordering.', [
+    { title: 'ISO 9001', text: 'A quality-management certificate addresses the certified organization and scope. Confirm holder, site, scope and validity.' },
+    { title: 'FSC', text: 'FSC claims depend on certified supply-chain scope and the selected paper product. Confirm the applicable claim and documentation for the order.' },
+    { title: 'BRC', text: 'Site or packaging certification does not automatically establish every product claim. Check the certified scope and current certificate.' },
+    { title: 'Product-specific reports', text: 'Food-contact, material and compostability evidence should be matched to the exact material, coating, ink and intended market.' },
+  ], [link('Certification Review Guide', '/resources/guides/food-packaging-certifications/', 'Learn how to read scope and product evidence.'), link('Request Documents', '/contact/', 'Name the exact item and target market.')]),
+  page('/contact/', 'contact', 'Request a Quote', 'Send Corncomp your product, quantity, customization, sample and destination requirements.', 'Include the product or item number, quantity, artwork needs, packing, destination and required documents. The team will review the specification before quoting.'),
+];
+
+export const LEGACY_PAGE_REDIRECTS = {
+  '/shop/': '/products/',
+  '/contact-us/': '/contact/',
+  '/about-us/': '/about/',
+  '/factory-manufacturing/': '/about/factory/',
+  '/food-packaging-manufacturer-china/': '/about/factory/',
+  '/certifications/': '/quality/',
+  '/b2b-buyer-oem-odm/': '/custom-packaging/',
+  '/custom-paper-straws/': '/custom-packaging/custom-paper-straws/',
+  '/compostable-straws/': '/products/foodservice-supplies/paper-straws/',
+  '/biodegradable-straws/': '/products/foodservice-supplies/paper-straws/',
+  '/product-category/paper-cup/': '/products/cups-bowls/paper-cups/',
+  '/product-category/salad-bowl/': '/products/cups-bowls/salad-bowls/',
+  '/product-category/soup-cup-bowl/': '/products/cups-bowls/soup-cups/',
+  '/product-category/menu-box/': '/products/food-boxes-containers/paper-food-boxes/',
+  '/product-category/salad-box/': '/products/food-boxes-containers/salad-boxes/',
+  '/product-category/hamburger-box-wrap-box-sandwich-box-pizza-slice/': '/products/food-boxes-containers/',
+  '/product-category/paper-straw/': '/products/foodservice-supplies/paper-straws/',
+  '/product-category/cutlery/': '/products/foodservice-supplies/disposable-cutlery/',
+  '/product-category/paper-plate/': '/products/foodservice-supplies/paper-plates/',
+};
