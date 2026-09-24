@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import worker from './index.mjs';
+import { localizedRedirects } from '../site/src/lib/localization.mjs';
 
 test('runs the Worker before static assets so canonical redirects execute', () => {
   const config = JSON.parse(readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
@@ -143,14 +144,11 @@ test('redirects preserved WordPress category archives to the matching language b
   }
 });
 
-test('redirects legacy translated aliases to the preserved localized route', async () => {
-  const response = await worker.fetch(new Request('https://corn-comp.com/fr/faq/'), { ASSETS: { fetch: () => new Response('asset') } });
-  assert.equal(response.status, 301);
-  assert.equal(response.headers.get('location'), 'https://corn-comp.com/fr/faq-corncomp/');
-});
-
-test('redirects legacy translated article aliases to the migrated article', async () => {
-  const response = await worker.fetch(new Request('https://corn-comp.com/es/pla-vs-bagasse-vs-fsc-paper/'), { ASSETS: { fetch: () => new Response('asset') } });
-  assert.equal(response.status, 301);
-  assert.equal(response.headers.get('location'), 'https://corn-comp.com/es/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/');
+test('redirects every reviewed localized alias directly to its canonical target with query parameters', async () => {
+  for (const [source, target] of localizedRedirects()) {
+    assert.equal(localizedRedirects().has(target), false, `redirect chain through ${target}`);
+    const response = await worker.fetch(new Request(`https://corn-comp.com${source}?source=alias`), { ASSETS: { fetch: () => new Response('asset') } });
+    assert.equal(response.status, 301, source);
+    assert.equal(response.headers.get('location'), `https://corn-comp.com${target}?source=alias`, source);
+  }
 });

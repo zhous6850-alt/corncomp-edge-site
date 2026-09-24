@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
-import { localizedEntry, routeFor, uiFor } from './localization.mjs';
+import { SUPPORTED_LANGUAGES, allLocalizedEntries, englishInventory, localizedEntry, routeFor, uiFor } from './localization.mjs';
+import { assertFactParity } from './product-facts.mjs';
+import { canonicalUrl } from './routes.mjs';
+import { contentText } from './content-routes.mjs';
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -18,6 +21,16 @@ function metaContent(html, name) {
 
 function structuredData(html) {
   return html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)?.[1] || '';
+}
+
+function structuredNodes(html) {
+  const value = JSON.parse(structuredData(html));
+  const values = Array.isArray(value) ? value : [value];
+  return values.flatMap((item) => item?.['@graph'] || item);
+}
+
+function visibleH1(html) {
+  return contentText(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '');
 }
 
 test('the built homepage includes the global site styles', async () => {
@@ -233,6 +246,76 @@ test('localized shared UI renders the reviewed locale labels', async () => {
     for (const contentKey of ['architecture:products', 'architecture:custom-packaging', 'architecture:applications', 'architecture:quality', 'architecture:resources', 'architecture:about', 'architecture:contact']) {
       assert.match(footer, new RegExp(`href="${escapeRegExp(routeFor(language, contentKey))}"`), `${language} footer is missing ${contentKey}`);
     }
+  }
+});
+
+test('every synchronized canonical route has a built page', async () => {
+  const sources = new Map(englishInventory().map((source) => [source.contentKey, source]));
+  for (const { language, contentKey, route } of allLocalizedEntries()) {
+    const html = await readBuiltRoute(route);
+    assert.match(html, new RegExp(`<html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`), contentKey);
+    assert.match(html, new RegExp(`<link rel="canonical" href="${escapeRegExp(canonicalUrl(route))}">`), `${language}:${contentKey}:canonical`);
+    for (const alternateLanguage of SUPPORTED_LANGUAGES) {
+      assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(routeFor(alternateLanguage, contentKey)))}"`), `${language}:${contentKey}:${alternateLanguage}`);
+    }
+    assert.match(html, new RegExp(`hreflang="x-default" href="${escapeRegExp(canonicalUrl(routeFor('en', contentKey)))}"`), `${language}:${contentKey}:x-default`);
+    const source = sources.get(contentKey);
+    const schemaType = source.type === 'product' ? 'Product'
+      : source.type === 'post' || source.kind === 'guide' ? 'Article'
+        : source.type === 'architecture' ? (source.kind === 'product-category' ? 'ItemList' : 'WebPage') : null;
+    if (schemaType) {
+      const schema = structuredNodes(html).find((node) => node?.['@type'] === schemaType);
+      assert.ok(schema, `${language}:${contentKey}:${schemaType}`);
+      assert.equal(contentText(schema.name || schema.headline), visibleH1(html), `${language}:${contentKey}:schema name`);
+    }
+  }
+});
+
+test('localized built-page samples render reviewed content, reciprocal SEO and matching schema names', async () => {
+  const samples = [
+    ['architecture:products/cups-bowls', 'WebPage'],
+    ['architecture:products/cups-bowls/paper-cups', 'ItemList'],
+    ['product:kraft-paper-bowl', 'Product'],
+    ['architecture:resources/guides/paper-cup-sizes', 'Article'],
+    ['post:eu-single-use-plastics-directive-explained', 'Article'],
+    ['architecture:contact', 'WebPage'],
+  ];
+  for (const language of SUPPORTED_LANGUAGES) {
+    for (const [contentKey, schemaType] of samples) {
+      const entry = localizedEntry(language, contentKey);
+      const html = await readBuiltRoute(entry.route);
+      assert.equal(visibleH1(html), contentText(entry.title), `${language}:${contentKey}:h1`);
+      assert.match(html, new RegExp(`<link rel="canonical" href="${escapeRegExp(canonicalUrl(entry.route))}">`));
+      for (const alternateLanguage of SUPPORTED_LANGUAGES) {
+        assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(routeFor(alternateLanguage, contentKey)))}"`), `${language}:${contentKey}:${alternateLanguage}`);
+      }
+      assert.match(html, new RegExp(`hreflang="x-default" href="${escapeRegExp(canonicalUrl(routeFor('en', contentKey)))}"`));
+      const schema = structuredNodes(html).find((node) => node?.['@type'] === schemaType);
+      assert.ok(schema, `${language}:${contentKey}:${schemaType}`);
+      assert.equal(contentText(schema.name || schema.headline), visibleH1(html), `${language}:${contentKey}:schema name`);
+    }
+  }
+});
+
+test('localized product samples preserve immutable English product facts and translated display values', async () => {
+  const source = englishInventory().find(({ contentKey }) => contentKey === 'product:kraft-paper-bowl');
+  for (const language of ['fr', 'es', 'ar']) {
+    const html = await readBuiltRoute(routeFor(language, source.contentKey));
+    assert.doesNotThrow(() => assertFactParity(source, html), language);
+    const translatedValue = Object.values(uiFor(language).specificationValues).find((value) => value.includes('300'));
+    if (translatedValue) assert.match(html, new RegExp(escapeRegExp(translatedValue)), language);
+  }
+});
+
+test('localized contact pages preserve field names and localize visible form labels', async () => {
+  const visibleName = { fr: 'Nom', es: 'Nombre', ar: 'الاسم' };
+  for (const language of ['fr', 'es', 'ar']) {
+    const html = await readBuiltRoute(routeFor(language, 'architecture:contact'));
+    for (const name of ['name', 'email', 'company', 'country', 'phone', 'quantity', 'productName', 'productSku', 'category', 'message', 'sourcePath']) {
+      assert.match(html, new RegExp(`name="${name}"`), `${language}:${name}`);
+    }
+    assert.match(html, new RegExp(`>${escapeRegExp(visibleName[language])}<input name="name"`));
+    assert.doesNotMatch(html, />Business email<input/);
   }
 });
 

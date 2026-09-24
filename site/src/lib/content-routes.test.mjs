@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { categoryLanguage, contentDescription, contentPath, contentTitle, localizeInternalLinks, normalizeBodyHeadings } from './content-routes.mjs';
+import { localizedRedirects, routeFor } from './localization.mjs';
 
 test('converts a preserved route into an Astro catch-all parameter', () => {
   assert.equal(contentPath('/es/producto/'), 'es/producto');
@@ -39,6 +40,27 @@ test('rewrites translated English-slug aliases to their actual localized routes'
     localizeInternalLinks(html),
     '<a href="/es/certificaciones-de-corncomp/">Certificaciones</a><a href="/fr/quest-ce-que-la-certification-bpi-en-quoi-elle-differe-de-la-certification-fsc/">BPI</a>',
   );
+});
+
+test('localizes relative, root-relative, absolute and reviewed alias links by stable identity', () => {
+  const [reviewedAlias, reviewedTarget] = [...localizedRedirects()].find(([source]) => source.startsWith('/fr/'));
+  const html = [
+    '<a href="/products/">Root</a>',
+    '<a href="https://corn-comp.com/resources/guides/paper-cup-sizes/?from=body#sizes">Absolute</a>',
+    '<a href="../../../products/cups-bowls/paper-cups/">Relative</a>',
+    `<a href="${reviewedAlias}">Alias</a>`,
+  ].join('');
+  const localized = localizeInternalLinks(html, 'fr', '/resources/guides/food-packaging-certifications/');
+
+  assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:products')}"`));
+  assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:resources/guides/paper-cup-sizes')}\\?from=body#sizes"`));
+  assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:products/cups-bowls/paper-cups')}"`));
+  assert.match(localized, new RegExp(`href="${reviewedTarget}"`));
+});
+
+test('does not rewrite assets, APIs, fragments or external and contact destinations', () => {
+  const html = '<a href="#section">Fragment</a><a href="/media/file.pdf">Asset</a><a href="/api/inquiry">API</a><a href="mailto:inquiry@corn-comp.com">Mail</a><a href="tel:+8657486961222">Tel</a><a href="https://wa.me/8613806632002">WhatsApp</a><a href="https://example.com/evidence">Evidence</a>';
+  assert.equal(localizeInternalLinks(html, 'es', '/es/recursos/'), html);
 });
 
 test('uses a plain-text excerpt when an SEO description is missing', () => {

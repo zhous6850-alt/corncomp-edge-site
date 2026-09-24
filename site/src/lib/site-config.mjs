@@ -1,5 +1,4 @@
-import records from '../data/records.json' with { type: 'json' };
-import { PRODUCT_CATEGORY_BY_SLUG, canonicalProductRoute } from './site-architecture.mjs';
+import { alternateGroup, contentKeyFromRoute, normalizeLocalizedRoute } from './localization.mjs';
 
 export const languageHomes = {
   en: '/',
@@ -26,53 +25,7 @@ export function navigationFor(language = 'en') {
   return navigation[language] || navigation.en;
 }
 
-const languageOrder = ['en', 'fr', 'es', 'ar'];
-const normalizeRoute = (route) => route.replace(/%[\da-f]{2}/gi, (escape) => escape.toUpperCase());
-
-const staticAlternateGroups = [
-  ['/', languageHomes.fr, languageHomes.es, languageHomes.ar],
-  ['/about/', navigation.fr.about[1], navigation.es.about[1], navigation.ar.about[1]],
-  ['/products/', '/fr/shop/', '/es/shop/', '/ar/shop/'],
-  ['/quality/', navigation.fr.certifications[1], navigation.es.certifications[1], navigation.ar.certifications[1]],
-  ['/case-studies/', navigation.fr.cases[1], navigation.es.cases[1], navigation.ar.cases[1]],
-  ['/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/'],
-  ['/faq/', navigation.fr.faq[1], navigation.es.faq[1], navigation.ar.faq[1]],
-  ['/contact/', navigation.fr.contact[1], navigation.es.contact[1], navigation.ar.contact[1]],
-].map((routes) => routes.map((route, index) => ({ language: languageOrder[index], route: normalizeRoute(route) })));
-
-function verifiedMediaGroups(type) {
-  const byMedia = new Map();
-  for (const record of records.filter((item) => item.type === type && item.featuredMediaId)) {
-    if (!byMedia.has(record.featuredMediaId)) byMedia.set(record.featuredMediaId, []);
-    byMedia.get(record.featuredMediaId).push(record);
-  }
-
-  return [...byMedia.values()].flatMap((group) => {
-    const byLanguage = Object.fromEntries(languageOrder.map((language) => [language, group.filter((item) => item.language === language)]));
-    if (!languageOrder.every((language) => byLanguage[language].length === 1)) return [];
-    const english = byLanguage.en[0];
-    if (type === 'product' && !PRODUCT_CATEGORY_BY_SLUG[english.slug]) return [];
-    return [languageOrder.map((language) => ({
-      language,
-      route: normalizeRoute(type === 'product' && language === 'en' ? canonicalProductRoute(english.slug) : byLanguage[language][0].route),
-    }))];
-  });
-}
-
-const partialArticleGroups = [[
-  { language: 'en', route: normalizeRoute('/us-state-plastic-packaging-laws-explained/') },
-  { language: 'es', route: normalizeRoute('/es/leyes-estatales-eeuu-empaques-plasticos/') },
-  { language: 'ar', route: normalizeRoute('/ar/qwanin-tbyt-lblastyk-alwlayat-almthdt/') },
-]];
-
-const alternateGroups = [
-  ...staticAlternateGroups,
-  ...verifiedMediaGroups('post'),
-  ...verifiedMediaGroups('product'),
-  ...partialArticleGroups,
-];
-
 export function pageAlternates(pathname) {
-  const route = normalizeRoute(pathname);
-  return alternateGroups.find((group) => group.some((item) => item.route === route)) || [];
+  const contentKey = contentKeyFromRoute(normalizeLocalizedRoute(pathname));
+  return contentKey ? alternateGroup(contentKey) : [];
 }

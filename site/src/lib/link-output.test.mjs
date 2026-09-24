@@ -4,6 +4,8 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { REDIRECTS } from '../../../worker/index.mjs';
+import { SUPPORTED_LANGUAGES, contentKeyFromRoute, normalizeLocalizedRoute, routeFor } from './localization.mjs';
+import { languageFromPath } from './routes.mjs';
 
 const dist = new URL('../../dist/', import.meta.url);
 
@@ -34,4 +36,25 @@ test('every rebuilt English internal link resolves to a page, asset, API endpoin
     }
   }
   assert.deepEqual(broken, []);
+});
+
+test('localized built-page internal links stay in the selected canonical language when synchronized', () => {
+  const wrongLanguage = [];
+  for (const file of htmlFiles(dist)) {
+    const relative = path.relative(fileURLToPath(dist), fileURLToPath(file)).replaceAll('\\', '/');
+    if (relative === '404.html') continue;
+    const pageRoute = normalizeLocalizedRoute(relative === 'index.html' ? '/' : `/${relative.replace(/index\.html$/, '')}`);
+    const language = languageFromPath(pageRoute);
+    if (!SUPPORTED_LANGUAGES.includes(language)) continue;
+    const html = readFileSync(file, 'utf8');
+    for (const match of html.matchAll(/<a\b([^>]*)href="(\/[^"?#]*)(?:[?#][^"]*)?"[^>]*>/g)) {
+      if (/\blang="(?:en|fr|es|ar)"/.test(match[0])) continue;
+      const target = normalizeLocalizedRoute(match[2]);
+      const contentKey = contentKeyFromRoute(target);
+      if (!contentKey) continue;
+      const expected = routeFor(language, contentKey);
+      if (target !== expected) wrongLanguage.push(`${pageRoute}: ${target} -> ${expected}`);
+    }
+  }
+  assert.deepEqual(wrongLanguage, []);
 });
