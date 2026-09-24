@@ -55,7 +55,9 @@ test('source hashes detect translatable English changes but ignore featured medi
   assert.notEqual(sourceHash(product), sourceHash({ ...product, title: `${product.title} changed` }));
   assert.notEqual(sourceHash(product), sourceHash({ ...product, body: `${product.body} changed` }));
   assert.notEqual(sourceHash(product), sourceHash({ ...product, seo: { ...product.seo, title: 'Changed SEO title' } }));
+  assert.notEqual(sourceHash(product), sourceHash({ ...product, featuredMedia: { ...product.featuredMedia, alt: 'Changed product image alt text' } }));
   assert.equal(sourceHash(product), sourceHash({ ...product, featuredMediaId: 123456 }));
+  assert.equal(sourceHash(product), sourceHash({ ...product, featuredMedia: { ...product.featuredMedia, id: 123456, sourceUrl: 'https://example.com/other.png', localPath: '/media/other.png' } }));
   assert.notEqual(sourceHash(ENGLISH_HOME), sourceHash({ ...ENGLISH_HOME, hero: { ...ENGLISH_HOME.hero, heading: 'Changed heading' } }));
   const guide = englishInventory().find(({ route }) => route === '/resources/guides/paper-cup-sizes/');
   assert.notEqual(sourceHash(guide), sourceHash({ ...guide, table: { ...guide.table, caption: 'Changed caption' } }));

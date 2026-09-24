@@ -104,7 +104,10 @@ const sourceFields = [
 ];
 
 export const sourceHash = (item) => createHash('sha256')
-  .update(JSON.stringify(Object.fromEntries(sourceFields.map((field) => [field, item[field] ?? null]))))
+  .update(JSON.stringify(Object.fromEntries([
+    ...sourceFields.map((field) => [field, item[field] ?? null]),
+    ['featuredMediaAlt', item.featuredMedia?.alt ?? null],
+  ])))
   .digest('hex');
 
 export function normalizeLocalizedRoute(route) {
