@@ -1,7 +1,7 @@
 # Corncomp Multilingual Content Synchronization Design
 
 **Date:** 2026-09-24  
-**Status:** Approved direction; awaiting written-spec review  
+**Status:** Approved by the user on 2026-09-24
 **Authoritative domain:** `corn-comp.com`
 
 ## 1. Purpose
@@ -187,4 +187,3 @@ The change is complete only when all of the following pass:
 ## 14. Acceptance Decision
 
 The selected approach is explicit source-controlled localization with shared facts and localized prose. Runtime automatic translation, partial `hreflang`-only synchronization, and duplicated per-language templates are rejected.
-
