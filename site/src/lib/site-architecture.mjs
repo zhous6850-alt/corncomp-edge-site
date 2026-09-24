@@ -277,7 +277,7 @@ export const ARCHITECTURE_PAGES = [
     { title: 'Product-specific reports', text: 'Food-contact, material and compostability evidence should be matched to the exact material, coating, ink and intended market.' },
   ], [link('Certification Review Guide', '/resources/guides/food-packaging-certifications/', 'Learn how to read scope and product evidence.'), link('Request Documents', '/contact/', 'Name the exact item and target market.')]),
   page('/contact/', 'contact', 'Request a Quote', 'Send Corncomp your product, quantity, customization, sample and destination requirements.', 'Include the product or item number, quantity, artwork needs, packing, destination and required documents. The team will review the specification before quoting.'),
-];
+].map((page) => ({ ...page, contentKey: `architecture:${page.route.replace(/^\/+|\/+$/g, '')}` }));
 
 export const LEGACY_PAGE_REDIRECTS = {
   '/shop/': '/products/',
