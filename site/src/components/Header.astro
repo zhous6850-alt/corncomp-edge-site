@@ -1,62 +1,63 @@
 ---
-import categories from '../data/categories.json';
-import { categoryIdsByLanguage, languageHomes, navigationFor } from '../lib/site-config.mjs';
+import { navigationFor } from '../lib/site-config.mjs';
 import { PRODUCT_CATEGORIES, PRODUCT_GROUPS } from '../lib/site-architecture.mjs';
+import { localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
 
 const { language = 'en' } = Astro.props;
 const nav = navigationFor(language);
-const productCategories = categoryIdsByLanguage[language].map((id) => categories.find((item) => item.id === id)).filter(Boolean);
+const ui = uiFor(language);
 const languages = [['en', 'English'], ['fr', 'Français'], ['es', 'Español'], ['ar', 'العربية']];
+const homeRoute = routeFor(language, 'home');
+const productsRoute = routeFor(language, 'architecture:products');
+const contactRoute = routeFor(language, 'architecture:contact');
+const primaryLinks = [
+  ['custom', 'architecture:custom-packaging'],
+  ['applications', 'architecture:applications'],
+  ['certifications', 'architecture:quality'],
+  ['resources', 'architecture:resources'],
+  ['about', 'architecture:about'],
+].map(([navKey, contentKey]) => {
+  const entry = localizedEntry(language, contentKey);
+  return { label: nav[navKey]?.[0] || entry.title, route: entry.route };
+});
+const productGroups = PRODUCT_GROUPS.map((group) => {
+  const contentKey = `architecture:${group.route.replace(/^\/+|\/+$/g, '')}`;
+  const entry = localizedEntry(language, contentKey);
+  return {
+    ...entry,
+    categories: PRODUCT_CATEGORIES.filter((category) => category.group === group.slug).map((category) => {
+      const categoryKey = `architecture:${category.route.replace(/^\/+|\/+$/g, '')}`;
+      return localizedEntry(language, categoryKey);
+    }),
+  };
+});
 ---
 <header class="site-header" data-site-header>
   <div class="header-inner">
-    <a class="brand" href={nav.home[1]} aria-label="Corncomp home">
+    <a class="brand" href={homeRoute} aria-label="Corncomp home">
       <img src="/media/corncomp-logo.png" width="111" height="104" alt="Corncomp">
     </a>
     <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false">
-      <span>Menu</span>
+      <span>{ui.menu}</span>
       <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
     </button>
     <nav id="primary-navigation" aria-label="Primary navigation">
-      <a href={nav.home[1]}>{nav.home[0]}</a>
-      {language === 'en' ? (
-        <>
-          <details class="product-menu">
-            <summary>{nav.product[0]}</summary>
-            <div class="nav-submenu product-mega-menu">
-              <a href={nav.product[1]}>All Products</a>
-              {PRODUCT_GROUPS.map((group) => <div class="nav-product-group"><a class="nav-group-link" href={group.route}>{group.title}</a>{PRODUCT_CATEGORIES.filter((category) => category.group === group.slug).map((category) => <a href={category.route}>{category.title}</a>)}</div>)}
-            </div>
-          </details>
-          <a href={nav.custom[1]}>{nav.custom[0]}</a>
-          <a href={nav.applications[1]}>{nav.applications[0]}</a>
-          <a href={nav.certifications[1]}>{nav.certifications[0]}</a>
-          <a href={nav.resources[1]}>{nav.resources[0]}</a>
-          <a href={nav.about[1]}>{nav.about[0]}</a>
-        </>
-      ) : (
-        <>
-          <a href={nav.about[1]}>{nav.about[0]}</a>
-          <details class="product-menu">
-            <summary>{nav.product[0]}</summary>
-            <div class="nav-submenu">
-              <a href={nav.product[1]}>All {nav.product[0]}</a>
-              {productCategories.map((category) => <a href={category.route} set:html={category.name} />)}
-            </div>
-          </details>
-          <a href={nav.certifications[1]}>{nav.certifications[0]}</a>
-          <a href={nav.cases[1]}>{nav.cases[0]}</a>
-          <a href={nav.blog[1]}>{nav.blog[0]}</a>
-          <a href={nav.faq[1]}>{nav.faq[0]}</a>
-        </>
-      )}
+      <a href={homeRoute}>{nav.home[0]}</a>
+      <details class="product-menu">
+        <summary>{nav.product[0]}</summary>
+        <div class="nav-submenu product-mega-menu">
+          <a href={productsRoute}>{ui.allProducts}</a>
+          {productGroups.map((group) => <div class="nav-product-group"><a class="nav-group-link" href={group.route}>{group.title}</a>{group.categories.map((category) => <a href={category.route}>{category.title}</a>)}</div>)}
+        </div>
+      </details>
+      {primaryLinks.map((item) => <a href={item.route}>{item.label}</a>)}
       <details class="language-menu">
         <summary>{language.toUpperCase()}</summary>
         <div class="nav-submenu language-submenu">
-          {languages.map(([code, label]) => <a href={languageHomes[code]} lang={code} aria-current={code === language ? 'page' : undefined}>{label}</a>)}
+          {languages.map(([code, label]) => <a href={routeFor(code, 'home')} lang={code} aria-current={code === language ? 'page' : undefined}>{label}</a>)}
         </div>
       </details>
-      <a class="nav-contact" href={nav.contact[1]}>{nav.contact[0]}</a>
+      <a class="nav-contact" href={contactRoute}>{ui.requestQuote}</a>
     </nav>
   </div>
 </header>

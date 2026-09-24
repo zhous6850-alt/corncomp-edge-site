@@ -1,7 +1,22 @@
 ---
 import { navigationFor } from '../lib/site-config.mjs';
+import { localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
 const { language = 'en' } = Astro.props;
 const nav = navigationFor(language);
+const ui = uiFor(language);
+const footerLinks = [
+  [nav.home[0], 'home'],
+  [nav.product[0], 'architecture:products'],
+  [nav.custom?.[0], 'architecture:custom-packaging'],
+  [nav.applications?.[0], 'architecture:applications'],
+  [nav.certifications?.[0], 'architecture:quality'],
+  [nav.resources?.[0], 'architecture:resources'],
+  [nav.about[0], 'architecture:about'],
+  [ui.requestQuote, 'architecture:contact'],
+].map(([label, contentKey]) => {
+  const entry = localizedEntry(language, contentKey);
+  return { label: label || entry.title, route: entry.route };
+});
 ---
 <footer>
   <div class="container footer-inner">
@@ -23,16 +38,16 @@ const nav = navigationFor(language);
       <a href="mailto:inquiry@corn-comp.com">inquiry@corn-comp.com</a>
     </div>
     <nav aria-label="Footer navigation">
-      {Object.values(nav).map(([label, route]) => <a href={route}>{label}</a>)}
+      {footerLinks.map(({ label, route }) => <a href={route}>{label}</a>)}
     </nav>
   </div>
   <div class="container footer-bottom">
     <span>Copyright © 2026 Ningbo Corncomp Tech Co., Ltd. All rights reserved.</span>
-    <button type="button" class="analytics-settings" data-analytics-settings>Analytics settings</button>
+    <button type="button" class="analytics-settings" data-analytics-settings>{ui.analyticsSettings}</button>
   </div>
 </footer>
 <a class="floating-whatsapp" href="https://wa.me/6581603123?text=Hello%20I%20would%20like%20to%20inquire%20about%20paper%20packaging%20products" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
-<a class="floating-contact" href={nav.contact[1]}>Contact Us</a>
+<a class="floating-contact" href={routeFor(language, 'architecture:contact')}>{ui.contactUs}</a>
 
 <style>
   footer { padding: 56px 0; background: var(--corncomp-deep-green); color: #fff; }

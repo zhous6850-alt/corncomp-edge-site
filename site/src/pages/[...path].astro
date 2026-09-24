@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomePage from '../components/HomePage.astro';
 import categories from '../data/categories.json';
 import records from '../data/records.json';
 import { categoryLanguage, contentDescription, contentPath, contentText, contentTitle, localizeInternalLinks, normalizeBodyHeadings } from '../lib/content-routes.mjs';
 import { categoryIdsByLanguage, navigationFor } from '../lib/site-config.mjs';
 import { ARCHITECTURE_PAGES, LEGACY_PAGE_REDIRECTS, PRODUCT_CATEGORIES, PRODUCT_CATEGORY_BY_SLUG, PRODUCT_GROUPS, canonicalProductRoute, categoryForProduct } from '../lib/site-architecture.mjs';
+import { localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
 
 export function getStaticPaths() {
   const retiredEnglishRoutes = new Set(Object.keys(LEGACY_PAGE_REDIRECTS));
@@ -26,10 +28,14 @@ export function getStaticPaths() {
   const architectureProducts = records
     .filter((record) => record.type === 'product' && record.language === 'en' && PRODUCT_CATEGORY_BY_SLUG[record.slug])
     .map((record) => ({ params: { path: contentPath(canonicalProductRoute(record.slug)) }, props: { record: { ...record, route: canonicalProductRoute(record.slug) }, architectureProduct: true, productCategory: categoryForProduct(record.slug) } }));
-  return [...contentPaths, ...categoryPaths, ...archivePaths, ...architecturePaths, ...architectureProducts];
+  const homePaths = ['fr', 'es', 'ar'].map((language) => ({
+    params: { path: contentPath(routeFor(language, 'home')) },
+    props: { localizedHome: localizedEntry(language, 'home'), language },
+  }));
+  return [...contentPaths, ...categoryPaths, ...archivePaths, ...architecturePaths, ...architectureProducts, ...homePaths];
 }
 
-const { record, category, products = [], language = 'en', archive, architecturePage, architectureProduct = false, productCategory } = Astro.props;
+const { record, category, products = [], language = 'en', archive, architecturePage, architectureProduct = false, productCategory, localizedHome } = Astro.props;
 const currentLanguage = record?.language || language;
 const isShop = record?.route === '/shop/' || archive === 'shop';
 const isBlog = record?.route === '/blog/' || archive === 'blog';
@@ -68,7 +74,9 @@ const listingSchema = architectureCategory ? { '@context': 'https://schema.org',
 const articleSchema = record?.type === 'post' || architecturePage?.kind === 'guide' ? { '@context': 'https://schema.org', '@type': 'Article', headline: contentText(record?.title || architecturePage.title), description: pageDescription, mainEntityOfPage: `https://corn-comp.com${pagePath}`, image: record?.featuredMedia ? new URL(record.featuredMedia.localPath, 'https://corn-comp.com').href : undefined, dateModified: architecturePage?.kind === 'guide' ? architecturePage.reviewedDate : undefined, author: { '@id': 'https://corn-comp.com/#organization' }, publisher: { '@id': 'https://corn-comp.com/#organization' } } : null;
 const structuredData = [productSchema, breadcrumbSchema, listingSchema, articleSchema].filter(Boolean);
 ---
-{architectureProduct ? (
+{localizedHome ? (
+  <HomePage language={language} content={localizedHome} ui={uiFor(language)} />
+) : architectureProduct ? (
   <BaseLayout title={pageTitle} description={pageDescription} language="en" pathname={record.route} image={record.featuredMedia?.localPath} structuredData={structuredData} bodyClass="architecture-site">
     <article class="content-shell content-product architecture-product">
       <nav class="breadcrumbs" aria-label="Breadcrumb">{breadcrumbItems.map(([name, route], index) => <>{index > 0 && <span>/</span>}{index === breadcrumbItems.length - 1 ? <span>{name}</span> : <a href={route}>{name}</a>}</>)}</nav>

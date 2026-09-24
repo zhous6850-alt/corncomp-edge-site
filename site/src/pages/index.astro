@@ -1,25 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-
-const productPathways = [
-  { title: 'Cups & Bowls', text: 'Paper cups, soup cups, salad bowls and ice cream cups with matching component options.', route: '/products/cups-bowls/', image: '/media/wp/261--2026-07-25-100620.png' },
-  { title: 'Food Boxes & Containers', text: 'Meal boxes, sandwich and sushi boxes, burger packs, wrap sleeves and fry packaging.', route: '/products/food-boxes-containers/', image: '/media/wp/164--2026-07-14-133106.png' },
-  { title: 'Foodservice Supplies', text: 'Paper straws, disposable cutlery and paper plates for distribution and custom programs.', route: '/products/foodservice-supplies/', image: '/media/wp/107--2026-07-14-101008.png' },
-];
+import HomePage from '../components/HomePage.astro';
+import { localizedEntry, uiFor } from '../lib/localization.mjs';
 ---
-<BaseLayout title="Paper Food Packaging Manufacturer | Corncomp" description="Corncomp manufactures paper cups, bowls, food boxes, paper straws and foodservice supplies for wholesale and custom packaging programs." language="en" pathname="/" bodyClass="home-v2">
-  <section class="home-hero">
-    <div class="home-hero-media"><img src="/media/embedded/c97a5896-corncomp-homepage-hero-drink-compressed-copy.jpg.webp" alt="Corncomp paper food packaging in beverage service" width="1920" height="1080" fetchpriority="high" decoding="async"></div>
-    <div class="content-shell home-hero-content"><p class="eyebrow">Paper packaging manufacturer · Ningbo, China</p><h1>Paper Food Packaging, Built for Real Service</h1><p class="home-hero-copy">Cups, bowls, food boxes, paper straws and foodservice supplies for distributors, restaurant groups and custom packaging programs.</p><div class="hero-actions"><a class="button-primary" href="/products/">Explore products</a><a class="button-secondary" href="/contact/">Request a quote</a></div></div>
-  </section>
-
-  <section class="content-shell home-proof" aria-label="Manufacturing overview"><div><strong>8,000 m²</strong><span>Manufacturing base</span></div><div><strong>6,000 m²</strong><span>GMP-standard dust-free workshop</span></div><div><strong>60</strong><span>Production lines</span></div><div><strong>2.5 billion</strong><span>Annual paper straw capacity</span></div></section>
-
-  <section class="content-shell home-section"><div class="section-heading split-heading"><div><p class="eyebrow">Product architecture</p><h2>Find the format first.<br>Specify the order second.</h2></div><p>Browse by packaging function, compare real catalogue products, and carry the selected item into a contextual inquiry. No shopping cart—just a clearer path from product research to a usable B2B specification.</p></div><div class="home-product-grid">{productPathways.map((item) => <a class="home-product-card" href={item.route}><img src={item.image} alt="" loading="lazy" decoding="async"><div><p class="eyebrow">Product group</p><h3>{item.title}</h3><p>{item.text}</p><span>View product families →</span></div></a>)}</div></section>
-
-  <section class="home-factory"><div class="content-shell home-factory-grid"><div class="home-factory-media"><img src="/media/embedded/be53f20b-facility-showcase-1.jpg" alt="Corncomp manufacturing facility" loading="lazy" decoding="async"></div><div class="home-factory-copy"><p class="eyebrow">Manufacturing evidence</p><h2>A supplier page should show what buyers need to verify.</h2><p>Review Corncomp’s factory context, production responsibilities and quality systems. Then confirm which material, production line, certificate or report applies to the exact item you plan to order.</p><ul><li>Catalogue-based product selection</li><li>Custom printing and private-label review</li><li>Specification, sample and packing confirmation</li><li>Product-specific document scope checks</li></ul><a class="button-primary" href="/about/factory/">See factory & manufacturing</a></div></div></section>
-
-  <section class="content-shell home-section home-pathways"><div class="section-heading"><p class="eyebrow">Plan the complete program</p><h2>Products are only one part of the decision.</h2></div><div class="architecture-grid"><a class="architecture-card" href="/custom-packaging/"><span>01</span><h3>Custom packaging</h3><p>Prepare size, artwork, print, packing and destination requirements before sampling.</p></a><a class="architecture-card" href="/applications/"><span>02</span><h3>Application planning</h3><p>Choose packaging around the food, temperature, holding time, display and delivery conditions.</p></a><a class="architecture-card" href="/quality/"><span>03</span><h3>Quality & certification</h3><p>Understand company-level certificates, test reports and item-specific document scope.</p></a><a class="architecture-card" href="/resources/"><span>04</span><h3>Buyer resources</h3><p>Use practical guides to compare sizes and prepare a more complete sourcing brief.</p></a></div></section>
-
-  <section class="content-shell home-cta"><div><p class="eyebrow">Ready to specify?</p><h2>Send the product, quantity and destination.</h2><p>Add artwork, packing and document requirements when available. Corncomp will review feasibility before quoting.</p></div><a class="button-primary" href="/contact/">Start an inquiry</a></section>
-</BaseLayout>
+<HomePage language="en" content={localizedEntry('en', 'home')} ui={uiFor('en')} />

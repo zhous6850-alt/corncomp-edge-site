@@ -1,6 +1,16 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
+import { localizedEntry, routeFor, uiFor } from './localization.mjs';
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+async function readBuiltRoute(route) {
+  const path = route === '/' ? 'index.html' : `${route.replace(/^\/+|\/+$/g, '')}/index.html`;
+  return readFile(new URL(`../../dist/${path}`, import.meta.url), 'utf8');
+}
 
 function metaContent(html, name) {
   return html.match(new RegExp(`<meta name="${name}" content="([^"]*)">`))?.[1] || '';
@@ -195,6 +205,35 @@ test('the homepage presents the manufacturer proof and approved product pathways
   assert.match(html, /href="\/products\/cups-bowls\/"/);
   assert.match(html, /href="\/about\/factory\/"/);
   assert.match(html, /href="\/contact\/"/);
+});
+
+test('localized homepages render localized content and preserve manufacturing proof', async () => {
+  for (const language of ['fr', 'es', 'ar']) {
+    const content = localizedEntry(language, 'home');
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+
+    assert.match(html, new RegExp(`<html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`));
+    assert.match(html, new RegExp(escapeRegExp(content.hero.heading)));
+    assert.match(html, new RegExp(escapeRegExp(content.hero.secondaryLabel)));
+    assert.match(html, new RegExp(escapeRegExp(content.proof[0][0])));
+    assert.match(html, new RegExp(escapeRegExp(content.proof[3][0])));
+    assert.doesNotMatch(html, /Explore products/);
+  }
+});
+
+test('localized shared UI renders the reviewed locale labels', async () => {
+  for (const language of ['fr', 'es', 'ar']) {
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+    const ui = uiFor(language);
+    const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0] || '';
+
+    for (const key of ['menu', 'allProducts', 'contactUs', 'analyticsSettings', 'allowAnalytics', 'declineAnalytics']) {
+      assert.match(html, new RegExp(escapeRegExp(ui[key])), `${language} homepage is missing ui.${key}`);
+    }
+    for (const contentKey of ['architecture:products', 'architecture:custom-packaging', 'architecture:applications', 'architecture:quality', 'architecture:resources', 'architecture:about', 'architecture:contact']) {
+      assert.match(footer, new RegExp(`href="${escapeRegExp(routeFor(language, contentKey))}"`), `${language} footer is missing ${contentKey}`);
+    }
+  }
 });
 
 test('analytics remains disabled until the visitor makes a consent choice', async () => {
