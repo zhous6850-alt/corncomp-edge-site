@@ -16,6 +16,7 @@ const organization = {
   sameAs: ['https://www.facebook.com/profile.php?id=61592477933421', 'https://www.instagram.com/zxh_0927', 'https://www.linkedin.com/in/sam-zhou-431ab9424/'],
 };
 const schemas = [organization, ...(Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : [])];
+const measurementId = 'G-R1SHNYEBN8';
 ---
 <!doctype html>
 <html lang={language} dir={documentDirection(language)}>
@@ -44,5 +45,107 @@ const schemas = [organization, ...(Array.isArray(structuredData) ? structuredDat
     <Header language={language} />
     <main><slot /></main>
     <Footer language={language} />
+    <aside class="analytics-consent" data-analytics-consent hidden role="region" aria-labelledby="analytics-consent-title">
+      <div>
+        <h2 id="analytics-consent-title">Optional analytics</h2>
+        <p>We use Google Analytics to understand visits and successful inquiries. Analytics stays off until you allow it.</p>
+      </div>
+      <div class="analytics-consent-actions">
+        <button type="button" data-analytics-allow>Allow analytics</button>
+        <button type="button" class="button-secondary" data-analytics-decline>Decline</button>
+      </div>
+    </aside>
+    <script is:inline define:vars={{ measurementId }}>
+      (() => {
+        const consentKey = 'corncomp-analytics-consent';
+        const leadKey = 'corncomp-reported-leads';
+        const banner = document.querySelector('[data-analytics-consent]');
+        const allowButton = document.querySelector('[data-analytics-allow]');
+        const declineButton = document.querySelector('[data-analytics-decline]');
+        const settingsButton = document.querySelector('[data-analytics-settings]');
+        let analyticsLoaded = false;
+        let returnFocus = null;
+
+        const readPreference = (key) => {
+          try { return localStorage.getItem(key); } catch { return null; }
+        };
+        const savePreference = (key, value) => {
+          try { localStorage.setItem(key, value); } catch { /* Storage may be unavailable. */ }
+        };
+        const hideBanner = () => {
+          if (banner) banner.hidden = true;
+          returnFocus?.focus();
+          returnFocus = null;
+        };
+        const showBanner = (moveFocus = false) => {
+          if (!banner) return;
+          banner.hidden = false;
+          if (moveFocus) allowButton?.focus();
+        };
+        const clearLeadMarker = () => {
+          const page = new URL(window.location.href);
+          if (page.searchParams.get('sent') !== '1') return;
+          page.searchParams.delete('sent');
+          page.searchParams.delete('lead');
+          history.replaceState(null, '', `${page.pathname}${page.search}${page.hash}`);
+        };
+        const loadAnalytics = () => {
+          if (analyticsLoaded) return;
+          analyticsLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', measurementId);
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+          document.head.append(script);
+        };
+        const recordPendingLead = () => {
+          const params = new URLSearchParams(window.location.search);
+          const leadId = params.get('sent') === '1' ? params.get('lead') : null;
+          if (!leadId) return;
+          let reportedLeads = [];
+          try {
+            const savedLeads = JSON.parse(readPreference(leadKey) || '[]');
+            if (Array.isArray(savedLeads)) reportedLeads = savedLeads;
+          } catch { /* Ignore an invalid stored preference. */ }
+          if (!reportedLeads.includes(leadId)) {
+            window.gtag?.('event', 'generate_lead');
+            savePreference(leadKey, JSON.stringify([...reportedLeads, leadId]));
+          }
+          clearLeadMarker();
+        };
+        const allowAnalytics = () => {
+          savePreference(consentKey, 'granted');
+          hideBanner();
+          loadAnalytics();
+          recordPendingLead();
+        };
+        const declineAnalytics = () => {
+          savePreference(consentKey, 'denied');
+          hideBanner();
+          clearLeadMarker();
+          if (analyticsLoaded) window.location.reload();
+        };
+
+        allowButton?.addEventListener('click', allowAnalytics);
+        declineButton?.addEventListener('click', declineAnalytics);
+        settingsButton?.addEventListener('click', () => {
+          returnFocus = settingsButton;
+          showBanner(true);
+        });
+
+        const consent = readPreference(consentKey);
+        if (consent === 'granted') {
+          loadAnalytics();
+          recordPendingLead();
+        } else if (consent === 'denied') {
+          clearLeadMarker();
+        } else {
+          showBanner();
+        }
+      })();
+    </script>
   </body>
 </html>

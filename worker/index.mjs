@@ -128,7 +128,16 @@ export default {
     });
     if (!emailResponse.ok) return json({ ok: false, error: 'Unable to send inquiry.' }, 502);
     if ((request.headers.get('content-type') || '').includes('application/json')) return json({ ok: true });
-    const page = new URL(source, request.url);
-    return new Response(null, { status: 303, headers: { location: `${url.origin}${page.pathname}#inquiry-sent` } });
+    let pagePath = '/contact/';
+    try {
+      const page = new URL(source);
+      if (page.origin === url.origin) pagePath = page.pathname;
+    } catch {}
+    const result = new URL(url.origin);
+    result.pathname = `/${pagePath.replace(/^\/+/, '')}`;
+    result.searchParams.set('sent', '1');
+    result.searchParams.set('lead', crypto.randomUUID());
+    result.hash = 'inquiry-sent';
+    return new Response(null, { status: 303, headers: { location: result.href } });
   },
 };

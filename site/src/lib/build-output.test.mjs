@@ -196,3 +196,30 @@ test('the homepage presents the manufacturer proof and approved product pathways
   assert.match(html, /href="\/about\/factory\/"/);
   assert.match(html, /href="\/contact\/"/);
 });
+
+test('analytics remains disabled until the visitor makes a consent choice', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /G-R1SHNYEBN8/);
+  assert.match(html, /data-analytics-consent/);
+  assert.match(html, /Allow analytics/);
+  assert.match(html, /Decline/);
+  assert.match(html, /corncomp-analytics-consent/);
+  assert.match(html, /createElement\(['"]script['"]\)/);
+  assert.doesNotMatch(html, /<script[^>]+src="https:\/\/www\.googletagmanager\.com\/gtag\/js/);
+});
+
+test('analytics can be reopened and records each successful inquiry once', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /data-analytics-settings/);
+  assert.match(html, /generate_lead/);
+  assert.match(html, /corncomp-reported-leads/);
+  assert.match(html, /history\.replaceState/);
+});
+
+test('revoking prior consent unloads analytics from the current page', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /analyticsLoaded[\s\S]*?window\.location\.reload\(\)/);
+});

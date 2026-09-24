@@ -91,7 +91,34 @@ test('redirects a browser form submission back to its language contact page', as
   try {
     const response = await worker.fetch(formRequest, { RESEND_API_KEY: 're_test' });
     assert.equal(response.status, 303);
-    assert.equal(response.headers.get('location'), 'https://corn-comp.com/es/contactenos/#inquiry-sent');
+    const location = new URL(response.headers.get('location'));
+    assert.equal(location.origin, 'https://corn-comp.com');
+    assert.equal(location.pathname, '/es/contactenos/');
+    assert.equal(location.searchParams.get('sent'), '1');
+    assert.match(location.searchParams.get('lead'), /^[0-9a-f-]{36}$/);
+    assert.equal(location.hash, '#inquiry-sent');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('keeps inquiry success redirects on the request origin for hostile or missing referrers', async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => Response.json({ id: 'test' });
+  try {
+    for (const referer of ['https://evil.example//evil.example/phishing', null]) {
+      const headers = { 'content-type': 'application/x-www-form-urlencoded' };
+      if (referer) headers.referer = referer;
+      const request = new Request('https://corn-comp.com/api/inquiry', {
+        method: 'POST',
+        headers,
+        body: new URLSearchParams({ 'your-name': 'Buyer', 'your-email': 'buyer@example.com' }),
+      });
+      const response = await worker.fetch(request, { RESEND_API_KEY: 're_test' });
+      const location = new URL(response.headers.get('location'));
+      assert.equal(location.origin, 'https://corn-comp.com');
+      assert.equal(location.pathname, '/contact/');
+    }
   } finally {
     globalThis.fetch = originalFetch;
   }
