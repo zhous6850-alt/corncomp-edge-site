@@ -66,7 +66,7 @@ test('source hashes detect translatable English changes but ignore featured medi
 
 test('unfinished locale shells remain non-indexed and missing routes return null', () => {
   assert.deepEqual(SUPPORTED_LANGUAGES, ['en', 'fr', 'es', 'ar']);
-  for (const language of ['es', 'ar']) {
+  for (const language of ['ar']) {
     assert.deepEqual(localeData(language), {
       _meta: { language, sourceLanguage: 'en', synchronizedOn: null }, ui: {}, content: {},
     });
@@ -77,9 +77,9 @@ test('unfinished locale shells remain non-indexed and missing routes return null
   assert.equal(routeFor('en', 'home'), '/');
   assert.equal(contentKeyFromRoute('/'), 'home');
   assert.equal(contentKeyFromRoute('/not-an-active-page/'), null);
-  assert.deepEqual(alternateGroup('home'), [{ language: 'en', route: '/' }, { language: 'fr', route: '/fr/' }]);
-  assert.equal(allLocalizedEntries().length, 170);
-  assert.deepEqual([...localizedRedirects()], [[
+  assert.deepEqual(alternateGroup('home'), [{ language: 'en', route: '/' }, { language: 'fr', route: '/fr/' }, { language: 'es', route: '/es/' }]);
+  assert.equal(allLocalizedEntries().length, 255);
+  assert.deepEqual([...localizedRedirects()].filter(([route]) => route.startsWith('/fr/')), [[
     '/fr/corncomp-pailles-en-papier-et-emballages-alimentaires-biodegradables/', '/fr/',
   ]]);
   assert.equal(uiFor('en').menu, 'Menu');
@@ -105,7 +105,7 @@ function assertLocaleContract(locale, sources = englishInventory()) {
     const entry = locale.content[key];
     assert.ok(entry, key);
     for (const field of ['route', 'title', 'description']) nonempty(entry[field], `${key}:${field}`);
-    assert.ok(entry.route.startsWith('/fr/'), `${key}:locale route`);
+    assert.ok(entry.route.startsWith(`/${locale._meta.language}/`), `${key}:locale route`);
     assert.equal(entry.route, normalizeLocalizedRoute(entry.route), `${key}:normalized route`);
     assert.ok(entry.route.endsWith('/') && !entry.route.includes('//'), `${key}:route shape`);
     assert.ok(!routes.has(entry.route), `${key}:duplicate route`);
@@ -245,4 +245,166 @@ test('French specification display values translate source cells without changin
     'Brown / White, for 8oz cups', '50pcs × 20 shrink packs', 'Pointed tip',
     '30,000 units standard; 50,000 units for custom printing',
   ]) assert.ok(values[source]?.trim(), source);
+});
+
+
+test('Spanish covers every active English key with current source hashes', () => {
+  const expected = englishInventory();
+  const locale = localeData('es');
+  assert.equal(Object.keys(locale.content).length, 85);
+  for (const source of expected) {
+    const entry = locale.content[source.contentKey];
+    assert.ok(entry, source.contentKey);
+    assert.equal(entry.sourceHash, sourceHash(source), source.contentKey);
+    for (const field of ['route', 'title', 'description']) assert.ok(entry[field]?.trim(), `${source.contentKey}:${field}`);
+  }
+});
+
+test('Spanish indexable fields do not contain English UI placeholders', () => {
+  assertLocaleHasNoEnglishPlaceholders('es', [
+    'Request a quote', 'Explore products', 'Built for B2B sourcing',
+    'Ordering questions', 'Contact Us', 'Analytics settings',
+  ]);
+});
+
+function assertSpanishNumberFormatting(locale) {
+  const check = (value, path) => {
+    if (typeof value === 'string') {
+      assert.ok(!/\b\d{1,3}(?:,\d{3})+\b/.test(value), `English comma thousands in Spanish: ${path}`);
+    } else if (value && typeof value === 'object') {
+      for (const [key, child] of Object.entries(value)) check(child, `${path}.${key}`);
+    }
+  };
+  check(locale.ui, 'ui');
+  check(locale.content, 'content');
+}
+
+test('Spanish commercial prose uses spaces rather than comma thousands separators', () => {
+  assertSpanishNumberFormatting(localeData('es'));
+  const changed = structuredClone(localeData('es'));
+  changed.content['product:kraft-paper-bowl'].orderTerms = 'Pedido mínimo: 30,000 unidades.';
+  assert.throws(() => assertSpanishNumberFormatting(changed), /English comma thousands/);
+  for (const source of englishInventory()) {
+    const entry = localeData('es').content[source.contentKey];
+    for (const field of ['title', 'description', 'intro']) {
+      if (source[field]) assert.notEqual(entry[field], source[field], `${source.contentKey}:English ${field}`);
+    }
+  }
+});
+
+test('Spanish satisfies page-type contracts and shared product fact parity', () => {
+  const locale = localeData('es');
+  assert.deepEqual(locale._meta, { language: 'es', sourceLanguage: 'en', synchronizedOn: '2026-09-24' });
+  for (const key of Object.keys(uiFor('en'))) assert.ok(locale.ui[key]?.trim(), `ui:${key}`);
+  assertLocaleContract(locale);
+});
+
+test('Spanish contracts reject missing prose, routes, alt text, product fields, headers and stale hashes', () => {
+  const cases = [
+    ['architecture:products', (entry) => { delete entry.intro; }, /intro/],
+    ['home', (entry) => { entry.hero.imageAlt = ''; }, /imageAlt/],
+    ['product:kraft-paper-bowl', (entry) => { entry.alt = ''; }, /alt/],
+    ['product:kraft-paper-bowl', (entry) => { delete entry.documentScope; }, /documentScope/],
+    ['post:eu-single-use-plastics-directive-explained', (entry) => { delete entry.bodyHtml; }, /bodyHtml/],
+    ['post:eu-single-use-plastics-directive-explained', (entry) => { entry.bodyHtml = '<img src="/media/image.jpg" alt="">'; }, /body image alt/],
+    ['home', (entry) => { entry.route = '/'; }, /locale route/],
+    ['architecture:products', (entry) => { entry.route = '/es/'; }, /duplicate route/],
+    ['home', (entry) => { entry.sourceHash = 'stale'; }, /sourceHash/],
+  ];
+  for (const [key, mutate, error] of cases) {
+    const locale = structuredClone(localeData('es'));
+    assert.ok(locale.content[key], key);
+    mutate(locale.content[key]);
+    assert.throws(() => assertLocaleContract(locale), error);
+  }
+  const locale = structuredClone(localeData('es'));
+  delete locale.ui.specificationHeaders;
+  assert.throws(() => assertLocaleContract(locale), /specificationHeaders/);
+  for (const field of ['summary', 'specificationHeading', 'comparisonHtml', 'orderingHeading', 'faq', 'documentScope', 'orderTerms', 'alt']) {
+    const changed = structuredClone(localeData('es'));
+    delete changed.content['product:kraft-paper-bowl'][field];
+    assert.throws(() => assertLocaleContract(changed), new RegExp(field));
+  }
+});
+
+function assertSpanishLinks(locale) {
+  const routes = new Set(Object.values(locale.content).map(({ route }) => route));
+  for (const source of englishInventory()) {
+    const entry = locale.content[source.contentKey];
+    assert.ok(entry, source.contentKey);
+    for (const link of entry.links || []) assert.ok(routes.has(link.route), `${source.contentKey}:${link.route}`);
+    for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
+      for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
+        if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
+        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+      }
+    }
+    if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));
+    if (source.type === 'post') {
+      const evidenceUrls = (html) => [...html.matchAll(/href="(https:[^"]+)"/g)]
+        .map((match) => match[1]).filter((href) => !href.includes('corn-comp.com'));
+      assert.deepEqual(evidenceUrls(entry.bodyHtml), evidenceUrls(source.body), `${source.contentKey}:evidence URLs`);
+    }
+  }
+  const home = locale.content.home;
+  for (const key of [
+    home.hero.primaryKey, home.hero.secondaryKey, home.factory.contentKey, home.cta.contentKey,
+    ...home.productPathways.map(([key]) => key), ...home.programs.cards.map(([key]) => key),
+  ]) assert.ok(locale.content[key]?.route.startsWith('/es/'), `home link:${key}`);
+}
+
+test('Spanish localized links resolve to Spanish entries and preserve guide evidence URLs', () => {
+  assertSpanishLinks(localeData('es'));
+  const redirects = localizedRedirects();
+  for (const entry of Object.values(localeData('es').content)) {
+    for (const alias of entry.aliases || []) assert.equal(redirects.get(alias), entry.route, alias);
+  }
+});
+
+function assertSpanishSpecificationValues(locale) {
+  const values = locale.ui.specificationValues;
+  assert.ok(values && Object.keys(values).length, 'Spanish specificationValues must cover prose cells');
+  const cells = new Set(englishInventory().filter(({ type }) => type === 'product')
+    .flatMap((source) => extractProductFacts(source).tables.flatMap(({ rows }) => rows.flat())));
+  for (const [source, translated] of Object.entries(values)) {
+    assert.ok(cells.has(source), `Unknown specification cell: ${source}`);
+    assert.ok(typeof translated === 'string' && translated.trim(), source);
+    assert.deepEqual(factTokens(translated), factTokens(source), source);
+  }
+  const neutralCell = /^(?:[\d\s.,×x()/"]|mm|ml|oz|g|pcs|ctn|&quot;|&#8243;)+$/;
+  for (const source of cells) {
+    if (/^CC[\dA-Z.-]+$/.test(source) || source === 'PLA' || neutralCell.test(source)) {
+      assert.ok(!Object.hasOwn(values, source), `Language-neutral cell must stay shared: ${source}`);
+    } else assert.ok(values[source]?.trim(), `Missing Spanish specification value: ${source}`);
+  }
+}
+
+test('Spanish specification display values translate every prose cell without changing fact tokens', () => {
+  assertSpanishSpecificationValues(localeData('es'));
+});
+
+test('Spanish mutations reject missing display maps, changed quantities and unresolved English links', () => {
+  for (const mutate of [
+    (locale) => { delete locale.ui.specificationValues; },
+    (locale) => { delete locale.ui.specificationValues.Documentation; },
+    (locale) => { locale.ui.specificationValues['500 pcs/pack, 10 packs/carton'] = '501 unidades/paquete, 10 paquetes/caja'; },
+  ]) {
+    const locale = structuredClone(localeData('es'));
+    mutate(locale);
+    assert.throws(() => assertSpanishSpecificationValues(locale));
+  }
+  for (const mutate of [
+    (locale) => { locale.content['architecture:resources'].links[0].route = '/resources/guides/paper-cup-sizes/'; },
+    (locale) => { locale.content['product:kraft-paper-bowl'].faq += '<a href="/contact/">Contacto</a>'; },
+    (locale) => { locale.content.home.hero.primaryKey = 'architecture:missing'; },
+  ]) {
+    const locale = structuredClone(localeData('es'));
+    mutate(locale);
+    assert.throws(() => assertSpanishLinks(locale));
+  }
+  const source = englishInventory().find(({ contentKey }) => contentKey === 'product:kraft-paper-bowl');
+  const facts = extractProductFacts(source);
+  const locale = localeData('es');
+  const html = localizedProductBody(locale.content[source.contentKey], facts, locale.ui);
+  assert.throws(() => assertFactParity(source, html.replaceAll('CC01KB500', 'INVALID')), /missing facts/);
 });
