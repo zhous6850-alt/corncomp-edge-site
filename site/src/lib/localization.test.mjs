@@ -167,6 +167,18 @@ test('French indexable fields do not contain English UI placeholders', () => {
   ]);
 });
 
+test('French commercial prose uses spaces rather than comma thousands separators', () => {
+  const violations = [];
+  const fields = ['title', 'description', 'summary', 'comparisonHtml', 'faq', 'documentScope', 'orderTerms', 'alt'];
+  for (const source of englishInventory().filter(({ type }) => type === 'product')) {
+    const entry = localeData('fr').content[source.contentKey];
+    for (const field of fields) {
+      if (/\b\d{1,3}(?:,\d{3})+\b/.test(entry[field] || '')) violations.push(`${source.contentKey}:${field}`);
+    }
+  }
+  assert.deepEqual(violations, [], 'English comma thousands in French commercial prose');
+});
+
 test('French satisfies page-type contracts and shared product fact parity', () => {
   const locale = localeData('fr');
   assert.deepEqual(locale._meta, { language: 'fr', sourceLanguage: 'en', synchronizedOn: '2026-09-24' });
