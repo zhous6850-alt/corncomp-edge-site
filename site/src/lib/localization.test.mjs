@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { documentDirection } from './routes.mjs';
 import { ARCHITECTURE_PAGES } from './site-architecture.mjs';
 import { extractProductFacts, localizedProductBody, assertFactParity, factTokens } from './product-facts.mjs';
 import {
@@ -64,21 +65,17 @@ test('source hashes detect translatable English changes but ignore featured medi
   assert.notEqual(sourceHash(guide), sourceHash({ ...guide, table: { ...guide.table, caption: 'Changed caption' } }));
 });
 
-test('unfinished locale shells remain non-indexed and missing routes return null', () => {
+test('completed locales expose routes while missing keys return null', () => {
   assert.deepEqual(SUPPORTED_LANGUAGES, ['en', 'fr', 'es', 'ar']);
-  for (const language of ['ar']) {
-    assert.deepEqual(localeData(language), {
-      _meta: { language, sourceLanguage: 'en', synchronizedOn: null }, ui: {}, content: {},
-    });
-    assert.equal(localizedEntry(language, 'home'), null);
-    assert.equal(routeFor(language, 'home'), null);
-    assert.deepEqual(uiFor(language), {});
+  for (const language of ['fr', 'es', 'ar']) {
+    assert.equal(localizedEntry(language, 'missing'), null);
+    assert.equal(routeFor(language, 'missing'), null);
   }
   assert.equal(routeFor('en', 'home'), '/');
   assert.equal(contentKeyFromRoute('/'), 'home');
   assert.equal(contentKeyFromRoute('/not-an-active-page/'), null);
-  assert.deepEqual(alternateGroup('home'), [{ language: 'en', route: '/' }, { language: 'fr', route: '/fr/' }, { language: 'es', route: '/es/' }]);
-  assert.equal(allLocalizedEntries().length, 255);
+  assert.deepEqual(alternateGroup('home'), [{ language: 'en', route: '/' }, { language: 'fr', route: '/fr/' }, { language: 'es', route: '/es/' }, { language: 'ar', route: '/ar/' }]);
+  assert.equal(allLocalizedEntries().length, 340);
   assert.deepEqual([...localizedRedirects()].filter(([route]) => route.startsWith('/fr/')), [[
     '/fr/corncomp-pailles-en-papier-et-emballages-alimentaires-biodegradables/', '/fr/',
   ]]);
@@ -407,4 +404,176 @@ test('Spanish mutations reject missing display maps, changed quantities and unre
   const locale = localeData('es');
   const html = localizedProductBody(locale.content[source.contentKey], facts, locale.ui);
   assert.throws(() => assertFactParity(source, html.replaceAll('CC01KB500', 'INVALID')), /missing facts/);
+});
+
+test('Arabic covers every active English key with canonical routes', () => {
+  const expected = englishInventory();
+  const locale = localeData('ar');
+  assert.equal(Object.keys(locale.content).length, 85);
+  for (const source of expected) {
+    const entry = locale.content[source.contentKey];
+    assert.ok(entry, source.contentKey);
+    assert.equal(entry.route, normalizeLocalizedRoute(entry.route));
+    assert.match(entry.route, /^\/ar\//);
+    assert.equal(entry.sourceHash, sourceHash(source), source.contentKey);
+    for (const field of ['route', 'title', 'description']) assert.ok(entry[field]?.trim(), `${source.contentKey}:${field}`);
+  }
+});
+
+test('Arabic indexable fields do not contain English UI placeholders', () => {
+  assertLocaleHasNoEnglishPlaceholders('ar', [
+    'Request a quote', 'Explore products', 'Built for B2B sourcing',
+    'Ordering questions', 'Contact Us', 'Analytics settings',
+  ]);
+});
+
+function assertArabicNumberFormatting(locale) {
+  const check = (value, path) => {
+    if (typeof value === 'string') {
+      assert.ok(!/\b\d{1,3}(?:,\d{3})+\b/.test(value), `English comma thousands in Arabic: ${path}`);
+    } else if (value && typeof value === 'object') {
+      for (const [key, child] of Object.entries(value)) check(child, `${path}.${key}`);
+    }
+  };
+  check(locale.ui, 'ui');
+  check(locale.content, 'content');
+}
+
+test('Arabic commercial prose uses spaces rather than comma thousands separators', () => {
+  assertArabicNumberFormatting(localeData('ar'));
+  const changed = structuredClone(localeData('ar'));
+  changed.content['product:kraft-paper-bowl'].orderTerms = 'الحد الأدنى للطلب: 30,000 وحدة.';
+  assert.throws(() => assertArabicNumberFormatting(changed), /English comma thousands/);
+  for (const source of englishInventory()) {
+    const entry = localeData('ar').content[source.contentKey];
+    for (const field of ['title', 'description', 'intro']) {
+      if (source[field]) assert.notEqual(entry[field], source[field], `${source.contentKey}:English ${field}`);
+    }
+  }
+});
+
+test('Arabic satisfies page-type contracts and shared product fact parity', () => {
+  const locale = localeData('ar');
+  assert.deepEqual(locale._meta, { language: 'ar', sourceLanguage: 'en', synchronizedOn: '2026-09-24' });
+  for (const key of Object.keys(uiFor('en'))) assert.ok(locale.ui[key]?.trim(), `ui:${key}`);
+  assertLocaleContract(locale);
+});
+
+test('Arabic contracts reject missing prose, routes, alt text, product fields, headers and stale hashes', () => {
+  const cases = [
+    ['architecture:products', (entry) => { delete entry.intro; }, /intro/],
+    ['home', (entry) => { entry.hero.imageAlt = ''; }, /imageAlt/],
+    ['product:kraft-paper-bowl', (entry) => { entry.alt = ''; }, /alt/],
+    ['product:kraft-paper-bowl', (entry) => { delete entry.documentScope; }, /documentScope/],
+    ['post:eu-single-use-plastics-directive-explained', (entry) => { delete entry.bodyHtml; }, /bodyHtml/],
+    ['post:eu-single-use-plastics-directive-explained', (entry) => { entry.bodyHtml = '<img src="/media/image.jpg" alt="">'; }, /body image alt/],
+    ['home', (entry) => { entry.route = '/'; }, /locale route/],
+    ['architecture:products', (entry) => { entry.route = '/ar/'; }, /duplicate route/],
+    ['home', (entry) => { entry.sourceHash = 'stale'; }, /sourceHash/],
+    ['home', (entry) => { entry.route = '/ar/%d8%b9/'; }, /normalized route/],
+  ];
+  for (const [key, mutate, error] of cases) {
+    const locale = structuredClone(localeData('ar'));
+    assert.ok(locale.content[key], key);
+    mutate(locale.content[key]);
+    assert.throws(() => assertLocaleContract(locale), error);
+  }
+  const locale = structuredClone(localeData('ar'));
+  delete locale.ui.specificationHeaders;
+  assert.throws(() => assertLocaleContract(locale), /specificationHeaders/);
+  for (const field of ['summary', 'specificationHeading', 'comparisonHtml', 'orderingHeading', 'faq', 'documentScope', 'orderTerms', 'alt']) {
+    const changed = structuredClone(localeData('ar'));
+    delete changed.content['product:kraft-paper-bowl'][field];
+    assert.throws(() => assertLocaleContract(changed), new RegExp(field));
+  }
+});
+
+function assertArabicLinks(locale) {
+  const routes = new Set(Object.values(locale.content).map(({ route }) => route));
+  for (const source of englishInventory()) {
+    const entry = locale.content[source.contentKey];
+    assert.ok(entry, source.contentKey);
+    for (const link of entry.links || []) assert.ok(routes.has(link.route), `${source.contentKey}:${link.route}`);
+    for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
+      for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
+        if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
+        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+      }
+    }
+    if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));
+    if (source.type === 'post') {
+      const evidenceUrls = (html) => [...html.matchAll(/href="(https:[^"]+)"/g)]
+        .map((match) => match[1]).filter((href) => !href.includes('corn-comp.com'));
+      assert.deepEqual(evidenceUrls(entry.bodyHtml), evidenceUrls(source.body), `${source.contentKey}:evidence URLs`);
+    }
+  }
+  const home = locale.content.home;
+  for (const key of [
+    home.hero.primaryKey, home.hero.secondaryKey, home.factory.contentKey, home.cta.contentKey,
+    ...home.productPathways.map(([key]) => key), ...home.programs.cards.map(([key]) => key),
+  ]) assert.ok(locale.content[key]?.route.startsWith('/ar/'), `home link:${key}`);
+}
+
+test('Arabic localized links resolve to Arabic entries and preserve guide evidence URLs', () => {
+  assertArabicLinks(localeData('ar'));
+  const redirects = localizedRedirects();
+  for (const entry of Object.values(localeData('ar').content)) {
+    for (const alias of entry.aliases || []) assert.equal(redirects.get(alias), entry.route, alias);
+  }
+});
+
+function assertArabicSpecificationValues(locale) {
+  const values = locale.ui.specificationValues;
+  assert.ok(values && Object.keys(values).length, 'Arabic specificationValues must cover prose cells');
+  const cells = new Set(englishInventory().filter(({ type }) => type === 'product')
+    .flatMap((source) => extractProductFacts(source).tables.flatMap(({ rows }) => rows.flat())));
+  for (const [source, translated] of Object.entries(values)) {
+    assert.ok(cells.has(source), `Unknown specification cell: ${source}`);
+    assert.ok(typeof translated === 'string' && translated.trim(), source);
+    assert.deepEqual(factTokens(translated), factTokens(source), source);
+  }
+  const neutralCell = /^(?:[\d\s.,×x()/"]|mm|ml|oz|g|pcs|ctn|&quot;|&#8243;)+$/;
+  for (const source of cells) {
+    if (/^CC[\dA-Z.-]+$/.test(source) || source === 'PLA' || neutralCell.test(source)) {
+      assert.ok(!Object.hasOwn(values, source), `Language-neutral cell must stay shared: ${source}`);
+    } else assert.ok(values[source]?.trim(), `Missing Arabic specification value: ${source}`);
+  }
+}
+
+test('Arabic specification display values translate every prose cell without changing fact tokens', () => {
+  assertArabicSpecificationValues(localeData('ar'));
+});
+
+test('Arabic mutations reject missing display maps, changed quantities and unresolved English links', () => {
+  for (const mutate of [
+    (locale) => { delete locale.ui.specificationValues; },
+    (locale) => { delete locale.ui.specificationValues.Documentation; },
+    (locale) => { locale.ui.specificationValues['500 pcs/pack, 10 packs/carton'] = '501 قطعة/عبوة، 10 عبوات/كرتون'; },
+  ]) {
+    const locale = structuredClone(localeData('ar'));
+    mutate(locale);
+    assert.throws(() => assertArabicSpecificationValues(locale));
+  }
+  for (const mutate of [
+    (locale) => { locale.content['architecture:resources'].links[0].route = '/resources/guides/paper-cup-sizes/'; },
+    (locale) => { locale.content['product:kraft-paper-bowl'].faq += '<a href="/contact/">اتصل بنا</a>'; },
+    (locale) => { locale.content.home.hero.primaryKey = 'architecture:missing'; },
+  ]) {
+    const locale = structuredClone(localeData('ar'));
+    mutate(locale);
+    assert.throws(() => assertArabicLinks(locale));
+  }
+  const source = englishInventory().find(({ contentKey }) => contentKey === 'product:kraft-paper-bowl');
+  const facts = extractProductFacts(source);
+  const locale = localeData('ar');
+  const html = localizedProductBody(locale.content[source.contentKey], facts, locale.ui);
+  assert.throws(() => assertFactParity(source, html.replaceAll('CC01KB500', 'INVALID')), /missing facts/);
+});
+
+test('Arabic locale outputs use the existing RTL direction contract', () => {
+  for (const entry of allLocalizedEntries().filter(({ language }) => language === 'ar')) {
+    assert.equal(documentDirection(entry.language), 'rtl', entry.contentKey);
+  }
+  assert.equal(localeData('ar')._meta.language, 'ar');
+  assert.equal(documentDirection(localeData('ar')._meta.language), 'rtl');
 });
