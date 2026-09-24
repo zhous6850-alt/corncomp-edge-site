@@ -41,7 +41,20 @@ test('immutable facts permit translated prose but reject a changed item code', (
 
 test('fact tokens preserve decimals and dimensions through HTML entities', () => {
   const tokens = factTokens('<td>CC01OWC5.5K</td><td>5.5&nbsp;oz</td><td>170 &#215; 130 mm</td><td>50/4</td>');
-  for (const token of ['CC01OWC5.5K', '5.5', '170', '130', '50/4']) assert.ok(tokens.includes(token), token);
+  for (const token of ['CC01OWC5.5K', '5.5', '170 x 130', '50/4']) assert.ok(tokens.includes(token), token);
+});
+
+test('fact parity detects a changed number attached to a unit', () => {
+  const product = englishProduct('round-paper-plate');
+  assert.ok(factTokens('127mm').includes('127'));
+  assert.ok(factTokens(product.body).includes('127'));
+  assert.throws(() => assertFactParity(product, product.body.replace('(127mm)', '(999mm)')), /127/);
+});
+
+test('fact parity treats entity and literal dimension separators alike', () => {
+  const source = { slug: 'entity-dimension', body: '<td>170 &#215; 130 mm</td>' };
+  assert.doesNotThrow(() => assertFactParity(source, '<td>170 x 130 mm</td>'));
+  assert.throws(() => assertFactParity(source, '<td>170 x 999 mm</td>'), /130/);
 });
 
 test('extractProductFacts reports the product slug for malformed table rows', () => {

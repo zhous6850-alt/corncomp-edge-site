@@ -1,8 +1,9 @@
 const itemCodePattern = /\bCC[\dA-Z.-]+\b/g;
-const numberPattern = /\b\d+(?:\.\d+)?(?:\s*[×x/]\s*\d+(?:\.\d+)?)*\b/g;
+const numberPattern = /\b\d+(?:\.\d+)?(?:\s*[×x/]\s*\d+(?:\.\d+)?)*(?!\d)/g;
 
 export function factTokens(html = '') {
   const cleaned = html
+    .replace(/(\d)\s*(?:&#215;|&#x0*d7;|&times;|×|x)\s*(?=\d)/gi, '$1 x ')
     .replace(/&#\d+;|&#x[\da-f]+;|&[a-z]+;/gi, ' ')
     .replace(/<[^>]+>/g, ' ');
   return [...new Set([
