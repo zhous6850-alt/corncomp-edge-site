@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { ARCHITECTURE_PAGES } from './site-architecture.mjs';
+import { extractProductFacts, localizedProductBody, assertFactParity, factTokens } from './product-facts.mjs';
 import {
   SUPPORTED_LANGUAGES,
   ENGLISH_HOME,
@@ -63,9 +64,9 @@ test('source hashes detect translatable English changes but ignore featured medi
   assert.notEqual(sourceHash(guide), sourceHash({ ...guide, table: { ...guide.table, caption: 'Changed caption' } }));
 });
 
-test('empty locale shells remain non-indexed and missing routes return null', () => {
+test('unfinished locale shells remain non-indexed and missing routes return null', () => {
   assert.deepEqual(SUPPORTED_LANGUAGES, ['en', 'fr', 'es', 'ar']);
-  for (const language of ['fr', 'es', 'ar']) {
+  for (const language of ['es', 'ar']) {
     assert.deepEqual(localeData(language), {
       _meta: { language, sourceLanguage: 'en', synchronizedOn: null }, ui: {}, content: {},
     });
@@ -76,10 +77,160 @@ test('empty locale shells remain non-indexed and missing routes return null', ()
   assert.equal(routeFor('en', 'home'), '/');
   assert.equal(contentKeyFromRoute('/'), 'home');
   assert.equal(contentKeyFromRoute('/not-an-active-page/'), null);
-  assert.deepEqual(alternateGroup('home'), [{ language: 'en', route: '/' }]);
-  assert.equal(allLocalizedEntries().length, 85);
-  assert.equal(localizedRedirects().size, 0);
+  assert.deepEqual(alternateGroup('home'), [{ language: 'en', route: '/' }, { language: 'fr', route: '/fr/' }]);
+  assert.equal(allLocalizedEntries().length, 170);
+  assert.deepEqual([...localizedRedirects()], [[
+    '/fr/corncomp-pailles-en-papier-et-emballages-alimentaires-biodegradables/', '/fr/',
+  ]]);
   assert.equal(uiFor('en').menu, 'Menu');
   assert.throws(() => localeData('de'), /Unsupported locale/);
   assert.throws(() => localizedEntry('de', 'home'), /Unsupported locale/);
+});
+
+function assertLocaleContract(locale, sources = englishInventory()) {
+  const nonempty = (value, label) => assert.ok(typeof value === 'string' && value.trim(), label);
+  const structure = (source, entry, path) => {
+    if (typeof source === 'string') nonempty(entry, path);
+    else if (Array.isArray(source)) {
+      assert.ok(Array.isArray(entry), path);
+      assert.equal(entry.length, source.length, path);
+      source.forEach((value, index) => structure(value, entry[index], `${path}[${index}]`));
+    } else if (source && typeof source === 'object') {
+      for (const [key, value] of Object.entries(source)) structure(value, entry?.[key], `${path}.${key}`);
+    }
+  };
+  const routes = new Set();
+  for (const source of sources) {
+    const key = source.contentKey;
+    const entry = locale.content[key];
+    assert.ok(entry, key);
+    for (const field of ['route', 'title', 'description']) nonempty(entry[field], `${key}:${field}`);
+    assert.ok(entry.route.startsWith('/fr/'), `${key}:locale route`);
+    assert.equal(entry.route, normalizeLocalizedRoute(entry.route), `${key}:normalized route`);
+    assert.ok(entry.route.endsWith('/') && !entry.route.includes('//'), `${key}:route shape`);
+    assert.ok(!routes.has(entry.route), `${key}:duplicate route`);
+    routes.add(entry.route);
+    assert.equal(entry.sourceHash, sourceHash(source), `${key}:sourceHash`);
+    if (source.featuredMedia) nonempty(entry.alt, `${key}:alt`);
+    if (source.type === 'home') {
+      for (const field of ['hero', 'proof', 'proofLabel', 'productIntro', 'productPathways', 'factory', 'programs', 'cta']) {
+        structure(source[field], entry[field], `${key}:${field}`);
+      }
+    } else if (source.type === 'architecture') {
+      for (const field of ['intro', 'sections', 'links']) structure(source[field], entry[field], `${key}:${field}`);
+      for (const field of ['preparedBy', 'reviewedLabel', 'table', 'sourceIntro', 'sources']) {
+        if (source[field]) structure(source[field], entry[field], `${key}:${field}`);
+      }
+    } else if (source.type === 'product') {
+      for (const field of ['summary', 'specificationHeading', 'comparisonHtml', 'orderingHeading', 'faq', 'documentScope', 'orderTerms', 'alt']) {
+        nonempty(entry[field], `${key}:${field}`);
+      }
+      const facts = extractProductFacts(source);
+      for (const header of facts.tables.flatMap(({ headers }) => headers)) {
+        nonempty(locale.ui.specificationHeaders?.[header], `ui.specificationHeaders:${header}`);
+      }
+      assertFactParity(source, localizedProductBody(entry, facts, locale.ui));
+    } else if (source.type === 'post') {
+      nonempty(entry.bodyHtml, `${key}:bodyHtml`);
+      for (const image of entry.bodyHtml.matchAll(/<img\b[^>]*>/g)) {
+        nonempty(image[0].match(/\balt="([^"]*)"/)?.[1], `${key}:body image alt`);
+      }
+    }
+    if (source.type === 'post' || source.kind === 'guide') {
+      assert.match(entry.dateModified || '', /^\d{4}-\d{2}-\d{2}$/, `${key}:dateModified`);
+    }
+  }
+}
+
+function assertLocaleHasNoEnglishPlaceholders(language, phrases) {
+  const locale = localeData(language);
+  const text = JSON.stringify({ ui: locale.ui, content: locale.content });
+  for (const phrase of phrases) assert.ok(!text.includes(phrase), `${language}:English placeholder ${phrase}`);
+}
+
+test('French covers every active English key with current source hashes', () => {
+  const expected = englishInventory();
+  const locale = localeData('fr');
+  assert.equal(Object.keys(locale.content).length, 85);
+  for (const source of expected) {
+    const entry = locale.content[source.contentKey];
+    assert.ok(entry, source.contentKey);
+    assert.equal(entry.sourceHash, sourceHash(source), source.contentKey);
+    for (const field of ['route', 'title', 'description']) assert.ok(entry[field]?.trim(), `${source.contentKey}:${field}`);
+  }
+});
+
+test('French indexable fields do not contain English UI placeholders', () => {
+  assertLocaleHasNoEnglishPlaceholders('fr', [
+    'Request a quote', 'Explore products', 'Built for B2B sourcing',
+    'Ordering questions', 'Contact Us', 'Analytics settings',
+  ]);
+});
+
+test('French satisfies page-type contracts and shared product fact parity', () => {
+  const locale = localeData('fr');
+  assert.deepEqual(locale._meta, { language: 'fr', sourceLanguage: 'en', synchronizedOn: '2026-09-24' });
+  for (const key of Object.keys(uiFor('en'))) assert.ok(locale.ui[key]?.trim(), `ui:${key}`);
+  assertLocaleContract(locale);
+});
+
+test('French contracts reject missing prose, routes, alt text, product fields, headers and stale hashes', () => {
+  const cases = [
+    ['architecture:products', (entry) => { delete entry.intro; }, /intro/],
+    ['home', (entry) => { entry.hero.imageAlt = ''; }, /imageAlt/],
+    ['product:kraft-paper-bowl', (entry) => { entry.alt = ''; }, /alt/],
+    ['product:kraft-paper-bowl', (entry) => { delete entry.documentScope; }, /documentScope/],
+    ['post:eu-single-use-plastics-directive-explained', (entry) => { delete entry.bodyHtml; }, /bodyHtml/],
+    ['post:eu-single-use-plastics-directive-explained', (entry) => { entry.bodyHtml = '<img src="/media/image.jpg" alt="">'; }, /body image alt/],
+    ['home', (entry) => { entry.route = '/'; }, /locale route/],
+    ['architecture:products', (entry) => { entry.route = '/fr/'; }, /duplicate route/],
+    ['home', (entry) => { entry.sourceHash = 'stale'; }, /sourceHash/],
+  ];
+  for (const [key, mutate, error] of cases) {
+    const locale = structuredClone(localeData('fr'));
+    assert.ok(locale.content[key], key);
+    mutate(locale.content[key]);
+    assert.throws(() => assertLocaleContract(locale), error);
+  }
+  const locale = structuredClone(localeData('fr'));
+  delete locale.ui.specificationHeaders;
+  assert.throws(() => assertLocaleContract(locale), /specificationHeaders/);
+  for (const field of ['summary', 'specificationHeading', 'comparisonHtml', 'orderingHeading', 'faq', 'documentScope', 'orderTerms', 'alt']) {
+    const changed = structuredClone(localeData('fr'));
+    delete changed.content['product:kraft-paper-bowl'][field];
+    assert.throws(() => assertLocaleContract(changed), new RegExp(field));
+  }
+});
+
+test('French localized links resolve to French entries and preserve guide evidence URLs', () => {
+  const locale = localeData('fr');
+  const routes = new Set(Object.values(locale.content).map(({ route }) => route));
+  for (const source of englishInventory()) {
+    const entry = locale.content[source.contentKey];
+    for (const link of entry.links || []) assert.ok(routes.has(link.route), `${source.contentKey}:${link.route}`);
+    for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
+      for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
+        if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
+        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+      }
+    }
+    if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));
+  }
+});
+
+test('French specification display values translate source cells without changing fact tokens', () => {
+  const values = localeData('fr').ui.specificationValues;
+  assert.ok(values && Object.keys(values).length, 'French specificationValues must cover prose cells');
+  const cells = new Set(englishInventory().filter(({ type }) => type === 'product')
+    .flatMap((source) => extractProductFacts(source).tables.flatMap(({ rows }) => rows.flat())));
+  for (const [source, translated] of Object.entries(values)) {
+    assert.ok(cells.has(source), `Unknown specification cell: ${source}`);
+    assert.ok(typeof translated === 'string' && translated.trim(), source);
+    assert.deepEqual(factTokens(translated), factTokens(source), source);
+  }
+  for (const source of [
+    'Material', 'Standard Lead Time', 'Available on request; applicability must be confirmed for the order',
+    'Brown / White, for 8oz cups', '50pcs × 20 shrink packs', 'Pointed tip',
+    '30,000 units standard; 50,000 units for custom printing',
+  ]) assert.ok(values[source]?.trim(), source);
 });
