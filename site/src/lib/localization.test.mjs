@@ -577,3 +577,21 @@ test('Arabic locale outputs use the existing RTL direction contract', () => {
   assert.equal(localeData('ar')._meta.language, 'ar');
   assert.equal(documentDirection(localeData('ar')._meta.language), 'rtl');
 });
+
+test('final synchronized locales have current English hashes and dated editorial entries', () => {
+  const sources = englishInventory();
+
+  for (const language of ['fr', 'es', 'ar']) {
+    const locale = localeData(language);
+    assert.equal(Object.keys(locale.content).length, 85, `${language}:entry count`);
+
+    for (const source of sources) {
+      const entry = locale.content[source.contentKey];
+      assert.ok(entry, `${language}:${source.contentKey}:entry`);
+      assert.equal(entry.sourceHash, sourceHash(source), `${language}:${source.contentKey}:sourceHash`);
+      if (source.type === 'post' || source.kind === 'guide') {
+        assert.match(entry.dateModified || '', /^\d{4}-\d{2}-\d{2}$/, `${language}:${source.contentKey}:dateModified`);
+      }
+    }
+  }
+});

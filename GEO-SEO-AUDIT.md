@@ -142,3 +142,78 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 - User-agent simulation proves the observed HTTP response, not that every named crawler used the same IP verification path.
 - Google Rich Results Test was not run in its interactive UI; this audit parsed JSON-LD and compared representative values with visible content.
 - `llms.txt` is an optional ecosystem convention, not a proven ranking or citation control.
+
+---
+
+# Multilingual preview verification checkpoint — 2026-09-25
+
+## 1. Decision summary
+
+- **Scope:** the synchronized English, French, Spanish and Arabic static output for `corn-comp.com`; 85 stable content identities per language; local build and deployment-safety checks performed on 2026-09-25.
+- **Verdict:** Local drift, output and Worker gates passed. The dedicated preview was not deployed because the third and final safe Wrangler attempt reached Cloudflare authentication and stopped before upload: the non-interactive process had no `CLOUDFLARE_API_TOKEN`. Preview HTTP, SEO and browser/visual acceptance are therefore **not observed**, and this checkpoint is not approval for production.
+- **Next actions:**
+  1. Provide Wrangler a secure, turn-scoped Cloudflare API token authorized only for the dedicated preview Worker.
+  2. Deploy with `wrangler.preview.jsonc` only and record the returned preview URL and version.
+  3. Run the 28-route HTTP/SEO matrix (four languages × seven page types) plus reviewed alias redirects.
+  4. Run executable desktop/mobile visual and interaction acceptance, including Arabic RTL.
+  5. Request explicit approval before any production action.
+
+## 2. Evidence ledger
+
+| ID | Class | Source | Scope/date | Observation |
+|---|---|---|---|---|
+| MV1 | Observed | `npm run build` | Local worktree, 2026-09-25 | Astro generated 348 pages from fresh source output. |
+| MV2 | Observed | `npm test` | `site`, after the fresh build, 2026-09-25 | 102 tests passed, 0 failed. |
+| MV3 | Observed | Node test runner | Four scripts plus inquiry Worker, 2026-09-25 | 30 tests passed, 0 failed; all five named test files existed. |
+| MV4 | Observed | Final localization drift gate | 3 translated locales × 85 keys, 2026-09-25 | Every translated entry matched the current English `sourceHash`; every translated post and buyer guide exposed a `YYYY-MM-DD` `dateModified`. |
+| MV5 | Observed | Final built-output gate | 340 synchronized pages, 2026-09-25 | Every synchronized built page had the exact production self-canonical, reciprocal `en`, `fr`, `es`, `ar` alternates, English `x-default`, correct `lang`, and Arabic-only `dir="rtl"`. |
+| MV6 | Derived | MV4-MV5 | Synchronized local output, 2026-09-25 | Local synchronized-entry coverage was 340/340 (100%); translated hash coverage was 255/255 (100%). |
+| MV7 | Observed | `wrangler.preview.jsonc` | Deployment preflight, 2026-09-25 | Target name was `corncomp-edge-site-v2-preview`, `workers_dev` was `true`, no routes or custom domain were configured, and assets pointed to fresh `./site/dist`. |
+| MV8 | Observed | Wrangler 4.135.0 output | Three safe preview attempts, 2026-09-25 | Attempts one and two stopped during local path resolution. A same-process short-drive mapping cleared that local blocker; attempt three then stopped before upload because `CLOUDFLARE_API_TOKEN` was unavailable. |
+| MV9 | Observed | Git checks | Local worktree, 2026-09-25 | `git diff --check` passed. |
+| MV10 | Heuristic | Editorial review boundary | Four-language content, 2026-09-25 | Native-speaker review remains advisable for commercial tone and idiom; automated structural parity does not establish translation naturalness. |
+
+## 3. Findings
+
+### Technical/crawl
+
+**Local reciprocal canonical architecture passed; preview delivery is unverified (MV1, MV4-MV6, MV8).** Why it matters: static output correctness does not prove the deployed Worker serves the same bytes or redirects. Recommended change: authenticate only the dedicated preview Worker and execute the planned HTTP matrix. Priority: P0 blocker. Effort: S. Confidence: high. Verification: returned preview deployment/version plus 28 direct route checks and representative one-hop alias checks.
+
+**Preview configuration is isolated from production (MV7).** Why it matters: the next deployment can be tested without changing `corn-comp.com` routes. Recommended change: keep `wrangler.preview.jsonc` unchanged and never substitute `wrangler.jsonc`. Priority: maintain. Effort: S. Confidence: high. Verification: Wrangler deployment output names `corncomp-edge-site-v2-preview` and returns only a `workers.dev` URL.
+
+### On-page
+
+**Built self-canonicals, alternates, language and direction passed locally on 340/340 synchronized pages (MV5-MV6).** Why it matters: complete reciprocal groups reduce ambiguity between reviewed language equivalents. Recommended change: no local markup change; verify the same fields over preview HTTP. Priority: P1 verification. Effort: S. Confidence: high. Verification: parse the deployed HTML for all 28 matrix routes and representative aliases.
+
+### Content/citability
+
+**Translated sources are current against all 85 English identities per locale (MV4, MV6).** Why it matters: stale source hashes would indicate untranslated English edits. Recommended change: retain the drift gate and obtain native-language editorial review for naturalness rather than treating structural parity as linguistic proof. Priority: P2. Effort: M. Confidence: high for parity, low for naturalness. Verification: future English copy changes fail the hash gate until reviewed locale updates are supplied; native-speaker review is recorded separately.
+
+### Structured data
+
+**Schema presence/name alignment is covered by the passing local output suite, but deployed schema is not observed (MV2, MV8).** Why it matters: deployment or Worker behavior can still change delivered HTML. Recommended change: record the primary schema type/name for every preview matrix page and compare it with the visible H1. Priority: P1 verification. Effort: S. Confidence: high. Verification: machine-readable preview matrix contains a passing schema type/name field for 28/28 routes.
+
+### Search/competitors
+
+**Rankings, indexing, traffic, backlinks, keyword metrics, competitors and AI citations were not observed.** Why it matters: local output and crawlability cannot establish search performance. Recommended change: use GSC and a dated market/device-specific third-party export after deployment; do not infer results from markup coverage. Priority: P2. Effort: M. Confidence: high. Verification: evidence cites the exact GSC or third-party report, date, country/database and device.
+
+## 4. Semrush evidence
+
+Semrush or compatible mirror evidence was **not observed** in this verification run. Database/country, device, date range, keyword volume, difficulty, rankings, traffic, backlinks and competitor metrics remain `not observed`.
+
+## 5. Action plan
+
+1. Supply a secure, least-privilege `CLOUDFLARE_API_TOKEN` to the non-interactive Wrangler process without committing or printing it.
+2. Deploy only `wrangler.preview.jsonc`; record preview URL and version.
+3. Complete the 28-route HTTP/SEO matrix and alias-query preservation checks.
+4. Complete desktop `1440 × 900` and mobile `390 × 844` executable browser acceptance, including menu, consent, focus, tables, assets and Arabic RTL.
+5. Repair only concrete preview failures with regression coverage, then repeat the failed state and a nearby smoke route.
+
+## 6. Limitations
+
+- No preview upload occurred, so there is no new preview URL or deployment/version evidence.
+- Preview HTTP, redirect, asset, schema and internal-link behavior was not exercised.
+- Executable browser acceptance and screenshots were not performed because there was no returned preview deployment to test; no visual acceptance is claimed.
+- Inquiry submission and email delivery were intentionally not exercised.
+- Production, DNS, cache and sitemap submission were not changed.
+- GSC, Semrush/DataForSEO, ranking, traffic, backlink, competitor and AI-citation evidence was not observed.

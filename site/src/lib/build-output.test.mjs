@@ -259,6 +259,7 @@ test('localized shared UI renders the reviewed locale labels', async () => {
 });
 
 test('every synchronized canonical route has a built page', async () => {
+  assert.equal(allLocalizedEntries().length, 340, 'synchronized route count');
   const sources = new Map(englishInventory().map((source) => [source.contentKey, source]));
   for (const { language, contentKey, route } of allLocalizedEntries()) {
     const html = await readBuiltRoute(route);
