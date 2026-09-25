@@ -50,6 +50,14 @@ test('resolves English page and product aliases before stable-key localization',
   ].join(''));
 });
 
+test('routes localized blog archive aliases to the explicitly selected language', () => {
+  const html = '<a href="/category/company-industry-fr/?p=1#x">Archive</a>';
+  for (const [language, route] of [['en', '/blog/'], ['fr', '/fr/blog/'], ['es', '/es/blog/'], ['ar', '/ar/blog/']]) {
+    assert.equal(localizeInternalLinks(html, language), `<a href="${route}?p=1#x">Archive</a>`);
+  }
+  assert.equal(localizeInternalLinks(html), '<a href="/fr/blog/?p=1#x">Archive</a>');
+});
+
 test('rewrites translated English-slug aliases to their actual localized routes', () => {
   const html = '<a href="https://corn-comp.com/es/certifications/">Certificaciones</a><a href="/fr/bpi-vs-fsc-certification/">BPI</a>';
   assert.equal(

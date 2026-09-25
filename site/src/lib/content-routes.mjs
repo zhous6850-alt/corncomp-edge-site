@@ -64,10 +64,13 @@ export function localizeInternalLinks(html = '', language = null, sourceRoute = 
     const normalized = normalizeLocalizedRoute(url.pathname);
     const canonical = aliases.get(normalized) || normalized;
     const contentKey = contentKeyFromRoute(canonical);
-    const inferredLanguage = language || canonical.match(/^\/(fr|es|ar)\//)?.[1] || 'en';
+    const selectedLanguage = ['en', 'fr', 'es', 'ar'].includes(language) ? language : null;
+    const inferredLanguage = selectedLanguage || canonical.match(/^\/(fr|es|ar)\//)?.[1] || 'en';
+    const blogRoute = selectedLanguage && ['/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/'].includes(canonical)
+      ? selectedLanguage === 'en' ? '/blog/' : `/${selectedLanguage}/blog/`
+      : null;
     const target = contentKey ? routeFor(inferredLanguage, contentKey)
-      : canonical === '/blog/' && inferredLanguage !== 'en' ? `/${inferredLanguage}/blog/`
-        : canonical;
+      : blogRoute || canonical;
     return `href=${quote}${target}${url.search}${url.hash}${quote}`;
   });
 }
