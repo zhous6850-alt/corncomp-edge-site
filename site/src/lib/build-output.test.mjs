@@ -108,6 +108,26 @@ test('new product pages group the title, image, breadcrumb and contextual quote 
   assert.match(html, /"@type":"Product"/);
 });
 
+test('mobile product specifications scroll inside a shrinkable content column', async () => {
+  const html = await readBuiltRoute('/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/');
+
+  assert.match(html, /\.product-detail-layout\s*>\s*\.wordpress-content\s*\{\s*min-width:\s*0;/);
+  assert.match(html, /\.wordpress-content table\s*\{[^}]*max-width:\s*100%;[^}]*overflow-x:\s*auto;/);
+});
+
+test('hidden inquiry honeypots cannot expand RTL page width', async () => {
+  const html = await readBuiltRoute('/ar/%D8%A7%D8%AA%D8%B5%D9%84-%D8%A8%D9%86%D8%A7/');
+
+  assert.match(html, /\.honeypot\s*\{[^}]*width:\s*1px;[^}]*height:\s*1px;[^}]*overflow:\s*hidden;[^}]*clip-path:\s*inset\(50%\);/);
+  assert.doesNotMatch(html, /\.honeypot\s*\{[^}]*left:\s*-10000px/);
+});
+
+test('direct editorial images stay inside the localized content column', async () => {
+  const html = await readBuiltRoute('/ar/%D8%AA%D9%88%D8%AC%D9%8A%D9%87-%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A/');
+
+  assert.match(html, /\.wordpress-content\s*>\s*img\s*\{[^}]*max-width:\s*100%;/);
+});
+
 test('product schema publishes readable names and only truthful item identifiers', async () => {
   const singleItemHtml = await readFile(
     new URL('../../dist/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/index.html', import.meta.url),

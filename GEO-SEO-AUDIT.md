@@ -150,7 +150,7 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 ## 1. Decision summary
 
 - **Scope:** the synchronized English, French, Spanish and Arabic static output for `corn-comp.com`; 85 stable content identities per language; local build and deployment-safety checks performed on 2026-09-25.
-- **Verdict:** Local drift, output and Worker gates passed. The controller deployed the dedicated preview Worker from `wrangler.preview.jsonc` as version `d048d843-8695-4c92-bea4-3a9bb3293f7a`. The 28-route preview HTTP/SEO matrix and three representative Arabic alias variants passed; executable browser/visual acceptance remains **not observed** because no usable browser channel was available. This checkpoint is not approval for production.
+- **Verdict:** Local drift, output and Worker gates passed. The controller deployed the dedicated preview Worker from `wrangler.preview.jsonc` as version `d048d843-8695-4c92-bea4-3a9bb3293f7a`. The 28-route preview HTTP/SEO matrix and three representative Arabic alias variants passed. Executable browser checks then found six mobile overflow failures; their three CSS root causes are repaired and regression-tested locally, but the repairs are not deployed. This checkpoint is not approval for production.
 - **Next actions:**
   1. Run executable desktop/mobile visual and interaction acceptance, including Arabic RTL.
   2. Inspect first-party asset requests, console errors, menu/focus, consent and mobile specification-table behavior in that browser pass.
@@ -163,7 +163,7 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 | ID | Class | Source | Scope/date | Observation |
 |---|---|---|---|---|
 | MV1 | Observed | `npm run build` | Local worktree, 2026-09-25 | Astro generated 348 pages from fresh source output. |
-| MV2 | Observed | `npm test` | `site`, after the fresh build, 2026-09-25 | 102 tests passed, 0 failed. |
+| MV2 | Observed | `npm test` | `site`, after the fresh build, 2026-09-25 | 105 tests passed, 0 failed. |
 | MV3 | Observed | Node test runner | Four scripts plus inquiry Worker, 2026-09-25 | 30 tests passed, 0 failed; all five named test files existed. |
 | MV4 | Observed | Final localization drift gate | 3 translated locales × 85 keys, 2026-09-25 | Every translated entry matched the current English `sourceHash`; every translated post and buyer guide exposed a `YYYY-MM-DD` `dateModified`. |
 | MV5 | Observed | Final built-output gate | 340 synchronized pages, 2026-09-25 | Every synchronized built page had the exact production self-canonical, reciprocal `en`, `fr`, `es`, `ar` alternates, English `x-default`, correct `lang`, and Arabic-only `dir="rtl"`. |
@@ -175,6 +175,9 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 | MV11 | Observed | Acceptance tool probes | Subtask environment, 2026-09-25 | Direct Node fetch was denied with `EACCES`; the web reader reported the preview host inaccessible; Chrome headless was rejected before launch by sandbox policy; the available Node REPL failed to initialize its kernel assets. No preview response or screenshot was obtained. |
 | MV12 | Observed | `qa/http-acceptance.json` | Preview version `d048d843-8695-4c92-bea4-3a9bb3293f7a`, 2026-09-25 | 28/28 selected routes returned direct 200 and passed visible-language, direction, production canonical, four reciprocal alternates plus `x-default`, primary schema and internal-link-language checks. Three Arabic alias forms (canonical-percent, lowercase-percent and decoded) each returned one 301 preserving the query, followed by direct 200. |
 | MV13 | Derived | MV12 | Four languages × seven page types, 2026-09-25 | Preview HTTP/SEO matrix coverage was 28/28 (100%); representative alias coverage was 3/3 (100%). |
+| MV14 | Observed | Controller CDP browser checks and screenshots | Preview version `d048d843-8695-4c92-bea4-3a9bb3293f7a`, 2026-09-25 | 34/40 selected viewport checks had no document-level horizontal overflow. Six `390 × 844` checks overflowed: English multi-row and decimal products, Spanish multi-row product, Arabic decimal product, Arabic editorial and Arabic contact. No inquiry was submitted. |
+| MV15 | Observed | Serial local Astro/CDP reproduction | Fresh repaired build, 2026-09-25 | Product grid minimum-content sizing, RTL off-canvas honeypots and an over-specific 850 px direct-image rule reproduced the failures. After the minimal CSS repairs, English/Spanish multi-row products, Arabic contact and Arabic editorial each reported `clientWidth=390`, `scrollWidth=390`; wide table rows remained inside the table scroller. |
+| MV16 | Observed | RED/GREEN built-output tests | Fresh repaired build, 2026-09-25 | Three new regression tests failed against the pre-fix build and passed after the CSS changes: shrinkable product table content, direction-safe hidden honeypots and responsive direct editorial images. |
 
 ## 3. Findings
 
@@ -187,6 +190,8 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 ### On-page
 
 **Built self-canonicals, alternates, language and direction passed locally on 340/340 synchronized pages and on the 28-route preview sample (MV5-MV6, MV12-MV13).** Why it matters: complete reciprocal groups reduce ambiguity between reviewed language equivalents. Recommended change: no markup change; retain local exhaustive gates plus the cross-page-type preview sample. Priority: maintain. Effort: S. Confidence: high. Verification: local 340-page gate and deployed 28-route matrix remain green.
+
+**The first executable mobile pass exposed evidence-backed responsive failures (MV14-MV16).** Product tables expanded their grid column, an off-canvas honeypot enlarged RTL contact pages, and direct editorial images inherited an 850 px maximum with higher specificity than the global image rule. The minimal CSS repairs preserve local table scrolling and hidden-field behavior while containing the document at 390 px. Priority: P1 before production. Effort: S. Confidence: high locally. Verification: deploy only to the isolated preview, rerun the six failed mobile routes serially, then repeat the selected visual matrix.
 
 ### Content/citability
 
@@ -206,9 +211,9 @@ Semrush or compatible mirror evidence was **not observed** in this verification 
 
 ## 5. Action plan
 
-1. Complete desktop `1440 × 900` and mobile `390 × 844` executable browser acceptance, including menu, consent, focus, tables, assets and Arabic RTL.
-2. Repair only concrete visual/browser failures with regression coverage, then repeat the failed state and a nearby smoke route.
-3. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the acceptance target; redeploy only if a reviewed repair changes source output.
+1. Review the three scoped CSS repairs and deploy the new commit with `wrangler.preview.jsonc` only.
+2. Rerun the six previously failed `390 × 844` routes serially, then repeat the complete selected desktop/mobile visual matrix, including menu, consent, focus, tables, assets and Arabic RTL.
+3. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the pre-fix evidence target; record the new preview version separately.
 4. Record native-language editorial review separately from automated structural parity.
 5. Request explicit user approval before any production action.
 
@@ -216,7 +221,8 @@ Semrush or compatible mirror evidence was **not observed** in this verification 
 
 - The controller supplied preview deployment/version evidence and executed the machine-readable HTTP/SEO matrix; this subtask validated the resulting JSON evidence file.
 - The HTTP matrix covered four languages and seven representative page types, not every deployed URL. Static tests provide the exhaustive 340-page metadata gate.
-- Executable browser acceptance and screenshots were not performed because the available browser/network channels were blocked by the execution environment; no visual acceptance is claimed.
+- Executable browser checks and screenshots were performed on the pre-fix preview. The post-fix browser checks used a local Astro server because this task was explicitly told not to deploy; production and the existing preview were not changed.
+- One initial parallel CDP batch showed port/profile cross-talk. Root-cause and post-fix checks cited above were rerun serially; the final preview rerun must also be serial.
 - Inquiry submission and email delivery were intentionally not exercised.
 - Production, DNS, cache and sitemap submission were not changed.
 - GSC, Semrush/DataForSEO, ranking, traffic, backlink, competitor and AI-citation evidence was not observed.
