@@ -150,13 +150,11 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 ## 1. Decision summary
 
 - **Scope:** the synchronized English, French, Spanish and Arabic static output for `corn-comp.com`; 85 stable content identities per language; local build and deployment-safety checks performed on 2026-09-25.
-- **Verdict:** Local drift, output and Worker gates passed. The controller deployed the dedicated preview Worker from `wrangler.preview.jsonc` as version `d048d843-8695-4c92-bea4-3a9bb3293f7a`. The 28-route preview HTTP/SEO matrix and three representative Arabic alias variants passed. Executable browser checks then found six mobile overflow failures; their three CSS root causes are repaired and regression-tested locally, but the repairs are not deployed. This checkpoint is not approval for production.
+- **Verdict:** Local drift, output and Worker gates passed. The controller deployed the repaired dedicated preview Worker from `wrangler.preview.jsonc` as version `254a0a55-08e7-4096-a68f-9de6f63176f0`. The final 28-route HTTP/SEO matrix and three representative Arabic alias variants passed. Forty final screenshots cover the selected desktop/mobile matrix; 37 runs returned valid numeric dimensions with no document overflow, while three visually valid screenshots were inspected manually because their metric JSON was blank. Four critical post-fix mobile routes also passed serial local numeric checks. This checkpoint is not approval for production.
 - **Next actions:**
-  1. Run executable desktop/mobile visual and interaction acceptance, including Arabic RTL.
-  2. Inspect first-party asset requests, console errors, menu/focus, consent and mobile specification-table behavior in that browser pass.
-  3. Repair only evidence-backed preview defects and repeat the affected checks.
-  4. Obtain native-language editorial review where commercial naturalness matters.
-  5. Request explicit approval before any production action.
+  1. Preserve the final preview screenshots and HTTP evidence with version `254a0a55-08e7-4096-a68f-9de6f63176f0`.
+  2. Obtain native-language editorial review where commercial naturalness matters.
+  3. Request explicit approval before any production action.
 
 ## 2. Evidence ledger
 
@@ -172,18 +170,21 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 | MV8 | Observed | Controller deployment result | Dedicated preview, 2026-09-25 | `wrangler.preview.jsonc` deployed `https://corncomp-edge-site-v2-preview.corncomp-edge.workers.dev` as version `d048d843-8695-4c92-bea4-3a9bb3293f7a`; the controller reported no production route, DNS, sitemap or inquiry change. |
 | MV9 | Observed | Git checks | Local worktree, 2026-09-25 | `git diff --check` passed. |
 | MV10 | Heuristic | Editorial review boundary | Four-language content, 2026-09-25 | Native-speaker review remains advisable for commercial tone and idiom; automated structural parity does not establish translation naturalness. |
-| MV11 | Observed | Acceptance tool probes | Subtask environment, 2026-09-25 | Direct Node fetch was denied with `EACCES`; the web reader reported the preview host inaccessible; Chrome headless was rejected before launch by sandbox policy; the available Node REPL failed to initialize its kernel assets. No preview response or screenshot was obtained. |
+| MV11 | Observed | Early acceptance tool probes | Subtask environment before controller fallback, 2026-09-25 | Direct Node fetch was denied with `EACCES`; the web reader reported the preview host inaccessible; Chrome headless was initially rejected before launch by sandbox policy; the available Node REPL failed to initialize its kernel assets. Later controller evidence superseded this early tooling gap for the bounded matrix described in MV12-MV19. |
 | MV12 | Observed | `qa/http-acceptance.json` | Preview version `d048d843-8695-4c92-bea4-3a9bb3293f7a`, 2026-09-25 | 28/28 selected routes returned direct 200 and passed visible-language, direction, production canonical, four reciprocal alternates plus `x-default`, primary schema and internal-link-language checks. Three Arabic alias forms (canonical-percent, lowercase-percent and decoded) each returned one 301 preserving the query, followed by direct 200. |
 | MV13 | Derived | MV12 | Four languages × seven page types, 2026-09-25 | Preview HTTP/SEO matrix coverage was 28/28 (100%); representative alias coverage was 3/3 (100%). |
 | MV14 | Observed | Controller CDP browser checks and screenshots | Preview version `d048d843-8695-4c92-bea4-3a9bb3293f7a`, 2026-09-25 | 34/40 selected viewport checks had no document-level horizontal overflow. Six `390 × 844` checks overflowed: English multi-row and decimal products, Spanish multi-row product, Arabic decimal product, Arabic editorial and Arabic contact. No inquiry was submitted. |
 | MV15 | Observed | Serial local Astro/CDP reproduction | Fresh repaired build, 2026-09-25 | Product grid minimum-content sizing, RTL off-canvas honeypots and an over-specific 850 px direct-image rule reproduced the failures. After the minimal CSS repairs, English/Spanish multi-row products, Arabic contact and Arabic editorial each reported `clientWidth=390`, `scrollWidth=390`; wide table rows remained inside the table scroller. |
 | MV16 | Observed | RED/GREEN built-output tests | Fresh repaired build, 2026-09-25 | Three new regression tests failed against the pre-fix build and passed after the CSS changes: shrinkable product table content, direction-safe hidden honeypots and responsive direct editorial images. |
+| MV17 | Observed | Controller final preview deployment and HTTP runner | Preview version `254a0a55-08e7-4096-a68f-9de6f63176f0`, 2026-09-25 | The repaired build was deployed with `wrangler.preview.jsonc` only. Final HTTP/SEO checks passed 28/28 routes and 3/3 Arabic alias variants; production remained untouched. |
+| MV18 | Observed | Serial CDP screenshots and dimensions | Final repaired preview, 2026-09-25 | Forty final screenshots were generated under ignored `qa/screenshots-final/`. Thirty-seven runs returned valid numeric viewport/document dimensions and all had document width less than or equal to viewport width. Three runs returned blank metric JSON because of intermittent Windows process-start instability: English multi-row product mobile, Arabic category desktop and Arabic buyer guide mobile. Their screenshots rendered and were manually inspected without visible clipping or misalignment. |
+| MV19 | Observed | Serial local Astro/CDP post-fix checks | Fresh repaired build, 2026-09-25 | Four critical former failure paths returned numeric `clientWidth=390`, `scrollWidth=390`: English and Spanish products, Arabic contact and Arabic editorial. This supports the repaired failure paths but does not convert the three MV18 manual-only preview checks into automated dimension checks. |
 
 ## 3. Findings
 
 ### Technical/crawl
 
-**Preview crawl and redirect delivery passed the agreed representative matrix (MV8, MV12-MV13).** Why it matters: this verifies the dedicated Worker serves localized canonical HTML and one-hop reviewed Arabic redirects rather than only proving static build output. Recommended change: retain the generated matrix evidence and rerun it after any source or Worker change. Priority: maintain. Effort: S. Confidence: high. Verification: the same runner returns 28/28 route passes and 3/3 alias passes for the deployed version.
+**Final repaired-preview crawl and redirect delivery passed the agreed representative matrix (MV17).** Why it matters: this verifies the repaired dedicated Worker serves localized canonical HTML and one-hop reviewed Arabic redirects rather than only proving static build output. Recommended change: retain the generated matrix evidence and rerun it after any source or Worker change. Priority: maintain. Effort: S. Confidence: high. Verification: the same runner returns 28/28 route passes and 3/3 alias passes for version `254a0a55-08e7-4096-a68f-9de6f63176f0`.
 
 **Preview configuration is isolated from production (MV7).** Why it matters: the next deployment can be tested without changing `corn-comp.com` routes. Recommended change: keep `wrangler.preview.jsonc` unchanged and never substitute `wrangler.jsonc`. Priority: maintain. Effort: S. Confidence: high. Verification: Wrangler deployment output names `corncomp-edge-site-v2-preview` and returns only a `workers.dev` URL.
 
@@ -191,7 +192,7 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 
 **Built self-canonicals, alternates, language and direction passed locally on 340/340 synchronized pages and on the 28-route preview sample (MV5-MV6, MV12-MV13).** Why it matters: complete reciprocal groups reduce ambiguity between reviewed language equivalents. Recommended change: no markup change; retain local exhaustive gates plus the cross-page-type preview sample. Priority: maintain. Effort: S. Confidence: high. Verification: local 340-page gate and deployed 28-route matrix remain green.
 
-**The first executable mobile pass exposed evidence-backed responsive failures (MV14-MV16).** Product tables expanded their grid column, an off-canvas honeypot enlarged RTL contact pages, and direct editorial images inherited an 850 px maximum with higher specificity than the global image rule. The minimal CSS repairs preserve local table scrolling and hidden-field behavior while containing the document at 390 px. Priority: P1 before production. Effort: S. Confidence: high locally. Verification: deploy only to the isolated preview, rerun the six failed mobile routes serially, then repeat the selected visual matrix.
+**The first executable mobile pass exposed evidence-backed responsive failures, and the repaired preview passed the bounded rerun (MV14-MV19).** Product tables expanded their grid column, an off-canvas honeypot enlarged RTL contact pages, and direct editorial images inherited an 850 px maximum with higher specificity than the global image rule. The minimal CSS repairs preserve local table scrolling and hidden-field behavior. The final preview produced 40 screenshots; 37 have passing numeric width evidence and three have manual visual-only evidence. Priority: maintain. Effort: S. Confidence: high for the 37 numeric preview checks and four local critical checks; medium for the three manual-only screenshots. Verification: retain serial probes and rerun any blank-metric rows when Windows process launch is stable.
 
 ### Content/citability
 
@@ -211,18 +212,18 @@ Semrush or compatible mirror evidence was **not observed** in this verification 
 
 ## 5. Action plan
 
-1. Review the three scoped CSS repairs and deploy the new commit with `wrangler.preview.jsonc` only.
-2. Rerun the six previously failed `390 × 844` routes serially, then repeat the complete selected desktop/mobile visual matrix, including menu, consent, focus, tables, assets and Arabic RTL.
-3. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the pre-fix evidence target; record the new preview version separately.
-4. Record native-language editorial review separately from automated structural parity.
-5. Request explicit user approval before any production action.
+1. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the pre-fix target and `254a0a55-08e7-4096-a68f-9de6f63176f0` as the repaired final-preview target.
+2. Rerun the three manual-only screenshot rows for numeric dimensions when Windows process launch is stable; do not treat this as a production blocker unless the screenshots or later metrics show a defect.
+3. Record native-language editorial review separately from automated structural parity.
+4. Request explicit user approval before any production action.
 
 ## 6. Limitations
 
 - The controller supplied preview deployment/version evidence and executed the machine-readable HTTP/SEO matrix; this subtask validated the resulting JSON evidence file.
 - The HTTP matrix covered four languages and seven representative page types, not every deployed URL. Static tests provide the exhaustive 340-page metadata gate.
-- Executable browser checks and screenshots were performed on the pre-fix preview. The post-fix browser checks used a local Astro server because this task was explicitly told not to deploy; production and the existing preview were not changed.
-- One initial parallel CDP batch showed port/profile cross-talk. Root-cause and post-fix checks cited above were rerun serially; the final preview rerun must also be serial.
+- Final executable browser screenshots were performed on the repaired preview. Thirty-seven of 40 rows have valid automated dimension metrics; three are manual visual-only because their metric JSON was blank. This is not claimed as 40/40 automated dimension coverage.
+- One initial parallel CDP batch showed port/profile cross-talk. Root-cause, local post-fix and final-preview checks cited above used serial runs.
+- New process launches later failed with Windows `CreateProcessWithLogonW` error 1909, preventing another preview probe. The three screenshot-only rows remain explicitly bounded rather than inferred from other routes.
 - Inquiry submission and email delivery were intentionally not exercised.
 - Production, DNS, cache and sitemap submission were not changed.
 - GSC, Semrush/DataForSEO, ranking, traffic, backlink, competitor and AI-citation evidence was not observed.
