@@ -152,3 +152,15 @@ test('redirects every reviewed localized alias directly to its canonical target 
     assert.equal(response.headers.get('location'), `https://corn-comp.com${target}?source=alias`, source);
   }
 });
+
+test('redirects localized shop archives to localized product hubs in one hop', async () => {
+  for (const [source, target] of [
+    ['/fr/shop/', '/fr/produits/'],
+    ['/es/shop/', '/es/productos/'],
+    ['/ar/shop/', '/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D9%84%D9%84%D8%AC%D9%85%D9%84%D8%A9-%D9%88%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%B7%D9%84%D8%A8/'],
+  ]) {
+    const response = await worker.fetch(new Request(`https://corn-comp.com${source}?source=archive`), { ASSETS: { fetch: () => new Response('asset') } });
+    assert.equal(response.status, 301, source);
+    assert.equal(response.headers.get('location'), `https://corn-comp.com${target}?source=archive`, source);
+  }
+});

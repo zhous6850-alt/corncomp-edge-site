@@ -9,6 +9,14 @@
     "allProducts": "Tous les produits",
     "requestQuote": "Demander un devis",
     "contactUs": "Nous contacter",
+    "brandHomeLabel": "Accueil Corncomp",
+    "primaryNavigationLabel": "Navigation principale",
+    "socialMediaLabel": "Réseaux sociaux de Corncomp",
+    "addressHeading": "Notre adresse",
+    "footerNavigationLabel": "Navigation du pied de page",
+    "copyrightLabel": "Copyright © 2026 Ningbo Corncomp Tech Co., Ltd. Tous droits réservés.",
+    "analyticsConsentHeading": "Analyse facultative",
+    "analyticsConsentBody": "Nous utilisons Google Analytics pour comprendre les visites et les demandes envoyées. L’analyse reste désactivée jusqu’à votre autorisation.",
     "analyticsSettings": "Paramètres d’analyse",
     "allowAnalytics": "Autoriser les données d’analyse",
     "declineAnalytics": "Refuser",
@@ -1327,7 +1335,7 @@
           "text": "Apprenez à lire le périmètre et les preuves relatives aux produits."
         },
         {
-          "title": "Demander un devis",
+          "title": "Demander les documents",
           "route": "/fr/contactez-nous/",
           "text": "Précisez la référence et le marché visé."
         }

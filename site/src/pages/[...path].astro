@@ -7,12 +7,12 @@ import { extractProductFacts, localizedProductBody } from '../lib/product-facts.
 import { PRODUCT_CATEGORIES, PRODUCT_GROUPS, categoryForProduct } from '../lib/site-architecture.mjs';
 
 export function getStaticPaths() {
-  const archiveRoutes = [['en', 'blog', '/blog/'], ['fr', 'shop', '/fr/shop/'], ['fr', 'blog', '/fr/blog/'], ['es', 'shop', '/es/shop/'], ['es', 'blog', '/es/blog/'], ['ar', 'shop', '/ar/shop/'], ['ar', 'blog', '/ar/blog/']];
+  const archiveRoutes = [['en', 'blog', '/blog/'], ['fr', 'blog', '/fr/blog/'], ['es', 'blog', '/es/blog/'], ['ar', 'blog', '/ar/blog/']];
   const pages = allLocalizedEntries().filter(({ language, contentKey }) => language !== 'en' || contentKey !== 'home').map(({ language, contentKey, route }) => ({ params: { path: contentPath(route) }, props: { language, contentKey } }));
   return [...pages, ...archiveRoutes.map(([language, archive, route]) => ({ params: { path: contentPath(route) }, props: { language, archive } }))];
 }
 
-const archiveRoutes = [['en', 'blog', '/blog/'], ['fr', 'shop', '/fr/shop/'], ['fr', 'blog', '/fr/blog/'], ['es', 'shop', '/es/shop/'], ['es', 'blog', '/es/blog/'], ['ar', 'shop', '/ar/shop/'], ['ar', 'blog', '/ar/blog/']];
+const archiveRoutes = [['en', 'blog', '/blog/'], ['fr', 'blog', '/fr/blog/'], ['es', 'blog', '/es/blog/'], ['ar', 'blog', '/ar/blog/']];
 
 const { language = 'en', contentKey, archive } = Astro.props;
 const inventory = englishInventory();

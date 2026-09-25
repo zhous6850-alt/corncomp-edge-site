@@ -4,7 +4,7 @@ import {
   PRODUCT_CATEGORY_BY_SLUG,
   canonicalProductRoute,
 } from '../site/src/lib/site-architecture.mjs';
-import { localizedRedirects, normalizeLocalizedRoute } from '../site/src/lib/localization.mjs';
+import { localizedRedirects, localizedShopRedirects, normalizeLocalizedRoute } from '../site/src/lib/localization.mjs';
 
 const RECIPIENT = 'zhous6850@gmail.com';
 const SENDER = 'Corncomp <inquiry@corn-comp.com>';
@@ -12,6 +12,7 @@ export const REDIRECTS = new Map([
   ['/cart/', '/products/'],
   ['/checkout/', '/products/'],
   ['/my-account/', '/products/'],
+  ...localizedShopRedirects(),
   ...Object.entries(LEGACY_PAGE_REDIRECTS),
   ...Object.keys(PRODUCT_CATEGORY_BY_SLUG).map((slug) => [`/product/${slug}/`, canonicalProductRoute(slug)]),
   ...Object.entries(DUPLICATE_PRODUCT_ALIASES).map(([source, target]) => [`/product/${source}/`, canonicalProductRoute(target)]),

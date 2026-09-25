@@ -22,7 +22,7 @@ const footerLinks = [
   <div class="container footer-inner">
     <div class="footer-brand">
       <img src="/media/corncomp-logo.png" width="111" height="104" alt="Corncomp">
-      <div class="social-links" aria-label="Corncomp social media">
+      <div class="social-links" aria-label={ui.socialMediaLabel}>
         <a href="https://www.facebook.com/profile.php?id=61592477933421" target="_blank" rel="noopener">Facebook</a>
         <a href="https://www.instagram.com/zxh_0927" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.linkedin.com/in/sam-zhou-431ab9424/" target="_blank" rel="noopener">LinkedIn</a>
@@ -30,19 +30,19 @@ const footerLinks = [
       </div>
     </div>
     <div class="footer-address">
-      <strong>Our Address</strong>
+      <strong>{ui.addressHeading}</strong>
       <p>No.2 Building, No.3 Wanquanhe Road, Xiapu Street,<br>Beilun District, Ningbo City, Zhejiang Province, China</p>
       <a href="tel:008657486961222">Tel: 0086-574-86961222</a>
       <a href="https://wa.me/6581603123">WhatsApp: +65 8160 3123</a>
       <a href="https://wa.me/8613806632002">WhatsApp: +86 138 0663 2002</a>
       <a href="mailto:inquiry@corn-comp.com">inquiry@corn-comp.com</a>
     </div>
-    <nav aria-label="Footer navigation">
+    <nav aria-label={ui.footerNavigationLabel}>
       {footerLinks.map(({ label, route }) => <a href={route}>{label}</a>)}
     </nav>
   </div>
   <div class="container footer-bottom">
-    <span>Copyright © 2026 Ningbo Corncomp Tech Co., Ltd. All rights reserved.</span>
+    <span>{ui.copyrightLabel}</span>
     <button type="button" class="analytics-settings" data-analytics-settings>{ui.analyticsSettings}</button>
   </div>
 </footer>

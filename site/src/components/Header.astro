@@ -34,14 +34,14 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
 ---
 <header class="site-header" data-site-header>
   <div class="header-inner">
-    <a class="brand" href={homeRoute} aria-label="Corncomp home">
+    <a class="brand" href={homeRoute} aria-label={ui.brandHomeLabel}>
       <img src="/media/corncomp-logo.png" width="111" height="104" alt="Corncomp">
     </a>
     <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false">
       <span>{ui.menu}</span>
       <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
     </button>
-    <nav id="primary-navigation" aria-label="Primary navigation">
+    <nav id="primary-navigation" aria-label={ui.primaryNavigationLabel}>
       <a href={homeRoute}>{nav.home[0]}</a>
       <details class="product-menu">
         <summary>{nav.product[0]}</summary>

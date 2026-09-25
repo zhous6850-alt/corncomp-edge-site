@@ -1,4 +1,4 @@
-import { contentKeyFromRoute, localizedRedirects, normalizeLocalizedRoute, routeFor } from './localization.mjs';
+import { contentKeyFromRoute, localizedRedirects, localizedShopRedirects, normalizeLocalizedRoute, routeFor } from './localization.mjs';
 import { DUPLICATE_PRODUCT_ALIASES, LEGACY_PAGE_REDIRECTS, PRODUCT_CATEGORY_BY_SLUG, canonicalProductRoute } from './site-architecture.mjs';
 
 export function contentPath(route) {
@@ -50,6 +50,7 @@ export function canonicalAliases() {
     ...Object.keys(PRODUCT_CATEGORY_BY_SLUG).map((slug) => [`/product/${slug}/`, canonicalProductRoute(slug)]),
     ...Object.entries(DUPLICATE_PRODUCT_ALIASES).map(([source, target]) => [`/product/${source}/`, canonicalProductRoute(target)]),
     ...localizedRedirects(),
+    ...localizedShopRedirects(),
     ...additionalAliases,
   ]);
 }

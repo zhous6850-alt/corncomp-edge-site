@@ -220,16 +220,16 @@ test('buyer guides publish reviewed evidence tables and official sources', async
   }
 });
 
-test('localized blog archives have distinct titles and descriptions from shop archives', async () => {
-  for (const language of ['fr', 'es', 'ar']) {
-    const blogHtml = await readFile(new URL(`../../dist/${language}/blog/index.html`, import.meta.url), 'utf8');
-    const shopHtml = await readFile(new URL(`../../dist/${language}/shop/index.html`, import.meta.url), 'utf8');
-    const blogTitle = blogHtml.match(/<title>([^<]*)<\/title>/)?.[1] || '';
-    const shopTitle = shopHtml.match(/<title>([^<]*)<\/title>/)?.[1] || '';
-
-    assert.notEqual(blogTitle, shopTitle);
-    assert.notEqual(metaContent(blogHtml, 'description'), metaContent(shopHtml, 'description'));
+test('blog archives publish reciprocal alternates and localized shop archives are not built', async () => {
+  const routes = { en: '/blog/', fr: '/fr/blog/', es: '/es/blog/', ar: '/ar/blog/' };
+  for (const [language, route] of Object.entries(routes)) {
+    const html = await readBuiltRoute(route);
+    for (const [alternateLanguage, alternateRoute] of Object.entries(routes)) {
+      assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(alternateRoute))}"`), `${language}:${alternateLanguage}`);
+    }
+    assert.match(html, /hreflang="x-default" href="https:\/\/corn-comp\.com\/blog\/"/);
   }
+  for (const language of ['fr', 'es', 'ar']) await assert.rejects(readBuiltRoute(`/${language}/shop/`), { code: 'ENOENT' });
 });
 
 test('blog cards stack their image above the title on phones', async () => {
@@ -283,6 +283,17 @@ test('localized shared UI renders the reviewed locale labels', async () => {
     for (const contentKey of ['architecture:products', 'architecture:custom-packaging', 'architecture:applications', 'architecture:quality', 'architecture:resources', 'architecture:about', 'architecture:contact']) {
       assert.match(footer, new RegExp(`href="${escapeRegExp(routeFor(language, contentKey))}"`), `${language} footer is missing ${contentKey}`);
     }
+  }
+});
+
+test('shared layout labels and Open Graph locales match every language', async () => {
+  const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
+  const fields = ['brandHomeLabel', 'primaryNavigationLabel', 'socialMediaLabel', 'addressHeading', 'footerNavigationLabel', 'copyrightLabel', 'analyticsConsentHeading', 'analyticsConsentBody'];
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+    const ui = uiFor(language);
+    for (const field of fields) assert.match(html, new RegExp(escapeRegExp(ui[field])), `${language}:ui.${field}`);
+    assert.match(html, new RegExp(`<meta property="og:locale" content="${ogLocales[language]}">`), `${language}:og:locale`);
   }
 });
 

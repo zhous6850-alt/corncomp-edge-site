@@ -9,7 +9,7 @@ test('sitemap includes localized archives and excludes retired commerce pages', 
   const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   const expectedRoutes = [
     ...allLocalizedEntries().map(({ route }) => normalizeLocalizedRoute(route)),
-    '/blog/', '/fr/shop/', '/fr/blog/', '/es/shop/', '/es/blog/', '/ar/shop/', '/ar/blog/',
+    '/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/',
   ];
   assert.equal(locations.length, expectedRoutes.length);
   assert.equal(new Set(locations).size, locations.length);
@@ -19,7 +19,7 @@ test('sitemap includes localized archives and excludes retired commerce pages', 
   assert.match(xml, /https:\/\/corn-comp\.com\/products\/cups-bowls\/paper-cups\/single-wall-white-cardboard-paper-cup\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/applications\/fast-food-packaging\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/resources\/guides\/paper-cup-sizes\//);
-  assert.match(xml, /https:\/\/corn-comp\.com\/fr\/shop\//);
+  for (const language of ['fr', 'es', 'ar']) assert.doesNotMatch(xml, new RegExp(`https://corn-comp\\.com/${language}/shop/`));
   assert.match(xml, /https:\/\/corn-comp\.com\/es\/blog\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/ar\/%D[89]/);
   assert.doesNotMatch(xml, /%[0-9a-f]*[a-f][0-9a-f]*/);

@@ -84,6 +84,18 @@ test('completed locales expose routes while missing keys return null', () => {
   assert.throws(() => localizedEntry('de', 'home'), /Unsupported locale/);
 });
 
+test('locale and content lookups reject inherited object properties', () => {
+  for (const key of ['constructor', 'toString']) {
+    assert.throws(() => localeData(key), /Unsupported locale/);
+    assert.equal(localizedEntry('fr', key), null);
+  }
+});
+
+test('French quality document CTA preserves the source intent', () => {
+  const quality = localizedEntry('fr', 'architecture:quality');
+  assert.equal(quality.links.find(({ route }) => route === routeFor('fr', 'architecture:contact')).title, 'Demander les documents');
+});
+
 function assertLocaleContract(locale, sources = englishInventory()) {
   const nonempty = (value, label) => assert.ok(typeof value === 'string' && value.trim(), label);
   const structure = (source, entry, path) => {

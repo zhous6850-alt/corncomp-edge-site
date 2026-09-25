@@ -5,7 +5,7 @@ export const prerender = true;
 
 const routes = [
   ...allLocalizedEntries().map(({ route }) => normalizeLocalizedRoute(route)),
-  '/blog/', '/fr/shop/', '/fr/blog/', '/es/shop/', '/es/blog/', '/ar/shop/', '/ar/blog/',
+  '/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/',
 ];
 const escapeXml = (value) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');
 

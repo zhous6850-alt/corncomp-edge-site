@@ -58,6 +58,13 @@ test('routes localized blog archive aliases to the explicitly selected language'
   assert.equal(localizeInternalLinks(html), '<a href="/fr/blog/?p=1#x">Archive</a>');
 });
 
+test('rewrites localized shop archives to product hubs with query and fragment intact', () => {
+  for (const [language, source] of [['fr', '/fr/shop/'], ['es', '/es/shop/'], ['ar', '/ar/shop/']]) {
+    const html = `<a href="${source}?page=2#catalog">Catalogue</a>`;
+    assert.equal(localizeInternalLinks(html, language), `<a href="${routeFor(language, 'architecture:products')}?page=2#catalog">Catalogue</a>`);
+  }
+});
+
 test('rewrites translated English-slug aliases to their actual localized routes', () => {
   const html = '<a href="https://corn-comp.com/es/certifications/">Certificaciones</a><a href="/fr/bpi-vs-fsc-certification/">BPI</a>';
   assert.equal(

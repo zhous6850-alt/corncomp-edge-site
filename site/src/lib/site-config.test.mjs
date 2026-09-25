@@ -4,7 +4,7 @@ import { navigationFor, pageAlternates } from './site-config.mjs';
 import { SUPPORTED_LANGUAGES, allLocalizedEntries, alternateGroup, contentKeyFromRoute, englishInventory, localizedRedirects, normalizeLocalizedRoute } from './localization.mjs';
 
 test('translated navigation stays inside the selected language', () => {
-  assert.equal(navigationFor('fr').product[1], '/fr/shop/');
+  assert.equal(navigationFor('fr').product[1], '/fr/produits/');
   assert.equal(navigationFor('es').blog[1], '/es/blog/');
   assert.equal(navigationFor('ar').contact[1].startsWith('/ar/'), true);
 });
@@ -12,6 +12,16 @@ test('translated navigation stays inside the selected language', () => {
 test('known page groups expose four hreflang alternatives', () => {
   assert.deepEqual(pageAlternates('/products/').map((item) => item.language), ['en', 'fr', 'es', 'ar']);
   assert.deepEqual(pageAlternates('/product/paper-lid/'), []);
+});
+
+test('blog archives share one reciprocal hreflang identity', () => {
+  const expected = [
+    { language: 'en', route: '/blog/' },
+    { language: 'fr', route: '/fr/blog/' },
+    { language: 'es', route: '/es/blog/' },
+    { language: 'ar', route: '/ar/blog/' },
+  ];
+  for (const { route } of expected) assert.deepEqual(pageAlternates(route), expected, route);
 });
 
 test('verified translated articles expose reciprocal deep-page alternatives', () => {

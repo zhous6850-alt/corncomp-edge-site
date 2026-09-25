@@ -73,6 +73,14 @@ export const ENGLISH_UI = {
   allProducts: 'All Products',
   requestQuote: 'Request a quote',
   contactUs: 'Contact Us',
+  brandHomeLabel: 'Corncomp home',
+  primaryNavigationLabel: 'Primary navigation',
+  socialMediaLabel: 'Corncomp social media',
+  addressHeading: 'Our Address',
+  footerNavigationLabel: 'Footer navigation',
+  copyrightLabel: 'Copyright © 2026 Ningbo Corncomp Tech Co., Ltd. All rights reserved.',
+  analyticsConsentHeading: 'Optional analytics',
+  analyticsConsentBody: 'We use Google Analytics to understand visits and successful inquiries. Analytics stays off until you allow it.',
   analyticsSettings: 'Analytics settings',
   allowAnalytics: 'Allow analytics',
   declineAnalytics: 'Decline',
@@ -117,18 +125,22 @@ export function normalizeLocalizedRoute(route) {
 const localeByLanguage = { fr, es, ar };
 
 export function localeData(language) {
-  const locale = localeByLanguage[language];
-  if (!locale) throw new Error(`Unsupported locale: ${language}`);
-  return locale;
+  if (!Object.hasOwn(localeByLanguage, language)) throw new Error(`Unsupported locale: ${language}`);
+  return localeByLanguage[language];
 }
 
 export function localizedEntry(language, contentKey) {
   if (language === 'en') return englishInventory().find((item) => item.contentKey === contentKey) || null;
-  return localeData(language).content[contentKey] || null;
+  const content = localeData(language).content;
+  return Object.hasOwn(content, contentKey) ? content[contentKey] : null;
 }
 
 export function routeFor(language, contentKey) {
   return localizedEntry(language, contentKey)?.route || null;
+}
+
+export function localizedShopRedirects() {
+  return new Map(['fr', 'es', 'ar'].map((language) => [`/${language}/shop/`, routeFor(language, 'architecture:products')]));
 }
 
 export function allLocalizedEntries() {
