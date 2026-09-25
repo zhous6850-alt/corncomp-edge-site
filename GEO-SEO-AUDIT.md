@@ -150,12 +150,12 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 ## 1. Decision summary
 
 - **Scope:** the synchronized English, French, Spanish and Arabic static output for `corn-comp.com`; 85 stable content identities per language; local build and deployment-safety checks performed on 2026-09-25.
-- **Verdict:** Local drift, output and Worker gates passed. The controller subsequently deployed the dedicated preview Worker from `wrangler.preview.jsonc` as version `d048d843-8695-4c92-bea4-3a9bb3293f7a`. This subtask could not perform preview HTTP, SEO or browser/visual acceptance because every available read-only execution channel was blocked by the task environment; those results remain **not observed**, and this checkpoint is not approval for production.
+- **Verdict:** Local drift, output and Worker gates passed. The controller deployed the dedicated preview Worker from `wrangler.preview.jsonc` as version `d048d843-8695-4c92-bea4-3a9bb3293f7a`. The 28-route preview HTTP/SEO matrix and three representative Arabic alias variants passed; executable browser/visual acceptance remains **not observed** because no usable browser channel was available. This checkpoint is not approval for production.
 - **Next actions:**
-  1. Run the 28-route HTTP/SEO matrix (four languages × seven page types) from a process that can reach the dedicated preview URL.
-  2. Verify reviewed aliases, including decoded and lowercase-percent Arabic forms, redirect once and preserve query strings.
-  3. Run executable desktop/mobile visual and interaction acceptance, including Arabic RTL.
-  4. Repair only evidence-backed preview defects and repeat the affected checks.
+  1. Run executable desktop/mobile visual and interaction acceptance, including Arabic RTL.
+  2. Inspect first-party asset requests, console errors, menu/focus, consent and mobile specification-table behavior in that browser pass.
+  3. Repair only evidence-backed preview defects and repeat the affected checks.
+  4. Obtain native-language editorial review where commercial naturalness matters.
   5. Request explicit approval before any production action.
 
 ## 2. Evidence ledger
@@ -173,18 +173,20 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 | MV9 | Observed | Git checks | Local worktree, 2026-09-25 | `git diff --check` passed. |
 | MV10 | Heuristic | Editorial review boundary | Four-language content, 2026-09-25 | Native-speaker review remains advisable for commercial tone and idiom; automated structural parity does not establish translation naturalness. |
 | MV11 | Observed | Acceptance tool probes | Subtask environment, 2026-09-25 | Direct Node fetch was denied with `EACCES`; the web reader reported the preview host inaccessible; Chrome headless was rejected before launch by sandbox policy; the available Node REPL failed to initialize its kernel assets. No preview response or screenshot was obtained. |
+| MV12 | Observed | `qa/http-acceptance.json` | Preview version `d048d843-8695-4c92-bea4-3a9bb3293f7a`, 2026-09-25 | 28/28 selected routes returned direct 200 and passed visible-language, direction, production canonical, four reciprocal alternates plus `x-default`, primary schema and internal-link-language checks. Three Arabic alias forms (canonical-percent, lowercase-percent and decoded) each returned one 301 preserving the query, followed by direct 200. |
+| MV13 | Derived | MV12 | Four languages × seven page types, 2026-09-25 | Preview HTTP/SEO matrix coverage was 28/28 (100%); representative alias coverage was 3/3 (100%). |
 
 ## 3. Findings
 
 ### Technical/crawl
 
-**Local reciprocal canonical architecture passed; preview delivery is unverified (MV1, MV4-MV6, MV8, MV11).** Why it matters: static output correctness and a successful deployment record do not prove the deployed Worker serves the same bytes or redirects. Recommended change: execute the planned HTTP matrix from an acceptance runner with preview network access. Priority: P0 blocker. Effort: S. Confidence: high. Verification: 28 direct route checks and representative one-hop alias checks against version `d048d843-8695-4c92-bea4-3a9bb3293f7a`.
+**Preview crawl and redirect delivery passed the agreed representative matrix (MV8, MV12-MV13).** Why it matters: this verifies the dedicated Worker serves localized canonical HTML and one-hop reviewed Arabic redirects rather than only proving static build output. Recommended change: retain the generated matrix evidence and rerun it after any source or Worker change. Priority: maintain. Effort: S. Confidence: high. Verification: the same runner returns 28/28 route passes and 3/3 alias passes for the deployed version.
 
 **Preview configuration is isolated from production (MV7).** Why it matters: the next deployment can be tested without changing `corn-comp.com` routes. Recommended change: keep `wrangler.preview.jsonc` unchanged and never substitute `wrangler.jsonc`. Priority: maintain. Effort: S. Confidence: high. Verification: Wrangler deployment output names `corncomp-edge-site-v2-preview` and returns only a `workers.dev` URL.
 
 ### On-page
 
-**Built self-canonicals, alternates, language and direction passed locally on 340/340 synchronized pages (MV5-MV6).** Why it matters: complete reciprocal groups reduce ambiguity between reviewed language equivalents. Recommended change: no local markup change; verify the same fields over preview HTTP. Priority: P1 verification. Effort: S. Confidence: high. Verification: parse the deployed HTML for all 28 matrix routes and representative aliases.
+**Built self-canonicals, alternates, language and direction passed locally on 340/340 synchronized pages and on the 28-route preview sample (MV5-MV6, MV12-MV13).** Why it matters: complete reciprocal groups reduce ambiguity between reviewed language equivalents. Recommended change: no markup change; retain local exhaustive gates plus the cross-page-type preview sample. Priority: maintain. Effort: S. Confidence: high. Verification: local 340-page gate and deployed 28-route matrix remain green.
 
 ### Content/citability
 
@@ -192,7 +194,7 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 
 ### Structured data
 
-**Schema presence/name alignment is covered by the passing local output suite, but deployed schema is not observed (MV2, MV8, MV11).** Why it matters: deployment or Worker behavior can still change delivered HTML. Recommended change: record the primary schema type/name for every preview matrix page and compare it with the visible H1. Priority: P1 verification. Effort: S. Confidence: high. Verification: machine-readable preview matrix contains a passing schema type/name field for 28/28 routes.
+**Primary schema type/name was present on all 28 preview matrix pages (MV12-MV13).** Why it matters: deployment did not strip the structured data exercised across the seven page types. Recommended change: keep local schema/value tests and rerun the preview matrix after changes. Priority: maintain. Effort: S. Confidence: high. Verification: the machine-readable matrix continues to report a schema type and non-empty name for 28/28 routes.
 
 ### Search/competitors
 
@@ -204,16 +206,16 @@ Semrush or compatible mirror evidence was **not observed** in this verification 
 
 ## 5. Action plan
 
-1. Use a bounded acceptance runner with network access to the dedicated preview URL and complete the 28-route HTTP/SEO matrix.
-2. Complete alias one-hop and query-preservation checks, including decoded and lowercase-percent Arabic variants.
-3. Complete desktop `1440 × 900` and mobile `390 × 844` executable browser acceptance, including menu, consent, focus, tables, assets and Arabic RTL.
-4. Repair only concrete preview failures with regression coverage, then repeat the failed state and a nearby smoke route.
-5. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the acceptance target; redeploy only if a reviewed repair changes source output.
+1. Complete desktop `1440 × 900` and mobile `390 × 844` executable browser acceptance, including menu, consent, focus, tables, assets and Arabic RTL.
+2. Repair only concrete visual/browser failures with regression coverage, then repeat the failed state and a nearby smoke route.
+3. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the acceptance target; redeploy only if a reviewed repair changes source output.
+4. Record native-language editorial review separately from automated structural parity.
+5. Request explicit user approval before any production action.
 
 ## 6. Limitations
 
-- The controller supplied preview deployment/version evidence, but this subtask could not independently fetch the returned preview URL.
-- Preview HTTP, redirect, asset, schema and internal-link behavior was not exercised.
+- The controller supplied preview deployment/version evidence and executed the machine-readable HTTP/SEO matrix; this subtask validated the resulting JSON evidence file.
+- The HTTP matrix covered four languages and seven representative page types, not every deployed URL. Static tests provide the exhaustive 340-page metadata gate.
 - Executable browser acceptance and screenshots were not performed because the available browser/network channels were blocked by the execution environment; no visual acceptance is claimed.
 - Inquiry submission and email delivery were intentionally not exercised.
 - Production, DNS, cache and sitemap submission were not changed.
