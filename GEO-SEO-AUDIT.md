@@ -150,12 +150,12 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 ## 1. Decision summary
 
 - **Scope:** the synchronized English, French, Spanish and Arabic static output for `corn-comp.com`; 85 stable content identities per language; local build and deployment-safety checks performed on 2026-09-25.
-- **Verdict:** Local drift, output and Worker gates passed. The dedicated preview was not deployed because the third and final safe Wrangler attempt reached Cloudflare authentication and stopped before upload: the non-interactive process had no `CLOUDFLARE_API_TOKEN`. Preview HTTP, SEO and browser/visual acceptance are therefore **not observed**, and this checkpoint is not approval for production.
+- **Verdict:** Local drift, output and Worker gates passed. The controller subsequently deployed the dedicated preview Worker from `wrangler.preview.jsonc` as version `d048d843-8695-4c92-bea4-3a9bb3293f7a`. This subtask could not perform preview HTTP, SEO or browser/visual acceptance because every available read-only execution channel was blocked by the task environment; those results remain **not observed**, and this checkpoint is not approval for production.
 - **Next actions:**
-  1. Provide Wrangler a secure, turn-scoped Cloudflare API token authorized only for the dedicated preview Worker.
-  2. Deploy with `wrangler.preview.jsonc` only and record the returned preview URL and version.
-  3. Run the 28-route HTTP/SEO matrix (four languages × seven page types) plus reviewed alias redirects.
-  4. Run executable desktop/mobile visual and interaction acceptance, including Arabic RTL.
+  1. Run the 28-route HTTP/SEO matrix (four languages × seven page types) from a process that can reach the dedicated preview URL.
+  2. Verify reviewed aliases, including decoded and lowercase-percent Arabic forms, redirect once and preserve query strings.
+  3. Run executable desktop/mobile visual and interaction acceptance, including Arabic RTL.
+  4. Repair only evidence-backed preview defects and repeat the affected checks.
   5. Request explicit approval before any production action.
 
 ## 2. Evidence ledger
@@ -169,15 +169,16 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 | MV5 | Observed | Final built-output gate | 340 synchronized pages, 2026-09-25 | Every synchronized built page had the exact production self-canonical, reciprocal `en`, `fr`, `es`, `ar` alternates, English `x-default`, correct `lang`, and Arabic-only `dir="rtl"`. |
 | MV6 | Derived | MV4-MV5 | Synchronized local output, 2026-09-25 | Local synchronized-entry coverage was 340/340 (100%); translated hash coverage was 255/255 (100%). |
 | MV7 | Observed | `wrangler.preview.jsonc` | Deployment preflight, 2026-09-25 | Target name was `corncomp-edge-site-v2-preview`, `workers_dev` was `true`, no routes or custom domain were configured, and assets pointed to fresh `./site/dist`. |
-| MV8 | Observed | Wrangler 4.135.0 output | Three safe preview attempts, 2026-09-25 | Attempts one and two stopped during local path resolution. A same-process short-drive mapping cleared that local blocker; attempt three then stopped before upload because `CLOUDFLARE_API_TOKEN` was unavailable. |
+| MV8 | Observed | Controller deployment result | Dedicated preview, 2026-09-25 | `wrangler.preview.jsonc` deployed `https://corncomp-edge-site-v2-preview.corncomp-edge.workers.dev` as version `d048d843-8695-4c92-bea4-3a9bb3293f7a`; the controller reported no production route, DNS, sitemap or inquiry change. |
 | MV9 | Observed | Git checks | Local worktree, 2026-09-25 | `git diff --check` passed. |
 | MV10 | Heuristic | Editorial review boundary | Four-language content, 2026-09-25 | Native-speaker review remains advisable for commercial tone and idiom; automated structural parity does not establish translation naturalness. |
+| MV11 | Observed | Acceptance tool probes | Subtask environment, 2026-09-25 | Direct Node fetch was denied with `EACCES`; the web reader reported the preview host inaccessible; Chrome headless was rejected before launch by sandbox policy; the available Node REPL failed to initialize its kernel assets. No preview response or screenshot was obtained. |
 
 ## 3. Findings
 
 ### Technical/crawl
 
-**Local reciprocal canonical architecture passed; preview delivery is unverified (MV1, MV4-MV6, MV8).** Why it matters: static output correctness does not prove the deployed Worker serves the same bytes or redirects. Recommended change: authenticate only the dedicated preview Worker and execute the planned HTTP matrix. Priority: P0 blocker. Effort: S. Confidence: high. Verification: returned preview deployment/version plus 28 direct route checks and representative one-hop alias checks.
+**Local reciprocal canonical architecture passed; preview delivery is unverified (MV1, MV4-MV6, MV8, MV11).** Why it matters: static output correctness and a successful deployment record do not prove the deployed Worker serves the same bytes or redirects. Recommended change: execute the planned HTTP matrix from an acceptance runner with preview network access. Priority: P0 blocker. Effort: S. Confidence: high. Verification: 28 direct route checks and representative one-hop alias checks against version `d048d843-8695-4c92-bea4-3a9bb3293f7a`.
 
 **Preview configuration is isolated from production (MV7).** Why it matters: the next deployment can be tested without changing `corn-comp.com` routes. Recommended change: keep `wrangler.preview.jsonc` unchanged and never substitute `wrangler.jsonc`. Priority: maintain. Effort: S. Confidence: high. Verification: Wrangler deployment output names `corncomp-edge-site-v2-preview` and returns only a `workers.dev` URL.
 
@@ -191,7 +192,7 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 
 ### Structured data
 
-**Schema presence/name alignment is covered by the passing local output suite, but deployed schema is not observed (MV2, MV8).** Why it matters: deployment or Worker behavior can still change delivered HTML. Recommended change: record the primary schema type/name for every preview matrix page and compare it with the visible H1. Priority: P1 verification. Effort: S. Confidence: high. Verification: machine-readable preview matrix contains a passing schema type/name field for 28/28 routes.
+**Schema presence/name alignment is covered by the passing local output suite, but deployed schema is not observed (MV2, MV8, MV11).** Why it matters: deployment or Worker behavior can still change delivered HTML. Recommended change: record the primary schema type/name for every preview matrix page and compare it with the visible H1. Priority: P1 verification. Effort: S. Confidence: high. Verification: machine-readable preview matrix contains a passing schema type/name field for 28/28 routes.
 
 ### Search/competitors
 
@@ -203,17 +204,17 @@ Semrush or compatible mirror evidence was **not observed** in this verification 
 
 ## 5. Action plan
 
-1. Supply a secure, least-privilege `CLOUDFLARE_API_TOKEN` to the non-interactive Wrangler process without committing or printing it.
-2. Deploy only `wrangler.preview.jsonc`; record preview URL and version.
-3. Complete the 28-route HTTP/SEO matrix and alias-query preservation checks.
-4. Complete desktop `1440 × 900` and mobile `390 × 844` executable browser acceptance, including menu, consent, focus, tables, assets and Arabic RTL.
-5. Repair only concrete preview failures with regression coverage, then repeat the failed state and a nearby smoke route.
+1. Use a bounded acceptance runner with network access to the dedicated preview URL and complete the 28-route HTTP/SEO matrix.
+2. Complete alias one-hop and query-preservation checks, including decoded and lowercase-percent Arabic variants.
+3. Complete desktop `1440 × 900` and mobile `390 × 844` executable browser acceptance, including menu, consent, focus, tables, assets and Arabic RTL.
+4. Repair only concrete preview failures with regression coverage, then repeat the failed state and a nearby smoke route.
+5. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the acceptance target; redeploy only if a reviewed repair changes source output.
 
 ## 6. Limitations
 
-- No preview upload occurred, so there is no new preview URL or deployment/version evidence.
+- The controller supplied preview deployment/version evidence, but this subtask could not independently fetch the returned preview URL.
 - Preview HTTP, redirect, asset, schema and internal-link behavior was not exercised.
-- Executable browser acceptance and screenshots were not performed because there was no returned preview deployment to test; no visual acceptance is claimed.
+- Executable browser acceptance and screenshots were not performed because the available browser/network channels were blocked by the execution environment; no visual acceptance is claimed.
 - Inquiry submission and email delivery were intentionally not exercised.
 - Production, DNS, cache and sitemap submission were not changed.
 - GSC, Semrush/DataForSEO, ranking, traffic, backlink, competitor and AI-citation evidence was not observed.
