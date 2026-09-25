@@ -122,6 +122,14 @@ test('hidden inquiry honeypots cannot expand RTL page width', async () => {
   assert.doesNotMatch(html, /\.honeypot\s*\{[^}]*left:\s*-10000px/);
 });
 
+test('localized contact honeypots stay outside the accessibility tree', async () => {
+  for (const route of ['/contact/', '/fr/contactez-nous/', '/es/contactenos/', '/ar/%D8%A7%D8%AA%D8%B5%D9%84-%D8%A8%D9%86%D8%A7/']) {
+    const html = await readBuiltRoute(route);
+
+    assert.match(html, /<label class="honeypot" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"><\/label>/);
+  }
+});
+
 test('direct editorial images stay inside the localized content column', async () => {
   const html = await readBuiltRoute('/ar/%D8%AA%D9%88%D8%AC%D9%8A%D9%87-%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A/');
 

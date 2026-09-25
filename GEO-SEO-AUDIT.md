@@ -150,9 +150,9 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 ## 1. Decision summary
 
 - **Scope:** the synchronized English, French, Spanish and Arabic static output for `corn-comp.com`; 85 stable content identities per language; local build and deployment-safety checks performed on 2026-09-25.
-- **Verdict:** Local drift, output and Worker gates passed. The controller deployed the repaired dedicated preview Worker from `wrangler.preview.jsonc` as version `254a0a55-08e7-4096-a68f-9de6f63176f0`. The final 28-route HTTP/SEO matrix and three representative Arabic alias variants passed. Forty final screenshots cover the selected desktop/mobile matrix; 37 runs returned valid numeric dimensions with no document overflow, while three visually valid screenshots were inspected manually because their metric JSON was blank. Four critical post-fix mobile routes also passed serial local numeric checks. This checkpoint is not approval for production.
+- **Verdict:** Local drift, output and Worker gates passed. The controller deployed the repaired dedicated preview Worker from `wrangler.preview.jsonc` as version `254a0a55-08e7-4096-a68f-9de6f63176f0`. The final 28-route HTTP/SEO matrix and three representative Arabic alias variants passed. Forty final screenshots cover the selected desktop/mobile matrix; 37 runs returned valid numeric dimensions with no document overflow, while three visually valid screenshots were inspected manually because their metric JSON was blank. Four critical post-fix mobile routes also passed serial local numeric checks. A later accessibility review found and locally repaired a contact-form honeypot issue; that repair is not in the cited preview version. This checkpoint is not approval for production.
 - **Next actions:**
-  1. Preserve the final preview screenshots and HTTP evidence with version `254a0a55-08e7-4096-a68f-9de6f63176f0`.
+  1. Preserve the final preview screenshots and HTTP evidence with version `254a0a55-08e7-4096-a68f-9de6f63176f0`, then verify the local honeypot accessibility repair on an isolated preview before any production action.
   2. Obtain native-language editorial review where commercial naturalness matters.
   3. Request explicit approval before any production action.
 
@@ -161,7 +161,7 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 | ID | Class | Source | Scope/date | Observation |
 |---|---|---|---|---|
 | MV1 | Observed | `npm run build` | Local worktree, 2026-09-25 | Astro generated 348 pages from fresh source output. |
-| MV2 | Observed | `npm test` | `site`, after the fresh build, 2026-09-25 | 105 tests passed, 0 failed. |
+| MV2 | Observed | Node test runner | `site`, after the fresh build and accessibility repair, 2026-09-25 | 106 tests passed, 0 failed. |
 | MV3 | Observed | Node test runner | Four scripts plus inquiry Worker, 2026-09-25 | 30 tests passed, 0 failed; all five named test files existed. |
 | MV4 | Observed | Final localization drift gate | 3 translated locales × 85 keys, 2026-09-25 | Every translated entry matched the current English `sourceHash`; every translated post and buyer guide exposed a `YYYY-MM-DD` `dateModified`. |
 | MV5 | Observed | Final built-output gate | 340 synchronized pages, 2026-09-25 | Every synchronized built page had the exact production self-canonical, reciprocal `en`, `fr`, `es`, `ar` alternates, English `x-default`, correct `lang`, and Arabic-only `dir="rtl"`. |
@@ -179,6 +179,7 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 | MV17 | Observed | Controller final preview deployment and HTTP runner | Preview version `254a0a55-08e7-4096-a68f-9de6f63176f0`, 2026-09-25 | The repaired build was deployed with `wrangler.preview.jsonc` only. Final HTTP/SEO checks passed 28/28 routes and 3/3 Arabic alias variants; production remained untouched. |
 | MV18 | Observed | Serial CDP screenshots and dimensions | Final repaired preview, 2026-09-25 | Forty final screenshots were generated under ignored `qa/screenshots-final/`. Thirty-seven runs returned valid numeric viewport/document dimensions and all had document width less than or equal to viewport width. Three runs returned blank metric JSON because of intermittent Windows process-start instability: English multi-row product mobile, Arabic category desktop and Arabic buyer guide mobile. Their screenshots rendered and were manually inspected without visible clipping or misalignment. |
 | MV19 | Observed | Serial local Astro/CDP post-fix checks | Fresh repaired build, 2026-09-25 | Four critical former failure paths returned numeric `clientWidth=390`, `scrollWidth=390`: English and Spanish products, Arabic contact and Arabic editorial. This supports the repaired failure paths but does not convert the three MV18 manual-only preview checks into automated dimension checks. |
+| MV20 | Observed | RED/GREEN built-output and Worker tests | Fresh local build after accessibility review, 2026-09-25 | All four built contact pages place the `website` honeypot label outside the accessibility tree with `aria-hidden="true"`, while retaining `name="website"` and `tabindex="-1"`. The focused regression was observed failing before the template fix and passing after it; the existing Worker test still confirms honeypot submissions return success without sending email. This change has not been deployed. |
 
 ## 3. Findings
 
@@ -193,6 +194,8 @@ No prices, offers, ratings, reviews or publication dates were invented. Inquiry 
 **Built self-canonicals, alternates, language and direction passed locally on 340/340 synchronized pages and on the 28-route preview sample (MV5-MV6, MV12-MV13).** Why it matters: complete reciprocal groups reduce ambiguity between reviewed language equivalents. Recommended change: no markup change; retain local exhaustive gates plus the cross-page-type preview sample. Priority: maintain. Effort: S. Confidence: high. Verification: local 340-page gate and deployed 28-route matrix remain green.
 
 **The first executable mobile pass exposed evidence-backed responsive failures, and the repaired preview passed the bounded rerun (MV14-MV19).** Product tables expanded their grid column, an off-canvas honeypot enlarged RTL contact pages, and direct editorial images inherited an 850 px maximum with higher specificity than the global image rule. The minimal CSS repairs preserve local table scrolling and hidden-field behavior. The final preview produced 40 screenshots; 37 have passing numeric width evidence and three have manual visual-only evidence. Priority: maintain. Effort: S. Confidence: high for the 37 numeric preview checks and four local critical checks; medium for the three manual-only screenshots. Verification: retain serial probes and rerun any blank-metric rows when Windows process launch is stable.
+
+**The contact-form honeypot is now excluded from the accessibility tree in local output (MV20).** Why it matters: a screen-reader user should not encounter and fill the anti-spam field, which the Worker intentionally accepts without sending. Recommended change: retain the four-locale built-output regression and verify this local-only repair on the isolated preview before production. Priority: P1. Effort: S. Confidence: high for local output and preserved Worker behavior; preview delivery is not yet observed. Verification: all four built contact pages contain `aria-hidden="true"` on the honeypot label while the input keeps `name="website"` and `tabindex="-1"`.
 
 ### Content/citability
 
@@ -212,10 +215,11 @@ Semrush or compatible mirror evidence was **not observed** in this verification 
 
 ## 5. Action plan
 
-1. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the pre-fix target and `254a0a55-08e7-4096-a68f-9de6f63176f0` as the repaired final-preview target.
-2. Rerun the three manual-only screenshot rows for numeric dimensions when Windows process launch is stable; do not treat this as a production blocker unless the screenshots or later metrics show a defect.
-3. Record native-language editorial review separately from automated structural parity.
-4. Request explicit user approval before any production action.
+1. Preserve version `d048d843-8695-4c92-bea4-3a9bb3293f7a` as the pre-fix target and `254a0a55-08e7-4096-a68f-9de6f63176f0` as the repaired visual-preview target.
+2. Deploy the later honeypot accessibility repair only to the isolated preview and confirm the four contact pages before considering production.
+3. Rerun the three manual-only screenshot rows for numeric dimensions when Windows process launch is stable; do not treat this as a production blocker unless the screenshots or later metrics show a defect.
+4. Record native-language editorial review separately from automated structural parity.
+5. Request explicit user approval before any production action.
 
 ## 6. Limitations
 
@@ -225,5 +229,6 @@ Semrush or compatible mirror evidence was **not observed** in this verification 
 - One initial parallel CDP batch showed port/profile cross-talk. Root-cause, local post-fix and final-preview checks cited above used serial runs.
 - New process launches later failed with Windows `CreateProcessWithLogonW` error 1909, preventing another preview probe. The three screenshot-only rows remain explicitly bounded rather than inferred from other routes.
 - Inquiry submission and email delivery were intentionally not exercised.
+- Preview version `254a0a55-08e7-4096-a68f-9de6f63176f0` predates the local honeypot accessibility repair in MV20; deployed accessibility acceptance remains outstanding.
 - Production, DNS, cache and sitemap submission were not changed.
 - GSC, Semrush/DataForSEO, ranking, traffic, backlink, competitor and AI-citation evidence was not observed.
