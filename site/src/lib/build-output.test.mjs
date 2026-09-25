@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { SUPPORTED_LANGUAGES, allLocalizedEntries, englishInventory, localizedEntry, routeFor, uiFor } from './localization.mjs';
 import { assertFactParity } from './product-facts.mjs';
@@ -13,6 +13,15 @@ function escapeRegExp(value) {
 async function readBuiltRoute(route) {
   const path = route === '/' ? 'index.html' : `${route.replace(/^\/+|\/+$/g, '')}/index.html`;
   return readFile(new URL(`../../dist/${path}`, import.meta.url), 'utf8');
+}
+
+async function builtHtmlFiles(directory = new URL('../../dist/', import.meta.url)) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(entries.map((entry) => {
+    const location = new URL(`${entry.name}${entry.isDirectory() ? '/' : ''}`, directory);
+    return entry.isDirectory() ? builtHtmlFiles(location) : entry.name.endsWith('.html') ? [location] : [];
+  }));
+  return files.flat();
 }
 
 function metaContent(html, name) {
@@ -305,6 +314,39 @@ test('localized product samples preserve immutable English product facts and tra
     const translatedValue = Object.values(uiFor(language).specificationValues).find((value) => value.includes('300'));
     if (translatedValue) assert.match(html, new RegExp(escapeRegExp(translatedValue)), language);
   }
+});
+
+test('all product variants preserve summaries and the approved buying layout', async () => {
+  const products = englishInventory().filter(({ type }) => type === 'product');
+  let englishExcerpts = 0;
+  let detailLayouts = 0;
+  let buyingNotes = 0;
+  let localizedEnglishExcerpts = 0;
+
+  for (const product of products) {
+    for (const language of SUPPORTED_LANGUAGES) {
+      const html = await readBuiltRoute(routeFor(language, product.contentKey));
+      englishExcerpts += language === 'en' ? (html.match(/class="product-excerpt"/g) || []).length : 0;
+      detailLayouts += (html.match(/class="product-detail-layout"/g) || []).length;
+      buyingNotes += (html.match(/class="buying-note"/g) || []).length;
+      if (language !== 'en' && product.excerpt && html.includes(contentText(product.excerpt))) localizedEnglishExcerpts += 1;
+    }
+  }
+
+  assert.equal(englishExcerpts, 44);
+  assert.equal(detailLayouts, 176);
+  assert.equal(buyingNotes, 176);
+  assert.equal(localizedEnglishExcerpts, 0);
+});
+
+test('visible main content never double-escapes WordPress numeric entities', async () => {
+  const failures = [];
+  for (const file of await builtHtmlFiles()) {
+    const html = await readFile(file, 'utf8');
+    const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || '';
+    if (/&amp;#(?:x[\da-f]+|\d+);/i.test(main)) failures.push(file.pathname);
+  }
+  assert.deepEqual(failures, []);
 });
 
 test('localized contact pages preserve field names and localize visible form labels', async () => {

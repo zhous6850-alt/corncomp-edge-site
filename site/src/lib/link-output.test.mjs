@@ -23,7 +23,7 @@ function routeExists(route) {
   return existsSync(target) || existsSync(`${target}.html`) || existsSync(path.join(target, 'index.html'));
 }
 
-test('every rebuilt English internal link resolves to a page, asset, API endpoint or one-hop redirect', () => {
+test('every rebuilt English internal link resolves directly without a redirect hop', () => {
   const broken = [];
   for (const file of htmlFiles(dist)) {
     const relative = path.relative(fileURLToPath(dist), fileURLToPath(file));
@@ -31,11 +31,24 @@ test('every rebuilt English internal link resolves to a page, asset, API endpoin
     const html = readFileSync(file, 'utf8');
     for (const match of html.matchAll(/href="(\/[^"]*)"/g)) {
       const route = match[1].replaceAll('&amp;', '&').split(/[?#]/)[0];
-      if (!route || route === '/' || route === '/api/inquiry' || routeExists(route) || REDIRECTS.has(route)) continue;
+      if (!route || route === '/' || route === '/api/inquiry' || routeExists(route)) continue;
       broken.push(`${file.pathname}: ${route}`);
     }
   }
   assert.deepEqual(broken, []);
+});
+
+test('ordinary built content links never target a Worker redirect source', () => {
+  const redirecting = [];
+  for (const file of htmlFiles(dist)) {
+    const html = readFileSync(file, 'utf8');
+    const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || '';
+    for (const match of main.matchAll(/<a\b([^>]*)href="(\/[^"?#]*)(?:[?#][^"]*)?"[^>]*>/g)) {
+      const target = normalizeLocalizedRoute(match[2]);
+      if (REDIRECTS.has(target)) redirecting.push(`${file.pathname}: ${target}`);
+    }
+  }
+  assert.deepEqual(redirecting, []);
 });
 
 test('localized built-page internal links stay in the selected canonical language when synchronized', () => {

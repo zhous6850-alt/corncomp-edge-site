@@ -31,7 +31,23 @@ test('uses the language shared by products in a category', () => {
 
 test('rewrites Corncomp absolute links to preview-safe internal links', () => {
   const html = '<a href="https://corn-comp.com/shop/">Shop</a><a href="https://example.com/">External</a>';
-  assert.equal(localizeInternalLinks(html), '<a href="/shop/">Shop</a><a href="https://example.com/">External</a>');
+  assert.equal(localizeInternalLinks(html), '<a href="/products/">Shop</a><a href="https://example.com/">External</a>');
+});
+
+test('resolves English page and product aliases before stable-key localization', () => {
+  const html = [
+    '<a href="/certifications/">Certificates</a>',
+    '<a href="/product/pla-lid/">PLA lid</a>',
+    '<a href="/product/couvercle-pla-pour-bol-a-salade/">Duplicate product</a>',
+    '<a href="/category/material-guides/">Guides</a>',
+  ].join('');
+
+  assert.equal(localizeInternalLinks(html, 'es'), [
+    `<a href="${routeFor('es', 'architecture:quality')}">Certificates</a>`,
+    `<a href="${routeFor('es', 'product:pla-lid')}">PLA lid</a>`,
+    `<a href="${routeFor('es', 'product:pla-lid')}">Duplicate product</a>`,
+    '<a href="/es/blog/">Guides</a>',
+  ].join(''));
 });
 
 test('rewrites translated English-slug aliases to their actual localized routes', () => {
