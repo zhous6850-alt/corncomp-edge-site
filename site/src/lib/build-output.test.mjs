@@ -5,6 +5,7 @@ import { SUPPORTED_LANGUAGES, allLocalizedEntries, englishInventory, localizedEn
 import { assertFactParity } from './product-facts.mjs';
 import { canonicalUrl } from './routes.mjs';
 import { contentText } from './content-routes.mjs';
+import { PRODUCT_CATEGORIES, PRODUCT_GROUPS, categoryForProduct } from './site-architecture.mjs';
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -132,6 +133,71 @@ test('new product pages group the title, image, breadcrumb and contextual quote 
   assert.match(html, /"@type":"Product"/);
 });
 
+test('every product group and category has a real hero and image-led inventory cards in all languages', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    for (const directory of [...PRODUCT_GROUPS, ...PRODUCT_CATEGORIES]) {
+      const key = `architecture:${directory.route.replace(/^\/|\/$/g, '')}`;
+      const html = await readBuiltRoute(routeFor(language, key));
+      const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
+      assert.match(hero, /<img\b[^>]*alt="[^"]+"[^>]*loading="eager"/, `${language}:${key}:hero`);
+      const cards = [...html.matchAll(/<article class="editorial-card">[\s\S]*?<\/article>/g)].map(([card]) => card);
+      const expected = directory.group
+        ? englishInventory().filter((item) => item.type === 'product' && categoryForProduct(item.slug)?.slug === directory.slug)
+        : PRODUCT_CATEGORIES.filter((item) => item.group === directory.slug);
+      assert.equal(cards.length, expected.length, `${language}:${key}:inventory`);
+      expected.forEach((item, index) => {
+        const itemKey = item.contentKey || `architecture:${item.route.replace(/^\/|\/$/g, '')}`;
+        assert.ok(cards[index].includes(`href="${routeFor(language, itemKey)}"`), itemKey);
+        assert.match(cards[index], /<img\b[^>]*alt="[^"]+"[^>]*loading="lazy"/, itemKey);
+      });
+    }
+  }
+});
+
+test('all product primary and related images reserve space and retain localized alt text', async () => {
+  for (const product of englishInventory().filter((item) => item.type === 'product')) {
+    for (const language of SUPPORTED_LANGUAGES) {
+      const html = await readBuiltRoute(routeFor(language, product.contentKey));
+      assert.doesNotThrow(() => assertFactParity(product, html), `${language}:${product.slug}:facts`);
+      assert.equal((html.match(/<table\b/g) || []).length, (product.body.match(/<table\b/g) || []).length, `${language}:${product.slug}:catalogue tables`);
+      const lead = html.match(/<figure class="featured-media product-media">[\s\S]*?<\/figure>/)?.[0] || '';
+      const image = lead.match(/<img\b[^>]*>/)?.[0] || '';
+      const alt = language === 'en' ? product.featuredMedia.alt : localizedEntry(language, product.contentKey).alt;
+      assert.ok(alt?.trim(), `${language}:${product.slug}:source alt`);
+      assert.equal(contentText(image.match(/alt="([^"]*)"/)?.[1] || ''), alt, `${language}:${product.slug}:alt`);
+      assert.match(image, /width="[1-9]\d*"/, product.slug);
+      assert.match(image, /height="[1-9]\d*"/, product.slug);
+      assert.match(image, /loading="eager"/);
+      const related = html.match(/<section class="related-products"[\s\S]*?<\/section>/)?.[0] || '';
+      for (const [relatedImage] of related.matchAll(/<img\b[^>]*>/g)) {
+        assert.match(relatedImage, /alt="[^"]+"/);
+        assert.match(relatedImage, /width="[1-9]\d*"/);
+        assert.match(relatedImage, /loading="lazy"/);
+      }
+    }
+  }
+});
+
+test('assigned product context is localized and distinguishes company documents from item certification', async () => {
+  const labels = { en: 'Company documents and item scope', fr: 'Documents de l’entreprise et portée par article', es: 'Documentos de la empresa y alcance por artículo', ar: 'وثائق الشركة ونطاق الصنف' };
+  for (const [language, heading] of Object.entries(labels)) {
+    for (const [slug, asset] of [['kraft-paper-bowl', '239-salad-bowl-real-photo'], ['bendy', '843-corncomp-homepage-hero-drink']]) {
+      const html = await readBuiltRoute(routeFor(language, `product:${slug}`));
+      const context = html.match(/<section class="product-evidence"[\s\S]*?<\/section>/)?.[0] || '';
+      assert.ok(context.includes(heading), `${language}:${slug}:scope heading`);
+      assert.ok(context.includes(asset), `${language}:${slug}:assigned context`);
+      assert.ok(context.includes('293-facility-photo-new.webp'), `${language}:${slug}:factory context`);
+      assert.ok(context.includes(`href="${routeFor(language, 'architecture:quality')}"`));
+      assert.equal((context.match(/<figure\b/g) || []).length, 2);
+      for (const [image] of context.matchAll(/<img\b[^>]*>/g)) assert.match(image, /alt="[^"]+"[^>]*loading="lazy"/);
+      assert.doesNotMatch(context, /all (?:products|items|SKUs) (?:are )?(?:certified|FSC|BPI)|BPI-certified bowl/i);
+      if (language !== 'en') assert.ok(context.includes(localizedEntry(language, `product:${slug}`).documentScope));
+    }
+  }
+  const unassigned = await readBuiltRoute('/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/');
+  assert.doesNotMatch(unassigned, /<section class="product-evidence"/);
+});
+
 test('mobile product specifications scroll inside a shrinkable content column', async () => {
   const html = await readBuiltRoute('/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/');
 
@@ -188,8 +254,8 @@ test('new category pages expose a labelled responsive product archive and buying
     'utf8',
   );
 
-  assert.match(html, /<section[^>]+class="content-shell category-archive"[^>]+aria-labelledby="category-title"/);
-  assert.match(html, /<h1 id="category-title"/);
+  assert.match(html, /<section[^>]+class="content-shell category-archive"[^>]+aria-label="Disposable Cutlery"/);
+  assert.match(html, /<h1>Disposable Cutlery<\/h1>/);
   assert.match(html, /Built for B2B sourcing/);
   assert.match(html, /href="\/products\/foodservice-supplies\/disposable-cutlery\/cpla-cutlery\/"/);
 });

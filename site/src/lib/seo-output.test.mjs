@@ -2,7 +2,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { GET } from '../pages/sitemap.xml.js';
-import { allLocalizedEntries, localizedRedirects, normalizeLocalizedRoute } from './localization.mjs';
+import { allLocalizedEntries, englishInventory, localizedEntry, localizedRedirects, normalizeLocalizedRoute, routeFor } from './localization.mjs';
+import { extractProductFacts } from './product-facts.mjs';
+import { contentText } from './content-routes.mjs';
 
 test('sitemap includes localized archives and excludes retired commerce pages', async () => {
   const xml = await (await GET()).text();
@@ -35,4 +37,28 @@ test('sitemap includes localized archives and excludes retired commerce pages', 
 test('robots advertises the production sitemap', async () => {
   const robots = await readFile(new URL('../../public/robots.txt', import.meta.url), 'utf8');
   assert.match(robots, /Sitemap: https:\/\/corn-comp\.com\/sitemap\.xml/);
+});
+
+test('visual product pages preserve all item identifiers, original schema images and contextual quote parameters', async () => {
+  for (const product of englishInventory().filter((item) => item.type === 'product')) {
+    const { itemCodes } = extractProductFacts(product);
+    for (const language of ['en', 'fr', 'es', 'ar']) {
+      const route = routeFor(language, product.contentKey);
+      const html = await readFile(new URL(`../../dist/${route.slice(1)}index.html`, import.meta.url), 'utf8');
+      const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
+      const schema = schemas.find((node) => node['@type'] === 'Product');
+      assert.equal(schema.url, `https://corn-comp.com${route}`);
+      assert.equal(schema.image, `https://corn-comp.com${product.featuredMedia.localPath}`);
+      assert.equal(schema.sku, itemCodes.length === 1 ? itemCodes[0] : undefined);
+      assert.deepEqual(schema.additionalProperty.map(({ value }) => value), itemCodes);
+      assert.equal(schema.hasCertification, undefined);
+      const quote = html.match(/<a class="button-primary" href="([^"]+\?product=[^"]+)"/)?.[1];
+      const url = new URL(contentText(quote), 'https://corn-comp.com');
+      assert.equal(url.pathname, routeFor(language, 'architecture:contact'));
+      assert.equal(url.searchParams.get('source'), route);
+      assert.equal(url.searchParams.get('sku'), itemCodes.length === 1 ? itemCodes[0] : '');
+      assert.ok(url.searchParams.get('category'));
+      assert.equal(url.searchParams.get('product'), contentText(localizedEntry(language, product.contentKey).title));
+    }
+  }
 });

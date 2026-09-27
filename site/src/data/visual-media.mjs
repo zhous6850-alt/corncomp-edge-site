@@ -139,6 +139,8 @@ export const VISUAL_MEDIA = [
 ];
 
 export const CONTENT_MEDIA = {
+  'product:kraft-paper-bowl': ['salad-bowls', 'factory-line'],
+  'product:bendy': ['drink-application', 'factory-line'],
   home: ['home-hero', 'products-overview', 'factory-line'],
   'architecture:products': ['products-overview', 'paper-cups', 'food-boxes', 'paper-straws'],
   'architecture:products/cups-bowls': ['paper-cups', 'salad-bowls'],

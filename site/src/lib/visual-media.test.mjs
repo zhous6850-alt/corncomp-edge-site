@@ -38,6 +38,17 @@ test('keeps optional media nullable', () => {
   assert.deepEqual(mediaListFor('not-a-content-key'), []);
 });
 
+test('only explicitly assigned products receive supplemental real context with four localized alt values', () => {
+  for (const language of ['en', 'fr', 'es', 'ar']) {
+    const bowl = mediaListFor('product:kraft-paper-bowl', language);
+    const straw = mediaListFor('product:bendy', language);
+    assert.deepEqual(bowl.map(({ key }) => key), ['salad-bowls', 'factory-line']);
+    assert.deepEqual(straw.map(({ evidence }) => evidence), ['application', 'factory']);
+    assert.ok([...bowl, ...straw].every(({ alt }) => alt?.trim()));
+  }
+  assert.deepEqual(mediaListFor('product:cardboard-open-wrap-cup'), []);
+});
+
 test('separates complete company certificates from supply-chain documents', () => {
   const company = companyCertificates();
   const suppliers = supplyChainDocuments();
