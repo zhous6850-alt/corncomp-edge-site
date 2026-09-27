@@ -1,10 +1,31 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { GET } from '../pages/sitemap.xml.js';
 import { allLocalizedEntries, englishInventory, localizedEntry, localizedRedirects, normalizeLocalizedRoute, routeFor } from './localization.mjs';
 import { extractProductFacts } from './product-facts.mjs';
 import { contentText } from './content-routes.mjs';
+
+test('all canonical pages retain production social URLs, organization email, schema arrays and consent-gated GA4', async () => {
+  for (const { route } of allLocalizedEntries()) {
+    const html = await readFile(new URL(`../../dist/${route.slice(1)}index.html`, import.meta.url), 'utf8');
+    const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
+    assert.equal(canonical, `https://corn-comp.com${normalizeLocalizedRoute(route)}`, route);
+    assert.doesNotMatch(html, /https?:\/\/(?:www\.)?corncomp\.com(?:[\/"<]|$)/, route);
+    const image = html.match(/property="og:image" content="([^"]+)"/)?.[1];
+    assert.equal(new URL(image).origin, 'https://corn-comp.com', route);
+    assert.equal(html.match(/name="twitter:image" content="([^"]+)"/)?.[1], image, route);
+    await access(new URL(`../../dist${new URL(image).pathname}`, import.meta.url));
+    const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
+    assert.ok(Array.isArray(schemas), route);
+    assert.equal(schemas.filter((node) => node['@type'] === 'Organization').length, 1, route);
+    assert.equal(schemas[0].email, 'inquiry@corn-comp.com', route);
+    assert.equal(schemas[0]['@id'], 'https://corn-comp.com/#organization', route);
+    assert.ok(html.includes('mailto:inquiry@corn-comp.com'), route);
+    assert.ok(html.includes('G-R1SHNYEBN8'), route);
+    assert.doesNotMatch(html, /<script[^>]+src="https:\/\/www\.googletagmanager\.com/, route);
+  }
+});
 
 test('all blog article identities, original schema images, canonical URLs and alternates survive the redesign', async () => {
   for (const post of englishInventory().filter(({ type }) => type === 'post')) {
@@ -28,6 +49,7 @@ test('all blog article identities, original schema images, canonical URLs and al
 
 test('sitemap includes localized archives and excludes retired commerce pages', async () => {
   const xml = await (await GET()).text();
+  assert.equal(await readFile(new URL('../../dist/sitemap.xml', import.meta.url), 'utf8'), xml, 'built sitemap matches canonical inventory');
   const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   const expectedRoutes = [
     ...allLocalizedEntries().map(({ route }) => normalizeLocalizedRoute(route)),

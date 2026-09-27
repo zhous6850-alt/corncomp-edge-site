@@ -23,16 +23,17 @@ function routeExists(route) {
   return existsSync(target) || existsSync(`${target}.html`) || existsSync(path.join(target, 'index.html'));
 }
 
-test('every rebuilt English internal link resolves directly without a redirect hop', () => {
+test('every rebuilt internal link and image resolves to a local output in every language', () => {
   const broken = [];
   for (const file of htmlFiles(dist)) {
-    const relative = path.relative(fileURLToPath(dist), fileURLToPath(file));
-    if (/^(fr|es|ar)[\\/]/.test(relative)) continue;
     const html = readFileSync(file, 'utf8');
     for (const match of html.matchAll(/href="(\/[^"]*)"/g)) {
       const route = match[1].replaceAll('&amp;', '&').split(/[?#]/)[0];
       if (!route || route === '/' || route === '/api/inquiry' || routeExists(route)) continue;
       broken.push(`${file.pathname}: ${route}`);
+    }
+    for (const [, source] of html.matchAll(/<img\b[^>]*src="([^"]+)"/g)) {
+      if (source.startsWith('/') && !routeExists(source.split(/[?#]/)[0])) broken.push(`${file.pathname}: image ${source}`);
     }
   }
   assert.deepEqual(broken, []);
@@ -53,6 +54,7 @@ test('ordinary built content links never target a Worker redirect source', () =>
 
 test('localized built-page internal links stay in the selected canonical language when synchronized', () => {
   const wrongLanguage = [];
+  const contentKeys = new Map();
   for (const file of htmlFiles(dist)) {
     const relative = path.relative(fileURLToPath(dist), fileURLToPath(file)).replaceAll('\\', '/');
     if (relative === '404.html') continue;
@@ -63,7 +65,8 @@ test('localized built-page internal links stay in the selected canonical languag
     for (const match of html.matchAll(/<a\b([^>]*)href="(\/[^"?#]*)(?:[?#][^"]*)?"[^>]*>/g)) {
       if (/\blang="(?:en|fr|es|ar)"/.test(match[0])) continue;
       const target = normalizeLocalizedRoute(match[2]);
-      const contentKey = contentKeyFromRoute(target);
+      if (!contentKeys.has(target)) contentKeys.set(target, contentKeyFromRoute(target));
+      const contentKey = contentKeys.get(target);
       if (!contentKey) continue;
       const expected = routeFor(language, contentKey);
       if (target !== expected) wrongLanguage.push(`${pageRoute}: ${target} -> ${expected}`);

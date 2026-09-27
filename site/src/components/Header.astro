@@ -79,6 +79,7 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
     const setOpen = (open) => {
       header.toggleAttribute('data-menu-open', open);
       button.setAttribute('aria-expanded', String(open));
+      if (!open) nav.querySelectorAll('details[open]').forEach((menu) => { menu.open = false; });
     };
 
     button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
@@ -87,8 +88,11 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
     });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
+        const mobileOpen = button.getAttribute('aria-expanded') === 'true' && button.getClientRects().length > 0;
+        const activeMenu = document.activeElement?.closest('details');
         setOpen(false);
-        button.focus();
+        if (mobileOpen) button.focus();
+        else if (activeMenu && nav.contains(activeMenu)) activeMenu.querySelector('summary')?.focus();
       }
     });
   })();

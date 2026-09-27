@@ -29,7 +29,7 @@
 
 * { box-sizing: border-box; }
 html { background: var(--corncomp-paper); color: var(--corncomp-ink); font-family: "Corncomp Sans", Arial, "Segoe UI", sans-serif; scroll-behavior: smooth; }
-body { margin: 0; overflow-x: hidden; background: var(--corncomp-paper); }
+body { margin: 0; overflow-wrap: anywhere; background: var(--corncomp-paper); }
 main { min-height: 60vh; }
 a { color: inherit; }
 img { display: block; max-width: 100%; height: auto; }
@@ -380,7 +380,8 @@ a.architecture-card:hover, a.architecture-card:focus-visible { border-color: #9a
 .contact-direct { margin-top: 34px; display: grid; gap: 8px; color: var(--corncomp-deep-green); font-weight: 800; }
 .inquiry-panel { padding: clamp(28px, 4vw, 48px); border: 1px solid var(--corncomp-line); background: #fff; box-shadow: var(--corncomp-shadow); }
 .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px; }
-.form-grid label { display: grid; gap: 8px; color: var(--corncomp-deep-green); font-size: .8rem; font-weight: 800; }
+.corncomp-inquiry-form > .form-grid { grid-column: 1 / -1; min-width: 0; }
+.form-grid label { min-width: 0; display: grid; gap: 8px; color: var(--corncomp-deep-green); font-size: .8rem; font-weight: 800; }
 .form-grid input, .form-grid textarea { width: 100%; padding: 13px 14px; border: 1px solid #cdd7ce; border-radius: 2px; background: #fffdf8; color: var(--corncomp-ink); }
 .form-grid input:focus, .form-grid textarea:focus { border-color: var(--corncomp-green); outline: 2px solid rgba(47,101,67,.18); }
 .form-wide { grid-column: 1 / -1; }
@@ -388,6 +389,7 @@ a.architecture-card:hover, a.architecture-card:focus-visible { border-color: #9a
 .honeypot { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 @media (max-width: 980px) {
+  .site-header nav { max-height: calc(100dvh - 72px); overflow-y: auto; }
   .product-lead { grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr); gap: 40px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .shop-directory { grid-template-columns: 1fr; }

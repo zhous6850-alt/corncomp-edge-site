@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict';
 import { readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
+import { validateVisualMedia } from './visual-media.mjs';
+import { VISUAL_MEDIA } from '../data/visual-media.mjs';
+import { COMPANY_CERTIFICATES } from '../data/certificates.mjs';
 import { SUPPORTED_LANGUAGES, allLocalizedEntries, englishInventory, localizedEntry, routeFor, uiFor } from './localization.mjs';
 import { assertFactParity } from './product-facts.mjs';
 import { canonicalUrl } from './routes.mjs';
@@ -43,6 +48,156 @@ function structuredNodes(html) {
 function visibleH1(html) {
   return contentText(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '');
 }
+
+test('visual validation identifies missing required paths, each missing locale, and incomplete company evidence', () => {
+  const publicDir = fileURLToPath(new URL('../../public/', import.meta.url));
+  const sample = VISUAL_MEDIA.find(({ required, evidence }) => required && evidence !== 'decorative');
+  const missingPath = '/media/missing-task-7-image.webp';
+  assert.ok(validateVisualMedia({ publicDir, media: [{ ...sample, src: missingPath }], assignments: {}, certificates: [] })
+    .some((error) => error.includes(sample.key) && error.includes(missingPath)));
+  for (const language of SUPPORTED_LANGUAGES) {
+    const alt = { ...sample.alt, [language]: '' };
+    assert.ok(validateVisualMedia({ publicDir, media: [{ ...sample, alt }], assignments: {}, certificates: [] })
+      .some((error) => error.includes(sample.key) && error.includes(language) && error.includes('alt')));
+  }
+  for (const field of ['holder', 'certificateNumber', 'scope', 'validUntil']) {
+    const certificate = { ...COMPANY_CERTIFICATES[0], [field]: '' };
+    assert.ok(validateVisualMedia({ publicDir, certificates: [certificate] })
+      .some((error) => error.includes(certificate.key) && error.includes(field)), field);
+  }
+});
+
+test('Resources closes on Escape and link activation without stealing desktop or outside focus', async () => {
+  const html = await readBuiltRoute('/');
+  const script = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(([, code]) => code)
+    .find((code) => code.includes("'[data-site-header]'"));
+  assert.ok(script, 'built navigation script');
+  const listeners = new Map();
+  let focused = 'resources-link';
+  let expanded = 'false';
+  let mobileOpen = false;
+  let mobile = false;
+  const summary = { focus() { focused = 'resources-summary'; } };
+  const resources = { open: true, querySelector: () => summary };
+  const button = {
+    addEventListener: (event, handler) => listeners.set(`button:${event}`, handler),
+    getAttribute: () => expanded,
+    getClientRects: () => mobile ? [{}] : [],
+    setAttribute: (_, value) => { expanded = value; },
+    focus() { focused = 'menu-toggle'; },
+  };
+  const nav = {
+    addEventListener: (event, handler) => listeners.set(`nav:${event}`, handler),
+    querySelectorAll: () => resources.open ? [resources] : [],
+    contains: (element) => element === resources,
+  };
+  const header = {
+    querySelector: (selector) => selector === '.menu-toggle' ? button : nav,
+    toggleAttribute: (_, value) => { mobileOpen = value; },
+  };
+  const document = {
+    activeElement: { closest: () => resources },
+    querySelector: () => header,
+    addEventListener: (event, handler) => listeners.set(`document:${event}`, handler),
+  };
+  vm.runInNewContext(script, { document });
+  listeners.get('document:keydown')({ key: 'Tab', preventDefault() { assert.fail('Tab must remain native'); } });
+  assert.equal(resources.open, true);
+  assert.equal(focused, 'resources-link');
+  listeners.get('document:keydown')({ key: 'Escape' });
+  assert.equal(resources.open, false, 'Escape closes the desktop disclosure');
+  assert.equal(focused, 'resources-summary', 'desktop focus returns to its visible disclosure');
+  document.activeElement = { closest: () => null };
+  focused = 'outside-link';
+  listeners.get('document:keydown')({ key: 'Escape' });
+  assert.equal(focused, 'outside-link', 'Escape outside navigation leaves focus alone');
+  mobile = true;
+  listeners.get('button:click')();
+  resources.open = true;
+  assert.equal(mobileOpen, true);
+  listeners.get('document:keydown')({ key: 'Escape' });
+  assert.equal(resources.open, false);
+  assert.equal(expanded, 'false');
+  assert.equal(focused, 'menu-toggle');
+  listeners.get('button:click')();
+  resources.open = true;
+  listeners.get('nav:click')({ target: { closest: () => ({}) } });
+  assert.equal(mobileOpen, false);
+  assert.equal(resources.open, false, 'following Guides or Blog also resets its disclosure');
+  listeners.get('button:click')();
+  resources.open = true;
+  document.activeElement = { closest: () => resources };
+  mobile = false;
+  listeners.get('document:keydown')({ key: 'Escape' });
+  assert.equal(focused, 'resources-summary', 'resizing to desktop must not focus the hidden toggle');
+});
+
+test('localized long titles and inquiry grids can shrink without clipping the page', async () => {
+  const html = await readBuiltRoute(routeFor('ar', 'architecture:contact'));
+  const css = html.match(/<style>([\s\S]*?)<\/style>/)?.[1] || '';
+  const missing = [
+    ['inherited wrapping for long localized text', /^body\s*\{[^}]*overflow-wrap:\s*anywhere;/m],
+    ['full-width shrinkable inquiry field grid', /\.corncomp-inquiry-form\s*>\s*\.form-grid\s*\{[^}]*grid-column:\s*1\s*\/\s*-1;[^}]*min-width:\s*0;/],
+    ['shrinkable form labels', /\.form-grid label\s*\{[^}]*min-width:\s*0;/],
+    ['scrollable mobile navigation within the viewport', /@media\s*\(max-width:\s*980px\)\s*\{[^}]*\.site-header nav\s*\{[^}]*max-height:\s*calc\(100dvh - 72px\);[^}]*overflow-y:\s*auto;/],
+  ].filter(([, rule]) => !rule.test(css)).map(([name]) => name);
+  if (/^body\s*\{[^}]*overflow-x:\s*hidden/m.test(css)) missing.push('page must not hide overflowing content');
+  assert.deepEqual(missing, []);
+});
+
+test('redesigned media reserves dimensions and loading priority while optional media stays absent', async () => {
+  let count = 0;
+  for (const file of await builtHtmlFiles()) {
+    const html = await readFile(file, 'utf8');
+    for (const [image] of html.matchAll(/<img\b[^>]*style="[^"]*object-fit:[^>]*>/g)) {
+      count += 1;
+      assert.match(image, /\bwidth="[1-9]\d*"/, file.pathname);
+      assert.match(image, /\bheight="[1-9]\d*"/, file.pathname);
+      assert.match(image, /\bloading="(?:eager|lazy)"/, file.pathname);
+      assert.match(image, /\bdecoding="async"/, file.pathname);
+      if (image.includes('loading="eager"')) assert.match(image, /fetchpriority="high"/, file.pathname);
+      else assert.doesNotMatch(image, /fetchpriority="high"/, file.pathname);
+    }
+  }
+  assert.ok(count > 100, 'exercise the rendered shared media across page families');
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'architecture:quality'));
+    const hero = html.match(/<header class="page-hero"[\s\S]*?<\/header>/)?.[0];
+    assert.ok(hero);
+    assert.doesNotMatch(hero, /<img\b/, `${language}: optional quality hero omitted`);
+  }
+});
+
+test('all localized homepage product and factory images reserve their actual source dimensions', async () => {
+  const dimensions = [
+    ['261--2026-07-25-100620.png', 348, 493],
+    ['164--2026-07-14-133106.png', 655, 715],
+    ['107--2026-07-14-101008.png', 520, 364],
+    ['be53f20b-facility-showcase-1.jpg', 2560, 1746],
+  ];
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+    const images = [...html.matchAll(/<img\b[^>]*>/g)].map(([image]) => image);
+    for (const [source, width, height] of dimensions) {
+      const matching = images.filter((image) => image.includes(source));
+      assert.equal(matching.length, 1, `${language}: ${source}`);
+      const [image] = matching;
+      assert.ok(image.includes(`width="${width}"`), `${language}: ${source} width`);
+      assert.ok(image.includes(`height="${height}"`), `${language}: ${source} height`);
+      assert.match(image, /\bloading="lazy"/, language);
+    }
+  }
+});
+
+test('RTL, reduced motion and visible keyboard focus hooks survive in built pages', async () => {
+  const html = await readBuiltRoute(routeFor('ar', 'architecture:resources'));
+  assert.match(html, /<html lang="ar" dir="rtl">/);
+  assert.match(html, /\[dir="rtl"\] \.page-hero--split\s*\{\s*direction:\s*rtl;/);
+  assert.match(html, /\[dir="rtl"\] \.page-hero__media img[^}]*transform:\s*none;/);
+  assert.doesNotMatch(html, /scaleX\(\s*-1\s*\)|row-reverse/);
+  assert.match(html, /:focus-visible\s*\{[^}]*outline:\s*3px solid/);
+  assert.match(html, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?scroll-behavior:\s*auto\s*!important;[^}]*transition-duration:\s*\.01ms\s*!important;[^}]*animation-duration:\s*\.01ms\s*!important;/);
+});
 
 test('the built homepage includes the global site styles', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
