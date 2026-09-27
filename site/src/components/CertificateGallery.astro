@@ -1,0 +1,49 @@
+---
+import ResponsiveMedia from './ResponsiveMedia.astro';
+
+const { company = [], supplyChain = [], language = 'en' } = Astro.props;
+const labels = {
+  en: { company: 'Corncomp company certificates', supply: 'Supply-chain and material documents', holder: 'Holder', number: 'Certificate number', standard: 'Standard', scope: 'Scope', validity: 'Valid until', document: 'View original document' },
+  fr: { company: 'Certificats de l’entreprise Corncomp', supply: 'Documents de la chaîne d’approvisionnement et des matériaux', holder: 'Titulaire', number: 'Numéro du certificat', standard: 'Norme', scope: 'Portée', validity: 'Valable jusqu’au', document: 'Voir le document original' },
+  es: { company: 'Certificados de la empresa Corncomp', supply: 'Documentos de la cadena de suministro y materiales', holder: 'Titular', number: 'Número de certificado', standard: 'Norma', scope: 'Alcance', validity: 'Válido hasta', document: 'Ver documento original' },
+  ar: { company: 'شهادات شركة كورنكومب', supply: 'وثائق سلسلة التوريد والمواد', holder: 'الجهة الحاصلة', number: 'رقم الشهادة', standard: 'المعيار', scope: 'النطاق', validity: 'صالحة حتى', document: 'عرض الوثيقة الأصلية' },
+}[language];
+---
+<div class="certificate-gallery">
+  {company.length > 0 && <section class="company-certificates" aria-label={labels.company}>
+    <h2>{labels.company}</h2>
+    <div class="certificate-gallery__grid">
+      {company.map((record) => <article class="certificate-card">
+        {record.image && <a class="certificate-card__image" href={record.image.src} aria-label={`${labels.document}: ${record.title}`}><ResponsiveMedia media={record.image} /></a>}
+        <div class="certificate-card__body">
+          <h3>{record.title}</h3>
+          <dl>
+            <div><dt>{labels.holder}</dt><dd>{record.holder}</dd></div>
+            <div><dt>{labels.number}</dt><dd>{record.certificateNumber}</dd></div>
+            <div><dt>{labels.standard}</dt><dd>{record.standard}</dd></div>
+            <div><dt>{labels.scope}</dt><dd>{record.scope}</dd></div>
+            <div><dt>{labels.validity}</dt><dd><time datetime={record.validUntil}>{record.validUntil}</time></dd></div>
+          </dl>
+        </div>
+      </article>)}
+    </div>
+  </section>}
+  {supplyChain.length > 0 && <section class="supply-chain-documents" aria-label={labels.supply}>
+    <h2>{labels.supply}</h2>
+    <div class="certificate-gallery__grid">
+      {supplyChain.map((record) => <article class="certificate-card certificate-card--document">
+        <div class="certificate-card__body">
+          <h3>{record.title}</h3>
+          <dl>
+            <div><dt>{labels.holder}</dt><dd>{record.holder}</dd></div>
+            <div><dt>{labels.number}</dt><dd>{record.certificateNumber}</dd></div>
+            <div><dt>{labels.standard}</dt><dd>{record.standard}</dd></div>
+            <div><dt>{labels.scope}</dt><dd>{record.scope}</dd></div>
+            <div><dt>{labels.validity}</dt><dd><time datetime={record.validUntil}>{record.validUntil}</time></dd></div>
+          </dl>
+          {record.documentUrl && <a class="text-link" href={record.documentUrl}>{labels.document}</a>}
+        </div>
+      </article>)}
+    </div>
+  </section>}
+</div>

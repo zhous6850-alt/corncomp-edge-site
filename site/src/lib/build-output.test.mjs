@@ -203,6 +203,45 @@ test('blog articles publish article, breadcrumb and social metadata', async () =
   assert.match(html, /"publisher":\{"@id":"https:\/\/corn-comp\.com\/#organization"\}/);
 });
 
+test('the About hero reserves image space and prioritizes its real factory image', async () => {
+  const html = await readBuiltRoute('/about/');
+  const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
+  const image = hero.match(/<img\b[^>]*>/)?.[0] || '';
+  assert.match(image, /\bwidth="\d+"/);
+  assert.match(image, /\bheight="\d+"/);
+  assert.match(image, /\bloading="eager"/);
+  assert.match(image, /alt="[^"]+"/);
+});
+
+test('the Quality page separates certificate evidence from material documents', async () => {
+  const html = await readBuiltRoute('/quality/');
+  const company = html.match(/<section class="company-certificates"[\s\S]*?<\/section>/)?.[0] || '';
+  const supplyChain = html.match(/<section class="supply-chain-documents"[\s\S]*?<\/section>/)?.[0] || '';
+  assert.match(company, /Ningbo Corncomp Tech Co., Ltd\./);
+  assert.match(company, /01526Q60104R001/);
+  assert.match(company, /Printed paper straws with maximum grammage 352 g\/m²/);
+  assert.match(company, /2027-09-30/);
+  const image = company.match(/<img\b[^>]*>/)?.[0] || '';
+  assert.match(image, /\bwidth="\d+"/);
+  assert.match(image, /\bheight="\d+"/);
+  assert.match(image, /\bloading="lazy"/);
+  assert.match(supplyChain, /Hangzhou POLYFUL Advanced Material Co., Ltd\./);
+  assert.match(supplyChain, /Ningbo Millionpack Co., Ltd\./);
+  assert.doesNotMatch(company, /Hangzhou POLYFUL|Ningbo Millionpack/);
+  assert.match(supplyChain, /href="\/documents\/certificates\/din-straw-material-7w0517\.pdf"/);
+});
+
+test('the Quality page uses lazy decorative cards and omits unassigned media', async () => {
+  const html = await readBuiltRoute('/quality/');
+  const guideCard = html.match(/<article class="[^"]*editorial-card[^"]*"[\s\S]*?<\/article>/)?.[0] || '';
+  const image = guideCard.match(/<img\b[^>]*>/)?.[0] || '';
+  assert.match(image, /\balt(?:="")?(?=\s|>)/);
+  assert.match(image, /\bloading="lazy"/);
+  const documentCard = [...html.matchAll(/<article class="[^"]*editorial-card[^"]*"[\s\S]*?<\/article>/g)].map(([card]) => card).find((card) => card.includes('Request Documents')) || '';
+  assert.match(documentCard, /Request Documents/);
+  assert.doesNotMatch(documentCard, /<img\b/);
+});
+
 test('buyer guides publish reviewed evidence tables and official sources', async () => {
   const guides = [
     ['paper-cup-sizes', 'Cup size specification checklist'],

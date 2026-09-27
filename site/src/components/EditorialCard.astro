@@ -1,0 +1,15 @@
+---
+import ResponsiveMedia from './ResponsiveMedia.astro';
+
+const { title, text, href, media = null, label } = Astro.props;
+---
+<article class="editorial-card">
+  <a href={href}>
+    {media && <ResponsiveMedia media={media} class="editorial-card__image" />}
+    <div class="editorial-card__body">
+      {label && <p class="eyebrow">{label}</p>}
+      <h2>{title}</h2>
+      {text && <p>{text}</p>}
+    </div>
+  </a>
+</article>

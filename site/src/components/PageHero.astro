@@ -1,0 +1,16 @@
+---
+import ResponsiveMedia from './ResponsiveMedia.astro';
+
+const { eyebrow, title, intro, media = null, actions = [], compact = false } = Astro.props;
+---
+<header class:list={['page-hero', { 'page-hero--compact': compact, 'page-hero--split': media }]}>
+  <div class="page-hero__copy">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    {intro && <p class="page-hero__intro">{intro}</p>}
+    {actions.length > 0 && <div class="page-hero__actions">
+      {actions.map((action) => <a class={action.primary ? 'button-primary' : 'text-link'} href={action.href}>{action.label}</a>)}
+    </div>}
+  </div>
+  {media && <div class="page-hero__media"><ResponsiveMedia media={media} eager /></div>}
+</header>

@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+
+const { media, eager = false, class: className = '' } = Astro.props;
+---
+{media && <Image
+  src={media.src}
+  width={media.width}
+  height={media.height}
+  alt={media.evidence === 'decorative' ? '' : media.alt}
+  loading={eager ? 'eager' : 'lazy'}
+  decoding="async"
+  fetchpriority={eager ? 'high' : undefined}
+  class={className}
+  style={`object-fit: ${media.fit}; object-position: ${media.position};`}
+/>}
