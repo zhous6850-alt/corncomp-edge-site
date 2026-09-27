@@ -152,6 +152,16 @@ const page = (route, kind, title, description, intro, sections = standardSection
 
 const link = (title, route, text) => ({ title, route, text });
 
+// Presentation aliases reuse verified imagery without changing the content or routes.
+const architectureMediaAliases = {
+  '/custom-packaging/custom-printed-paper-cups/': 'architecture:products/cups-bowls/paper-cups',
+  '/custom-packaging/custom-paper-straws/': 'architecture:products/foodservice-supplies/paper-straws',
+  '/resources/guides/paper-cup-sizes/': 'architecture:products/cups-bowls/paper-cups',
+  '/resources/guides/custom-printed-paper-cups/': 'architecture:products/cups-bowls/paper-cups',
+};
+
+export const mediaKeyForArchitecture = (page) => architectureMediaAliases[page.route] || `architecture:${page.route.replace(/^\/+|\/+$/g, '')}`;
+
 export const ARCHITECTURE_PAGES = [
   page('/products/', 'products', PAGE_COPY.products.title, PAGE_COPY.products.description, PAGE_COPY.products.intro),
   ...PRODUCT_GROUPS.map((group) => page(group.route, 'product-group', group.title, group.description, group.description)),

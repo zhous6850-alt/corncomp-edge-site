@@ -72,3 +72,16 @@ test('rejects product media assigned to a company certificate', () => {
   const errors = validateVisualMedia({ publicDir, assignments });
   assert.ok(errors.some((error) => error.includes('iso-9001') && error.includes('certificate image')));
 });
+test('Resources latest articles resolve accurately classified real evidence in every language', () => {
+  for (const language of ['en', 'fr', 'es', 'ar']) {
+    const legislation = mediaFor('post:us-state-plastic-packaging-laws-explained', language);
+    const verification = mediaFor('post:how-to-verify-supplier-sustainability-certifications', language);
+    assert.ok(legislation, language);
+    assert.match(legislation.src, /602-us-capitol-building/);
+    assert.equal(legislation.width, 1080);
+    assert.equal(legislation.height, 955);
+    assert.equal(legislation.evidence, 'decorative');
+    assert.equal(verification?.evidence, 'certificate');
+    assert.ok(verification.alt.trim());
+  }
+});

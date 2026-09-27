@@ -106,6 +106,12 @@ export const VISUAL_MEDIA = [
   wp('blog-eu-regulation', '618-eu-flag-at-the-european-parliament-brussels.jpg', 1080, 632, 'decorative', {
     en: '', fr: '', es: '', ar: '',
   }, { use: 'EU packaging regulation article illustration', restriction: 'Editorial context only.' }),
+  wp('blog-us-legislation', '602-us-capitol-building---state-and-federal-packaging-legislation.jpg', 1080, 955, 'decorative', {
+    en: 'US Capitol building illustrating the context of packaging legislation',
+    fr: 'Capitole des États-Unis illustrant le contexte de la législation sur les emballages',
+    es: 'Capitolio de Estados Unidos como contexto de la legislación sobre envases',
+    ar: 'مبنى الكابيتول الأمريكي لتوضيح سياق تشريعات التغليف',
+  }, { use: 'US packaging legislation article illustration', restriction: 'Editorial context only; the image does not substantiate a legal requirement.' }),
   wp('certificate-iso', '289-certificate-1.webp', 1080, 1567, 'certificate', {
     en: 'Corncomp ISO 9001:2015 certificate, number 01526Q60104R001',
     fr: 'Certificat ISO 9001:2015 de Corncomp, numéro 01526Q60104R001',
@@ -162,4 +168,6 @@ export const CONTENT_MEDIA = {
   'architecture:resources/guides/food-packaging-certifications': ['guide-certification'],
   'architecture:contact': ['factory-line'],
   'post:eu-single-use-plastics-directive-explained': ['blog-eu-regulation'],
+  'post:us-state-plastic-packaging-laws-explained': ['blog-us-legislation'],
+  'post:how-to-verify-supplier-sustainability-certifications': ['certificate-iso'],
 };

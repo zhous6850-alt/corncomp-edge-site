@@ -198,7 +198,8 @@ test('the products hub exposes the three approved product groups', async () => {
   const html = await readFile(new URL('../../dist/products/index.html', import.meta.url), 'utf8');
 
   assert.match(html, /Paper Food Packaging for Wholesale/);
-  assert.equal((html.match(/class="architecture-card product-group-card"/g) || []).length, 3);
+  const groups = html.match(/<div class="architecture-grid product-group-grid">([\s\S]*?)<\/div><section/)?.[1] || '';
+  assert.equal((groups.match(/class="editorial-card"/g) || []).length, 3);
   for (const route of [
     '/products/cups-bowls/',
     '/products/food-boxes-containers/',
@@ -225,6 +226,65 @@ test('blog articles publish article, breadcrumb and social metadata', async () =
   assert.match(html, /"@type":"BreadcrumbList"/);
   assert.match(html, /"mainEntityOfPage":"https:\/\/corn-comp\.com\/eu-single-use-plastics-directive-explained\/"/);
   assert.match(html, /"publisher":\{"@id":"https:\/\/corn-comp\.com\/#organization"\}/);
+});
+
+test('buyer and company page families render assigned media in every language', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    for (const key of ['products', 'custom-packaging', 'applications', 'resources', 'about']) {
+      const html = await readBuiltRoute(routeFor(language, `architecture:${key}`));
+      const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
+      assert.match(hero, /<img\b[^>]*loading="eager"/, `${language}:${key} hero`);
+      assert.match(html, /class="editorial-card"[\s\S]*?<img\b[^>]*loading="lazy"/, `${language}:${key} cards`);
+    }
+  }
+});
+
+test('Quality places its full-width title before certificates, factory evidence, and separate material documents', async () => {
+  const html = await readBuiltRoute('/quality/');
+  const heading = html.indexOf('<h1>');
+  const company = html.indexOf('<section class="company-certificates"');
+  const factory = html.indexOf('<section class="quality-factory-evidence"');
+  const supply = html.indexOf('<section class="supply-chain-documents"');
+  assert.ok(heading > 0 && company > heading && factory > company && supply > factory);
+  const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
+  assert.doesNotMatch(hero, /page-hero--split|<img\b/);
+  assert.match(html, /\.certificate-gallery__grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,/);
+});
+
+test('Resources features one guide and links the remaining guides and three localized articles', async () => {
+  const labels = { en: ['Featured guide', 'Latest articles'], fr: ['Guide à la une', 'Articles récents'], es: ['Guía destacada', 'Artículos recientes'], ar: ['الدليل المميز', 'أحدث المقالات'] };
+  for (const [language, [featured, latest]] of Object.entries(labels)) {
+    const html = await readBuiltRoute(routeFor(language, 'architecture:resources'));
+    assert.equal((html.match(/class="featured-guide"/g) || []).length, 1);
+    assert.ok(html.includes(featured) && html.includes(latest), language);
+    const articles = html.match(/<section class="latest-articles"[\s\S]*?<\/section>/)?.[0] || '';
+    assert.equal((articles.match(/class="editorial-card"/g) || []).length, 3);
+    for (const slug of ['us-state-plastic-packaging-laws-explained', 'how-to-verify-supplier-sustainability-certifications', 'eu-single-use-plastics-directive-explained']) {
+      assert.ok(articles.includes(`href="${routeFor(language, `post:${slug}`)}"`), `${language}:${slug}`);
+    }
+    for (const slug of ['paper-cup-sizes', 'custom-printed-paper-cups', 'food-packaging-certifications']) {
+      assert.ok(html.includes(`href="${routeFor(language, `architecture:resources/guides/${slug}`)}"`));
+    }
+  }
+});
+
+test('About alternates real evidence and Contact keeps one image beside the complete inquiry contract', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    const about = await readBuiltRoute(routeFor(language, 'architecture:about'));
+    assert.match(about, /class="evidence-split evidence-split--reverse"/);
+    const contact = await readBuiltRoute(routeFor(language, 'architecture:contact'));
+    const panel = contact.match(/<section class="content-shell architecture-page contact-page">[\s\S]*?<\/section>/)?.[0] || '';
+    assert.equal((panel.match(/<img\b/g) || []).length, 1, language);
+    assert.match(panel, /class="contact-support"/);
+    assert.match(panel, /<form[^>]*action="\/api\/inquiry" method="post"/);
+    for (const name of ['name', 'email', 'company', 'country', 'phone', 'quantity', 'productName', 'productSku', 'category', 'message', 'sourcePath', 'website']) {
+      assert.ok(panel.includes(`name="${name}"`), `${language}:${name}`);
+    }
+    assert.match(panel, /type="hidden" name="sourcePath"/);
+    assert.match(panel, /params.get\('source'\) \|\| document.referrer \|\| window.location.pathname/);
+    assert.ok(panel.includes('inquiry@corn-comp.com'));
+    if (language === 'ar') assert.match(contact, /<html lang="ar" dir="rtl">/);
+  }
 });
 
 test('the About hero reserves image space and prioritizes its real factory image', async () => {

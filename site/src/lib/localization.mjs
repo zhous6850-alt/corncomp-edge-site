@@ -7,6 +7,15 @@ import { ARCHITECTURE_PAGES, PRODUCT_CATEGORY_BY_SLUG, canonicalProductRoute } f
 
 export const SUPPORTED_LANGUAGES = ['en', 'fr', 'es', 'ar'];
 
+const architectureLabels = {
+  en: { featuredGuide: 'Featured guide', remainingGuides: 'More buyer guides', latestArticles: 'Latest articles', allArticles: 'View all articles', factoryEvidence: 'Factory and production context' },
+  fr: { featuredGuide: 'Guide à la une', remainingGuides: 'Autres guides d’achat', latestArticles: 'Articles récents', allArticles: 'Voir tous les articles', factoryEvidence: 'Usine et contexte de production' },
+  es: { featuredGuide: 'Guía destacada', remainingGuides: 'Más guías de compra', latestArticles: 'Artículos recientes', allArticles: 'Ver todos los artículos', factoryEvidence: 'Fábrica y contexto de producción' },
+  ar: { featuredGuide: 'الدليل المميز', remainingGuides: 'المزيد من أدلة الشراء', latestArticles: 'أحدث المقالات', allArticles: 'عرض جميع المقالات', factoryEvidence: 'المصنع وسياق الإنتاج' },
+};
+
+export const architectureLabelsFor = (language) => architectureLabels[language];
+
 export const ENGLISH_HOME = {
   contentKey: 'home',
   type: 'home',

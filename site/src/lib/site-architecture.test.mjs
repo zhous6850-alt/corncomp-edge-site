@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import records from '../data/records.json' with { type: 'json' };
+import * as architecture from './site-architecture.mjs';
+import { mediaFor } from './visual-media.mjs';
 import {
   ARCHITECTURE_PAGES,
   DUPLICATE_PRODUCT_ALIASES,
@@ -43,4 +45,18 @@ test('includes the approved custom, application, resource, trust, and contact pa
   const routes = new Set(ARCHITECTURE_PAGES.map((page) => page.route));
 
   for (const route of ['/products/', '/custom-packaging/', '/custom-packaging/custom-printed-paper-cups/', '/custom-packaging/custom-paper-straws/', '/applications/', '/applications/takeaway-packaging/', '/applications/restaurant-packaging/', '/applications/fast-food-packaging/', '/applications/ice-cream-dessert-packaging/', '/resources/', '/resources/guides/paper-cup-sizes/', '/resources/guides/custom-printed-paper-cups/', '/resources/guides/food-packaging-certifications/', '/about/', '/about/factory/', '/quality/', '/contact/']) assert.ok(routes.has(route), `Missing ${route}`);
+});
+
+test('visual page aliases resolve real cup and straw media without changing content routes', () => {
+  for (const [route, image] of [
+    ['/custom-packaging/custom-printed-paper-cups/', 'paper-cups'],
+    ['/custom-packaging/custom-paper-straws/', 'paper-straws'],
+    ['/resources/guides/paper-cup-sizes/', 'paper-cups'],
+    ['/resources/guides/custom-printed-paper-cups/', 'paper-cups'],
+  ]) {
+    assert.equal(typeof architecture.mediaKeyForArchitecture, 'function');
+    const page = ARCHITECTURE_PAGES.find((item) => item.route === route);
+    assert.equal(mediaFor(architecture.mediaKeyForArchitecture(page)).key, image);
+    assert.equal(page.route, route);
+  }
 });

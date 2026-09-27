@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import * as visualLocalization from './localization.mjs';
 import { documentDirection } from './routes.mjs';
 import { ARCHITECTURE_PAGES } from './site-architecture.mjs';
 import { extractProductFacts, localizedProductBody, assertFactParity, factTokens } from './product-facts.mjs';
@@ -604,6 +605,17 @@ test('final synchronized locales have current English hashes and dated editorial
       if (source.type === 'post' || source.kind === 'guide') {
         assert.match(entry.dateModified || '', /^\d{4}-\d{2}-\d{2}$/, `${language}:${source.contentKey}:dateModified`);
       }
+    }
+  }
+});
+test('architecture editorial labels are explicitly localized for all four languages', () => {
+  assert.equal(typeof visualLocalization.architectureLabelsFor, 'function');
+  const english = visualLocalization.architectureLabelsFor('en');
+  for (const language of ['fr', 'es', 'ar']) {
+    const labels = visualLocalization.architectureLabelsFor(language);
+    for (const key of ['featuredGuide', 'remainingGuides', 'latestArticles', 'allArticles', 'factoryEvidence']) {
+      assert.ok(labels[key]?.trim(), `${language}:${key}`);
+      assert.notEqual(labels[key], english[key], `${language}:${key}`);
     }
   }
 });
