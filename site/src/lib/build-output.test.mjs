@@ -242,6 +242,15 @@ test('the Quality page uses lazy decorative cards and omits unassigned media', a
   assert.doesNotMatch(documentCard, /<img\b/);
 });
 
+test('the Quality editorial cards retain two desktop columns', async () => {
+  const html = await readBuiltRoute('/quality/');
+  const css = await readFile(new URL('../styles/global.css', import.meta.url), 'utf8');
+  assert.match(html, /class="architecture-grid linked-page-grid editorial-card-grid"/);
+  const baseRule = css.indexOf('.architecture-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));');
+  const cardRule = css.indexOf('.editorial-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr));');
+  assert.ok(baseRule >= 0 && cardRule > baseRule, 'the two-column card rule must follow the equally specific architecture grid rule');
+});
+
 test('buyer guides publish reviewed evidence tables and official sources', async () => {
   const guides = [
     ['paper-cup-sizes', 'Cup size specification checklist'],
