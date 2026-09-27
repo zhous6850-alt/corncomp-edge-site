@@ -1,4 +1,4 @@
-import { alternateGroup, contentKeyFromRoute, normalizeLocalizedRoute } from './localization.mjs';
+import { alternateGroup, contentKeyFromRoute, normalizeLocalizedRoute, routeFor } from './localization.mjs';
 
 export const languageHomes = {
   en: '/',
@@ -20,6 +20,20 @@ const navigation = {
   es: { home: ['Inicio', languageHomes.es], about: ['Sobre nosotros', '/es/sobre-corncomp-fabricante-de-envases-de-papel-biodegradables/'], product: ['Productos', '/es/productos/'], certifications: ['Certificaciones', '/es/certificaciones-de-corncomp/'], cases: ['Casos de estudio', '/es/la-confianza-de-las-marcas-globales-casos-de-estudio-de-corncomp/'], blog: ['Blog', '/es/blog/'], faq: ['Preguntas frecuentes', '/es/preguntas-frecuentes-corncomp/'], contact: ['Contacto', '/es/contactenos/'] },
   ar: { home: ['الرئيسية', languageHomes.ar], about: ['من نحن', '/ar/%d8%b9%d9%86-corncomp-%d8%a7%d9%84%d8%b4%d8%b1%d9%83%d8%a9/'], product: ['المنتجات', '/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D9%84%D9%84%D8%AC%D9%85%D9%84%D8%A9-%D9%88%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%B7%D9%84%D8%A8/'], certifications: ['الشهادات', '/ar/%d8%b4%d9%87%d8%a7%d8%af%d8%a7%d8%aa-corncomp/'], cases: ['دراسات الحالة', '/ar/%d8%af%d8%b1%d8%a7%d8%b3%d8%a7%d8%aa-%d8%ad%d8%a7%d9%84%d8%a9-corncomp/'], blog: ['المدونة', '/ar/blog/'], faq: ['الأسئلة الشائعة', '/ar/%d8%a7%d9%84%d8%a3%d8%b3%d8%a6%d9%84%d8%a9-%d8%a7%d9%84%d8%b4%d8%a7%d8%a6%d8%b9%d8%a9-corncomp/'], contact: ['اتصل بنا', '/ar/%d8%a7%d8%aa%d8%b5%d9%84-%d8%a8%d9%86%d8%a7/'] },
 };
+
+const resourceLabels = {
+  en: ['Resources', 'Guides'],
+  fr: ['Ressources', 'Guides'],
+  es: ['Recursos', 'Guías'],
+  ar: ['الموارد', 'الأدلة'],
+};
+
+for (const [language, [label, guidesLabel]] of Object.entries(resourceLabels)) {
+  const route = routeFor(language, 'architecture:resources');
+  const resources = navigation[language].resources || [label, route];
+  resources.children = [[guidesLabel, route], navigation[language].blog];
+  navigation[language].resources = resources;
+}
 
 export const categoryIdsByLanguage = {
   en: [35, 20, 25, 52, 60, 59, 61, 64, 45],

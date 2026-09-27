@@ -71,6 +71,30 @@ test('the global navigation exposes every migrated primary section and language 
   assert.match(html, /class="[^\"]*product-menu[^\"]*"/);
 });
 
+test('Resources is a keyboard-operable disclosure with localized Guides and Blog links', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+    const header = html.match(/<header\b[^>]*>[\s\S]*?<\/header>/)?.[0] || '';
+    const resources = header.match(/<details class="resources-menu"[^>]*>[\s\S]*?<\/details>/)?.[0] || '';
+    const guidesRoute = routeFor(language, 'architecture:resources');
+    const blogRoute = language === 'en' ? '/blog/' : `/${language}/blog/`;
+
+    assert.match(resources, /<summary\b[^>]*>[^<]+<\/summary>/, `${language}: focusable disclosure summary`);
+    assert.match(resources, new RegExp(`href="${escapeRegExp(guidesRoute)}"`), `${language}: Guides link`);
+    assert.match(resources, new RegExp(`href="${escapeRegExp(blogRoute)}"`), `${language}: Blog link`);
+  }
+});
+
+test('the footer includes a direct localized Blog archive link', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+    const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0] || '';
+    const blogRoute = language === 'en' ? '/blog/' : `/${language}/blog/`;
+
+    assert.match(footer, new RegExp(`<a href="${escapeRegExp(blogRoute)}"[^>]*>`), `${language}: direct Blog link`);
+  }
+});
+
 test('the footer preserves company contact, social, copyright and floating inquiry actions', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
 

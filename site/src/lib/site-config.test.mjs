@@ -14,6 +14,21 @@ test('known page groups expose four hreflang alternatives', () => {
   assert.deepEqual(pageAlternates('/product/paper-lid/'), []);
 });
 
+test('Resources exposes exact localized Guides and Blog destinations', () => {
+  const expected = {
+    en: { label: 'Resources', guides: ['Guides', '/resources/'], blog: ['Blog', '/blog/'] },
+    fr: { label: 'Ressources', guides: ['Guides', '/fr/ressources/'], blog: ['Blog', '/fr/blog/'] },
+    es: { label: 'Recursos', guides: ['Guías', '/es/recursos/'], blog: ['Blog', '/es/blog/'] },
+    ar: { label: 'الموارد', guides: ['الأدلة', '/ar/%D9%85%D9%88%D8%A7%D8%B1%D8%AF-%D8%B4%D8%B1%D8%A7%D8%A1-%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/'], blog: ['المدونة', '/ar/blog/'] },
+  };
+
+  for (const [language, { label, guides, blog }] of Object.entries(expected)) {
+    const resources = navigationFor(language).resources;
+    assert.equal(resources[0], label, `${language}: Resources label`);
+    assert.deepEqual(resources.children, [guides, blog], `${language}: submenu destinations`);
+  }
+});
+
 test('blog archives share one reciprocal hreflang identity', () => {
   const expected = [
     { language: 'en', route: '/blog/' },

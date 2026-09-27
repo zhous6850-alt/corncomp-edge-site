@@ -39,6 +39,7 @@ const footerLinks = [
     </div>
     <nav aria-label={ui.footerNavigationLabel}>
       {footerLinks.map(({ label, route }) => <a href={route}>{label}</a>)}
+      <a href={nav.blog[1]}>{nav.blog[0]}</a>
     </nav>
   </div>
   <div class="container footer-bottom">
