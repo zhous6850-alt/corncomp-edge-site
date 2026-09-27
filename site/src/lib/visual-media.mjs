@@ -39,12 +39,12 @@ export function validateVisualMedia({
   certificates = [...COMPANY_CERTIFICATES, ...SUPPLY_CHAIN_DOCUMENTS],
 }) {
   const errors = [];
-  const known = new Set();
+  const known = new Map();
   const assetExists = (url) => url?.startsWith('/') && !url.includes('..') && existsSync(join(publicDir, url.slice(1)));
 
   for (const item of media) {
     if (known.has(item.key)) errors.push(`${item.key}: duplicate media key`);
-    known.add(item.key);
+    known.set(item.key, item.evidence);
     if (!EVIDENCE.has(item.evidence)) errors.push(`${item.key}: invalid evidence value`);
     if (!(item.width > 0 && item.height > 0)) errors.push(`${item.key}: invalid image dimensions`);
     for (const language of LANGUAGES) {
@@ -69,7 +69,7 @@ export function validateVisualMedia({
       }
     }
     if (record.group === 'company') {
-      if (!assignments[record.imageKey]?.some((key) => known.has(key))) errors.push(`${record.key}: missing company certificate image`);
+      if (!assignments[record.imageKey]?.some((key) => known.get(key) === 'certificate')) errors.push(`${record.key}: missing company certificate image`);
     } else if (record.group === 'supplyChain') {
       if (!record.documentUrl || !assetExists(record.documentUrl)) errors.push(`${record.key}: missing supply-chain document ${record.documentUrl ?? ''}`);
     } else errors.push(`${record.key}: invalid certificate group`);

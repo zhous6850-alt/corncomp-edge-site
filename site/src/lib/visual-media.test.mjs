@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { mediaFor, mediaListFor, validateVisualMedia } from './visual-media.mjs';
 import { companyCertificates, supplyChainDocuments } from '../data/certificates.mjs';
+import { CONTENT_MEDIA } from '../data/visual-media.mjs';
 
 const publicDir = fileURLToPath(new URL('../../public/', import.meta.url));
 
@@ -64,4 +65,10 @@ test('separates complete company certificates from supply-chain documents', () =
     certificates: [{ key: 'incomplete-certificate', group: 'company', holder: 'Example Holder' }],
   });
   assert.ok(errors.some((error) => error.includes('incomplete-certificate') && error.includes('scope')));
+});
+
+test('rejects product media assigned to a company certificate', () => {
+  const assignments = { ...CONTENT_MEDIA, 'certificate:iso': ['paper-cups'] };
+  const errors = validateVisualMedia({ publicDir, assignments });
+  assert.ok(errors.some((error) => error.includes('iso-9001') && error.includes('certificate image')));
 });
