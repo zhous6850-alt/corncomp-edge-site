@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import worker from './index.mjs';
+import { localizedRedirects } from '../site/src/lib/localization.mjs';
 
 test('runs the Worker before static assets so canonical redirects execute', () => {
   const config = JSON.parse(readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
@@ -91,7 +92,34 @@ test('redirects a browser form submission back to its language contact page', as
   try {
     const response = await worker.fetch(formRequest, { RESEND_API_KEY: 're_test' });
     assert.equal(response.status, 303);
-    assert.equal(response.headers.get('location'), 'https://corn-comp.com/es/contactenos/#inquiry-sent');
+    const location = new URL(response.headers.get('location'));
+    assert.equal(location.origin, 'https://corn-comp.com');
+    assert.equal(location.pathname, '/es/contactenos/');
+    assert.equal(location.searchParams.get('sent'), '1');
+    assert.match(location.searchParams.get('lead'), /^[0-9a-f-]{36}$/);
+    assert.equal(location.hash, '#inquiry-sent');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('keeps inquiry success redirects on the request origin for hostile or missing referrers', async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => Response.json({ id: 'test' });
+  try {
+    for (const referer of ['https://evil.example//evil.example/phishing', null]) {
+      const headers = { 'content-type': 'application/x-www-form-urlencoded' };
+      if (referer) headers.referer = referer;
+      const request = new Request('https://corn-comp.com/api/inquiry', {
+        method: 'POST',
+        headers,
+        body: new URLSearchParams({ 'your-name': 'Buyer', 'your-email': 'buyer@example.com' }),
+      });
+      const response = await worker.fetch(request, { RESEND_API_KEY: 're_test' });
+      const location = new URL(response.headers.get('location'));
+      assert.equal(location.origin, 'https://corn-comp.com');
+      assert.equal(location.pathname, '/contact/');
+    }
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -116,14 +144,23 @@ test('redirects preserved WordPress category archives to the matching language b
   }
 });
 
-test('redirects legacy translated aliases to the preserved localized route', async () => {
-  const response = await worker.fetch(new Request('https://corn-comp.com/fr/faq/'), { ASSETS: { fetch: () => new Response('asset') } });
-  assert.equal(response.status, 301);
-  assert.equal(response.headers.get('location'), 'https://corn-comp.com/fr/faq-corncomp/');
+test('redirects every reviewed localized alias directly to its canonical target with query parameters', async () => {
+  for (const [source, target] of localizedRedirects()) {
+    assert.equal(localizedRedirects().has(target), false, `redirect chain through ${target}`);
+    const response = await worker.fetch(new Request(`https://corn-comp.com${source}?source=alias`), { ASSETS: { fetch: () => new Response('asset') } });
+    assert.equal(response.status, 301, source);
+    assert.equal(response.headers.get('location'), `https://corn-comp.com${target}?source=alias`, source);
+  }
 });
 
-test('redirects legacy translated article aliases to the migrated article', async () => {
-  const response = await worker.fetch(new Request('https://corn-comp.com/es/pla-vs-bagasse-vs-fsc-paper/'), { ASSETS: { fetch: () => new Response('asset') } });
-  assert.equal(response.status, 301);
-  assert.equal(response.headers.get('location'), 'https://corn-comp.com/es/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/');
+test('redirects localized shop archives to localized product hubs in one hop', async () => {
+  for (const [source, target] of [
+    ['/fr/shop/', '/fr/produits/'],
+    ['/es/shop/', '/es/productos/'],
+    ['/ar/shop/', '/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D9%84%D9%84%D8%AC%D9%85%D9%84%D8%A9-%D9%88%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%B7%D9%84%D8%A8/'],
+  ]) {
+    const response = await worker.fetch(new Request(`https://corn-comp.com${source}?source=archive`), { ASSETS: { fetch: () => new Response('asset') } });
+    assert.equal(response.status, 301, source);
+    assert.equal(response.headers.get('location'), `https://corn-comp.com${target}?source=archive`, source);
+  }
 });

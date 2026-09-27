@@ -4,8 +4,9 @@ import Footer from '../components/Footer.astro';
 import globalCss from '../styles/global.css?raw';
 import { canonicalUrl, documentDirection } from '../lib/routes.mjs';
 import { pageAlternates } from '../lib/site-config.mjs';
+import { uiFor } from '../lib/localization.mjs';
 
-const { title, description = '', language = 'en', pathname = Astro.url.pathname, bodyClass = '', image = '/media/corncomp-logo.png', structuredData } = Astro.props;
+const { title, description = '', language = 'en', pathname = Astro.url.pathname, bodyClass = '', image = '/media/corncomp-logo.png', structuredData, ogType = 'website' } = Astro.props;
 const canonical = canonicalUrl(pathname);
 const socialImage = new URL(image, 'https://corn-comp.com').href;
 const alternates = pageAlternates(pathname);
@@ -16,6 +17,9 @@ const organization = {
   sameAs: ['https://www.facebook.com/profile.php?id=61592477933421', 'https://www.instagram.com/zxh_0927', 'https://www.linkedin.com/in/sam-zhou-431ab9424/'],
 };
 const schemas = [organization, ...(Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : [])];
+const measurementId = 'G-R1SHNYEBN8';
+const ui = uiFor(language);
+const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
 ---
 <!doctype html>
 <html lang={language} dir={documentDirection(language)}>
@@ -28,7 +32,8 @@ const schemas = [organization, ...(Array.isArray(structuredData) ? structuredDat
     <link rel="icon" href="/media/corncomp-logo.png">
     {alternates.map((item) => <link rel="alternate" hreflang={item.language} href={canonicalUrl(item.route)} />)}
     {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={canonicalUrl(alternates[0].route)} />}
-    <meta property="og:type" content="website">
+    <meta property="og:type" content={ogType}>
+    <meta property="og:locale" content={ogLocales[language]}>
     <meta property="og:title" content={title}>
     {description && <meta property="og:description" content={description}>}
     <meta property="og:url" content={canonical}>
@@ -44,5 +49,107 @@ const schemas = [organization, ...(Array.isArray(structuredData) ? structuredDat
     <Header language={language} />
     <main><slot /></main>
     <Footer language={language} />
+    <aside class="analytics-consent" data-analytics-consent hidden role="region" aria-labelledby="analytics-consent-title">
+      <div>
+        <h2 id="analytics-consent-title">{ui.analyticsConsentHeading}</h2>
+        <p>{ui.analyticsConsentBody}</p>
+      </div>
+      <div class="analytics-consent-actions">
+        <button type="button" data-analytics-allow>{ui.allowAnalytics}</button>
+        <button type="button" class="button-secondary" data-analytics-decline>{ui.declineAnalytics}</button>
+      </div>
+    </aside>
+    <script is:inline define:vars={{ measurementId }}>
+      (() => {
+        const consentKey = 'corncomp-analytics-consent';
+        const leadKey = 'corncomp-reported-leads';
+        const banner = document.querySelector('[data-analytics-consent]');
+        const allowButton = document.querySelector('[data-analytics-allow]');
+        const declineButton = document.querySelector('[data-analytics-decline]');
+        const settingsButton = document.querySelector('[data-analytics-settings]');
+        let analyticsLoaded = false;
+        let returnFocus = null;
+
+        const readPreference = (key) => {
+          try { return localStorage.getItem(key); } catch { return null; }
+        };
+        const savePreference = (key, value) => {
+          try { localStorage.setItem(key, value); } catch { /* Storage may be unavailable. */ }
+        };
+        const hideBanner = () => {
+          if (banner) banner.hidden = true;
+          returnFocus?.focus();
+          returnFocus = null;
+        };
+        const showBanner = (moveFocus = false) => {
+          if (!banner) return;
+          banner.hidden = false;
+          if (moveFocus) allowButton?.focus();
+        };
+        const clearLeadMarker = () => {
+          const page = new URL(window.location.href);
+          if (page.searchParams.get('sent') !== '1') return;
+          page.searchParams.delete('sent');
+          page.searchParams.delete('lead');
+          history.replaceState(null, '', `${page.pathname}${page.search}${page.hash}`);
+        };
+        const loadAnalytics = () => {
+          if (analyticsLoaded) return;
+          analyticsLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', measurementId);
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+          document.head.append(script);
+        };
+        const recordPendingLead = () => {
+          const params = new URLSearchParams(window.location.search);
+          const leadId = params.get('sent') === '1' ? params.get('lead') : null;
+          if (!leadId) return;
+          let reportedLeads = [];
+          try {
+            const savedLeads = JSON.parse(readPreference(leadKey) || '[]');
+            if (Array.isArray(savedLeads)) reportedLeads = savedLeads;
+          } catch { /* Ignore an invalid stored preference. */ }
+          if (!reportedLeads.includes(leadId)) {
+            window.gtag?.('event', 'generate_lead');
+            savePreference(leadKey, JSON.stringify([...reportedLeads, leadId]));
+          }
+          clearLeadMarker();
+        };
+        const allowAnalytics = () => {
+          savePreference(consentKey, 'granted');
+          hideBanner();
+          loadAnalytics();
+          recordPendingLead();
+        };
+        const declineAnalytics = () => {
+          savePreference(consentKey, 'denied');
+          hideBanner();
+          clearLeadMarker();
+          if (analyticsLoaded) window.location.reload();
+        };
+
+        allowButton?.addEventListener('click', allowAnalytics);
+        declineButton?.addEventListener('click', declineAnalytics);
+        settingsButton?.addEventListener('click', () => {
+          returnFocus = settingsButton;
+          showBanner(true);
+        });
+
+        const consent = readPreference(consentKey);
+        if (consent === 'granted') {
+          loadAnalytics();
+          recordPendingLead();
+        } else if (consent === 'denied') {
+          clearLeadMarker();
+        } else {
+          showBanner();
+        }
+      })();
+    </script>
   </body>
 </html>

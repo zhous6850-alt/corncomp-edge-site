@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { routeFor } from '../lib/localization.mjs';
+
+const { language, content, ui } = Astro.props;
+const productImages = [
+  '/media/wp/261--2026-07-25-100620.png',
+  '/media/wp/164--2026-07-14-133106.png',
+  '/media/wp/107--2026-07-14-101008.png',
+];
+---
+<BaseLayout title={content.title} description={content.description} language={language} pathname={content.route} bodyClass="home-v2">
+  <section class="home-hero">
+    <div class="home-hero-media"><img src="/media/embedded/c97a5896-corncomp-homepage-hero-drink-compressed-copy.jpg.webp" alt={content.hero.imageAlt} width="1920" height="1080" fetchpriority="high" decoding="async"></div>
+    <div class="content-shell home-hero-content"><p class="eyebrow">{content.hero.eyebrow}</p><h1>{content.hero.heading}</h1><p class="home-hero-copy">{content.hero.text}</p><div class="hero-actions"><a class="button-primary" href={routeFor(language, content.hero.primaryKey)}>{content.hero.primaryLabel}</a><a class="button-secondary" href={routeFor(language, content.hero.secondaryKey)}>{content.hero.secondaryLabel}</a></div></div>
+  </section>
+
+  <section class="content-shell home-proof" aria-label={content.proofLabel}>{content.proof.map(([value, label]) => <div><strong>{value}</strong><span>{label}</span></div>)}</section>
+
+  <section class="content-shell home-section"><div class="section-heading split-heading"><div><p class="eyebrow">{content.productIntro.eyebrow}</p><h2 set:html={content.productIntro.heading} /></div><p>{content.productIntro.text}</p></div><div class="home-product-grid">{content.productPathways.map(([contentKey, title, text], index) => <a class="home-product-card" href={routeFor(language, contentKey)}><img src={productImages[index]} alt="" loading="lazy" decoding="async"><div><p class="eyebrow">{ui.productGroup}</p><h3>{title}</h3><p>{text}</p><span>{ui.viewProductFamilies} →</span></div></a>)}</div></section>
+
+  <section class="home-factory"><div class="content-shell home-factory-grid"><div class="home-factory-media"><img src="/media/embedded/be53f20b-facility-showcase-1.jpg" alt={content.factory.imageAlt} loading="lazy" decoding="async"></div><div class="home-factory-copy"><p class="eyebrow">{content.factory.eyebrow}</p><h2>{content.factory.heading}</h2><p>{content.factory.text}</p><ul>{content.factory.bullets.map((item) => <li>{item}</li>)}</ul><a class="button-primary" href={routeFor(language, content.factory.contentKey)}>{content.factory.label}</a></div></div></section>
+
+  <section class="content-shell home-section home-pathways"><div class="section-heading"><p class="eyebrow">{content.programs.eyebrow}</p><h2>{content.programs.heading}</h2></div><div class="architecture-grid">{content.programs.cards.map(([contentKey, title, text], index) => <a class="architecture-card" href={routeFor(language, contentKey)}><span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></a>)}</div></section>
+
+  <section class="content-shell home-cta"><div><p class="eyebrow">{content.cta.eyebrow}</p><h2>{content.cta.heading}</h2><p>{content.cta.text}</p></div><a class="button-primary" href={routeFor(language, content.cta.contentKey)}>{content.cta.label}</a></section>
+</BaseLayout>

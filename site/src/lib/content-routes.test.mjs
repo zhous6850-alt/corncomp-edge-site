@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { categoryLanguage, contentDescription, contentPath, contentTitle, localizeInternalLinks, normalizeBodyHeadings } from './content-routes.mjs';
+import { localizedRedirects, routeFor } from './localization.mjs';
 
 test('converts a preserved route into an Astro catch-all parameter', () => {
   assert.equal(contentPath('/es/producto/'), 'es/producto');
@@ -30,7 +31,38 @@ test('uses the language shared by products in a category', () => {
 
 test('rewrites Corncomp absolute links to preview-safe internal links', () => {
   const html = '<a href="https://corn-comp.com/shop/">Shop</a><a href="https://example.com/">External</a>';
-  assert.equal(localizeInternalLinks(html), '<a href="/shop/">Shop</a><a href="https://example.com/">External</a>');
+  assert.equal(localizeInternalLinks(html), '<a href="/products/">Shop</a><a href="https://example.com/">External</a>');
+});
+
+test('resolves English page and product aliases before stable-key localization', () => {
+  const html = [
+    '<a href="/certifications/">Certificates</a>',
+    '<a href="/product/pla-lid/">PLA lid</a>',
+    '<a href="/product/couvercle-pla-pour-bol-a-salade/">Duplicate product</a>',
+    '<a href="/category/material-guides/">Guides</a>',
+  ].join('');
+
+  assert.equal(localizeInternalLinks(html, 'es'), [
+    `<a href="${routeFor('es', 'architecture:quality')}">Certificates</a>`,
+    `<a href="${routeFor('es', 'product:pla-lid')}">PLA lid</a>`,
+    `<a href="${routeFor('es', 'product:pla-lid')}">Duplicate product</a>`,
+    '<a href="/es/blog/">Guides</a>',
+  ].join(''));
+});
+
+test('routes localized blog archive aliases to the explicitly selected language', () => {
+  const html = '<a href="/category/company-industry-fr/?p=1#x">Archive</a>';
+  for (const [language, route] of [['en', '/blog/'], ['fr', '/fr/blog/'], ['es', '/es/blog/'], ['ar', '/ar/blog/']]) {
+    assert.equal(localizeInternalLinks(html, language), `<a href="${route}?p=1#x">Archive</a>`);
+  }
+  assert.equal(localizeInternalLinks(html), '<a href="/fr/blog/?p=1#x">Archive</a>');
+});
+
+test('rewrites localized shop archives to product hubs with query and fragment intact', () => {
+  for (const [language, source] of [['fr', '/fr/shop/'], ['es', '/es/shop/'], ['ar', '/ar/shop/']]) {
+    const html = `<a href="${source}?page=2#catalog">Catalogue</a>`;
+    assert.equal(localizeInternalLinks(html, language), `<a href="${routeFor(language, 'architecture:products')}?page=2#catalog">Catalogue</a>`);
+  }
 });
 
 test('rewrites translated English-slug aliases to their actual localized routes', () => {
@@ -39,6 +71,27 @@ test('rewrites translated English-slug aliases to their actual localized routes'
     localizeInternalLinks(html),
     '<a href="/es/certificaciones-de-corncomp/">Certificaciones</a><a href="/fr/quest-ce-que-la-certification-bpi-en-quoi-elle-differe-de-la-certification-fsc/">BPI</a>',
   );
+});
+
+test('localizes relative, root-relative, absolute and reviewed alias links by stable identity', () => {
+  const [reviewedAlias, reviewedTarget] = [...localizedRedirects()].find(([source]) => source.startsWith('/fr/'));
+  const html = [
+    '<a href="/products/">Root</a>',
+    '<a href="https://corn-comp.com/resources/guides/paper-cup-sizes/?from=body#sizes">Absolute</a>',
+    '<a href="../../../products/cups-bowls/paper-cups/">Relative</a>',
+    `<a href="${reviewedAlias}">Alias</a>`,
+  ].join('');
+  const localized = localizeInternalLinks(html, 'fr', '/resources/guides/food-packaging-certifications/');
+
+  assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:products')}"`));
+  assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:resources/guides/paper-cup-sizes')}\\?from=body#sizes"`));
+  assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:products/cups-bowls/paper-cups')}"`));
+  assert.match(localized, new RegExp(`href="${reviewedTarget}"`));
+});
+
+test('does not rewrite assets, APIs, fragments or external and contact destinations', () => {
+  const html = '<a href="#section">Fragment</a><a href="/media/file.pdf">Asset</a><a href="/api/inquiry">API</a><a href="mailto:inquiry@corn-comp.com">Mail</a><a href="tel:+8657486961222">Tel</a><a href="https://wa.me/8613806632002">WhatsApp</a><a href="https://example.com/evidence">Evidence</a>';
+  assert.equal(localizeInternalLinks(html, 'es', '/es/recursos/'), html);
 });
 
 test('uses a plain-text excerpt when an SEO description is missing', () => {

@@ -1,6 +1,46 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
+import { SUPPORTED_LANGUAGES, allLocalizedEntries, englishInventory, localizedEntry, routeFor, uiFor } from './localization.mjs';
+import { assertFactParity } from './product-facts.mjs';
+import { canonicalUrl } from './routes.mjs';
+import { contentText } from './content-routes.mjs';
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+async function readBuiltRoute(route) {
+  const path = route === '/' ? 'index.html' : `${route.replace(/^\/+|\/+$/g, '')}/index.html`;
+  return readFile(new URL(`../../dist/${path}`, import.meta.url), 'utf8');
+}
+
+async function builtHtmlFiles(directory = new URL('../../dist/', import.meta.url)) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(entries.map((entry) => {
+    const location = new URL(`${entry.name}${entry.isDirectory() ? '/' : ''}`, directory);
+    return entry.isDirectory() ? builtHtmlFiles(location) : entry.name.endsWith('.html') ? [location] : [];
+  }));
+  return files.flat();
+}
+
+function metaContent(html, name) {
+  return html.match(new RegExp(`<meta name="${name}" content="([^"]*)">`))?.[1] || '';
+}
+
+function structuredData(html) {
+  return html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)?.[1] || '';
+}
+
+function structuredNodes(html) {
+  const value = JSON.parse(structuredData(html));
+  const values = Array.isArray(value) ? value : [value];
+  return values.flatMap((item) => item?.['@graph'] || item);
+}
+
+function visibleH1(html) {
+  return contentText(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '');
+}
 
 test('the built homepage includes the global site styles', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
@@ -68,6 +108,56 @@ test('new product pages group the title, image, breadcrumb and contextual quote 
   assert.match(html, /"@type":"Product"/);
 });
 
+test('mobile product specifications scroll inside a shrinkable content column', async () => {
+  const html = await readBuiltRoute('/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/');
+
+  assert.match(html, /\.product-detail-layout\s*>\s*\.wordpress-content\s*\{\s*min-width:\s*0;/);
+  assert.match(html, /\.wordpress-content table\s*\{[^}]*max-width:\s*100%;[^}]*overflow-x:\s*auto;/);
+});
+
+test('hidden inquiry honeypots cannot expand RTL page width', async () => {
+  const html = await readBuiltRoute('/ar/%D8%A7%D8%AA%D8%B5%D9%84-%D8%A8%D9%86%D8%A7/');
+
+  assert.match(html, /\.honeypot\s*\{[^}]*width:\s*1px;[^}]*height:\s*1px;[^}]*overflow:\s*hidden;[^}]*clip-path:\s*inset\(50%\);/);
+  assert.doesNotMatch(html, /\.honeypot\s*\{[^}]*left:\s*-10000px/);
+});
+
+test('localized contact honeypots stay outside the accessibility tree', async () => {
+  for (const route of ['/contact/', '/fr/contactez-nous/', '/es/contactenos/', '/ar/%D8%A7%D8%AA%D8%B5%D9%84-%D8%A8%D9%86%D8%A7/']) {
+    const html = await readBuiltRoute(route);
+
+    assert.match(html, /<label class="honeypot" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"><\/label>/);
+  }
+});
+
+test('direct editorial images stay inside the localized content column', async () => {
+  const html = await readBuiltRoute('/ar/%D8%AA%D9%88%D8%AC%D9%8A%D9%87-%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A/');
+
+  assert.match(html, /\.wordpress-content\s*>\s*img\s*\{[^}]*max-width:\s*100%;/);
+});
+
+test('product schema publishes readable names and only truthful item identifiers', async () => {
+  const singleItemHtml = await readFile(
+    new URL('../../dist/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/index.html', import.meta.url),
+    'utf8',
+  );
+  const multiItemHtml = await readFile(
+    new URL('../../dist/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/index.html', import.meta.url),
+    'utf8',
+  );
+  const singleItemSchema = structuredData(singleItemHtml);
+  const multiItemSchema = structuredData(multiItemHtml);
+
+  assert.match(singleItemSchema, /"sku":"CC01TRIWINK"/);
+  assert.match(singleItemSchema, /"name":"Item number","value":"CC01TRIWINK"/);
+  assert.match(multiItemSchema, /"name":"Kraft Burrito Sleeve – 4 Sizes"/);
+  assert.doesNotMatch(multiItemSchema, /&#8211;/);
+  for (const itemNumber of ['CC01OWC100K', 'CC01OWC5.5K', 'CC01OWC135K', 'CC01OWC160K']) {
+    assert.match(multiItemSchema, new RegExp(`"name":"Item number","value":"${itemNumber.replaceAll('.', '\\.')}"`));
+  }
+  assert.doesNotMatch(multiItemSchema, /"sku":"CC01OWC/);
+});
+
 test('new category pages expose a labelled responsive product archive and buying guidance', async () => {
   const html = await readFile(
     new URL('../../dist/products/foodservice-supplies/disposable-cutlery/index.html', import.meta.url),
@@ -100,6 +190,48 @@ test('the blog restores the English insight archive', async () => {
   assert.doesNotMatch(html, /href="\/fr\/quest-ce-que/);
 });
 
+test('blog articles publish article, breadcrumb and social metadata', async () => {
+  const html = await readFile(
+    new URL('../../dist/eu-single-use-plastics-directive-explained/index.html', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(html, /<meta property="og:type" content="article">/);
+  assert.match(html, /"@type":"Article"/);
+  assert.match(html, /"@type":"BreadcrumbList"/);
+  assert.match(html, /"mainEntityOfPage":"https:\/\/corn-comp\.com\/eu-single-use-plastics-directive-explained\/"/);
+  assert.match(html, /"publisher":\{"@id":"https:\/\/corn-comp\.com\/#organization"\}/);
+});
+
+test('buyer guides publish reviewed evidence tables and official sources', async () => {
+  const guides = [
+    ['paper-cup-sizes', 'Cup size specification checklist'],
+    ['custom-printed-paper-cups', 'Custom print approval checklist'],
+    ['food-packaging-certifications', 'Certificate review checklist'],
+  ];
+
+  for (const [slug, caption] of guides) {
+    const html = await readFile(new URL(`../../dist/resources/guides/${slug}/index.html`, import.meta.url), 'utf8');
+    assert.match(html, /Prepared by Corncomp/);
+    assert.match(html, /Last reviewed: 23 September 2026/);
+    assert.match(html, new RegExp(`<caption>${caption}</caption>`));
+    assert.match(html, /class="guide-sources"/);
+    assert.match(html, /"dateModified":"2026-09-23"/);
+  }
+});
+
+test('blog archives publish reciprocal alternates and localized shop archives are not built', async () => {
+  const routes = { en: '/blog/', fr: '/fr/blog/', es: '/es/blog/', ar: '/ar/blog/' };
+  for (const [language, route] of Object.entries(routes)) {
+    const html = await readBuiltRoute(route);
+    for (const [alternateLanguage, alternateRoute] of Object.entries(routes)) {
+      assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(alternateRoute))}"`), `${language}:${alternateLanguage}`);
+    }
+    assert.match(html, /hreflang="x-default" href="https:\/\/corn-comp\.com\/blog\/"/);
+  }
+  for (const language of ['fr', 'es', 'ar']) await assert.rejects(readBuiltRoute(`/${language}/shop/`), { code: 'ENOENT' });
+});
+
 test('blog cards stack their image above the title on phones', async () => {
   const css = await readFile(new URL('../styles/global.css', import.meta.url), 'utf8');
 
@@ -123,4 +255,175 @@ test('the homepage presents the manufacturer proof and approved product pathways
   assert.match(html, /href="\/products\/cups-bowls\/"/);
   assert.match(html, /href="\/about\/factory\/"/);
   assert.match(html, /href="\/contact\/"/);
+});
+
+test('localized homepages render localized content and preserve manufacturing proof', async () => {
+  for (const language of ['fr', 'es', 'ar']) {
+    const content = localizedEntry(language, 'home');
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+
+    assert.match(html, new RegExp(`<html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`));
+    assert.match(html, new RegExp(escapeRegExp(content.hero.heading)));
+    assert.match(html, new RegExp(escapeRegExp(content.hero.secondaryLabel)));
+    assert.match(html, new RegExp(escapeRegExp(content.proof[0][0])));
+    assert.match(html, new RegExp(escapeRegExp(content.proof[3][0])));
+    assert.doesNotMatch(html, /Explore products/);
+  }
+});
+
+test('localized shared UI renders the reviewed locale labels', async () => {
+  for (const language of ['fr', 'es', 'ar']) {
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+    const ui = uiFor(language);
+    const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0] || '';
+
+    for (const key of ['menu', 'allProducts', 'contactUs', 'analyticsSettings', 'allowAnalytics', 'declineAnalytics']) {
+      assert.match(html, new RegExp(escapeRegExp(ui[key])), `${language} homepage is missing ui.${key}`);
+    }
+    for (const contentKey of ['architecture:products', 'architecture:custom-packaging', 'architecture:applications', 'architecture:quality', 'architecture:resources', 'architecture:about', 'architecture:contact']) {
+      assert.match(footer, new RegExp(`href="${escapeRegExp(routeFor(language, contentKey))}"`), `${language} footer is missing ${contentKey}`);
+    }
+  }
+});
+
+test('shared layout labels and Open Graph locales match every language', async () => {
+  const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
+  const fields = ['brandHomeLabel', 'primaryNavigationLabel', 'socialMediaLabel', 'addressHeading', 'footerNavigationLabel', 'copyrightLabel', 'analyticsConsentHeading', 'analyticsConsentBody'];
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'home'));
+    const ui = uiFor(language);
+    for (const field of fields) assert.match(html, new RegExp(escapeRegExp(ui[field])), `${language}:ui.${field}`);
+    assert.match(html, new RegExp(`<meta property="og:locale" content="${ogLocales[language]}">`), `${language}:og:locale`);
+  }
+});
+
+test('every synchronized canonical route has a built page', async () => {
+  assert.equal(allLocalizedEntries().length, 340, 'synchronized route count');
+  const sources = new Map(englishInventory().map((source) => [source.contentKey, source]));
+  for (const { language, contentKey, route } of allLocalizedEntries()) {
+    const html = await readBuiltRoute(route);
+    assert.match(html, new RegExp(`<html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`), contentKey);
+    assert.match(html, new RegExp(`<link rel="canonical" href="${escapeRegExp(canonicalUrl(route))}">`), `${language}:${contentKey}:canonical`);
+    for (const alternateLanguage of SUPPORTED_LANGUAGES) {
+      assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(routeFor(alternateLanguage, contentKey)))}"`), `${language}:${contentKey}:${alternateLanguage}`);
+    }
+    assert.match(html, new RegExp(`hreflang="x-default" href="${escapeRegExp(canonicalUrl(routeFor('en', contentKey)))}"`), `${language}:${contentKey}:x-default`);
+    const source = sources.get(contentKey);
+    const schemaType = source.type === 'product' ? 'Product'
+      : source.type === 'post' || source.kind === 'guide' ? 'Article'
+        : source.type === 'architecture' ? (source.kind === 'product-category' ? 'ItemList' : 'WebPage') : null;
+    if (schemaType) {
+      const schema = structuredNodes(html).find((node) => node?.['@type'] === schemaType);
+      assert.ok(schema, `${language}:${contentKey}:${schemaType}`);
+      assert.equal(contentText(schema.name || schema.headline), visibleH1(html), `${language}:${contentKey}:schema name`);
+    }
+  }
+});
+
+test('localized built-page samples render reviewed content, reciprocal SEO and matching schema names', async () => {
+  const samples = [
+    ['architecture:products/cups-bowls', 'WebPage'],
+    ['architecture:products/cups-bowls/paper-cups', 'ItemList'],
+    ['product:kraft-paper-bowl', 'Product'],
+    ['architecture:resources/guides/paper-cup-sizes', 'Article'],
+    ['post:eu-single-use-plastics-directive-explained', 'Article'],
+    ['architecture:contact', 'WebPage'],
+  ];
+  for (const language of SUPPORTED_LANGUAGES) {
+    for (const [contentKey, schemaType] of samples) {
+      const entry = localizedEntry(language, contentKey);
+      const html = await readBuiltRoute(entry.route);
+      assert.equal(visibleH1(html), contentText(entry.title), `${language}:${contentKey}:h1`);
+      assert.match(html, new RegExp(`<link rel="canonical" href="${escapeRegExp(canonicalUrl(entry.route))}">`));
+      for (const alternateLanguage of SUPPORTED_LANGUAGES) {
+        assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(routeFor(alternateLanguage, contentKey)))}"`), `${language}:${contentKey}:${alternateLanguage}`);
+      }
+      assert.match(html, new RegExp(`hreflang="x-default" href="${escapeRegExp(canonicalUrl(routeFor('en', contentKey)))}"`));
+      const schema = structuredNodes(html).find((node) => node?.['@type'] === schemaType);
+      assert.ok(schema, `${language}:${contentKey}:${schemaType}`);
+      assert.equal(contentText(schema.name || schema.headline), visibleH1(html), `${language}:${contentKey}:schema name`);
+    }
+  }
+});
+
+test('localized product samples preserve immutable English product facts and translated display values', async () => {
+  const source = englishInventory().find(({ contentKey }) => contentKey === 'product:kraft-paper-bowl');
+  for (const language of ['fr', 'es', 'ar']) {
+    const html = await readBuiltRoute(routeFor(language, source.contentKey));
+    assert.doesNotThrow(() => assertFactParity(source, html), language);
+    const translatedValue = Object.values(uiFor(language).specificationValues).find((value) => value.includes('300'));
+    if (translatedValue) assert.match(html, new RegExp(escapeRegExp(translatedValue)), language);
+  }
+});
+
+test('all product variants preserve summaries and the approved buying layout', async () => {
+  const products = englishInventory().filter(({ type }) => type === 'product');
+  let englishExcerpts = 0;
+  let detailLayouts = 0;
+  let buyingNotes = 0;
+  let localizedEnglishExcerpts = 0;
+
+  for (const product of products) {
+    for (const language of SUPPORTED_LANGUAGES) {
+      const html = await readBuiltRoute(routeFor(language, product.contentKey));
+      englishExcerpts += language === 'en' ? (html.match(/class="product-excerpt"/g) || []).length : 0;
+      detailLayouts += (html.match(/class="product-detail-layout"/g) || []).length;
+      buyingNotes += (html.match(/class="buying-note"/g) || []).length;
+      if (language !== 'en' && product.excerpt && html.includes(contentText(product.excerpt))) localizedEnglishExcerpts += 1;
+    }
+  }
+
+  assert.equal(englishExcerpts, 44);
+  assert.equal(detailLayouts, 176);
+  assert.equal(buyingNotes, 176);
+  assert.equal(localizedEnglishExcerpts, 0);
+});
+
+test('visible main content never double-escapes WordPress numeric entities', async () => {
+  const failures = [];
+  for (const file of await builtHtmlFiles()) {
+    const html = await readFile(file, 'utf8');
+    const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || '';
+    if (/&amp;#(?:x[\da-f]+|\d+);/i.test(main)) failures.push(file.pathname);
+  }
+  assert.deepEqual(failures, []);
+});
+
+test('localized contact pages preserve field names and localize visible form labels', async () => {
+  const visibleName = { fr: 'Nom', es: 'Nombre', ar: 'الاسم' };
+  for (const language of ['fr', 'es', 'ar']) {
+    const html = await readBuiltRoute(routeFor(language, 'architecture:contact'));
+    for (const name of ['name', 'email', 'company', 'country', 'phone', 'quantity', 'productName', 'productSku', 'category', 'message', 'sourcePath']) {
+      assert.match(html, new RegExp(`name="${name}"`), `${language}:${name}`);
+    }
+    assert.match(html, new RegExp(`>${escapeRegExp(visibleName[language])}<input name="name"`));
+    assert.doesNotMatch(html, />Business email<input/);
+  }
+});
+
+test('analytics remains disabled until the visitor makes a consent choice', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /G-R1SHNYEBN8/);
+  assert.match(html, /data-analytics-consent/);
+  assert.match(html, /Allow analytics/);
+  assert.match(html, /Decline/);
+  assert.match(html, /corncomp-analytics-consent/);
+  assert.match(html, /createElement\(['"]script['"]\)/);
+  assert.doesNotMatch(html, /<script[^>]+src="https:\/\/www\.googletagmanager\.com\/gtag\/js/);
+});
+
+test('analytics can be reopened and records each successful inquiry once', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /data-analytics-settings/);
+  assert.match(html, /generate_lead/);
+  assert.match(html, /corncomp-reported-leads/);
+  assert.match(html, /history\.replaceState/);
+});
+
+test('revoking prior consent unloads analytics from the current page', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /analyticsLoaded[\s\S]*?window\.location\.reload\(\)/);
 });
