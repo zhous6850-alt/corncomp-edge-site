@@ -1,0 +1,24 @@
+---
+import EditorialCard from './EditorialCard.astro';
+import ResponsiveMedia from './ResponsiveMedia.astro';
+import mediaInventory from '../data/media.json';
+import { contentDescription, contentText } from '../lib/content-routes.mjs';
+
+const { posts, language, labels } = Astro.props;
+const [featured, ...remaining] = posts;
+const postMedia = ({ source, entry }) => {
+  const image = source.featuredMedia;
+  if (!image) return null;
+  const { width, height } = mediaInventory.find(({ id }) => id === image.id).media_details;
+  return { src: image.localPath, width, height, alt: language === 'en' ? image.alt : entry.alt, fit: 'cover', position: 'center', evidence: 'application' };
+};
+const summary = ({ source, entry }) => language === 'en' ? contentDescription(source) : entry.description;
+---
+<section class="insight-archive blog-archive" aria-labelledby="blog-title">
+  <header class="content-heading archive-heading"><p class="content-kind">Corncomp</p><h1 id="blog-title">{labels.title}</h1></header>
+  {featured && <section class="blog-featured" aria-labelledby="featured-article-title">
+    <a class="blog-featured__media" href={featured.entry.route} aria-label={contentText(featured.entry.title)}><ResponsiveMedia media={postMedia(featured)} eager /></a>
+    <div class="blog-featured__copy"><p class="eyebrow">{labels.featured}</p><h2 id="featured-article-title"><a href={featured.entry.route}>{contentText(featured.entry.title)}</a></h2><p>{summary(featured)}</p><a class="text-link" href={featured.entry.route}>{labels.readArticle}</a></div>
+  </section>}
+  <section class="blog-remaining" aria-labelledby="more-articles-title"><h2 id="more-articles-title">{labels.moreArticles}</h2><div class="insight-grid">{remaining.map((post) => <EditorialCard title={contentText(post.entry.title)} text={summary(post)} href={post.entry.route} media={postMedia(post)} label={labels.insight} />)}</div></section>
+</section>

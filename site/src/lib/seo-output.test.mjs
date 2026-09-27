@@ -6,6 +6,26 @@ import { allLocalizedEntries, englishInventory, localizedEntry, localizedRedirec
 import { extractProductFacts } from './product-facts.mjs';
 import { contentText } from './content-routes.mjs';
 
+test('all blog article identities, original schema images, canonical URLs and alternates survive the redesign', async () => {
+  for (const post of englishInventory().filter(({ type }) => type === 'post')) {
+    for (const language of ['en', 'fr', 'es', 'ar']) {
+      const entry = localizedEntry(language, post.contentKey);
+      const html = await readFile(new URL(`../../dist/${entry.route.slice(1)}index.html`, import.meta.url), 'utf8');
+      const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
+      const article = schemas.find((node) => node['@type'] === 'Article');
+      assert.equal(article.headline, contentText(entry.title));
+      assert.equal(article.mainEntityOfPage, `https://corn-comp.com${entry.route}`);
+      assert.equal(article.image, `https://corn-comp.com${post.featuredMedia.localPath}`);
+      assert.deepEqual(article.author, { '@id': 'https://corn-comp.com/#organization' });
+      assert.deepEqual(article.publisher, { '@id': 'https://corn-comp.com/#organization' });
+      assert.equal(article.dateModified, entry.dateModified || entry.reviewedDate);
+      assert.ok(html.includes(`rel="canonical" href="https://corn-comp.com${normalizeLocalizedRoute(entry.route)}"`));
+      for (const alternate of ['en', 'fr', 'es', 'ar']) assert.ok(html.includes(`hreflang="${alternate}" href="https://corn-comp.com${normalizeLocalizedRoute(routeFor(alternate, post.contentKey))}"`));
+      assert.ok(html.includes(`hreflang="x-default" href="https://corn-comp.com${post.route}"`));
+    }
+  }
+});
+
 test('sitemap includes localized archives and excludes retired commerce pages', async () => {
   const xml = await (await GET()).text();
   const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);

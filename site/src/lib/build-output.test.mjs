@@ -4,7 +4,8 @@ import test from 'node:test';
 import { SUPPORTED_LANGUAGES, allLocalizedEntries, englishInventory, localizedEntry, routeFor, uiFor } from './localization.mjs';
 import { assertFactParity } from './product-facts.mjs';
 import { canonicalUrl } from './routes.mjs';
-import { contentText } from './content-routes.mjs';
+import { contentText, localizeInternalLinks, normalizeBodyHeadings } from './content-routes.mjs';
+import records from '../data/records.json' with { type: 'json' };
 import { PRODUCT_CATEGORIES, PRODUCT_GROUPS, categoryForProduct } from './site-architecture.mjs';
 
 function escapeRegExp(value) {
@@ -292,6 +293,58 @@ test('blog articles publish article, breadcrumb and social metadata', async () =
   assert.match(html, /"@type":"BreadcrumbList"/);
   assert.match(html, /"mainEntityOfPage":"https:\/\/corn-comp\.com\/eu-single-use-plastics-directive-explained\/"/);
   assert.match(html, /"publisher":\{"@id":"https:\/\/corn-comp\.com\/#organization"\}/);
+});
+
+test('all legacy blog records remain discoverable through the four featured archives', async () => {
+  const legacyPosts = records.filter(({ type }) => type === 'post');
+  const posts = englishInventory().filter(({ type }) => type === 'post');
+  assert.equal(legacyPosts.length, 19, 'legacy migration inventory');
+  assert.equal(posts.length, 5, 'stable shared post keys');
+  assert.equal(allLocalizedEntries().filter(({ contentKey }) => contentKey.startsWith('post:')).length, 20, 'synchronized article routes');
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(language === 'en' ? '/blog/' : `/${language}/blog/`);
+    const featured = html.match(/<section class="blog-featured"[^>]*>[\s\S]*?<\/section>/)?.[0] || '';
+    assert.ok(featured.includes(`href="${routeFor(language, posts[0].contentKey)}"`), `${language}: first source-order article featured`);
+    assert.match(featured, /<img[^>]+loading="eager"/, `${language}: featured image priority`);
+    const grid = html.match(/<div class="insight-grid">([\s\S]*?)<\/section>/)?.[1] || '';
+    assert.equal((grid.match(/class="editorial-card"/g) || []).length, 4, `${language}: remaining image cards`);
+    for (const post of posts) {
+      assert.ok(html.includes(`href="${routeFor(language, post.contentKey)}"`), `${language}:${post.contentKey}`);
+      assert.ok(html.includes(`src="${post.featuredMedia.localPath}"`), `${language}: original featured image`);
+    }
+  }
+});
+
+test('blog articles retain imported content and expose working heading navigation and same-language related cards', async () => {
+  const labels = { en: ['On this page', 'Related articles'], fr: ['Dans cet article', 'Articles connexes'], es: ['En este artículo', 'Artículos relacionados'], ar: ['في هذه الصفحة', 'مقالات ذات صلة'] };
+  const posts = englishInventory().filter(({ type }) => type === 'post');
+  for (const language of SUPPORTED_LANGUAGES) {
+    for (const post of posts) {
+      const entry = localizedEntry(language, post.contentKey);
+      const html = await readBuiltRoute(entry.route);
+      const hero = html.match(/<header class="blog-article__hero">[\s\S]*?<\/header>/)?.[0] || '';
+      assert.ok(hero.includes(`src="${post.featuredMedia.localPath}"`), `${entry.route}: cover image`);
+      const coverImage = hero.match(/<img\b[^>]*>/)?.[0] || '';
+      assert.match(coverImage, /width="\d+"/);
+      assert.match(coverImage, /height="\d+"/);
+      assert.match(coverImage, /loading="eager"/);
+      const imageAlt = language === 'en' ? post.featuredMedia.alt : entry.alt;
+      assert.ok(contentText(hero.match(/<img[^>]+alt="([^"]*)"/)?.[1]).includes(imageAlt), `${entry.route}: localized cover alt`);
+      const original = normalizeBodyHeadings(localizeInternalLinks(language === 'en' ? post.body : entry.bodyHtml, language, entry.route));
+      const body = html.match(/<div class="wordpress-content blog-article__body">([\s\S]*?)<\/div>\s*<\/div>/)?.[1] || '';
+      assert.equal(contentText(body), contentText(original), `${entry.route}: imported article copy intact`);
+      for (const [, href] of original.matchAll(/href="([^"]+)"/g)) assert.ok(body.includes(`href="${href}"`), `${entry.route}: source and internal links intact`);
+      const headings = [...body.matchAll(/<h2\b[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g)];
+      const navigation = html.match(/<nav class="article-toc"[^>]*>[\s\S]*?<\/nav>/)?.[0] || '';
+      assert.equal(headings.length, (original.match(/<h2\b/g) || []).length, `${entry.route}: every section addressable`);
+      assert.ok(navigation.includes(labels[language][0]), `${entry.route}: localized contents label`);
+      for (const [, id, title] of headings) assert.ok(navigation.includes(`href="#${id}"`) && contentText(navigation).includes(contentText(title)), `${entry.route}: contents link target`);
+      const related = html.match(/<section class="blog-related"[^>]*>[\s\S]*?<\/section>/)?.[0] || '';
+      assert.ok(related.includes(labels[language][1]));
+      const expected = posts.filter(({ contentKey }) => contentKey !== post.contentKey).slice(0, 3).map(({ contentKey }) => routeFor(language, contentKey));
+      assert.deepEqual([...related.matchAll(/<a href="([^"]+)"/g)].map(([, href]) => href), expected);
+    }
+  }
 });
 
 test('buyer and company page families render assigned media in every language', async () => {

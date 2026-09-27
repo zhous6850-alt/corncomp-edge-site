@@ -1,0 +1,37 @@
+---
+import EditorialCard from './EditorialCard.astro';
+import ResponsiveMedia from './ResponsiveMedia.astro';
+import mediaInventory from '../data/media.json';
+import { contentText } from '../lib/content-routes.mjs';
+
+const { source, entry, bodyHtml, language, breadcrumbs, relatedPosts, labels } = Astro.props;
+const postMedia = (post, localized, fit = 'contain') => {
+  const image = post.featuredMedia;
+  if (!image) return null;
+  const { width, height } = mediaInventory.find(({ id }) => id === image.id).media_details;
+  return { src: image.localPath, width, height, alt: language === 'en' ? image.alt : localized.alt, fit, position: 'center', evidence: 'application' };
+};
+const sections = [];
+const usedIds = new Set([...bodyHtml.matchAll(/\bid\s*=\s*(["'])(.*?)\1/gi)].map(([, , id]) => id));
+const articleHtml = bodyHtml.replace(/<h2\b([^>]*)>([\s\S]*?)<\/h2>/gi, (heading, attributes, title) => {
+  let id = attributes.match(/\bid\s*=\s*(["'])(.*?)\1/i)?.[2];
+  if (!id) {
+    let index = sections.length + 1;
+    while (usedIds.has(`article-section-${index}`)) index += 1;
+    id = `article-section-${index}`;
+    usedIds.add(id);
+    heading = `<h2${attributes} id="${id}">${title}</h2>`;
+  }
+  sections.push({ id, title: contentText(title) });
+  return heading;
+});
+---
+<article class="content-shell content-post blog-article">
+  <nav class="breadcrumbs" aria-label={labels.breadcrumbs}>{breadcrumbs.map(([name, route], index) => <>{index > 0 && <span aria-hidden="true">/</span>}{index === breadcrumbs.length - 1 ? <span aria-current="page">{contentText(name)}</span> : <a href={route}>{contentText(name)}</a>}</>)}</nav>
+  <header class="blog-article__hero"><div class="content-heading"><p class="content-kind">{labels.insight}</p><h1>{contentText(entry.title)}</h1></div>{source.featuredMedia && <figure class="blog-article__cover"><ResponsiveMedia media={postMedia(source, entry)} eager /></figure>}</header>
+  <div class:list={['blog-article__reading', { 'blog-article__reading--with-toc': sections.length > 1 }]}>
+    {sections.length > 1 && <nav class="article-toc" aria-labelledby="article-toc-title"><h2 id="article-toc-title">{labels.contents}</h2><ol>{sections.map(({ id, title }) => <li><a href={`#${id}`}>{title}</a></li>)}</ol></nav>}
+    <div class="wordpress-content blog-article__body" set:html={articleHtml} />
+  </div>
+  {relatedPosts.length > 0 && <section class="blog-related" aria-labelledby="blog-related-title"><h2 id="blog-related-title">{labels.related}</h2><div class="insight-grid">{relatedPosts.map(({ source: post, entry: localized }) => <EditorialCard title={contentText(localized.title)} href={localized.route} media={postMedia(post, localized, 'cover')} label={labels.insight} />)}</div></section>}
+</article>

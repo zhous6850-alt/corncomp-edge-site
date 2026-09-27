@@ -16,6 +16,15 @@ const architectureLabels = {
 
 export const architectureLabelsFor = (language) => architectureLabels[language];
 
+const blogLabels = {
+  en: { featured: 'Featured article', readArticle: 'Read article', moreArticles: 'More articles', contents: 'On this page', related: 'Related articles', breadcrumbs: 'Breadcrumb' },
+  fr: { featured: 'Article à la une', readArticle: 'Lire l’article', moreArticles: 'Autres articles', contents: 'Dans cet article', related: 'Articles connexes', breadcrumbs: 'Fil d’Ariane' },
+  es: { featured: 'Artículo destacado', readArticle: 'Leer artículo', moreArticles: 'Más artículos', contents: 'En este artículo', related: 'Artículos relacionados', breadcrumbs: 'Ruta de navegación' },
+  ar: { featured: 'مقال مميز', readArticle: 'قراءة المقال', moreArticles: 'المزيد من المقالات', contents: 'في هذه الصفحة', related: 'مقالات ذات صلة', breadcrumbs: 'مسار التنقل' },
+};
+
+export const blogLabelsFor = (language) => blogLabels[language];
+
 export const ENGLISH_HOME = {
   contentKey: 'home',
   type: 'home',
