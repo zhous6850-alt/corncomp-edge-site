@@ -218,6 +218,19 @@ test('the compact navigation covers tablet widths where desktop labels wrap', as
   assert.match(header, /@media \(max-width: 980px\)/);
 });
 
+test('the header renders 16px navigation with a larger responsive brand mark', async () => {
+  const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
+  const stylesheet = html.match(/<link rel="stylesheet" href="([^"]+\.css)"/)?.[1];
+  assert.ok(stylesheet, 'built header stylesheet');
+  const css = await readFile(new URL(`../../dist${stylesheet}`, import.meta.url), 'utf8');
+
+  assert.match(css, /\.header-inner[^,{]*\{[^}]*min-height:100px/);
+  assert.match(css, /\.brand[^,{]* img[^,{]*\{[^}]*width:116px;height:78px/);
+  assert.match(css, /nav[^,{]*\{[^}]*font-size:1rem/);
+  assert.match(css, /@media\(max-width:980px\)[\s\S]*?\.brand[^,{]* img[^,{]*\{[^}]*width:88px;height:56px/);
+  assert.match(css, /@media\(max-width:980px\)[\s\S]*?nav[^,{]* a[^,{]*\{[^}]*font-size:1rem/);
+});
+
 test('the global navigation exposes every migrated primary section and language choice', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
 
