@@ -1,6 +1,14 @@
 # Sitewide visual redesign preview QA — 2026-09-27
 
-Status: **preview deployed and live HTTP/SEO verification passed; browser acceptance remains partial**. This record is not a release approval.
+Status: **production deployed and live HTTP/SEO verification passed; browser acceptance remains partial**.
+
+## 2026-09-28 production release
+
+The user explicitly approved production publication after reviewing the isolated preview. Preflight reconfirmed the authenticated account, the exact `corn-comp.com/*` and `www.corn-comp.com/*` routes, and the presence (name only) of the existing production `RESEND_API_KEY`. The prior production version **`158002d7-7019-4902-81fa-eeaaf5cb8838`** was recorded as the rollback point.
+
+The first production command uploaded 348 changed assets but stalled before creating a Worker version while waiting on a second Cloudflare settings read. Deployment history confirmed that production remained on the prior version, so the hanging command was stopped. A subsequent read-only settings/secret request returned normally. One bounded retry reused the uploaded assets and completed successfully.
+
+Production Worker **`corncomp-edge-site`** was deployed as version **`af5e5a04-5a35-4aba-8956-ce72ccbe6187`**, with deployment message `Publish verified sitewide visual redesign`. Cloudflare reported both production routes active. Post-deployment checks returned 200 for the homepage, Products, Quality, Blog, a representative product, French, Spanish and Arabic routes, robots, sitemap and the built CSS asset. HTML samples retained production canonicals, JSON-LD and five hreflang links. `www` redirected to the apex, `/shop/` redirected to `/products/` with its query intact, and an invalid production inquiry returned 400 without sending email. No 502/503/504/524 response occurred. No valid production inquiry was sent.
 
 ## 2026-09-28 resumed verification
 
@@ -19,7 +27,7 @@ Preview deployment succeeded at <https://corncomp-edge-site-v2-preview.corncomp-
 
 The preview Worker has no `RESEND_API_KEY` secret, so the previously authorized valid preview inquiry remains unsent; production secrets were not read or copied. User approval is still required before adding a preview-only secret, sending the one authorized valid inquiry, merging, or deploying to production.
 
-**production untouched** — no production deployment, route change, merge, or external inquiry was performed. Explicit user approval remains required after completed preview review and before any merge or production deployment.
+Production publication was explicitly approved and completed as recorded above. No merge or valid external inquiry was performed.
 
 ## Baseline and local environment
 
@@ -107,6 +115,6 @@ Live read-after-write checks passed for 11 representative routes/files, one lega
 
 ## Recovery and approval gate
 
-The application remains at baseline commit `870d3dd1515e96b3a041d733273ef05d83c4ae13`; the QA update records the isolated preview version above. Existing `.tmp-npm-cache/`, `.wrangler-dry-run/` and other pre-existing temporary paths were left untouched. The preview version can be superseded or rolled back without changing production routes.
+The application implementation baseline remains commit `870d3dd1515e96b3a041d733273ef05d83c4ae13`; later commits update QA evidence only. Existing `.tmp-npm-cache/`, `.wrangler-dry-run/` and other pre-existing temporary paths were left untouched. Production rollback point: **`158002d7-7019-4902-81fa-eeaaf5cb8838`**; current production version: **`af5e5a04-5a35-4aba-8956-ce72ccbe6187`**.
 
-Resume by completing visual review on the deployed preview, prioritizing Quality desktop/mobile, Resources keyboard open/close/Escape/focus, Contact mobile, and Arabic RTL. If email delivery must be verified before approval, add a preview-only `RESEND_API_KEY` through an authorized secret workflow and send the single authorized valid inquiry. Present that evidence to the user for approval before merging or deploying to production.
+Continue post-release visual monitoring, prioritizing Quality desktop/mobile, Resources keyboard open/close/Escape/focus, Contact mobile, and Arabic RTL. A valid inquiry delivery test requires separate explicit authorization; the production secret was preserved but never read.
