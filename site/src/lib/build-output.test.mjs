@@ -569,6 +569,17 @@ test('Resources features one guide and links the remaining guides and three loca
   }
 });
 
+test('Resources does not repeat editorial imagery within the page', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'architecture:resources'));
+    const sources = [...html.matchAll(/<img\b[^>]*src="([^"]+)"/g)]
+      .map(([, src]) => src)
+      .filter((src) => !src.endsWith('/corncomp-logo.png'));
+
+    assert.equal(new Set(sources).size, sources.length, `${language}: unique resource imagery`);
+  }
+});
+
 test('About alternates real evidence and Contact keeps one image beside the complete inquiry contract', async () => {
   for (const language of SUPPORTED_LANGUAGES) {
     const about = await readBuiltRoute(routeFor(language, 'architecture:about'));

@@ -67,6 +67,12 @@ export const VISUAL_MEDIA = [
     es: 'Línea de vasos de papel con distintos diseños abstractos impresos',
     ar: 'مجموعة أكواب ورقية بتصاميم مطبوعة تجريدية متنوعة',
   }, 'Custom printed paper cup service illustration'),
+  generated('resources-overview', 'food-packaging-resources.webp', {
+    en: 'Packaging buyer workspace with material samples, paper cup, food box and checklist',
+    fr: 'Espace de travail d’un acheteur avec échantillons, gobelet, boîte alimentaire et liste de contrôle',
+    es: 'Mesa de trabajo de compras con muestras, vaso de papel, caja de comida y lista de control',
+    ar: 'مساحة عمل للمشتريات تضم عينات مواد وكوبًا ورقيًا وعلبة طعام وقائمة مراجعة',
+  }, 'Food packaging resources hero illustration'),
   wp('salad-bowls', '239-salad-bowl-real-photo-scaled.jpg', 2560, 1920, 'product', {
     en: 'Kraft paper salad bowl beside wooden cutlery',
     fr: 'Bol à salade en papier kraft à côté de couverts en bois',
@@ -200,7 +206,7 @@ export const CONTENT_MEDIA = {
   'certificate:fsc': ['certificate-fsc'],
   'certificate:bpi': ['certificate-bpi'],
   'certificate:brcgs': ['certificate-brcgs'],
-  'architecture:resources': ['guide-certification', 'blog-eu-regulation'],
+  'architecture:resources': ['resources-overview', 'blog-eu-regulation'],
   'architecture:resources/guides/paper-cup-sizes': ['guide-paper-cup-sizes'],
   'architecture:resources/guides/custom-printed-paper-cups': ['guide-custom-printed-cups'],
   'architecture:resources/guides/food-packaging-certifications': ['guide-certification'],
