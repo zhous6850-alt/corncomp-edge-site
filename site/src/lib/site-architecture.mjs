@@ -154,10 +154,7 @@ const link = (title, route, text) => ({ title, route, text });
 
 // Presentation aliases reuse verified imagery without changing the content or routes.
 const architectureMediaAliases = {
-  '/custom-packaging/custom-printed-paper-cups/': 'architecture:products/cups-bowls/paper-cups',
   '/custom-packaging/custom-paper-straws/': 'architecture:products/foodservice-supplies/paper-straws',
-  '/resources/guides/paper-cup-sizes/': 'architecture:products/cups-bowls/paper-cups',
-  '/resources/guides/custom-printed-paper-cups/': 'architecture:products/cups-bowls/paper-cups',
 };
 
 export const mediaKeyForArchitecture = (page) => architectureMediaAliases[page.route] || `architecture:${page.route.replace(/^\/+|\/+$/g, '')}`;

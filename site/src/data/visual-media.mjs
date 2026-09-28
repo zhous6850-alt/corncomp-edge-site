@@ -15,6 +15,21 @@ const wp = (key, filename, width, height, evidence, alt, options = {}) => ({
   required: true,
 });
 
+const generated = (key, filename, alt, use) => ({
+  key,
+  src: `/media/generated/${filename}`,
+  width: 1536,
+  height: 1024,
+  evidence: 'decorative',
+  alt,
+  fit: 'cover',
+  position: 'center',
+  source: 'AI-generated editorial artwork for Corncomp',
+  use,
+  restriction: 'Conceptual illustration only; not a photograph of a Corncomp product or evidence of certification or performance.',
+  required: true,
+});
+
 export const VISUAL_MEDIA = [
   wp('home-hero', '845-corncomp-homepage-hero-picnic-compressed-copy.jpg', 1417, 467, 'application', {
     en: 'Friends sharing drinks with paper straws at a picnic',
@@ -34,6 +49,24 @@ export const VISUAL_MEDIA = [
     es: 'Vasos de papel lisos de distintos tamaños',
     ar: 'أكواب ورقية سادة مرتبة حسب الحجم',
   }, { use: 'Paper cup category' }),
+  generated('guide-paper-cup-sizes', 'paper-cup-sizes-guide.webp', {
+    en: 'Four paper cup sizes arranged with a caliper and dimension drawing',
+    fr: 'Quatre formats de gobelets en papier avec un pied à coulisse et un plan coté',
+    es: 'Cuatro tamaños de vasos de papel con un calibre y un plano de dimensiones',
+    ar: 'أربعة أحجام من الأكواب الورقية مع فرجار قياس ورسم للأبعاد',
+  }, 'Paper cup sizes guide illustration'),
+  generated('guide-custom-printed-cups', 'custom-printed-paper-cups-guide.webp', {
+    en: 'Paper cup artwork review with color swatches, dieline and printed proof',
+    fr: 'Révision d’un visuel de gobelet avec nuancier, gabarit et épreuve imprimée',
+    es: 'Revisión del diseño de un vaso con muestras de color, plantilla y prueba impresa',
+    ar: 'مراجعة تصميم كوب ورقي مع عينات ألوان وقالب وعينة مطبوعة',
+  }, 'Custom printed paper cup guide illustration'),
+  generated('custom-printed-cups-service', 'custom-printed-paper-cups-service.webp', {
+    en: 'Lineup of paper cups with varied abstract printed designs',
+    fr: 'Gamme de gobelets en papier aux différents motifs abstraits imprimés',
+    es: 'Línea de vasos de papel con distintos diseños abstractos impresos',
+    ar: 'مجموعة أكواب ورقية بتصاميم مطبوعة تجريدية متنوعة',
+  }, 'Custom printed paper cup service illustration'),
   wp('salad-bowls', '239-salad-bowl-real-photo-scaled.jpg', 2560, 1920, 'product', {
     en: 'Kraft paper salad bowl beside wooden cutlery',
     fr: 'Bol à salade en papier kraft à côté de couverts en bois',
@@ -145,6 +178,7 @@ export const CONTENT_MEDIA = {
   'architecture:products': ['products-overview', 'paper-cups', 'food-boxes', 'paper-straws'],
   'architecture:products/cups-bowls': ['paper-cups', 'salad-bowls'],
   'architecture:products/cups-bowls/paper-cups': ['paper-cups'],
+  'architecture:custom-packaging/custom-printed-paper-cups': ['custom-printed-cups-service'],
   'architecture:products/cups-bowls/salad-bowls': ['salad-bowls'],
   'architecture:products/food-boxes-containers': ['food-boxes', 'burger-boxes', 'salad-boxes'],
   'architecture:products/food-boxes-containers/paper-food-boxes': ['food-boxes'],
@@ -167,6 +201,8 @@ export const CONTENT_MEDIA = {
   'certificate:bpi': ['certificate-bpi'],
   'certificate:brcgs': ['certificate-brcgs'],
   'architecture:resources': ['guide-certification', 'blog-eu-regulation'],
+  'architecture:resources/guides/paper-cup-sizes': ['guide-paper-cup-sizes'],
+  'architecture:resources/guides/custom-printed-paper-cups': ['guide-custom-printed-cups'],
   'architecture:resources/guides/food-packaging-certifications': ['guide-certification'],
   'architecture:contact': ['factory-line'],
   'post:eu-single-use-plastics-directive-explained': ['blog-eu-regulation'],
