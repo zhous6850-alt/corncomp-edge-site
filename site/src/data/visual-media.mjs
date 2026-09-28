@@ -155,7 +155,7 @@ export const CONTENT_MEDIA = {
   'architecture:products/foodservice-supplies/disposable-cutlery': ['cutlery'],
   'architecture:products/foodservice-supplies/paper-plates': ['paper-plates'],
   'architecture:custom-packaging': ['custom-packaging', 'factory-line'],
-  'architecture:applications': ['salad-boxes', 'drink-application'],
+  'architecture:applications': ['drink-application', 'salad-boxes'],
   'architecture:applications/takeaway-packaging': ['salad-boxes'],
   'architecture:applications/restaurant-packaging': ['salad-bowls'],
   'architecture:applications/fast-food-packaging': ['burger-boxes'],

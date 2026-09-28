@@ -513,6 +513,20 @@ test('buyer and company page families render assigned media in every language', 
   }
 });
 
+test('application landing pages do not repeat the hero image in their cards', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'architecture:applications'));
+    const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
+    const heroSrc = hero.match(/<img\b[^>]*src="([^"]+)"/)?.[1];
+    const cards = html.match(/<div class="architecture-grid linked-page-grid editorial-card-grid">([\s\S]*?)<\/div><div class="architecture-grid content-section-grid/)?.[1] || '';
+    const cardSources = [...cards.matchAll(/<img\b[^>]*src="([^"]+)"/g)].map(([, src]) => src);
+
+    assert.ok(heroSrc, `${language}: application hero image`);
+    assert.equal(cardSources.length, 3, `${language}: application card images`);
+    assert.equal(new Set([heroSrc, ...cardSources]).size, 4, `${language}: unique application imagery`);
+  }
+});
+
 test('Quality places its full-width title before certificates, factory evidence, and separate material documents', async () => {
   const html = await readBuiltRoute('/quality/');
   const heading = html.indexOf('<h1>');
