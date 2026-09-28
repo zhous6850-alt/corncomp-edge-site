@@ -2,6 +2,19 @@
 
 Status: **partial local verification; browser acceptance and preview deployment blocked**. This record is not a release approval.
 
+## 2026-09-28 resumed verification
+
+The user explicitly authorized continuation and network access. The application baseline remained unchanged; documentation baseline was `74ffb2c828870747f3cae755587a092268fc6597`.
+
+- A fresh stable build completed: **345 pages**, exit 0, **24.69 seconds**. Command from the worktree: `$env:ASTRO_TELEMETRY_DISABLED='1'; npm run build --prefix site`.
+- Re-read computer-use version `26.924.22138` and its required guidance/confirmations. Native `@oai/sky` application discovery succeeded and found Chrome installed with no open browser window. The subsequent `sky.launch_app({app:'Chrome'})` operation did not return within the requested 30-second tool timeout and was interrupted; no new browser visual acceptance was completed. The earlier unverified viewport/state matrix below therefore remains outstanding. No authentication UI was automated.
+- npm cache and Wrangler logs were redirected under the existing ignored orchestration directory: `.superpowers/sdd/2026-09-27-corncomp-sitewide-visual-redesign/runtime/`. Neither pre-existing temp directory was used or changed.
+- `npx --yes wrangler whoami` remained silent during package resolution and ultimately returned **EACCES** fetching `https://registry.npmjs.org/wrangler`, despite the resumed network authorization. It was not retried.
+- Used the already-installed binary instead: **`.\.wrangler-cli\node_modules\.bin\wrangler.cmd whoami`** with the worktree-local cache/log paths and `WRANGLER_SEND_METRICS=false`. Wrangler **4.135.0** completed, exit 0, with **`You are not authenticated. Please run wrangler login.`** This is not a successful authenticated-account check. No login URL was returned. No login command or temporary-account deployment was initiated.
+- Reconfirmed that `wrangler.preview.jsonc` targets only `corncomp-edge-site-v2-preview` with `workers_dev: true` and no production routes; the separate production config was only read for target comparison.
+
+**Current deployment blocker: Cloudflare authentication is absent.** No deployment, live preview read-after-write, or valid inquiry was performed. No preview URL/version was produced, and production remains untouched. There is no remote rollback to perform. After user-completed authentication, confirm the account using the existing local binary, then continue only with the explicit preview config and remaining acceptance checks. The prior single authorized valid preview inquiry remains unsent. User approval is still required before merge or production deployment.
+
 **production untouched** — no production deployment, route change, merge, or external inquiry was performed. Explicit user approval remains required after completed preview review and before any merge or production deployment.
 
 ## Baseline and local environment
