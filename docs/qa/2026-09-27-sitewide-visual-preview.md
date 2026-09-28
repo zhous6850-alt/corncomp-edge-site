@@ -1,6 +1,6 @@
 # Sitewide visual redesign preview QA — 2026-09-27
 
-Status: **partial local verification; browser acceptance and preview deployment blocked**. This record is not a release approval.
+Status: **preview deployed and live HTTP/SEO verification passed; browser acceptance remains partial**. This record is not a release approval.
 
 ## 2026-09-28 resumed verification
 
@@ -9,11 +9,15 @@ The user explicitly authorized continuation and network access. The application 
 - A fresh stable build completed: **345 pages**, exit 0, **24.69 seconds**. Command from the worktree: `$env:ASTRO_TELEMETRY_DISABLED='1'; npm run build --prefix site`.
 - Re-read computer-use version `26.924.22138` and its required guidance/confirmations. Native `@oai/sky` application discovery succeeded and found Chrome installed with no open browser window. The subsequent `sky.launch_app({app:'Chrome'})` operation did not return within the requested 30-second tool timeout and was interrupted; no new browser visual acceptance was completed. The earlier unverified viewport/state matrix below therefore remains outstanding. No authentication UI was automated.
 - npm cache and Wrangler logs were redirected under the existing ignored orchestration directory: `.superpowers/sdd/2026-09-27-corncomp-sitewide-visual-redesign/runtime/`. Neither pre-existing temp directory was used or changed.
-- `npx --yes wrangler whoami` remained silent during package resolution and ultimately returned **EACCES** fetching `https://registry.npmjs.org/wrangler`, despite the resumed network authorization. It was not retried.
-- Used the already-installed binary instead: **`.\.wrangler-cli\node_modules\.bin\wrangler.cmd whoami`** with the worktree-local cache/log paths and `WRANGLER_SEND_METRICS=false`. Wrangler **4.135.0** completed, exit 0, with **`You are not authenticated. Please run wrangler login.`** This is not a successful authenticated-account check. No login URL was returned. No login command or temporary-account deployment was initiated.
+- `npx --yes wrangler whoami` remained silent during package resolution and ultimately returned **EACCES** fetching `https://registry.npmjs.org/wrangler`. The already-installed Wrangler **4.135.0** binary was used instead.
+- Repeated localhost OAuth callbacks arrived after Wrangler's listener timeout. Switching to the supported `wrangler login --device` flow completed authentication. A subsequent `whoami` confirmed the expected Cloudflare account and Workers write scope; no credential values were printed or committed.
 - Reconfirmed that `wrangler.preview.jsonc` targets only `corncomp-edge-site-v2-preview` with `workers_dev: true` and no production routes; the separate production config was only read for target comparison.
 
-**Current deployment blocker: Cloudflare authentication is absent.** No deployment, live preview read-after-write, or valid inquiry was performed. No preview URL/version was produced, and production remains untouched. There is no remote rollback to perform. After user-completed authentication, confirm the account using the existing local binary, then continue only with the explicit preview config and remaining acceptance checks. The prior single authorized valid preview inquiry remains unsent. User approval is still required before merge or production deployment.
+The fresh build and **149/149** site tests passed. Wrangler's embedded esbuild could not resolve an entry from the sandboxed worktree because its ancestor-directory scan reached a denied user-directory boundary. A short-lived isolated staging directory, a Vite/Rollup single-file Worker build, `--no-bundle`, and a temporary `subst` drive mapping produced a successful dry-run before upload. The mapping was removed after each command. Only `wrangler.preview.jsonc` was deployed.
+
+Preview deployment succeeded at <https://corncomp-edge-site-v2-preview.corncomp-edge.workers.dev/> as version **`e48c91e0-9a57-497b-918a-4e6a5b8d6976`**. Live read-after-write checks returned 200 for the homepage, products, Quality, Blog, a representative product, French, Spanish and Arabic home/archive routes, robots and sitemap. HTML samples retained production canonicals, JSON-LD and five hreflang links. `/shop/?source=qa` returned 301 to the preview `/products/?source=qa`, and a live invalid inquiry returned 400 without an email send. No 502/503/504/524 response occurred.
+
+The preview Worker has no `RESEND_API_KEY` secret, so the previously authorized valid preview inquiry remains unsent; production secrets were not read or copied. User approval is still required before adding a preview-only secret, sending the one authorized valid inquiry, merging, or deploying to production.
 
 **production untouched** — no production deployment, route change, merge, or external inquiry was performed. Explicit user approval remains required after completed preview review and before any merge or production deployment.
 
@@ -84,7 +88,7 @@ For reproducible localization, the probe used `routeFor(language, contentKey)` f
 
 ## Inquiry verification
 
-An invalid local request `{name:"", email:"invalid"}` was passed directly to the actual Worker handler, with external fetch guarded to fail if invoked. Result: **400**, `{"ok":false,"error":"Please enter a valid name and email."}`, **zero external email calls**. This is an in-process Worker check, not an HTTP request to the Astro static server.
+An invalid local request `{name:"", email:"invalid"}` was passed directly to the actual Worker handler, with external fetch guarded to fail if invoked. Result: **400**, `{"ok":false,"error":"Please enter a valid name and email."}`, **zero external email calls**. The same invalid payload returned **400** from the deployed preview Worker.
 
 The existing Worker suite also passed mocked valid-send and browser-return tests. **No valid live test inquiry was sent.** The one authorized valid inquiry is still pending and may be sent at most once to the preview Worker after deployment, never production. Delivery to the existing recipient is therefore unverified; no secret or private recipient address is reproduced here. Public/sender address remains `inquiry@corn-comp.com`.
 
@@ -97,12 +101,12 @@ Read-only inspection of `wrangler.preview.jsonc` confirmed:
 - `workers_dev: true`; assets `./site/dist`, binding `ASSETS`, `run_worker_first: true`.
 - No production routes or custom-domain configuration in this preview file.
 
-`$env:WRANGLER_SEND_METRICS='false'; npx wrangler whoami` failed before authentication could be confirmed: npm reported **EACCES** fetching `https://registry.npmjs.org/wrangler`, and could not write logs to its restricted default cache. A scoped network-permission request was interrupted/aborted by the user; no grant was recorded. No authentication dialog was automated and no credentials were inspected.
+User-completed device authorization was verified using the existing local Wrangler binary. The isolated preview deployment uploaded 348 changed assets (166 already present), retained only the `ASSETS` binding, and published version **`e48c91e0-9a57-497b-918a-4e6a5b8d6976`** at <https://corncomp-edge-site-v2-preview.corncomp-edge.workers.dev/>. The preview configuration contains no production route or custom domain. Production remained untouched.
 
-Because browser acceptance and authentication remain unconfirmed, **`npx wrangler deploy --config wrangler.preview.jsonc` was not run**. No new preview URL/version exists from this task. Live preview read-after-write, live inquiry and remote rollback-version checks remain pending. No 502/503/504/524 response was observed; if one occurs during the remaining work, stop rather than retry deployment actions.
+Live read-after-write checks passed for 11 representative routes/files, one legacy redirect and invalid inquiry validation. A valid live inquiry is pending because the preview Worker has no `RESEND_API_KEY`; no production secret was read or copied.
 
 ## Recovery and approval gate
 
-No deployment rollback is needed because no remote state changed. The application remains at baseline commit `870d3dd1515e96b3a041d733273ef05d83c4ae13`; the QA commit adds only this record. Existing `.tmp-npm-cache/`, `.wrangler-dry-run/` and other pre-existing temporary paths were left untouched.
+The application remains at baseline commit `870d3dd1515e96b3a041d733273ef05d83c4ae13`; the QA update records the isolated preview version above. Existing `.tmp-npm-cache/`, `.wrangler-dry-run/` and other pre-existing temporary paths were left untouched. The preview version can be superseded or rolled back without changing production routes.
 
-Resume by restoring browser availability and completing the viewport matrix, prioritizing Quality desktop/mobile, Resources keyboard open/close/Escape/focus, Contact mobile, and Arabic RTL. Then confirm Cloudflare authentication, capture the existing preview version for rollback, deploy only using the explicit preview config, and perform preview read-after-write plus the single authorized valid inquiry. Present that evidence to the user for approval before merging or deploying to production.
+Resume by completing visual review on the deployed preview, prioritizing Quality desktop/mobile, Resources keyboard open/close/Escape/focus, Contact mobile, and Arabic RTL. If email delivery must be verified before approval, add a preview-only `RESEND_API_KEY` through an authorized secret workflow and send the single authorized valid inquiry. Present that evidence to the user for approval before merging or deploying to production.
