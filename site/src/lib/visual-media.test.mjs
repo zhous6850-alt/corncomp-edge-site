@@ -23,7 +23,7 @@ test('reports missing required assets', () => {
   assert.ok(errors.some((error) => error.includes('home-hero') && error.includes('missing')));
 });
 
-test('requires all four localized alt values', () => {
+test('requires every supported localized alt value', () => {
   const media = [{
     key: 'sample', src: '/media/wp/example.jpg', width: 100, height: 80,
     alt: { en: 'Sample image', fr: 'Image exemple', es: 'Imagen de ejemplo' },
@@ -38,8 +38,8 @@ test('keeps optional media nullable', () => {
   assert.deepEqual(mediaListFor('not-a-content-key'), []);
 });
 
-test('only explicitly assigned products receive supplemental real context with four localized alt values', () => {
-  for (const language of ['en', 'fr', 'es', 'ar']) {
+test('only explicitly assigned products receive supplemental real context with every localized alt value', () => {
+  for (const language of ['en', 'fr', 'es', 'ar', 'zh', 'de']) {
     const bowl = mediaListFor('product:kraft-paper-bowl', language);
     const straw = mediaListFor('product:bendy', language);
     assert.deepEqual(bowl.map(({ key }) => key), ['salad-bowls', 'factory-line']);
@@ -67,7 +67,7 @@ test('separates complete company certificates from supply-chain documents', () =
   ]);
   assert.ok(suppliers.every(({ documentUrl }) => documentUrl?.endsWith('.pdf')));
   assert.ok(suppliers.every(({ holder }) => holder !== 'Ningbo Corncomp Tech Co., Ltd.'));
-  for (const language of ['fr', 'es', 'ar']) {
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) {
     assert.equal(companyCertificates(language).length, 4);
     assert.equal(supplyChainDocuments(language).length, 2);
   }
@@ -84,7 +84,7 @@ test('rejects product media assigned to a company certificate', () => {
   assert.ok(errors.some((error) => error.includes('iso-9001') && error.includes('certificate image')));
 });
 test('Resources latest articles resolve accurately classified real evidence in every language', () => {
-  for (const language of ['en', 'fr', 'es', 'ar']) {
+  for (const language of ['en', 'fr', 'es', 'ar', 'zh', 'de']) {
     const legislation = mediaFor('post:us-state-plastic-packaging-laws-explained', language);
     const verification = mediaFor('post:how-to-verify-supplier-sustainability-certifications', language);
     assert.ok(legislation, language);

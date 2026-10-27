@@ -1,0 +1,106 @@
+---
+import { routeFor } from '../lib/localization.mjs';
+import homeImages from '../data/home-images.json';
+
+const { language, ui } = Astro.props;
+const copy = {
+  en: {
+    eyebrow: 'Our product range', heading: 'Packaging for Every Serving',
+    intro: 'Browse our cups, containers and foodservice supplies by category.',
+    browse: 'Explore range', custom: 'Custom printed packaging',
+    titles: ['Paper Cups & Lids', 'Bowls & Soup Cups', 'Ice Cream Cups', 'Food Boxes', 'Paper Straws', 'Tableware & Accessories'],
+    descriptions: ['Plain and printed cups, with matching lids.', 'Salad bowls, soup cups and matching lids.', 'Paper cups for ice cream and desserts.', 'Meal, burger, sandwich and sushi packaging.', 'Straight, bendable and individually wrapped options.', 'Cutlery and paper plates for foodservice.'],
+  },
+  zh: {
+    eyebrow: '我们的产品', heading: '为每一份餐饮，找到合适的包装',
+    intro: '从纸杯、食品容器到餐饮配套用品，按品类找到您需要的产品。',
+    browse: '查看系列', custom: '定制印刷包装',
+    titles: ['纸杯及杯盖', '沙拉碗与汤杯', '冰淇淋杯', '食品包装盒', '纸吸管', '餐具及配套用品'],
+    descriptions: ['素色、印刷纸杯与配套杯盖。', '沙拉碗、汤杯及配套盖型。', '适用于冰淇淋和甜品的纸杯。', '餐盒、汉堡盒、三明治盒与寿司盒。', '直管、可弯吸管与独立包装选择。', '餐饮用餐具与纸盘。'],
+  },
+  fr: {
+    eyebrow: 'Nos produits', heading: 'Un emballage pour chaque service',
+    intro: 'Gobelets, contenants alimentaires et accessoires : choisissez une gamme pour trouver votre format.',
+    browse: 'Voir la gamme', custom: 'Emballages imprimés sur mesure',
+    titles: ['Gobelets et couvercles', 'Bols et pots à soupe', 'Pots à glace', 'Boîtes alimentaires', 'Pailles en papier', 'Vaisselle et accessoires'],
+    descriptions: ['Gobelets unis ou imprimés et couvercles assortis.', 'Bols à salade, pots à soupe et couvercles.', 'Pots en papier pour glaces et desserts.', 'Boîtes pour repas, burgers, sandwichs et sushis.', 'Pailles droites, flexibles ou emballées individuellement.', 'Couverts et assiettes en papier pour la restauration.'],
+  },
+  es: {
+    eyebrow: 'Nuestros productos', heading: 'Un envase para cada servicio',
+    intro: 'Vasos, envases alimentarios y accesorios: elija una gama para encontrar el formato que necesita.',
+    browse: 'Ver la gama', custom: 'Envases con impresión personalizada',
+    titles: ['Vasos y tapas', 'Boles y vasos para sopa', 'Vasos para helado', 'Cajas para alimentos', 'Pajitas de papel', 'Vajilla y accesorios'],
+    descriptions: ['Vasos lisos o impresos y tapas compatibles.', 'Boles para ensalada, vasos para sopa y tapas.', 'Vasos de papel para helados y postres.', 'Cajas para comidas, hamburguesas, sándwiches y sushi.', 'Pajitas rectas, flexibles o envueltas individualmente.', 'Cubiertos y platos de papel para restauración.'],
+  },
+  ar: {
+    eyebrow: 'منتجاتنا', heading: 'عبوات لكل وجبة ومشروب',
+    intro: 'استعرض الأكواب وعبوات الطعام ومستلزمات التقديم، واختر الفئة المناسبة لاحتياجاتك.',
+    browse: 'استعرض المجموعة', custom: 'عبوات بطباعة مخصصة',
+    titles: ['أكواب وأغطية', 'أوعية سلطة وأكواب شوربة', 'أكواب آيس كريم', 'علب طعام', 'ماصات ورقية', 'أدوات مائدة ومستلزمات'],
+    descriptions: ['أكواب سادة ومطبوعة مع أغطية مناسبة.', 'أوعية سلطة وأكواب شوربة مع أغطية مناسبة.', 'أكواب ورقية للآيس كريم والحلويات.', 'علب للوجبات والبرغر والسندويشات والسوشي.', 'خيارات مستقيمة وقابلة للثني ومغلفة فردياً.', 'أدوات مائدة وأطباق ورقية لخدمات الطعام.'],
+  },
+  de: {
+    eyebrow: 'Unser Sortiment', heading: 'Verpackungen für jede Portion',
+    intro: 'Papierbecher, Lebensmittelbehälter und Zubehör: Wählen Sie eine Produktgruppe und finden Sie das passende Format.',
+    browse: 'Sortiment ansehen', custom: 'Individuell bedruckte Verpackungen',
+    titles: ['Papierbecher & Deckel', 'Salatschalen & Suppenbecher', 'Eisbecher', 'Lebensmittelboxen', 'Papierstrohhalme', 'Geschirr & Zubehör'],
+    descriptions: ['Unbedruckte und bedruckte Becher mit passenden Deckeln.', 'Salatschalen, Suppenbecher und passende Deckel.', 'Papierbecher für Eis und Desserts.', 'Boxen für Mahlzeiten, Burger, Sandwiches und Sushi.', 'Gerade, biegsame und einzeln verpackte Varianten.', 'Besteck und Pappteller für die Gastronomie.'],
+  },
+}[language];
+const ranges = [
+  { key: 'products/cups-bowls/paper-cups', image: 'v1/cups' },
+  { key: 'products/cups-bowls', image: 'v2/bowls' },
+  { key: 'products/cups-bowls/ice-cream-cups', image: 'v1/icecream' },
+  { key: 'products/food-boxes-containers', image: 'v2/boxes' },
+  { key: 'products/foodservice-supplies/paper-straws', image: 'v1/straws' },
+  { key: 'products/foodservice-supplies', image: 'v2/tableware' },
+];
+---
+<section class="content-shell home-catalogue" id="product-ranges" aria-labelledby="product-ranges-heading">
+  <div class="home-catalogue-heading">
+    <p class="eyebrow">{copy.eyebrow}</p>
+    <h2 id="product-ranges-heading">{copy.heading}</h2>
+    <p>{copy.intro}</p>
+  </div>
+  <div class="home-product-grid">
+    {ranges.map((range, index) => <article class="home-range">
+      <a class="home-range-main" href={routeFor(language, `architecture:${range.key}`)}>
+        <div class="home-range-media">
+          <img {...homeImages[range.image]} sizes="(max-width: 760px) calc((100vw - 60px) / 2), (max-width: 980px) calc((100vw - 66px) / 2), (max-width: 1208px) calc((100vw - 84px) / 3), 374px" width="1200" height="900" alt="" loading="lazy" decoding="async" data-image-kind="ai-lifestyle" />
+        </div>
+        <div class="home-range-copy"><h3>{copy.titles[index]}</h3><p>{copy.descriptions[index]}</p><span>{copy.browse}<span aria-hidden="true"> →</span></span></div>
+      </a>
+    </article>)}
+  </div>
+  <div class="home-catalogue-actions"><a class="button-primary" href={routeFor(language, 'architecture:products')}>{ui.allProducts}<span aria-hidden="true"> →</span></a><a class="home-catalogue-custom" href={routeFor(language, 'architecture:custom-packaging')}>{copy.custom}<span aria-hidden="true"> ↗</span></a></div>
+</section>
+<style>
+  .home-catalogue { padding-block: 72px 88px; scroll-margin-top: 32px; }
+  .home-catalogue-heading { max-width: 760px; margin: 0 auto 36px; text-align: center; }
+  .home-catalogue-heading .eyebrow { margin-bottom: 12px; }
+  .home-catalogue-heading h2 { margin: 0; color: var(--corncomp-deep-green); font-size: clamp(1.9rem, 3.5vw, 2.8rem); line-height: 1.15; letter-spacing: -.035em; text-wrap: balance; }
+  .home-catalogue-heading > p:last-child { margin: 16px 0 0; color: var(--corncomp-muted); line-height: 1.6; text-wrap: pretty; }
+  .home-product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .home-range { min-width: 0; border: 1px solid var(--corncomp-line); background: #fff; }
+  .home-range-main { display: block; color: inherit; text-decoration: none; }
+  .home-range-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--corncomp-paper); isolation: isolate; }
+  .home-range-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+  .home-range-main:hover img, .home-range-main:focus-visible img { transform: scale(1.035); }
+  .home-range-copy { padding: 20px 22px 22px; }
+  .home-range h3 { margin: 0; color: var(--corncomp-deep-green); font-size: 1.3rem; line-height: 1.25; letter-spacing: -.025em; text-wrap: pretty; }
+  .home-range-copy p { min-height: 2.9em; margin: 9px 0 14px; color: var(--corncomp-muted); font-size: .9rem; line-height: 1.45; }
+  .home-range-copy > span { color: var(--corncomp-green); font-size: .85rem; font-weight: 700; }
+  .home-catalogue-actions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px 32px; margin-top: 32px; }
+  .home-catalogue-custom { color: var(--corncomp-green); font-weight: 700; text-underline-offset: 5px; }
+  @media (max-width: 980px) { .home-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) {
+    .home-catalogue { padding-block: 44px 54px; }
+    .home-catalogue-heading { margin-bottom: 26px; }
+    .home-product-grid { gap: 12px; }
+    .home-range-copy { padding: 14px 12px; }
+    .home-range h3 { font-size: 1rem; }
+    .home-range-copy p { font-size: .8rem; min-height: 0; }
+    .home-range-copy > span { font-size: .78rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .home-range-media img { transition: none; } .home-range-main:hover img, .home-range-main:focus-visible img { transform: none; } }
+</style>

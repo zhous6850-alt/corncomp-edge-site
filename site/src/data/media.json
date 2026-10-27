@@ -24446,5 +24446,617 @@
       ]
     },
     "localPath": "/media/wp/6--2026-07-13-085050.png"
+  },
+  {
+    "id": 20000,
+    "localPath": "/media/catalogue/printed-stripe-paper-straws.webp",
+    "source_url": "",
+    "alt_text": "Stripe Colors - decorative patterns",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "printed-stripe-paper-straws.webp"
+  },
+  {
+    "id": 20001,
+    "localPath": "/media/catalogue/small-dot-paper-straws.webp",
+    "source_url": "",
+    "alt_text": "Small Dot Colors",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "small-dot-paper-straws.webp"
+  },
+  {
+    "id": 20002,
+    "localPath": "/media/catalogue/big-dot-paper-straws.webp",
+    "source_url": "",
+    "alt_text": "Big Dot Colors",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "big-dot-paper-straws.webp"
+  },
+  {
+    "id": 20003,
+    "localPath": "/media/catalogue/wave-paper-straws.webp",
+    "source_url": "",
+    "alt_text": "Wave Colors",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "wave-paper-straws.webp"
+  },
+  {
+    "id": 20004,
+    "localPath": "/media/catalogue/cardboard-ice-cream-cup.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Ice Cream Cup",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "cardboard-ice-cream-cup.webp"
+  },
+  {
+    "id": 20005,
+    "localPath": "/media/catalogue/pla-ice-cream-lid.webp",
+    "source_url": "",
+    "alt_text": "PLA Lid",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "pla-ice-cream-lid.webp"
+  },
+  {
+    "id": 20006,
+    "localPath": "/media/catalogue/kraft-paper-tray.webp",
+    "source_url": "",
+    "alt_text": "Kraft Paper Tray",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-paper-tray.webp"
+  },
+  {
+    "id": 20007,
+    "localPath": "/media/catalogue/two-compartment-paper-tray.webp",
+    "source_url": "",
+    "alt_text": "2-Compartment Paper Tray",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "two-compartment-paper-tray.webp"
+  },
+  {
+    "id": 20008,
+    "localPath": "/media/catalogue/hot-dog-tray.webp",
+    "source_url": "",
+    "alt_text": "Hot Dog Tray",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "hot-dog-tray.webp"
+  },
+  {
+    "id": 20009,
+    "localPath": "/media/catalogue/kraft-square-food-box.webp",
+    "source_url": "",
+    "alt_text": "Kraft Square Food Box",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-square-food-box.webp"
+  },
+  {
+    "id": 20010,
+    "localPath": "/media/catalogue/kraft-square-food-box-wire-handle.webp",
+    "source_url": "",
+    "alt_text": "Kraft Square Food Box-Wire Handle",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-square-food-box-wire-handle.webp"
+  },
+  {
+    "id": 20011,
+    "localPath": "/media/catalogue/white-cardboard-food-box.webp",
+    "source_url": "",
+    "alt_text": "White Cardboard Box",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "white-cardboard-food-box.webp"
+  },
+  {
+    "id": 20012,
+    "localPath": "/media/catalogue/white-cardboard-food-box-pp-handle.webp",
+    "source_url": "",
+    "alt_text": "White Cardboard Box-pp Handle",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "white-cardboard-food-box-pp-handle.webp"
+  },
+  {
+    "id": 20013,
+    "localPath": "/media/catalogue/kraft-round-food-box.webp",
+    "source_url": "",
+    "alt_text": "Kraft Round Food Box",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-round-food-box.webp"
+  },
+  {
+    "id": 20014,
+    "localPath": "/media/catalogue/white-round-food-box.webp",
+    "source_url": "",
+    "alt_text": "White Round Food Box",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "white-round-food-box.webp"
+  },
+  {
+    "id": 20015,
+    "localPath": "/media/catalogue/white-cardboard-menu-box.webp",
+    "source_url": "",
+    "alt_text": "White Cardboard Menu Box",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "white-cardboard-menu-box.webp"
+  },
+  {
+    "id": 20016,
+    "localPath": "/media/catalogue/cardboard-cutlery.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Cutlery",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "cardboard-cutlery.webp"
+  },
+  {
+    "id": 20017,
+    "localPath": "/media/catalogue/corrugated-hamburger-box.webp",
+    "source_url": "",
+    "alt_text": "Corrugated Hamburger Box",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "corrugated-hamburger-box.webp"
+  },
+  {
+    "id": 20018,
+    "localPath": "/media/catalogue/cardboard-sandwich-box-pla-window.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Sandwich Box-PLA Window",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "cardboard-sandwich-box-pla-window.webp"
+  },
+  {
+    "id": 20019,
+    "localPath": "/media/catalogue/cardboard-triangle-box-pla-window.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Triangle Box-PLA Window",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "cardboard-triangle-box-pla-window.webp"
+  },
+  {
+    "id": 20020,
+    "localPath": "/media/catalogue/kraft-wrap-box-pla-window.webp",
+    "source_url": "",
+    "alt_text": "Kraft Wrap Box-PLA Window",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-wrap-box-pla-window.webp"
+  },
+  {
+    "id": 20021,
+    "localPath": "/media/catalogue/cardboard-window-food-box.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Box-PLA Window",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "cardboard-window-food-box.webp"
+  },
+  {
+    "id": 20022,
+    "localPath": "/media/catalogue/multi-window-salad-box.webp",
+    "source_url": "",
+    "alt_text": "Kraft Paper Salad Box-PLA Window - multi-window",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "multi-window-salad-box.webp"
+  },
+  {
+    "id": 20023,
+    "localPath": "/media/catalogue/two-piece-window-food-box.webp",
+    "source_url": "",
+    "alt_text": "Kraft Paper Box-PLA Window - two-piece",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "two-piece-window-food-box.webp"
+  },
+  {
+    "id": 20024,
+    "localPath": "/media/catalogue/rectangular-pla-window-box.webp",
+    "source_url": "",
+    "alt_text": "Kraft Paper Box-PLA Window - rectangular",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "rectangular-pla-window-box.webp"
+  },
+  {
+    "id": 20025,
+    "localPath": "/media/catalogue/kraft-window-menu-box.webp",
+    "source_url": "",
+    "alt_text": "Kraft Paper Box-PLA Window - hinged",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-window-menu-box.webp"
+  },
+  {
+    "id": 20026,
+    "localPath": "/media/catalogue/frite-cone-white.webp",
+    "source_url": "",
+    "alt_text": "Frite Cone-White",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "frite-cone-white.webp"
+  },
+  {
+    "id": 20027,
+    "localPath": "/media/catalogue/frite-cone-kraft-cardboard.webp",
+    "source_url": "",
+    "alt_text": "Frite Cone-Kraft Cardboard",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "frite-cone-kraft-cardboard.webp"
+  },
+  {
+    "id": 20028,
+    "localPath": "/media/catalogue/cardboard-closed-snack-cup.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Closed Snack Cup",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "cardboard-closed-snack-cup.webp"
+  },
+  {
+    "id": 20029,
+    "localPath": "/media/catalogue/kraft-french-fries-box.webp",
+    "source_url": "",
+    "alt_text": "Natural Kraft French Fries Box",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-french-fries-box.webp"
+  },
+  {
+    "id": 20030,
+    "localPath": "/media/catalogue/bagasse-round-plate.webp",
+    "source_url": "",
+    "alt_text": "Plate Round",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-round-plate.webp"
+  },
+  {
+    "id": 20031,
+    "localPath": "/media/catalogue/bagasse-natural-round-plate.webp",
+    "source_url": "",
+    "alt_text": "Plate Round Natural",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-natural-round-plate.webp"
+  },
+  {
+    "id": 20032,
+    "localPath": "/media/catalogue/bagasse-three-compartment-plate.webp",
+    "source_url": "",
+    "alt_text": "Plate Round 3 Part",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-three-compartment-plate.webp"
+  },
+  {
+    "id": 20033,
+    "localPath": "/media/catalogue/bagasse-natural-round-bowl.webp",
+    "source_url": "",
+    "alt_text": "Bowl Round Natural",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-natural-round-bowl.webp"
+  },
+  {
+    "id": 20034,
+    "localPath": "/media/catalogue/bagasse-round-bowl.webp",
+    "source_url": "",
+    "alt_text": "Bowl Round",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-round-bowl.webp"
+  },
+  {
+    "id": 20035,
+    "localPath": "/media/catalogue/bagasse-shallow-round-bowl.webp",
+    "source_url": "",
+    "alt_text": "Bowl Round Shallow",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-shallow-round-bowl.webp"
+  },
+  {
+    "id": 20036,
+    "localPath": "/media/catalogue/bagasse-two-compartment-tray.webp",
+    "source_url": "",
+    "alt_text": "Menu Tray-Rectangular Natural",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-two-compartment-tray.webp"
+  },
+  {
+    "id": 20037,
+    "localPath": "/media/catalogue/bagasse-square-plate.webp",
+    "source_url": "",
+    "alt_text": "Plate Square",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-square-plate.webp"
+  },
+  {
+    "id": 20038,
+    "localPath": "/media/catalogue/bagasse-three-compartment-clamshell.webp",
+    "source_url": "",
+    "alt_text": "Food Box with Fold-over Lid 3 Part",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-three-compartment-clamshell.webp"
+  },
+  {
+    "id": 20039,
+    "localPath": "/media/catalogue/bagasse-clamshell.webp",
+    "source_url": "",
+    "alt_text": "Food Box with Fold-over Lid",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "bagasse-clamshell.webp"
+  },
+  {
+    "id": 20040,
+    "localPath": "/media/catalogue/compostable-waste-bag.webp",
+    "source_url": "",
+    "alt_text": "Compostable Waste Bag",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "compostable-waste-bag.webp"
+  },
+  {
+    "id": 20041,
+    "localPath": "/media/catalogue/ripple-white-paper-cup-vertical.webp",
+    "source_url": "",
+    "alt_text": "Ripple-White Cardboard Paper Cup-Vertical Style",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "ripple-white-paper-cup-vertical.webp"
+  },
+  {
+    "id": 20042,
+    "localPath": "/media/catalogue/ripple-white-paper-cup-horizontal.webp",
+    "source_url": "",
+    "alt_text": "Ripple-White Cardboard Paper Cup-Horizon Style",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "ripple-white-paper-cup-horizontal.webp"
+  },
+  {
+    "id": 20043,
+    "localPath": "/media/catalogue/single-wall-bagasse-paper-cup.webp",
+    "source_url": "",
+    "alt_text": "Single Wall-Bagasse Paper Cup",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "single-wall-bagasse-paper-cup.webp"
+  },
+  {
+    "id": 20044,
+    "localPath": "/media/catalogue/single-wall-kraft-paper-cup.webp",
+    "source_url": "",
+    "alt_text": "Single Wall-Natural Kraft Paper Cup",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "single-wall-kraft-paper-cup.webp"
+  },
+  {
+    "id": 20045,
+    "localPath": "/media/catalogue/double-wall-kraft-paper-cup.webp",
+    "source_url": "",
+    "alt_text": "Double Wall-Natural Kraft Paper Cup",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "double-wall-kraft-paper-cup.webp"
+  },
+  {
+    "id": 20046,
+    "localPath": "/media/catalogue/white-handle-paper-bag.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Handle Paper Bag",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "white-handle-paper-bag.webp"
+  },
+  {
+    "id": 20047,
+    "localPath": "/media/catalogue/kraft-handle-paper-bag.webp",
+    "source_url": "",
+    "alt_text": "Natural Kraft Handle Paper Bag",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-handle-paper-bag.webp"
+  },
+  {
+    "id": 20048,
+    "localPath": "/media/catalogue/white-paper-bag.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Paper Bag",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "white-paper-bag.webp"
+  },
+  {
+    "id": 20049,
+    "localPath": "/media/catalogue/kraft-paper-bag.webp",
+    "source_url": "",
+    "alt_text": "Natural Kraft Paper Bag",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "kraft-paper-bag.webp"
+  },
+  {
+    "id": 20050,
+    "localPath": "/media/catalogue/white-open-wrap-cup.webp",
+    "source_url": "",
+    "alt_text": "Cardboard Open Wrap Cup",
+    "media_details": {
+      "width": 1200,
+      "height": 900
+    },
+    "mime_type": "image/webp",
+    "filename": "white-open-wrap-cup.webp"
   }
 ]

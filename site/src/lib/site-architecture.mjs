@@ -1,7 +1,11 @@
+import coverage from '../data/catalogue-coverage.json' with { type: 'json' };
+import baseline from '../../../docs/qa/catalogue-route-baseline.json' with { type: 'json' };
+
 export const PRODUCT_GROUPS = [
   { slug: 'cups-bowls', title: 'Cups & Bowls', route: '/products/cups-bowls/', description: 'Paper cups and bowls for beverages, prepared food, takeaway service and branded foodservice programs.' },
   { slug: 'food-boxes-containers', title: 'Food Boxes & Containers', route: '/products/food-boxes-containers/', description: 'Paper food boxes for meals, sandwiches, sushi, salads, burgers, wraps, pizza slices and fried food.' },
   { slug: 'foodservice-supplies', title: 'Foodservice Supplies', route: '/products/foodservice-supplies/', description: 'Paper straws, disposable cutlery and paper plates for distributors, restaurant groups and private-label programs.' },
+  { slug: 'bagasse', title: 'Bagasse Tableware', route: '/products/bagasse/', description: 'Bagasse plates, bowls, trays and hinged food boxes from the Corncomp catalogue.' },
 ];
 
 export const PRODUCT_CATEGORIES = [
@@ -20,9 +24,20 @@ export const PRODUCT_CATEGORIES = [
   { group: 'foodservice-supplies', slug: 'paper-straws', title: 'Paper Straws', description: 'Paper straws in standard and custom formats, including wrapped, printed and multiple-diameter options.' },
   { group: 'foodservice-supplies', slug: 'disposable-cutlery', title: 'Disposable Cutlery', description: 'Wooden and CPLA forks, knives and spoons for foodservice supply programs.' },
   { group: 'foodservice-supplies', slug: 'paper-plates', title: 'Paper Plates', description: 'Round and oval paper plates in multiple catalogue sizes.' },
+  { group: 'food-boxes-containers', slug: 'paper-trays', title: 'Paper Trays', description: 'Kraft food trays, divided trays and hot dog trays.' },
+  { group: 'food-boxes-containers', slug: 'square-food-boxes', title: 'Square Food Boxes', description: 'Kraft and white food pails with plain, PP-handle and wire-handle options.' },
+  { group: 'food-boxes-containers', slug: 'round-food-boxes', title: 'Round Food Boxes', description: 'Round-base kraft and white food boxes and doner boxes.' },
+  { group: 'food-boxes-containers', slug: 'menu-boxes', title: 'Menu Boxes', description: 'Kraft and white cardboard menu boxes in catalogue sizes.' },
+  { group: 'foodservice-supplies', slug: 'paper-bags', title: 'Paper Bags', description: 'Kraft and white paper bags, with and without handles.' },
+  { group: 'foodservice-supplies', slug: 'compostable-waste-bags', title: 'Compostable Waste Bags', description: 'The waste bag format listed in the Corncomp catalogue; confirm material documentation for your market.' },
+  { group: 'bagasse', slug: 'bagasse-plates', title: 'Bagasse Plates', description: 'White, natural and compartmented round bagasse plates.' },
+  { group: 'bagasse', slug: 'bagasse-bowls', title: 'Bagasse Bowls', description: 'Natural, white and shallow round bagasse bowls.' },
+  { group: 'bagasse', slug: 'bagasse-trays', title: 'Bagasse Trays & Square Plates', description: 'Rectangular meal trays and square bagasse plates.' },
+  { group: 'bagasse', slug: 'bagasse-clamshells', title: 'Bagasse Clamshell Boxes', description: 'Single-compartment and three-compartment hinged bagasse food boxes.' },
 ].map((category) => ({ ...category, route: `/products/${category.group}/${category.slug}/` }));
 
 export const PRODUCT_CATEGORY_BY_SLUG = {
+  ...Object.fromEntries(coverage.map(x=>[x.productSlug,x.categorySlug])),
   'bamboo-paper-soup-cup': 'soup-cups',
   bendy: 'paper-straws',
   'pla-lid-for-coffee-cup-black': 'paper-cups',
@@ -68,6 +83,7 @@ export const PRODUCT_CATEGORY_BY_SLUG = {
   'pla-lid-for-coffee-cup-white': 'paper-cups',
   'wooden-bamboo-cutlery': 'disposable-cutlery',
 };
+Object.assign(PRODUCT_CATEGORY_BY_SLUG, Object.fromEntries(coverage.map(x=>[x.productSlug,x.categorySlug])));
 
 export const DUPLICATE_PRODUCT_ALIASES = {
   'bol-en-carton-blanc-bambou': 'cardboard-bamboo-bowl',
@@ -111,10 +127,14 @@ export const DUPLICATE_PRODUCT_ALIASES = {
 };
 
 export function categoryForProduct(slug) {
-  return PRODUCT_CATEGORIES.find((category) => category.slug === PRODUCT_CATEGORY_BY_SLUG[slug]);
+  const categorySlug = coverage.find(x=>x.productSlug===slug)?.categorySlug || PRODUCT_CATEGORY_BY_SLUG[slug];
+  return PRODUCT_CATEGORIES.find((category) => category.slug === categorySlug);
 }
 
+export const PRODUCT_ROUTE_OVERRIDES = Object.fromEntries(baseline.products.map(x=>[x.slug,x.route]));
+
 export function canonicalProductRoute(slug) {
+  if (PRODUCT_ROUTE_OVERRIDES[slug]) return PRODUCT_ROUTE_OVERRIDES[slug];
   const category = categoryForProduct(slug);
   return category ? `${category.route}${slug}/` : null;
 }
@@ -268,11 +288,11 @@ export const ARCHITECTURE_PAGES = [
   }),
   page('/about/', 'trust', 'About Corncomp', 'Learn about Corncomp, its Ningbo manufacturing base and export food packaging programs.', 'Corncomp develops and supplies paper food packaging for distributors, restaurant groups and custom programs, with production and export support based in Ningbo, China.', [
     { title: 'Foodservice focus', text: 'The catalogue covers paper cups, bowls, food boxes, paper straws, cutlery and paper plates.' },
-    { title: 'Manufacturing base', text: 'Corncomp states an 8,000 m² manufacturing base, including a 6,000 m² GMP-standard dust-free workshop and 60 production lines.' },
+    { title: 'Manufacturing base', text: 'Corncomp states an 8,000 m² manufacturing base, including a 6,800 m² GMP-standard dust-free workshop and 60 production lines.' },
     { title: 'Specification-led export support', text: 'Product, artwork, packing, destination and document requirements are reviewed together for wholesale and private-label programs.' },
   ], [link('Factory & Manufacturing', '/about/factory/', 'Review facility and production context.'), link('Quality & Certifications', '/quality/', 'Understand document scope and verification.')]),
   page('/about/factory/', 'trust', 'Factory & Manufacturing', 'See Corncomp manufacturing capabilities, production workflow and quality-control responsibilities.', 'Review the factory, process and capacity evidence behind the products, then confirm the line, material and documentation relevant to your order.', [
-    { title: '8,000 m² manufacturing base', text: 'The site presents an 8,000 m² base in Ningbo, including a 6,000 m² GMP-standard dust-free workshop.' },
+    { title: '8,000 m² manufacturing base', text: 'The site presents an 8,000 m² base in Ningbo, including a 6,800 m² GMP-standard dust-free workshop.' },
     { title: '60 production lines', text: 'Production capacity spans paper straws and multiple paper food packaging formats. Capacity must still be confirmed for the selected item and timing.' },
     { title: '2.5 billion paper straws annually', text: 'This stated annual paper-straw capacity is a factory-level figure, not a promise for every size, print or delivery window.' },
     { title: 'Production release controls', text: 'Final specification, artwork, sample, packing and documentation are confirmed before mass production.' },
@@ -287,6 +307,42 @@ export const ARCHITECTURE_PAGES = [
 ].map((page) => ({ ...page, contentKey: `architecture:${page.route.replace(/^\/+|\/+$/g, '')}` }));
 
 export const LEGACY_PAGE_REDIRECTS = {
+  "/sitemap_index.xml": "/sitemap.xml",
+  "/ar/product-category/أكواب-ورقية/": "/ar/%D8%A7%D9%84%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/",
+  "/ar/product-category/أدوات-مائدة/": "/ar/%D8%A3%D8%AF%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D8%AF%D8%A9-%D8%A3%D8%AD%D8%A7%D8%AF%D9%8A%D8%A9-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85/",
+  "/fr/product-category/paille-en-papier/": "/fr/produits/fournitures-restauration/pailles-papier/",
+  "/es/product-category/cubiertos/": "/es/productos/suministros-para-restauracion/cubiertos-desechables/",
+  "/es/product-category/caja-de-menu-caja-de-comida-redonda/": "/es/productos/cajas-y-envases/",
+  "/es/product-category/caja-de-ensalada/": "/es/productos/cajas-y-envases/cajas-para-ensaladas/",
+  "/ar/product-category/علب-برغر-علب-راب-علب-ساندويتش-قطعة-بيت/": "/ar/%D8%B9%D9%84%D8%A8-%D9%88%D8%AD%D8%A7%D9%88%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/",
+  "/ar/product-category/مصاصات-ورقية/": "/ar/%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D8%B5%D8%A7%D8%AA-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/",
+  "/كيفية-التحقق-من-صحة-شهادات-الاستدامة-ا/": "/ar/%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D8%AD%D9%82%D9%82-%D9%85%D9%86-%D8%B5%D8%AD%D8%A9-%D8%B4%D9%87%D8%A7%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AF%D8%A7%D9%85%D8%A9-%D8%A7/",
+  "/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/": "/es/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/",
+  "/es/product-category/vaso-cuenco-para-sopa/": "/es/productos/vasos-y-cuencos/vasos-para-sopa/",
+  "/es/leyes-estatales-eeuu-empaques-plasticos/": "/es/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/",
+  "/ar/product-category/أكواب-أوعية-ورقية-للحساء/": "/ar/%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D8%AD%D8%B3%D8%A7%D8%A1/",
+  "/quest-ce-que-la-certification-bpi-en-quoi-elle-differe-de-la-certification-fsc/": "/fr/quest-ce-que-la-certification-bpi-en-quoi-elle-differe-de-la-certification-fsc/",
+  "/product-category/gobelet-en-papier/": "/fr/produits/gobelets-bols/gobelets-papier/",
+  "/product-category/couverts/": "/fr/produits/fournitures-restauration/couverts-jetables/",
+  "/es/product-category/cuenco-para-ensalada/": "/es/productos/vasos-y-cuencos/cuencos-para-ensaladas/",
+  "/product-category/boite-a-salade/": "/fr/produits/boites-contenants-alimentaires/boites-salades/",
+  "/ar/product-category/علب-الوجبات-علب-طعام-دائرية/": "/ar/%D8%B9%D9%84%D8%A8-%D9%88%D8%AD%D8%A7%D9%88%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/",
+  "/es/product-category/pajitas-de-papel/": "/es/productos/suministros-para-restauracion/pajitas-de-papel/",
+  "/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/": "/es/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/",
+  "/ما-هي-شهادة-bpi؟-وكيف-تختلف-عن-شهادة-fsc/": "/ar/%D9%85%D8%A7-%D9%87%D9%8A-%D8%B4%D9%87%D8%A7%D8%AF%D8%A9-bpi%D8%9F-%D9%88%D9%83%D9%8A%D9%81-%D8%AA%D8%AE%D8%AA%D9%84%D9%81-%D8%B9%D9%86-%D8%B4%D9%87%D8%A7%D8%AF%D8%A9-fsc/",
+  "/ar/qwanin-tbyt-lblastyk-alwlayat-almthdt/": "/ar/%D9%82%D9%88%D8%A7%D9%86%D9%8A%D9%86-%D8%A7%D9%84%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A%D9%83%D9%8A%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D9%88%D9%84%D8%A7%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D9%8A%D8%A9/",
+  "/directive-europeenne-sur-les-plastiques-a-usage-unique-ce-quelle-signifie-pour-les-acheteurs-demballages/": "/fr/directive-europeenne-sur-les-plastiques-a-usage-unique-ce-quelle-signifie-pour-les-acheteurs-demballages/",
+  "/ar/product-category/أوعية-ورقية-للسلطة/": "/ar/%D8%A3%D9%88%D8%B9%D9%8A%D8%A9-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/",
+  "/توجيه-الاتحاد-الأوروبي-بشأن-البلاستي/": "/ar/%D8%AA%D9%88%D8%AC%D9%8A%D9%87-%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A/",
+  "/product-category/gobelet-bol-a-soupe/": "/fr/produits/gobelets-bols/pots-soupe/",
+  "/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/": "/es/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/",
+  "/ar/product-category/علب-ورقية-للسلطة/": "/ar/%D8%B9%D9%84%D8%A8-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/",
+  "/product-category/sandwich-box/": "/products/food-boxes-containers/sandwich-boxes/",
+  "/product-category/wrap-box/": "/products/food-boxes-containers/wrap-boxes/",
+  "/product-category/hamburger-box/": "/products/food-boxes-containers/burger-boxes/",
+  "/product-category/square-food-box/": "/products/food-boxes-containers/square-food-boxes/",
+  "/product-category/round-food-box/": "/products/food-boxes-containers/round-food-boxes/",
+
   '/shop/': '/products/',
   '/contact-us/': '/contact/',
   '/about-us/': '/about/',

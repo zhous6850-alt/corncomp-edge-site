@@ -64,10 +64,18 @@ export function localizeInternalLinks(html = '', language = null, sourceRoute = 
     if (url.origin !== 'https://corn-comp.com' || url.pathname.startsWith('/media/') || url.pathname.startsWith('/api/')) return attribute;
     const normalized = normalizeLocalizedRoute(url.pathname);
     const canonical = aliases.get(normalized) || normalized;
-    const contentKey = contentKeyFromRoute(canonical);
-    const selectedLanguage = ['en', 'fr', 'es', 'ar'].includes(language) ? language : null;
-    const inferredLanguage = selectedLanguage || canonical.match(/^\/(fr|es|ar)\//)?.[1] || 'en';
-    const blogRoute = selectedLanguage && ['/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/'].includes(canonical)
+    const selectedLanguage = ['en', 'fr', 'es', 'ar', 'zh', 'de'].includes(language) ? language : null;
+    let contentKey = contentKeyFromRoute(canonical);
+    if (!contentKey && selectedLanguage && canonical.startsWith(`/${selectedLanguage}/`)) {
+      const suffix = canonical.slice(selectedLanguage.length + 1);
+      for (const candidateLanguage of ['en', 'fr', 'es', 'ar', 'zh', 'de']) {
+        const candidate = candidateLanguage === 'en' ? suffix : `/${candidateLanguage}${suffix}`;
+        contentKey = contentKeyFromRoute(candidate);
+        if (contentKey) break;
+      }
+    }
+    const inferredLanguage = selectedLanguage || canonical.match(/^\/(fr|es|ar|zh|de)\//)?.[1] || 'en';
+    const blogRoute = selectedLanguage && ['/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/', '/zh/blog/', '/de/blog/'].includes(canonical)
       ? selectedLanguage === 'en' ? '/blog/' : `/${selectedLanguage}/blog/`
       : null;
     const target = contentKey ? routeFor(inferredLanguage, contentKey)

@@ -89,6 +89,14 @@ test('localizes relative, root-relative, absolute and reviewed alias links by st
   assert.match(localized, new RegExp(`href="${reviewedTarget}"`));
 });
 
+test('repairs inherited Spanish paths inside Simplified Chinese content', () => {
+  const html = '<a href="/zh/productos/vasos-y-cuencos/vasos-de-papel/">纸杯</a>';
+  assert.equal(
+    localizeInternalLinks(html, 'zh', '/zh/resources/'),
+    `<a href="${routeFor('zh', 'architecture:products/cups-bowls/paper-cups')}">纸杯</a>`,
+  );
+});
+
 test('does not rewrite assets, APIs, fragments or external and contact destinations', () => {
   const html = '<a href="#section">Fragment</a><a href="/media/file.pdf">Asset</a><a href="/api/inquiry">API</a><a href="mailto:inquiry@corn-comp.com">Mail</a><a href="tel:+8657486961222">Tel</a><a href="https://wa.me/8613806632002">WhatsApp</a><a href="https://example.com/evidence">Evidence</a>';
   assert.equal(localizeInternalLinks(html, 'es', '/es/recursos/'), html);

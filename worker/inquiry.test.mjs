@@ -17,10 +17,10 @@ function request(body, method = 'POST') {
   });
 }
 
-test('redirects www requests to the canonical root domain', async () => {
+test('combines www normalization and the shop alias into its final canonical route', async () => {
   const response = await worker.fetch(new Request('https://www.corn-comp.com/shop/?source=www'), { ASSETS: { fetch: () => new Response('asset') } });
   assert.equal(response.status, 301);
-  assert.equal(response.headers.get('location'), 'https://corn-comp.com/shop/?source=www');
+  assert.equal(response.headers.get('location'), 'https://corn-comp.com/products/?source=www');
 });
 
 test('rejects invalid inquiry data without sending email', async () => {
@@ -37,16 +37,79 @@ test('silently accepts honeypot submissions without sending email', async () => 
   assert.equal(sent, false);
 });
 
+test('rejects inquiry submissions without a verified Turnstile token before sending email', async () => {
+  const originalFetch = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = async () => { calls += 1; return Response.json({ id: 'unexpected' }); };
+  try {
+    const response = await worker.fetch(request({ name: 'Buyer', email: 'buyer@example.com', company: 'Buyer Co', country: 'DE', message: 'Need 50,000 bowls' }), {
+      RESEND_API_KEY: 're_test',
+      TURNSTILE_SECRET_KEY: 'turnstile_test',
+    });
+    assert.equal(response.status, 400);
+    assert.equal(calls, 0);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('rejects advertising copy submitted as a buyer name before sending email', async () => {
+  const originalFetch = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = async () => { calls += 1; return Response.json({ id: 'unexpected' }); };
+  try {
+    const response = await worker.fetch(request({
+      name: 'Приветствуем! Напоминаем, что на вашем бонусном счёте находится 986USD',
+      email: 'bot@example.com',
+      company: 'Spam',
+      country: 'RU',
+      message: 'Bonus offer',
+      'cf-turnstile-response': 'valid-token',
+    }), { RESEND_API_KEY: 're_test', TURNSTILE_SECRET_KEY: 'turnstile_test' });
+    assert.equal(response.status, 400);
+    assert.equal(calls, 0);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('rejects inquiry submissions when Turnstile verification fails', async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (url, options) => {
+    calls.push({ url, options });
+    return Response.json({ success: false });
+  };
+  try {
+    const response = await worker.fetch(request({
+      name: 'Buyer',
+      email: 'buyer@example.com',
+      'cf-turnstile-response': 'invalid-token',
+    }), { RESEND_API_KEY: 're_test', TURNSTILE_SECRET_KEY: 'turnstile_test' });
+    assert.equal(response.status, 400);
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test('sends a valid contextual inquiry through Resend from inquiry@corn-comp.com', async () => {
   const originalFetch = globalThis.fetch;
   let call;
   globalThis.fetch = async (url, options) => {
+    if (url === 'https://challenges.cloudflare.com/turnstile/v0/siteverify') {
+      assert.equal(new URLSearchParams(options.body).get('secret'), 'turnstile_test');
+      assert.equal(new URLSearchParams(options.body).get('response'), 'valid-token');
+      return Response.json({ success: true });
+    }
     call = { url, options };
     return Response.json({ id: 'test' });
   };
   try {
-    const response = await worker.fetch(request({ name: 'Buyer', email: 'buyer@example.com', phone: '+1 555', company: 'Buyer Co', country: 'DE', productName: 'Kraft Paper Bowl', productSku: 'CC01KB500', category: 'Salad Bowls', quantity: '50,000', sourcePath: '/products/cups-bowls/salad-bowls/kraft-paper-bowl/', message: 'Need bowls' }), {
+    const response = await worker.fetch(request({ name: 'Buyer', email: 'buyer@example.com', phone: '+1 555', company: 'Buyer Co', country: 'DE', productName: 'Kraft Paper Bowl', productSku: 'CC01KB500', category: 'Salad Bowls', quantity: '50,000', sourcePath: '/products/cups-bowls/salad-bowls/kraft-paper-bowl/', message: 'Need bowls', 'cf-turnstile-response': 'valid-token' }), {
       RESEND_API_KEY: 're_test',
+      TURNSTILE_SECRET_KEY: 'turnstile_test',
     });
     const message = JSON.parse(call.options.body);
     assert.equal(response.status, 200);
@@ -66,6 +129,27 @@ test('sends a valid contextual inquiry through Resend from inquiry@corn-comp.com
   }
 });
 
+test('logs only provider status and error code when email sending fails', async () => {
+  const originalFetch = globalThis.fetch;
+  const originalError = console.error;
+  const logs = [];
+  globalThis.fetch = async (url) => url.includes('siteverify')
+    ? Response.json({ success: true })
+    : Response.json({ name: 'validation_error', message: 'private provider details' }, { status: 401 });
+  console.error = (...args) => logs.push(args);
+  try {
+    const response = await worker.fetch(request({ name: 'Buyer', email: 'buyer@example.com', 'cf-turnstile-response': 'valid-token' }), {
+      RESEND_API_KEY: 'private-key', TURNSTILE_SECRET_KEY: 'private-secret',
+    });
+    assert.equal(response.status, 502);
+    assert.deepEqual(logs, [['Inquiry email rejected', JSON.stringify({ status: 401, code: 'validation_error' })]]);
+    assert.deepEqual(await response.json(), { ok: false, error: 'Unable to send inquiry.' });
+  } finally {
+    globalThis.fetch = originalFetch;
+    console.error = originalError;
+  }
+});
+
 test('redirects legacy English product URLs in one hop and preserves query parameters', async () => {
   const response = await worker.fetch(new Request('https://corn-comp.com/product/single-wall-white-cardboard-paper-cup/?utm_source=legacy'), { ASSETS: { fetch: () => new Response('asset') } });
 
@@ -81,16 +165,16 @@ test('redirects misplaced French-root duplicates to their canonical English prod
 });
 
 test('redirects a browser form submission back to its language contact page', async () => {
-  const form = new URLSearchParams({ 'your-name': 'Buyer', 'your-email': 'buyer@example.com' });
+  const form = new URLSearchParams({ 'your-name': 'Buyer', 'your-email': 'buyer@example.com', 'cf-turnstile-response': 'valid-token' });
   const formRequest = new Request('https://corn-comp.com/api/inquiry', {
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded', referer: 'https://corn-comp.com/es/contactenos/' },
     body: form,
   });
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async () => Response.json({ id: 'test' });
+  globalThis.fetch = async (url) => Response.json(url.includes('siteverify') ? { success: true } : { id: 'test' });
   try {
-    const response = await worker.fetch(formRequest, { RESEND_API_KEY: 're_test' });
+    const response = await worker.fetch(formRequest, { RESEND_API_KEY: 're_test', TURNSTILE_SECRET_KEY: 'turnstile_test' });
     assert.equal(response.status, 303);
     const location = new URL(response.headers.get('location'));
     assert.equal(location.origin, 'https://corn-comp.com');
@@ -105,7 +189,7 @@ test('redirects a browser form submission back to its language contact page', as
 
 test('keeps inquiry success redirects on the request origin for hostile or missing referrers', async () => {
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async () => Response.json({ id: 'test' });
+  globalThis.fetch = async (url) => Response.json(url.includes('siteverify') ? { success: true } : { id: 'test' });
   try {
     for (const referer of ['https://evil.example//evil.example/phishing', null]) {
       const headers = { 'content-type': 'application/x-www-form-urlencoded' };
@@ -113,9 +197,9 @@ test('keeps inquiry success redirects on the request origin for hostile or missi
       const request = new Request('https://corn-comp.com/api/inquiry', {
         method: 'POST',
         headers,
-        body: new URLSearchParams({ 'your-name': 'Buyer', 'your-email': 'buyer@example.com' }),
+        body: new URLSearchParams({ 'your-name': 'Buyer', 'your-email': 'buyer@example.com', 'cf-turnstile-response': 'valid-token' }),
       });
-      const response = await worker.fetch(request, { RESEND_API_KEY: 're_test' });
+      const response = await worker.fetch(request, { RESEND_API_KEY: 're_test', TURNSTILE_SECRET_KEY: 'turnstile_test' });
       const location = new URL(response.headers.get('location'));
       assert.equal(location.origin, 'https://corn-comp.com');
       assert.equal(location.pathname, '/contact/');

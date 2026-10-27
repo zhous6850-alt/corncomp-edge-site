@@ -17,10 +17,10 @@ test('extracts every open-wrap-cup item code and decimal token', () => {
   assert.ok(factTokens(product.body).includes('5.5'));
 });
 
-test('44 canonical products expose tables and preserve absent source item codes', () => {
+test('95 canonical products expose tables and preserve absent source item codes', () => {
   const products = records.filter((item) =>
     item.language === 'en' && item.type === 'product' && PRODUCT_CATEGORY_BY_SLUG[item.slug]);
-  assert.equal(products.length, 44);
+  assert.equal(products.length, 95);
 
   const withoutCodes = [];
   for (const product of products) {
@@ -29,7 +29,7 @@ test('44 canonical products expose tables and preserve absent source item codes'
     if (!facts.itemCodes.length) withoutCodes.push(product.slug);
   }
   assert.deepEqual(withoutCodes.sort(), [
-    'bendy', 'sharp-edge', 'solid-colors-with-bamboo-fiber-wooden-fiber', 'stripe-colors', 'stripe-colors-2',
+    'bendy', 'big-dot-paper-straws', 'printed-stripe-paper-straws', 'sharp-edge', 'small-dot-paper-straws', 'solid-colors-with-bamboo-fiber-wooden-fiber', 'stripe-colors', 'stripe-colors-2', 'wave-paper-straws',
   ]);
 });
 

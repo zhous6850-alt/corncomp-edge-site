@@ -1,4 +1,4 @@
-const itemCodePattern = /\bCC[\dA-Z.-]+\b/g;
+const itemCodePattern = /\b(?:CC[\dA-Z.-]+|MYPLABAG)\b/g;
 const numberPattern = /\b\d+(?:\.\d+)?(?:\s*[×x/]\s*\d+(?:\.\d+)?)*(?!\d)/g;
 
 export function factTokens(html = '') {

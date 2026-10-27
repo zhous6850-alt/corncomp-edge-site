@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductGroupLanding from '../../components/ProductGroupLanding.astro';
+import { localizedEntry } from '../../lib/localization.mjs';
+const page=localizedEntry('en','architecture:products/food-boxes-containers');
+---
+<BaseLayout title="Food Boxes & Containers — Design Preview | Corncomp" pathname={page.route} bodyClass="architecture-site"><ProductGroupLanding group="food-boxes-containers" page={page} language="en" preview/></BaseLayout>

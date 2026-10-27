@@ -6,6 +6,8 @@ const labels = {
   en: { company: 'Corncomp company certificates', supply: 'Supply-chain and material documents', holder: 'Holder', number: 'Certificate number', standard: 'Standard', scope: 'Scope', validity: 'Valid until', document: 'View original document' },
   fr: { company: 'Certificats de l’entreprise Corncomp', supply: 'Documents de la chaîne d’approvisionnement et des matériaux', holder: 'Titulaire', number: 'Numéro du certificat', standard: 'Norme', scope: 'Portée', validity: 'Valable jusqu’au', document: 'Voir le document original' },
   es: { company: 'Certificados de la empresa Corncomp', supply: 'Documentos de la cadena de suministro y materiales', holder: 'Titular', number: 'Número de certificado', standard: 'Norma', scope: 'Alcance', validity: 'Válido hasta', document: 'Ver documento original' },
+  zh: { company: 'Corncomp 公司证书', supply: '供应链与材料文件', holder: '证书持有人', number: '证书编号', standard: '标准', scope: '适用范围', validity: '有效期至', document: '查看原始文件' },
+  de: { company: 'Unternehmenszertifikate von Corncomp', supply: 'Lieferketten- und Materialdokumente', holder: 'Inhaber', number: 'Zertifikatsnummer', standard: 'Norm', scope: 'Geltungsbereich', validity: 'Gültig bis', document: 'Originaldokument ansehen' },
   ar: { company: 'شهادات شركة كورنكومب', supply: 'وثائق سلسلة التوريد والمواد', holder: 'الجهة الحاصلة', number: 'رقم الشهادة', standard: 'المعيار', scope: 'النطاق', validity: 'صالحة حتى', document: 'عرض الوثيقة الأصلية' },
 }[language];
 ---
@@ -41,7 +43,7 @@ const labels = {
             <div><dt>{labels.scope}</dt><dd>{record.scope}</dd></div>
             <div><dt>{labels.validity}</dt><dd><time datetime={record.validUntil}>{record.validUntil}</time></dd></div>
           </dl>
-          {record.documentUrl && <a class="text-link" href={record.documentUrl}>{labels.document}</a>}
+          {record.documentUrl && <a class="text-link" href={record.key === 'din-resin-7w0517' ? '/media/din-material-overview.jpg' : '/media/din-container-overview.jpg'}>{labels.document}</a>}
         </div>
       </article>)}
     </div>

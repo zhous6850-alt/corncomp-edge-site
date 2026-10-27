@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResponsiveMedia from '../../components/ResponsiveMedia.astro';
+import { englishInventory, routeFor } from '../../lib/localization.mjs';
+import { contentText } from '../../lib/content-routes.mjs';
+import mediaInventory from '../../data/media.json';
+const inventory = englishInventory();
+const select = (slug) => inventory.find((item) => item.type === 'product' && item.slug === slug);
+const bowls = ['kraft-paper-bowl', 'cardboard-bamboo-bowl'].map(select);
+const lids = ['paper-lid', 'pet-lid', 'pp-lid', 'pla-lid'].map(select);
+const media = (item) => {
+  const image = item.featuredMedia;
+  const dimensions = mediaInventory.find((asset) => asset.id === image.id).media_details;
+  return { src: image.localPath, width: dimensions.width, height: dimensions.height, alt: image.alt, fit: 'contain', position: 'center', evidence: 'product' };
+};
+const quote = '/contact/?category=Salad%20Bowls&source=%2Fproducts%2Fcups-bowls%2Fsalad-bowls%2F';
+---
+<BaseLayout title="Salad Bowls — Design Preview | Corncomp" pathname="/products/cups-bowls/salad-bowls/" bodyClass="architecture-site">
+  <div class="preview-note">DESIGN PREVIEW · 沙拉碗分类页设计预览 · 正式站未修改</div>
+  <div class="range-preview">
+    <nav class="trail" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/products/">Products</a><span>/</span><a href="/products/cups-bowls/">Cups &amp; Bowls</a><span>/ Salad Bowls</span></nav>
+    <header class="range-intro">
+      <div><p class="range-label">CUPS &amp; BOWLS</p><h1>Salad bowls.<br /><span>Start with the right base.</span></h1><p class="intro-copy">Kraft and white paper bowls, with a separate range of matching lid options. Explore the bowl first, then complete your specification.</p><a class="solid-link" href="#bowls">Explore bowls <span>↓</span></a></div>
+      <aside class="range-index" aria-label="On this page"><p>IN THIS RANGE</p><a href="#bowls"><span><small>01 / THE BASE</small>Paper bowls</span><b>2 bowl ranges ↗</b></a><a href="#lids"><span><small>02 / THE FINISH</small>Lid options</span><b>4 lid materials ↗</b></a><a href="#ordering"><span><small>03 / THE NEXT STEP</small>Plan your order</span><b>↗</b></a></aside>
+    </header>
+    <nav class="range-tabs" aria-label="Range navigation"><a href="#bowls">Bowls <sup>2</sup></a><a href="#lids">Lids <sup>4</sup></a><a href="#ordering">Ordering guide</a><a href={quote}>Request a quote ↗</a></nav>
+    <section id="bowls" class="range-section">
+      <div class="section-heading"><div><p class="range-label">01 / CHOOSE YOUR BOWL</p><h2>Two finishes. Your choice.</h2></div><p>Open a product to compare catalogue sizes<br />and item references.</p></div>
+      <div class="bowl-grid">{bowls.map((item, index) => <article class="bowl-card"><a class="product-image" href={routeFor('en', item.contentKey)}><ResponsiveMedia media={media(item)} eager /></a><div class="bowl-info"><span class="finish">{index === 0 ? 'NATURAL KRAFT' : 'WHITE CARDBOARD'}</span><h3><a href={routeFor('en', item.contentKey)}>{index === 0 ? 'Kraft Paper Bowl' : 'White Cardboard Bowl'}</a></h3><div class="product-bottom"><span>6 catalogue sizes</span><a href={routeFor('en', item.contentKey)}>View sizes &amp; details ↗</a></div></div></article>)}</div>
+    </section>
+    <section id="lids" class="range-section lid-section">
+      <div class="section-heading"><div><p class="range-label">02 / COMPLETE THE SET</p><h2>A lid for your specification.</h2></div><p>Select a material to review available options.<br />Confirm bowl-and-lid fit before ordering.</p></div>
+      <div class="lid-grid">{lids.map((item) => <article class="lid-card"><a href={routeFor('en', item.contentKey)}><ResponsiveMedia media={media(item)} /><div><h3>{item.slug.split('-')[0].toUpperCase() === 'PAPER' ? 'Paper lids' : `${item.slug.split('-')[0].toUpperCase()} lids`}</h3><p>{contentText(item.title).replace(/^(Paper|PET|PP|PLA) Salad Bowl Lid, /, '')}</p><span>Explore options ↗</span></div></a></article>)}</div>
+    </section>
+    <section id="ordering" class="ordering">
+      <div class="ordering-lead"><p class="range-label">LET’S GET THE DETAILS RIGHT</p><h2>From selection<br />to specification.</h2><p>Have a format in mind? Send us the details, and we’ll review your requirements with you.</p><a href={quote}>Request a quote <span>↗</span></a></div>
+      <div class="ordering-steps"><article><span>01</span><div><h3>Choose your format</h3><p>Share the bowl series, size and estimated quantity.</p></div></article><article><span>02</span><div><h3>Complete the specification</h3><p>Confirm lid fit, material or coating, artwork and packing requirements.</p></div></article><article><span>03</span><div><h3>Tell us where it’s going</h3><p>Include the destination, target schedule and required documents.</p></div></article><details><summary>What is confirmed before production?</summary><p>Final material, certification scope, packing, MOQ and lead time are confirmed for the selected order. Company certificates do not automatically apply to every SKU or construction; request the documents covering your selected item.</p></details></div>
+    </section>
+  </div>
+</BaseLayout>
+<style>
+  .range-preview{--forest:#1c3927;--muted:#617065;--line:#dce3da;max-width:1320px;margin:auto;padding:0 36px 80px;color:var(--forest)}
+  .preview-note{background:#e9efdf;color:#35503b;text-align:center;font-size:12px;letter-spacing:.06em;padding:8px 16px}
+  .trail{display:flex;flex-wrap:wrap;gap:10px;font-size:14px;color:var(--muted);padding:26px 0}.trail a{text-decoration:none}
+  .range-intro{display:grid;grid-template-columns:1.55fr 1fr;gap:90px;padding:30px 0 44px;align-items:center}
+  .range-label{font-size:12px;font-weight:700;letter-spacing:.14em;margin:0 0 16px}.range-intro h1{font-size:clamp(36px,4.2vw,62px);line-height:1.08;letter-spacing:-.045em;margin:0;font-weight:700}.range-intro h1 span{color:#587253}
+  .intro-copy{font-size:17px;line-height:1.65;max-width:560px;color:var(--muted);margin:22px 0}.solid-link{display:inline-flex;gap:35px;padding:14px 20px;background:var(--forest);color:#fffdf8;text-decoration:none;font-weight:700;font-size:15px}
+  .range-index{border-top:1px solid var(--forest)}.range-index>p{font-size:11px;letter-spacing:.15em;margin:18px 0 4px;color:var(--muted)}.range-index>a{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:17px 0;text-decoration:none;font-size:21px}.range-index small{display:block;font-size:10px;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}.range-index b{font-size:15px;font-weight:400}
+  .range-tabs{display:flex;gap:34px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:19px 0;font-size:15px;font-weight:700}.range-tabs a{text-decoration:none}.range-tabs a:last-child{margin-inline-start:auto}.range-tabs sup{color:#75866e;font-size:11px;margin-left:5px}
+  .range-section{padding:45px 0 10px;scroll-margin-top:130px}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:25px}.section-heading h2{font-size:clamp(27px,3vw,38px);line-height:1.12;letter-spacing:-.03em;margin:0}.section-heading .range-label{margin-bottom:10px}.section-heading>p{font-size:14px;line-height:1.6;color:var(--muted);margin:0}
+  .bowl-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}.bowl-card{border:1px solid var(--line);background:#fff}.product-image{display:block}.product-image :global(img){display:block;width:100%;height:300px;object-fit:contain}.bowl-info{padding:23px 26px}.finish{font-size:10px;letter-spacing:.12em;color:var(--muted)}.bowl-info h3{font-size:27px;letter-spacing:-.025em;margin:8px 0 22px}.bowl-info h3 a{text-decoration:none}.product-bottom{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:16px;font-size:14px}.product-bottom>span{color:var(--muted)}.product-bottom a{font-weight:700;text-decoration:none}
+  .lid-section{padding-bottom:54px}.lid-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.lid-card{background:#fff;border:1px solid var(--line)}.lid-card>a{display:block;text-decoration:none}.lid-card :global(img){height:180px;width:100%;object-fit:contain;display:block}.lid-card a>div{padding:20px}.lid-card h3{font-size:22px;margin:0 0 7px}.lid-card p{font-size:14px;color:var(--muted);margin:0 0 20px}.lid-card span{font-size:14px;font-weight:700}
+  .ordering{display:grid;grid-template-columns:1fr 1.35fr;scroll-margin-top:130px}.ordering-lead{background:var(--forest);color:#fffdf8;padding:42px}.ordering-lead .range-label{color:#b9c9ac;font-size:11px}.ordering-lead h2{font-size:38px;line-height:1.12;letter-spacing:-.035em;margin:22px 0}.ordering-lead>p:not(.range-label){font-size:16px;line-height:1.6;color:#d4dece;max-width:320px}.ordering-lead>a{display:flex;justify-content:space-between;background:#e2ebd4;color:var(--forest);padding:16px 20px;margin-top:32px;font-size:15px;font-weight:700;text-decoration:none}
+  .ordering-steps{padding:18px 38px;background:#edf1e7}.ordering-steps article{display:flex;gap:24px;padding:23px 0;border-bottom:1px solid #d4ddcd}.ordering-steps article>span{font-size:16px;color:#718365;padding-top:2px}.ordering-steps h3{font-size:21px;margin:0 0 8px;letter-spacing:-.02em}.ordering-steps p{font-size:15px;line-height:1.6;margin:0;color:#596951}.ordering-steps details{padding:20px 0 5px;font-size:13px}.ordering-steps summary{cursor:pointer;font-weight:700;min-height:30px}.ordering-steps details p{font-size:13px;margin-top:12px}
+  a:hover{text-decoration:underline;text-underline-offset:4px}a:focus-visible,summary:focus-visible{outline:3px solid #71935e;outline-offset:4px}
+  @media(max-width:850px){.range-intro{gap:35px;grid-template-columns:1.4fr 1fr}.range-preview{padding-inline:24px}.lid-grid{grid-template-columns:repeat(2,1fr)}.section-heading>p br{display:none}.ordering-lead{padding:30px}.ordering-steps{padding:12px 26px}.ordering-lead h2{font-size:32px}.product-image :global(img){height:240px}.product-bottom{flex-direction:column}}
+  @media(max-width:580px){.range-preview{padding:0 18px 40px}.trail{font-size:12px;padding:20px 0}.range-intro{grid-template-columns:1fr;gap:28px;padding-top:15px}.range-intro h1{font-size:39px}.range-index{display:none}.range-tabs{gap:20px;flex-wrap:wrap;font-size:13px}.range-tabs a:last-child{margin:0}.section-heading{display:block}.section-heading>p{margin-top:14px}.bowl-grid{grid-template-columns:1fr}.bowl-info{padding:20px}.product-image :global(img){height:280px}.product-bottom{flex-direction:row}.lid-grid{gap:12px}.lid-card :global(img){height:140px}.lid-card a>div{padding:15px}.lid-card h3{font-size:20px}.ordering{grid-template-columns:1fr}.ordering-lead h2{font-size:35px}.ordering-steps{padding:10px 25px}.range-section{padding-top:35px}.preview-note{font-size:10px}}
+</style>

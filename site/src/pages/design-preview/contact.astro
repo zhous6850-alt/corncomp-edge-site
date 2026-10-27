@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArchitecturePage from '../../components/ArchitecturePage.astro';
+import '../../styles/contact-quote-preview.css';
+import {englishInventory,localizedEntry,uiFor} from '../../lib/localization.mjs';
+const source=englishInventory().find(item=>item.contentKey==='architecture:contact');
+const page=localizedEntry('en','architecture:contact');
+const labels={homeLabel:'Home',sentLabel:'Thank you. Your inquiry has been sent successfully.',nameLabel:'Name',emailLabel:'Business email',companyLabel:'Company',countryLabel:'Country / market',phoneLabel:'Phone / WhatsApp',quantityLabel:'Estimated quantity',productLabel:'Product or format',skuLabel:'Item / SKU',categoryFormLabel:'Category',requirementsLabel:'Requirements',sendLabel:'Send inquiry'};
+---
+<BaseLayout title="Request a Quote - Design Preview | Corncomp" pathname="/contact/" bodyClass="architecture-site"><ArchitecturePage source={source} page={page} language="en" ui={uiFor('en')} contactRoute="/contact/" labels={labels} contactDesign/></BaseLayout>

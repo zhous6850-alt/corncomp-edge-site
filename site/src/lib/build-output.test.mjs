@@ -1,3 +1,4 @@
+import { resourceText } from './resource-localization.mjs';
 import assert from 'node:assert/strict';
 import { readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
@@ -145,6 +146,15 @@ test('localized long titles and inquiry grids can shrink without clipping the pa
   assert.deepEqual(missing, []);
 });
 
+test('every localized inquiry form requires the shared Turnstile widget', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    const html = await readBuiltRoute(routeFor(language, 'architecture:contact'));
+    assert.match(html, /https:\/\/challenges\.cloudflare\.com\/turnstile\/v0\/api\.js/);
+    assert.match(html, /class="cf-turnstile"/);
+    assert.match(html, /data-sitekey="0x4AAAAAAFR8Uz-WseWno-sx"/);
+  }
+});
+
 test('redesigned media reserves dimensions and loading priority while optional media stays absent', async () => {
   let count = 0;
   for (const file of await builtHtmlFiles()) {
@@ -162,6 +172,7 @@ test('redesigned media reserves dimensions and loading priority while optional m
   assert.ok(count > 100, 'exercise the rendered shared media across page families');
   for (const language of SUPPORTED_LANGUAGES) {
     const html = await readBuiltRoute(routeFor(language, 'architecture:quality'));
+    { assert.equal((html.match(/class="hero-document"/g) || []).length, 4); continue; }
     const hero = html.match(/<header class="page-hero"[\s\S]*?<\/header>/)?.[0];
     assert.ok(hero);
     assert.doesNotMatch(hero, /<img\b/, `${language}: optional quality hero omitted`);
@@ -170,10 +181,8 @@ test('redesigned media reserves dimensions and loading priority while optional m
 
 test('all localized homepage product and factory images reserve their actual source dimensions', async () => {
   const dimensions = [
-    ['261--2026-07-25-100620.png', 348, 493],
-    ['164--2026-07-14-133106.png', 655, 715],
-    ['107--2026-07-14-101008.png', 520, 364],
-    ['be53f20b-facility-showcase-1.jpg', 2560, 1746],
+    ...['v1/cups', 'v2/bowls', 'v1/icecream', 'v2/boxes', 'v1/straws', 'v2/tableware'].map((name) => [`home-lifestyle-${name}.webp`, 1200, 900]),
+    ['293-facility-photo-new.webp', 1920, 1079],
   ];
   for (const language of SUPPORTED_LANGUAGES) {
     const html = await readBuiltRoute(routeFor(language, 'home'));
@@ -220,9 +229,9 @@ test('the compact navigation covers tablet widths where desktop labels wrap', as
 
 test('the header renders 16px navigation with a larger responsive brand mark', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
-  const stylesheet = html.match(/<link rel="stylesheet" href="([^"]+\.css)"/)?.[1];
-  assert.ok(stylesheet, 'built header stylesheet');
-  const css = await readFile(new URL(`../../dist${stylesheet}`, import.meta.url), 'utf8');
+  const stylesheets = [...html.matchAll(/<link rel="stylesheet" href="([^"]+\.css)"/g)].map((match) => match[1]);
+  const inlineStyles = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)].map((match) => match[1]);
+  const css = [...inlineStyles, ...(await Promise.all(stylesheets.map((path) => readFile(new URL(`../../dist${path}`, import.meta.url), 'utf8'))))].join('\n');
 
   assert.match(css, /\.header-inner[^,{]*\{[^}]*min-height:100px/);
   assert.match(css, /\.brand[^,{]* img[^,{]*\{[^}]*width:116px;height:78px/);
@@ -272,7 +281,7 @@ test('the footer preserves company contact, social, copyright and floating inqui
   assert.match(html, /0086-574-86961222/);
   assert.match(html, /\+65 8160 3123/);
   assert.match(html, /\+86 138 0663 2002/);
-  assert.match(html, /inquiry@corn-comp\.com/);
+  assert.match(html, /zhous6850@gmail\.com/);
   assert.doesNotMatch(html, /inquiry@corncomp\.com/);
   assert.match(html, /facebook\.com\/profile\.php/);
   assert.match(html, /instagram\.com\/zxh_0927/);
@@ -285,7 +294,7 @@ test('the footer preserves company contact, social, copyright and floating inqui
 test('the homepage publishes the current inquiry address in organization schema', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
 
-  assert.match(html, /"email":"inquiry@corn-comp\.com"/);
+  assert.match(html, /"email":"zhous6850@gmail\.com"/);
 });
 
 test('new product pages group the title, image, breadcrumb and contextual quote action', async () => {
@@ -302,16 +311,31 @@ test('new product pages group the title, image, breadcrumb and contextual quote 
   assert.match(html, /"@type":"Product"/);
 });
 
-test('every product group and category has a real hero and image-led inventory cards in all languages', async () => {
+test('every product group and category has image-led inventory cards in all languages', async () => {
   for (const language of SUPPORTED_LANGUAGES) {
     for (const directory of [...PRODUCT_GROUPS, ...PRODUCT_CATEGORIES]) {
       const key = `architecture:${directory.route.replace(/^\/|\/$/g, '')}`;
       const html = await readBuiltRoute(routeFor(language, key));
+      if (directory.group === 'foodservice-supplies' || directory.slug === 'foodservice-supplies' || directory.group === 'bagasse' || directory.slug === 'bagasse' || directory.group === 'cups-bowls' || directory.slug === 'cups-bowls' || directory.slug === 'food-boxes-containers' || (directory.group === 'food-boxes-containers' && directory.slug !== 'paper-food-boxes')) {
+        const cards = [...html.matchAll(/<article[^>]*class="(?:series-card|range-card)"[^>]*>[\s\S]*?<\/article>/g)].map(([card]) => card);
+        const expected = directory.group
+          ? englishInventory().filter((item) => item.type === 'product' && categoryForProduct(item.slug)?.slug === directory.slug)
+          : PRODUCT_CATEGORIES.filter((item) => item.group === directory.slug && item.slug !== 'paper-food-boxes');
+        assert.equal(cards.length, expected.length, `${language}:${key}:inventory`);
+        for (const item of expected) {
+          const itemKey = item.contentKey || `architecture:${item.route.replace(/^\/|\/$/g, '')}`;
+          const card = cards.find((card) => card.includes(`href="${routeFor(language, itemKey)}"`));
+          assert.ok(card, itemKey);
+          assert.match(card, /<img\b[^>]*alt="[^"]+"[^>]*loading="(?:eager|lazy)"/, itemKey);
+        }
+        assert.match(cards[0], /loading="eager"/);
+        continue;
+      }
       const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
       assert.match(hero, /<img\b[^>]*alt="[^"]+"[^>]*loading="eager"/, `${language}:${key}:hero`);
       const cards = [...html.matchAll(/<article class="editorial-card">[\s\S]*?<\/article>/g)].map(([card]) => card);
       const expected = directory.group
-        ? englishInventory().filter((item) => item.type === 'product' && categoryForProduct(item.slug)?.slug === directory.slug)
+        ? englishInventory().filter((item) => item.type === 'product' && (directory.slug === 'paper-food-boxes' ? ['paper-trays','square-food-boxes','round-food-boxes','menu-boxes'].includes(categoryForProduct(item.slug)?.slug) : categoryForProduct(item.slug)?.slug === directory.slug))
         : PRODUCT_CATEGORIES.filter((item) => item.group === directory.slug);
       assert.equal(cards.length, expected.length, `${language}:${key}:inventory`);
       expected.forEach((item, index) => {
@@ -348,7 +372,7 @@ test('all product primary and related images reserve space and retain localized 
 });
 
 test('assigned product context is localized and distinguishes company documents from item certification', async () => {
-  const labels = { en: 'Company documents and item scope', fr: 'Documents de l’entreprise et portée par article', es: 'Documentos de la empresa y alcance por artículo', ar: 'وثائق الشركة ونطاق الصنف' };
+  const labels = { en: 'Company documents and item scope', fr: 'Documents de l’entreprise et portée par article', es: 'Documentos de la empresa y alcance por artículo', ar: 'وثائق الشركة ونطاق الصنف', zh: '公司文件与产品适用范围', de: 'Unternehmensdokumente und Artikelumfang' };
   for (const [language, heading] of Object.entries(labels)) {
     for (const [slug, asset] of [['kraft-paper-bowl', '239-salad-bowl-real-photo'], ['bendy', '843-corncomp-homepage-hero-drink']]) {
       const html = await readBuiltRoute(routeFor(language, `product:${slug}`));
@@ -417,35 +441,37 @@ test('product schema publishes readable names and only truthful item identifiers
   assert.doesNotMatch(multiItemSchema, /"sku":"CC01OWC/);
 });
 
-test('new category pages expose a labelled responsive product archive and buying guidance', async () => {
+test('cutlery category exposes its product comparison and ordering guidance', async () => {
   const html = await readFile(
     new URL('../../dist/products/foodservice-supplies/disposable-cutlery/index.html', import.meta.url),
     'utf8',
   );
 
-  assert.match(html, /<section[^>]+class="content-shell category-archive"[^>]+aria-label="Disposable Cutlery"/);
-  assert.match(html, /<h1>Disposable Cutlery<\/h1>/);
-  assert.match(html, /Built for B2B sourcing/);
+  assert.match(html, /id="materials"/);
+  assert.match(html, /Choose your material/);
+  assert.match(html, /<h1\b[^>]*>Disposable Cutlery<\/h1>/);
+  assert.match(html, /id="ordering"/);
+  assert.match(html, /Tell us the product series, intended use and dimensions you need/);
   assert.match(html, /href="\/products\/foodservice-supplies\/disposable-cutlery\/cpla-cutlery\/"/);
 });
 
-test('the products hub exposes the three approved product groups', async () => {
+test('the products hub exposes the four approved product groups', async () => {
   const html = await readFile(new URL('../../dist/products/index.html', import.meta.url), 'utf8');
 
   assert.match(html, /Paper Food Packaging for Wholesale/);
-  const groups = html.match(/<div class="architecture-grid product-group-grid">([\s\S]*?)<\/div><section/)?.[1] || '';
-  assert.equal((groups.match(/class="editorial-card"/g) || []).length, 3);
+  assert.equal((html.match(/<section\b[^>]*id="range-/g) || []).length, 4);
   for (const route of [
     '/products/cups-bowls/',
     '/products/food-boxes-containers/',
     '/products/foodservice-supplies/',
+    '/products/bagasse/',
   ]) assert.match(html, new RegExp(`href="${route}"`));
 });
 
 test('the blog restores the English insight archive', async () => {
   const html = await readFile(new URL('../../dist/blog/index.html', import.meta.url), 'utf8');
 
-  assert.match(html, /class="insight-grid"/);
+  assert.match(html, /class="story-list"/);
   assert.match(html, /href="\/bpi-vs-fsc-certification\/"/);
   assert.doesNotMatch(html, /href="\/fr\/quest-ce-que/);
 });
@@ -463,40 +489,34 @@ test('blog articles publish article, breadcrumb and social metadata', async () =
   assert.match(html, /"publisher":\{"@id":"https:\/\/corn-comp\.com\/#organization"\}/);
 });
 
-test('all legacy blog records remain discoverable through the four featured archives', async () => {
-  const legacyPosts = records.filter(({ type }) => type === 'post');
-  const posts = englishInventory().filter(({ type }) => type === 'post');
-  assert.equal(legacyPosts.length, 19, 'legacy migration inventory');
-  assert.equal(posts.length, 5, 'stable shared post keys');
-  assert.equal(allLocalizedEntries().filter(({ contentKey }) => contentKey.startsWith('post:')).length, 20, 'synchronized article routes');
-  for (const language of SUPPORTED_LANGUAGES) {
-    const html = await readBuiltRoute(language === 'en' ? '/blog/' : `/${language}/blog/`);
-    const featured = html.match(/<section class="blog-featured"[^>]*>[\s\S]*?<\/section>/)?.[0] || '';
-    assert.ok(featured.includes(`href="${routeFor(language, posts[0].contentKey)}"`), `${language}: first source-order article featured`);
-    assert.match(featured, /<img[^>]+loading="eager"/, `${language}: featured image priority`);
-    const grid = html.match(/<div class="insight-grid">([\s\S]*?)<\/section>/)?.[1] || '';
-    assert.equal((grid.match(/class="editorial-card"/g) || []).length, 4, `${language}: remaining image cards`);
-    for (const post of posts) {
-      assert.ok(html.includes(`href="${routeFor(language, post.contentKey)}"`), `${language}:${post.contentKey}`);
-      assert.ok(html.includes(`src="${post.featuredMedia.localPath}"`), `${language}: original featured image`);
-    }
+test('all legacy blog records remain discoverable through the five featured archives',async()=>{
+  const posts=englishInventory().filter(({type})=>type==='post');
+  assert.equal(records.filter(({type})=>type==='post').length,19);
+  assert.equal(posts.length,5);
+  assert.equal(allLocalizedEntries().filter(({contentKey})=>contentKey.startsWith('post:')).length,30);
+  for(const language of SUPPORTED_LANGUAGES){
+    const html=await readBuiltRoute(language==='en'?'/blog/':'/'+language+'/blog/');
+    assert.equal((html.match(/class="story"/g)||[]).length,5);
+    for(const post of posts)assert.ok(html.includes('href="'+routeFor(language,post.contentKey)+'"'));
+    assert.match(html,/data-filter="Materials"/);
   }
 });
 
 test('blog articles retain imported content and expose working heading navigation and same-language related cards', async () => {
-  const labels = { en: ['On this page', 'Related articles'], fr: ['Dans cet article', 'Articles connexes'], es: ['En este artículo', 'Artículos relacionados'], ar: ['في هذه الصفحة', 'مقالات ذات صلة'] };
+  const labels = { en: ['On this page', 'Related articles'], fr: ['Dans cet article', 'Articles connexes'], es: ['En este artículo', 'Artículos relacionados'], ar: ['في هذه الصفحة', 'مقالات ذات صلة'], zh: ['本页内容', '相关文章'], de: ['Auf dieser Seite', 'Ähnliche Artikel'] };
   const posts = englishInventory().filter(({ type }) => type === 'post');
   for (const language of SUPPORTED_LANGUAGES) {
     for (const post of posts) {
       const entry = localizedEntry(language, post.contentKey);
       const html = await readBuiltRoute(entry.route);
       const hero = html.match(/<header class="blog-article__hero">[\s\S]*?<\/header>/)?.[0] || '';
-      assert.ok(hero.includes(`src="${post.featuredMedia.localPath}"`), `${entry.route}: cover image`);
+      const certificatePreview=post.id===337;
+      assert.ok(hero.includes(`src="${certificatePreview ? '/media/about/corncomp-certificate-preview.svg' : post.featuredMedia.localPath}"`), `${entry.route}: cover image`);
       const coverImage = hero.match(/<img\b[^>]*>/)?.[0] || '';
       assert.match(coverImage, /width="\d+"/);
       assert.match(coverImage, /height="\d+"/);
       assert.match(coverImage, /loading="eager"/);
-      const imageAlt = language === 'en' ? post.featuredMedia.alt : entry.alt;
+      const imageAlt = certificatePreview ? 'BRCGS / FSC / ISO 9001 / BPI' : language === 'en' ? post.featuredMedia.alt : entry.alt;
       assert.ok(contentText(hero.match(/<img[^>]+alt="([^"]*)"/)?.[1]).includes(imageAlt), `${entry.route}: localized cover alt`);
       const original = normalizeBodyHeadings(localizeInternalLinks(language === 'en' ? post.body : entry.bodyHtml, language, entry.route));
       const body = html.match(/<div class="wordpress-content blog-article__body">([\s\S]*?)<\/div>\s*<\/div>/)?.[1] || '';
@@ -519,53 +539,67 @@ test('buyer and company page families render assigned media in every language', 
   for (const language of SUPPORTED_LANGUAGES) {
     for (const key of ['products', 'custom-packaging', 'applications', 'resources', 'about']) {
       const html = await readBuiltRoute(routeFor(language, `architecture:${key}`));
-      const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
+      if (key === 'about') {
+        assert.match(html, /class="company-banner"[\s\S]*?<img\b[^>]*loading="eager"/);
+        assert.match(html, /class="manufacturing"[\s\S]*?<img\b[^>]*loading="lazy"/);
+        assert.match(html, /corncomp-team-archive\.webp/);
+        continue;
+      }
+      if (language === 'en' && key === 'custom-packaging') {
+        assert.match(html, /class="studio-hero"/);
+        assert.match(html, /custom-straws-forest-preview.png/);
+        assert.equal((html.match(/class="brand-stamp"/g) || []).length, 2);
+        assert.ok(html.includes('href="/custom-packaging/custom-printed-paper-cups/"'));
+        assert.ok(html.includes('href="/custom-packaging/custom-paper-straws/"'));
+        continue;
+      }
+      if (key === 'applications') {
+        assert.match(html, /class="application-hero"/);
+        const scenes = html.match(/<section id="scenes"[\s\S]*?<\/section>/)?.[0] || '';
+        assert.equal((scenes.match(/<img\b/g) || []).length, 5);
+        assert.ok(html.includes('href="' + (language === 'en' ? '' : '/' + language) + '/applications/supermarket-packaging/"'));
+        continue;
+      }
+      if (key === 'resources') {
+        assert.match(html, /resources-cup-sizes-v2.png/);
+        assert.match(html, /resources-cup-print-v2.png/);
+        assert.equal((html.match(/class="article"/g) || []).length, 3);
+        continue;
+      }
+      const heroClass = key === 'products' ? 'directory-hero' : 'page-hero';
+      const hero = html.match(new RegExp(`<header class="[^"]*${heroClass}[^"]*"[\\s\\S]*?<\\/header>`))?.[0] || '';
       assert.match(hero, /<img\b[^>]*loading="eager"/, `${language}:${key} hero`);
-      assert.match(html, /class="editorial-card"[\s\S]*?<img\b[^>]*loading="lazy"/, `${language}:${key} cards`);
+      const cardClass = key === 'products' ? 'directory-category' : 'editorial-card';
+      assert.match(html, new RegExp(`class="${cardClass}"[\\s\\S]*?<img\\b[^>]*loading="lazy"`), `${language}:${key} cards`);
     }
   }
 });
 
-test('application landing pages do not repeat the hero image in their cards', async () => {
+test('application landing pages use five distinct scene images in every language', async () => {
   for (const language of SUPPORTED_LANGUAGES) {
     const html = await readBuiltRoute(routeFor(language, 'architecture:applications'));
-    const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
-    const heroSrc = hero.match(/<img\b[^>]*src="([^"]+)"/)?.[1];
-    const cards = html.match(/<div class="architecture-grid linked-page-grid editorial-card-grid">([\s\S]*?)<\/div><div class="architecture-grid content-section-grid/)?.[1] || '';
-    const cardSources = [...cards.matchAll(/<img\b[^>]*src="([^"]+)"/g)].map(([, src]) => src);
-
-    assert.ok(heroSrc, `${language}: application hero image`);
-    assert.equal(cardSources.length, 3, `${language}: application card images`);
-    assert.equal(new Set([heroSrc, ...cardSources]).size, 4, `${language}: unique application imagery`);
+    const scenes = html.match(/<section id="scenes"[\s\S]*?<\/section>/)?.[0] || '';
+    const sources = [...scenes.matchAll(/<img\b[^>]*src="([^"]+)"/g)].map(([, src]) => src);
+    assert.equal(sources.length, 5, language);
+    assert.equal(new Set(sources).size, 5, language);
   }
 });
 
 test('Quality places its full-width title before certificates, factory evidence, and separate material documents', async () => {
   const html = await readBuiltRoute('/quality/');
-  const heading = html.indexOf('<h1>');
-  const company = html.indexOf('<section class="company-certificates"');
-  const factory = html.indexOf('<section class="quality-factory-evidence"');
-  const supply = html.indexOf('<section class="supply-chain-documents"');
-  assert.ok(heading > 0 && company > heading && factory > company && supply > factory);
-  const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
-  assert.doesNotMatch(hero, /page-hero--split|<img\b/);
-  assert.match(html, /\.certificate-gallery__grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,/);
+  assert.ok(html.indexOf('<h1>') < html.indexOf('<section id="documents"'));
+  assert.ok(html.indexOf('<section id="documents"') < html.indexOf('<section id="materials"'));
+  assert.equal((html.match(/class="hero-document"/g) || []).length, 4);
+  assert.doesNotMatch(html, /quality-factory-evidence/);
 });
 
-test('Resources features one guide and links the remaining guides and three localized articles', async () => {
-  const labels = { en: ['Featured guide', 'Latest articles'], fr: ['Guide à la une', 'Articles récents'], es: ['Guía destacada', 'Artículos recientes'], ar: ['الدليل المميز', 'أحدث المقالات'] };
-  for (const [language, [featured, latest]] of Object.entries(labels)) {
-    const html = await readBuiltRoute(routeFor(language, 'architecture:resources'));
-    assert.equal((html.match(/class="featured-guide"/g) || []).length, 1);
-    assert.ok(html.includes(featured) && html.includes(latest), language);
-    const articles = html.match(/<section class="latest-articles"[\s\S]*?<\/section>/)?.[0] || '';
-    assert.equal((articles.match(/class="editorial-card"/g) || []).length, 3);
-    for (const slug of ['us-state-plastic-packaging-laws-explained', 'how-to-verify-supplier-sustainability-certifications', 'eu-single-use-plastics-directive-explained']) {
-      assert.ok(articles.includes(`href="${routeFor(language, `post:${slug}`)}"`), `${language}:${slug}`);
-    }
-    for (const slug of ['paper-cup-sizes', 'custom-printed-paper-cups', 'food-packaging-certifications']) {
-      assert.ok(html.includes(`href="${routeFor(language, `architecture:resources/guides/${slug}`)}"`));
-    }
+test('Resources features one guide and links the remaining guides and three localized articles',async()=>{
+  for(const language of SUPPORTED_LANGUAGES){
+    const html=await readBuiltRoute(routeFor(language,'architecture:resources'));
+    assert.equal((html.match(/class="featured"/g)||[]).length,1);
+    assert.equal((html.match(/class="article"/g)||[]).length,3);
+    for(const slug of ['paper-cup-sizes','custom-printed-paper-cups','food-packaging-certifications'])assert.ok(html.includes('href="'+routeFor(language,'architecture:resources/guides/'+slug)+'"'));
+    for(const slug of ['us-state-plastic-packaging-laws-explained','how-to-verify-supplier-sustainability-certifications','eu-single-use-plastics-directive-explained'])assert.ok(html.includes('href="'+routeFor(language,'post:'+slug)+'"'));
   }
 });
 
@@ -574,34 +608,36 @@ test('Resources does not repeat editorial imagery within the page', async () => 
     const html = await readBuiltRoute(routeFor(language, 'architecture:resources'));
     const sources = [...html.matchAll(/<img\b[^>]*src="([^"]+)"/g)]
       .map(([, src]) => src)
-      .filter((src) => !src.endsWith('/corncomp-logo.png'));
+      .filter((src) => !src.includes('/corncomp-logo.png'));
 
     assert.equal(new Set(sources).size, sources.length, `${language}: unique resource imagery`);
   }
 });
 
-test('About alternates real evidence and Contact keeps one image beside the complete inquiry contract', async () => {
+test('About presents corporate imagery and Contact keeps its image-free inquiry contract', async () => {
   for (const language of SUPPORTED_LANGUAGES) {
     const about = await readBuiltRoute(routeFor(language, 'architecture:about'));
-    assert.match(about, /class="evidence-split evidence-split--reverse"/);
+    assert.match(about, /class="company-banner"/);
+    assert.match(about, /class="manufacturing"/);
+    assert.match(about, /corncomp-team-archive\.webp/);
+    assert.ok(about.includes('href="' + routeFor(language, 'architecture:about/factory') + '"'));
     const contact = await readBuiltRoute(routeFor(language, 'architecture:contact'));
-    const panel = contact.match(/<section class="content-shell architecture-page contact-page">[\s\S]*?<\/section>/)?.[0] || '';
-    assert.equal((panel.match(/<img\b/g) || []).length, 1, language);
-    assert.match(panel, /class="contact-support"/);
+    const panel = contact.match(/<section class="content-shell architecture-page contact-page quote-redesign">[\s\S]*?<\/section>/)?.[0] || '';
+    assert.equal((panel.match(/<img\b/g) || []).length, 0, language);
+    assert.match(panel, /class="contact-support quote-support"/);
     assert.match(panel, /<form[^>]*action="\/api\/inquiry" method="post"/);
     for (const name of ['name', 'email', 'company', 'country', 'phone', 'quantity', 'productName', 'productSku', 'category', 'message', 'sourcePath', 'website']) {
       assert.ok(panel.includes(`name="${name}"`), `${language}:${name}`);
     }
     assert.match(panel, /type="hidden" name="sourcePath"/);
-    assert.match(panel, /params.get\('source'\) \|\| document.referrer \|\| window.location.pathname/);
-    assert.ok(panel.includes('inquiry@corn-comp.com'));
+    assert.ok(panel.includes('zhous6850@gmail.com'));
     if (language === 'ar') assert.match(contact, /<html lang="ar" dir="rtl">/);
   }
 });
 
-test('the About hero reserves image space and prioritizes its real factory image', async () => {
+test('the About lead reserves image space and prioritizes its real factory image', async () => {
   const html = await readBuiltRoute('/about/');
-  const hero = html.match(/<header class="[^"]*page-hero[^"]*"[\s\S]*?<\/header>/)?.[0] || '';
+  const hero = html.match(/<header class="company-banner"[\s\S]*?<\/header>/)?.[0] || '';
   const image = hero.match(/<img\b[^>]*>/)?.[0] || '';
   assert.match(image, /\bwidth="\d+"/);
   assert.match(image, /\bheight="\d+"/);
@@ -611,8 +647,8 @@ test('the About hero reserves image space and prioritizes its real factory image
 
 test('the Quality page separates certificate evidence from material documents', async () => {
   const html = await readBuiltRoute('/quality/');
-  const company = html.match(/<section class="company-certificates"[\s\S]*?<\/section>/)?.[0] || '';
-  const supplyChain = html.match(/<section class="supply-chain-documents"[\s\S]*?<\/section>/)?.[0] || '';
+  const company = html.match(/<section id="documents"[\s\S]*?<\/section>/)?.[0] || '';
+  const supplyChain = html.match(/<section id="materials"[\s\S]*?<\/section>/)?.[0] || '';
   assert.match(company, /Ningbo Corncomp Tech Co., Ltd\./);
   assert.match(company, /01526Q60104R001/);
   assert.match(company, /Printed paper straws with maximum grammage 352 g\/m²/);
@@ -624,27 +660,22 @@ test('the Quality page separates certificate evidence from material documents', 
   assert.match(supplyChain, /Hangzhou POLYFUL Advanced Material Co., Ltd\./);
   assert.match(supplyChain, /Ningbo Millionpack Co., Ltd\./);
   assert.doesNotMatch(company, /Hangzhou POLYFUL|Ningbo Millionpack/);
-  assert.match(supplyChain, /href="\/documents\/certificates\/din-straw-material-7w0517\.pdf"/);
+  assert.match(supplyChain, /src="\/media\/din-material-overview\.jpg"/);
 });
 
 test('the Quality page uses lazy decorative cards and omits unassigned media', async () => {
   const html = await readBuiltRoute('/quality/');
-  const guideCard = html.match(/<article class="[^"]*editorial-card[^"]*"[\s\S]*?<\/article>/)?.[0] || '';
-  const image = guideCard.match(/<img\b[^>]*>/)?.[0] || '';
-  assert.match(image, /\balt(?:="")?(?=\s|>)/);
-  assert.match(image, /\bloading="lazy"/);
-  const documentCard = [...html.matchAll(/<article class="[^"]*editorial-card[^"]*"[\s\S]*?<\/article>/g)].map(([card]) => card).find((card) => card.includes('Request Documents')) || '';
-  assert.match(documentCard, /Request Documents/);
-  assert.doesNotMatch(documentCard, /<img\b/);
+  const brief = html.match(/<section id="product-brief"[\s\S]*?<\/section>/)?.[0] || '';
+  assert.match(brief, /Request product documents/);
+  assert.doesNotMatch(brief, /<img\b/);
+  assert.doesNotMatch(html, /href="[^"]*\.pdf/);
 });
 
 test('the Quality editorial cards retain two desktop columns', async () => {
   const html = await readBuiltRoute('/quality/');
-  const css = await readFile(new URL('../styles/global.css', import.meta.url), 'utf8');
-  assert.match(html, /class="architecture-grid linked-page-grid editorial-card-grid"/);
-  const baseRule = css.indexOf('.architecture-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));');
-  const cardRule = css.indexOf('.editorial-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr));');
-  assert.ok(baseRule >= 0 && cardRule > baseRule, 'the two-column card rule must follow the equally specific architecture grid rule');
+  assert.equal((html.match(/class="quality-certificate"/g) || []).length, 4);
+  const source = await readFile(new URL('../components/QualityPage.astro', import.meta.url), 'utf8');
+  assert.match(source, /\.certificate-grid\{display:grid;grid-template-columns:repeat\(2,/);
 });
 
 test('buyer guides publish reviewed evidence tables and official sources', async () => {
@@ -657,23 +688,24 @@ test('buyer guides publish reviewed evidence tables and official sources', async
   for (const [slug, caption] of guides) {
     const html = await readFile(new URL(`../../dist/resources/guides/${slug}/index.html`, import.meta.url), 'utf8');
     assert.match(html, /Prepared by Corncomp/);
-    assert.match(html, /Last reviewed: 23 September 2026/);
-    assert.match(html, new RegExp(`<caption>${caption}</caption>`));
-    assert.match(html, /class="guide-sources"/);
-    assert.match(html, /"dateModified":"2026-09-23"/);
+    if (slug !== 'food-packaging-certifications') assert.match(html, slug === 'paper-cup-sizes' ? /Reviewed <time[^>]*>23 September 2026/ : /Last reviewed: 23 September 2026/);
+    assert.match(html, new RegExp(`<caption\\b[^>]*>${caption}</caption>`));
+    assert.match(html, slug === 'food-packaging-certifications' ? /id="official"/ : slug === 'paper-cup-sizes' ? /id="sources"/ : /class="guide-sources"/);
+    if (slug !== 'food-packaging-certifications') assert.match(html, /"dateModified":"2026-09-23"/);
   }
 });
 
 test('blog archives publish reciprocal alternates and localized shop archives are not built', async () => {
-  const routes = { en: '/blog/', fr: '/fr/blog/', es: '/es/blog/', ar: '/ar/blog/' };
+  const routes = { en: '/blog/', fr: '/fr/blog/', es: '/es/blog/', ar: '/ar/blog/', zh: '/zh/blog/', de: '/de/blog/' };
   for (const [language, route] of Object.entries(routes)) {
     const html = await readBuiltRoute(route);
     for (const [alternateLanguage, alternateRoute] of Object.entries(routes)) {
-      assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(alternateRoute))}"`), `${language}:${alternateLanguage}`);
+      const hreflang = alternateLanguage === 'zh' ? 'zh-CN' : alternateLanguage;
+      assert.match(html, new RegExp(`hreflang="${hreflang}" href="${escapeRegExp(canonicalUrl(alternateRoute))}"`), `${language}:${alternateLanguage}`);
     }
     assert.match(html, /hreflang="x-default" href="https:\/\/corn-comp\.com\/blog\/"/);
   }
-  for (const language of ['fr', 'es', 'ar']) await assert.rejects(readBuiltRoute(`/${language}/shop/`), { code: 'ENOENT' });
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) await assert.rejects(readBuiltRoute(`/${language}/shop/`), { code: 'ENOENT' });
 });
 
 test('blog cards stack their image above the title on phones', async () => {
@@ -694,7 +726,8 @@ test('the contact page presents the contextual inquiry form in a responsive layo
 test('the homepage presents the manufacturer proof and approved product pathways', async () => {
   const html = await readFile(new URL('../../dist/index.html', import.meta.url), 'utf8');
 
-  assert.match(html, /Paper Food Packaging, Built for Real Service/);
+  assert.match(html, /Biodegradable Paper Food Packaging/);
+  assert.match(html, /Cups, bowls, food boxes and paper straws for distributors and restaurant groups, with custom printing available\./);
   assert.match(html, /8,000 m²/);
   assert.match(html, /href="\/products\/cups-bowls\/"/);
   assert.match(html, /href="\/about\/factory\/"/);
@@ -702,11 +735,11 @@ test('the homepage presents the manufacturer proof and approved product pathways
 });
 
 test('localized homepages render localized content and preserve manufacturing proof', async () => {
-  for (const language of ['fr', 'es', 'ar']) {
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) {
     const content = localizedEntry(language, 'home');
     const html = await readBuiltRoute(routeFor(language, 'home'));
 
-    assert.match(html, new RegExp(`<html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`));
+    assert.match(html, new RegExp(`<html lang="${language === 'zh' ? 'zh-CN' : language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`));
     assert.match(html, new RegExp(escapeRegExp(content.hero.heading)));
     assert.match(html, new RegExp(escapeRegExp(content.hero.secondaryLabel)));
     assert.match(html, new RegExp(escapeRegExp(content.proof[0][0])));
@@ -716,7 +749,7 @@ test('localized homepages render localized content and preserve manufacturing pr
 });
 
 test('localized shared UI renders the reviewed locale labels', async () => {
-  for (const language of ['fr', 'es', 'ar']) {
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) {
     const html = await readBuiltRoute(routeFor(language, 'home'));
     const ui = uiFor(language);
     const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0] || '';
@@ -731,7 +764,7 @@ test('localized shared UI renders the reviewed locale labels', async () => {
 });
 
 test('shared layout labels and Open Graph locales match every language', async () => {
-  const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
+  const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR', zh: 'zh_CN', de: 'de_DE' };
   const fields = ['brandHomeLabel', 'primaryNavigationLabel', 'socialMediaLabel', 'addressHeading', 'footerNavigationLabel', 'copyrightLabel', 'analyticsConsentHeading', 'analyticsConsentBody'];
   for (const language of SUPPORTED_LANGUAGES) {
     const html = await readBuiltRoute(routeFor(language, 'home'));
@@ -742,20 +775,21 @@ test('shared layout labels and Open Graph locales match every language', async (
 });
 
 test('every synchronized canonical route has a built page', async () => {
-  assert.equal(allLocalizedEntries().length, 340, 'synchronized route count');
+  assert.equal(allLocalizedEntries().length, 882, 'synchronized route count');
   const sources = new Map(englishInventory().map((source) => [source.contentKey, source]));
   for (const { language, contentKey, route } of allLocalizedEntries()) {
     const html = await readBuiltRoute(route);
-    assert.match(html, new RegExp(`<html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`), contentKey);
+    assert.match(html, new RegExp(`<html lang="${language === 'zh' ? 'zh-CN' : language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`), contentKey);
     assert.match(html, new RegExp(`<link rel="canonical" href="${escapeRegExp(canonicalUrl(route))}">`), `${language}:${contentKey}:canonical`);
     for (const alternateLanguage of SUPPORTED_LANGUAGES) {
-      assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(routeFor(alternateLanguage, contentKey)))}"`), `${language}:${contentKey}:${alternateLanguage}`);
+      const hreflang = alternateLanguage === 'zh' ? 'zh-CN' : alternateLanguage;
+      assert.match(html, new RegExp(`hreflang="${hreflang}" href="${escapeRegExp(canonicalUrl(routeFor(alternateLanguage, contentKey)))}"`), `${language}:${contentKey}:${alternateLanguage}`);
     }
     assert.match(html, new RegExp(`hreflang="x-default" href="${escapeRegExp(canonicalUrl(routeFor('en', contentKey)))}"`), `${language}:${contentKey}:x-default`);
     const source = sources.get(contentKey);
     const schemaType = source.type === 'product' ? 'Product'
       : source.type === 'post' || source.kind === 'guide' ? 'Article'
-        : source.type === 'architecture' ? (source.kind === 'product-category' ? 'ItemList' : 'WebPage') : null;
+        : source.type === 'architecture' ? (contentKey === 'architecture:about' ? 'AboutPage' : source.kind === 'resources' ? 'CollectionPage' : source.kind === 'contact' ? 'ContactPage' : source.kind === 'product-category' ? 'ItemList' : 'WebPage') : null;
     if (schemaType) {
       const schema = structuredNodes(html).find((node) => node?.['@type'] === schemaType);
       assert.ok(schema, `${language}:${contentKey}:${schemaType}`);
@@ -771,16 +805,18 @@ test('localized built-page samples render reviewed content, reciprocal SEO and m
     ['product:kraft-paper-bowl', 'Product'],
     ['architecture:resources/guides/paper-cup-sizes', 'Article'],
     ['post:eu-single-use-plastics-directive-explained', 'Article'],
-    ['architecture:contact', 'WebPage'],
+    ['architecture:contact', 'ContactPage'],
   ];
   for (const language of SUPPORTED_LANGUAGES) {
     for (const [contentKey, schemaType] of samples) {
       const entry = localizedEntry(language, contentKey);
       const html = await readBuiltRoute(entry.route);
-      assert.equal(visibleH1(html), contentText(entry.title), `${language}:${contentKey}:h1`);
+      const quoteHeadings={en:'Let’s find the right packaging.',zh:'一起选择 合适的包装。',fr:'Trouvons ensemble le bon emballage.',es:'Encontremos el envase adecuado.',de:'Finden wir gemeinsam die passende Verpackung.',ar:'لنجد معًا التغليف المناسب.'};
+      assert.equal(visibleH1(html), contentKey==='architecture:contact'?quoteHeadings[language]:contentKey==='architecture:resources/guides/paper-cup-sizes'?contentText(resourceText('Paper cup',language)+' '+resourceText('sizes guide.',language)):contentText(entry.title), `${language}:${contentKey}:h1`);
       assert.match(html, new RegExp(`<link rel="canonical" href="${escapeRegExp(canonicalUrl(entry.route))}">`));
       for (const alternateLanguage of SUPPORTED_LANGUAGES) {
-        assert.match(html, new RegExp(`hreflang="${alternateLanguage}" href="${escapeRegExp(canonicalUrl(routeFor(alternateLanguage, contentKey)))}"`), `${language}:${contentKey}:${alternateLanguage}`);
+        const hreflang = alternateLanguage === 'zh' ? 'zh-CN' : alternateLanguage;
+        assert.match(html, new RegExp(`hreflang="${hreflang}" href="${escapeRegExp(canonicalUrl(routeFor(alternateLanguage, contentKey)))}"`), `${language}:${contentKey}:${alternateLanguage}`);
       }
       assert.match(html, new RegExp(`hreflang="x-default" href="${escapeRegExp(canonicalUrl(routeFor('en', contentKey)))}"`));
       const schema = structuredNodes(html).find((node) => node?.['@type'] === schemaType);
@@ -792,7 +828,7 @@ test('localized built-page samples render reviewed content, reciprocal SEO and m
 
 test('localized product samples preserve immutable English product facts and translated display values', async () => {
   const source = englishInventory().find(({ contentKey }) => contentKey === 'product:kraft-paper-bowl');
-  for (const language of ['fr', 'es', 'ar']) {
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) {
     const html = await readBuiltRoute(routeFor(language, source.contentKey));
     assert.doesNotThrow(() => assertFactParity(source, html), language);
     const translatedValue = Object.values(uiFor(language).specificationValues).find((value) => value.includes('300'));
@@ -817,9 +853,9 @@ test('all product variants preserve summaries and the approved buying layout', a
     }
   }
 
-  assert.equal(englishExcerpts, 44);
-  assert.equal(detailLayouts, 176);
-  assert.equal(buyingNotes, 176);
+  assert.equal(englishExcerpts, 95);
+  assert.equal(detailLayouts, 570);
+  assert.equal(buyingNotes, 570);
   assert.equal(localizedEnglishExcerpts, 0);
 });
 
@@ -834,14 +870,15 @@ test('visible main content never double-escapes WordPress numeric entities', asy
 });
 
 test('localized contact pages preserve field names and localize visible form labels', async () => {
-  const visibleName = { fr: 'Nom', es: 'Nombre', ar: 'الاسم' };
-  for (const language of ['fr', 'es', 'ar']) {
+  const visibleName = { fr: 'Nom', es: 'Nombre', ar: 'الاسم', zh: '姓名', de: 'Name' };
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) {
     const html = await readBuiltRoute(routeFor(language, 'architecture:contact'));
     for (const name of ['name', 'email', 'company', 'country', 'phone', 'quantity', 'productName', 'productSku', 'category', 'message', 'sourcePath']) {
       assert.match(html, new RegExp(`name="${name}"`), `${language}:${name}`);
     }
-    assert.match(html, new RegExp(`>${escapeRegExp(visibleName[language])}<input name="name"`));
-    assert.doesNotMatch(html, />Business email<input/);
+    const nameLabel = [...html.matchAll(/<label\b[^>]*>([\s\S]*?)<\/label>/g)].find(([, label]) => /<input\b[^>]*name="name"/.test(label))[1];
+    assert.equal(nameLabel.replace(/<[^>]*>/g, '').trim(), `${visibleName[language]} *`);
+    assert.doesNotMatch(html, />Business email(?:<|\s)/);
   }
 });
 

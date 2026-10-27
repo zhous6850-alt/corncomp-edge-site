@@ -1,0 +1,94 @@
+---
+const { preview = true } = Astro.props;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResponsiveMedia from './ResponsiveMedia.astro';
+import { companyCertificates } from '../data/certificates.mjs';
+const certificateImages = ['brcgs-packaging','fsc-coc','iso-9001','bpi-straws'].map(key=>companyCertificates('en').find(item=>item.key===key));
+import mediaInventory from '../data/media.json';
+import { englishInventory } from '../lib/localization.mjs';
+import { contentText, contentDescription } from '../lib/content-routes.mjs';
+const posts = englishInventory().filter(post=>post.type==='post');
+const topic = (post) => post.slug.includes('laws')||post.slug.includes('directive') ? 'Regulations' : post.slug.includes('pla-vs') ? 'Materials' : 'Certifications';
+const postMedia = (post) => {
+  const image=post.featuredMedia;
+  if(!image)return null;
+  const {width,height}=mediaInventory.find(item=>item.id===image.id).media_details;
+  return {src:image.localPath,width,height,alt:image.alt,fit:'cover',position:'center',evidence:'application'};
+};
+const schema = [
+  {'@context':'https://schema.org','@type':'CollectionPage',name:'Packaging insights',url:'https://corn-comp.com/blog/'},
+  {'@context':'https://schema.org','@type':'ItemList',itemListElement:posts.map((post,index)=>({'@type':'ListItem',position:index+1,name:contentText(post.title),url:'https://corn-comp.com'+post.route}))},
+  {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:'https://corn-comp.com/'},{'@type':'ListItem',position:2,name:'Blog',item:'https://corn-comp.com/blog/'}]},
+];
+---
+<BaseLayout title={preview ? 'Packaging Insights - Design Preview | Corncomp' : 'Packaging Insights | Corncomp'} description="Articles on packaging regulations, certification checks and material choices for food packaging buyers." pathname="/blog/" bodyClass="architecture-site" structuredData={schema}>
+{preview && <p class="preview-note">DESIGN PREVIEW · 博客列表 · 正式站未修改</p>}
+<div class="blog-preview">
+  <header class="journal-hero">
+    <img src="/media/about/corncomp-blog-workshop.webp" width="1920" height="1080" alt="" fetchpriority="high" decoding="async"/>
+    <div><p class="eyebrow">CORNCOMP JOURNAL</p><h1>LATEST BLOGS</h1></div>
+  </header>
+  <div class="journal-content">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Blog</span></nav>
+    <section id="articles" aria-labelledby="articles-title">
+      <div class="archive-heading"><h2 id="articles-title">Browse the journal.</h2><span>{posts.length} articles</span></div>
+      <div class="filter-bar" role="group" aria-label="Filter articles by topic">{['All articles','Regulations','Certifications','Materials'].map((label,index)=><button type="button" data-filter={index===0?'all':label} aria-pressed={index===0?'true':'false'}>{label}</button>)}</div>
+      <p class="result-count" aria-live="polite" data-one="article" data-many="articles">{posts.length} articles</p>
+      <div class="story-list">{posts.map(post=><article class="story" data-topic={topic(post)}><a class="story-image" href={post.route} aria-label={contentText(post.title)}>{post.slug==='how-to-verify-supplier-sustainability-certifications' ? <div class="certificate-montage" aria-hidden="true">{certificateImages.map(certificate=><div><img src={certificate.image.src} width={certificate.image.width} height={certificate.image.height} alt="" loading="lazy" decoding="async"/><span>{certificate.standard.startsWith('FSC') ? 'FSC' : certificate.key==='brcgs-packaging' ? 'BRCGS' : certificate.key==='bpi-straws' ? 'BPI' : 'ISO 9001'}</span></div>)}</div> : <ResponsiveMedia media={postMedia(post)}/>}</a><div class="story-copy"><p class="topic">{topic(post)}</p><h3><a href={post.route}>{contentText(post.title)}</a></h3><p class="story-summary">{contentDescription(post)}</p><a class="read-link" href={post.route}>Read the article <span aria-hidden="true">↗</span></a></div></article>)}</div>
+    </section>
+  </div>
+</div>
+</BaseLayout>
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const stories = document.querySelectorAll<HTMLElement>('[data-topic]');
+  const count = document.querySelector('.result-count');
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+    let visible=0;
+    stories.forEach(story=>{story.hidden=button.dataset.filter!=='all'&&story.dataset.topic!==button.dataset.filter;if(!story.hidden)visible++;});
+    if(count)count.textContent=visible+' '+count.getAttribute(visible===1?'data-one':'data-many');
+  }));
+</script>
+<style>
+  .blog-preview{--journal-bg:#14271d;--journal-card:#0e1e15;--journal-text:#fffdf8;--journal-muted:#c3cfc5;background:var(--journal-bg);color:var(--journal-text)}
+  .preview-note{margin:0;padding:8px 16px;background:#edf1e7;text-align:center;font-size:11px;color:#405e42}
+  .journal-hero{position:relative;min-height:280px;display:grid;place-items:center;padding:64px 24px;text-align:center;isolation:isolate;overflow:hidden}
+  .journal-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;z-index:-2}
+  .journal-hero::before{content:"";position:absolute;inset:0;background:rgba(8,24,15,.7);z-index:-1}
+  .eyebrow{margin:0 0 18px;color:#c3d7bd;font-size:12px;font-weight:700;letter-spacing:.16em}
+  .journal-hero h1{margin:0;color:var(--journal-text);font-size:clamp(36px,4.5vw,60px);line-height:1.12;letter-spacing:-.025em}
+  .journal-content{max-width:1280px;margin:auto;padding:0 40px 72px}
+  .crumb{display:flex;gap:12px;padding:24px 0 32px;font-size:12px;color:var(--journal-muted)}
+  .crumb a{text-decoration:none}
+  .archive-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;max-width:none;margin:0 0 20px}
+  .archive-heading h2{font-size:24px;line-height:1.3;margin:0;letter-spacing:-.015em}
+  .archive-heading>span,.result-count{color:var(--journal-muted);font-size:12px}
+  .filter-bar{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid #3c5041;padding-bottom:20px}
+  .filter-bar button{font:inherit;font-size:13px;min-height:44px;padding:10px 16px;border:1px solid #536957;border-radius:2px;background:transparent;color:var(--journal-text);cursor:pointer}
+  .filter-bar button[aria-pressed="true"]{background:#dce6d8;border-color:#dce6d8;color:#14271d}
+  .filter-bar button:hover:not([aria-pressed="true"]){background:#294132}
+  .result-count{margin:18px 0 24px}
+  .story-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+  .story{min-width:0;display:flex;flex-direction:column;background:var(--journal-card)}
+  .story[hidden]{display:none}
+  .story-image{display:block;overflow:hidden}
+  .story-image :global(img){width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .25s ease}
+  .story:hover .story-image :global(img){transform:scale(1.025)}
+  .certificate-montage{aspect-ratio:16/9;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;gap:10px;padding:24px 16px;background:#e5e8df;direction:ltr}
+  .certificate-montage>div{min-width:0;text-align:center}
+  .story-image .certificate-montage img{width:100%;height:auto;aspect-ratio:210/297;object-fit:contain;background:#fff;transform:none;transition:none}
+  .certificate-montage span{display:block;margin-top:10px;color:#1d3826;font-size:10px;font-weight:700;white-space:nowrap}
+  .story-copy{display:flex;flex:1;flex-direction:column;padding:24px}
+  .topic{margin:0 0 14px;font-size:11px;font-weight:700;letter-spacing:.06em;color:#bed5b7}
+  .story h3{margin:0 0 16px;font-size:21px;line-height:1.35;letter-spacing:-.015em;text-wrap:pretty}
+  .story h3 a{text-decoration:none}
+  .story h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+  .story-summary{margin:0 0 24px;color:var(--journal-muted);font-size:14px;line-height:1.75;text-wrap:pretty}
+  .read-link{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;margin-top:auto;padding-top:12px;border-top:1px solid #334638;font-size:13px;font-weight:700;text-decoration:none}
+  .read-link:hover{color:#bed5b7}
+  a:focus-visible,button:focus-visible{outline:3px solid #dce6d8;outline-offset:4px}
+  @media(max-width:1000px){.story-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.journal-content{padding-inline:28px}}
+  @media(max-width:700px){.journal-hero{min-height:220px;padding-block:44px}.journal-content{padding:0 20px 44px}.crumb{padding:20px 0 28px}.story-list{grid-template-columns:1fr;gap:24px}.story-copy{padding:22px}.archive-heading>span{display:none}.archive-heading h2{font-size:22px}}
+  @media(prefers-reduced-motion:reduce){.story-image :global(img){transition:none}.story:hover .story-image :global(img){transform:none}}
+</style>

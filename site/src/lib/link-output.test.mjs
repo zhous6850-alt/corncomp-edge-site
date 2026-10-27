@@ -63,7 +63,7 @@ test('localized built-page internal links stay in the selected canonical languag
     if (!SUPPORTED_LANGUAGES.includes(language)) continue;
     const html = readFileSync(file, 'utf8');
     for (const match of html.matchAll(/<a\b([^>]*)href="(\/[^"?#]*)(?:[?#][^"]*)?"[^>]*>/g)) {
-      if (/\blang="(?:en|fr|es|ar)"/.test(match[0])) continue;
+      if (/\blang="(?:en|fr|es|ar|zh-CN|de)"/.test(match[0])) continue;
       const target = normalizeLocalizedRoute(match[2]);
       if (!contentKeys.has(target)) contentKeys.set(target, contentKeyFromRoute(target));
       const contentKey = contentKeys.get(target);

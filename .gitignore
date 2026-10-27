@@ -8,3 +8,16 @@ site/.dev.vars
 .wrangler-config/
 .gh-cli/
 .worktrees/
+.ssh-local/
+.gh-config/
+.wrangler*/
+.wrangler-*.log
+.wrangler-preview-worker.mjs
+.npm-cache*/
+.tmp-*/
+tmp/
+output/
+garden-gpt-image-2/
+site/.tmp-*/
+site/node_modules-junction-backup/
+NUL

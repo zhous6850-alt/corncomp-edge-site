@@ -1,17 +1,31 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import QuoteDialog from '../components/QuoteDialog.astro';
+import { routeFor } from '../lib/localization.mjs';
 import globalCss from '../styles/global.css?raw';
 import { canonicalUrl, documentDirection } from '../lib/routes.mjs';
 import { pageAlternates } from '../lib/site-config.mjs';
 import { uiFor } from '../lib/localization.mjs';
+import { resourceContext, resourceText, localizeResourceHtml, localizeResourceSchema } from '../lib/resource-localization.mjs';
+import { applicationContext, applicationText, localizeApplicationHtml, localizeApplicationSchema } from '../lib/application-localization.mjs';
 
-const { title, description = '', language = 'en', pathname = Astro.url.pathname, bodyClass = '', image = '/media/corncomp-logo.png', structuredData, ogType = 'website' } = Astro.props;
+const { title: sourceTitle, description: sourceDescription = '', language: sourceLanguage = 'en', pathname: sourcePath = Astro.url.pathname, bodyClass = '', image = '/media/corncomp-logo.png', structuredData: sourceSchemas, ogType = 'website', headerOverlay = false } = Astro.props;
+const application = applicationContext(Astro.url.pathname);
+const localApplication = application && application.language !== 'en' ? application : null;
+const resource = resourceContext(Astro.url.pathname);
+const language = resource?.language || localApplication?.language || sourceLanguage;
+const pathname = resource?.route || localApplication?.route || sourcePath;
+const title = resource ? resourceText(sourceTitle,language) : localApplication ? applicationText(sourceTitle, language) : sourceTitle;
+const description = resource ? resourceText(sourceDescription,language) : localApplication ? applicationText(sourceDescription, language) : sourceDescription;
+const resourceContent = resource ? localizeResourceHtml(await Astro.slots.render('default'),language) : null;
+const applicationContent = localApplication ? localizeApplicationHtml(await Astro.slots.render('default'), language) : null;
+const structuredData = resource ? localizeResourceSchema(sourceSchemas,language,resourceContent.heading) : localApplication ? localizeApplicationSchema(sourceSchemas, language, applicationContent.heading) : sourceSchemas;
 const canonical = canonicalUrl(pathname);
 const socialImage = new URL(image, 'https://corn-comp.com').href;
 const alternates = pageAlternates(pathname);
 const organization = {
-  '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://corn-comp.com/#organization', name: 'Corncomp', url: 'https://corn-comp.com', email: 'inquiry@corn-comp.com', telephone: '+86-574-86961222',
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://corn-comp.com/#organization', name: 'Corncomp', url: 'https://corn-comp.com', email: 'zhous6850@gmail.com', telephone: '+86-574-86961222',
   logo: 'https://corn-comp.com/media/corncomp-logo.png',
   address: { '@type': 'PostalAddress', streetAddress: 'No.2 Building, No.3 Wanquanhe Road, Xiapu Street, Beilun District', addressLocality: 'Ningbo', addressRegion: 'Zhejiang', addressCountry: 'CN' },
   sameAs: ['https://www.facebook.com/profile.php?id=61592477933421', 'https://www.instagram.com/zxh_0927', 'https://www.linkedin.com/in/sam-zhou-431ab9424/'],
@@ -19,18 +33,22 @@ const organization = {
 const schemas = [organization, ...(Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : [])];
 const measurementId = 'G-R1SHNYEBN8';
 const ui = uiFor(language);
-const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
+const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR', zh: 'zh_CN', de: 'de_DE' };
+const languageTag = (code) => code === 'zh' ? 'zh-CN' : code;
 ---
 <!doctype html>
-<html lang={language} dir={documentDirection(language)}>
+<html lang={languageTag(language)} dir={documentDirection(language)}>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+    <slot name="head" />
+    <link rel="preload" href="/media/embedded/c516b3f7-roboto-0f7fcdc8.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/media/embedded/63ade1d7-roboto-da69b94e.woff2" as="font" type="font/woff2" crossorigin>
     <title>{title}</title>
     {description && <meta name="description" content={description}>}
     <link rel="canonical" href={canonical}>
     <link rel="icon" href="/media/corncomp-logo.png">
-    {alternates.map((item) => <link rel="alternate" hreflang={item.language} href={canonicalUrl(item.route)} />)}
+    {alternates.map((item) => <link rel="alternate" hreflang={languageTag(item.language)} href={canonicalUrl(item.route)} />)}
     {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={canonicalUrl(alternates[0].route)} />}
     <meta property="og:type" content={ogType}>
     <meta property="og:locale" content={ogLocales[language]}>
@@ -44,11 +62,25 @@ const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
     <meta name="twitter:image" content={socialImage}>
     <script type="application/ld+json" set:html={JSON.stringify(schemas).replaceAll('<', '\\u003c')} />
     <style is:inline set:html={globalCss} />
+    {localApplication && <style is:inline>
+      main h1, main h2, main h3 { overflow-wrap: anywhere; }
+      main table, main caption { text-align: start; }
+      html[dir="rtl"] main .eyebrow { letter-spacing: normal; }
+      html[dir="rtl"] main h1, html[dir="rtl"] main h2, html[dir="rtl"] main h3 { line-height: 1.35; letter-spacing: normal; }
+      html[dir="rtl"] main .image-label { left: auto; right: 18px; }
+    </style>}
   </head>
   <body class={bodyClass}>
-    <Header language={language} />
-    <main><slot /></main>
+    <Header language={language} overlay={headerOverlay} />
+    <main>{resourceContent ? <Fragment set:html={resourceContent.html} /> : applicationContent ? <Fragment set:html={applicationContent.html} /> : <slot />}</main>
+    {resource && <style is:global>
+      html[dir="rtl"] main table { text-align: right; }
+      html[dir="rtl"] main .verification-steps { border-left: 0; border-right: 1px solid #c2ceba; padding-left: 0; padding-right: 28px; }
+      html[dir="rtl"] main .resource-heading h1, html[dir="rtl"] main .guide-heading h1, html[dir="rtl"] main .blog-heading h1, html[dir="rtl"] main .quality-hero h1 { letter-spacing: normal; line-height: 1.4; }
+      main .reading-layout, main .guide-body, main .certificate-copy { min-width: 0; }
+    </style>}
     <Footer language={language} />
+    {pathname !== routeFor(language,'architecture:contact') && <QuoteDialog language={language} ui={ui}/>}
     <aside class="analytics-consent" data-analytics-consent hidden role="region" aria-labelledby="analytics-consent-title">
       <div>
         <h2 id="analytics-consent-title">{ui.analyticsConsentHeading}</h2>
@@ -69,6 +101,7 @@ const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
         const settingsButton = document.querySelector('[data-analytics-settings]');
         let analyticsLoaded = false;
         let returnFocus = null;
+        let pendingInPlaceLeads = 0;
 
         const readPreference = (key) => {
           try { return localStorage.getItem(key); } catch { return null; }
@@ -98,14 +131,41 @@ const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
           analyticsLoaded = true;
           window.dataLayer = window.dataLayer || [];
           window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('consent', 'default', {
+            analytics_storage: 'granted',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+          });
+          window.gtag('set', 'user_data', null);
           window.gtag('js', new Date());
-          window.gtag('config', measurementId);
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
-          document.head.append(script);
+          window.gtag('config', measurementId, {
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false,
+          });
+          let inserted = false;
+          const insert = () => {
+            if (inserted || readPreference(consentKey) !== 'granted') return;
+            inserted = true;
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+            document.head.append(script);
+          };
+          const schedule = () => {
+            if (window.requestIdleCallback) window.requestIdleCallback(insert, { timeout: 2000 });
+            else window.setTimeout(insert, 0);
+          };
+          // Queue events now; let essential page resources finish before the tracker runs.
+          if (document.readyState === 'complete') schedule();
+          else window.addEventListener('load', schedule, { once: true });
+          window.addEventListener('pagehide', insert, { once: true });
         };
         const recordPendingLead = () => {
+          while (pendingInPlaceLeads > 0) {
+            window.gtag?.('event', 'generate_lead');
+            pendingInPlaceLeads--;
+          }
           const params = new URLSearchParams(window.location.search);
           const leadId = params.get('sent') === '1' ? params.get('lead') : null;
           if (!leadId) return;
@@ -127,6 +187,7 @@ const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
           recordPendingLead();
         };
         const declineAnalytics = () => {
+          pendingInPlaceLeads = 0;
           savePreference(consentKey, 'denied');
           hideBanner();
           clearLeadMarker();
@@ -134,6 +195,11 @@ const ogLocales = { en: 'en_US', fr: 'fr_FR', es: 'es_ES', ar: 'ar_AR' };
         };
 
         allowButton?.addEventListener('click', allowAnalytics);
+        window.addEventListener('corncomp:inquiry-sent', () => {
+          if (readPreference(consentKey) === 'denied') return;
+          pendingInPlaceLeads++;
+          if (readPreference(consentKey) === 'granted') recordPendingLead();
+        });
         declineButton?.addEventListener('click', declineAnalytics);
         settingsButton?.addEventListener('click', () => {
           returnFocus = settingsButton;

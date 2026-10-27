@@ -1,0 +1,279 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResponsiveMedia from './ResponsiveMedia.astro';
+import { mediaListFor } from '../lib/visual-media.mjs';
+import { companyCertificates } from '../data/certificates.mjs';
+import homeImages from '../data/home-images.json';
+
+const { preview = true } = Astro.props;
+const workshop = mediaListFor('architecture:about/factory', 'en')[0];
+const certificates = companyCertificates('en');
+const standards = [
+  { key: 'brcgs-packaging', name: 'BRCGS', scope: 'Packaging materials' },
+  { key: 'fsc-coc', name: 'FSC', scope: 'Chain of Custody' },
+  { key: 'iso-9001', name: 'ISO 9001', scope: 'Quality management' },
+  { key: 'bpi-straws', name: 'BPI', scope: 'Printed paper straws' },
+];
+const structuredData = [
+  { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About Corncomp', url: 'https://corn-comp.com/about/', about: { '@id': 'https://corn-comp.com/#organization' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://corn-comp.com/' },
+    { '@type': 'ListItem', position: 2, name: 'About Corncomp', item: 'https://corn-comp.com/about/' },
+  ] },
+];
+---
+<BaseLayout
+  title={preview ? 'About Corncomp | Company Design Preview' : 'About Corncomp | Paper Packaging Manufacturer'}
+  description="Meet the people and manufacturing behind Corncomp, a paper straw and paper tableware business founded in Ningbo in 2018."
+  pathname="/about/"
+  bodyClass="architecture-site"
+  structuredData={structuredData}
+  image={workshop.src}
+>
+  {preview && <div class="preview-note">DESIGN PREVIEW · About 公司介绍 · 正式站未修改</div>}
+  <main class="company-page">
+    <header class="company-banner">
+      <ResponsiveMedia media={workshop} eager/>
+      <div class="banner-copy">
+        <p class="eyebrow">Ningbo Corncomp Tech Co., Ltd.</p>
+        <h1>About Corncomp</h1>
+      </div>
+    </header>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>About Corncomp</span></nav>
+
+    <section id="company" class="company-overview" aria-labelledby="company-heading">
+      <div class="company-story">
+      <div class="overview-copy">
+        <h2 id="company-heading">Established in Ningbo in 2018.</h2>
+        <p>Ningbo Corncomp Tech Co., Ltd. develops and manufactures paper straws and paper tableware for distributors and foodservice businesses. Our company premises cover 8,000 m², including 6,800 m² of factory space.</p>
+        <p>Environmental responsibility and innovation guide our work. We bring research, development and manufacturing together, with food safety and the development of biodegradable tableware as our focus.</p>
+      </div>
+      <div class="overview-video">
+        <div class="company-video">
+          <button type="button" data-company-video aria-label="Play company video on YouTube">
+            <img {...homeImages.hero} width="1702" height="1276" sizes="(max-width: 767px) calc(100vw - 88px), 50vw" alt="Corncomp factory exterior and entrance in Ningbo, China" loading="lazy" decoding="async"/>
+            <span class="video-play" aria-hidden="true">▶</span>
+            <span class="video-caption">Watch our company video</span>
+          </button>
+        </div>
+        <a class="video-fallback" href="https://www.youtube.com/watch?v=EqrXHrFuIGc" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a>
+      </div>
+      </div>
+      <dl class="company-facts">
+        <div><dt>Established</dt><dd dir="ltr">2018</dd></div>
+        <div><dt>Total company area</dt><dd dir="ltr">8,000 <span>m²</span></dd></div>
+        <div><dt>Factory area</dt><dd dir="ltr">6,800 <span>m²</span></dd></div>
+        <div><dt>Production lines</dt><dd dir="ltr">60</dd></div>
+      </dl>
+    </section>
+
+    <section id="vision" class="company-vision" aria-labelledby="vision-heading">
+      <h2 id="vision-heading">Our vision</h2>
+      <div class="vision-lettering" lang="en" dir="ltr">
+        <p class="vision-statement"><span>Make Tableware</span><span>Bio-degradable, Eco-Friendly</span></p>
+        <p class="vision-support">We Do everything we can to support Green Earth</p>
+      </div>
+    </section>
+
+    <section id="manufacturing" class="manufacturing" aria-labelledby="manufacturing-heading">
+      <div class="manufacturing-story">
+        <figure class="packing-photo">
+          <img src="/media/about/corncomp-straw-packing-archive.webp" srcset="/media/about/corncomp-straw-packing-archive-480.webp 480w, /media/about/corncomp-straw-packing-archive-800.webp 800w, /media/about/corncomp-straw-packing-archive-1280.webp 1280w, /media/about/corncomp-straw-packing-archive.webp 1920w" sizes="(max-width: 767px) calc(100vw - 44px), (max-width: 1440px) 50vw, 696px" width="1920" height="1440" alt="Corncomp workers packing bundles of striped paper straws at tables in the factory" loading="lazy" decoding="async"/>
+          <figcaption>Paper straw packing at our Ningbo facility. Company archive photograph.</figcaption>
+        </figure>
+        <div class="manufacturing-copy">
+          <h2 id="manufacturing-heading">Manufacturing and quality.</h2>
+          <p>Our Ningbo facility brings together paper preparation, printing, cutting, forming and packing across 60 production lines.</p>
+          <p id="development">Our development work includes multilayer paper structures, material combinations and forming processes.</p>
+          <p>The company holds BRCGS, FSC, ISO 9001 and BPI certificates. Each document covers a defined site, system or product scope.</p>
+          <a class="text-link" href={preview ? '/design-preview/factory/' : '/about/factory/'}>Explore our factory <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="quality" aria-labelledby="quality-heading">
+      <div class="quality-heading">
+        <h2 id="quality-heading">Our certifications.</h2>
+        <p>Four certificates held by Corncomp. View the documents and their scope on our Quality page.</p>
+      </div>
+      <div class="standards">
+        {standards.map(({ key, name, scope }) => {
+          const certificate = certificates.find((item) => item.key === key);
+          return <a data-company-certificate={key} href="/quality/#documents" class="standard" aria-label={'View ' + name + ' certificate'}>
+            <div class="standard-image"><img {...homeImages['certificate:' + key]} width={certificate.image.width} height={certificate.image.height} sizes="(max-width: 600px) 120px, 160px" alt={certificate.image.alt} loading="lazy" decoding="async"/></div>
+            <div><h3>{name}</h3><p>{scope}</p><span class="standard-action">View certificate <span aria-hidden="true">↗</span></span></div>
+          </a>;
+        })}
+      </div>
+      <p class="scope-note">BPI covers printed paper straws up to 352 g/m². Each certificate has its own scope; it does not certify every product in the catalogue.</p>
+    </section>
+
+    <section id="team" class="team-section" aria-labelledby="team-heading">
+      <figure class="team-photo">
+        <img src="/media/about/corncomp-team-archive.webp" srcset="/media/about/corncomp-team-archive-480.webp 480w, /media/about/corncomp-team-archive-800.webp 800w, /media/about/corncomp-team-archive-1280.webp 1280w, /media/about/corncomp-team-archive.webp 1920w" sizes="(max-width: 767px) calc(100vw - 44px), (max-width: 1440px) 50vw, 696px" width="1920" height="1440" alt="Corncomp employees together outside the company entrance, beneath the Corncomp sign" loading="lazy" decoding="async"/>
+        <figcaption>The Corncomp team. Company archive photograph.</figcaption>
+      </figure>
+      <div class="team-copy">
+        <h2 id="team-heading">Our team</h2>
+        <p>Based in Ningbo, our team brings together colleagues in research and development, production and packing.</p>
+      </div>
+    </section>
+
+    <section class="company-contact" aria-labelledby="contact-heading">
+      <div><h2 id="contact-heading">Connect with Corncomp.</h2><p>Contact our team to discuss your business and packaging requirements.</p></div>
+      <a class="quote-button" href="/contact/?source=%2Fabout%2F">Request a quote <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+</BaseLayout>
+<script is:inline>
+  document.querySelectorAll('[data-company-video]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const player = document.createElement('iframe');
+      player.src = 'https://www.youtube-nocookie.com/embed/EqrXHrFuIGc?autoplay=1&rel=0';
+      player.title = button.getAttribute('aria-label');
+      player.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      player.allowFullscreen = true;
+      player.referrerPolicy = 'strict-origin-when-cross-origin';
+      player.tabIndex = 0;
+      button.replaceWith(player);
+      player.focus();
+    }, { once: true });
+  });
+</script>
+<style>
+  .company-page{--ink:#1d3826;--muted:#566354;--line:#d3dccf;--pale:#edf1e9;--action:#406345;max-width:1440px;margin:auto;padding:0 48px 64px;color:var(--ink);text-wrap:pretty}
+  .preview-note{padding:8px 20px;background:#edf1e9;color:#406345;text-align:center;font-size:12px;letter-spacing:.04em}
+  .breadcrumb{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 44px;font-size:13px;color:var(--muted)}
+  .breadcrumb a{text-decoration:none}
+  .company-page figure{margin:0;min-width:0}
+  .company-page figcaption{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.5}
+  .company-page p{margin:0;color:var(--muted);font-size:17px;line-height:1.75}
+  .company-page h1,.company-page h2,.company-page h3{color:var(--ink);letter-spacing:-.035em}
+  .company-page h2{margin:0 0 22px;font-size:clamp(30px,3vw,44px);line-height:1.15}
+  .company-page h3{margin:0 0 14px;font-size:22px;line-height:1.25}
+  .company-banner{position:relative;isolation:isolate;display:flex;align-items:center;min-height:310px;margin-inline:-48px;background:var(--ink);overflow:hidden}
+  .company-banner :global(img){position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover!important;object-position:50% 52%!important}
+  .company-banner::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(18,56,35,.83),rgba(18,56,35,.38))}
+  .banner-copy{position:relative;z-index:2;padding:56px 48px}
+  .company-page .company-banner .eyebrow{color:#fffdf8;margin-bottom:18px}
+  .company-page .company-banner h1{color:#fffdf8;margin:0;font-size:clamp(42px,5.2vw,68px);line-height:1.12}
+  .company-page .eyebrow{margin-bottom:22px;font-size:11px;font-weight:700;line-height:1.6;letter-spacing:.12em;text-transform:uppercase;color:var(--action)}
+  .team-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:50% 55%}
+  .text-link{display:inline-flex;align-items:center;gap:28px;min-height:44px;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:6px}
+  .company-overview{scroll-margin-top:110px;margin:0 -48px 64px;padding:48px;background:var(--ink)}
+  .company-story{display:grid;grid-template-columns:1fr 1.1fr;align-items:center;gap:42px}
+  .company-page .company-overview h2{color:#fffdf8;font-size:clamp(30px,3.1vw,44px)}
+  .company-page .company-overview p{color:#d5dfd1;font-size:16px;line-height:1.75}
+  .company-overview .company-facts{border-color:#60765f}
+  .company-overview .company-facts>div{border-color:#60765f}
+  .company-overview .company-facts dt{color:#c5d1c0}
+  .company-overview .company-facts dd{color:#fffdf8}
+  .overview-video{min-width:0}
+  .company-video{aspect-ratio:16/9;position:relative;background:#101d14;overflow:hidden}
+  .company-video button{position:relative;display:block;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:#101d14;color:#fffdf8;font:inherit}
+  .company-video img{display:block;width:100%;height:100%;object-fit:cover}
+  .company-video button::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.7))}
+  .video-play{position:absolute;z-index:1;inset:50% auto auto 50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:64px;height:64px;padding-inline-start:4px;background:rgba(29,56,38,.9);border:1px solid #d5dfd1;border-radius:50%;font-size:25px}
+  .video-caption{position:absolute;z-index:1;inset-inline:20px;bottom:18px;text-align:start;font-size:15px;font-weight:600}
+  .company-video button:hover .video-play{background:#406345}
+  .company-video button:focus-visible{outline:3px solid #fffdf8;outline-offset:-5px}
+  .company-video :global(iframe){display:block;width:100%;height:100%;border:0}
+  .video-fallback{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-top:4px;color:#d5dfd1;font-size:13px;text-underline-offset:4px}
+  .company-overview a:focus-visible{outline-color:#fffdf8}
+  .overview-copy{max-width:840px}
+  .overview-copy p+p{margin-top:18px}
+  .company-vision{padding:48px 24px 54px;margin-bottom:64px;background:var(--pale);text-align:center;scroll-margin-top:125px}
+  .company-page .company-vision h2{margin:0 0 42px;font-family:inherit;font-size:clamp(34px,4.2vw,58px);font-weight:700;line-height:1.2;letter-spacing:.015em;text-transform:uppercase;color:var(--ink)}
+  .company-page .vision-statement{font-family:Georgia,'Times New Roman',serif;font-size:clamp(34px,4.2vw,58px);font-style:italic;font-weight:400;line-height:1.22;letter-spacing:-.025em;color:var(--action)}
+  .vision-statement span{display:block}
+  .company-page .vision-support{margin:24px auto 0;font-size:clamp(25px,3.1vw,42px);line-height:1.3;letter-spacing:-.025em;color:var(--ink);max-width:1160px;text-wrap:balance}
+  .company-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:32px 0 0;padding:26px 0;border-block:1px solid var(--line)}
+  .company-facts>div{padding-inline-start:26px;border-inline-start:1px solid var(--line)}
+  .company-facts>div:first-child{padding-inline-start:0;border:0}
+  .company-facts dt{margin-bottom:12px;color:var(--muted);font-size:13px}
+  .company-facts dd{margin:0;font-size:clamp(30px,3vw,44px);line-height:1.1;letter-spacing:-.04em}
+  .company-facts dd span{font-size:18px;letter-spacing:0}
+  .manufacturing{margin:0 -48px 64px;padding:48px;background:var(--ink);scroll-margin-top:110px}
+  .company-page .manufacturing h2{color:#fffdf8}
+  .company-page .manufacturing p,.company-page .manufacturing figcaption{color:#d5dfd1}
+  .manufacturing .text-link{color:#fffdf8}
+  .manufacturing .text-link:hover{color:#d5dfd1}
+  .manufacturing a:focus-visible{outline-color:#fffdf8}
+  .manufacturing-story{display:grid;grid-template-columns:1.16fr 1fr;gap:48px;align-items:center}
+  .packing-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
+  .manufacturing-copy p{font-size:16px}
+  .manufacturing-copy p+p{margin-top:14px}
+  .manufacturing-copy>.text-link{margin-top:14px}
+  .quality{background:var(--pale);padding:36px;margin-bottom:64px}
+  .quality-heading{max-width:660px}
+  .quality-heading h2{margin-bottom:12px}
+  .quality-heading p{font-size:16px}
+  .standards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;margin:28px 0 24px}
+  .standard{min-width:0;text-decoration:none}
+  .standard-image{display:flex;align-items:center;justify-content:flex-start;height:160px;margin-bottom:18px}
+  .standard-image img{display:block;width:auto;max-width:100%;height:100%;object-fit:contain}
+  .standard h3{margin-bottom:6px;font-size:22px}
+  .standard p{font-size:13px;line-height:1.5}
+  .standard-action{display:inline-flex;gap:14px;align-items:center;min-height:44px;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:5px}
+  .company-page .scope-note{max-width:760px;font-size:12px;line-height:1.7}
+  .team-section{display:grid;grid-template-columns:1.16fr 1fr;align-items:center;gap:40px;margin-bottom:48px;scroll-margin-top:125px}
+  .team-copy{max-width:470px}
+  .team-copy h2{font-size:clamp(28px,2.7vw,36px);margin-bottom:16px}
+  .team-copy p{font-size:16px}
+  .company-contact{display:flex;align-items:center;justify-content:space-between;gap:32px;border-top:1px solid var(--line);padding-top:38px}
+  .company-contact h2{font-size:32px;margin-bottom:8px}
+  .company-contact p{font-size:15px}
+  .quote-button{display:inline-flex;align-items:center;justify-content:center;gap:28px;padding:18px 24px;background:var(--action);color:#fffdf8;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap}
+  .text-link:hover,.standard:hover h3{color:#406345;text-decoration-thickness:2px}
+  .quote-button:hover{background:var(--ink)}
+  .quote-button:active{transform:translateY(1px)}
+  .company-page a:focus-visible{outline:3px solid #406345;outline-offset:5px}
+  :global(html[dir="rtl"]) .company-banner::after{background:linear-gradient(270deg,rgba(18,56,35,.83),rgba(18,56,35,.38))}
+  :global(html[dir="rtl"]) .company-facts dd{text-align:right}
+  :global(html[dir="rtl"]) .company-page h1,:global(html[dir="rtl"]) .company-page h2,:global(html[dir="rtl"]) .company-page h3{letter-spacing:0;line-height:1.4}
+  :global(html[dir="rtl"]) .company-page .eyebrow{letter-spacing:0;text-transform:none}
+  :global(html[lang="zh-CN"]) .company-page h1,:global(html[lang="zh-CN"]) .company-page h2,:global(html[lang="zh-CN"]) .company-page h3{letter-spacing:0;line-height:1.35}
+  @media(max-width:1000px){
+    .company-page{padding-inline:32px}
+    .company-banner{margin-inline:-32px}
+    .banner-copy{padding-inline:32px}
+    .company-overview{margin-inline:-32px;padding:36px 32px}
+    .manufacturing{margin-inline:-32px;padding:36px 32px}
+    .company-story{gap:28px}
+    .manufacturing-story,.team-section{gap:32px}
+    .quality{padding:28px}
+    .standards{gap:20px}
+    .standard-image{height:140px}
+  }
+  @media(max-width:767px){
+    .company-page{padding:0 22px 40px}
+    .breadcrumb{margin:20px 0 32px}
+    .company-banner{min-height:240px;margin-inline:-22px}
+    .banner-copy{padding:40px 22px}
+    .company-page .company-banner h1{font-size:clamp(38px,10vw,54px)}
+    .company-page .eyebrow{margin-bottom:16px}
+    .company-overview{margin:0 -22px 40px;padding:32px 22px}
+    .company-story{grid-template-columns:1fr;gap:26px}
+    .company-vision{margin-bottom:40px;padding:34px 18px 38px}
+    .company-page .company-vision h2{font-size:clamp(28px,6.7vw,40px);margin-bottom:34px}
+    .company-page .vision-statement{font-size:clamp(28px,6.7vw,40px);letter-spacing:-.03em;line-height:1.25}
+    .company-page .vision-support{font-size:clamp(22px,5.2vw,30px);margin-top:22px;line-height:1.35}
+    .company-page h2{font-size:30px}
+    .company-page p{font-size:16px}
+    .company-facts{grid-template-columns:1fr 1fr;gap:24px 20px;padding:24px 0}
+    .company-facts>div{padding-inline-start:18px}
+    .company-facts>div:nth-child(odd){padding-inline-start:0;border:0}
+    .company-facts dt{font-size:12px;min-height:18px}
+    .company-facts dd{font-size:34px}
+    .manufacturing{margin:0 -22px 40px;padding:32px 22px}
+    .manufacturing-story,.team-section{grid-template-columns:1fr;gap:26px}
+    .quality{padding:26px 20px;margin:0 -6px 40px}
+    .standards{grid-template-columns:1fr 1fr;gap:24px 20px}
+    .standard-image{height:140px}
+    .standard h3{font-size:20px}
+    .standard-action{font-size:12px;gap:8px}
+    .team-section{margin-bottom:40px}
+    .company-contact{flex-direction:column;align-items:flex-start;padding-top:28px;gap:20px}
+    .company-contact h2{font-size:28px}
+  }
+</style>

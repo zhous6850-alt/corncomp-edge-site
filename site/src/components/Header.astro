@@ -1,15 +1,39 @@
 ---
+import homeImages from '../data/home-images.json';
 import { navigationFor } from '../lib/site-config.mjs';
 import { PRODUCT_CATEGORIES, PRODUCT_GROUPS } from '../lib/site-architecture.mjs';
-import { localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
+import { contentKeyFromRoute, localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
+import { applicationContext, applicationRoute } from '../lib/application-localization.mjs';
 
-const { language = 'en' } = Astro.props;
+const { language = 'en', overlay = false } = Astro.props;
 const nav = navigationFor(language);
 const ui = uiFor(language);
-const languages = [['en', 'English'], ['fr', 'Français'], ['es', 'Español'], ['ar', 'العربية']];
+const languages = [['en', 'English'], ['fr', 'Français'], ['es', 'Español'], ['ar', 'العربية'], ['zh', '简体中文'], ['de', 'Deutsch']];
+const currentContentKey = contentKeyFromRoute(Astro.url.pathname);
+const currentApplication = applicationContext(Astro.url.pathname);
+const languageRoute = (code) => currentApplication
+  ? applicationRoute(code, currentApplication.scene)
+  : currentContentKey
+  ? routeFor(code, currentContentKey)
+  : Astro.url.pathname.endsWith('/blog/')
+    ? code === 'en' ? '/blog/' : `/${code}/blog/`
+    : routeFor(code, 'home');
 const homeRoute = routeFor(language, 'home');
 const productsRoute = routeFor(language, 'architecture:products');
 const contactRoute = routeFor(language, 'architecture:contact');
+const applicationRoutes = ['takeaway-packaging','restaurant-packaging','fast-food-packaging','ice-cream-dessert-packaging'];
+const applicationLabels = {
+  en: ['Takeaway & Delivery','Restaurant & Foodservice','Fast Food','Ice Cream & Dessert','Supermarket'],
+  zh: ['外卖配送','餐饮服务','快餐','冰淇淋与甜品','超市零售'],
+  fr: ['Vente à emporter et livraison','Restauration','Restauration rapide','Glaces et desserts','Supermarché'],
+  es: ['Comida para llevar y reparto','Restauración','Comida rápida','Helados y postres','Supermercado'],
+  ar: ['الوجبات الجاهزة والتوصيل','المطاعم وخدمات الطعام','الوجبات السريعة','الآيس كريم والحلويات','السوبرماركت'],
+  de: ['Takeaway & Lieferung','Gastronomie','Fast Food','Eis & Desserts','Supermarkt'],
+}[language];
+const applicationLinks = applicationLabels.map((label, index) => ({
+  label,
+  route: Astro.url.pathname.startsWith('/design-preview/') ? '/design-preview/applications/' + (applicationRoutes[index] || 'supermarket-packaging') + '/' : applicationRoute(language, applicationRoutes[index] || 'supermarket-packaging'),
+}));
 const primaryLinks = [
   ['custom', 'architecture:custom-packaging'],
   ['applications', 'architecture:applications'],
@@ -25,17 +49,29 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
   const entry = localizedEntry(language, contentKey);
   return {
     ...entry,
-    categories: PRODUCT_CATEGORIES.filter((category) => category.group === group.slug).map((category) => {
+    categories: PRODUCT_CATEGORIES.filter((category) => category.group === group.slug && category.slug !== 'paper-food-boxes').sort((a, b) => {
+      const order = ['salad-bowls','soup-cups','ice-cream-cups','paper-cups','paper-trays','square-food-boxes','round-food-boxes','menu-boxes','burger-boxes','wrap-boxes','sandwich-boxes','pizza-slice-boxes','sushi-boxes','salad-boxes','cone-fry-packaging','paper-straws','disposable-cutlery','paper-plates','paper-bags','compostable-waste-bags','bagasse-plates','bagasse-bowls','bagasse-trays','bagasse-clamshells'];
+      return order.indexOf(a.slug) - order.indexOf(b.slug);
+    }).map((category) => {
       const categoryKey = `architecture:${category.route.replace(/^\/+|\/+$/g, '')}`;
       return localizedEntry(language, categoryKey);
     }),
   };
 });
 ---
-<header class="site-header" data-site-header>
+<header class:list={['site-header', { 'site-header--overlay': overlay }]} data-site-header>
+  <svg class="brand-colour-filter" aria-hidden="true" width="0" height="0"><defs><filter id="corncomp-navigation-logo" color-interpolation-filters="sRGB">
+    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1 0 0 0 1" result="logo-ink" />
+    <feComposite in="logo-ink" in2="SourceAlpha" operator="in" result="bounded-ink" />
+    <feFlood flood-color="#c9c6bc" result="warm-grey" />
+    <feComposite in="warm-grey" in2="bounded-ink" operator="in" result="logo-text" />
+    <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -12 12 0 0 0" result="original-green" />
+    <feComposite in="original-green" in2="bounded-ink" operator="in" result="clean-green" />
+    <feMerge><feMergeNode in="logo-text" /><feMergeNode in="clean-green" /></feMerge>
+  </filter></defs></svg>
   <div class="header-inner">
     <a class="brand" href={homeRoute} aria-label={ui.brandHomeLabel}>
-      <img src="/media/corncomp-logo.png" width="111" height="104" alt="Corncomp">
+      <img {...homeImages['brand-logo']} sizes="116px" width="111" height="104" alt="Corncomp">
     </a>
     <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false">
       <span>{ui.menu}</span>
@@ -46,7 +82,7 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
       <details class="product-menu">
         <summary>{nav.product[0]}</summary>
         <div class="nav-submenu product-mega-menu">
-          <a href={productsRoute}>{ui.allProducts}</a>
+          <a href={productsRoute}>{ui.allProducts}<span aria-hidden="true"> →</span></a>
           {productGroups.map((group) => <div class="nav-product-group"><a class="nav-group-link" href={group.route}>{group.title}</a>{group.categories.map((category) => <a href={category.route}>{category.title}</a>)}</div>)}
         </div>
       </details>
@@ -55,13 +91,22 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
           <summary>{item.label}</summary>
           <div class="nav-submenu resources-submenu">
             {nav.resources.children.map(([label, route]) => <a href={route}>{label}</a>)}
+            <a href={Astro.url.pathname.startsWith('/design-preview/') ? '/design-preview/faq/' : '/faq/'}>FAQ</a>
+          </div>
+        </details>
+      ) : item.key === 'applications' ? (
+        <details class="applications-menu">
+          <summary>{item.label}</summary>
+          <div class="nav-submenu applications-submenu">
+            <a class="applications-overview" href={language === 'en' && Astro.url.pathname.startsWith('/design-preview/') ? '/design-preview/applications/' : item.route}>{item.label}<span aria-hidden="true"> →</span></a>
+            {applicationLinks.map((application) => <a href={application.route}>{application.label}</a>)}
           </div>
         </details>
       ) : <a href={item.route}>{item.label}</a>)}
       <details class="language-menu">
         <summary>{language.toUpperCase()}</summary>
         <div class="nav-submenu language-submenu">
-          {languages.map(([code, label]) => <a href={routeFor(code, 'home')} lang={code} aria-current={code === language ? 'page' : undefined}>{label}</a>)}
+          {languages.map(([code, label]) => <a href={languageRoute(code)} lang={code === 'zh' ? 'zh-CN' : code} aria-current={code === language ? 'page' : undefined}>{label}</a>)}
         </div>
       </details>
       <a class="nav-contact" href={contactRoute}>{ui.requestQuote}</a>
@@ -98,35 +143,68 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
   })();
 </script>
 
+<script is:inline>
+  (() => {
+    const header = document.querySelector('.site-header--overlay');
+    if (!header) return;
+    const update = () => header.toggleAttribute('data-scrolled', window.scrollY > 32);
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('pageshow', update);
+  })();
+</script>
+
 <style>
-  .site-header { position: relative; z-index: 50; border-bottom: 1px solid var(--corncomp-line); background: color-mix(in srgb, var(--corncomp-paper) 94%, transparent); }
+  :global(html) { scroll-padding-top: 116px; }
+  .site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--corncomp-line); background: var(--corncomp-deep-green); }
   .header-inner { width: min(1200px, calc(100% - 48px)); min-height: 100px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-  .brand { display: inline-flex; flex: 0 0 auto; }
-  .brand img { width: 116px; height: 78px; object-fit: contain; }
-  nav { display: flex; align-items: center; gap: clamp(10px, 1.15vw, 18px); color: var(--corncomp-deep-green); font-size: 1rem; font-weight: 700; letter-spacing: .02em; }
+  .brand-colour-filter { position: absolute; pointer-events: none; }
+  .brand { display: inline-flex; flex: 0 0 auto; padding: 0; }
+  .brand img { width: 116px; height: 78px; object-fit: contain; filter: url(#corncomp-navigation-logo); }
+  nav { display: flex; align-items: center; gap: clamp(10px, 1.15vw, 18px); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: .02em; }
   nav a { position: relative; text-decoration: none; }
   nav a:not(.nav-contact)::after { position: absolute; right: 0; bottom: -8px; left: 0; height: 2px; background: var(--corncomp-green); content: ''; transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
   nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
-  .nav-contact { padding: 11px 17px; border: 1px solid var(--corncomp-green); border-radius: 4px; color: var(--corncomp-green); }
+  .nav-contact { padding: 11px 17px; border: 1px solid var(--corncomp-green); border-radius: 4px; background: var(--corncomp-green); color: #fff; white-space: nowrap; }
   details { position: relative; }
   summary { cursor: pointer; list-style: none; }
   summary::-webkit-details-marker { display: none; }
   summary::after { margin-inline-start: 6px; content: '▾'; font-size: .7em; }
-  .nav-submenu { position: absolute; top: calc(100% + 14px); left: -18px; min-width: 260px; padding: 10px; border: 1px solid var(--corncomp-line); border-radius: 4px; background: #fff; box-shadow: var(--corncomp-shadow); }
+  .nav-submenu { position: absolute; top: calc(100% + 14px); left: -18px; min-width: 260px; padding: 10px; border: 1px solid var(--corncomp-line); border-radius: 4px; background: #fff; color: var(--corncomp-deep-green); box-shadow: var(--corncomp-shadow); }
   .nav-submenu a { display: block; padding: 9px 10px; line-height: 1.25; }
   .language-submenu { right: 0; left: auto; min-width: 140px; }
   .resources-submenu { inset-inline-start: auto; inset-inline-end: 0; min-width: 180px; }
+  .applications-submenu { min-width: 280px; }
+  .applications-overview { border-bottom: 1px solid var(--corncomp-line); margin-bottom: 6px; }
+  .applications-menu summary:focus-visible { outline: 3px solid #72a87d; outline-offset: 3px; }
   .resources-menu summary:focus-visible { outline: 3px solid #72a87d; outline-offset: 3px; }
-  .product-mega-menu { display: grid; grid-template-columns: repeat(3, minmax(190px, 1fr)); width: min(760px, calc(100vw - 48px)); }
-  .nav-product-group { padding: 8px; }
-  .nav-product-group .nav-group-link { color: var(--corncomp-green); font-weight: 900; }
-  .menu-toggle { display: none; align-items: center; gap: 10px; padding: 10px 0; border: 0; background: transparent; color: var(--corncomp-deep-green); font: inherit; font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; cursor: pointer; }
+  .header-inner { position: relative; }
+  .product-menu { position: static; }
+  .product-mega-menu { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; width: min(1100px, calc(100vw - 48px)); left: 0; right: 0; top: calc(100% - 4px); margin-inline: auto; max-height: calc(100dvh - 116px); overflow-y: auto; font-size: .9rem; overflow-wrap: anywhere; }
+  .product-mega-menu > a { grid-column: 1 / -1; padding: 12px 18px 16px; border-bottom: 1px solid var(--corncomp-line); font-size: 1rem; font-weight: 700; }
+  .product-mega-menu a { padding-block: 8px; border-radius: 3px; }
+  .product-mega-menu a:hover, .product-mega-menu a:focus-visible { background: #edf5ee; }
+  .product-mega-menu a::after { display: none; }
+  .nav-product-group { padding: 18px 16px 10px; }
+  .nav-product-group + .nav-product-group { border-inline-start: 1px solid var(--corncomp-line); }
+  .nav-product-group > a:not(.nav-group-link) { color: #506357; font-size: 1rem; font-weight: 400; letter-spacing: 0; }
+  .nav-product-group .nav-group-link { margin-bottom: 14px; color: var(--corncomp-deep-green); font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+  .nav-product-group .nav-group-link::before { display: block; width: 32px; height: 3px; margin-bottom: 12px; background: var(--corncomp-green); content: ''; }
+  .menu-toggle { display: none; align-items: center; gap: 10px; padding: 10px 0; border: 0; background: transparent; color: #fff; font: inherit; font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; cursor: pointer; }
   .menu-icon { position: relative; width: 22px; height: 16px; display: block; }
   .menu-icon i { position: absolute; left: 0; width: 22px; height: 2px; background: currentColor; transition: transform .2s ease, top .2s ease; }
   .menu-icon i:first-child { top: 3px; }
   .menu-icon i:last-child { top: 11px; }
+  .site-header--overlay { position: fixed; inset: 0 0 auto; border-bottom: 1px solid rgba(255,255,255,.18); background: transparent; transition: background-color .2s ease, box-shadow .2s ease; }
+  .site-header--overlay[data-scrolled], .site-header--overlay[data-menu-open] { background: var(--corncomp-deep-green); box-shadow: 0 4px 20px rgba(18,56,35,.12); }
+  .site-header--overlay .header-inner { min-height: 104px; }
+  .site-header--overlay .brand { padding: 0; background: transparent; }
+  .site-header--overlay nav { color: #fff; }
+  .site-header--overlay .nav-contact { border-color: var(--corncomp-green); background: var(--corncomp-green); color: #fff; white-space: nowrap; }
+  .site-header--overlay .nav-submenu { color: var(--corncomp-deep-green); }
+  .site-header--overlay .menu-toggle { color: #fff; }
 
   @media (max-width: 980px) {
+    :global(html) { scroll-padding-top: 92px; }
     .header-inner { width: min(100% - 32px, 1200px); min-height: 72px; }
     .brand img { width: 88px; height: 56px; }
     .menu-toggle { display: inline-flex; }
@@ -135,12 +213,18 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
     nav details { border-bottom: 1px solid var(--corncomp-line); }
     nav summary { padding: 15px 8px; font-size: 1rem; }
     .nav-submenu { position: static; min-width: 0; padding: 0 0 10px 14px; border: 0; box-shadow: none; }
-    .product-mega-menu { display: block; width: auto; }
+    .product-mega-menu { display: block; width: auto; max-height: none; overflow-y: visible; }
     .nav-submenu a { padding: 9px 8px; border: 0; font-size: .86rem; }
+    .nav-product-group { padding: 16px 0; }
+    .nav-product-group + .nav-product-group { border-inline-start: 0; border-top: 1px solid var(--corncomp-line); }
+    .nav-product-group .nav-group-link { font-size: 1.25rem; }
     nav a::after { display: none; }
     .nav-contact { margin-top: 12px; padding: 13px 16px; border: 0; border-radius: 3px; background: var(--corncomp-green); color: white; text-align: center; }
     [data-menu-open] nav { opacity: 1; visibility: visible; transform: translateY(0); }
     [data-menu-open] .menu-icon i:first-child { top: 7px; transform: rotate(45deg); }
     [data-menu-open] .menu-icon i:last-child { top: 7px; transform: rotate(-45deg); }
+    .site-header--overlay .header-inner { min-height: 80px; }
+    nav, .site-header--overlay nav { color: var(--corncomp-deep-green); max-height: calc(100dvh - 80px); overflow-y: auto; }
   }
+  @media (prefers-reduced-motion: reduce) { .site-header--overlay { transition: none; } }
 </style>

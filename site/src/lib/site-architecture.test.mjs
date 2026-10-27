@@ -15,7 +15,7 @@ test('classifies every English-labelled product as canonical or duplicate', () =
   const products = records.filter((record) => record.type === 'product' && record.language === 'en');
   const classified = products.filter((product) => PRODUCT_CATEGORY_BY_SLUG[product.slug] || DUPLICATE_PRODUCT_ALIASES[product.slug]);
 
-  assert.equal(products.length, 82);
+  assert.equal(products.length, 133);
   assert.equal(classified.length, products.length);
   assert.equal(new Set(classified.map((product) => product.slug)).size, products.length);
 });
@@ -38,7 +38,8 @@ test('publishes only supported independent product categories', () => {
   const slugs = PRODUCT_CATEGORIES.map((category) => category.slug);
 
   for (const supported of ['paper-cups', 'salad-bowls', 'soup-cups', 'ice-cream-cups', 'paper-food-boxes', 'sushi-boxes', 'paper-straws', 'disposable-cutlery', 'paper-plates']) assert.ok(slugs.includes(supported));
-  for (const unsupported of ['paper-bags', 'compostable-paper-cups', 'compostable-waste-bags', 'soup-bowls']) assert.ok(!slugs.includes(unsupported));
+  for (const supported of ['paper-bags', 'compostable-waste-bags', 'bagasse-plates']) assert.ok(slugs.includes(supported));
+  for (const unsupported of ['compostable-paper-cups', 'soup-bowls']) assert.ok(!slugs.includes(unsupported));
 });
 
 test('includes the approved custom, application, resource, trust, and contact pages', () => {

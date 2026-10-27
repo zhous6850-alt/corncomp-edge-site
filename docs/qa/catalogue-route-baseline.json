@@ -1,0 +1,3251 @@
+{
+  "routes": [
+    "/404.html",
+    "/",
+    "/zh/",
+    "/zh/us-state-plastic-packaging-laws-explained/",
+    "/zh/resources/",
+    "/zh/resources/guides/paper-cup-sizes/",
+    "/zh/resources/guides/food-packaging-certifications/",
+    "/zh/resources/guides/custom-printed-paper-cups/",
+    "/zh/quality/",
+    "/zh/products/",
+    "/zh/products/foodservice-supplies/",
+    "/zh/products/foodservice-supplies/paper-straws/",
+    "/zh/products/foodservice-supplies/paper-straws/stripe-colors-2/",
+    "/zh/products/foodservice-supplies/paper-straws/stripe-colors/",
+    "/zh/products/foodservice-supplies/paper-straws/solid-colors-with-bamboo-fiber-wooden-fiber/",
+    "/zh/products/foodservice-supplies/paper-straws/sharp-edge/",
+    "/zh/products/foodservice-supplies/paper-straws/bendy/",
+    "/zh/products/foodservice-supplies/paper-plates/",
+    "/zh/products/foodservice-supplies/paper-plates/round-paper-plate/",
+    "/zh/products/foodservice-supplies/paper-plates/oval-paper-plate/",
+    "/zh/products/foodservice-supplies/disposable-cutlery/",
+    "/zh/products/foodservice-supplies/disposable-cutlery/wooden-bamboo-cutlery/",
+    "/zh/products/foodservice-supplies/disposable-cutlery/cpla-cutlery/",
+    "/zh/products/food-boxes-containers/",
+    "/zh/products/food-boxes-containers/wrap-boxes/",
+    "/zh/products/food-boxes-containers/wrap-boxes/cardboard-wrap-box-pla-window/",
+    "/zh/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/",
+    "/zh/products/food-boxes-containers/sushi-boxes/",
+    "/zh/products/food-boxes-containers/sushi-boxes/black-white-cardboard-sushi-box-pla-window/",
+    "/zh/products/food-boxes-containers/sandwich-boxes/",
+    "/zh/products/food-boxes-containers/sandwich-boxes/natural-kraft-sandwich-box-pla-window/",
+    "/zh/products/food-boxes-containers/salad-boxes/",
+    "/zh/products/food-boxes-containers/salad-boxes/kraft-paper-salad-box-pla-window/",
+    "/zh/products/food-boxes-containers/pizza-slice-boxes/",
+    "/zh/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/",
+    "/zh/products/food-boxes-containers/paper-food-boxes/",
+    "/zh/products/food-boxes-containers/paper-food-boxes/white-cardboard-box-wire-handle/",
+    "/zh/products/food-boxes-containers/paper-food-boxes/natural-kraft-menu-box/",
+    "/zh/products/food-boxes-containers/paper-food-boxes/kraft-square-food-bow-pp-handle/",
+    "/zh/products/food-boxes-containers/paper-food-boxes/kraft-paper-box-pet-window/",
+    "/zh/products/food-boxes-containers/paper-food-boxes/doner-box/",
+    "/zh/products/food-boxes-containers/cone-fry-packaging/",
+    "/zh/products/food-boxes-containers/cone-fry-packaging/natural-kraft-closed-snack-cup/",
+    "/zh/products/food-boxes-containers/cone-fry-packaging/frite-cone-kraft/",
+    "/zh/products/food-boxes-containers/cone-fry-packaging/frite-cone-black/",
+    "/zh/products/food-boxes-containers/burger-boxes/",
+    "/zh/products/food-boxes-containers/burger-boxes/natural-kraft-hamburger-box/",
+    "/zh/products/cups-bowls/",
+    "/zh/products/cups-bowls/soup-cups/",
+    "/zh/products/cups-bowls/soup-cups/pla-lid-2/",
+    "/zh/products/cups-bowls/soup-cups/natural-kraft-soup-cup/",
+    "/zh/products/cups-bowls/soup-cups/natural-kraft-lid/",
+    "/zh/products/cups-bowls/soup-cups/cardboard-soup-cup/",
+    "/zh/products/cups-bowls/soup-cups/cardboard-lid/",
+    "/zh/products/cups-bowls/soup-cups/bamboo-paper-soup-cup/",
+    "/zh/products/cups-bowls/salad-bowls/",
+    "/zh/products/cups-bowls/salad-bowls/pp-lid/",
+    "/zh/products/cups-bowls/salad-bowls/pla-lid/",
+    "/zh/products/cups-bowls/salad-bowls/pet-lid/",
+    "/zh/products/cups-bowls/salad-bowls/paper-lid/",
+    "/zh/products/cups-bowls/salad-bowls/kraft-paper-bowl/",
+    "/zh/products/cups-bowls/salad-bowls/cardboard-bamboo-bowl/",
+    "/zh/products/cups-bowls/paper-cups/",
+    "/zh/products/cups-bowls/paper-cups/single-wall-white-cardboard-paper-cup/",
+    "/zh/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-vertical-style/",
+    "/zh/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-horizon-style/",
+    "/zh/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-white/",
+    "/zh/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-black/",
+    "/zh/products/cups-bowls/paper-cups/double-wall-white-cardboard-paper-cup/",
+    "/zh/products/cups-bowls/paper-cups/corrugated-board-cup-sleeve-8-12-16-20oz/",
+    "/zh/products/cups-bowls/ice-cream-cups/",
+    "/zh/products/cups-bowls/ice-cream-cups/kraft-colour-ice-cream-cup/",
+    "/zh/pla-vs-bagasse-vs-fsc-paper/",
+    "/zh/how-to-verify-supplier-sustainability-certifications/",
+    "/zh/eu-single-use-plastics-directive-explained/",
+    "/zh/custom-packaging/",
+    "/zh/custom-packaging/custom-printed-paper-cups/",
+    "/zh/custom-packaging/custom-paper-straws/",
+    "/zh/contact/",
+    "/zh/bpi-vs-fsc-certification/",
+    "/zh/blog/",
+    "/zh/applications/",
+    "/zh/applications/takeaway-packaging/",
+    "/zh/applications/restaurant-packaging/",
+    "/zh/applications/ice-cream-dessert-packaging/",
+    "/zh/applications/fast-food-packaging/",
+    "/zh/about/",
+    "/zh/about/factory/",
+    "/us-state-plastic-packaging-laws-explained/",
+    "/resources/",
+    "/resources/guides/paper-cup-sizes/",
+    "/resources/guides/food-packaging-certifications/",
+    "/resources/guides/custom-printed-paper-cups/",
+    "/quality/",
+    "/products/",
+    "/products/foodservice-supplies/",
+    "/products/foodservice-supplies/paper-straws/",
+    "/products/foodservice-supplies/paper-straws/stripe-colors-2/",
+    "/products/foodservice-supplies/paper-straws/stripe-colors/",
+    "/products/foodservice-supplies/paper-straws/solid-colors-with-bamboo-fiber-wooden-fiber/",
+    "/products/foodservice-supplies/paper-straws/sharp-edge/",
+    "/products/foodservice-supplies/paper-straws/bendy/",
+    "/products/foodservice-supplies/paper-plates/",
+    "/products/foodservice-supplies/paper-plates/round-paper-plate/",
+    "/products/foodservice-supplies/paper-plates/oval-paper-plate/",
+    "/products/foodservice-supplies/disposable-cutlery/",
+    "/products/foodservice-supplies/disposable-cutlery/wooden-bamboo-cutlery/",
+    "/products/foodservice-supplies/disposable-cutlery/cpla-cutlery/",
+    "/products/food-boxes-containers/",
+    "/products/food-boxes-containers/wrap-boxes/",
+    "/products/food-boxes-containers/wrap-boxes/cardboard-wrap-box-pla-window/",
+    "/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/",
+    "/products/food-boxes-containers/sushi-boxes/",
+    "/products/food-boxes-containers/sushi-boxes/black-white-cardboard-sushi-box-pla-window/",
+    "/products/food-boxes-containers/sandwich-boxes/",
+    "/products/food-boxes-containers/sandwich-boxes/natural-kraft-sandwich-box-pla-window/",
+    "/products/food-boxes-containers/salad-boxes/",
+    "/products/food-boxes-containers/salad-boxes/kraft-paper-salad-box-pla-window/",
+    "/products/food-boxes-containers/pizza-slice-boxes/",
+    "/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/",
+    "/products/food-boxes-containers/paper-food-boxes/",
+    "/products/food-boxes-containers/paper-food-boxes/white-cardboard-box-wire-handle/",
+    "/products/food-boxes-containers/paper-food-boxes/natural-kraft-menu-box/",
+    "/products/food-boxes-containers/paper-food-boxes/kraft-square-food-bow-pp-handle/",
+    "/products/food-boxes-containers/paper-food-boxes/kraft-paper-box-pet-window/",
+    "/products/food-boxes-containers/paper-food-boxes/doner-box/",
+    "/products/food-boxes-containers/cone-fry-packaging/",
+    "/products/food-boxes-containers/cone-fry-packaging/natural-kraft-closed-snack-cup/",
+    "/products/food-boxes-containers/cone-fry-packaging/frite-cone-kraft/",
+    "/products/food-boxes-containers/cone-fry-packaging/frite-cone-black/",
+    "/products/food-boxes-containers/burger-boxes/",
+    "/products/food-boxes-containers/burger-boxes/natural-kraft-hamburger-box/",
+    "/products/cups-bowls/",
+    "/products/cups-bowls/soup-cups/",
+    "/products/cups-bowls/soup-cups/pla-lid-2/",
+    "/products/cups-bowls/soup-cups/natural-kraft-soup-cup/",
+    "/products/cups-bowls/soup-cups/natural-kraft-lid/",
+    "/products/cups-bowls/soup-cups/cardboard-soup-cup/",
+    "/products/cups-bowls/soup-cups/cardboard-lid/",
+    "/products/cups-bowls/soup-cups/bamboo-paper-soup-cup/",
+    "/products/cups-bowls/salad-bowls/",
+    "/products/cups-bowls/salad-bowls/pp-lid/",
+    "/products/cups-bowls/salad-bowls/pla-lid/",
+    "/products/cups-bowls/salad-bowls/pet-lid/",
+    "/products/cups-bowls/salad-bowls/paper-lid/",
+    "/products/cups-bowls/salad-bowls/kraft-paper-bowl/",
+    "/products/cups-bowls/salad-bowls/cardboard-bamboo-bowl/",
+    "/products/cups-bowls/paper-cups/",
+    "/products/cups-bowls/paper-cups/single-wall-white-cardboard-paper-cup/",
+    "/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-vertical-style/",
+    "/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-horizon-style/",
+    "/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-white/",
+    "/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-black/",
+    "/products/cups-bowls/paper-cups/double-wall-white-cardboard-paper-cup/",
+    "/products/cups-bowls/paper-cups/corrugated-board-cup-sleeve-8-12-16-20oz/",
+    "/products/cups-bowls/ice-cream-cups/",
+    "/products/cups-bowls/ice-cream-cups/kraft-colour-ice-cream-cup/",
+    "/pla-vs-bagasse-vs-fsc-paper/",
+    "/how-to-verify-supplier-sustainability-certifications/",
+    "/fr/",
+    "/fr/ressources/",
+    "/fr/ressources/guides/gobelets-papier-personnalises/",
+    "/fr/ressources/guides/dimensions-gobelets-papier/",
+    "/fr/ressources/guides/certifications-emballages-alimentaires/",
+    "/fr/quest-ce-que-la-certification-bpi-en-quoi-elle-differe-de-la-certification-fsc/",
+    "/fr/produits/",
+    "/fr/produits/pot-soupe-kraft/",
+    "/fr/produits/pot-soupe-carton-blanc/",
+    "/fr/produits/pot-soupe-bagasse/",
+    "/fr/produits/pot-glace-kraft/",
+    "/fr/produits/pot-frites-kraft-fermeture/",
+    "/fr/produits/paille-papier-rayee-tons-chauds/",
+    "/fr/produits/paille-papier-pointe-biseautee/",
+    "/fr/produits/paille-papier-flexible-bendy/",
+    "/fr/produits/paille-papier-couleur-unie/",
+    "/fr/produits/manchon-gobelet-carton-ondule/",
+    "/fr/produits/gobelets-bols/",
+    "/fr/produits/gobelets-bols/pots-soupe/",
+    "/fr/produits/gobelets-bols/pots-glace/",
+    "/fr/produits/gobelets-bols/gobelets-papier/",
+    "/fr/produits/gobelets-bols/bols-salade/",
+    "/fr/produits/gobelet-kraft-paroi-ondulee-horizontale/",
+    "/fr/produits/gobelet-carton-blanc-simple-paroi/",
+    "/fr/produits/gobelet-carton-blanc-double-paroi/",
+    "/fr/produits/fournitures-restauration/",
+    "/fr/produits/fournitures-restauration/pailles-papier/",
+    "/fr/produits/fournitures-restauration/couverts-jetables/",
+    "/fr/produits/fournitures-restauration/assiettes-papier/",
+    "/fr/produits/etui-burrito-kraft/",
+    "/fr/produits/couverts-cpla/",
+    "/fr/produits/couverts-bois/",
+    "/fr/produits/couvercles-cafe-pla-noirs/",
+    "/fr/produits/couvercles-cafe-pla-blancs/",
+    "/fr/produits/couvercle-pp-bol-salade/",
+    "/fr/produits/couvercle-pla-pot-soupe/",
+    "/fr/produits/couvercle-pla-bol-salade/",
+    "/fr/produits/couvercle-pet-bol-salade/",
+    "/fr/produits/couvercle-papier-bol-salade/",
+    "/fr/produits/couvercle-kraft-pot-soupe/",
+    "/fr/produits/couvercle-carton-pot-soupe/",
+    "/fr/produits/cornet-frites-noir/",
+    "/fr/produits/bol-papier-kraft/",
+    "/fr/produits/bol-carton-blanc/",
+    "/fr/produits/boites-contenants-alimentaires/",
+    "/fr/produits/boites-contenants-alimentaires/cornets-pots-frites/",
+    "/fr/produits/boites-contenants-alimentaires/boites-sushis/",
+    "/fr/produits/boites-contenants-alimentaires/boites-sandwichs/",
+    "/fr/produits/boites-contenants-alimentaires/boites-salades/",
+    "/fr/produits/boites-contenants-alimentaires/boites-repas/",
+    "/fr/produits/boites-contenants-alimentaires/boites-parts-pizza/",
+    "/fr/produits/boites-contenants-alimentaires/boites-etuis-wraps/",
+    "/fr/produits/boites-contenants-alimentaires/boites-burgers/",
+    "/fr/produits/boite-wrap-fenetre-pla/",
+    "/fr/produits/boite-sandwich-kraft-fenetre-pla/",
+    "/fr/produits/boite-salade-kraft-fenetre-pla/",
+    "/fr/produits/boite-repas-kraft/",
+    "/fr/produits/boite-part-pizza-kraft-fenetre-pla/",
+    "/fr/produits/boite-kraft-anse-pp/",
+    "/fr/produits/boite-carton-blanc-anse-metallique/",
+    "/fr/produits/boite-burger-kraft/",
+    "/fr/produits/assiette-papier-ronde/",
+    "/fr/produits/assiette-papier-ovale/",
+    "/fr/product/paille-en-papier-rayee-tons-froids/",
+    "/fr/product/gobelet-a-paroi-ondulee-kraft-naturel-style-vertical/",
+    "/fr/product/cone-a-frites-kraft/",
+    "/fr/product/boite-en-papier-kraft-avec-fenetre-pet/",
+    "/fr/product/boite-a-sushi-noire-blanche-en-carton-fenetre-pla/",
+    "/fr/product/boite-a-doner-kebab/",
+    "/fr/pla-vs-bagasse-vs-papier-fsc-choisir-le-bon-materiau-demballage-compostable/",
+    "/fr/lois-etats-americains-emballages-plastiques/",
+    "/fr/emballages-personnalises/",
+    "/fr/emballages-personnalises/pailles-papier-personnalisees/",
+    "/fr/emballages-personnalises/gobelets-papier-imprimes/",
+    "/fr/directive-europeenne-sur-les-plastiques-a-usage-unique-ce-quelle-signifie-pour-les-acheteurs-demballages/",
+    "/fr/contactez-nous/",
+    "/fr/comment-verifier-lauthenticite-des-certifications-de-durabilite-dun-fournisseur-demballages/",
+    "/fr/certifications-corncomp/",
+    "/fr/blog/",
+    "/fr/applications/",
+    "/fr/applications/vente-a-emporter-livraison/",
+    "/fr/applications/restauration-rapide/",
+    "/fr/applications/restaurants-restauration/",
+    "/fr/applications/glaces-desserts/",
+    "/fr/a-propos-de-corncomp-fabricant-d-emballages-papier-biodegradables/",
+    "/fr/a-propos/usine/",
+    "/eu-single-use-plastics-directive-explained/",
+    "/es/",
+    "/es/sobre-corncomp/",
+    "/es/sobre-corncomp/fabrica/",
+    "/es/recursos/",
+    "/es/recursos/guias/vasos-de-papel-impresos/",
+    "/es/recursos/guias/tamanos-de-vasos-de-papel/",
+    "/es/recursos/guias/certificaciones-de-envases-alimentarios/",
+    "/es/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/",
+    "/es/productos/",
+    "/es/productos/vasos-y-cuencos/",
+    "/es/productos/vasos-y-cuencos/vasos-para-sopa/",
+    "/es/productos/vasos-y-cuencos/vasos-de-papel/",
+    "/es/productos/vasos-y-cuencos/tarrinas-para-helado/",
+    "/es/productos/vasos-y-cuencos/cuencos-para-ensaladas/",
+    "/es/productos/suministros-para-restauracion/",
+    "/es/productos/suministros-para-restauracion/platos-de-papel/",
+    "/es/productos/suministros-para-restauracion/pajitas-de-papel/",
+    "/es/productos/suministros-para-restauracion/cubiertos-desechables/",
+    "/es/productos/cajas-y-envases/",
+    "/es/productos/cajas-y-envases/conos-y-envases-para-fritos/",
+    "/es/productos/cajas-y-envases/cajas-y-fundas-para-wraps/",
+    "/es/productos/cajas-y-envases/cajas-para-sushi/",
+    "/es/productos/cajas-y-envases/cajas-para-sandwiches/",
+    "/es/productos/cajas-y-envases/cajas-para-porciones-de-pizza/",
+    "/es/productos/cajas-y-envases/cajas-para-hamburguesas/",
+    "/es/productos/cajas-y-envases/cajas-para-ensaladas/",
+    "/es/productos/cajas-y-envases/cajas-de-papel-para-alimentos/",
+    "/es/product/vaso-de-sopa-de-kraft-natural/",
+    "/es/product/vaso-de-sopa-de-carton-blanco/",
+    "/es/product/vaso-de-sopa-de-bagazo/",
+    "/es/product/vaso-de-papel-kraft-ondulado-vertical/",
+    "/es/product/vaso-de-papel-kraft-ondulado-horizontal/",
+    "/es/product/vaso-de-papel-de-pared-sencilla-cartoncillo-blanco/",
+    "/es/product/vaso-de-papel-de-doble-pared-cartoncillo-blanco/",
+    "/es/product/vaso-de-helado-kraft-de-color/",
+    "/es/product/vaso-cerrado-para-snacks-de-kraft-natural/",
+    "/es/product/vaso-abierto-de-carton-para-wraps/",
+    "/es/product/tapa-para-vaso-de-cafe-pla-blanca/",
+    "/es/product/tapa-de-vaso-de-cafe-pla-negra/",
+    "/es/product/tapa-de-pp-para-cuenco-de-ensalada/",
+    "/es/product/tapa-de-pla-para-vaso-de-sopa/",
+    "/es/product/tapa-de-pla-para-cuenco-de-ensalada/",
+    "/es/product/tapa-de-pet-para-cuenco-de-ensalada/",
+    "/es/product/tapa-de-papel-para-cuenco-de-ensalada/",
+    "/es/product/tapa-de-kraft-natural/",
+    "/es/product/tapa-de-carton-para-vaso-de-sopa/",
+    "/es/product/plato-de-papel-redondo/",
+    "/es/product/plato-de-papel-ovalado/",
+    "/es/product/pajita-de-papel-sharp-edge/",
+    "/es/product/pajita-de-papel-de-color-solido-con-fibra-de-bambu/",
+    "/es/product/pajita-de-papel-bendy/",
+    "/es/product/pajita-de-papel-a-rayas-tonos-frios/",
+    "/es/product/pajita-de-papel-a-rayas-tonos-calidos/",
+    "/es/product/funda-de-carton-corrugado-para-vasos-8-12-16-20oz/",
+    "/es/product/cuenco-de-papel-kraft/",
+    "/es/product/cuenco-de-carton-blanco/",
+    "/es/product/cubiertos-de-madera/",
+    "/es/product/cubiertos-de-cpla/",
+    "/es/product/cono-para-patatas-fritas-negro/",
+    "/es/product/cono-de-papas-fritas-kraft/",
+    "/es/product/caja-para-wrap-de-carton-con-ventana-de-pla/",
+    "/es/product/caja-para-sandwiches-de-kraft-natural-con-ventana-de-pla/",
+    "/es/product/caja-para-porcion-de-pizza-triangulo-marron-con-ventana-de-pla/",
+    "/es/product/caja-para-doner-kebab/",
+    "/es/product/caja-menu-de-kraft-natural/",
+    "/es/product/caja-de-sushi-de-carton-negro-blanco-ventana-de-pla/",
+    "/es/product/caja-de-papel-kraft-para-ensaladas-con-ventana-de-pla/",
+    "/es/product/caja-de-papel-kraft-con-ventana-de-pet/",
+    "/es/product/caja-de-kraft-natural-para-hamburguesas/",
+    "/es/product/caja-de-alimentos-kraft-con-asa-de-pp/",
+    "/es/product/caja-de-alimentos-cuadrada-con-asa-de-alambre-carton-blanco/",
+    "/es/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/",
+    "/es/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/",
+    "/es/envases-personalizados/",
+    "/es/envases-personalizados/vasos-de-papel-impresos/",
+    "/es/envases-personalizados/pajitas-de-papel-personalizadas/",
+    "/es/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/",
+    "/es/contactenos/",
+    "/es/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/",
+    "/es/certificaciones-de-corncomp/",
+    "/es/blog/",
+    "/es/aplicaciones/",
+    "/es/aplicaciones/envases-para-restauracion/",
+    "/es/aplicaciones/envases-para-llevar/",
+    "/es/aplicaciones/envases-para-helados-y-postres/",
+    "/es/aplicaciones/envases-para-comida-rapida/",
+    "/de/",
+    "/de/resources/",
+    "/de/resources/guides/paper-cup-sizes/",
+    "/de/resources/guides/food-packaging-certifications/",
+    "/de/resources/guides/custom-printed-paper-cups/",
+    "/de/quality/",
+    "/de/products/",
+    "/de/products/wooden-bamboo-cutlery/",
+    "/de/products/white-cardboard-box-wire-handle/",
+    "/de/products/stripe-colors-2/",
+    "/de/products/stripe-colors/",
+    "/de/products/solid-colors-with-bamboo-fiber-wooden-fiber/",
+    "/de/products/single-wall-white-cardboard-paper-cup/",
+    "/de/products/sharp-edge/",
+    "/de/products/round-paper-plate/",
+    "/de/products/ripple-natural-kraft-paper-cup-vertical-style/",
+    "/de/products/ripple-natural-kraft-paper-cup-horizon-style/",
+    "/de/products/pp-lid/",
+    "/de/products/pla-lid-for-coffee-cup-white/",
+    "/de/products/pla-lid-for-coffee-cup-black/",
+    "/de/products/pla-lid-2/",
+    "/de/products/pla-lid/",
+    "/de/products/pet-lid/",
+    "/de/products/paper-lid/",
+    "/de/products/oval-paper-plate/",
+    "/de/products/natural-kraft-soup-cup/",
+    "/de/products/natural-kraft-sandwich-box-pla-window/",
+    "/de/products/natural-kraft-menu-box/",
+    "/de/products/natural-kraft-lid/",
+    "/de/products/natural-kraft-hamburger-box/",
+    "/de/products/natural-kraft-closed-snack-cup/",
+    "/de/products/kraft-square-food-bow-pp-handle/",
+    "/de/products/kraft-paper-salad-box-pla-window/",
+    "/de/products/kraft-paper-box-pet-window/",
+    "/de/products/kraft-paper-bowl/",
+    "/de/products/kraft-colour-ice-cream-cup/",
+    "/de/products/frite-cone-kraft/",
+    "/de/products/frite-cone-black/",
+    "/de/products/foodservice-supplies/",
+    "/de/products/foodservice-supplies/paper-straws/",
+    "/de/products/foodservice-supplies/paper-plates/",
+    "/de/products/foodservice-supplies/disposable-cutlery/",
+    "/de/products/food-boxes-containers/",
+    "/de/products/food-boxes-containers/wrap-boxes/",
+    "/de/products/food-boxes-containers/sushi-boxes/",
+    "/de/products/food-boxes-containers/sandwich-boxes/",
+    "/de/products/food-boxes-containers/salad-boxes/",
+    "/de/products/food-boxes-containers/pizza-slice-boxes/",
+    "/de/products/food-boxes-containers/paper-food-boxes/",
+    "/de/products/food-boxes-containers/cone-fry-packaging/",
+    "/de/products/food-boxes-containers/burger-boxes/",
+    "/de/products/double-wall-white-cardboard-paper-cup/",
+    "/de/products/doner-box/",
+    "/de/products/cups-bowls/",
+    "/de/products/cups-bowls/soup-cups/",
+    "/de/products/cups-bowls/salad-bowls/",
+    "/de/products/cups-bowls/paper-cups/",
+    "/de/products/cups-bowls/ice-cream-cups/",
+    "/de/products/cpla-cutlery/",
+    "/de/products/corrugated-board-cup-sleeve-8-12-16-20oz/",
+    "/de/products/cardboard-wrap-box-pla-window/",
+    "/de/products/cardboard-soup-cup/",
+    "/de/products/cardboard-open-wrap-cup/",
+    "/de/products/cardboard-lid/",
+    "/de/products/cardboard-bamboo-bowl/",
+    "/de/products/brown-triangle-box-pla-window/",
+    "/de/products/black-white-cardboard-sushi-box-pla-window/",
+    "/de/products/bendy/",
+    "/de/products/bamboo-paper-soup-cup/",
+    "/de/custom-packaging/",
+    "/de/custom-packaging/custom-printed-paper-cups/",
+    "/de/custom-packaging/custom-paper-straws/",
+    "/de/contact/",
+    "/de/blog/",
+    "/de/blog/us-state-plastic-packaging-laws-explained/",
+    "/de/blog/pla-vs-bagasse-vs-fsc-paper/",
+    "/de/blog/how-to-verify-supplier-sustainability-certifications/",
+    "/de/blog/eu-single-use-plastics-directive-explained/",
+    "/de/blog/bpi-vs-fsc-certification/",
+    "/de/applications/",
+    "/de/applications/takeaway-packaging/",
+    "/de/applications/restaurant-packaging/",
+    "/de/applications/ice-cream-dessert-packaging/",
+    "/de/applications/fast-food-packaging/",
+    "/de/about/",
+    "/de/about/factory/",
+    "/custom-packaging/",
+    "/custom-packaging/custom-printed-paper-cups/",
+    "/custom-packaging/custom-paper-straws/",
+    "/contact/",
+    "/bpi-vs-fsc-certification/",
+    "/blog/",
+    "/ar/",
+    "/ar/موارد-شراء-عبوات-الطعام/",
+    "/ar/مصاصات-ورقية-حسب-الطلب/",
+    "/ar/مستلزمات-تقديم-الطعام/",
+    "/ar/ما-هي-شهادة-bpi؟-وكيف-تختلف-عن-شهادة-fsc/",
+    "/ar/كيفية-التحقق-من-صحة-شهادات-الاستدامة-ا/",
+    "/ar/قوانين-العبوات-البلاستيكية-في-الولايات-الأمريكية/",
+    "/ar/عن-corncomp-الشركة/",
+    "/ar/علب-وحاويات-الطعام/",
+    "/ar/علب-وأغلفة-الراب/",
+    "/ar/علب-شرائح-البيتزا/",
+    "/ar/علب-الطعام-الورقية/",
+    "/ar/علب-السوشي/",
+    "/ar/علب-السلطة/",
+    "/ar/علب-الساندويتش/",
+    "/ar/علب-البرغر/",
+    "/ar/عبوات-غذائية-ورقية-للجملة-والتصنيع-حسب-الطلب/",
+    "/ar/عبوات-غذائية-حسب-الاستخدام/",
+    "/ar/عبوات-غذائية-بطباعة-مخصصة/",
+    "/ar/عبوات-الوجبات-السريعة/",
+    "/ar/عبوات-الوجبات-الخارجية-والتوصيل/",
+    "/ar/عبوات-المطاعم-وخدمات-الطعام/",
+    "/ar/عبوات-الآيس-كريم-والحلويات/",
+    "/ar/شهادات-corncomp/",
+    "/ar/دليل-مقاسات-الأكواب-الورقية/",
+    "/ar/دليل-طباعة-الأكواب-الورقية-حسب-الطلب/",
+    "/ar/دليل-شهادات-عبوات-الطعام/",
+    "/ar/توجيه-الاتحاد-الأوروبي-بشأن-البلاستي/",
+    "/ar/المصنع-والتصنيع/",
+    "/ar/المصاصات-الورقية/",
+    "/ar/الأكواب-والأوعية/",
+    "/ar/الأكواب-الورقية/",
+    "/ar/الأطباق-الورقية/",
+    "/ar/اتصل-بنا/",
+    "/ar/أوعية-السلطة/",
+    "/ar/أكواب-ورقية-بطباعة-مخصصة/",
+    "/ar/أكواب-الحساء/",
+    "/ar/أكواب-الآيس-كريم/",
+    "/ar/أقماع-وعبوات-البطاطس-المقلية/",
+    "/ar/أدوات-المائدة-أحادية-الاستخدام/",
+    "/ar/product/وعاء-كرتوني-أبيض/",
+    "/ar/product/وعاء-كرافت-ورقي/",
+    "/ar/product/مصاصة-ورقية-مخططة-ألوان-باردة/",
+    "/ar/product/مصاصة-ورقية-مخططة/",
+    "/ar/product/مصاصة-ورقية-أحادية-اللون-الخيزران/",
+    "/ar/product/مصاصة-sharp-edge-الورقية/",
+    "/ar/product/مصاصة-bendy-الورقية/",
+    "/ar/product/مخروط-بطاطس-مقلية-كرافت/",
+    "/ar/product/مخروط-بطاطس-مقلية-أسود/",
+    "/ar/product/كوب-ورقي-مموّج-كرافت-طبيعي-بنمط-عمود/",
+    "/ar/product/كوب-ورقي-مموّج-كرافت-طبيعي-بنمط-أفقي/",
+    "/ar/product/كوب-ورقي-مزدوج-الجدار-كرتون-أبيض/",
+    "/ar/product/كوب-ورقي-أحادي-الجدار-كرتون-أبيض/",
+    "/ar/product/كوب-وجبات-خفيفة-كرافت-طبيعي-مغلق/",
+    "/ar/product/كوب-راب-مفتوح-من-الكرتون/",
+    "/ar/product/كوب-حساء-كرتوني-أبيض/",
+    "/ar/product/كوب-حساء-كرافت-طبيعي/",
+    "/ar/product/كوب-حساء-الباغاس/",
+    "/ar/product/كوب-آيس-كريم-كرافت-ملوّن/",
+    "/ar/product/كم-الكوب-المضلع-8-12-16-20-أونصة/",
+    "/ar/product/غطاء-ورقي-لوعاء-السلطة/",
+    "/ar/product/غطاء-كوب-القهوة-pla-أسود/",
+    "/ar/product/غطاء-كوب-القهوة-pla-أبيض/",
+    "/ar/product/غطاء-كرتوني-لكوب-الحساء/",
+    "/ar/product/غطاء-الكرافت-الطبيعي/",
+    "/ar/product/غطاء-pp-لوعاء-السلطة/",
+    "/ar/product/غطاء-pla-لوعاء-السلطة/",
+    "/ar/product/غطاء-pla-لكوب-الحساء/",
+    "/ar/product/غطاء-pet-لوعاء-السلطة/",
+    "/ar/product/علبة-ورق-كرافت-بنافذة-pet/",
+    "/ar/product/علبة-وجبات-من-الكرافت-الطبيعي/",
+    "/ar/product/علبة-همبرغر-كرافت-طبيعية/",
+    "/ar/product/علبة-طعام-مربعة-بمقبض-سلكي-كرتون-أبي/",
+    "/ar/product/علبة-طعام-كرافت-بمقبض-pp/",
+    "/ar/product/علبة-شريحة-بيتزا-مثلثة-بنية-بنافذة-pla/",
+    "/ar/product/علبة-سوشي-من-الكرتون-أسود-أبيض-بنافذة-pla/",
+    "/ar/product/علبة-سلطة-ورق-كرافت-بنافذة-pla/",
+    "/ar/product/علبة-ساندويتش-كرافت-طبيعية-بنافذة-pla/",
+    "/ar/product/علبة-راب-من-الكرتون-بنافذة-pla/",
+    "/ar/product/علبة-الدونر/",
+    "/ar/product/طبق-ورقي-دائري/",
+    "/ar/product/طبق-ورقي-بيضاوي/",
+    "/ar/product/أدوات-مائدة-خشبية/",
+    "/ar/product/أدوات-مائدة-cpla/",
+    "/ar/pla-مقابل-الباغاس-مقابل-الورق-المعتمد-fsc-كي/",
+    "/ar/blog/",
+    "/applications/",
+    "/applications/takeaway-packaging/",
+    "/applications/restaurant-packaging/",
+    "/applications/ice-cream-dessert-packaging/",
+    "/applications/fast-food-packaging/",
+    "/about/",
+    "/about/factory/"
+  ],
+  "entries": [
+    {
+      "language": "en",
+      "contentKey": "home",
+      "route": "/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products",
+      "route": "/products/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/cups-bowls",
+      "route": "/products/cups-bowls/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers",
+      "route": "/products/food-boxes-containers/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/foodservice-supplies",
+      "route": "/products/foodservice-supplies/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/cups-bowls/paper-cups",
+      "route": "/products/cups-bowls/paper-cups/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/cups-bowls/salad-bowls",
+      "route": "/products/cups-bowls/salad-bowls/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/cups-bowls/soup-cups",
+      "route": "/products/cups-bowls/soup-cups/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/cups-bowls/ice-cream-cups",
+      "route": "/products/cups-bowls/ice-cream-cups/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers/paper-food-boxes",
+      "route": "/products/food-boxes-containers/paper-food-boxes/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers/sandwich-boxes",
+      "route": "/products/food-boxes-containers/sandwich-boxes/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers/sushi-boxes",
+      "route": "/products/food-boxes-containers/sushi-boxes/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers/salad-boxes",
+      "route": "/products/food-boxes-containers/salad-boxes/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers/burger-boxes",
+      "route": "/products/food-boxes-containers/burger-boxes/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers/wrap-boxes",
+      "route": "/products/food-boxes-containers/wrap-boxes/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers/pizza-slice-boxes",
+      "route": "/products/food-boxes-containers/pizza-slice-boxes/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/food-boxes-containers/cone-fry-packaging",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/foodservice-supplies/paper-straws",
+      "route": "/products/foodservice-supplies/paper-straws/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/foodservice-supplies/disposable-cutlery",
+      "route": "/products/foodservice-supplies/disposable-cutlery/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:products/foodservice-supplies/paper-plates",
+      "route": "/products/foodservice-supplies/paper-plates/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:custom-packaging",
+      "route": "/custom-packaging/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:custom-packaging/custom-printed-paper-cups",
+      "route": "/custom-packaging/custom-printed-paper-cups/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:custom-packaging/custom-paper-straws",
+      "route": "/custom-packaging/custom-paper-straws/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:applications",
+      "route": "/applications/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:applications/takeaway-packaging",
+      "route": "/applications/takeaway-packaging/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:applications/restaurant-packaging",
+      "route": "/applications/restaurant-packaging/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:applications/fast-food-packaging",
+      "route": "/applications/fast-food-packaging/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:applications/ice-cream-dessert-packaging",
+      "route": "/applications/ice-cream-dessert-packaging/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:resources",
+      "route": "/resources/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:resources/guides/paper-cup-sizes",
+      "route": "/resources/guides/paper-cup-sizes/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:resources/guides/custom-printed-paper-cups",
+      "route": "/resources/guides/custom-printed-paper-cups/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:resources/guides/food-packaging-certifications",
+      "route": "/resources/guides/food-packaging-certifications/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:about",
+      "route": "/about/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:about/factory",
+      "route": "/about/factory/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:quality",
+      "route": "/quality/"
+    },
+    {
+      "language": "en",
+      "contentKey": "architecture:contact",
+      "route": "/contact/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:oval-paper-plate",
+      "route": "/products/foodservice-supplies/paper-plates/oval-paper-plate/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:round-paper-plate",
+      "route": "/products/foodservice-supplies/paper-plates/round-paper-plate/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:brown-triangle-box-pla-window",
+      "route": "/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:natural-kraft-closed-snack-cup",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/natural-kraft-closed-snack-cup/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:cardboard-open-wrap-cup",
+      "route": "/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:frite-cone-black",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/frite-cone-black/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:frite-cone-kraft",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/frite-cone-kraft/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:black-white-cardboard-sushi-box-pla-window",
+      "route": "/products/food-boxes-containers/sushi-boxes/black-white-cardboard-sushi-box-pla-window/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:corrugated-board-cup-sleeve-8-12-16-20oz",
+      "route": "/products/cups-bowls/paper-cups/corrugated-board-cup-sleeve-8-12-16-20oz/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:pla-lid-for-coffee-cup-black",
+      "route": "/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-black/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:pla-lid-for-coffee-cup-white",
+      "route": "/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-white/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-horizon-style",
+      "route": "/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-horizon-style/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-vertical-style",
+      "route": "/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-vertical-style/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:double-wall-white-cardboard-paper-cup",
+      "route": "/products/cups-bowls/paper-cups/double-wall-white-cardboard-paper-cup/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:single-wall-white-cardboard-paper-cup",
+      "route": "/products/cups-bowls/paper-cups/single-wall-white-cardboard-paper-cup/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:kraft-colour-ice-cream-cup",
+      "route": "/products/cups-bowls/ice-cream-cups/kraft-colour-ice-cream-cup/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:cpla-cutlery",
+      "route": "/products/foodservice-supplies/disposable-cutlery/cpla-cutlery/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:wooden-bamboo-cutlery",
+      "route": "/products/foodservice-supplies/disposable-cutlery/wooden-bamboo-cutlery/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:kraft-paper-box-pet-window",
+      "route": "/products/food-boxes-containers/paper-food-boxes/kraft-paper-box-pet-window/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:kraft-paper-salad-box-pla-window",
+      "route": "/products/food-boxes-containers/salad-boxes/kraft-paper-salad-box-pla-window/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:cardboard-wrap-box-pla-window",
+      "route": "/products/food-boxes-containers/wrap-boxes/cardboard-wrap-box-pla-window/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:natural-kraft-sandwich-box-pla-window",
+      "route": "/products/food-boxes-containers/sandwich-boxes/natural-kraft-sandwich-box-pla-window/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:natural-kraft-hamburger-box",
+      "route": "/products/food-boxes-containers/burger-boxes/natural-kraft-hamburger-box/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:natural-kraft-menu-box",
+      "route": "/products/food-boxes-containers/paper-food-boxes/natural-kraft-menu-box/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:doner-box",
+      "route": "/products/food-boxes-containers/paper-food-boxes/doner-box/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:white-cardboard-box-wire-handle",
+      "route": "/products/food-boxes-containers/paper-food-boxes/white-cardboard-box-wire-handle/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:kraft-square-food-bow-pp-handle",
+      "route": "/products/food-boxes-containers/paper-food-boxes/kraft-square-food-bow-pp-handle/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:bendy",
+      "route": "/products/foodservice-supplies/paper-straws/bendy/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:sharp-edge",
+      "route": "/products/foodservice-supplies/paper-straws/sharp-edge/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:solid-colors-with-bamboo-fiber-wooden-fiber",
+      "route": "/products/foodservice-supplies/paper-straws/solid-colors-with-bamboo-fiber-wooden-fiber/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:stripe-colors-2",
+      "route": "/products/foodservice-supplies/paper-straws/stripe-colors-2/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:stripe-colors",
+      "route": "/products/foodservice-supplies/paper-straws/stripe-colors/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:pla-lid-2",
+      "route": "/products/cups-bowls/soup-cups/pla-lid-2/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:natural-kraft-lid",
+      "route": "/products/cups-bowls/soup-cups/natural-kraft-lid/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:cardboard-lid",
+      "route": "/products/cups-bowls/soup-cups/cardboard-lid/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:bamboo-paper-soup-cup",
+      "route": "/products/cups-bowls/soup-cups/bamboo-paper-soup-cup/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:cardboard-soup-cup",
+      "route": "/products/cups-bowls/soup-cups/cardboard-soup-cup/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:natural-kraft-soup-cup",
+      "route": "/products/cups-bowls/soup-cups/natural-kraft-soup-cup/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:paper-lid",
+      "route": "/products/cups-bowls/salad-bowls/paper-lid/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:pla-lid",
+      "route": "/products/cups-bowls/salad-bowls/pla-lid/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:pp-lid",
+      "route": "/products/cups-bowls/salad-bowls/pp-lid/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:pet-lid",
+      "route": "/products/cups-bowls/salad-bowls/pet-lid/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:cardboard-bamboo-bowl",
+      "route": "/products/cups-bowls/salad-bowls/cardboard-bamboo-bowl/"
+    },
+    {
+      "language": "en",
+      "contentKey": "product:kraft-paper-bowl",
+      "route": "/products/cups-bowls/salad-bowls/kraft-paper-bowl/"
+    },
+    {
+      "language": "en",
+      "contentKey": "post:us-state-plastic-packaging-laws-explained",
+      "route": "/us-state-plastic-packaging-laws-explained/"
+    },
+    {
+      "language": "en",
+      "contentKey": "post:how-to-verify-supplier-sustainability-certifications",
+      "route": "/how-to-verify-supplier-sustainability-certifications/"
+    },
+    {
+      "language": "en",
+      "contentKey": "post:eu-single-use-plastics-directive-explained",
+      "route": "/eu-single-use-plastics-directive-explained/"
+    },
+    {
+      "language": "en",
+      "contentKey": "post:bpi-vs-fsc-certification",
+      "route": "/bpi-vs-fsc-certification/"
+    },
+    {
+      "language": "en",
+      "contentKey": "post:pla-vs-bagasse-vs-fsc-paper",
+      "route": "/pla-vs-bagasse-vs-fsc-paper/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "home",
+      "route": "/fr/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products",
+      "route": "/fr/produits/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/cups-bowls",
+      "route": "/fr/produits/gobelets-bols/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers",
+      "route": "/fr/produits/boites-contenants-alimentaires/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/foodservice-supplies",
+      "route": "/fr/produits/fournitures-restauration/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/cups-bowls/paper-cups",
+      "route": "/fr/produits/gobelets-bols/gobelets-papier/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/cups-bowls/salad-bowls",
+      "route": "/fr/produits/gobelets-bols/bols-salade/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/cups-bowls/soup-cups",
+      "route": "/fr/produits/gobelets-bols/pots-soupe/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/cups-bowls/ice-cream-cups",
+      "route": "/fr/produits/gobelets-bols/pots-glace/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers/paper-food-boxes",
+      "route": "/fr/produits/boites-contenants-alimentaires/boites-repas/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers/sandwich-boxes",
+      "route": "/fr/produits/boites-contenants-alimentaires/boites-sandwichs/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers/sushi-boxes",
+      "route": "/fr/produits/boites-contenants-alimentaires/boites-sushis/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers/salad-boxes",
+      "route": "/fr/produits/boites-contenants-alimentaires/boites-salades/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers/burger-boxes",
+      "route": "/fr/produits/boites-contenants-alimentaires/boites-burgers/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers/wrap-boxes",
+      "route": "/fr/produits/boites-contenants-alimentaires/boites-etuis-wraps/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers/pizza-slice-boxes",
+      "route": "/fr/produits/boites-contenants-alimentaires/boites-parts-pizza/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/food-boxes-containers/cone-fry-packaging",
+      "route": "/fr/produits/boites-contenants-alimentaires/cornets-pots-frites/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/foodservice-supplies/paper-straws",
+      "route": "/fr/produits/fournitures-restauration/pailles-papier/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/foodservice-supplies/disposable-cutlery",
+      "route": "/fr/produits/fournitures-restauration/couverts-jetables/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:products/foodservice-supplies/paper-plates",
+      "route": "/fr/produits/fournitures-restauration/assiettes-papier/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:custom-packaging",
+      "route": "/fr/emballages-personnalises/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:custom-packaging/custom-printed-paper-cups",
+      "route": "/fr/emballages-personnalises/gobelets-papier-imprimes/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:custom-packaging/custom-paper-straws",
+      "route": "/fr/emballages-personnalises/pailles-papier-personnalisees/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:applications",
+      "route": "/fr/applications/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:applications/takeaway-packaging",
+      "route": "/fr/applications/vente-a-emporter-livraison/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:applications/restaurant-packaging",
+      "route": "/fr/applications/restaurants-restauration/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:applications/fast-food-packaging",
+      "route": "/fr/applications/restauration-rapide/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:applications/ice-cream-dessert-packaging",
+      "route": "/fr/applications/glaces-desserts/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:resources",
+      "route": "/fr/ressources/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:resources/guides/paper-cup-sizes",
+      "route": "/fr/ressources/guides/dimensions-gobelets-papier/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:resources/guides/custom-printed-paper-cups",
+      "route": "/fr/ressources/guides/gobelets-papier-personnalises/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:resources/guides/food-packaging-certifications",
+      "route": "/fr/ressources/guides/certifications-emballages-alimentaires/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:about",
+      "route": "/fr/a-propos-de-corncomp-fabricant-d-emballages-papier-biodegradables/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:about/factory",
+      "route": "/fr/a-propos/usine/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:quality",
+      "route": "/fr/certifications-corncomp/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "architecture:contact",
+      "route": "/fr/contactez-nous/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:oval-paper-plate",
+      "route": "/fr/produits/assiette-papier-ovale/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:round-paper-plate",
+      "route": "/fr/produits/assiette-papier-ronde/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:brown-triangle-box-pla-window",
+      "route": "/fr/produits/boite-part-pizza-kraft-fenetre-pla/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:natural-kraft-closed-snack-cup",
+      "route": "/fr/produits/pot-frites-kraft-fermeture/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:cardboard-open-wrap-cup",
+      "route": "/fr/produits/etui-burrito-kraft/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:frite-cone-black",
+      "route": "/fr/produits/cornet-frites-noir/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:frite-cone-kraft",
+      "route": "/fr/product/cone-a-frites-kraft/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:black-white-cardboard-sushi-box-pla-window",
+      "route": "/fr/product/boite-a-sushi-noire-blanche-en-carton-fenetre-pla/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:corrugated-board-cup-sleeve-8-12-16-20oz",
+      "route": "/fr/produits/manchon-gobelet-carton-ondule/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:pla-lid-for-coffee-cup-black",
+      "route": "/fr/produits/couvercles-cafe-pla-noirs/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:pla-lid-for-coffee-cup-white",
+      "route": "/fr/produits/couvercles-cafe-pla-blancs/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-horizon-style",
+      "route": "/fr/produits/gobelet-kraft-paroi-ondulee-horizontale/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-vertical-style",
+      "route": "/fr/product/gobelet-a-paroi-ondulee-kraft-naturel-style-vertical/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:double-wall-white-cardboard-paper-cup",
+      "route": "/fr/produits/gobelet-carton-blanc-double-paroi/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:single-wall-white-cardboard-paper-cup",
+      "route": "/fr/produits/gobelet-carton-blanc-simple-paroi/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:kraft-colour-ice-cream-cup",
+      "route": "/fr/produits/pot-glace-kraft/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:cpla-cutlery",
+      "route": "/fr/produits/couverts-cpla/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:wooden-bamboo-cutlery",
+      "route": "/fr/produits/couverts-bois/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:kraft-paper-box-pet-window",
+      "route": "/fr/product/boite-en-papier-kraft-avec-fenetre-pet/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:kraft-paper-salad-box-pla-window",
+      "route": "/fr/produits/boite-salade-kraft-fenetre-pla/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:cardboard-wrap-box-pla-window",
+      "route": "/fr/produits/boite-wrap-fenetre-pla/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:natural-kraft-sandwich-box-pla-window",
+      "route": "/fr/produits/boite-sandwich-kraft-fenetre-pla/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:natural-kraft-hamburger-box",
+      "route": "/fr/produits/boite-burger-kraft/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:natural-kraft-menu-box",
+      "route": "/fr/produits/boite-repas-kraft/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:doner-box",
+      "route": "/fr/product/boite-a-doner-kebab/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:white-cardboard-box-wire-handle",
+      "route": "/fr/produits/boite-carton-blanc-anse-metallique/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:kraft-square-food-bow-pp-handle",
+      "route": "/fr/produits/boite-kraft-anse-pp/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:bendy",
+      "route": "/fr/produits/paille-papier-flexible-bendy/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:sharp-edge",
+      "route": "/fr/produits/paille-papier-pointe-biseautee/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:solid-colors-with-bamboo-fiber-wooden-fiber",
+      "route": "/fr/produits/paille-papier-couleur-unie/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:stripe-colors-2",
+      "route": "/fr/product/paille-en-papier-rayee-tons-froids/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:stripe-colors",
+      "route": "/fr/produits/paille-papier-rayee-tons-chauds/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:pla-lid-2",
+      "route": "/fr/produits/couvercle-pla-pot-soupe/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:natural-kraft-lid",
+      "route": "/fr/produits/couvercle-kraft-pot-soupe/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:cardboard-lid",
+      "route": "/fr/produits/couvercle-carton-pot-soupe/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:bamboo-paper-soup-cup",
+      "route": "/fr/produits/pot-soupe-bagasse/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:cardboard-soup-cup",
+      "route": "/fr/produits/pot-soupe-carton-blanc/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:natural-kraft-soup-cup",
+      "route": "/fr/produits/pot-soupe-kraft/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:paper-lid",
+      "route": "/fr/produits/couvercle-papier-bol-salade/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:pla-lid",
+      "route": "/fr/produits/couvercle-pla-bol-salade/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:pp-lid",
+      "route": "/fr/produits/couvercle-pp-bol-salade/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:pet-lid",
+      "route": "/fr/produits/couvercle-pet-bol-salade/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:cardboard-bamboo-bowl",
+      "route": "/fr/produits/bol-carton-blanc/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "product:kraft-paper-bowl",
+      "route": "/fr/produits/bol-papier-kraft/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "post:us-state-plastic-packaging-laws-explained",
+      "route": "/fr/lois-etats-americains-emballages-plastiques/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "post:how-to-verify-supplier-sustainability-certifications",
+      "route": "/fr/comment-verifier-lauthenticite-des-certifications-de-durabilite-dun-fournisseur-demballages/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "post:eu-single-use-plastics-directive-explained",
+      "route": "/fr/directive-europeenne-sur-les-plastiques-a-usage-unique-ce-quelle-signifie-pour-les-acheteurs-demballages/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "post:bpi-vs-fsc-certification",
+      "route": "/fr/quest-ce-que-la-certification-bpi-en-quoi-elle-differe-de-la-certification-fsc/"
+    },
+    {
+      "language": "fr",
+      "contentKey": "post:pla-vs-bagasse-vs-fsc-paper",
+      "route": "/fr/pla-vs-bagasse-vs-papier-fsc-choisir-le-bon-materiau-demballage-compostable/"
+    },
+    {
+      "language": "es",
+      "contentKey": "home",
+      "route": "/es/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products",
+      "route": "/es/productos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/cups-bowls",
+      "route": "/es/productos/vasos-y-cuencos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers",
+      "route": "/es/productos/cajas-y-envases/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/foodservice-supplies",
+      "route": "/es/productos/suministros-para-restauracion/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/cups-bowls/paper-cups",
+      "route": "/es/productos/vasos-y-cuencos/vasos-de-papel/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/cups-bowls/salad-bowls",
+      "route": "/es/productos/vasos-y-cuencos/cuencos-para-ensaladas/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/cups-bowls/soup-cups",
+      "route": "/es/productos/vasos-y-cuencos/vasos-para-sopa/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/cups-bowls/ice-cream-cups",
+      "route": "/es/productos/vasos-y-cuencos/tarrinas-para-helado/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers/paper-food-boxes",
+      "route": "/es/productos/cajas-y-envases/cajas-de-papel-para-alimentos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers/sandwich-boxes",
+      "route": "/es/productos/cajas-y-envases/cajas-para-sandwiches/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers/sushi-boxes",
+      "route": "/es/productos/cajas-y-envases/cajas-para-sushi/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers/salad-boxes",
+      "route": "/es/productos/cajas-y-envases/cajas-para-ensaladas/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers/burger-boxes",
+      "route": "/es/productos/cajas-y-envases/cajas-para-hamburguesas/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers/wrap-boxes",
+      "route": "/es/productos/cajas-y-envases/cajas-y-fundas-para-wraps/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers/pizza-slice-boxes",
+      "route": "/es/productos/cajas-y-envases/cajas-para-porciones-de-pizza/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/food-boxes-containers/cone-fry-packaging",
+      "route": "/es/productos/cajas-y-envases/conos-y-envases-para-fritos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/foodservice-supplies/paper-straws",
+      "route": "/es/productos/suministros-para-restauracion/pajitas-de-papel/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/foodservice-supplies/disposable-cutlery",
+      "route": "/es/productos/suministros-para-restauracion/cubiertos-desechables/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:products/foodservice-supplies/paper-plates",
+      "route": "/es/productos/suministros-para-restauracion/platos-de-papel/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:custom-packaging",
+      "route": "/es/envases-personalizados/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:custom-packaging/custom-printed-paper-cups",
+      "route": "/es/envases-personalizados/vasos-de-papel-impresos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:custom-packaging/custom-paper-straws",
+      "route": "/es/envases-personalizados/pajitas-de-papel-personalizadas/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:applications",
+      "route": "/es/aplicaciones/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:applications/takeaway-packaging",
+      "route": "/es/aplicaciones/envases-para-llevar/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:applications/restaurant-packaging",
+      "route": "/es/aplicaciones/envases-para-restauracion/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:applications/fast-food-packaging",
+      "route": "/es/aplicaciones/envases-para-comida-rapida/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:applications/ice-cream-dessert-packaging",
+      "route": "/es/aplicaciones/envases-para-helados-y-postres/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:resources",
+      "route": "/es/recursos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:resources/guides/paper-cup-sizes",
+      "route": "/es/recursos/guias/tamanos-de-vasos-de-papel/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:resources/guides/custom-printed-paper-cups",
+      "route": "/es/recursos/guias/vasos-de-papel-impresos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:resources/guides/food-packaging-certifications",
+      "route": "/es/recursos/guias/certificaciones-de-envases-alimentarios/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:about",
+      "route": "/es/sobre-corncomp/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:about/factory",
+      "route": "/es/sobre-corncomp/fabrica/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:quality",
+      "route": "/es/certificaciones-de-corncomp/"
+    },
+    {
+      "language": "es",
+      "contentKey": "architecture:contact",
+      "route": "/es/contactenos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:oval-paper-plate",
+      "route": "/es/product/plato-de-papel-ovalado/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:round-paper-plate",
+      "route": "/es/product/plato-de-papel-redondo/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:brown-triangle-box-pla-window",
+      "route": "/es/product/caja-para-porcion-de-pizza-triangulo-marron-con-ventana-de-pla/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:natural-kraft-closed-snack-cup",
+      "route": "/es/product/vaso-cerrado-para-snacks-de-kraft-natural/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:cardboard-open-wrap-cup",
+      "route": "/es/product/vaso-abierto-de-carton-para-wraps/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:frite-cone-black",
+      "route": "/es/product/cono-para-patatas-fritas-negro/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:frite-cone-kraft",
+      "route": "/es/product/cono-de-papas-fritas-kraft/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:black-white-cardboard-sushi-box-pla-window",
+      "route": "/es/product/caja-de-sushi-de-carton-negro-blanco-ventana-de-pla/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:corrugated-board-cup-sleeve-8-12-16-20oz",
+      "route": "/es/product/funda-de-carton-corrugado-para-vasos-8-12-16-20oz/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:pla-lid-for-coffee-cup-black",
+      "route": "/es/product/tapa-de-vaso-de-cafe-pla-negra/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:pla-lid-for-coffee-cup-white",
+      "route": "/es/product/tapa-para-vaso-de-cafe-pla-blanca/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-horizon-style",
+      "route": "/es/product/vaso-de-papel-kraft-ondulado-horizontal/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-vertical-style",
+      "route": "/es/product/vaso-de-papel-kraft-ondulado-vertical/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:double-wall-white-cardboard-paper-cup",
+      "route": "/es/product/vaso-de-papel-de-doble-pared-cartoncillo-blanco/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:single-wall-white-cardboard-paper-cup",
+      "route": "/es/product/vaso-de-papel-de-pared-sencilla-cartoncillo-blanco/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:kraft-colour-ice-cream-cup",
+      "route": "/es/product/vaso-de-helado-kraft-de-color/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:cpla-cutlery",
+      "route": "/es/product/cubiertos-de-cpla/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:wooden-bamboo-cutlery",
+      "route": "/es/product/cubiertos-de-madera/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:kraft-paper-box-pet-window",
+      "route": "/es/product/caja-de-papel-kraft-con-ventana-de-pet/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:kraft-paper-salad-box-pla-window",
+      "route": "/es/product/caja-de-papel-kraft-para-ensaladas-con-ventana-de-pla/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:cardboard-wrap-box-pla-window",
+      "route": "/es/product/caja-para-wrap-de-carton-con-ventana-de-pla/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:natural-kraft-sandwich-box-pla-window",
+      "route": "/es/product/caja-para-sandwiches-de-kraft-natural-con-ventana-de-pla/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:natural-kraft-hamburger-box",
+      "route": "/es/product/caja-de-kraft-natural-para-hamburguesas/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:natural-kraft-menu-box",
+      "route": "/es/product/caja-menu-de-kraft-natural/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:doner-box",
+      "route": "/es/product/caja-para-doner-kebab/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:white-cardboard-box-wire-handle",
+      "route": "/es/product/caja-de-alimentos-cuadrada-con-asa-de-alambre-carton-blanco/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:kraft-square-food-bow-pp-handle",
+      "route": "/es/product/caja-de-alimentos-kraft-con-asa-de-pp/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:bendy",
+      "route": "/es/product/pajita-de-papel-bendy/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:sharp-edge",
+      "route": "/es/product/pajita-de-papel-sharp-edge/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:solid-colors-with-bamboo-fiber-wooden-fiber",
+      "route": "/es/product/pajita-de-papel-de-color-solido-con-fibra-de-bambu/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:stripe-colors-2",
+      "route": "/es/product/pajita-de-papel-a-rayas-tonos-frios/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:stripe-colors",
+      "route": "/es/product/pajita-de-papel-a-rayas-tonos-calidos/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:pla-lid-2",
+      "route": "/es/product/tapa-de-pla-para-vaso-de-sopa/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:natural-kraft-lid",
+      "route": "/es/product/tapa-de-kraft-natural/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:cardboard-lid",
+      "route": "/es/product/tapa-de-carton-para-vaso-de-sopa/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:bamboo-paper-soup-cup",
+      "route": "/es/product/vaso-de-sopa-de-bagazo/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:cardboard-soup-cup",
+      "route": "/es/product/vaso-de-sopa-de-carton-blanco/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:natural-kraft-soup-cup",
+      "route": "/es/product/vaso-de-sopa-de-kraft-natural/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:paper-lid",
+      "route": "/es/product/tapa-de-papel-para-cuenco-de-ensalada/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:pla-lid",
+      "route": "/es/product/tapa-de-pla-para-cuenco-de-ensalada/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:pp-lid",
+      "route": "/es/product/tapa-de-pp-para-cuenco-de-ensalada/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:pet-lid",
+      "route": "/es/product/tapa-de-pet-para-cuenco-de-ensalada/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:cardboard-bamboo-bowl",
+      "route": "/es/product/cuenco-de-carton-blanco/"
+    },
+    {
+      "language": "es",
+      "contentKey": "product:kraft-paper-bowl",
+      "route": "/es/product/cuenco-de-papel-kraft/"
+    },
+    {
+      "language": "es",
+      "contentKey": "post:us-state-plastic-packaging-laws-explained",
+      "route": "/es/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/"
+    },
+    {
+      "language": "es",
+      "contentKey": "post:how-to-verify-supplier-sustainability-certifications",
+      "route": "/es/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/"
+    },
+    {
+      "language": "es",
+      "contentKey": "post:eu-single-use-plastics-directive-explained",
+      "route": "/es/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/"
+    },
+    {
+      "language": "es",
+      "contentKey": "post:bpi-vs-fsc-certification",
+      "route": "/es/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/"
+    },
+    {
+      "language": "es",
+      "contentKey": "post:pla-vs-bagasse-vs-fsc-paper",
+      "route": "/es/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "home",
+      "route": "/ar/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products",
+      "route": "/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D9%84%D9%84%D8%AC%D9%85%D9%84%D8%A9-%D9%88%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%B7%D9%84%D8%A8/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/cups-bowls",
+      "route": "/ar/%D8%A7%D9%84%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D9%88%D8%A7%D9%84%D8%A3%D9%88%D8%B9%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers",
+      "route": "/ar/%D8%B9%D9%84%D8%A8-%D9%88%D8%AD%D8%A7%D9%88%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/foodservice-supplies",
+      "route": "/ar/%D9%85%D8%B3%D8%AA%D9%84%D8%B2%D9%85%D8%A7%D8%AA-%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/cups-bowls/paper-cups",
+      "route": "/ar/%D8%A7%D9%84%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/cups-bowls/salad-bowls",
+      "route": "/ar/%D8%A3%D9%88%D8%B9%D9%8A%D8%A9-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/cups-bowls/soup-cups",
+      "route": "/ar/%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D8%AD%D8%B3%D8%A7%D8%A1/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/cups-bowls/ice-cream-cups",
+      "route": "/ar/%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D8%A2%D9%8A%D8%B3-%D9%83%D8%B1%D9%8A%D9%85/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers/paper-food-boxes",
+      "route": "/ar/%D8%B9%D9%84%D8%A8-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers/sandwich-boxes",
+      "route": "/ar/%D8%B9%D9%84%D8%A8-%D8%A7%D9%84%D8%B3%D8%A7%D9%86%D8%AF%D9%88%D9%8A%D8%AA%D8%B4/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers/sushi-boxes",
+      "route": "/ar/%D8%B9%D9%84%D8%A8-%D8%A7%D9%84%D8%B3%D9%88%D8%B4%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers/salad-boxes",
+      "route": "/ar/%D8%B9%D9%84%D8%A8-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers/burger-boxes",
+      "route": "/ar/%D8%B9%D9%84%D8%A8-%D8%A7%D9%84%D8%A8%D8%B1%D8%BA%D8%B1/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers/wrap-boxes",
+      "route": "/ar/%D8%B9%D9%84%D8%A8-%D9%88%D8%A3%D8%BA%D9%84%D9%81%D8%A9-%D8%A7%D9%84%D8%B1%D8%A7%D8%A8/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers/pizza-slice-boxes",
+      "route": "/ar/%D8%B9%D9%84%D8%A8-%D8%B4%D8%B1%D8%A7%D8%A6%D8%AD-%D8%A7%D9%84%D8%A8%D9%8A%D8%AA%D8%B2%D8%A7/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/food-boxes-containers/cone-fry-packaging",
+      "route": "/ar/%D8%A3%D9%82%D9%85%D8%A7%D8%B9-%D9%88%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D8%B7%D8%A7%D8%B7%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D9%84%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/foodservice-supplies/paper-straws",
+      "route": "/ar/%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D8%B5%D8%A7%D8%AA-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/foodservice-supplies/disposable-cutlery",
+      "route": "/ar/%D8%A3%D8%AF%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D8%AF%D8%A9-%D8%A3%D8%AD%D8%A7%D8%AF%D9%8A%D8%A9-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:products/foodservice-supplies/paper-plates",
+      "route": "/ar/%D8%A7%D9%84%D8%A3%D8%B7%D8%A8%D8%A7%D9%82-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:custom-packaging",
+      "route": "/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-%D8%A8%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D9%85%D8%AE%D8%B5%D8%B5%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:custom-packaging/custom-printed-paper-cups",
+      "route": "/ar/%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D8%A8%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D9%85%D8%AE%D8%B5%D8%B5%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:custom-packaging/custom-paper-straws",
+      "route": "/ar/%D9%85%D8%B5%D8%A7%D8%B5%D8%A7%D8%AA-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%B7%D9%84%D8%A8/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:applications",
+      "route": "/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:applications/takeaway-packaging",
+      "route": "/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D9%88%D8%AC%D8%A8%D8%A7%D8%AA-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D9%88%D8%A7%D9%84%D8%AA%D9%88%D8%B5%D9%8A%D9%84/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:applications/restaurant-packaging",
+      "route": "/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%B7%D8%A7%D8%B9%D9%85-%D9%88%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:applications/fast-food-packaging",
+      "route": "/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D9%88%D8%AC%D8%A8%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D8%B1%D9%8A%D8%B9%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:applications/ice-cream-dessert-packaging",
+      "route": "/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%A2%D9%8A%D8%B3-%D9%83%D8%B1%D9%8A%D9%85-%D9%88%D8%A7%D9%84%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:resources",
+      "route": "/ar/%D9%85%D9%88%D8%A7%D8%B1%D8%AF-%D8%B4%D8%B1%D8%A7%D8%A1-%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:resources/guides/paper-cup-sizes",
+      "route": "/ar/%D8%AF%D9%84%D9%8A%D9%84-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:resources/guides/custom-printed-paper-cups",
+      "route": "/ar/%D8%AF%D9%84%D9%8A%D9%84-%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%B7%D9%84%D8%A8/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:resources/guides/food-packaging-certifications",
+      "route": "/ar/%D8%AF%D9%84%D9%8A%D9%84-%D8%B4%D9%87%D8%A7%D8%AF%D8%A7%D8%AA-%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:about",
+      "route": "/ar/%D8%B9%D9%86-corncomp-%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:about/factory",
+      "route": "/ar/%D8%A7%D9%84%D9%85%D8%B5%D9%86%D8%B9-%D9%88%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:quality",
+      "route": "/ar/%D8%B4%D9%87%D8%A7%D8%AF%D8%A7%D8%AA-corncomp/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "architecture:contact",
+      "route": "/ar/%D8%A7%D8%AA%D8%B5%D9%84-%D8%A8%D9%86%D8%A7/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:oval-paper-plate",
+      "route": "/ar/product/%D8%B7%D8%A8%D9%82-%D9%88%D8%B1%D9%82%D9%8A-%D8%A8%D9%8A%D8%B6%D8%A7%D9%88%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:round-paper-plate",
+      "route": "/ar/product/%D8%B7%D8%A8%D9%82-%D9%88%D8%B1%D9%82%D9%8A-%D8%AF%D8%A7%D8%A6%D8%B1%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:brown-triangle-box-pla-window",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D8%B4%D8%B1%D9%8A%D8%AD%D8%A9-%D8%A8%D9%8A%D8%AA%D8%B2%D8%A7-%D9%85%D8%AB%D9%84%D8%AB%D8%A9-%D8%A8%D9%86%D9%8A%D8%A9-%D8%A8%D9%86%D8%A7%D9%81%D8%B0%D8%A9-pla/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:natural-kraft-closed-snack-cup",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D9%88%D8%AC%D8%A8%D8%A7%D8%AA-%D8%AE%D9%81%D9%8A%D9%81%D8%A9-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A-%D9%85%D8%BA%D9%84%D9%82/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:cardboard-open-wrap-cup",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D8%B1%D8%A7%D8%A8-%D9%85%D9%81%D8%AA%D9%88%D8%AD-%D9%85%D9%86-%D8%A7%D9%84%D9%83%D8%B1%D8%AA%D9%88%D9%86/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:frite-cone-black",
+      "route": "/ar/product/%D9%85%D8%AE%D8%B1%D9%88%D8%B7-%D8%A8%D8%B7%D8%A7%D8%B7%D8%B3-%D9%85%D9%82%D9%84%D9%8A%D8%A9-%D8%A3%D8%B3%D9%88%D8%AF/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:frite-cone-kraft",
+      "route": "/ar/product/%D9%85%D8%AE%D8%B1%D9%88%D8%B7-%D8%A8%D8%B7%D8%A7%D8%B7%D8%B3-%D9%85%D9%82%D9%84%D9%8A%D8%A9-%D9%83%D8%B1%D8%A7%D9%81%D8%AA/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:black-white-cardboard-sushi-box-pla-window",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D8%B3%D9%88%D8%B4%D9%8A-%D9%85%D9%86-%D8%A7%D9%84%D9%83%D8%B1%D8%AA%D9%88%D9%86-%D8%A3%D8%B3%D9%88%D8%AF-%D8%A3%D8%A8%D9%8A%D8%B6-%D8%A8%D9%86%D8%A7%D9%81%D8%B0%D8%A9-pla/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:corrugated-board-cup-sleeve-8-12-16-20oz",
+      "route": "/ar/product/%D9%83%D9%85-%D8%A7%D9%84%D9%83%D9%88%D8%A8-%D8%A7%D9%84%D9%85%D8%B6%D9%84%D8%B9-8-12-16-20-%D8%A3%D9%88%D9%86%D8%B5%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:pla-lid-for-coffee-cup-black",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-%D9%83%D9%88%D8%A8-%D8%A7%D9%84%D9%82%D9%87%D9%88%D8%A9-pla-%D8%A3%D8%B3%D9%88%D8%AF/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:pla-lid-for-coffee-cup-white",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-%D9%83%D9%88%D8%A8-%D8%A7%D9%84%D9%82%D9%87%D9%88%D8%A9-pla-%D8%A3%D8%A8%D9%8A%D8%B6/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-horizon-style",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D9%88%D8%B1%D9%82%D9%8A-%D9%85%D9%85%D9%88%D9%91%D8%AC-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A-%D8%A8%D9%86%D9%85%D8%B7-%D8%A3%D9%81%D9%82%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-vertical-style",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D9%88%D8%B1%D9%82%D9%8A-%D9%85%D9%85%D9%88%D9%91%D8%AC-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A-%D8%A8%D9%86%D9%85%D8%B7-%D8%B9%D9%85%D9%88%D8%AF/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:double-wall-white-cardboard-paper-cup",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D9%88%D8%B1%D9%82%D9%8A-%D9%85%D8%B2%D8%AF%D9%88%D8%AC-%D8%A7%D9%84%D8%AC%D8%AF%D8%A7%D8%B1-%D9%83%D8%B1%D8%AA%D9%88%D9%86-%D8%A3%D8%A8%D9%8A%D8%B6/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:single-wall-white-cardboard-paper-cup",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D9%88%D8%B1%D9%82%D9%8A-%D8%A3%D8%AD%D8%A7%D8%AF%D9%8A-%D8%A7%D9%84%D8%AC%D8%AF%D8%A7%D8%B1-%D9%83%D8%B1%D8%AA%D9%88%D9%86-%D8%A3%D8%A8%D9%8A%D8%B6/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:kraft-colour-ice-cream-cup",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D8%A2%D9%8A%D8%B3-%D9%83%D8%B1%D9%8A%D9%85-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D9%85%D9%84%D9%88%D9%91%D9%86/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:cpla-cutlery",
+      "route": "/ar/product/%D8%A3%D8%AF%D9%88%D8%A7%D8%AA-%D9%85%D8%A7%D8%A6%D8%AF%D8%A9-cpla/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:wooden-bamboo-cutlery",
+      "route": "/ar/product/%D8%A3%D8%AF%D9%88%D8%A7%D8%AA-%D9%85%D8%A7%D8%A6%D8%AF%D8%A9-%D8%AE%D8%B4%D8%A8%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:kraft-paper-box-pet-window",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D9%88%D8%B1%D9%82-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%A8%D9%86%D8%A7%D9%81%D8%B0%D8%A9-pet/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:kraft-paper-salad-box-pla-window",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D8%B3%D9%84%D8%B7%D8%A9-%D9%88%D8%B1%D9%82-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%A8%D9%86%D8%A7%D9%81%D8%B0%D8%A9-pla/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:cardboard-wrap-box-pla-window",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D8%B1%D8%A7%D8%A8-%D9%85%D9%86-%D8%A7%D9%84%D9%83%D8%B1%D8%AA%D9%88%D9%86-%D8%A8%D9%86%D8%A7%D9%81%D8%B0%D8%A9-pla/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:natural-kraft-sandwich-box-pla-window",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D8%B3%D8%A7%D9%86%D8%AF%D9%88%D9%8A%D8%AA%D8%B4-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A%D8%A9-%D8%A8%D9%86%D8%A7%D9%81%D8%B0%D8%A9-pla/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:natural-kraft-hamburger-box",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D9%87%D9%85%D8%A8%D8%B1%D8%BA%D8%B1-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:natural-kraft-menu-box",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D9%88%D8%AC%D8%A8%D8%A7%D8%AA-%D9%85%D9%86-%D8%A7%D9%84%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%A7%D9%84%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:doner-box",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D8%A7%D9%84%D8%AF%D9%88%D9%86%D8%B1/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:white-cardboard-box-wire-handle",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D8%B7%D8%B9%D8%A7%D9%85-%D9%85%D8%B1%D8%A8%D8%B9%D8%A9-%D8%A8%D9%85%D9%82%D8%A8%D8%B6-%D8%B3%D9%84%D9%83%D9%8A-%D9%83%D8%B1%D8%AA%D9%88%D9%86-%D8%A3%D8%A8%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:kraft-square-food-bow-pp-handle",
+      "route": "/ar/product/%D8%B9%D9%84%D8%A8%D8%A9-%D8%B7%D8%B9%D8%A7%D9%85-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%A8%D9%85%D9%82%D8%A8%D8%B6-pp/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:bendy",
+      "route": "/ar/product/%D9%85%D8%B5%D8%A7%D8%B5%D8%A9-bendy-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:sharp-edge",
+      "route": "/ar/product/%D9%85%D8%B5%D8%A7%D8%B5%D8%A9-sharp-edge-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:solid-colors-with-bamboo-fiber-wooden-fiber",
+      "route": "/ar/product/%D9%85%D8%B5%D8%A7%D8%B5%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D8%A3%D8%AD%D8%A7%D8%AF%D9%8A%D8%A9-%D8%A7%D9%84%D9%84%D9%88%D9%86-%D8%A7%D9%84%D8%AE%D9%8A%D8%B2%D8%B1%D8%A7%D9%86/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:stripe-colors-2",
+      "route": "/ar/product/%D9%85%D8%B5%D8%A7%D8%B5%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D9%85%D8%AE%D8%B7%D8%B7%D8%A9-%D8%A3%D9%84%D9%88%D8%A7%D9%86-%D8%A8%D8%A7%D8%B1%D8%AF%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:stripe-colors",
+      "route": "/ar/product/%D9%85%D8%B5%D8%A7%D8%B5%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D9%85%D8%AE%D8%B7%D8%B7%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:pla-lid-2",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-pla-%D9%84%D9%83%D9%88%D8%A8-%D8%A7%D9%84%D8%AD%D8%B3%D8%A7%D8%A1/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:natural-kraft-lid",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%A7%D9%84%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:cardboard-lid",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-%D9%83%D8%B1%D8%AA%D9%88%D9%86%D9%8A-%D9%84%D9%83%D9%88%D8%A8-%D8%A7%D9%84%D8%AD%D8%B3%D8%A7%D8%A1/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:bamboo-paper-soup-cup",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D8%AD%D8%B3%D8%A7%D8%A1-%D8%A7%D9%84%D8%A8%D8%A7%D8%BA%D8%A7%D8%B3/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:cardboard-soup-cup",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D8%AD%D8%B3%D8%A7%D8%A1-%D9%83%D8%B1%D8%AA%D9%88%D9%86%D9%8A-%D8%A3%D8%A8%D9%8A%D8%B6/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:natural-kraft-soup-cup",
+      "route": "/ar/product/%D9%83%D9%88%D8%A8-%D8%AD%D8%B3%D8%A7%D8%A1-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:paper-lid",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-%D9%88%D8%B1%D9%82%D9%8A-%D9%84%D9%88%D8%B9%D8%A7%D8%A1-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:pla-lid",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-pla-%D9%84%D9%88%D8%B9%D8%A7%D8%A1-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:pp-lid",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-pp-%D9%84%D9%88%D8%B9%D8%A7%D8%A1-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:pet-lid",
+      "route": "/ar/product/%D8%BA%D8%B7%D8%A7%D8%A1-pet-%D9%84%D9%88%D8%B9%D8%A7%D8%A1-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:cardboard-bamboo-bowl",
+      "route": "/ar/product/%D9%88%D8%B9%D8%A7%D8%A1-%D9%83%D8%B1%D8%AA%D9%88%D9%86%D9%8A-%D8%A3%D8%A8%D9%8A%D8%B6/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "product:kraft-paper-bowl",
+      "route": "/ar/product/%D9%88%D8%B9%D8%A7%D8%A1-%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D9%88%D8%B1%D9%82%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "post:us-state-plastic-packaging-laws-explained",
+      "route": "/ar/%D9%82%D9%88%D8%A7%D9%86%D9%8A%D9%86-%D8%A7%D9%84%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A%D9%83%D9%8A%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D9%88%D9%84%D8%A7%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D9%8A%D8%A9/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "post:how-to-verify-supplier-sustainability-certifications",
+      "route": "/ar/%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D8%AD%D9%82%D9%82-%D9%85%D9%86-%D8%B5%D8%AD%D8%A9-%D8%B4%D9%87%D8%A7%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AF%D8%A7%D9%85%D8%A9-%D8%A7/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "post:eu-single-use-plastics-directive-explained",
+      "route": "/ar/%D8%AA%D9%88%D8%AC%D9%8A%D9%87-%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "post:bpi-vs-fsc-certification",
+      "route": "/ar/%D9%85%D8%A7-%D9%87%D9%8A-%D8%B4%D9%87%D8%A7%D8%AF%D8%A9-bpi%D8%9F-%D9%88%D9%83%D9%8A%D9%81-%D8%AA%D8%AE%D8%AA%D9%84%D9%81-%D8%B9%D9%86-%D8%B4%D9%87%D8%A7%D8%AF%D8%A9-fsc/"
+    },
+    {
+      "language": "ar",
+      "contentKey": "post:pla-vs-bagasse-vs-fsc-paper",
+      "route": "/ar/pla-%D9%85%D9%82%D8%A7%D8%A8%D9%84-%D8%A7%D9%84%D8%A8%D8%A7%D8%BA%D8%A7%D8%B3-%D9%85%D9%82%D8%A7%D8%A8%D9%84-%D8%A7%D9%84%D9%88%D8%B1%D9%82-%D8%A7%D9%84%D9%85%D8%B9%D8%AA%D9%85%D8%AF-fsc-%D9%83%D9%8A/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "home",
+      "route": "/zh/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products",
+      "route": "/zh/products/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/cups-bowls",
+      "route": "/zh/products/cups-bowls/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers",
+      "route": "/zh/products/food-boxes-containers/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/foodservice-supplies",
+      "route": "/zh/products/foodservice-supplies/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/cups-bowls/paper-cups",
+      "route": "/zh/products/cups-bowls/paper-cups/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/cups-bowls/salad-bowls",
+      "route": "/zh/products/cups-bowls/salad-bowls/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/cups-bowls/soup-cups",
+      "route": "/zh/products/cups-bowls/soup-cups/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/cups-bowls/ice-cream-cups",
+      "route": "/zh/products/cups-bowls/ice-cream-cups/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers/paper-food-boxes",
+      "route": "/zh/products/food-boxes-containers/paper-food-boxes/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers/sandwich-boxes",
+      "route": "/zh/products/food-boxes-containers/sandwich-boxes/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers/sushi-boxes",
+      "route": "/zh/products/food-boxes-containers/sushi-boxes/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers/salad-boxes",
+      "route": "/zh/products/food-boxes-containers/salad-boxes/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers/burger-boxes",
+      "route": "/zh/products/food-boxes-containers/burger-boxes/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers/wrap-boxes",
+      "route": "/zh/products/food-boxes-containers/wrap-boxes/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers/pizza-slice-boxes",
+      "route": "/zh/products/food-boxes-containers/pizza-slice-boxes/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/food-boxes-containers/cone-fry-packaging",
+      "route": "/zh/products/food-boxes-containers/cone-fry-packaging/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/foodservice-supplies/paper-straws",
+      "route": "/zh/products/foodservice-supplies/paper-straws/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/foodservice-supplies/disposable-cutlery",
+      "route": "/zh/products/foodservice-supplies/disposable-cutlery/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:products/foodservice-supplies/paper-plates",
+      "route": "/zh/products/foodservice-supplies/paper-plates/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:custom-packaging",
+      "route": "/zh/custom-packaging/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:custom-packaging/custom-printed-paper-cups",
+      "route": "/zh/custom-packaging/custom-printed-paper-cups/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:custom-packaging/custom-paper-straws",
+      "route": "/zh/custom-packaging/custom-paper-straws/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:applications",
+      "route": "/zh/applications/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:applications/takeaway-packaging",
+      "route": "/zh/applications/takeaway-packaging/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:applications/restaurant-packaging",
+      "route": "/zh/applications/restaurant-packaging/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:applications/fast-food-packaging",
+      "route": "/zh/applications/fast-food-packaging/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:applications/ice-cream-dessert-packaging",
+      "route": "/zh/applications/ice-cream-dessert-packaging/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:resources",
+      "route": "/zh/resources/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:resources/guides/paper-cup-sizes",
+      "route": "/zh/resources/guides/paper-cup-sizes/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:resources/guides/custom-printed-paper-cups",
+      "route": "/zh/resources/guides/custom-printed-paper-cups/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:resources/guides/food-packaging-certifications",
+      "route": "/zh/resources/guides/food-packaging-certifications/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:about",
+      "route": "/zh/about/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:about/factory",
+      "route": "/zh/about/factory/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:quality",
+      "route": "/zh/quality/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "architecture:contact",
+      "route": "/zh/contact/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:oval-paper-plate",
+      "route": "/zh/products/foodservice-supplies/paper-plates/oval-paper-plate/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:round-paper-plate",
+      "route": "/zh/products/foodservice-supplies/paper-plates/round-paper-plate/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:brown-triangle-box-pla-window",
+      "route": "/zh/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:natural-kraft-closed-snack-cup",
+      "route": "/zh/products/food-boxes-containers/cone-fry-packaging/natural-kraft-closed-snack-cup/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:cardboard-open-wrap-cup",
+      "route": "/zh/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:frite-cone-black",
+      "route": "/zh/products/food-boxes-containers/cone-fry-packaging/frite-cone-black/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:frite-cone-kraft",
+      "route": "/zh/products/food-boxes-containers/cone-fry-packaging/frite-cone-kraft/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:black-white-cardboard-sushi-box-pla-window",
+      "route": "/zh/products/food-boxes-containers/sushi-boxes/black-white-cardboard-sushi-box-pla-window/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:corrugated-board-cup-sleeve-8-12-16-20oz",
+      "route": "/zh/products/cups-bowls/paper-cups/corrugated-board-cup-sleeve-8-12-16-20oz/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:pla-lid-for-coffee-cup-black",
+      "route": "/zh/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-black/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:pla-lid-for-coffee-cup-white",
+      "route": "/zh/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-white/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-horizon-style",
+      "route": "/zh/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-horizon-style/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-vertical-style",
+      "route": "/zh/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-vertical-style/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:double-wall-white-cardboard-paper-cup",
+      "route": "/zh/products/cups-bowls/paper-cups/double-wall-white-cardboard-paper-cup/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:single-wall-white-cardboard-paper-cup",
+      "route": "/zh/products/cups-bowls/paper-cups/single-wall-white-cardboard-paper-cup/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:kraft-colour-ice-cream-cup",
+      "route": "/zh/products/cups-bowls/ice-cream-cups/kraft-colour-ice-cream-cup/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:cpla-cutlery",
+      "route": "/zh/products/foodservice-supplies/disposable-cutlery/cpla-cutlery/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:wooden-bamboo-cutlery",
+      "route": "/zh/products/foodservice-supplies/disposable-cutlery/wooden-bamboo-cutlery/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:kraft-paper-box-pet-window",
+      "route": "/zh/products/food-boxes-containers/paper-food-boxes/kraft-paper-box-pet-window/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:kraft-paper-salad-box-pla-window",
+      "route": "/zh/products/food-boxes-containers/salad-boxes/kraft-paper-salad-box-pla-window/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:cardboard-wrap-box-pla-window",
+      "route": "/zh/products/food-boxes-containers/wrap-boxes/cardboard-wrap-box-pla-window/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:natural-kraft-sandwich-box-pla-window",
+      "route": "/zh/products/food-boxes-containers/sandwich-boxes/natural-kraft-sandwich-box-pla-window/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:natural-kraft-hamburger-box",
+      "route": "/zh/products/food-boxes-containers/burger-boxes/natural-kraft-hamburger-box/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:natural-kraft-menu-box",
+      "route": "/zh/products/food-boxes-containers/paper-food-boxes/natural-kraft-menu-box/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:doner-box",
+      "route": "/zh/products/food-boxes-containers/paper-food-boxes/doner-box/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:white-cardboard-box-wire-handle",
+      "route": "/zh/products/food-boxes-containers/paper-food-boxes/white-cardboard-box-wire-handle/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:kraft-square-food-bow-pp-handle",
+      "route": "/zh/products/food-boxes-containers/paper-food-boxes/kraft-square-food-bow-pp-handle/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:bendy",
+      "route": "/zh/products/foodservice-supplies/paper-straws/bendy/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:sharp-edge",
+      "route": "/zh/products/foodservice-supplies/paper-straws/sharp-edge/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:solid-colors-with-bamboo-fiber-wooden-fiber",
+      "route": "/zh/products/foodservice-supplies/paper-straws/solid-colors-with-bamboo-fiber-wooden-fiber/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:stripe-colors-2",
+      "route": "/zh/products/foodservice-supplies/paper-straws/stripe-colors-2/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:stripe-colors",
+      "route": "/zh/products/foodservice-supplies/paper-straws/stripe-colors/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:pla-lid-2",
+      "route": "/zh/products/cups-bowls/soup-cups/pla-lid-2/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:natural-kraft-lid",
+      "route": "/zh/products/cups-bowls/soup-cups/natural-kraft-lid/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:cardboard-lid",
+      "route": "/zh/products/cups-bowls/soup-cups/cardboard-lid/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:bamboo-paper-soup-cup",
+      "route": "/zh/products/cups-bowls/soup-cups/bamboo-paper-soup-cup/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:cardboard-soup-cup",
+      "route": "/zh/products/cups-bowls/soup-cups/cardboard-soup-cup/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:natural-kraft-soup-cup",
+      "route": "/zh/products/cups-bowls/soup-cups/natural-kraft-soup-cup/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:paper-lid",
+      "route": "/zh/products/cups-bowls/salad-bowls/paper-lid/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:pla-lid",
+      "route": "/zh/products/cups-bowls/salad-bowls/pla-lid/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:pp-lid",
+      "route": "/zh/products/cups-bowls/salad-bowls/pp-lid/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:pet-lid",
+      "route": "/zh/products/cups-bowls/salad-bowls/pet-lid/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:cardboard-bamboo-bowl",
+      "route": "/zh/products/cups-bowls/salad-bowls/cardboard-bamboo-bowl/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "product:kraft-paper-bowl",
+      "route": "/zh/products/cups-bowls/salad-bowls/kraft-paper-bowl/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "post:us-state-plastic-packaging-laws-explained",
+      "route": "/zh/us-state-plastic-packaging-laws-explained/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "post:how-to-verify-supplier-sustainability-certifications",
+      "route": "/zh/how-to-verify-supplier-sustainability-certifications/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "post:eu-single-use-plastics-directive-explained",
+      "route": "/zh/eu-single-use-plastics-directive-explained/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "post:bpi-vs-fsc-certification",
+      "route": "/zh/bpi-vs-fsc-certification/"
+    },
+    {
+      "language": "zh",
+      "contentKey": "post:pla-vs-bagasse-vs-fsc-paper",
+      "route": "/zh/pla-vs-bagasse-vs-fsc-paper/"
+    },
+    {
+      "language": "de",
+      "contentKey": "home",
+      "route": "/de/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products",
+      "route": "/de/products/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/cups-bowls",
+      "route": "/de/products/cups-bowls/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers",
+      "route": "/de/products/food-boxes-containers/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/foodservice-supplies",
+      "route": "/de/products/foodservice-supplies/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/cups-bowls/paper-cups",
+      "route": "/de/products/cups-bowls/paper-cups/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/cups-bowls/salad-bowls",
+      "route": "/de/products/cups-bowls/salad-bowls/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/cups-bowls/soup-cups",
+      "route": "/de/products/cups-bowls/soup-cups/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/cups-bowls/ice-cream-cups",
+      "route": "/de/products/cups-bowls/ice-cream-cups/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers/paper-food-boxes",
+      "route": "/de/products/food-boxes-containers/paper-food-boxes/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers/sandwich-boxes",
+      "route": "/de/products/food-boxes-containers/sandwich-boxes/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers/sushi-boxes",
+      "route": "/de/products/food-boxes-containers/sushi-boxes/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers/salad-boxes",
+      "route": "/de/products/food-boxes-containers/salad-boxes/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers/burger-boxes",
+      "route": "/de/products/food-boxes-containers/burger-boxes/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers/wrap-boxes",
+      "route": "/de/products/food-boxes-containers/wrap-boxes/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers/pizza-slice-boxes",
+      "route": "/de/products/food-boxes-containers/pizza-slice-boxes/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/food-boxes-containers/cone-fry-packaging",
+      "route": "/de/products/food-boxes-containers/cone-fry-packaging/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/foodservice-supplies/paper-straws",
+      "route": "/de/products/foodservice-supplies/paper-straws/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/foodservice-supplies/disposable-cutlery",
+      "route": "/de/products/foodservice-supplies/disposable-cutlery/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:products/foodservice-supplies/paper-plates",
+      "route": "/de/products/foodservice-supplies/paper-plates/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:custom-packaging",
+      "route": "/de/custom-packaging/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:custom-packaging/custom-printed-paper-cups",
+      "route": "/de/custom-packaging/custom-printed-paper-cups/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:custom-packaging/custom-paper-straws",
+      "route": "/de/custom-packaging/custom-paper-straws/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:applications",
+      "route": "/de/applications/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:applications/takeaway-packaging",
+      "route": "/de/applications/takeaway-packaging/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:applications/restaurant-packaging",
+      "route": "/de/applications/restaurant-packaging/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:applications/fast-food-packaging",
+      "route": "/de/applications/fast-food-packaging/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:applications/ice-cream-dessert-packaging",
+      "route": "/de/applications/ice-cream-dessert-packaging/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:resources",
+      "route": "/de/resources/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:resources/guides/paper-cup-sizes",
+      "route": "/de/resources/guides/paper-cup-sizes/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:resources/guides/custom-printed-paper-cups",
+      "route": "/de/resources/guides/custom-printed-paper-cups/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:resources/guides/food-packaging-certifications",
+      "route": "/de/resources/guides/food-packaging-certifications/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:about",
+      "route": "/de/about/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:about/factory",
+      "route": "/de/about/factory/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:quality",
+      "route": "/de/quality/"
+    },
+    {
+      "language": "de",
+      "contentKey": "architecture:contact",
+      "route": "/de/contact/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:oval-paper-plate",
+      "route": "/de/products/oval-paper-plate/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:round-paper-plate",
+      "route": "/de/products/round-paper-plate/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:brown-triangle-box-pla-window",
+      "route": "/de/products/brown-triangle-box-pla-window/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:natural-kraft-closed-snack-cup",
+      "route": "/de/products/natural-kraft-closed-snack-cup/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:cardboard-open-wrap-cup",
+      "route": "/de/products/cardboard-open-wrap-cup/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:frite-cone-black",
+      "route": "/de/products/frite-cone-black/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:frite-cone-kraft",
+      "route": "/de/products/frite-cone-kraft/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:black-white-cardboard-sushi-box-pla-window",
+      "route": "/de/products/black-white-cardboard-sushi-box-pla-window/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:corrugated-board-cup-sleeve-8-12-16-20oz",
+      "route": "/de/products/corrugated-board-cup-sleeve-8-12-16-20oz/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:pla-lid-for-coffee-cup-black",
+      "route": "/de/products/pla-lid-for-coffee-cup-black/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:pla-lid-for-coffee-cup-white",
+      "route": "/de/products/pla-lid-for-coffee-cup-white/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-horizon-style",
+      "route": "/de/products/ripple-natural-kraft-paper-cup-horizon-style/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:ripple-natural-kraft-paper-cup-vertical-style",
+      "route": "/de/products/ripple-natural-kraft-paper-cup-vertical-style/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:double-wall-white-cardboard-paper-cup",
+      "route": "/de/products/double-wall-white-cardboard-paper-cup/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:single-wall-white-cardboard-paper-cup",
+      "route": "/de/products/single-wall-white-cardboard-paper-cup/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:kraft-colour-ice-cream-cup",
+      "route": "/de/products/kraft-colour-ice-cream-cup/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:cpla-cutlery",
+      "route": "/de/products/cpla-cutlery/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:wooden-bamboo-cutlery",
+      "route": "/de/products/wooden-bamboo-cutlery/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:kraft-paper-box-pet-window",
+      "route": "/de/products/kraft-paper-box-pet-window/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:kraft-paper-salad-box-pla-window",
+      "route": "/de/products/kraft-paper-salad-box-pla-window/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:cardboard-wrap-box-pla-window",
+      "route": "/de/products/cardboard-wrap-box-pla-window/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:natural-kraft-sandwich-box-pla-window",
+      "route": "/de/products/natural-kraft-sandwich-box-pla-window/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:natural-kraft-hamburger-box",
+      "route": "/de/products/natural-kraft-hamburger-box/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:natural-kraft-menu-box",
+      "route": "/de/products/natural-kraft-menu-box/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:doner-box",
+      "route": "/de/products/doner-box/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:white-cardboard-box-wire-handle",
+      "route": "/de/products/white-cardboard-box-wire-handle/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:kraft-square-food-bow-pp-handle",
+      "route": "/de/products/kraft-square-food-bow-pp-handle/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:bendy",
+      "route": "/de/products/bendy/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:sharp-edge",
+      "route": "/de/products/sharp-edge/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:solid-colors-with-bamboo-fiber-wooden-fiber",
+      "route": "/de/products/solid-colors-with-bamboo-fiber-wooden-fiber/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:stripe-colors-2",
+      "route": "/de/products/stripe-colors-2/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:stripe-colors",
+      "route": "/de/products/stripe-colors/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:pla-lid-2",
+      "route": "/de/products/pla-lid-2/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:natural-kraft-lid",
+      "route": "/de/products/natural-kraft-lid/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:cardboard-lid",
+      "route": "/de/products/cardboard-lid/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:bamboo-paper-soup-cup",
+      "route": "/de/products/bamboo-paper-soup-cup/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:cardboard-soup-cup",
+      "route": "/de/products/cardboard-soup-cup/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:natural-kraft-soup-cup",
+      "route": "/de/products/natural-kraft-soup-cup/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:paper-lid",
+      "route": "/de/products/paper-lid/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:pla-lid",
+      "route": "/de/products/pla-lid/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:pp-lid",
+      "route": "/de/products/pp-lid/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:pet-lid",
+      "route": "/de/products/pet-lid/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:cardboard-bamboo-bowl",
+      "route": "/de/products/cardboard-bamboo-bowl/"
+    },
+    {
+      "language": "de",
+      "contentKey": "product:kraft-paper-bowl",
+      "route": "/de/products/kraft-paper-bowl/"
+    },
+    {
+      "language": "de",
+      "contentKey": "post:us-state-plastic-packaging-laws-explained",
+      "route": "/de/blog/us-state-plastic-packaging-laws-explained/"
+    },
+    {
+      "language": "de",
+      "contentKey": "post:how-to-verify-supplier-sustainability-certifications",
+      "route": "/de/blog/how-to-verify-supplier-sustainability-certifications/"
+    },
+    {
+      "language": "de",
+      "contentKey": "post:eu-single-use-plastics-directive-explained",
+      "route": "/de/blog/eu-single-use-plastics-directive-explained/"
+    },
+    {
+      "language": "de",
+      "contentKey": "post:bpi-vs-fsc-certification",
+      "route": "/de/blog/bpi-vs-fsc-certification/"
+    },
+    {
+      "language": "de",
+      "contentKey": "post:pla-vs-bagasse-vs-fsc-paper",
+      "route": "/de/blog/pla-vs-bagasse-vs-fsc-paper/"
+    }
+  ],
+  "products": [
+    {
+      "slug": "oval-paper-plate",
+      "route": "/products/foodservice-supplies/paper-plates/oval-paper-plate/"
+    },
+    {
+      "slug": "round-paper-plate",
+      "route": "/products/foodservice-supplies/paper-plates/round-paper-plate/"
+    },
+    {
+      "slug": "brown-triangle-box-pla-window",
+      "route": "/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/"
+    },
+    {
+      "slug": "natural-kraft-closed-snack-cup",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/natural-kraft-closed-snack-cup/"
+    },
+    {
+      "slug": "cardboard-open-wrap-cup",
+      "route": "/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/"
+    },
+    {
+      "slug": "frite-cone-black",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/frite-cone-black/"
+    },
+    {
+      "slug": "frite-cone-kraft",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/frite-cone-kraft/"
+    },
+    {
+      "slug": "black-white-cardboard-sushi-box-pla-window",
+      "route": "/products/food-boxes-containers/sushi-boxes/black-white-cardboard-sushi-box-pla-window/"
+    },
+    {
+      "slug": "corrugated-board-cup-sleeve-8-12-16-20oz",
+      "route": "/products/cups-bowls/paper-cups/corrugated-board-cup-sleeve-8-12-16-20oz/"
+    },
+    {
+      "slug": "pla-lid-for-coffee-cup-black",
+      "route": "/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-black/"
+    },
+    {
+      "slug": "pla-lid-for-coffee-cup-white",
+      "route": "/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-white/"
+    },
+    {
+      "slug": "ripple-natural-kraft-paper-cup-horizon-style",
+      "route": "/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-horizon-style/"
+    },
+    {
+      "slug": "ripple-natural-kraft-paper-cup-vertical-style",
+      "route": "/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-vertical-style/"
+    },
+    {
+      "slug": "double-wall-white-cardboard-paper-cup",
+      "route": "/products/cups-bowls/paper-cups/double-wall-white-cardboard-paper-cup/"
+    },
+    {
+      "slug": "single-wall-white-cardboard-paper-cup",
+      "route": "/products/cups-bowls/paper-cups/single-wall-white-cardboard-paper-cup/"
+    },
+    {
+      "slug": "kraft-colour-ice-cream-cup",
+      "route": "/products/cups-bowls/ice-cream-cups/kraft-colour-ice-cream-cup/"
+    },
+    {
+      "slug": "cpla-cutlery",
+      "route": "/products/foodservice-supplies/disposable-cutlery/cpla-cutlery/"
+    },
+    {
+      "slug": "wooden-bamboo-cutlery",
+      "route": "/products/foodservice-supplies/disposable-cutlery/wooden-bamboo-cutlery/"
+    },
+    {
+      "slug": "kraft-paper-box-pet-window",
+      "route": "/products/food-boxes-containers/paper-food-boxes/kraft-paper-box-pet-window/"
+    },
+    {
+      "slug": "kraft-paper-salad-box-pla-window",
+      "route": "/products/food-boxes-containers/salad-boxes/kraft-paper-salad-box-pla-window/"
+    },
+    {
+      "slug": "cardboard-wrap-box-pla-window",
+      "route": "/products/food-boxes-containers/wrap-boxes/cardboard-wrap-box-pla-window/"
+    },
+    {
+      "slug": "natural-kraft-sandwich-box-pla-window",
+      "route": "/products/food-boxes-containers/sandwich-boxes/natural-kraft-sandwich-box-pla-window/"
+    },
+    {
+      "slug": "natural-kraft-hamburger-box",
+      "route": "/products/food-boxes-containers/burger-boxes/natural-kraft-hamburger-box/"
+    },
+    {
+      "slug": "natural-kraft-menu-box",
+      "route": "/products/food-boxes-containers/paper-food-boxes/natural-kraft-menu-box/"
+    },
+    {
+      "slug": "doner-box",
+      "route": "/products/food-boxes-containers/paper-food-boxes/doner-box/"
+    },
+    {
+      "slug": "white-cardboard-box-wire-handle",
+      "route": "/products/food-boxes-containers/paper-food-boxes/white-cardboard-box-wire-handle/"
+    },
+    {
+      "slug": "kraft-square-food-bow-pp-handle",
+      "route": "/products/food-boxes-containers/paper-food-boxes/kraft-square-food-bow-pp-handle/"
+    },
+    {
+      "slug": "bendy",
+      "route": "/products/foodservice-supplies/paper-straws/bendy/"
+    },
+    {
+      "slug": "sharp-edge",
+      "route": "/products/foodservice-supplies/paper-straws/sharp-edge/"
+    },
+    {
+      "slug": "solid-colors-with-bamboo-fiber-wooden-fiber",
+      "route": "/products/foodservice-supplies/paper-straws/solid-colors-with-bamboo-fiber-wooden-fiber/"
+    },
+    {
+      "slug": "stripe-colors-2",
+      "route": "/products/foodservice-supplies/paper-straws/stripe-colors-2/"
+    },
+    {
+      "slug": "stripe-colors",
+      "route": "/products/foodservice-supplies/paper-straws/stripe-colors/"
+    },
+    {
+      "slug": "pla-lid-2",
+      "route": "/products/cups-bowls/soup-cups/pla-lid-2/"
+    },
+    {
+      "slug": "natural-kraft-lid",
+      "route": "/products/cups-bowls/soup-cups/natural-kraft-lid/"
+    },
+    {
+      "slug": "cardboard-lid",
+      "route": "/products/cups-bowls/soup-cups/cardboard-lid/"
+    },
+    {
+      "slug": "bamboo-paper-soup-cup",
+      "route": "/products/cups-bowls/soup-cups/bamboo-paper-soup-cup/"
+    },
+    {
+      "slug": "cardboard-soup-cup",
+      "route": "/products/cups-bowls/soup-cups/cardboard-soup-cup/"
+    },
+    {
+      "slug": "natural-kraft-soup-cup",
+      "route": "/products/cups-bowls/soup-cups/natural-kraft-soup-cup/"
+    },
+    {
+      "slug": "paper-lid",
+      "route": "/products/cups-bowls/salad-bowls/paper-lid/"
+    },
+    {
+      "slug": "pla-lid",
+      "route": "/products/cups-bowls/salad-bowls/pla-lid/"
+    },
+    {
+      "slug": "pp-lid",
+      "route": "/products/cups-bowls/salad-bowls/pp-lid/"
+    },
+    {
+      "slug": "pet-lid",
+      "route": "/products/cups-bowls/salad-bowls/pet-lid/"
+    },
+    {
+      "slug": "cardboard-bamboo-bowl",
+      "route": "/products/cups-bowls/salad-bowls/cardboard-bamboo-bowl/"
+    },
+    {
+      "slug": "kraft-paper-bowl",
+      "route": "/products/cups-bowls/salad-bowls/kraft-paper-bowl/"
+    }
+  ]
+}

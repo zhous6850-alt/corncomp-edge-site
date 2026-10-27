@@ -1,0 +1,53 @@
+# Catalogue verification issues
+
+- round-paper-plate (PDF 2): Recheck existing specifications against this catalogue edition.
+- oval-paper-plate (PDF 2): Recheck existing specifications against this catalogue edition.
+- kraft-paper-bowl (PDF 3): Recheck existing specifications against this catalogue edition.
+- cardboard-bamboo-bowl (PDF 4): Recheck existing specifications against this catalogue edition.
+- pet-lid (PDF 4): Recheck existing specifications against this catalogue edition.
+- pp-lid (PDF 4): Recheck existing specifications against this catalogue edition.
+- pla-lid (PDF 4): Recheck existing specifications against this catalogue edition.
+- paper-lid (PDF 4): Recheck existing specifications against this catalogue edition.
+- natural-kraft-soup-cup (PDF 5): Recheck existing specifications against this catalogue edition.
+- cardboard-soup-cup (PDF 5): Recheck existing specifications against this catalogue edition.
+- bamboo-paper-soup-cup (PDF 5): Recheck existing specifications against this catalogue edition.
+- cardboard-lid (PDF 5): Recheck existing specifications against this catalogue edition.
+- natural-kraft-lid (PDF 5): Recheck existing specifications against this catalogue edition.
+- pla-lid-2 (PDF 5): Recheck existing specifications against this catalogue edition.
+- stripe-colors (PDF 7): Recheck existing specifications against this catalogue edition.
+- stripe-colors-2 (PDF 7): Recheck existing specifications against this catalogue edition.
+- solid-colors-with-bamboo-fiber-wooden-fiber (PDF 7): Recheck existing specifications against this catalogue edition.
+- printed-stripe-paper-straws (PDF 8): Colour and print patterns are shown in the catalogue; confirm the selected design.
+- sharp-edge (PDF 9): Recheck existing specifications against this catalogue edition.
+- bendy (PDF 9): Recheck existing specifications against this catalogue edition.
+- kraft-colour-ice-cream-cup (PDF 10): Recheck existing specifications against this catalogue edition.
+- kraft-square-food-bow-pp-handle (PDF 11): Recheck existing specifications against this catalogue edition.
+- white-cardboard-box-wire-handle (PDF 11): Recheck existing specifications against this catalogue edition.
+- doner-box (PDF 12): Recheck existing specifications against this catalogue edition.
+- natural-kraft-menu-box (PDF 13): Recheck existing specifications against this catalogue edition.
+- white-cardboard-menu-box (PDF 13): Catalogue dimensions are reproduced as printed; confirm drawings before ordering.
+- wooden-bamboo-cutlery (PDF 13): Recheck existing specifications against this catalogue edition.
+- cpla-cutlery (PDF 13): Recheck existing specifications against this catalogue edition.
+- natural-kraft-hamburger-box (PDF 14): Recheck existing specifications against this catalogue edition.
+- natural-kraft-sandwich-box-pla-window (PDF 15): Recheck existing specifications against this catalogue edition.
+- cardboard-sandwich-box-pla-window (PDF 15): The printed thickness values appear inconsistent with the product photo; dimensional confirmation is required before ordering.
+- brown-triangle-box-pla-window (PDF 15): Recheck existing specifications against this catalogue edition.
+- cardboard-wrap-box-pla-window (PDF 15): Recheck existing specifications against this catalogue edition.
+- black-white-cardboard-sushi-box-pla-window (PDF 16): Recheck existing specifications against this catalogue edition.
+- kraft-paper-salad-box-pla-window (PDF 17): Recheck existing specifications against this catalogue edition.
+- kraft-paper-box-pet-window (PDF 17): Recheck existing specifications against this catalogue edition.
+- frite-cone-kraft (PDF 18): Recheck existing specifications against this catalogue edition.
+- frite-cone-black (PDF 18): Recheck existing specifications against this catalogue edition.
+- cardboard-open-wrap-cup (PDF 19): Recheck existing specifications against this catalogue edition.
+- natural-kraft-closed-snack-cup (PDF 19): Recheck existing specifications against this catalogue edition.
+- bagasse-three-compartment-plate (PDF 20): The catalogue groups the undivided CC03RP261 alongside compartmented plates; confirm compartment layout per item.
+- bagasse-three-compartment-clamshell (PDF 22): Carton values are misaligned in the PDF; confirm packing before ordering.
+- bagasse-clamshell (PDF 22): The PDF repeats CC03FC251 and CC03FC238 with different dimensions. These four ambiguous rows are withheld pending confirmation.
+- compostable-waste-bag (PDF 22): Compostability conditions and current certification must be confirmed for the selected order.
+- single-wall-white-cardboard-paper-cup (PDF 23): Recheck existing specifications against this catalogue edition.
+- double-wall-white-cardboard-paper-cup (PDF 23): Recheck existing specifications against this catalogue edition.
+- ripple-natural-kraft-paper-cup-vertical-style (PDF 24): Recheck existing specifications against this catalogue edition.
+- ripple-natural-kraft-paper-cup-horizon-style (PDF 24): Recheck existing specifications against this catalogue edition.
+- pla-lid-for-coffee-cup-white (PDF 24): Recheck existing specifications against this catalogue edition.
+- pla-lid-for-coffee-cup-black (PDF 24): Recheck existing specifications against this catalogue edition.
+- corrugated-board-cup-sleeve-8-12-16-20oz (PDF 24): Recheck existing specifications against this catalogue edition.

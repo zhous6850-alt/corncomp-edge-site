@@ -1,0 +1,168 @@
+---
+import ResponsiveMedia from './ResponsiveMedia.astro';
+import { englishInventory, localizedEntry, routeFor } from '../lib/localization.mjs';
+import { PRODUCT_CATEGORIES, PRODUCT_GROUPS, categoryForProduct } from '../lib/site-architecture.mjs';
+import mediaInventory from '../data/media.json';
+import { PRODUCT_DIRECTORY_TITLES } from '../data/product-directory.mjs';
+import { mediaFor } from '../lib/visual-media.mjs';
+
+const { language, ui } = Astro.props;
+const copy = {
+  en: {
+    intro: 'Explore cups, food containers, tableware and accessories. Find your format, then compare sizes and options.',
+    browse: 'Browse categories', catalogue: 'Download catalogue', range: 'View full range', series: 'product series',
+    help: 'Ready to plan your order?', helpText: 'Share your product, quantity and destination. We will help you confirm the specification.',
+    custom: 'Custom packaging', customText: 'Explore printing and private-label options for your packaging.',
+    pdfText: 'Keep the product range and specification tables at hand.',
+    groups: ['Cups & Bowls', 'Food Boxes & Trays', 'Accessories & Bags', 'Bagasse Tableware'],
+    intros: ['For coffee, salads, soups and desserts.', 'For takeaway meals, fresh food and snacks.', 'The finishing touches for food and drinks.', 'Plates, bowls, trays and hinged food boxes.'],
+  },
+  zh: {
+    intro: '从纸杯、食品容器到餐具与配件，按品类找到合适的产品，再查看尺寸与款式。',
+    browse: '浏览产品分类', catalogue: '下载产品册', range: '查看完整系列', series: '个产品系列',
+    help: '开始规划您的采购', helpText: '告诉我们产品、数量与目的地，我们会协助确认具体规格。',
+    custom: '定制包装', customText: '了解包装印刷与自有品牌定制方案。', pdfText: '随时查阅完整产品系列与规格表。',
+    groups: ['纸杯与碗', '食品盒与纸托', '餐饮配件与袋类', '甘蔗渣餐具'],
+    intros: ['适用于咖啡、沙拉、汤品与甜点。', '适用于外带餐食、生鲜展示与小吃。', '为餐饮服务配齐吸管、餐具与袋类。', '圆盘、碗、餐托与翻盖餐盒。'],
+  },
+  fr: {
+    intro: 'Découvrez gobelets, contenants, vaisselle et accessoires. Choisissez votre format, puis comparez dimensions et options.',
+    browse: 'Voir les catégories', catalogue: 'Télécharger le catalogue', range: 'Voir toute la gamme', series: 'séries de produits',
+    help: 'Préparons votre commande', helpText: 'Indiquez le produit, la quantité et la destination pour confirmer les caractéristiques.',
+    custom: 'Emballages personnalisés', customText: 'Découvrez les options d’impression et de marque propre.', pdfText: 'Retrouvez les gammes et les tableaux de caractéristiques.',
+    groups: ['Gobelets et bols', 'Boîtes et barquettes', 'Accessoires et sacs', 'Vaisselle en bagasse'],
+    intros: ['Pour cafés, salades, soupes et desserts.', 'Pour repas à emporter, produits frais et snacks.', 'Pailles, couverts et sacs pour la restauration.', 'Assiettes, bols, plateaux et boîtes à charnière.'],
+  },
+  es: {
+    intro: 'Explore vasos, envases, vajilla y accesorios. Elija su formato y compare tamaños y opciones.',
+    browse: 'Ver categorías', catalogue: 'Descargar catálogo', range: 'Ver toda la gama', series: 'series de productos',
+    help: 'Prepare su pedido', helpText: 'Indique el producto, la cantidad y el destino para confirmar las especificaciones.',
+    custom: 'Envases personalizados', customText: 'Conozca las opciones de impresión y marca propia.', pdfText: 'Consulte las gamas y las tablas de especificaciones.',
+    groups: ['Vasos y boles', 'Cajas y bandejas', 'Accesorios y bolsas', 'Vajilla de bagazo'],
+    intros: ['Para café, ensaladas, sopas y postres.', 'Para comida para llevar, alimentos frescos y aperitivos.', 'Pajitas, cubiertos y bolsas para el servicio.', 'Platos, boles, bandejas y cajas con bisagra.'],
+  },
+  ar: {
+    intro: 'استعرض الأكواب وعبوات الطعام وأدوات المائدة والملحقات. اختر الشكل المناسب ثم قارن المقاسات والخيارات.',
+    browse: 'تصفح الفئات', catalogue: 'تنزيل الكتالوج', range: 'عرض المجموعة كاملة', series: 'سلاسل منتجات',
+    help: 'لنخطط لطلبك', helpText: 'أرسل المنتج والكمية والوجهة لمساعدتك في تأكيد المواصفات.',
+    custom: 'عبوات مخصصة', customText: 'تعرف على خيارات الطباعة والعلامة التجارية الخاصة.', pdfText: 'اطلع على مجموعات المنتجات وجداول المواصفات.',
+    groups: ['أكواب وأوعية', 'علب وصواني طعام', 'ملحقات وأكياس', 'أدوات مائدة من الباغاس'],
+    intros: ['للقهوة والسلطات والشوربات والحلويات.', 'للوجبات الجاهزة والأطعمة الطازجة والوجبات الخفيفة.', 'ماصات وأدوات مائدة وأكياس لخدمات الطعام.', 'أطباق وأوعية وصوانٍ وعلب بأغطية متصلة.'],
+  },
+  de: {
+    intro: 'Entdecken Sie Becher, Lebensmittelbehälter, Geschirr und Zubehör. Wählen Sie Ihr Format und vergleichen Sie Größen und Optionen.',
+    browse: 'Kategorien ansehen', catalogue: 'Katalog herunterladen', range: 'Gesamtes Sortiment', series: 'Produktserien',
+    help: 'Planen wir Ihre Bestellung', helpText: 'Nennen Sie Produkt, Menge und Zielort. Wir helfen bei der Abstimmung der Spezifikation.',
+    custom: 'Individuelle Verpackungen', customText: 'Entdecken Sie Druckoptionen und Eigenmarken-Verpackungen.', pdfText: 'Alle Produktserien und Spezifikationstabellen zum Nachschlagen.',
+    groups: ['Becher & Schalen', 'Boxen & Schalen für Speisen', 'Zubehör & Beutel', 'Bagasse-Geschirr'],
+    intros: ['Für Kaffee, Salate, Suppen und Desserts.', 'Für Speisen zum Mitnehmen, Frischwaren und Snacks.', 'Strohhalme, Besteck und Beutel für den Service.', 'Teller, Schalen, Tabletts und Klappboxen.'],
+  },
+}[language];
+const products = englishInventory().filter((item) => item.type === 'product');
+const featured = {
+  'paper-cups': 'single-wall-white-cardboard-paper-cup', 'salad-bowls': 'kraft-paper-bowl',
+  'soup-cups': 'natural-kraft-soup-cup', 'ice-cream-cups': 'kraft-colour-ice-cream-cup',
+  'paper-straws': 'bendy', 'disposable-cutlery': 'wooden-bamboo-cutlery', 'paper-plates': 'round-paper-plate',
+};
+const zhTitles = { 'soup-cups': '汤杯', 'ice-cream-cups': '冰淇淋杯', 'wrap-boxes': '卷饼盒与开口杯', 'cone-fry-packaging': '薯条盒与小吃杯' };
+const groups = PRODUCT_GROUPS.map((group, index) => ({
+  ...group, title: copy.groups[index], intro: copy.intros[index],
+  route: routeFor(language, `architecture:products/${group.slug}`),
+  categories: PRODUCT_CATEGORIES.filter((item) => item.group === group.slug && !['paper-food-boxes', 'compostable-waste-bags'].includes(item.slug)).map((category) => {
+    const entry = localizedEntry(language, `architecture:products/${group.slug}/${category.slug}`);
+    const items = products.filter((item) => categoryForProduct(item.slug)?.slug === category.slug);
+    const product = items.find((item) => item.slug === featured[category.slug]) || items.find((item) => item.featuredMedia);
+    const image = product.featuredMedia;
+    const dimensions = mediaInventory.find((asset) => asset.id === image.id).media_details;
+    return { ...category, title: language === 'zh' ? zhTitles[category.slug] || entry.title : entry.title, route: entry.route, count: items.length,
+      media: { src: image.localPath, width: dimensions.width, height: dimensions.height, alt: localizedEntry(language, product.contentKey).title, fit: 'contain', position: 'center', evidence: 'product' } };
+  }),
+}));
+const catalogue = '/media/wp/231-corncomp-catalogue.pdf';
+---
+<div class="products-overview">
+  <header class="directory-hero content-shell">
+    <div class="directory-intro"><h1>{PRODUCT_DIRECTORY_TITLES[language]}</h1><p>{copy.intro}</p><a class="button-primary" href="#product-directory">{copy.browse}<span aria-hidden="true"> ↓</span></a></div>
+    <div class="directory-scenes">
+      <img src="/media/products-showroom-user-20261017.jpg" width="1880" height="1057" alt={mediaFor('architecture:products', language).alt} loading="eager" fetchpriority="high" />
+    </div>
+  </header>
+  <nav class="directory-jumps" aria-label={copy.browse}><div class="directory-jumps-inner">{groups.map((group) => <a href={`#range-${group.slug}`}>{group.title}</a>)}</div></nav>
+  <div class="content-shell directory-body" id="product-directory">
+    {groups.map((group) => <section class="directory-range" id={`range-${group.slug}`} aria-labelledby={`heading-${group.slug}`}>
+      <header class="range-heading"><div><h2 id={`heading-${group.slug}`}>{group.title}</h2><p>{group.intro}</p></div><a href={group.route}>{copy.range}<span aria-hidden="true"> →</span></a></header>
+      <div class="directory-categories">{group.categories.map((category) => <a class="directory-category" data-product-category={category.slug} href={category.route}>
+        <div class="directory-product-image"><ResponsiveMedia media={category.media} /></div>
+        <div class="directory-category-copy"><h3>{category.title}</h3><div><span>{category.count} {copy.series}</span><span aria-hidden="true">↗</span></div></div>
+      </a>)}</div>
+    </section>)}
+    <section class="directory-support" aria-labelledby="directory-help">
+      <div class="directory-help"><h2 id="directory-help">{copy.help}</h2><p>{copy.helpText}</p><a class="button-primary" href={routeFor(language, 'architecture:contact')}>{ui.requestQuote}</a></div>
+      <div class="directory-resources"><a href={catalogue} target="_blank" rel="noopener"><h3>{copy.catalogue}<span aria-hidden="true"> ↗</span></h3><p>{copy.pdfText}</p><span class="resource-format">PDF</span></a><a href={routeFor(language, 'architecture:custom-packaging')}><h3>{copy.custom}<span aria-hidden="true"> →</span></h3><p>{copy.customText}</p></a></div>
+    </section>
+  </div>
+</div>
+<style>
+  .products-overview { color: var(--corncomp-deep-green); }
+  .directory-hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; padding-block: 48px; }
+  .directory-intro h1 { max-width: 590px; font-size: clamp(2.6rem, 4.4vw, 3.8rem); line-height: 1.05; letter-spacing: -.04em; text-wrap: pretty; }
+  .directory-intro > p { max-width: 490px; margin: 22px 0 26px; color: var(--corncomp-muted); font-size: 1.05rem; line-height: 1.65; text-wrap: pretty; }
+  .directory-scenes img { width: 100%; height: auto; border-radius: 4px; }
+  .directory-jumps { border-block: 1px solid var(--corncomp-line); background: var(--corncomp-paper); }
+  .directory-jumps-inner { width: min(1160px, calc(100% - 48px)); margin-inline: auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .directory-jumps a { display: flex; align-items: center; justify-content: center; min-height: 68px; padding: 14px; text-align: center; text-decoration: none; font-weight: 700; line-height: 1.3; }
+  .directory-jumps a + a { border-inline-start: 1px solid var(--corncomp-line); }
+  .directory-jumps a:hover, .directory-jumps a:focus-visible { background: var(--corncomp-sage); }
+  .directory-body { padding-block: 56px 80px; }
+  .directory-range { padding-bottom: 58px; margin-bottom: 50px; border-bottom: 1px solid var(--corncomp-line); scroll-margin-top: 8px; }
+  .range-heading { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 26px; }
+  .range-heading h2 { margin: 0; font-size: clamp(1.7rem, 2.6vw, 2.3rem); letter-spacing: -.03em; line-height: 1.2; }
+  .range-heading p { margin: 9px 0 0; color: var(--corncomp-muted); line-height: 1.5; }
+  .range-heading > a { flex: 0 0 auto; color: var(--corncomp-green); font-size: .9rem; font-weight: 700; text-underline-offset: 6px; }
+  .directory-categories { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+  .directory-category { min-width: 0; text-decoration: none; border: 1px solid var(--corncomp-line); border-radius: 4px; overflow: hidden; background: #fff; transition: border-color .2s ease; }
+  .directory-category:hover, .directory-category:focus-visible { border-color: var(--corncomp-green); }
+  .directory-product-image { aspect-ratio: 4 / 3; padding: 24px; background: #fff; overflow: hidden; }
+  .directory-product-image :global(img) { width: 100%; height: 100%; transition: transform .25s ease; }
+  .directory-category:hover :global(img) { transform: scale(1.04); }
+  .directory-category-copy { padding: 18px 18px 20px; background: var(--corncomp-paper); border-top: 1px solid var(--corncomp-line); }
+  .directory-category h3 { margin: 0 0 13px; font-size: 1.08rem; font-weight: 700; line-height: 1.35; text-wrap: pretty; }
+  .directory-category-copy > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: .82rem; line-height: 1.4; color: var(--corncomp-muted); }
+  .directory-category-copy > div > span:last-child { font-size: 1.2rem; color: var(--corncomp-green); }
+  .directory-support { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding: 38px; border-radius: 4px; background: var(--corncomp-sage); }
+  .directory-help h2 { margin: 0; font-size: 2rem; letter-spacing: -.025em; line-height: 1.2; }
+  .directory-help p { margin: 16px 0 22px; max-width: 400px; line-height: 1.6; }
+  .directory-resources { display: grid; align-content: center; }
+  .directory-resources > a { display: block; position: relative; padding-block: 18px; text-decoration: none; }
+  .directory-resources > a + a { border-top: 1px solid rgba(18,56,35,.2); }
+  .directory-resources h3 { margin: 0 0 8px; font-size: 1.1rem; line-height: 1.4; }
+  .directory-resources a:hover h3 { text-decoration: underline; text-underline-offset: 5px; }
+  .directory-resources p { margin: 0; max-width: 360px; font-size: .9rem; line-height: 1.5; }
+  .resource-format { display: inline-block; margin-top: 10px; font-size: .75rem; font-weight: 700; }
+  @media (max-width: 980px) {
+    .directory-hero { gap: 28px; }
+    .directory-categories { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .directory-support { gap: 32px; padding: 28px; }
+  }
+  @media (max-width: 760px) {
+    .directory-hero { grid-template-columns: 1fr; gap: 26px; padding-block: 30px; }
+    .directory-intro h1 { font-size: 2.5rem; }
+    .directory-intro > p { margin: 16px 0 22px; font-size: 1rem; }
+    .directory-jumps-inner { width: calc(100% - 32px); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .directory-jumps a { min-height: 54px; font-size: .88rem; padding: 10px; }
+    .directory-jumps a:nth-child(3) { border-inline-start: 0; }
+    .directory-jumps a:nth-child(n+3) { border-top: 1px solid var(--corncomp-line); }
+    .directory-body { padding-block: 34px 48px; }
+    .directory-range { padding-bottom: 34px; margin-bottom: 32px; }
+    .range-heading { display: block; margin-bottom: 20px; }
+    .range-heading > a { display: inline-block; margin-top: 14px; min-height: 32px; }
+    .directory-categories { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .directory-product-image { padding: 12px; }
+    .directory-category-copy { padding: 12px; }
+    .directory-category h3 { font-size: .96rem; }
+    .directory-category-copy > div { font-size: .75rem; gap: 6px; }
+    .directory-support { grid-template-columns: 1fr; gap: 22px; padding: 24px; }
+    .directory-help h2 { font-size: 1.65rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .directory-category, .directory-product-image :global(img) { transition: none; } .directory-category:hover :global(img) { transform: none; } }
+</style>

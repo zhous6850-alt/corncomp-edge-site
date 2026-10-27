@@ -8,12 +8,14 @@ const { source, entry, bodyHtml, language, breadcrumbs, relatedPosts, labels } =
 const postMedia = (post, localized, fit = 'contain') => {
   const image = post.featuredMedia;
   if (!image) return null;
+  if (post.id === 337) return { src: '/media/about/corncomp-certificate-preview.svg', width: 1600, height: 900, alt: 'BRCGS / FSC / ISO 9001 / BPI', fit: 'contain', position: 'center', evidence: 'certificate' };
   const { width, height } = mediaInventory.find(({ id }) => id === image.id).media_details;
   return { src: image.localPath, width, height, alt: language === 'en' ? image.alt : localized.alt, fit, position: 'center', evidence: 'application' };
 };
 const sections = [];
 const usedIds = new Set([...bodyHtml.matchAll(/\bid\s*=\s*(["'])(.*?)\1/gi)].map(([, , id]) => id));
-const articleHtml = bodyHtml.replace(/<h2\b([^>]*)>([\s\S]*?)<\/h2>/gi, (heading, attributes, title) => {
+const displayBody = source.id === 337 ? bodyHtml.replace(/<img\b[^>]*616-verifying-certification-documents[^>]*>/gi, '<img src="/media/about/corncomp-certificate-preview.svg" width="1600" height="900" alt="BRCGS / FSC / ISO 9001 / BPI" loading="lazy" decoding="async"/>') : bodyHtml;
+const articleHtml = displayBody.replace(/<h2\b([^>]*)>([\s\S]*?)<\/h2>/gi, (heading, attributes, title) => {
   let id = attributes.match(/\bid\s*=\s*(["'])(.*?)\1/i)?.[2];
   if (!id) {
     let index = sections.length + 1;

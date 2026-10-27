@@ -1,0 +1,277 @@
+[
+  {
+    "legacy_url": "https://corn-comp.com/nonexistent-codex-seo-audit-20261027/",
+    "candidate_target": "",
+    "decision": "test_only_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/sitemap_index.xml",
+    "candidate_target": "https://corn-comp.com/sitemap.xml",
+    "decision": "sitemap_compatibility_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/product-category/أكواب-ورقية/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%A7%D9%84%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/product-category/أدوات-مائدة/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%A3%D8%AF%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D8%AF%D8%A9-%D8%A3%D8%AD%D8%A7%D8%AF%D9%8A%D8%A9-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/fr/product-category/paille-en-papier/",
+    "candidate_target": "https://corn-comp.com/fr/produits/fournitures-restauration/pailles-papier/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/product-category/cubiertos/",
+    "candidate_target": "https://corn-comp.com/es/productos/suministros-para-restauracion/cubiertos-desechables/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/product-category/caja-de-menu-caja-de-comida-redonda/",
+    "candidate_target": "https://corn-comp.com/es/productos/cajas-y-envases/",
+    "decision": "ready_parent_category_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/product-category/caja-de-ensalada/",
+    "candidate_target": "https://corn-comp.com/es/productos/cajas-y-envases/cajas-para-ensaladas/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/product-category/علب-برغر-علب-راب-علب-ساندويتش-قطعة-بيت/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%B9%D9%84%D8%A8-%D9%88%D8%AD%D8%A7%D9%88%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/",
+    "decision": "ready_parent_category_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/product-category/مصاصات-ورقية/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D8%B5%D8%A7%D8%AA-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D9%8A%D8%A9/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/كيفية-التحقق-من-صحة-شهادات-الاستدامة-ا/",
+    "candidate_target": "https://corn-comp.com/ar/%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D8%AD%D9%82%D9%82-%D9%85%D9%86-%D8%B5%D8%AD%D8%A9-%D8%B4%D9%87%D8%A7%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AF%D8%A7%D9%85%D8%A9-%D8%A7/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/",
+    "candidate_target": "https://corn-comp.com/es/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/product-category/vaso-cuenco-para-sopa/",
+    "candidate_target": "https://corn-comp.com/es/productos/vasos-y-cuencos/vasos-para-sopa/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/leyes-estatales-eeuu-empaques-plasticos/",
+    "candidate_target": "https://corn-comp.com/es/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/product-category/أكواب-أوعية-ورقية-للحساء/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%A3%D9%83%D9%88%D8%A7%D8%A8-%D8%A7%D9%84%D8%AD%D8%B3%D8%A7%D8%A1/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/quest-ce-que-la-certification-bpi-en-quoi-elle-differe-de-la-certification-fsc/",
+    "candidate_target": "https://corn-comp.com/fr/quest-ce-que-la-certification-bpi-en-quoi-elle-differe-de-la-certification-fsc/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/gobelet-en-papier/",
+    "candidate_target": "https://corn-comp.com/fr/produits/gobelets-bols/gobelets-papier/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/fr/la-confiance-des-grandes-marques-etudes-de-cas-corncomp/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/fr/faq-corncomp/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/couverts/",
+    "candidate_target": "https://corn-comp.com/fr/produits/fournitures-restauration/couverts-jetables/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/product-category/vaso-cuenco-para-sopa/feed/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/product-category/cuenco-para-ensalada/",
+    "candidate_target": "https://corn-comp.com/es/productos/vasos-y-cuencos/cuencos-para-ensaladas/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/boite-a-salade/",
+    "candidate_target": "https://corn-comp.com/fr/produits/boites-contenants-alimentaires/boites-salades/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/la-confianza-de-las-marcas-globales-casos-de-estudio-de-corncomp/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/product-category/علب-الوجبات-علب-طعام-دائرية/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%B9%D9%84%D8%A8-%D9%88%D8%AD%D8%A7%D9%88%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%B9%D8%A7%D9%85/",
+    "decision": "ready_parent_category_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/الأسئلة-الشائعة-corncomp/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/product-category/pajitas-de-papel/",
+    "candidate_target": "https://corn-comp.com/es/productos/suministros-para-restauracion/pajitas-de-papel/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/",
+    "candidate_target": "https://corn-comp.com/es/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ما-هي-شهادة-bpi؟-وكيف-تختلف-عن-شهادة-fsc/",
+    "candidate_target": "https://corn-comp.com/ar/%D9%85%D8%A7-%D9%87%D9%8A-%D8%B4%D9%87%D8%A7%D8%AF%D8%A9-bpi%D8%9F-%D9%88%D9%83%D9%8A%D9%81-%D8%AA%D8%AE%D8%AA%D9%84%D9%81-%D8%B9%D9%86-%D8%B4%D9%87%D8%A7%D8%AF%D8%A9-fsc/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/qwanin-tbyt-lblastyk-alwlayat-almthdt/",
+    "candidate_target": "https://corn-comp.com/ar/%D9%82%D9%88%D8%A7%D9%86%D9%8A%D9%86-%D8%A7%D9%84%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A%D9%83%D9%8A%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D9%88%D9%84%D8%A7%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D9%8A%D8%A9/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/دراسات-حالة-corncomp/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/directive-europeenne-sur-les-plastiques-a-usage-unique-ce-quelle-signifie-pour-les-acheteurs-demballages/",
+    "candidate_target": "https://corn-comp.com/fr/directive-europeenne-sur-les-plastiques-a-usage-unique-ce-quelle-signifie-pour-les-acheteurs-demballages/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/product-category/أوعية-ورقية-للسلطة/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%A3%D9%88%D8%B9%D9%8A%D8%A9-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/biodegradable-food-packaging/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/توجيه-الاتحاد-الأوروبي-بشأن-البلاستي/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%AA%D9%88%D8%AC%D9%8A%D9%87-%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%B3%D8%AA%D9%8A/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/gobelet-bol-a-soupe/",
+    "candidate_target": "https://corn-comp.com/fr/produits/gobelets-bols/pots-soupe/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/es/preguntas-frecuentes-corncomp/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/",
+    "candidate_target": "https://corn-comp.com/es/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/compostable-food-packaging/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/hello-world/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/gobelet-en-papier/feed/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/feed/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-tag/biodegradable-disposable-utensils/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ما-هي-شهادة-bpi؟-وكيف-تختلف-عن-شهادة-fsc/feed/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product/kraft-ppaer-bowl/",
+    "candidate_target": "",
+    "decision": "hold"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-tag/fsc/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product/couvercle-en-pla-pour-gobelet-a-soupe/feed/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/ar/product-category/علب-ورقية-للسلطة/",
+    "candidate_target": "https://corn-comp.com/ar/%D8%B9%D9%84%D8%A8-%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A9/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-tag/recyclable/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-tag/eco-friendly-burrito-containers/",
+    "candidate_target": "",
+    "decision": "retain_404_no_change"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/sandwich-box/",
+    "candidate_target": "https://corn-comp.com/products/food-boxes-containers/sandwich-boxes/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/wrap-box/",
+    "candidate_target": "https://corn-comp.com/products/food-boxes-containers/wrap-boxes/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/hamburger-box/",
+    "candidate_target": "https://corn-comp.com/products/food-boxes-containers/burger-boxes/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/square-food-box/",
+    "candidate_target": "https://corn-comp.com/products/food-boxes-containers/square-food-boxes/",
+    "decision": "ready_for_preview"
+  },
+  {
+    "legacy_url": "https://corn-comp.com/product-category/round-food-box/",
+    "candidate_target": "https://corn-comp.com/products/food-boxes-containers/round-food-boxes/",
+    "decision": "ready_for_preview"
+  }
+]

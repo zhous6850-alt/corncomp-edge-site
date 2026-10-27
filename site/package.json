@@ -3,12 +3,16 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/optimize-home-images.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/optimize-home-images.mjs",
     "build": "astro build",
+    "postbuild": "node scripts/optimize-site-images.mjs",
     "preview": "astro preview",
     "test": "node --test src/lib/*.test.mjs"
   },
   "dependencies": {
-    "astro": "5.18.2"
+    "astro": "5.18.2",
+    "parse5": "7.3.0"
   }
 }

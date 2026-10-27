@@ -1,0 +1,9 @@
+# FAQ migration preview
+
+Source: https://corncomp-yumi.pages.dev/faq/, read in full using agent-reach/Jina on 2026-10-19. Twelve questions retained. Named archived customer designs generalized to branded project photographs; the prohibition on reproduction without permission is preserved. Commercial MOQ and lead-time qualifiers retained. BPI 352 g/m² scope checked against current certificates.mjs; the two DIN holders remain distinct. Links point to current Quality and certification-guide routes, not the old site. No new shipping, performance or certification promises.
+
+Design read: buyer-support page within the existing editorial B2B site; native topic navigation and details/summary accordions. DESIGN_VARIANCE 4, MOTION_INTENSITY 1, VISUAL_DENSITY 6. Preserve Corncomp logo, typography, deep-green / warm-paper brand and shared navigation. FAQ content takes priority over decorative photos; no fabricated testimonial, stock photograph or generated evidence is needed. Four thematic groups, sticky topic index on desktop, two-column topic links and single-column answers on phones. First answer open; all answers remain readable without JavaScript. Keyboard focus visible.
+
+FAQPage schema is generated from the exact same twelve visible answers. BreadcrumbList uses Home > Resources > FAQ. This is schema for semantic accuracy, not a promise of search rich results. Preview route /design-preview/faq/; intended public route /faq/. Resources submenu entry added in shared Header. Deploy preview only until user approves publication. Other languages will not be presented as translated FAQ content without a reviewed translation.
+
+Copy review: retained precise practical answers, removed the source em dash, updated internal links, preserved scope and order-specific conditions. Shared brand assets /media/corncomp-logo.png and existing site fonts, inherited through BaseLayout.

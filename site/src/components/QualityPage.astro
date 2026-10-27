@@ -1,0 +1,135 @@
+---
+const { preview = true } = Astro.props;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResponsiveMedia from '../components/ResponsiveMedia.astro';
+import { companyCertificates, supplyChainDocuments } from '../data/certificates.mjs';
+
+const groups = {
+  'iso-9001': 'Quality management',
+  'brcgs-packaging': 'Site & processes',
+  'fsc-coc': 'Chain of Custody',
+  'bpi-straws': 'Specific product scope',
+};
+const records = companyCertificates().sort((a, b) => ['iso-9001', 'brcgs-packaging', 'fsc-coc', 'bpi-straws'].indexOf(a.key) - ['iso-9001', 'brcgs-packaging', 'fsc-coc', 'bpi-straws'].indexOf(b.key));
+const supplierDocuments = supplyChainDocuments().map((record, index) => ({ ...record, overview: index === 0 ? '/media/din-material-overview.jpg' : '/media/din-container-overview.jpg' }));
+const enquiry = '/contact/?' + new URLSearchParams({ category: 'Quality & product documentation', source: '/quality/' }).toString();
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Quality & certifications.', url: 'https://corn-comp.com/quality/', about: { '@id': 'https://corn-comp.com/#organization' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://corn-comp.com/' }, { '@type': 'ListItem', position: 2, name: 'Quality & certifications', item: 'https://corn-comp.com/quality/' }] },
+];
+---
+<BaseLayout title={preview ? 'Quality & Certifications - Design Preview | Corncomp' : 'Quality & Certifications | Corncomp'} description="Review Corncomp certificates, their scope and original documents. Match product and material evidence to your order." pathname="/quality/" bodyClass="architecture-site" structuredData={schema} image={records[0].image.src}>
+  {preview && <div class="preview-note">DESIGN PREVIEW · 质量与认证页 · 正式站未修改</div>}
+  <div class="quality-preview">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Quality & certifications</span></nav>
+    <header class="quality-hero">
+      <div class="hero-copy"><p class="eyebrow">CORNCOMP / QUALITY</p><h1>Quality &<br/><span>certifications.</span></h1><p>Review the documents behind our packaging. Confirm the scope for your product, construction and market.</p><a class="primary-action" href="#documents">Explore documents <span aria-hidden="true">↘</span></a></div>
+      <div class="hero-documents" aria-label="Corncomp certificate images">
+        {records.map((record) => <a class="hero-document" href={record.image.src} data-certificate data-title={record.title} aria-label={'Enlarge original certificate: ' + record.title}>
+          <ResponsiveMedia media={record.image} eager/>
+          <span>{record.title}<b aria-hidden="true">↗</b></span>
+        </a>)}
+      </div>
+    </header>
+
+    <nav class="quality-index" aria-label="Quality page sections">
+      <a href="#documents"><span>Certificates</span><strong>Review the scope</strong><b aria-hidden="true">↘</b></a>
+      <a href="#materials"><span>Material documents</span><strong>Check the source</strong><b aria-hidden="true">↘</b></a>
+      <a href="#product-brief"><span>Your product</span><strong>Request the right evidence</strong><b aria-hidden="true">↘</b></a>
+    </nav>
+
+    <section id="documents" class="documents-section" aria-labelledby="documents-title">
+      <div class="section-heading"><h2 id="documents-title">Start with what<br/>each document covers.</h2><p>These documents cover different things: a management system, a site, a supply chain or specific products. Select a certificate to view the complete original.</p></div>
+      <div class="certificate-grid">
+        {records.map((record) => <article class="quality-certificate">
+          <a class="document-thumb" href={record.image.src} data-certificate data-title={record.title} aria-label={'Enlarge original certificate: ' + record.title}><ResponsiveMedia media={record.image}/><span>View original <b aria-hidden="true">↗</b></span></a>
+          <div class="certificate-copy"><p class="scope-label">{groups[record.key]}</p><h3>{record.title}</h3><p class="scope-summary">{record.scope}</p><div class="document-reference"><span>Certificate no.</span><strong>{record.certificateNumber}</strong></div><p class="document-date">Document expiry <time datetime={record.validUntil}>{record.validUntil}</time></p><details><summary>Holder & standard</summary><dl><div><dt>Holder</dt><dd>{record.holder}</dd></div><div><dt>Standard</dt><dd>{record.standard}</dd></div></dl></details></div>
+        </article>)}
+      </div>
+      <p class="document-note">Dates are those stated in the displayed documents. Confirm current validity and the exact order scope before relying on a claim.</p>
+    </section>
+
+    <section id="materials" class="materials-section" aria-labelledby="materials-title">
+      <div class="material-intro"><p class="eyebrow">SUPPLY-CHAIN DOCUMENTS</p><h2 id="materials-title">A material certificate<br/>has its own scope.</h2><p>The documents here name other certificate holders. Review them separately from Corncomp-held certificates and match the listed material or construction to the proposed product.</p></div>
+<div class="material-documents">{supplierDocuments.map((record) => <article class="material-document"><div><h3>{record.title}</h3><p class="holder">{record.holder}</p><p>{record.scope}</p><details><summary>Document details</summary><dl><div><dt>Registration no.</dt><dd>{record.certificateNumber}</dd></div><div><dt>Standard</dt><dd>{record.standard}</dd></div><div><dt>Document expiry</dt><dd><time datetime={record.validUntil}>{record.validUntil}</time></dd></div></dl></details></div><figure class="material-overview"><button type="button" data-overview data-image={record.overview} data-title={record.title} aria-label={'Enlarge overview: ' + record.title}><img src={record.overview} width="212" height="300" alt={record.title + ' certificate image'} loading="lazy"/><span>Enlarge ↗</span></button><figcaption>Certificate image</figcaption></figure></article>)}</div>
+    </section>
+
+    <section id="product-brief" class="product-brief" aria-labelledby="brief-title">
+      <div class="brief-heading"><h2 id="brief-title">Which documents<br/>does your order need?</h2><p>Start with the exact product and intended use. We can review which available documents relate to the proposed specification.</p><a class="guide-link" href="/resources/guides/food-packaging-certifications/">How to review certification scope ↗</a></div>
+      <div class="brief-fields"><div><h3>Product & construction</h3><p>Item reference, dimensions, material, coating, print and matching components.</p></div><div><h3>Food & use conditions</h3><p>Food type, contact temperature, holding time and the way it will be served.</p></div><div><h3>Market & required evidence</h3><p>Destination, customer requirements and the certificate or report you need to review.</p></div><a class="primary-action" href={enquiry}>Request product documents <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <p class="closing-scope">Company or site certification is not automatic certification of every SKU. Food-contact, material and compostability evidence must match the exact product construction and intended use.</p>
+  </div>
+
+  <dialog id="certificate-viewer" aria-labelledby="certificate-viewer-title" data-viewer-original="ORIGINAL CERTIFICATE" data-viewer-overview="DOCUMENT OVERVIEW" data-viewer-overview-footer="Certificate image only. Use Zoom in to read. Press Escape to close." data-viewer-original-footer="Use Zoom in to read the document. Press Escape to close." data-viewer-zoom="Zoom in" data-viewer-fit="Fit to view" data-viewer-image="certificate image" data-viewer-complete="complete original certificate">
+    <header><div><p>ORIGINAL CERTIFICATE</p><h2 id="certificate-viewer-title"></h2></div><div class="viewer-actions"><button type="button" data-zoom aria-pressed="false">Zoom in</button><button type="button" data-close autofocus>Close</button></div></header>
+    <div class="viewer-image" aria-live="polite"><img alt="" hidden/><p data-image-error hidden>The document could not load. <a data-original target="_blank" rel="noopener">Open the original file</a>.</p></div>
+    <footer><span>Use Zoom in to read the document. Press Escape to close.</span><a data-original target="_blank" rel="noopener">Open original file ↗</a></footer>
+  </dialog>
+</BaseLayout>
+
+<script>
+  const viewer = document.querySelector<HTMLDialogElement>('#certificate-viewer');
+  if (viewer) {
+    const image = viewer.querySelector<HTMLImageElement>('.viewer-image img')!;
+    const title = viewer.querySelector<HTMLElement>('#certificate-viewer-title')!;
+    const zoom = viewer.querySelector<HTMLButtonElement>('[data-zoom]')!;
+    const error = viewer.querySelector<HTMLElement>('[data-image-error]')!;
+    document.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>('[data-certificate], [data-overview]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || !viewer.showModal) return;
+        event.preventDefault();
+        title.textContent = link.dataset.title!;
+        const overview = link.hasAttribute('data-overview');
+        const source = overview ? link.dataset.image! : (link as HTMLAnchorElement).href;
+        image.alt = link.dataset.title! + ' ' + (overview ? viewer.dataset.viewerImage : viewer.dataset.viewerComplete);
+        viewer.querySelector('header p')!.textContent = (overview ? viewer.dataset.viewerOverview : viewer.dataset.viewerOriginal)!;
+        viewer.querySelector('footer span')!.textContent = (overview ? viewer.dataset.viewerOverviewFooter : viewer.dataset.viewerOriginalFooter)!;
+        error.hidden = true;
+        image.hidden = false;
+        image.src = source;
+        viewer.querySelectorAll<HTMLAnchorElement>('[data-original]').forEach((a) => {
+          a.hidden = overview;
+          if (overview) a.removeAttribute('href');
+          else a.href = source;
+        });
+        viewer.classList.remove('is-zoomed');
+        zoom.textContent = viewer.dataset.viewerZoom!;
+        zoom.setAttribute('aria-pressed', 'false');
+        viewer.showModal();
+      });
+    });
+    image.addEventListener('error', () => { image.hidden = true; error.hidden = false; });
+    viewer.querySelector('[data-close]')!.addEventListener('click', () => viewer.close());
+    zoom.addEventListener('click', () => {
+      const active = viewer.classList.toggle('is-zoomed');
+      zoom.textContent = (active ? viewer.dataset.viewerFit : viewer.dataset.viewerZoom)!;
+      zoom.setAttribute('aria-pressed', String(active));
+    });
+    viewer.addEventListener('click', (event) => { if (event.target === viewer) viewer.close(); });
+    viewer.addEventListener('close', () => { image.removeAttribute('src'); image.hidden = true; });
+  }
+</script>
+
+<style>
+  .hero-documents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 30px;padding:28px 48px 44px;background:#e8ede2;min-width:0}.hero-document{display:block;min-width:0;text-decoration:none}.hero-document:nth-child(even){transform:translateY(16px)}.hero-document :global(img){display:block;width:100%;height:174px;object-fit:contain;background:#fff;padding:9px;box-shadow:0 5px 14px rgb(28 57 39 / .08)}.hero-document>span{display:flex;justify-content:space-between;gap:8px;font-size:11px;line-height:1.4;margin-top:10px}.hero-document b{font-size:15px;font-weight:400}.hero-document:hover>span{text-decoration:underline;text-underline-offset:4px}.hero-document:active{opacity:.8}
+  @media(max-width:760px){.hero-documents{padding:24px 28px 40px;gap:20px}.hero-document :global(img){height:150px}.hero-document>span{font-size:10px}}
+  .material-overview button{border:0;background:transparent;padding:0;color:inherit;cursor:zoom-in;width:100%}.material-overview button:hover img{outline:2px solid #718466}.material-overview button span{display:block;font-size:10px;margin-top:8px}.viewer-actions button[hidden],[data-original][hidden]{display:none}
+  .quality-preview{--ink:#1c3927;--sage:#718466;--muted:#657064;--line:#d4ddcf;max-width:1400px;padding:0 48px 64px;margin:auto;color:var(--ink)}
+  .preview-note{padding:8px 16px;background:#edf1e7;text-align:center;color:#405e42;font-size:11px}.crumb{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted);padding:28px 0}.crumb a{text-decoration:none}
+  h1,h2,h3,p{ text-wrap:pretty }a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #7b945e;outline-offset:5px}.eyebrow{font-size:10px;letter-spacing:.14em;font-weight:700;margin:0 0 20px}
+  .quality-hero{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center;padding:24px 0 44px}.quality-hero h1{font-size:clamp(44px,4.8vw,68px);letter-spacing:-.05em;line-height:1.05;margin:0 0 26px}.quality-hero h1 span{color:var(--sage)}.hero-copy>p:not(.eyebrow){font-size:17px;line-height:1.8;color:var(--muted);max-width:440px;margin:0 0 28px}
+  .quality-hero figure{margin:0;min-width:0}.quality-hero figure :global(img){display:block;width:100%;height:340px;object-fit:cover}.quality-hero figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 18px;font-size:10px;line-height:1.8;color:var(--muted);padding-top:12px}.quality-hero figcaption a{text-underline-offset:4px}
+  .primary-action{display:inline-flex;gap:28px;align-items:center;justify-content:space-between;min-height:52px;padding:16px 22px;background:#3d6145;border-radius:3px;color:#f3f1dd;text-decoration:none;font-weight:700;font-size:13px}.primary-action:hover{background:#1c3927}
+  .quality-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--line);padding:24px 0;gap:32px}.quality-index a{display:grid;grid-template-columns:1fr auto;gap:5px 12px;text-decoration:none;padding:5px 0}.quality-index span{grid-column:1;font-size:11px;color:var(--muted)}.quality-index strong{font-size:17px;font-weight:500}.quality-index b{grid-column:2;grid-row:1/3;align-self:center;font-size:22px;font-weight:400}.quality-index a:hover strong{text-decoration:underline;text-underline-offset:5px}
+  section{scroll-margin-top:120px}.documents-section{padding:64px 0}.section-heading{max-width:720px;margin-bottom:32px}h2{font-size:clamp(32px,3.4vw,46px);line-height:1.1;letter-spacing:-.04em;margin:0 0 20px}.section-heading>p,.material-intro>p:not(.eyebrow),.brief-heading>p{font-size:16px;line-height:1.8;color:var(--muted);max-width:650px}
+  .certificate-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.quality-certificate{display:grid;grid-template-columns:145px minmax(0,1fr);gap:24px;padding:26px;border:1px solid var(--line);align-items:start;background:#fff}
+  .document-thumb{display:flex;flex-direction:column;background:#f1f2e9;padding:12px;text-decoration:none;gap:14px}.document-thumb :global(img){width:100%;height:174px;object-fit:contain;display:block}.document-thumb>span{font-size:10px;display:flex;align-items:center;justify-content:space-between;min-height:30px}.document-thumb b{font-size:16px;font-weight:400}.document-thumb:hover{background:#e5ebdd}
+  .certificate-copy{min-width:0}.scope-label{font-size:10px;color:var(--ink);margin:0 0 10px}.certificate-copy h3{font-size:24px;line-height:1.15;letter-spacing:-.025em;margin:0 0 14px}.scope-summary{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 20px}.document-reference{border-top:1px solid var(--line);padding-top:14px}.document-reference>span{display:block;font-size:10px;color:var(--muted);margin-bottom:5px}.document-reference strong{font-size:12px;font-weight:500;overflow-wrap:anywhere}.document-date{display:flex;flex-wrap:wrap;gap:5px 16px;font-size:10px;color:var(--muted);margin:10px 0 16px}.document-date time{color:var(--ink)}
+  details{font-size:12px}summary{cursor:pointer;text-underline-offset:4px;min-height:30px;padding:5px 0}summary:hover{text-decoration:underline}dl{margin:12px 0 0}dl>div{margin-bottom:12px}dt{font-size:10px;color:var(--muted);margin-bottom:4px}dd{margin:0;font-size:12px;line-height:1.7;overflow-wrap:anywhere}.document-note,.closing-scope{font-size:12px;line-height:1.8;color:var(--muted);margin:20px 0 0}
+  .materials-section{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;background:#edf1e7;padding:44px}.material-intro>p:not(.eyebrow){font-size:14px}.material-document{display:grid;grid-template-columns:1fr auto;gap:24px;padding:24px 0;border-top:1px solid #cbd5c3}.material-document:first-child{padding-top:0;border-top:0}.material-document:last-child{padding-bottom:0}.material-document h3{font-size:23px;line-height:1.2;letter-spacing:-.025em;margin:0 0 12px}.material-document p{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 14px}.material-document .holder{font-size:11px;color:var(--ink)}.material-overview{margin:0;width:90px;align-self:start;text-align:center}.material-overview img{display:block;width:90px;height:128px;object-fit:contain;background:#fff;padding:6px}.material-overview figcaption{font-size:9px;color:var(--muted);margin-top:9px}
+  .product-brief{display:grid;grid-template-columns:1fr 1fr;gap:88px;padding:64px 0 32px}.guide-link{display:inline-block;margin-top:14px;font-size:13px;text-underline-offset:5px}.brief-fields>div{border-top:1px solid var(--line);padding:20px 0}.brief-fields h3{font-size:19px;letter-spacing:-.02em;margin:0 0 10px}.brief-fields p{font-size:14px;line-height:1.8;color:var(--muted);margin:0}.brief-fields .primary-action{margin-top:12px}.closing-scope{border-top:1px solid var(--line);padding-top:20px;margin:0}
+  dialog{width:min(1040px,calc(100vw - 32px));max-height:94dvh;border:1px solid #d4ddcf;padding:0;color:#1c3927;background:#fffef8;border-radius:4px}dialog::backdrop{background:rgb(14 30 20 / .76)}dialog>header,dialog>footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px}dialog>header{border-bottom:1px solid #d4ddcf}dialog header p{font-size:9px;letter-spacing:.12em;color:#657064;margin:0 0 7px}dialog h2{font-size:22px;margin:0;letter-spacing:-.02em}.viewer-actions{display:flex;gap:10px}.viewer-actions button{background:#edf1e7;border:1px solid #cbd5c3;padding:10px 16px;color:#1c3927;min-height:44px;font-size:12px;cursor:pointer;white-space:nowrap}.viewer-actions button:hover{background:#dce6d4}.viewer-image{max-height:70dvh;overflow:auto;background:#e8e9e1;padding:20px;text-align:center}.viewer-image img{display:block;width:auto;max-width:100%;height:auto;max-height:65dvh;margin:auto}.viewer-image img[hidden],.viewer-image p[hidden]{display:none}.is-zoomed .viewer-image img{width:1100px;max-width:none;max-height:none}.viewer-image p{font-size:14px;padding:30px}dialog>footer{font-size:11px;line-height:1.7;color:#657064}dialog>footer a{white-space:nowrap;text-underline-offset:4px}
+  @media(max-width:1100px){.quality-preview{padding-inline:28px}.quality-hero{gap:36px}.quality-hero figure :global(img){height:300px}.quality-certificate{grid-template-columns:110px minmax(0,1fr);gap:18px;padding:22px}.document-thumb{padding:9px}.document-thumb :global(img){height:150px}.certificate-copy h3{font-size:22px}.materials-section{gap:32px;padding:32px}.product-brief{gap:48px}}
+  @media(max-width:760px){.quality-preview{padding:0 20px 36px}.crumb{font-size:12px;padding:20px 0}.quality-hero{grid-template-columns:1fr;gap:28px;padding:16px 0 32px}.quality-hero h1{font-size:48px}.hero-copy>p:not(.eyebrow){font-size:16px}.quality-hero figure :global(img){height:260px}.quality-index{grid-template-columns:1fr;gap:0;padding:8px 0}.quality-index a{padding:17px 0;border-bottom:1px solid var(--line)}.quality-index a:last-child{border-bottom:0}.quality-index strong{font-size:17px}.documents-section{padding:40px 0}.certificate-grid{grid-template-columns:1fr;gap:18px}.quality-certificate{grid-template-columns:95px minmax(0,1fr);gap:17px;padding:20px}.document-thumb :global(img){height:132px}.document-thumb>span{font-size:9px}.certificate-copy h3{font-size:23px}.scope-summary{font-size:13px}.materials-section{grid-template-columns:1fr;padding:28px 24px;gap:24px}.material-document{gap:16px}.material-document h3{font-size:22px}.product-brief{grid-template-columns:1fr;gap:24px;padding:40px 0 28px}h2{font-size:34px}dialog>header{padding:16px;align-items:start;flex-direction:column;gap:14px}.viewer-actions{width:100%;justify-content:end}.viewer-image{padding:12px;max-height:62dvh}.viewer-image img{max-height:58dvh}dialog>footer{padding:14px 16px;flex-wrap:wrap;gap:8px}dialog h2{font-size:20px}}
+</style>

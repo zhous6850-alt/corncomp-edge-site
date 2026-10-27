@@ -1,0 +1,1434 @@
+[
+  {
+    "seriesKey": "round-paper-plate",
+    "sourceName": "Round Paper Plate",
+    "pdfPage": 2,
+    "printedPages": [
+      "inside cover"
+    ],
+    "categorySlug": "paper-plates",
+    "productSlug": "round-paper-plate",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 2",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "oval-paper-plate",
+    "sourceName": "Oval Paper Plate",
+    "pdfPage": 2,
+    "printedPages": [
+      "inside cover"
+    ],
+    "categorySlug": "paper-plates",
+    "productSlug": "oval-paper-plate",
+    "status": "existing",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 2",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "kraft-paper-bowl",
+    "sourceName": "Kraft Paper Bowl",
+    "pdfPage": 3,
+    "printedPages": [
+      "02"
+    ],
+    "categorySlug": "salad-bowls",
+    "productSlug": "kraft-paper-bowl",
+    "status": "existing",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 3",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-bamboo-bowl",
+    "sourceName": "Cardboard Bowl",
+    "pdfPage": 4,
+    "printedPages": [
+      "03"
+    ],
+    "categorySlug": "salad-bowls",
+    "productSlug": "cardboard-bamboo-bowl",
+    "status": "existing",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 4",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "pet-lid",
+    "sourceName": "PET Lid",
+    "pdfPage": 4,
+    "printedPages": [
+      "03"
+    ],
+    "categorySlug": "salad-bowls",
+    "productSlug": "pet-lid",
+    "status": "existing",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 4",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "pp-lid",
+    "sourceName": "PP Lid",
+    "pdfPage": 4,
+    "printedPages": [
+      "04"
+    ],
+    "categorySlug": "salad-bowls",
+    "productSlug": "pp-lid",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 4",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "pla-lid",
+    "sourceName": "PLA Lid",
+    "pdfPage": 4,
+    "printedPages": [
+      "04"
+    ],
+    "categorySlug": "salad-bowls",
+    "productSlug": "pla-lid",
+    "status": "existing",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 4",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "paper-lid",
+    "sourceName": "Paper Lid",
+    "pdfPage": 4,
+    "printedPages": [
+      "04"
+    ],
+    "categorySlug": "salad-bowls",
+    "productSlug": "paper-lid",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 4",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "natural-kraft-soup-cup",
+    "sourceName": "Natural Kraft Soup Cup",
+    "pdfPage": 5,
+    "printedPages": [
+      "05"
+    ],
+    "categorySlug": "soup-cups",
+    "productSlug": "natural-kraft-soup-cup",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 5",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-soup-cup",
+    "sourceName": "Cardboard Soup Cup",
+    "pdfPage": 5,
+    "printedPages": [
+      "05"
+    ],
+    "categorySlug": "soup-cups",
+    "productSlug": "cardboard-soup-cup",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 5",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "bamboo-paper-soup-cup",
+    "sourceName": "Bagasse Paper Soup Cup",
+    "pdfPage": 5,
+    "printedPages": [
+      "06"
+    ],
+    "categorySlug": "soup-cups",
+    "productSlug": "bamboo-paper-soup-cup",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 5",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-lid",
+    "sourceName": "Cardboard Lid",
+    "pdfPage": 5,
+    "printedPages": [
+      "06"
+    ],
+    "categorySlug": "soup-cups",
+    "productSlug": "cardboard-lid",
+    "status": "existing",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 5",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "natural-kraft-lid",
+    "sourceName": "Natural Kraft Lid",
+    "pdfPage": 5,
+    "printedPages": [
+      "06"
+    ],
+    "categorySlug": "soup-cups",
+    "productSlug": "natural-kraft-lid",
+    "status": "existing",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 5",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "pla-lid-2",
+    "sourceName": "PLA Lid",
+    "pdfPage": 5,
+    "printedPages": [
+      "06"
+    ],
+    "categorySlug": "soup-cups",
+    "productSlug": "pla-lid-2",
+    "status": "existing",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 5",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "stripe-colors",
+    "sourceName": "Stripe Colors",
+    "pdfPage": 7,
+    "printedPages": [
+      "09"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "stripe-colors",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 7",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "stripe-colors-2",
+    "sourceName": "Stripe Colors - assorted",
+    "pdfPage": 7,
+    "printedPages": [
+      "09"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "stripe-colors-2",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 7",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "solid-colors-with-bamboo-fiber-wooden-fiber",
+    "sourceName": "Solid Colors with Bamboo Fiber / Wooden Fiber",
+    "pdfPage": 7,
+    "printedPages": [
+      "10"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "solid-colors-with-bamboo-fiber-wooden-fiber",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 7",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "printed-stripe-paper-straws",
+    "sourceName": "Stripe Colors - decorative patterns",
+    "pdfPage": 8,
+    "printedPages": [
+      "11"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "printed-stripe-paper-straws",
+    "status": "new",
+    "specificationRows": 1,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 8",
+    "unresolved": [
+      "Colour and print patterns are shown in the catalogue; confirm the selected design."
+    ]
+  },
+  {
+    "seriesKey": "small-dot-paper-straws",
+    "sourceName": "Small Dot Colors",
+    "pdfPage": 8,
+    "printedPages": [
+      "12"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "small-dot-paper-straws",
+    "status": "new",
+    "specificationRows": 1,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 8",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "big-dot-paper-straws",
+    "sourceName": "Big Dot Colors",
+    "pdfPage": 8,
+    "printedPages": [
+      "12"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "big-dot-paper-straws",
+    "status": "new",
+    "specificationRows": 1,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 8",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "wave-paper-straws",
+    "sourceName": "Wave Colors",
+    "pdfPage": 8,
+    "printedPages": [
+      "12"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "wave-paper-straws",
+    "status": "new",
+    "specificationRows": 1,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 8",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "sharp-edge",
+    "sourceName": "Sharp edge",
+    "pdfPage": 9,
+    "printedPages": [
+      "14"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "sharp-edge",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 9",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "bendy",
+    "sourceName": "Bendy",
+    "pdfPage": 9,
+    "printedPages": [
+      "14"
+    ],
+    "categorySlug": "paper-straws",
+    "productSlug": "bendy",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 9",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "kraft-colour-ice-cream-cup",
+    "sourceName": "Kraft Colour Ice Cream Cup",
+    "pdfPage": 10,
+    "printedPages": [
+      "15"
+    ],
+    "categorySlug": "ice-cream-cups",
+    "productSlug": "kraft-colour-ice-cream-cup",
+    "status": "existing",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 10",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-ice-cream-cup",
+    "sourceName": "Cardboard Ice Cream Cup",
+    "pdfPage": 10,
+    "printedPages": [
+      "15"
+    ],
+    "categorySlug": "ice-cream-cups",
+    "productSlug": "cardboard-ice-cream-cup",
+    "status": "new",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 10",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "pla-ice-cream-lid",
+    "sourceName": "PLA Lid",
+    "pdfPage": 10,
+    "printedPages": [
+      "15"
+    ],
+    "categorySlug": "ice-cream-cups",
+    "productSlug": "pla-ice-cream-lid",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 10",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "kraft-paper-tray",
+    "sourceName": "Kraft Paper Tray",
+    "pdfPage": 10,
+    "printedPages": [
+      "16"
+    ],
+    "categorySlug": "paper-trays",
+    "productSlug": "kraft-paper-tray",
+    "status": "new",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 10",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "two-compartment-paper-tray",
+    "sourceName": "2-Compartment Paper Tray",
+    "pdfPage": 10,
+    "printedPages": [
+      "16"
+    ],
+    "categorySlug": "paper-trays",
+    "productSlug": "two-compartment-paper-tray",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 10",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "hot-dog-tray",
+    "sourceName": "Hot Dog Tray",
+    "pdfPage": 10,
+    "printedPages": [
+      "16"
+    ],
+    "categorySlug": "paper-trays",
+    "productSlug": "hot-dog-tray",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 10",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "kraft-square-food-box",
+    "sourceName": "Kraft Square Food Box",
+    "pdfPage": 11,
+    "printedPages": [
+      "17"
+    ],
+    "categorySlug": "square-food-boxes",
+    "productSlug": "kraft-square-food-box",
+    "status": "new",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 11",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "kraft-square-food-bow-pp-handle",
+    "sourceName": "Kraft Square Food Box-pp Handle",
+    "pdfPage": 11,
+    "printedPages": [
+      "17"
+    ],
+    "categorySlug": "square-food-boxes",
+    "productSlug": "kraft-square-food-bow-pp-handle",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 11",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "kraft-square-food-box-wire-handle",
+    "sourceName": "Kraft Square Food Box-Wire Handle",
+    "pdfPage": 11,
+    "printedPages": [
+      "17"
+    ],
+    "categorySlug": "square-food-boxes",
+    "productSlug": "kraft-square-food-box-wire-handle",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 11",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "white-cardboard-food-box",
+    "sourceName": "White Cardboard Box",
+    "pdfPage": 11,
+    "printedPages": [
+      "18"
+    ],
+    "categorySlug": "square-food-boxes",
+    "productSlug": "white-cardboard-food-box",
+    "status": "new",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 11",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "white-cardboard-food-box-pp-handle",
+    "sourceName": "White Cardboard Box-pp Handle",
+    "pdfPage": 11,
+    "printedPages": [
+      "18"
+    ],
+    "categorySlug": "square-food-boxes",
+    "productSlug": "white-cardboard-food-box-pp-handle",
+    "status": "new",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 11",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "white-cardboard-box-wire-handle",
+    "sourceName": "White Cardboard Box-Wire Handle",
+    "pdfPage": 11,
+    "printedPages": [
+      "18"
+    ],
+    "categorySlug": "square-food-boxes",
+    "productSlug": "white-cardboard-box-wire-handle",
+    "status": "existing",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 11",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "doner-box",
+    "sourceName": "Doner Box",
+    "pdfPage": 12,
+    "printedPages": [
+      "20"
+    ],
+    "categorySlug": "round-food-boxes",
+    "productSlug": "doner-box",
+    "status": "existing",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 12",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "kraft-round-food-box",
+    "sourceName": "Kraft Round Food Box",
+    "pdfPage": 12,
+    "printedPages": [
+      "20"
+    ],
+    "categorySlug": "round-food-boxes",
+    "productSlug": "kraft-round-food-box",
+    "status": "new",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 12",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "white-round-food-box",
+    "sourceName": "White Round Food Box",
+    "pdfPage": 12,
+    "printedPages": [
+      "20"
+    ],
+    "categorySlug": "round-food-boxes",
+    "productSlug": "white-round-food-box",
+    "status": "new",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 12",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "natural-kraft-menu-box",
+    "sourceName": "Natural Kraft Menu Box",
+    "pdfPage": 13,
+    "printedPages": [
+      "21"
+    ],
+    "categorySlug": "menu-boxes",
+    "productSlug": "natural-kraft-menu-box",
+    "status": "existing",
+    "specificationRows": 7,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 13",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "white-cardboard-menu-box",
+    "sourceName": "White Cardboard Menu Box",
+    "pdfPage": 13,
+    "printedPages": [
+      "21"
+    ],
+    "categorySlug": "menu-boxes",
+    "productSlug": "white-cardboard-menu-box",
+    "status": "new",
+    "specificationRows": 7,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 13",
+    "unresolved": [
+      "Catalogue dimensions are reproduced as printed; confirm drawings before ordering."
+    ]
+  },
+  {
+    "seriesKey": "wooden-bamboo-cutlery",
+    "sourceName": "Wooden Cutlery",
+    "pdfPage": 13,
+    "printedPages": [
+      "22"
+    ],
+    "categorySlug": "disposable-cutlery",
+    "productSlug": "wooden-bamboo-cutlery",
+    "status": "existing",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 13",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cpla-cutlery",
+    "sourceName": "CPLA Cutlery",
+    "pdfPage": 13,
+    "printedPages": [
+      "22"
+    ],
+    "categorySlug": "disposable-cutlery",
+    "productSlug": "cpla-cutlery",
+    "status": "existing",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 13",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-cutlery",
+    "sourceName": "Cardboard Cutlery",
+    "pdfPage": 13,
+    "printedPages": [
+      "22"
+    ],
+    "categorySlug": "disposable-cutlery",
+    "productSlug": "cardboard-cutlery",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 13",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "natural-kraft-hamburger-box",
+    "sourceName": "Natural Kraft Hamburger Box",
+    "pdfPage": 14,
+    "printedPages": [
+      "24"
+    ],
+    "categorySlug": "burger-boxes",
+    "productSlug": "natural-kraft-hamburger-box",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 14",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "corrugated-hamburger-box",
+    "sourceName": "Corrugated Hamburger Box",
+    "pdfPage": 14,
+    "printedPages": [
+      "24"
+    ],
+    "categorySlug": "burger-boxes",
+    "productSlug": "corrugated-hamburger-box",
+    "status": "new",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 14",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "natural-kraft-sandwich-box-pla-window",
+    "sourceName": "Natural Kraft Sandwich Box-PLA Window",
+    "pdfPage": 15,
+    "printedPages": [
+      "25"
+    ],
+    "categorySlug": "sandwich-boxes",
+    "productSlug": "natural-kraft-sandwich-box-pla-window",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 15",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-sandwich-box-pla-window",
+    "sourceName": "Cardboard Sandwich Box-PLA Window",
+    "pdfPage": 15,
+    "printedPages": [
+      "25"
+    ],
+    "categorySlug": "sandwich-boxes",
+    "productSlug": "cardboard-sandwich-box-pla-window",
+    "status": "new",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 15",
+    "unresolved": [
+      "The printed thickness values appear inconsistent with the product photo; dimensional confirmation is required before ordering."
+    ]
+  },
+  {
+    "seriesKey": "brown-triangle-box-pla-window",
+    "sourceName": "Brown Triangle Box-PLA Window",
+    "pdfPage": 15,
+    "printedPages": [
+      "25"
+    ],
+    "categorySlug": "pizza-slice-boxes",
+    "productSlug": "brown-triangle-box-pla-window",
+    "status": "existing",
+    "specificationRows": 1,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 15",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-triangle-box-pla-window",
+    "sourceName": "Cardboard Triangle Box-PLA Window",
+    "pdfPage": 15,
+    "printedPages": [
+      "25"
+    ],
+    "categorySlug": "pizza-slice-boxes",
+    "productSlug": "cardboard-triangle-box-pla-window",
+    "status": "new",
+    "specificationRows": 1,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 15",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "kraft-wrap-box-pla-window",
+    "sourceName": "Kraft Wrap Box-PLA Window",
+    "pdfPage": 15,
+    "printedPages": [
+      "26"
+    ],
+    "categorySlug": "wrap-boxes",
+    "productSlug": "kraft-wrap-box-pla-window",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 15",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "cardboard-wrap-box-pla-window",
+    "sourceName": "Cardboard Wrap Box-PLA Window",
+    "pdfPage": 15,
+    "printedPages": [
+      "26"
+    ],
+    "categorySlug": "wrap-boxes",
+    "productSlug": "cardboard-wrap-box-pla-window",
+    "status": "existing",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 15",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-window-food-box",
+    "sourceName": "Cardboard Box-PLA Window",
+    "pdfPage": 15,
+    "printedPages": [
+      "26"
+    ],
+    "categorySlug": "salad-boxes",
+    "productSlug": "cardboard-window-food-box",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 15",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "black-white-cardboard-sushi-box-pla-window",
+    "sourceName": "Black/White Cardboard Sushi Box-PLA Window",
+    "pdfPage": 16,
+    "printedPages": [
+      "27"
+    ],
+    "categorySlug": "sushi-boxes",
+    "productSlug": "black-white-cardboard-sushi-box-pla-window",
+    "status": "existing",
+    "specificationRows": 9,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 16",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "kraft-paper-salad-box-pla-window",
+    "sourceName": "Kraft Paper Salad Box-PLA Window",
+    "pdfPage": 17,
+    "printedPages": [
+      "29"
+    ],
+    "categorySlug": "salad-boxes",
+    "productSlug": "kraft-paper-salad-box-pla-window",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 17",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "multi-window-salad-box",
+    "sourceName": "Kraft Paper Salad Box-PLA Window - multi-window",
+    "pdfPage": 17,
+    "printedPages": [
+      "29"
+    ],
+    "categorySlug": "salad-boxes",
+    "productSlug": "multi-window-salad-box",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 17",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "two-piece-window-food-box",
+    "sourceName": "Kraft Paper Box-PLA Window - two-piece",
+    "pdfPage": 17,
+    "printedPages": [
+      "29"
+    ],
+    "categorySlug": "salad-boxes",
+    "productSlug": "two-piece-window-food-box",
+    "status": "new",
+    "specificationRows": 8,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 17",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "rectangular-pla-window-box",
+    "sourceName": "Kraft Paper Box-PLA Window - rectangular",
+    "pdfPage": 17,
+    "printedPages": [
+      "30"
+    ],
+    "categorySlug": "salad-boxes",
+    "productSlug": "rectangular-pla-window-box",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 17",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "kraft-paper-box-pet-window",
+    "sourceName": "Kraft Paper Box-PET Window",
+    "pdfPage": 17,
+    "printedPages": [
+      "30"
+    ],
+    "categorySlug": "salad-boxes",
+    "productSlug": "kraft-paper-box-pet-window",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 17",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "kraft-window-menu-box",
+    "sourceName": "Kraft Paper Box-PLA Window - hinged",
+    "pdfPage": 17,
+    "printedPages": [
+      "30"
+    ],
+    "categorySlug": "salad-boxes",
+    "productSlug": "kraft-window-menu-box",
+    "status": "new",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 17",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "frite-cone-white",
+    "sourceName": "Frite Cone-White",
+    "pdfPage": 18,
+    "printedPages": [
+      "32"
+    ],
+    "categorySlug": "cone-fry-packaging",
+    "productSlug": "frite-cone-white",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 18",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "frite-cone-kraft",
+    "sourceName": "Frite Cone-Kraft",
+    "pdfPage": 18,
+    "printedPages": [
+      "32"
+    ],
+    "categorySlug": "cone-fry-packaging",
+    "productSlug": "frite-cone-kraft",
+    "status": "existing",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 18",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "frite-cone-black",
+    "sourceName": "Frite Cone-Black",
+    "pdfPage": 18,
+    "printedPages": [
+      "32"
+    ],
+    "categorySlug": "cone-fry-packaging",
+    "productSlug": "frite-cone-black",
+    "status": "existing",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 18",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "frite-cone-kraft-cardboard",
+    "sourceName": "Frite Cone-Kraft Cardboard",
+    "pdfPage": 18,
+    "printedPages": [
+      "32"
+    ],
+    "categorySlug": "cone-fry-packaging",
+    "productSlug": "frite-cone-kraft-cardboard",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 18",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "white-open-wrap-cup",
+    "sourceName": "Cardboard Open Wrap Cup",
+    "pdfPage": 19,
+    "printedPages": [
+      "33"
+    ],
+    "categorySlug": "wrap-boxes",
+    "productSlug": "white-open-wrap-cup",
+    "status": "new",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 19",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "cardboard-open-wrap-cup",
+    "sourceName": "Natural Kraft Open Wrap Cup",
+    "pdfPage": 19,
+    "printedPages": [
+      "33"
+    ],
+    "categorySlug": "wrap-boxes",
+    "productSlug": "cardboard-open-wrap-cup",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 19",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "cardboard-closed-snack-cup",
+    "sourceName": "Cardboard Closed Snack Cup",
+    "pdfPage": 19,
+    "printedPages": [
+      "34"
+    ],
+    "categorySlug": "cone-fry-packaging",
+    "productSlug": "cardboard-closed-snack-cup",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 19",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "natural-kraft-closed-snack-cup",
+    "sourceName": "Natural Kraft Closed Snack Cup",
+    "pdfPage": 19,
+    "printedPages": [
+      "34"
+    ],
+    "categorySlug": "cone-fry-packaging",
+    "productSlug": "natural-kraft-closed-snack-cup",
+    "status": "existing",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 19",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "kraft-french-fries-box",
+    "sourceName": "Natural Kraft French Fries Box",
+    "pdfPage": 19,
+    "printedPages": [
+      "34"
+    ],
+    "categorySlug": "cone-fry-packaging",
+    "productSlug": "kraft-french-fries-box",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 19",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "bagasse-round-plate",
+    "sourceName": "Plate Round",
+    "pdfPage": 20,
+    "printedPages": [
+      "36"
+    ],
+    "categorySlug": "bagasse-plates",
+    "productSlug": "bagasse-round-plate",
+    "status": "new",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 20",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "bagasse-natural-round-plate",
+    "sourceName": "Plate Round Natural",
+    "pdfPage": 20,
+    "printedPages": [
+      "36"
+    ],
+    "categorySlug": "bagasse-plates",
+    "productSlug": "bagasse-natural-round-plate",
+    "status": "new",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 20",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "bagasse-three-compartment-plate",
+    "sourceName": "Plate Round 3 Part",
+    "pdfPage": 20,
+    "printedPages": [
+      "36"
+    ],
+    "categorySlug": "bagasse-plates",
+    "productSlug": "bagasse-three-compartment-plate",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 20",
+    "unresolved": [
+      "The catalogue groups the undivided CC03RP261 alongside compartmented plates; confirm compartment layout per item."
+    ]
+  },
+  {
+    "seriesKey": "bagasse-natural-round-bowl",
+    "sourceName": "Bowl Round Natural",
+    "pdfPage": 21,
+    "printedPages": [
+      "37"
+    ],
+    "categorySlug": "bagasse-bowls",
+    "productSlug": "bagasse-natural-round-bowl",
+    "status": "new",
+    "specificationRows": 13,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 21",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "bagasse-round-bowl",
+    "sourceName": "Bowl Round",
+    "pdfPage": 21,
+    "printedPages": [
+      "37"
+    ],
+    "categorySlug": "bagasse-bowls",
+    "productSlug": "bagasse-round-bowl",
+    "status": "new",
+    "specificationRows": 13,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 21",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "bagasse-shallow-round-bowl",
+    "sourceName": "Bowl Round Shallow",
+    "pdfPage": 21,
+    "printedPages": [
+      "37"
+    ],
+    "categorySlug": "bagasse-bowls",
+    "productSlug": "bagasse-shallow-round-bowl",
+    "status": "new",
+    "specificationRows": 1,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 21",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "bagasse-two-compartment-tray",
+    "sourceName": "Menu Tray-Rectangular Natural",
+    "pdfPage": 21,
+    "printedPages": [
+      "38"
+    ],
+    "categorySlug": "bagasse-trays",
+    "productSlug": "bagasse-two-compartment-tray",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 21",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "bagasse-square-plate",
+    "sourceName": "Plate Square",
+    "pdfPage": 21,
+    "printedPages": [
+      "38"
+    ],
+    "categorySlug": "bagasse-trays",
+    "productSlug": "bagasse-square-plate",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 21",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "bagasse-three-compartment-clamshell",
+    "sourceName": "Food Box with Fold-over Lid 3 Part",
+    "pdfPage": 22,
+    "printedPages": [
+      "39"
+    ],
+    "categorySlug": "bagasse-clamshells",
+    "productSlug": "bagasse-three-compartment-clamshell",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 22",
+    "unresolved": [
+      "Carton values are misaligned in the PDF; confirm packing before ordering."
+    ]
+  },
+  {
+    "seriesKey": "bagasse-clamshell",
+    "sourceName": "Food Box with Fold-over Lid",
+    "pdfPage": 22,
+    "printedPages": [
+      "39"
+    ],
+    "categorySlug": "bagasse-clamshells",
+    "productSlug": "bagasse-clamshell",
+    "status": "new",
+    "specificationRows": 12,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 22",
+    "unresolved": [
+      "The PDF repeats CC03FC251 and CC03FC238 with different dimensions. These four ambiguous rows are withheld pending confirmation."
+    ]
+  },
+  {
+    "seriesKey": "compostable-waste-bag",
+    "sourceName": "Compostable Waste Bag",
+    "pdfPage": 22,
+    "printedPages": [
+      "40"
+    ],
+    "categorySlug": "compostable-waste-bags",
+    "productSlug": "compostable-waste-bag",
+    "status": "new",
+    "specificationRows": 1,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 22",
+    "unresolved": [
+      "Compostability conditions and current certification must be confirmed for the selected order."
+    ]
+  },
+  {
+    "seriesKey": "single-wall-white-cardboard-paper-cup",
+    "sourceName": "Single Wall-White Cardboard Paper Cup",
+    "pdfPage": 23,
+    "printedPages": [
+      "42"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "single-wall-white-cardboard-paper-cup",
+    "status": "existing",
+    "specificationRows": 11,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 23",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "double-wall-white-cardboard-paper-cup",
+    "sourceName": "Double Wall-White Cardboard Paper Cup",
+    "pdfPage": 23,
+    "printedPages": [
+      "42"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "double-wall-white-cardboard-paper-cup",
+    "status": "existing",
+    "specificationRows": 9,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 23",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "ripple-white-paper-cup-vertical",
+    "sourceName": "Ripple-White Cardboard Paper Cup-Vertical Style",
+    "pdfPage": 23,
+    "printedPages": [
+      "42"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "ripple-white-paper-cup-vertical",
+    "status": "new",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 23",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "ripple-white-paper-cup-horizontal",
+    "sourceName": "Ripple-White Cardboard Paper Cup-Horizon Style",
+    "pdfPage": 23,
+    "printedPages": [
+      "42"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "ripple-white-paper-cup-horizontal",
+    "status": "new",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 23",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "single-wall-bagasse-paper-cup",
+    "sourceName": "Single Wall-Bagasse Paper Cup",
+    "pdfPage": 23,
+    "printedPages": [
+      "42"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "single-wall-bagasse-paper-cup",
+    "status": "new",
+    "specificationRows": 6,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 23",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "single-wall-kraft-paper-cup",
+    "sourceName": "Single Wall-Natural Kraft Paper Cup",
+    "pdfPage": 24,
+    "printedPages": [
+      "43"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "single-wall-kraft-paper-cup",
+    "status": "new",
+    "specificationRows": 7,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 24",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "double-wall-kraft-paper-cup",
+    "sourceName": "Double Wall-Natural Kraft Paper Cup",
+    "pdfPage": 24,
+    "printedPages": [
+      "43"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "double-wall-kraft-paper-cup",
+    "status": "new",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 24",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "ripple-natural-kraft-paper-cup-vertical-style",
+    "sourceName": "Ripple-Natural Kraft Paper Cup-Vertical Style",
+    "pdfPage": 24,
+    "printedPages": [
+      "43"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "ripple-natural-kraft-paper-cup-vertical-style",
+    "status": "existing",
+    "specificationRows": 10,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 24",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "ripple-natural-kraft-paper-cup-horizon-style",
+    "sourceName": "Ripple-Natural Kraft Paper Cup-Horizon Style",
+    "pdfPage": 24,
+    "printedPages": [
+      "43"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "ripple-natural-kraft-paper-cup-horizon-style",
+    "status": "existing",
+    "specificationRows": 10,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 24",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "pla-lid-for-coffee-cup-white",
+    "sourceName": "PLA Lid for Coffee Cup-White",
+    "pdfPage": 24,
+    "printedPages": [
+      "44"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "pla-lid-for-coffee-cup-white",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 24",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "pla-lid-for-coffee-cup-black",
+    "sourceName": "PLA Lid for Coffee Cup-Black",
+    "pdfPage": 24,
+    "printedPages": [
+      "44"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "pla-lid-for-coffee-cup-black",
+    "status": "existing",
+    "specificationRows": 4,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 24",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "corrugated-board-cup-sleeve-8-12-16-20oz",
+    "sourceName": "Corrugated Board Cup Sleeve 8/12/16/20oz",
+    "pdfPage": 24,
+    "printedPages": [
+      "44"
+    ],
+    "categorySlug": "paper-cups",
+    "productSlug": "corrugated-board-cup-sleeve-8-12-16-20oz",
+    "status": "existing",
+    "specificationRows": 5,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 24",
+    "unresolved": [
+      "Recheck existing specifications against this catalogue edition."
+    ]
+  },
+  {
+    "seriesKey": "white-handle-paper-bag",
+    "sourceName": "Cardboard Handle Paper Bag",
+    "pdfPage": 25,
+    "printedPages": [
+      "46"
+    ],
+    "categorySlug": "paper-bags",
+    "productSlug": "white-handle-paper-bag",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 25",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "white-paper-bag",
+    "sourceName": "Cardboard Paper Bag",
+    "pdfPage": 25,
+    "printedPages": [
+      "46"
+    ],
+    "categorySlug": "paper-bags",
+    "productSlug": "white-paper-bag",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 25",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "kraft-handle-paper-bag",
+    "sourceName": "Natural Kraft Handle Paper Bag",
+    "pdfPage": 25,
+    "printedPages": [
+      "46"
+    ],
+    "categorySlug": "paper-bags",
+    "productSlug": "kraft-handle-paper-bag",
+    "status": "new",
+    "specificationRows": 2,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 25",
+    "unresolved": []
+  },
+  {
+    "seriesKey": "kraft-paper-bag",
+    "sourceName": "Natural Kraft Paper Bag",
+    "pdfPage": 25,
+    "printedPages": [
+      "46"
+    ],
+    "categorySlug": "paper-bags",
+    "productSlug": "kraft-paper-bag",
+    "status": "new",
+    "specificationRows": 3,
+    "imageSource": "Corncomp Catalogue(1).pdf, physical page 25",
+    "unresolved": []
+  }
+]

@@ -1,0 +1,74 @@
+---
+import homeImages from '../data/home-images.json';
+const { language } = Astro.props;
+const labels = {
+  en: ['Brands we have worked with', 'Pause logo carousel', 'Resume logo carousel'],
+  fr: ['Des marques avec lesquelles nous avons travaillé', 'Mettre le défilement en pause', 'Reprendre le défilement'],
+  es: ['Marcas con las que hemos trabajado', 'Pausar los logotipos', 'Reanudar los logotipos'],
+  ar: ['علامات تجارية عملنا معها', 'إيقاف تمرير الشعارات', 'استئناف تمرير الشعارات'],
+  zh: ['合作过的品牌客户', '暂停品牌轮播', '继续品牌轮播'],
+  de: ['Marken, mit denen wir zusammengearbeitet haben', 'Logo-Laufband anhalten', 'Logo-Laufband fortsetzen'],
+}[language];
+const logos = [
+  ['Disney', 'disney.png', 446, 198],
+  ['Starbucks', 'starbucks.png', 87, 75],
+  ['Dorfin', 'dorfin.png', 605, 185],
+  ['METRO', 'metro.png', 536, 193],
+  ['Bunzl', 'bunzl.png', 378, 366],
+  ['Marubeni', 'marubeni.png', 670, 203],
+  ['First Pack', 'first-pack.png', 294, 96],
+  ['Eco-Products', 'eco-products.jpg', 160, 160],
+  ['Embaco', 'embaco.png', 169, 38],
+  ['GÜDE', 'gude.png', 422, 92],
+  ['Brenta', 'brenta.png', 268, 43],
+];
+---
+<section class="customer-logos" aria-labelledby="customer-logos-heading">
+  <div class="content-shell customer-logos-heading">
+    <h2 id="customer-logos-heading">{labels[0]}</h2>
+    <button type="button" class="customer-logos-toggle" aria-label={labels[1]} aria-pressed="false" data-pause={labels[1]} data-resume={labels[2]}><span aria-hidden="true">Ⅱ</span></button>
+  </div>
+  <div class="customer-logos-window">
+    <div class="customer-logos-track">
+      {[false, true].map((duplicate) => <div class="customer-logos-group" aria-hidden={duplicate ? 'true' : undefined}>
+        {logos.map(([name, file, width, height]) => <div class="customer-logo"><img src={homeImages['customer:' + String(file).replace(/\.[^.]+$/, '')]?.src || `/media/customers/${file}`} alt={duplicate ? '' : name} width={width} height={height} loading="lazy" decoding="async" /></div>)}
+      </div>)}
+    </div>
+  </div>
+</section>
+<style>
+  .customer-logos { padding: 42px 0 48px; border-bottom: 1px solid var(--border-color, #dce3d9); }
+  .customer-logos-heading { position: relative; text-align: center; margin-bottom: 30px; padding: 0; }
+  .customer-logos h2 { margin: 0; padding: 0 42px; font-size: 13px; line-height: 1.6; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: #68766b; }
+  .customer-logos-toggle { position: absolute; inset-inline-end: 0; top: -5px; width: 32px; height: 32px; border: 1px solid #cdd7cd; border-radius: 50%; background: transparent; color: #536b55; cursor: pointer; }
+  .customer-logos-window { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+  .customer-logos-track { display: flex; width: max-content; direction: ltr; animation: customer-logos-scroll 48s linear infinite; }
+  .customer-logos-group { display: flex; align-items: center; gap: 64px; padding-inline-end: 64px; }
+  .customer-logo { width: 148px; height: 80px; display: flex; align-items: center; justify-content: center; }
+  .customer-logo img { width: auto; height: auto; max-width: 148px; max-height: 72px; object-fit: contain; filter: grayscale(1); opacity: .55; mix-blend-mode: multiply; transition: filter .25s, opacity .25s; }
+  .customer-logo:hover img { filter: none; opacity: 1; }
+  .customer-logos:hover .customer-logos-track, .customer-logos:focus-within .customer-logos-track, .customer-logos.is-paused .customer-logos-track { animation-play-state: paused; }
+  @keyframes customer-logos-scroll { to { transform: translateX(-50%); } }
+  @media (max-width: 760px) {
+    .customer-logos { padding: 30px 0; }
+    .customer-logos-group { gap: 32px; padding-inline-end: 32px; }
+    .customer-logo { width: 120px; }
+    .customer-logo img { max-width: 120px; max-height: 64px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .customer-logos-track { animation: none; width: auto; }
+    .customer-logos-window { mask-image: none; }
+    .customer-logos-group { flex-wrap: wrap; justify-content: center; width: 100%; padding: 0 24px; gap: 24px; }
+    .customer-logos-group[aria-hidden="true"], .customer-logos-toggle { display: none; }
+  }
+</style>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.customer-logos-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const paused = button.closest('.customer-logos')!.classList.toggle('is-paused');
+      button.setAttribute('aria-pressed', String(paused));
+      button.setAttribute('aria-label', (paused ? button.dataset.resume : button.dataset.pause)!);
+      button.querySelector('span')!.textContent = paused ? '▶' : 'Ⅱ';
+    });
+  });
+</script>

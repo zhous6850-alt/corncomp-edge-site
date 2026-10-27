@@ -1,0 +1,2602 @@
+{
+  "counts": {
+    "ai-restored-reference": 15,
+    "restored-original": 77,
+    "reviewed-retained-original": 3
+  },
+  "products": [
+    {
+      "index": 1,
+      "slug": "oval-paper-plate",
+      "title": "Oval Paper Plate &#8211; 2 Sizes",
+      "image": "/media/wp/306--2026-07-27-100841.webp",
+      "route": "/products/foodservice-supplies/paper-plates/oval-paper-plate/",
+      "pdfPage": 2,
+      "pixelSize": [
+        639,
+        492
+      ],
+      "status": "reviewed-retained-original",
+      "finalPixelSize": [
+        639,
+        492
+      ],
+      "sha256": "7f3ce471b86d0e827dcce4049faf1a599667069e7f1dfdb3d0f8c91b28a5ad6d",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 2,
+      "slug": "round-paper-plate",
+      "title": "Round Paper Plate &#8211; 5 Sizes",
+      "image": "/media/wp/304--2026-07-27-100604.webp",
+      "route": "/products/foodservice-supplies/paper-plates/round-paper-plate/",
+      "pdfPage": 2,
+      "pixelSize": [
+        568,
+        520
+      ],
+      "status": "reviewed-retained-original",
+      "finalPixelSize": [
+        568,
+        520
+      ],
+      "sha256": "4fdf9754f3d91964628d6dcd2b51bfed62831b4bde7c92f959310b7fa9b8c000",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 3,
+      "slug": "brown-triangle-box-pla-window",
+      "title": "Kraft Pizza Slice Box with PLA Window",
+      "image": "/media/wp/285-_20260725105213_193_9.webp",
+      "route": "/products/food-boxes-containers/pizza-slice-boxes/brown-triangle-box-pla-window/",
+      "pdfPage": 15,
+      "pixelSize": [
+        1024,
+        772
+      ],
+      "status": "restored-original",
+      "source": "p15-00",
+      "crop": [
+        0,
+        0.42,
+        0.3,
+        0.74
+      ],
+      "nativeProductSize": [
+        659,
+        497
+      ],
+      "finalPixelSize": [
+        1024,
+        772
+      ],
+      "sha256": "8958e7d290a77b7fca7aa74ae2aa7e2e3b44abfad692f1190a79cdda4ac0add7",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 4,
+      "slug": "natural-kraft-closed-snack-cup",
+      "title": "Kraft French Fry Cup &#8211; Closed Top, 3 Sizes",
+      "image": "/media/wp/283-_20260725103938_191_9.webp",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/natural-kraft-closed-snack-cup/",
+      "pdfPage": 19,
+      "pixelSize": [
+        1024,
+        692
+      ],
+      "status": "restored-original",
+      "source": "p19-00",
+      "crop": [
+        0.54,
+        0.38,
+        0.86,
+        0.68
+      ],
+      "nativeProductSize": [
+        709,
+        520
+      ],
+      "finalPixelSize": [
+        1024,
+        692
+      ],
+      "sha256": "4797fe6542441f04300374f69ba4210a5d1fe962e09220f791b9b670e0e4a51b",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 5,
+      "slug": "cardboard-open-wrap-cup",
+      "title": "Kraft Burrito Sleeve &#8211; 4 Sizes",
+      "image": "/media/wp/281-_20260725103604_189_9.webp",
+      "route": "/products/food-boxes-containers/wrap-boxes/cardboard-open-wrap-cup/",
+      "pdfPage": 19,
+      "pixelSize": [
+        1060,
+        799
+      ],
+      "status": "ai-restored-reference",
+      "source": "p19-00",
+      "crop": [
+        0,
+        0.39,
+        0.35,
+        0.72
+      ],
+      "nativeProductSize": [
+        1270,
+        1061
+      ],
+      "finalPixelSize": [
+        1200,
+        905
+      ],
+      "sha256": "5d3e3b8767465e86fa238b53e7a217e9b8c1cdaec8bb5f2a24b8c27418b3357f",
+      "restorationSource": "exec-e3522cc0-a2f7-4c94-a34d-816193eb9d5b.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 6,
+      "slug": "frite-cone-black",
+      "title": "Black Fries Cone &#8211; 3 Sizes",
+      "image": "/media/wp/279--2026-07-25-103142.webp",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/frite-cone-black/",
+      "pdfPage": 18,
+      "pixelSize": [
+        402,
+        574
+      ],
+      "status": "restored-original",
+      "source": "p18-00",
+      "crop": [
+        0.58,
+        0.49,
+        0.72,
+        0.79
+      ],
+      "nativeProductSize": [
+        208,
+        424
+      ],
+      "finalPixelSize": [
+        402,
+        574
+      ],
+      "sha256": "d378a934c080d34cf2dd09db19ce054f04397691c96e264c395b7ef7e16fa9b8",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 7,
+      "slug": "frite-cone-kraft",
+      "title": "French Fry Cone &#8211; Kraft, 3 Sizes",
+      "image": "/media/wp/277--2026-07-25-102757.webp",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/frite-cone-kraft/",
+      "pdfPage": 18,
+      "pixelSize": [
+        336,
+        603
+      ],
+      "status": "restored-original",
+      "source": "p18-00",
+      "crop": [
+        0.84,
+        0.22,
+        0.99,
+        0.51
+      ],
+      "nativeProductSize": [
+        221,
+        426
+      ],
+      "finalPixelSize": [
+        336,
+        603
+      ],
+      "sha256": "1d4f73779e3086db74a78f2060bc8a6352ee4f0733f18e5d223cef05421cb0c6",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 8,
+      "slug": "black-white-cardboard-sushi-box-pla-window",
+      "title": "Paper Sushi Box with PLA Window, 9 Sizes",
+      "image": "/media/wp/275--2026-07-25-102414.webp",
+      "route": "/products/food-boxes-containers/sushi-boxes/black-white-cardboard-sushi-box-pla-window/",
+      "pdfPage": 16,
+      "pixelSize": [
+        757,
+        771
+      ],
+      "status": "restored-original",
+      "source": "p16-01",
+      "crop": [
+        0.5,
+        0.59,
+        0.98,
+        0.95
+      ],
+      "nativeProductSize": [
+        518,
+        586
+      ],
+      "finalPixelSize": [
+        757,
+        771
+      ],
+      "sha256": "8e88206d6181e234deb5bd5dbe384a3c180ae449f658f58e2a3db4a73e2efd63",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 9,
+      "slug": "corrugated-board-cup-sleeve-8-12-16-20oz",
+      "title": "Corrugated Board Cup Sleeve 8/12/16/20oz",
+      "image": "/media/wp/273--2026-07-25-102135.png",
+      "route": "/products/cups-bowls/paper-cups/corrugated-board-cup-sleeve-8-12-16-20oz/",
+      "pdfPage": 24,
+      "pixelSize": [
+        568,
+        519
+      ],
+      "status": "restored-original",
+      "source": "p24-03",
+      "crop": null,
+      "nativeProductSize": [
+        299,
+        294
+      ],
+      "finalPixelSize": [
+        568,
+        519
+      ],
+      "sha256": "b4e2901a1783863bd5e2fd0edcc8b0d10b39dc3d7afb1826a13b20bc7817a550",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 10,
+      "slug": "pla-lid-for-coffee-cup-black",
+      "title": "Black Coffee Cup Lids &#8211; PLA, 4 Sizes",
+      "image": "/media/wp/271--2026-07-25-101924.png",
+      "route": "/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-black/",
+      "pdfPage": 24,
+      "pixelSize": [
+        514,
+        385
+      ],
+      "status": "restored-original",
+      "source": "p24-01",
+      "crop": null,
+      "nativeProductSize": [
+        365,
+        245
+      ],
+      "finalPixelSize": [
+        514,
+        385
+      ],
+      "sha256": "42e17dddbdcc59170beae6646391faa67ed6cded7b29d17a705fc6034b65e3c6",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 11,
+      "slug": "pla-lid-for-coffee-cup-white",
+      "title": "White Coffee Cup Lids &#8211; PLA, 4 Sizes",
+      "image": "/media/wp/269--2026-07-25-101752.png",
+      "route": "/products/cups-bowls/paper-cups/pla-lid-for-coffee-cup-white/",
+      "pdfPage": 24,
+      "pixelSize": [
+        567,
+        460
+      ],
+      "status": "restored-original",
+      "source": "p24-02",
+      "crop": null,
+      "nativeProductSize": [
+        362,
+        228
+      ],
+      "finalPixelSize": [
+        567,
+        460
+      ],
+      "sha256": "71dede539015ed7eed6de36faf826823cc6f2166d6151d46c7bd1dc4dd8306f7",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 12,
+      "slug": "ripple-natural-kraft-paper-cup-horizon-style",
+      "title": "Ripple Wall Paper Cup &#8211; Natural Kraft Horizon Style",
+      "image": "/media/wp/267--2026-07-25-101435.png",
+      "route": "/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-horizon-style/",
+      "pdfPage": 24,
+      "pixelSize": [
+        471,
+        598
+      ],
+      "status": "restored-original",
+      "source": "p24-00",
+      "crop": [
+        0.63,
+        0.71,
+        0.99,
+        1
+      ],
+      "nativeProductSize": [
+        309,
+        428
+      ],
+      "finalPixelSize": [
+        471,
+        598
+      ],
+      "sha256": "005e5f3a0485babe544b2e2f0035b844bf78f8ebe646971aca845739ee972693",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 13,
+      "slug": "ripple-natural-kraft-paper-cup-vertical-style",
+      "title": "Ripple Wall Paper Cup &#8211; Natural Kraft Vertical Style",
+      "image": "/media/wp/265--2026-07-25-101201.png",
+      "route": "/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-vertical-style/",
+      "pdfPage": 24,
+      "pixelSize": [
+        463,
+        568
+      ],
+      "status": "restored-original",
+      "source": "p24-00",
+      "crop": [
+        0.03,
+        0.53,
+        0.39,
+        0.79
+      ],
+      "nativeProductSize": [
+        317,
+        410
+      ],
+      "finalPixelSize": [
+        463,
+        568
+      ],
+      "sha256": "6dd80d443c5f1441637d30f3989bb53f6706ba56aa08421769b75b939236a259",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 14,
+      "slug": "double-wall-white-cardboard-paper-cup",
+      "title": "Double Wall Paper Cup &#8211; White Cardboard",
+      "image": "/media/wp/263--2026-07-25-100816.png",
+      "route": "/products/cups-bowls/paper-cups/double-wall-white-cardboard-paper-cup/",
+      "pdfPage": 23,
+      "pixelSize": [
+        409,
+        469
+      ],
+      "status": "restored-original",
+      "source": "p23-00",
+      "crop": [
+        0.57,
+        0.21,
+        0.69,
+        0.43
+      ],
+      "nativeProductSize": [
+        238,
+        329
+      ],
+      "finalPixelSize": [
+        409,
+        469
+      ],
+      "sha256": "a4a435d3eba233c4232da163a09866d6912039f37308a6a54ac961de08df78b3",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 15,
+      "slug": "single-wall-white-cardboard-paper-cup",
+      "title": "Single Wall Paper Cup &#8211; White Cardboard",
+      "image": "/media/wp/261--2026-07-25-100620.png",
+      "route": "/products/cups-bowls/paper-cups/single-wall-white-cardboard-paper-cup/",
+      "pdfPage": 23,
+      "pixelSize": [
+        348,
+        493
+      ],
+      "status": "restored-original",
+      "source": "p23-00",
+      "crop": [
+        0.83,
+        0,
+        0.97,
+        0.25
+      ],
+      "nativeProductSize": [
+        228,
+        360
+      ],
+      "finalPixelSize": [
+        348,
+        493
+      ],
+      "sha256": "5012e8b84fa9f1910e8fa5831dd2f61e9176bc432e58efe4b5da02e58db799f3",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 16,
+      "slug": "kraft-colour-ice-cream-cup",
+      "title": "Kraft Ice Cream Cup, 6 Sizes",
+      "image": "/media/wp/258--2026-07-25-100144.png",
+      "route": "/products/cups-bowls/ice-cream-cups/kraft-colour-ice-cream-cup/",
+      "pdfPage": 10,
+      "pixelSize": [
+        510,
+        541
+      ],
+      "status": "restored-original",
+      "source": "p10-02",
+      "crop": [
+        0.47,
+        0,
+        1,
+        0.52
+      ],
+      "nativeProductSize": [
+        319,
+        390
+      ],
+      "finalPixelSize": [
+        510,
+        541
+      ],
+      "sha256": "a23c2e0eb64f3d0c4041ec7a7c56081dfd16fe2de98cca1756e3f34c4d2bdb4b",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 17,
+      "slug": "cpla-cutlery",
+      "title": "CPLA Cutlery, Fork, Knife &#038; Spoon",
+      "image": "/media/wp/256--2026-07-25-095531.png",
+      "route": "/products/foodservice-supplies/disposable-cutlery/cpla-cutlery/",
+      "pdfPage": 13,
+      "pixelSize": [
+        1027,
+        390
+      ],
+      "status": "restored-original",
+      "source": "p13-03",
+      "crop": null,
+      "nativeProductSize": [
+        790,
+        318
+      ],
+      "finalPixelSize": [
+        1027,
+        390
+      ],
+      "sha256": "5f7195ab36928fa7f6279ebf51f72229f4cdbf038216be99c922f8aeef1421c6",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 18,
+      "slug": "wooden-bamboo-cutlery",
+      "title": "Wooden Cutlery, Forks, Knives &#038; Spoons",
+      "image": "/media/wp/254--2026-07-25-094945.png",
+      "route": "/products/foodservice-supplies/disposable-cutlery/wooden-bamboo-cutlery/",
+      "pdfPage": 13,
+      "pixelSize": [
+        952,
+        483
+      ],
+      "status": "restored-original",
+      "source": "p13-02",
+      "crop": null,
+      "nativeProductSize": [
+        744,
+        384
+      ],
+      "finalPixelSize": [
+        952,
+        483
+      ],
+      "sha256": "6317bbed5776cb6e5d0a61bcc100f0e90535ab4b4a8f0dc5f585c035bbcaf4ad",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 19,
+      "slug": "kraft-paper-box-pet-window",
+      "title": "Kraft Paper Box with PET Window, 4 Sizes",
+      "image": "/media/wp/175--2026-07-14-134911.png",
+      "route": "/products/food-boxes-containers/paper-food-boxes/kraft-paper-box-pet-window/",
+      "pdfPage": 17,
+      "pixelSize": [
+        616,
+        421
+      ],
+      "status": "restored-original",
+      "source": "p17-00",
+      "crop": [
+        0.76,
+        0.35,
+        1,
+        0.67
+      ],
+      "nativeProductSize": [
+        557,
+        464
+      ],
+      "finalPixelSize": [
+        616,
+        421
+      ],
+      "sha256": "5123a6d8d7ea87de324cf899fa31f6cc88e6b91dffbf815c61a0e425ba68c0bc",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 20,
+      "slug": "kraft-paper-salad-box-pla-window",
+      "title": "Kraft Salad Box with PLA Window, 4 Sizes",
+      "image": "/media/wp/172--2026-07-14-134508.png",
+      "route": "/products/food-boxes-containers/salad-boxes/kraft-paper-salad-box-pla-window/",
+      "pdfPage": 17,
+      "pixelSize": [
+        429,
+        265
+      ],
+      "status": "restored-original",
+      "source": "p17-00",
+      "crop": [
+        0,
+        0.35,
+        0.3,
+        0.68
+      ],
+      "nativeProductSize": [
+        660,
+        561
+      ],
+      "finalPixelSize": [
+        429,
+        265
+      ],
+      "sha256": "d6dc1914c18d6e8726096e8ca0251ea69d9bf93a65fb2956971682e2e638c764",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 21,
+      "slug": "cardboard-wrap-box-pla-window",
+      "title": "Sandwich Wrap Box with PLA Window, 2 Sizes",
+      "image": "/media/wp/170--2026-07-14-134136.png",
+      "route": "/products/food-boxes-containers/wrap-boxes/cardboard-wrap-box-pla-window/",
+      "pdfPage": 15,
+      "pixelSize": [
+        628,
+        625
+      ],
+      "status": "restored-original",
+      "source": "p15-00",
+      "crop": [
+        0.53,
+        0.19,
+        0.74,
+        0.46
+      ],
+      "nativeProductSize": [
+        458,
+        448
+      ],
+      "finalPixelSize": [
+        628,
+        625
+      ],
+      "sha256": "0e2b2a4789d49e7fe044f824b72a9bd15df9cfd52a66359017eac974c68b19c0",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 22,
+      "slug": "natural-kraft-sandwich-box-pla-window",
+      "title": "Kraft Sandwich Box with PLA Window, 4 Sizes",
+      "image": "/media/wp/168--2026-07-14-133831.png",
+      "route": "/products/food-boxes-containers/sandwich-boxes/natural-kraft-sandwich-box-pla-window/",
+      "pdfPage": 15,
+      "pixelSize": [
+        565,
+        592
+      ],
+      "status": "restored-original",
+      "source": "p15-00",
+      "crop": [
+        0,
+        0,
+        0.25,
+        0.34
+      ],
+      "nativeProductSize": [
+        470,
+        466
+      ],
+      "finalPixelSize": [
+        565,
+        592
+      ],
+      "sha256": "cf623ac6d530f106f590c738f38af37e7af6947dcd72c30db9fea356e64c8bca",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 23,
+      "slug": "natural-kraft-hamburger-box",
+      "title": "Kraft Burger Box, 5 Sizes",
+      "image": "/media/wp/166--2026-07-14-133439.png",
+      "route": "/products/food-boxes-containers/burger-boxes/natural-kraft-hamburger-box/",
+      "pdfPage": 14,
+      "pixelSize": [
+        843,
+        720
+      ],
+      "status": "restored-original",
+      "source": "p14-00",
+      "crop": [
+        0.69,
+        0,
+        0.98,
+        0.39
+      ],
+      "nativeProductSize": [
+        607,
+        527
+      ],
+      "finalPixelSize": [
+        843,
+        720
+      ],
+      "sha256": "dbb38d24af2cd076df9a8dd9146a3e7dcf60d395531f2f22d9937e4e8d70e80b",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 24,
+      "slug": "natural-kraft-menu-box",
+      "title": "Kraft Meal Box, 7 Sizes",
+      "image": "/media/wp/164--2026-07-14-133106.png",
+      "route": "/products/food-boxes-containers/paper-food-boxes/natural-kraft-menu-box/",
+      "pdfPage": 13,
+      "pixelSize": [
+        655,
+        715
+      ],
+      "status": "restored-original",
+      "source": "p13-00",
+      "crop": [
+        0.48,
+        0,
+        0.96,
+        0.39
+      ],
+      "nativeProductSize": [
+        503,
+        560
+      ],
+      "finalPixelSize": [
+        655,
+        715
+      ],
+      "sha256": "eaffeb1da25d7a909f3ee47548fe15c90981ae2c4126427416d36f230b739b79",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 25,
+      "slug": "doner-box",
+      "title": "Paper Kebab Box, 2 Sizes",
+      "image": "/media/wp/162--2026-07-14-132515.png",
+      "route": "/products/food-boxes-containers/paper-food-boxes/doner-box/",
+      "pdfPage": 12,
+      "pixelSize": [
+        684,
+        513
+      ],
+      "status": "restored-original",
+      "source": "p12-00",
+      "crop": [
+        0.53,
+        0.06,
+        0.75,
+        0.29
+      ],
+      "nativeProductSize": [
+        490,
+        359
+      ],
+      "finalPixelSize": [
+        684,
+        513
+      ],
+      "sha256": "fe519b2266aaae4a15c88c8bba23377e46e83475e0bae2e603049f002bb75f42",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 26,
+      "slug": "white-cardboard-box-wire-handle",
+      "title": "Paper Food Pail with Wire Handle, 3 Sizes",
+      "image": "/media/wp/160--2026-07-14-132219.png",
+      "route": "/products/food-boxes-containers/paper-food-boxes/white-cardboard-box-wire-handle/",
+      "pdfPage": 11,
+      "pixelSize": [
+        667,
+        496
+      ],
+      "status": "restored-original",
+      "source": "p11-00",
+      "crop": [
+        0.53,
+        0.46,
+        0.75,
+        0.68
+      ],
+      "nativeProductSize": [
+        450,
+        369
+      ],
+      "finalPixelSize": [
+        667,
+        496
+      ],
+      "sha256": "4ef13668f175045b264cc9806b195bfac010a3f066000cb8de24dc20926a3f6f",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 27,
+      "slug": "kraft-square-food-bow-pp-handle",
+      "title": "Kraft Food Box with PP Handle, 4 Sizes",
+      "image": "/media/wp/155--2026-07-14-131441.png",
+      "route": "/products/food-boxes-containers/paper-food-boxes/kraft-square-food-bow-pp-handle/",
+      "pdfPage": 11,
+      "pixelSize": [
+        681,
+        481
+      ],
+      "status": "restored-original",
+      "source": "p11-00",
+      "crop": [
+        0.25,
+        0.56,
+        0.46,
+        0.83
+      ],
+      "nativeProductSize": [
+        464,
+        359
+      ],
+      "finalPixelSize": [
+        681,
+        481
+      ],
+      "sha256": "71a390cb3ccbf2c9a4f2ecf9192c9e0ca4a9061d213e4c24ee3ab5f72ba21ff3",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 28,
+      "slug": "bendy",
+      "title": "Bendy Paper Straw",
+      "image": "/media/wp/107--2026-07-14-101008.png",
+      "route": "/products/foodservice-supplies/paper-straws/bendy/",
+      "pdfPage": 9,
+      "pixelSize": [
+        1286,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1286,
+        900
+      ],
+      "sha256": "4549f01b0f7ba3e10031b9fd6755cbac7ff722046e37dc234a6a8adf329f29ed",
+      "restorationSource": "exec-eb54fb45-5b11-4d4b-bcb6-5d1602e8bb53.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 29,
+      "slug": "sharp-edge",
+      "title": "Sharp Edge Paper Straw",
+      "image": "/media/wp/105--2026-07-14-100732.png",
+      "route": "/products/foodservice-supplies/paper-straws/sharp-edge/",
+      "pdfPage": 9,
+      "pixelSize": [
+        1315,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1315,
+        900
+      ],
+      "sha256": "9f1cbcfe73d30f9b34a7499cf6261671838e3d1efa7ee994b94b88bb4997198e",
+      "restorationSource": "exec-8769b8f9-23d7-4901-a6b3-46205233f5e6.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 30,
+      "slug": "solid-colors-with-bamboo-fiber-wooden-fiber",
+      "title": "Solid Color Paper Straw with Bamboo Fiber",
+      "image": "/media/wp/103--2026-07-14-100329.png",
+      "route": "/products/foodservice-supplies/paper-straws/solid-colors-with-bamboo-fiber-wooden-fiber/",
+      "pdfPage": 7,
+      "pixelSize": [
+        1308,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1308,
+        900
+      ],
+      "sha256": "c40a067472c27e320e2bbbe83688fb23aafe22bf3dca5e88e3320ab6403313c8",
+      "restorationSource": "exec-78e8cda9-0bf1-4558-abf0-39d9d6996dad.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 31,
+      "slug": "stripe-colors-2",
+      "title": "Striped Paper Straw &#8211; Cool Tones",
+      "image": "/media/wp/101--2026-07-14-095358.png",
+      "route": "/products/foodservice-supplies/paper-straws/stripe-colors-2/",
+      "pdfPage": 7,
+      "pixelSize": [
+        1321,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1321,
+        900
+      ],
+      "sha256": "0e0604f75bcf7ea9f6beb81742d2820db2e4b0dcc358b456f49e6842ccd59a6a",
+      "restorationSource": "exec-13f97f50-1897-4ba1-a1e1-647d704d64b7.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 32,
+      "slug": "stripe-colors",
+      "title": "Striped Paper Straw",
+      "image": "/media/wp/99--2026-07-14-094900.png",
+      "route": "/products/foodservice-supplies/paper-straws/stripe-colors/",
+      "pdfPage": 7,
+      "pixelSize": [
+        1309,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1309,
+        900
+      ],
+      "sha256": "8067303f64d06eac34c11ba7791182959989fab2bfe135c548e11279b6f94c81",
+      "restorationSource": "exec-e5ee2b06-86e6-4325-8043-50fb6c6c7236.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 33,
+      "slug": "pla-lid-2",
+      "title": "PLA Soup Cup Lid, 2 Sizes",
+      "image": "/media/wp/96--2026-07-14-094045.png",
+      "route": "/products/cups-bowls/soup-cups/pla-lid-2/",
+      "pdfPage": 5,
+      "pixelSize": [
+        319,
+        148
+      ],
+      "status": "ai-restored-reference",
+      "source": "p05-03",
+      "crop": [
+        0,
+        0.6,
+        1,
+        1
+      ],
+      "nativeProductSize": [
+        218,
+        100
+      ],
+      "finalPixelSize": [
+        1940,
+        900
+      ],
+      "sha256": "306736f1fdcd46725b258c6d1ad4de42939a6f09b407eb0b0a92e6755c41936a",
+      "restorationSource": "exec-1174ed30-cf07-4ffd-896e-cebc6617b129.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 34,
+      "slug": "natural-kraft-lid",
+      "title": "Kraft Soup Cup Lid, 2 Sizes",
+      "image": "/media/wp/94--2026-07-14-093751.png",
+      "route": "/products/cups-bowls/soup-cups/natural-kraft-lid/",
+      "pdfPage": 5,
+      "pixelSize": [
+        346,
+        157
+      ],
+      "status": "ai-restored-reference",
+      "source": "p05-03",
+      "crop": [
+        0,
+        0.36,
+        1,
+        0.6
+      ],
+      "nativeProductSize": [
+        215,
+        111
+      ],
+      "finalPixelSize": [
+        1983,
+        900
+      ],
+      "sha256": "2b6bc63b35462241393b0cd0305894aaecb663affb9b4a971b02a4f33e2a2f8a",
+      "restorationSource": "exec-69dc6c64-8de8-45bb-a41a-eb8a5dbbd2dc.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 35,
+      "slug": "cardboard-lid",
+      "title": "Cardboard Soup Cup Lid, 2 Sizes",
+      "image": "/media/wp/92--2026-07-14-093442.png",
+      "route": "/products/cups-bowls/soup-cups/cardboard-lid/",
+      "pdfPage": 5,
+      "pixelSize": [
+        339,
+        198
+      ],
+      "status": "ai-restored-reference",
+      "source": "p05-03",
+      "crop": [
+        0,
+        0,
+        1,
+        0.36
+      ],
+      "nativeProductSize": [
+        209,
+        109
+      ],
+      "finalPixelSize": [
+        1541,
+        900
+      ],
+      "sha256": "6f4f22956b46431d04b1cba06e8a55e13a6b8029e6af45874add7de4ee781280",
+      "restorationSource": "exec-0c9bf507-b1d5-411d-8aa3-9f04b75083be.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 36,
+      "slug": "bamboo-paper-soup-cup",
+      "title": "Bagasse Soup Cup, 4 Sizes",
+      "image": "/media/wp/90--2026-07-14-093115.png",
+      "route": "/products/cups-bowls/soup-cups/bamboo-paper-soup-cup/",
+      "pdfPage": 5,
+      "pixelSize": [
+        943,
+        634
+      ],
+      "status": "restored-original",
+      "source": "p05-02",
+      "crop": null,
+      "nativeProductSize": [
+        704,
+        464
+      ],
+      "finalPixelSize": [
+        943,
+        634
+      ],
+      "sha256": "e8069780e9d57f7136c036fa3f11003247427e5d030096ba6ccec39360a05d72",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 37,
+      "slug": "cardboard-soup-cup",
+      "title": "Cardboard Soup Cup, 5 Sizes",
+      "image": "/media/wp/88--2026-07-14-092633.png",
+      "route": "/products/cups-bowls/soup-cups/cardboard-soup-cup/",
+      "pdfPage": 5,
+      "pixelSize": [
+        622,
+        424
+      ],
+      "status": "restored-original",
+      "source": "p05-00",
+      "crop": null,
+      "nativeProductSize": [
+        544,
+        384
+      ],
+      "finalPixelSize": [
+        622,
+        424
+      ],
+      "sha256": "cfc86d95771b2bf94d0282ddbdc74d4cb7dd3a771fcbbe9d7ef01806e01cdce7",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 38,
+      "slug": "natural-kraft-soup-cup",
+      "title": "Kraft Soup Cup, 5 Sizes",
+      "image": "/media/wp/86--2026-07-14-092210.png",
+      "route": "/products/cups-bowls/soup-cups/natural-kraft-soup-cup/",
+      "pdfPage": 5,
+      "pixelSize": [
+        682,
+        442
+      ],
+      "status": "restored-original",
+      "source": "p05-01",
+      "crop": null,
+      "nativeProductSize": [
+        544,
+        376
+      ],
+      "finalPixelSize": [
+        682,
+        442
+      ],
+      "sha256": "d2ce6f87551a434e823042deb443d0b44533e4c63a9c99a6111a9ae78003d048",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 39,
+      "slug": "paper-lid",
+      "title": "Paper Salad Bowl Lid, 4 Variants",
+      "image": "/media/wp/84--2026-07-14-091707.png",
+      "route": "/products/cups-bowls/salad-bowls/paper-lid/",
+      "pdfPage": 4,
+      "pixelSize": [
+        549,
+        493
+      ],
+      "status": "restored-original",
+      "source": "p04-03",
+      "crop": null,
+      "nativeProductSize": [
+        440,
+        368
+      ],
+      "finalPixelSize": [
+        549,
+        493
+      ],
+      "sha256": "2df99b61b64409741808ebc08d315c417ab86cf8a2ad95ea05e9e30e11fc4f68",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 40,
+      "slug": "pla-lid",
+      "title": "PLA Salad Bowl Lid, 150 &#038; 185 mm",
+      "image": "/media/wp/82--2026-07-14-091435.png",
+      "route": "/products/cups-bowls/salad-bowls/pla-lid/",
+      "pdfPage": 4,
+      "pixelSize": [
+        562,
+        463
+      ],
+      "status": "restored-original",
+      "source": "p04-01",
+      "crop": null,
+      "nativeProductSize": [
+        456,
+        352
+      ],
+      "finalPixelSize": [
+        562,
+        463
+      ],
+      "sha256": "9bbdc12fb562895cdc461945ab85cf62180ae1c0c5f5574485cf7d0ab7d27391",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 41,
+      "slug": "pp-lid",
+      "title": "PP Salad Bowl Lid, 4 Variants",
+      "image": "/media/wp/80--2026-07-14-091055.png",
+      "route": "/products/cups-bowls/salad-bowls/pp-lid/",
+      "pdfPage": 4,
+      "pixelSize": [
+        496,
+        484
+      ],
+      "status": "restored-original",
+      "source": "p04-02",
+      "crop": null,
+      "nativeProductSize": [
+        432,
+        384
+      ],
+      "finalPixelSize": [
+        496,
+        484
+      ],
+      "sha256": "aead79cb1f08103b1359d4d5f706320c9523a6b2387e22688378828ea478d86b",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 42,
+      "slug": "pet-lid",
+      "title": "PET Salad Bowl Lid, 150 &#038; 185 mm",
+      "image": "/media/wp/78--2026-07-14-090653.png",
+      "route": "/products/cups-bowls/salad-bowls/pet-lid/",
+      "pdfPage": 4,
+      "pixelSize": [
+        619,
+        436
+      ],
+      "status": "restored-original",
+      "source": "p04-00",
+      "crop": null,
+      "nativeProductSize": [
+        613,
+        435
+      ],
+      "finalPixelSize": [
+        619,
+        436
+      ],
+      "sha256": "b5c2fcc3d622a187f9a6e7cdb0d747c3c707e80fc99c8c9b0efccb62259694d1",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 43,
+      "slug": "cardboard-bamboo-bowl",
+      "title": "White Cardboard Bowl, 6 Sizes",
+      "image": "/media/wp/76--2026-07-14-085703.png",
+      "route": "/products/cups-bowls/salad-bowls/cardboard-bamboo-bowl/",
+      "pdfPage": 4,
+      "pixelSize": [
+        1047,
+        817
+      ],
+      "status": "restored-original",
+      "source": "p04-04",
+      "crop": null,
+      "nativeProductSize": [
+        464,
+        568
+      ],
+      "finalPixelSize": [
+        1047,
+        817
+      ],
+      "sha256": "dc721e099083df57727b8f57348216221095ae922f6b483f560131c54cad8f93",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 44,
+      "slug": "kraft-paper-bowl",
+      "title": "Kraft Paper Bowl, 6 Sizes",
+      "image": "/media/wp/73--2026-07-14-084149.png",
+      "route": "/products/cups-bowls/salad-bowls/kraft-paper-bowl/",
+      "pdfPage": 3,
+      "pixelSize": [
+        895,
+        658
+      ],
+      "status": "restored-original",
+      "source": "p03-01",
+      "crop": null,
+      "nativeProductSize": [
+        1152,
+        759
+      ],
+      "finalPixelSize": [
+        895,
+        658
+      ],
+      "sha256": "a1ea35528d9435c3cba86a7b4c5d50d8fcd1b9ab66ecc6b583cbb952e4faa67c",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 45,
+      "slug": "printed-stripe-paper-straws",
+      "title": "Stripe Colors - decorative patterns",
+      "image": "/media/catalogue/printed-stripe-paper-straws.webp",
+      "route": "/products/foodservice-supplies/paper-straws/printed-stripe-paper-straws/",
+      "pdfPage": 8,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "0c0b58553ca9d34378bd880f68b20a5a21b568783225930368de9aa13d8f19f2",
+      "restorationSource": "exec-dc23bab2-1871-4b35-b504-d1611e8ceeb0.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 46,
+      "slug": "small-dot-paper-straws",
+      "title": "Small Dot Colors",
+      "image": "/media/catalogue/small-dot-paper-straws.webp",
+      "route": "/products/foodservice-supplies/paper-straws/small-dot-paper-straws/",
+      "pdfPage": 8,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "e68770f841ff8055fa86cab05713b6fca02908c73ca3249f4b7695ab30283080",
+      "restorationSource": "exec-ec125de3-90b1-4509-b49a-ef9c92ffa409.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 47,
+      "slug": "big-dot-paper-straws",
+      "title": "Big Dot Colors",
+      "image": "/media/catalogue/big-dot-paper-straws.webp",
+      "route": "/products/foodservice-supplies/paper-straws/big-dot-paper-straws/",
+      "pdfPage": 8,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "4265ff9f2fda367ba1308b09c61e292d6f021e4c7a6c91c8bee3e4b26ef619d7",
+      "restorationSource": "exec-55d0ed0f-4430-4c6e-ab8c-9113878d2f60.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 48,
+      "slug": "wave-paper-straws",
+      "title": "Wave Colors",
+      "image": "/media/catalogue/wave-paper-straws.webp",
+      "route": "/products/foodservice-supplies/paper-straws/wave-paper-straws/",
+      "pdfPage": 8,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "4c215506f3b957ab8cf93dd7d2f572799e1c08f1bf9d3d4fb131e4f8d11dfc9b",
+      "restorationSource": "exec-2d1c9386-9763-450e-b9af-d262d2b68212.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 49,
+      "slug": "cardboard-ice-cream-cup",
+      "title": "Cardboard Ice Cream Cup",
+      "image": "/media/catalogue/cardboard-ice-cream-cup.webp",
+      "route": "/products/cups-bowls/ice-cream-cups/cardboard-ice-cream-cup/",
+      "pdfPage": 10,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p10-02",
+      "crop": [
+        0,
+        0.42,
+        0.53,
+        1
+      ],
+      "nativeProductSize": [
+        335,
+        360
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "2fa9d25470fc5705c8739a9af912109b114e96ed447508d8287d1522dc648556",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 50,
+      "slug": "pla-ice-cream-lid",
+      "title": "PLA Lid",
+      "image": "/media/catalogue/pla-ice-cream-lid.webp",
+      "route": "/products/cups-bowls/ice-cream-cups/pla-ice-cream-lid/",
+      "pdfPage": 10,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p10-02",
+      "crop": [
+        0.52,
+        0.65,
+        1,
+        1
+      ],
+      "nativeProductSize": [
+        342,
+        164
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "b39beddf0e8c26e3c8a9fec7910bd536a92e585107ebd015e9d6e8819b7bcee3",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 51,
+      "slug": "kraft-paper-tray",
+      "title": "Kraft Paper Tray",
+      "image": "/media/catalogue/kraft-paper-tray.webp",
+      "route": "/products/food-boxes-containers/paper-trays/kraft-paper-tray/",
+      "pdfPage": 10,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p10-01",
+      "crop": null,
+      "nativeProductSize": [
+        688,
+        352
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "f14a9cab62baf1c835c30874817dcc639cf105f1e2faf10fc6a0f6a07aeeab78",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 52,
+      "slug": "two-compartment-paper-tray",
+      "title": "2-Compartment Paper Tray",
+      "image": "/media/catalogue/two-compartment-paper-tray.webp",
+      "route": "/products/food-boxes-containers/paper-trays/two-compartment-paper-tray/",
+      "pdfPage": 10,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p10-04",
+      "crop": null,
+      "nativeProductSize": [
+        453,
+        256
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "c37b1950daa00482d455008082c5035ad8fe5101b717e814cf5b5c293eeb0dc0",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 53,
+      "slug": "hot-dog-tray",
+      "title": "Hot Dog Tray",
+      "image": "/media/catalogue/hot-dog-tray.webp",
+      "route": "/products/food-boxes-containers/paper-trays/hot-dog-tray/",
+      "pdfPage": 10,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p10-00",
+      "crop": null,
+      "nativeProductSize": [
+        496,
+        323
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "532e92c4ad3b6f2a8f93ec5642eda335b0c2efc2ac0e0187dfbcefd242ebacdf",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 54,
+      "slug": "kraft-square-food-box",
+      "title": "Kraft Square Food Box",
+      "image": "/media/catalogue/kraft-square-food-box.webp",
+      "route": "/products/food-boxes-containers/square-food-boxes/kraft-square-food-box/",
+      "pdfPage": 11,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "source": "p11-00",
+      "crop": [
+        0,
+        0.47,
+        0.25,
+        0.64
+      ],
+      "nativeProductSize": [
+        464,
+        262
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "2cff2d15cf72e98936f13a1c57210aef1c845b955658d6f3e1c21d52ca452406",
+      "restorationSource": "exec-72f4137e-18d3-47e0-8f00-b8b1e9d7521c.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 55,
+      "slug": "kraft-square-food-box-wire-handle",
+      "title": "Kraft Square Food Box-Wire Handle",
+      "image": "/media/catalogue/kraft-square-food-box-wire-handle.webp",
+      "route": "/products/food-boxes-containers/square-food-boxes/kraft-square-food-box-wire-handle/",
+      "pdfPage": 11,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p11-00",
+      "crop": [
+        0,
+        0.73,
+        0.25,
+        0.98
+      ],
+      "nativeProductSize": [
+        466,
+        358
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "9ff5f646a44429772066e2f59e373b66324128463af1cc58c885ed96fb46aa9e",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 56,
+      "slug": "white-cardboard-food-box",
+      "title": "White Cardboard Box",
+      "image": "/media/catalogue/white-cardboard-food-box.webp",
+      "route": "/products/food-boxes-containers/square-food-boxes/white-cardboard-food-box/",
+      "pdfPage": 11,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p11-00",
+      "crop": [
+        0.53,
+        0.05,
+        0.75,
+        0.29
+      ],
+      "nativeProductSize": [
+        459,
+        369
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "264846ab8506bb648d376d18b77950d43d9c3f028bdcf8983045e542fb40593b",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 57,
+      "slug": "white-cardboard-food-box-pp-handle",
+      "title": "White Cardboard Box-pp Handle",
+      "image": "/media/catalogue/white-cardboard-food-box-pp-handle.webp",
+      "route": "/products/food-boxes-containers/square-food-boxes/white-cardboard-food-box-pp-handle/",
+      "pdfPage": 11,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p11-00",
+      "crop": [
+        0.75,
+        0.29,
+        0.98,
+        0.53
+      ],
+      "nativeProductSize": [
+        461,
+        400
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "8a52b3f235c3832f7e3a13b17ec65727e754736c9be771ce2dc4b42e6847173e",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 58,
+      "slug": "kraft-round-food-box",
+      "title": "Kraft Round Food Box",
+      "image": "/media/catalogue/kraft-round-food-box.webp",
+      "route": "/products/food-boxes-containers/round-food-boxes/kraft-round-food-box/",
+      "pdfPage": 12,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p12-00",
+      "crop": [
+        0.77,
+        0.24,
+        0.98,
+        0.47
+      ],
+      "nativeProductSize": [
+        407,
+        335
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "c09618d896acda82180e31d0bfb673215333b8f5b7aa9198f4679ecea7f133d2",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 59,
+      "slug": "white-round-food-box",
+      "title": "White Round Food Box",
+      "image": "/media/catalogue/white-round-food-box.webp",
+      "route": "/products/food-boxes-containers/round-food-boxes/white-round-food-box/",
+      "pdfPage": 12,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p12-00",
+      "crop": [
+        0.53,
+        0.45,
+        0.74,
+        0.66
+      ],
+      "nativeProductSize": [
+        484,
+        374
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "da195e2f579ad12928f58d1766cfef6d0a7e326c12683bad2275a2f46d1cea0a",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 60,
+      "slug": "white-cardboard-menu-box",
+      "title": "White Cardboard Menu Box",
+      "image": "/media/catalogue/white-cardboard-menu-box.webp",
+      "route": "/products/food-boxes-containers/menu-boxes/white-cardboard-menu-box/",
+      "pdfPage": 13,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "ai-restored-reference",
+      "source": "p13-00",
+      "crop": [
+        0.09,
+        0.4,
+        0.62,
+        0.65
+      ],
+      "nativeProductSize": [
+        621,
+        423
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "232042bb24a7be7fe160f4d05bee8fdd18bcc4185d310a482de1723b2bdec573",
+      "restorationSource": "exec-bec3267d-df76-491c-9ad9-bf2b76907024.png",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 61,
+      "slug": "cardboard-cutlery",
+      "title": "Cardboard Cutlery",
+      "image": "/media/catalogue/cardboard-cutlery.webp",
+      "route": "/products/foodservice-supplies/disposable-cutlery/cardboard-cutlery/",
+      "pdfPage": 13,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p13-01",
+      "crop": null,
+      "nativeProductSize": [
+        632,
+        304
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "513ab821366ba5e5a2fa4c34554e7f975d1e13876511b174c7861bc0a65e9461",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 62,
+      "slug": "corrugated-hamburger-box",
+      "title": "Corrugated Hamburger Box",
+      "image": "/media/catalogue/corrugated-hamburger-box.webp",
+      "route": "/products/food-boxes-containers/burger-boxes/corrugated-hamburger-box/",
+      "pdfPage": 14,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p14-00",
+      "crop": [
+        0.69,
+        0.48,
+        0.98,
+        0.84
+      ],
+      "nativeProductSize": [
+        612,
+        514
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "6c17911945c8446f49277aa97bbebda06daab643ba552646b6c1f0bd5381d4fe",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 63,
+      "slug": "cardboard-sandwich-box-pla-window",
+      "title": "Cardboard Sandwich Box-PLA Window",
+      "image": "/media/catalogue/cardboard-sandwich-box-pla-window.webp",
+      "route": "/products/food-boxes-containers/sandwich-boxes/cardboard-sandwich-box-pla-window/",
+      "pdfPage": 15,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p15-00",
+      "crop": [
+        0.29,
+        0.2,
+        0.46,
+        0.46
+      ],
+      "nativeProductSize": [
+        329,
+        421
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "c1de7500582f461999439a0ff3f930641a54d519b46b3a7d3fcc6e0ba4a5943b",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 64,
+      "slug": "cardboard-triangle-box-pla-window",
+      "title": "Cardboard Triangle Box-PLA Window",
+      "image": "/media/catalogue/cardboard-triangle-box-pla-window.webp",
+      "route": "/products/food-boxes-containers/pizza-slice-boxes/cardboard-triangle-box-pla-window/",
+      "pdfPage": 15,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p15-00",
+      "crop": [
+        0.18,
+        0.73,
+        0.48,
+        0.99
+      ],
+      "nativeProductSize": [
+        670,
+        497
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "0a0e049722d89c0dd4ba8322c24d3fb5d33232f116873ca3c4b2740669136789",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 65,
+      "slug": "kraft-wrap-box-pla-window",
+      "title": "Kraft Wrap Box-PLA Window",
+      "image": "/media/catalogue/kraft-wrap-box-pla-window.webp",
+      "route": "/products/food-boxes-containers/wrap-boxes/kraft-wrap-box-pla-window/",
+      "pdfPage": 15,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p15-00",
+      "crop": [
+        0.76,
+        0,
+        1,
+        0.34
+      ],
+      "nativeProductSize": [
+        481,
+        449
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "f7c65985d7d6272b409f752b64e355b2489f454c85485b136bf5ec9c3e273471",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 66,
+      "slug": "cardboard-window-food-box",
+      "title": "Cardboard Box-PLA Window",
+      "image": "/media/catalogue/cardboard-window-food-box.webp",
+      "route": "/products/food-boxes-containers/salad-boxes/cardboard-window-food-box/",
+      "pdfPage": 15,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p15-00",
+      "crop": [
+        0.77,
+        0.44,
+        1,
+        0.63
+      ],
+      "nativeProductSize": [
+        399,
+        276
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "fc5c0e502d54b7d5b287482c08d02679b46e738f3e7269b185fd3ad7128790fb",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 67,
+      "slug": "multi-window-salad-box",
+      "title": "Kraft Paper Salad Box-PLA Window - multi-window",
+      "image": "/media/catalogue/multi-window-salad-box.webp",
+      "route": "/products/food-boxes-containers/salad-boxes/multi-window-salad-box/",
+      "pdfPage": 17,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p17-00",
+      "crop": [
+        0.13,
+        0,
+        0.45,
+        0.34
+      ],
+      "nativeProductSize": [
+        709,
+        515
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "8ec8d638f372cc29bef68e89a7e48e852f7bfac5141d0192ab5d9bff45f0f372",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 68,
+      "slug": "two-piece-window-food-box",
+      "title": "Kraft Paper Box-PLA Window - two-piece",
+      "image": "/media/catalogue/two-piece-window-food-box.webp",
+      "route": "/products/food-boxes-containers/salad-boxes/two-piece-window-food-box/",
+      "pdfPage": 17,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p17-00",
+      "crop": [
+        0.26,
+        0.68,
+        0.5,
+        0.97
+      ],
+      "nativeProductSize": [
+        566,
+        500
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "9e7399cdba0748cf96e3cdc8269c3ac8c30eaaa502653b8df0b2bef98e14142c",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 69,
+      "slug": "rectangular-pla-window-box",
+      "title": "Kraft Paper Box-PLA Window - rectangular",
+      "image": "/media/catalogue/rectangular-pla-window-box.webp",
+      "route": "/products/food-boxes-containers/salad-boxes/rectangular-pla-window-box/",
+      "pdfPage": 17,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p17-00",
+      "crop": [
+        0.53,
+        0,
+        0.77,
+        0.34
+      ],
+      "nativeProductSize": [
+        549,
+        474
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "2e7a1da547af30d01ce3c3b2b4a88e11fe2c238e4be07d9b95e44c8e801a2ab9",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 70,
+      "slug": "kraft-window-menu-box",
+      "title": "Kraft Paper Box-PLA Window - hinged",
+      "image": "/media/catalogue/kraft-window-menu-box.webp",
+      "route": "/products/food-boxes-containers/salad-boxes/kraft-window-menu-box/",
+      "pdfPage": 17,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p17-00",
+      "crop": [
+        0.54,
+        0.65,
+        0.78,
+        0.83
+      ],
+      "nativeProductSize": [
+        541,
+        255
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "b77f284b81e5f08012d6517496d8c7429c8fb372385284682812073cc826c647",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 71,
+      "slug": "frite-cone-white",
+      "title": "Frite Cone-White",
+      "image": "/media/catalogue/frite-cone-white.webp",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/frite-cone-white/",
+      "pdfPage": 18,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p18-00",
+      "crop": [
+        0.57,
+        0,
+        0.7,
+        0.31
+      ],
+      "nativeProductSize": [
+        234,
+        471
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "a92e9306de9b64378a29482c8adfe789fcec2e8ba62731e60eadae654590f560",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 72,
+      "slug": "frite-cone-kraft-cardboard",
+      "title": "Frite Cone-Kraft Cardboard",
+      "image": "/media/catalogue/frite-cone-kraft-cardboard.webp",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/frite-cone-kraft-cardboard/",
+      "pdfPage": 18,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p18-00",
+      "crop": [
+        0.83,
+        0.7,
+        1,
+        0.98
+      ],
+      "nativeProductSize": [
+        261,
+        436
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "2278be76650781c7c71dd90e165b455ac62b7a677cc537eb80f36bcce5d975af",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 73,
+      "slug": "cardboard-closed-snack-cup",
+      "title": "Cardboard Closed Snack Cup",
+      "image": "/media/catalogue/cardboard-closed-snack-cup.webp",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/cardboard-closed-snack-cup/",
+      "pdfPage": 19,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p19-00",
+      "crop": [
+        0.68,
+        0.02,
+        0.99,
+        0.39
+      ],
+      "nativeProductSize": [
+        664,
+        543
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "d5d15cd45ec8b9ef674c082a1227c78a3a5fe30756828de6b99690ee49aa8608",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 74,
+      "slug": "kraft-french-fries-box",
+      "title": "Natural Kraft French Fries Box",
+      "image": "/media/catalogue/kraft-french-fries-box.webp",
+      "route": "/products/food-boxes-containers/cone-fry-packaging/kraft-french-fries-box/",
+      "pdfPage": 19,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p19-00",
+      "crop": [
+        0.8,
+        0.69,
+        0.98,
+        0.96
+      ],
+      "nativeProductSize": [
+        300,
+        457
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "8e21c21d10dafa564aa0756d8c160a23b9203ee662a797ef52531a5b643a294c",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 75,
+      "slug": "bagasse-round-plate",
+      "title": "Plate Round",
+      "image": "/media/catalogue/bagasse-round-plate.webp",
+      "route": "/products/bagasse/bagasse-plates/bagasse-round-plate/",
+      "pdfPage": 20,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p20-00",
+      "crop": null,
+      "nativeProductSize": [
+        560,
+        408
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "54285125183f49eddfd1716d5dde7b1c4ff5041d6e0b41013f131be1277c5fb7",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 76,
+      "slug": "bagasse-natural-round-plate",
+      "title": "Plate Round Natural",
+      "image": "/media/catalogue/bagasse-natural-round-plate.webp",
+      "route": "/products/bagasse/bagasse-plates/bagasse-natural-round-plate/",
+      "pdfPage": 20,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p20-02",
+      "crop": null,
+      "nativeProductSize": [
+        584,
+        424
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "8d14d23d09e8b2121fca9a63c9edabd514d5d0f1288c59a79b2115c4d39817b7",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 77,
+      "slug": "bagasse-three-compartment-plate",
+      "title": "Plate Round 3 Part",
+      "image": "/media/catalogue/bagasse-three-compartment-plate.webp",
+      "route": "/products/bagasse/bagasse-plates/bagasse-three-compartment-plate/",
+      "pdfPage": 20,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p20-01",
+      "crop": null,
+      "nativeProductSize": [
+        677,
+        501
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "00cd91148252fca31142f47b1fb54a5e6ad832496f8ecdcc7ff9778678424254",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 78,
+      "slug": "bagasse-natural-round-bowl",
+      "title": "Bowl Round Natural",
+      "image": "/media/catalogue/bagasse-natural-round-bowl.webp",
+      "route": "/products/bagasse/bagasse-bowls/bagasse-natural-round-bowl/",
+      "pdfPage": 21,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p21-01",
+      "crop": null,
+      "nativeProductSize": [
+        550,
+        439
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "5f521f37f1baf0c6822a14bc7af045604f10b6fb52f45e0ff4890a72232655dc",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 79,
+      "slug": "bagasse-round-bowl",
+      "title": "Bowl Round",
+      "image": "/media/catalogue/bagasse-round-bowl.webp",
+      "route": "/products/bagasse/bagasse-bowls/bagasse-round-bowl/",
+      "pdfPage": 21,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p21-00",
+      "crop": null,
+      "nativeProductSize": [
+        544,
+        439
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "2b6274b54f1dd08184c1f149cc13e47157ecd37b37eb562645741e443b026364",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 80,
+      "slug": "bagasse-shallow-round-bowl",
+      "title": "Bowl Round Shallow",
+      "image": "/media/catalogue/bagasse-shallow-round-bowl.webp",
+      "route": "/products/bagasse/bagasse-bowls/bagasse-shallow-round-bowl/",
+      "pdfPage": 21,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p21-02",
+      "crop": null,
+      "nativeProductSize": [
+        566,
+        400
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "f4aacc1572458438cedf9ac18597b608a2feb500d31334d92824e769dedef62f",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 81,
+      "slug": "bagasse-two-compartment-tray",
+      "title": "Menu Tray-Rectangular Natural",
+      "image": "/media/catalogue/bagasse-two-compartment-tray.webp",
+      "route": "/products/bagasse/bagasse-trays/bagasse-two-compartment-tray/",
+      "pdfPage": 21,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p21-03",
+      "crop": null,
+      "nativeProductSize": [
+        572,
+        376
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "39aec41e446bfe379403548cf93c17a4904ca56c6930c82474642770a10175fa",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 82,
+      "slug": "bagasse-square-plate",
+      "title": "Plate Square",
+      "image": "/media/catalogue/bagasse-square-plate.webp",
+      "route": "/products/bagasse/bagasse-trays/bagasse-square-plate/",
+      "pdfPage": 21,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p21-04",
+      "crop": null,
+      "nativeProductSize": [
+        576,
+        416
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "7bdfc060a973e34f9991d44a18a9ecbb4c4efc6ed52fba382b700e63fda818da",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 83,
+      "slug": "bagasse-three-compartment-clamshell",
+      "title": "Food Box with Fold-over Lid 3 Part",
+      "image": "/media/catalogue/bagasse-three-compartment-clamshell.webp",
+      "route": "/products/bagasse/bagasse-clamshells/bagasse-three-compartment-clamshell/",
+      "pdfPage": 22,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p22-00",
+      "crop": null,
+      "nativeProductSize": [
+        496,
+        672
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "a28092267e8949d7060582c4826a4829c63980b50f2613101137fdc2aa0902cb",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 84,
+      "slug": "bagasse-clamshell",
+      "title": "Food Box with Fold-over Lid",
+      "image": "/media/catalogue/bagasse-clamshell.webp",
+      "route": "/products/bagasse/bagasse-clamshells/bagasse-clamshell/",
+      "pdfPage": 22,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p22-01",
+      "crop": null,
+      "nativeProductSize": [
+        470,
+        693
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "6c605b43515c9393a1db32d9b8f407303f73329ddc16d94aeeef5c3e9483c5a9",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 85,
+      "slug": "compostable-waste-bag",
+      "title": "Compostable Waste Bag",
+      "image": "/media/catalogue/compostable-waste-bag.webp",
+      "route": "/products/foodservice-supplies/compostable-waste-bags/compostable-waste-bag/",
+      "pdfPage": 22,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "reviewed-retained-original",
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "a6d023ca11fb176259910a4268a0f68bea669e6b9e13e5b0e91a3e9d2fd241db",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 86,
+      "slug": "ripple-white-paper-cup-vertical",
+      "title": "Ripple-White Cardboard Paper Cup-Vertical Style",
+      "image": "/media/catalogue/ripple-white-paper-cup-vertical.webp",
+      "route": "/products/cups-bowls/paper-cups/ripple-white-paper-cup-vertical/",
+      "pdfPage": 23,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p23-00",
+      "crop": [
+        0.83,
+        0.39,
+        0.97,
+        0.62
+      ],
+      "nativeProductSize": [
+        214,
+        347
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "67d7a37ee3fcd7e7c2e9a01e3e10f18f550bd59d3efe8c2ef14cdc275e3c3792",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 87,
+      "slug": "ripple-white-paper-cup-horizontal",
+      "title": "Ripple-White Cardboard Paper Cup-Horizon Style",
+      "image": "/media/catalogue/ripple-white-paper-cup-horizontal.webp",
+      "route": "/products/cups-bowls/paper-cups/ripple-white-paper-cup-horizontal/",
+      "pdfPage": 23,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p23-00",
+      "crop": [
+        0.56,
+        0.58,
+        0.7,
+        0.83
+      ],
+      "nativeProductSize": [
+        262,
+        319
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "e905e517068d8440b952ad2fe97d0c9e303aae82e9adb3e176cc31fb76002bcb",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 88,
+      "slug": "single-wall-bagasse-paper-cup",
+      "title": "Single Wall-Bagasse Paper Cup",
+      "image": "/media/catalogue/single-wall-bagasse-paper-cup.webp",
+      "route": "/products/cups-bowls/paper-cups/single-wall-bagasse-paper-cup/",
+      "pdfPage": 23,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p23-00",
+      "crop": [
+        0.83,
+        0.75,
+        0.97,
+        0.99
+      ],
+      "nativeProductSize": [
+        208,
+        331
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "bc1910ce0e41be304562635884fee591e57640a7381ea8aaf276e2b9df49b752",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 89,
+      "slug": "single-wall-kraft-paper-cup",
+      "title": "Single Wall-Natural Kraft Paper Cup",
+      "image": "/media/catalogue/single-wall-kraft-paper-cup.webp",
+      "route": "/products/cups-bowls/paper-cups/single-wall-kraft-paper-cup/",
+      "pdfPage": 24,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p24-00",
+      "crop": [
+        0.04,
+        0,
+        0.39,
+        0.3
+      ],
+      "nativeProductSize": [
+        301,
+        401
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "b68d8c5928295230810d4c3b0dbe065251733f2f642e004a66589a691947eb1a",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 90,
+      "slug": "double-wall-kraft-paper-cup",
+      "title": "Double Wall-Natural Kraft Paper Cup",
+      "image": "/media/catalogue/double-wall-kraft-paper-cup.webp",
+      "route": "/products/cups-bowls/paper-cups/double-wall-kraft-paper-cup/",
+      "pdfPage": 24,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p24-00",
+      "crop": [
+        0.57,
+        0.26,
+        0.91,
+        0.53
+      ],
+      "nativeProductSize": [
+        300,
+        423
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "0d162a835440a85b33a3c933acf3973347c9dd365fad66cee1bb21707bd2d55c",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 91,
+      "slug": "white-handle-paper-bag",
+      "title": "Cardboard Handle Paper Bag",
+      "image": "/media/catalogue/white-handle-paper-bag.webp",
+      "route": "/products/foodservice-supplies/paper-bags/white-handle-paper-bag/",
+      "pdfPage": 25,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p25-00",
+      "crop": [
+        0.53,
+        0.17,
+        0.71,
+        0.51
+      ],
+      "nativeProductSize": [
+        321,
+        525
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "cad7ec99468de4b050fb5f6b42f0e5ff560abd2fed419ea2cc9b44ce9d80968f",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 92,
+      "slug": "kraft-handle-paper-bag",
+      "title": "Natural Kraft Handle Paper Bag",
+      "image": "/media/catalogue/kraft-handle-paper-bag.webp",
+      "route": "/products/foodservice-supplies/paper-bags/kraft-handle-paper-bag/",
+      "pdfPage": 25,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p25-00",
+      "crop": [
+        0.79,
+        0.04,
+        0.97,
+        0.4
+      ],
+      "nativeProductSize": [
+        354,
+        541
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "c0c610b942646569b209eb5ce223653e593b9bd894b8928ea303466af9b00a40",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 93,
+      "slug": "white-paper-bag",
+      "title": "Cardboard Paper Bag",
+      "image": "/media/catalogue/white-paper-bag.webp",
+      "route": "/products/foodservice-supplies/paper-bags/white-paper-bag/",
+      "pdfPage": 25,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p25-00",
+      "crop": [
+        0.53,
+        0.57,
+        0.71,
+        0.91
+      ],
+      "nativeProductSize": [
+        291,
+        473
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "375f37dfc5aebf86c28e1ac27a6bec3e659a4e91a7fd9a018ce2447b0d28f586",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 94,
+      "slug": "kraft-paper-bag",
+      "title": "Natural Kraft Paper Bag",
+      "image": "/media/catalogue/kraft-paper-bag.webp",
+      "route": "/products/foodservice-supplies/paper-bags/kraft-paper-bag/",
+      "pdfPage": 25,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p25-00",
+      "crop": [
+        0.79,
+        0.47,
+        0.97,
+        0.81
+      ],
+      "nativeProductSize": [
+        308,
+        502
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "783e836988c639dffb564421786a058d478731d5bb52c9376c978bacdb61a151",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    },
+    {
+      "index": 95,
+      "slug": "white-open-wrap-cup",
+      "title": "Cardboard Open Wrap Cup",
+      "image": "/media/catalogue/white-open-wrap-cup.webp",
+      "route": "/products/food-boxes-containers/wrap-boxes/white-open-wrap-cup/",
+      "pdfPage": 19,
+      "pixelSize": [
+        1200,
+        900
+      ],
+      "status": "restored-original",
+      "source": "p19-00",
+      "crop": [
+        0.15,
+        0,
+        0.48,
+        0.39
+      ],
+      "nativeProductSize": [
+        717,
+        611
+      ],
+      "finalPixelSize": [
+        1200,
+        900
+      ],
+      "sha256": "1091884d7558460098c7ca351270f07bdb968f98f2df217c1508c409e540e6eb",
+      "visualReview": "reviewed-in-labelled-contact-sheet"
+    }
+  ]
+}

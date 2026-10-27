@@ -1,0 +1,33 @@
+---
+import homeImages from '../data/home-images.json';
+
+const { language } = Astro.props;
+const copy = {
+  en: { title: 'Trade Show Presence', alts: ['A group photograph at the Corncomp exhibition stand', 'Corncomp representative and a visitor beside the packaging display', 'Two people at the Corncomp stand with paper tableware on display', 'A conversation about samples at the Corncomp exhibition counter', 'Two people with a catalogue at the Corncomp exhibition stand', 'Two people posing beside the Corncomp packaging display'] },
+  zh: { title: '展会交流', alts: ['遇米展台前的四人合影', '遇米代表与访客在包装展示区合影', '两人在遇米纸质餐具展台前合影', '遇米展台前交流产品样品', '两人在遇米展台前手持目录合影', '两人在遇米包装展示区合影'] },
+  fr: { title: 'Nos rencontres en salon', alts: ['Photo de groupe sur le stand Corncomp', 'Un représentant Corncomp et un visiteur devant les emballages exposés', 'Deux personnes devant la vaisselle en papier du stand Corncomp', 'Une discussion sur les échantillons au comptoir Corncomp', 'Deux personnes avec un catalogue sur le stand Corncomp', 'Deux personnes devant la présentation des emballages Corncomp'] },
+  es: { title: 'Encuentros en ferias', alts: ['Foto de grupo en el stand de Corncomp', 'Un representante de Corncomp y un visitante junto a los envases expuestos', 'Dos personas ante la vajilla de papel del stand de Corncomp', 'Una conversación sobre muestras en el mostrador de Corncomp', 'Dos personas con un catálogo en el stand de Corncomp', 'Dos personas junto a la exposición de envases de Corncomp'] },
+  de: { title: 'Begegnungen auf Messen', alts: ['Gruppenfoto am Corncomp-Messestand', 'Ein Corncomp-Vertreter und ein Besucher neben den ausgestellten Verpackungen', 'Zwei Personen vor dem Papiergeschirr am Corncomp-Messestand', 'Ein Gespräch über Muster am Corncomp-Messestand', 'Zwei Personen mit einem Katalog am Corncomp-Messestand', 'Zwei Personen neben der Corncomp-Verpackungsausstellung'] },
+  ar: { title: 'لقاءات في المعارض', alts: ['صورة جماعية في جناح كورنكومب بالمعرض', 'ممثل كورنكومب وزائر بجانب عرض العبوات', 'شخصان أمام أدوات المائدة الورقية في جناح كورنكومب', 'نقاش حول العينات عند منصة كورنكومب', 'شخصان يحملان كتالوجاً في جناح كورنكومب', 'شخصان بجانب عرض عبوات كورنكومب'] },
+}[language];
+---
+<section id="home-trade-shows" class="home-trade-shows" aria-labelledby="home-trade-shows-title">
+  <div class="content-shell trade-shows-inner">
+    <h2 id="home-trade-shows-title">{copy.title}</h2>
+    <div class="trade-shows-grid">
+      {copy.alts.map((alt, index) => <div class="trade-show-frame"><img {...homeImages['trade-show:' + (index + 1)]} width="1200" height="900" sizes="(max-width: 600px) 46vw, (max-width: 1280px) 30vw, 390px" alt={alt} loading="lazy" decoding="async"/></div>)}
+    </div>
+  </div>
+</section>
+<style>
+  .home-trade-shows{background:var(--corncomp-paper);scroll-margin-top:110px}
+  .trade-shows-inner{padding-block:48px 32px}
+  .trade-shows-inner h2{margin:0 0 28px;text-align:center;color:var(--corncomp-deep-green);font-size:clamp(1.9rem,3.4vw,2.8rem);line-height:1.2;letter-spacing:-.025em;text-wrap:pretty}
+  .trade-shows-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .trade-show-frame{aspect-ratio:4/3;overflow:hidden;border-radius:4px}
+  .trade-shows-grid img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+  .trade-show-frame:nth-child(1) img{transform:scale(1.14);transform-origin:50% 60%}
+  .trade-show-frame:nth-child(2) img{transform:scale(1.24);transform-origin:45% 68%}
+  :global(html[lang="ar"]) .trade-shows-inner h2,:global(html[lang="zh"]) .trade-shows-inner h2{letter-spacing:0}
+  @media(max-width:600px){.trade-shows-inner{padding-block:32px 16px}.trade-shows-inner h2{margin-bottom:20px;font-size:1.7rem}.trade-shows-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+</style>

@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { FOREST_PRODUCT_IMAGES, PRODUCT_IMAGE_BACKGROUND } from '../data/product-image-background.mjs';
 
 const { media, eager = false, class: className = '' } = Astro.props;
 ---
@@ -12,5 +13,5 @@ const { media, eager = false, class: className = '' } = Astro.props;
   decoding="async"
   fetchpriority={eager ? 'high' : undefined}
   class={className}
-  style={`object-fit: ${media.fit}; object-position: ${media.position};`}
+  style={`object-fit: ${media.fit}; object-position: ${media.position};${FOREST_PRODUCT_IMAGES.has(media.src) ? ` background: ${PRODUCT_IMAGE_BACKGROUND};` : ''}`}
 />}

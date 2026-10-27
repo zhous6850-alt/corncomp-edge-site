@@ -1,0 +1,117 @@
+---
+import { routeFor } from '../lib/localization.mjs';
+const { language, ui } = Astro.props;
+const contactPath=routeFor(language,'architecture:contact');
+const copy={
+  en:['Close inquiry','Loading form…','Unable to load the form. Please use our contact page.'],
+  zh:['关闭询盘','正在加载表单…','表单加载失败，请使用联系页面。'],
+  fr:['Fermer la demande','Chargement du formulaire…','Impossible de charger le formulaire. Utilisez notre page de contact.'],
+  es:['Cerrar consulta','Cargando formulario…','No se pudo cargar el formulario. Utilice la página de contacto.'],
+  de:['Anfrage schließen','Formular wird geladen…','Das Formular konnte nicht geladen werden. Bitte nutzen Sie die Kontaktseite.'],
+  ar:['إغلاق الاستفسار','جارٍ تحميل النموذج…','تعذر تحميل النموذج. يرجى استخدام صفحة الاتصال.'],
+}[language];
+---
+<dialog class="quote-dialog" aria-labelledby="quote-dialog-title" data-contact-path={contactPath} data-quote-label={ui.requestQuote}>
+  <header class="quote-dialog-heading"><h2 id="quote-dialog-title">{ui.requestQuote}</h2><button type="button" data-quote-close aria-label={copy[0]}>×</button></header>
+  <div class="quote-dialog-content">
+    <p data-quote-loading role="status">{copy[1]}</p>
+    <div data-quote-error hidden role="alert"><p>{copy[2]}</p><a href={contactPath} data-contact-page>{ui.contactUs} →</a></div>
+    <div data-quote-form></div>
+  </div>
+</dialog>
+<script>
+  import { isQuoteLink, applyQuoteContext } from '../lib/quote-dialog.mjs';
+  const dialog=document.querySelector<HTMLDialogElement>('.quote-dialog');
+  if(dialog && typeof dialog.showModal==='function') {
+    const mount=dialog.querySelector<HTMLElement>('[data-quote-form]');
+    const loading=dialog.querySelector<HTMLElement>('[data-quote-loading]');
+    const error=dialog.querySelector<HTMLElement>('[data-quote-error]');
+    let opener:HTMLAnchorElement;
+    let form:HTMLFormElement;
+    let pending:Promise<void>;
+    let widgetId:string;
+    let scrollY=0;
+    let bodyStyle='';
+    const verification=()=>new Promise<void>((resolve,reject)=>{
+      if((window as any).turnstile){resolve();return;}
+      const script=document.createElement('script');
+      const timer=setTimeout(()=>{script.remove();reject(new Error('Verification timed out'));},20000);
+      (window as any).corncompTurnstileLoaded=()=>{clearTimeout(timer);resolve();};
+      script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=corncompTurnstileLoaded';
+      script.async=true;script.onerror=()=>{clearTimeout(timer);script.remove();reject(new Error('Verification unavailable'));};document.head.append(script);
+    });
+    const load=async()=>{
+      loading.hidden=false;error.hidden=true;mount.hidden=true;
+      const [response,{initializeInquiryForm}]=await Promise.all([
+        fetch(dialog.dataset.contactPath,{credentials:'same-origin',signal:AbortSignal.timeout(20000)}),
+        import('../lib/inquiry-form.mjs'),
+      ]);
+      if(!response.ok)throw new Error('Form unavailable');
+      const page=new DOMParser().parseFromString(await response.text(),'text/html');
+      const panel=page.querySelector('.inquiry-panel');
+      const notice=page.querySelector<HTMLElement>('#inquiry-toast');
+      if(!panel || !notice)throw new Error('Form unavailable');
+      // Import only the existing form and feedback, never scripts or the contact page.
+      mount.replaceChildren(document.importNode(notice,true),document.importNode(panel,true));
+      form=mount.querySelector<HTMLFormElement>('form');
+      const feedback=mount.querySelector<HTMLElement>('.inquiry-toast');
+      feedback.removeAttribute('id');
+      initializeInquiryForm(form,feedback,{params:new URLSearchParams(),sourcePath:window.location.pathname,resetVerification:()=>{if(widgetId)(window as any).turnstile?.reset(widgetId);}});
+      const submit=form.querySelector<HTMLButtonElement>('[type=submit]');
+      submit.disabled=true;
+      await verification();
+      const widget=form.querySelector<HTMLElement>('.cf-turnstile');
+      widgetId=(window as any).turnstile.render(widget,{sitekey:widget.dataset.sitekey,theme:'light',size:window.innerWidth<380?'compact':'normal'});
+      submit.disabled=false;
+      loading.hidden=true;mount.hidden=false;
+    };
+    document.addEventListener('click',async(event)=>{
+      if(event.defaultPrevented || event.button!==0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)return;
+      const anchor=(event.target as Element).closest<HTMLAnchorElement>('a[href]');
+      if(!anchor || anchor.target==='_blank' || anchor.hasAttribute('download'))return;
+      if(!isQuoteLink({href:anchor.href,bypass:anchor.hasAttribute('data-contact-page')},{origin:location.origin,contactPath:dialog.dataset.contactPath}))return;
+      event.preventDefault();
+      if(dialog.open)return;
+      opener=anchor;scrollY=window.scrollY;bodyStyle=document.body.style.cssText;
+      document.body.style.position='fixed';document.body.style.top=-scrollY+'px';document.body.style.width='100%';
+      dialog.showModal();
+      try {
+        if(!pending)pending=load().catch(reason=>{pending=null;mount.replaceChildren();form=null;loading.hidden=true;error.hidden=false;throw reason;});
+        await pending;
+        const url=new URL(anchor.href);
+        applyQuoteContext(form.elements,url.searchParams,window.location.pathname);
+        if(dialog.open)form.querySelector<HTMLInputElement>('input[name=name]')?.focus({preventScroll:true});
+      } catch { /* The localized error and ordinary contact link remain available. */ }
+    });
+    dialog.querySelector('[data-quote-close]').addEventListener('click',()=>dialog.close());
+    dialog.addEventListener('click',event=>{
+      if(event.target!==dialog)return;
+      const rect=dialog.getBoundingClientRect();
+      if(event.clientX<rect.left || event.clientX>rect.right || event.clientY<rect.top || event.clientY>rect.bottom)dialog.close();
+    });
+    dialog.addEventListener('close',()=>{
+      document.body.style.cssText=bodyStyle;
+      const behavior=document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,scrollY);document.documentElement.style.scrollBehavior=behavior;
+      opener?.focus({preventScroll:true});
+    });
+  }
+</script>
+<style>
+  .quote-dialog{width:min(720px,calc(100% - 48px));max-width:none;max-height:calc(100dvh - 48px);padding:0;border:0;border-radius:8px;background:#fffdf8;color:#1d3826;overflow:auto;overscroll-behavior:contain;box-shadow:0 24px 80px #07190d55}
+  .quote-dialog::backdrop{background:#081b12b8}
+  .quote-dialog-heading{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 28px;background:#e8eee3;border-bottom:1px solid #cdd8c8}
+  .quote-dialog-heading h2{margin:0;font-size:26px;line-height:1.2}
+  .quote-dialog-heading button{flex:none;width:44px;height:44px;border:1px solid #b9c8b6;background:#fffdf8;color:#1d3826;border-radius:50%;font-size:30px;cursor:pointer}
+  .quote-dialog-content{padding:24px 28px 30px}
+  .quote-dialog-content :global(.inquiry-panel){padding:0;border:0;background:transparent;box-shadow:none}
+  .quote-dialog-content :global(.form-intro),.quote-dialog-content :global(.inquiry-success){display:none}
+  .quote-dialog-content :global(.form-section-title){grid-column:1/-1;margin:0;font-size:17px}
+  .quote-dialog-content :global(.corncomp-inquiry-form){display:grid;grid-template-columns:1fr;gap:18px}
+  .quote-dialog-content :global(.form-grid){gap:18px}
+  .quote-dialog-content :global(.required-note){margin:0;font-size:12px}
+  .quote-dialog-content :global(textarea){min-height:120px}
+  .quote-dialog-content :global(.inquiry-toast){position:sticky;inset:auto;top:0;z-index:1;width:100%;max-width:none;margin-bottom:20px;box-shadow:none;font-size:14px}
+  .quote-dialog-content :global(.button-primary){min-height:48px}
+  @media(max-width:700px){.quote-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px);margin:8px auto;border-radius:6px}.quote-dialog-heading{padding:14px 18px}.quote-dialog-heading h2{font-size:23px}.quote-dialog-content{padding:20px 18px 28px}.quote-dialog-content :global(.form-grid){grid-template-columns:1fr}}
+</style>

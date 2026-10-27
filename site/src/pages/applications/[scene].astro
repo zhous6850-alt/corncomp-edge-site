@@ -1,0 +1,18 @@
+---
+import SupermarketPreview from '../../components/SupermarketPreview.astro';
+import TakeawayPreview from '../../components/TakeawayPreview.astro';
+import RestaurantPreview from '../../components/RestaurantPreview.astro';
+import FastFoodPreview from '../../components/FastFoodPreview.astro';
+import DessertPreview from '../../components/DessertPreview.astro';
+export function getStaticPaths(){
+ return [
+  ['takeaway-packaging',TakeawayPreview],
+  ['restaurant-packaging',RestaurantPreview],
+  ['fast-food-packaging',FastFoodPreview],
+  ['ice-cream-dessert-packaging',DessertPreview],
+  ['supermarket-packaging',SupermarketPreview],
+ ].map(([scene,Component])=>({params:{scene},props:{Component}}));
+}
+const {Component}=Astro.props;
+---
+<Component preview={false}/>

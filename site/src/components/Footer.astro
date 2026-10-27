@@ -1,46 +1,103 @@
 ---
+import homeImages from '../data/home-images.json';
 import { navigationFor } from '../lib/site-config.mjs';
 import { localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
+import { companyCertificates } from '../data/certificates.mjs';
 const { language = 'en' } = Astro.props;
 const nav = navigationFor(language);
 const ui = uiFor(language);
-const footerLinks = [
+const certificateByKey = new Map(companyCertificates(language).map((certificate) => [certificate.key, certificate]));
+const certificateLinks = [['brcgs-packaging', 'BRCGS'], ['fsc-coc', 'FSC'], ['iso-9001', 'ISO 9001'], ['bpi-straws', 'BPI']].map(([key, label]) => ({ label, scope: certificateByKey.get(key).scope }));
+const copy = {
+  en: { quick: 'Quick links', services: 'Products & services', contact: 'Contact', email: 'Email', phone: 'Telephone', intro: 'Founded in 2018 in Ningbo, China, Corncomp manufactures paper straws, cups and bowls for distributors and foodservice businesses.' },
+  zh: { quick: '快捷导航', services: '产品与服务', contact: '联系我们', email: '邮箱', phone: '电话', intro: 'Corncomp 遇米生物于2018年成立于中国宁波，为经销商和餐饮企业生产纸吸管、纸杯及纸碗。' },
+  fr: { quick: 'Liens utiles', services: 'Produits et services', contact: 'Contact', email: 'E-mail', phone: 'Téléphone', intro: 'Fondée en 2018 à Ningbo, en Chine, Corncomp fabrique des pailles, gobelets et bols en papier pour les distributeurs et les professionnels de la restauration.' },
+  es: { quick: 'Enlaces útiles', services: 'Productos y servicios', contact: 'Contacto', email: 'Correo electrónico', phone: 'Teléfono', intro: 'Fundada en 2018 en Ningbo, China, Corncomp fabrica pajitas, vasos y cuencos de papel para distribuidores y empresas de restauración.' },
+  de: { quick: 'Direktlinks', services: 'Produkte und Leistungen', contact: 'Kontakt', email: 'E-Mail', phone: 'Telefon', intro: 'Corncomp wurde 2018 in Ningbo, China, gegründet und produziert Papierstrohhalme, Papierbecher und Papierschalen für Händler und Gastronomiebetriebe.' },
+  ar: { quick: 'روابط سريعة', services: 'المنتجات والخدمات', contact: 'اتصل بنا', email: 'البريد الإلكتروني', phone: 'الهاتف', intro: 'تأسست Corncomp عام 2018 في نينغبو بالصين، وتنتج المصاصات والأكواب والأوعية الورقية للموزعين وشركات خدمات الطعام.' },
+}[language];
+const supportTopics = {
+  en: [
+    ['Custom printing', 'Discuss artwork, print coverage and packing for your selected cups or straws.'],
+    ['Products & specifications', 'Compare product sizes, item codes and matching lid options.'],
+    ['Ordering support', 'Confirm minimum quantities, samples, production timing and delivery details before ordering.'],
+  ],
+  zh: [
+    ['定制印刷', '根据选定的纸杯或纸吸管，沟通印刷稿件、印刷范围和包装要求。'],
+    ['产品与规格', '比较产品尺寸、货号和配套杯盖选项。'],
+    ['采购支持', '下单前确认起订量、样品、生产周期和交付安排。'],
+  ],
+  fr: [
+    ['Impression personnalisée', 'Échangeons sur les fichiers graphiques, la surface imprimée et le conditionnement des gobelets ou pailles choisis.'],
+    ['Produits et spécifications', 'Comparez les dimensions, les références et les couvercles compatibles.'],
+    ['Accompagnement des commandes', 'Confirmez les quantités minimales, les échantillons, les délais de production et la livraison avant de commander.'],
+  ],
+  es: [
+    ['Impresión personalizada', 'Consulte el diseño, la superficie de impresión y el embalaje de los vasos o pajitas elegidos.'],
+    ['Productos y especificaciones', 'Compare tamaños, referencias y opciones de tapas compatibles.'],
+    ['Asistencia para pedidos', 'Confirme las cantidades mínimas, las muestras, los plazos de producción y la entrega antes de realizar el pedido.'],
+  ],
+  de: [
+    ['Individueller Druck', 'Besprechen Sie Druckdaten, Druckfläche und Verpackung für Ihre ausgewählten Becher oder Strohhalme.'],
+    ['Produkte und Spezifikationen', 'Vergleichen Sie Größen, Artikelnummern und passende Deckel.'],
+    ['Unterstützung bei Bestellungen', 'Klären Sie Mindestmengen, Muster, Produktionszeiten und Lieferdetails vor der Bestellung.'],
+  ],
+  ar: [
+    ['الطباعة المخصصة', 'ناقش ملفات التصميم ومساحة الطباعة والتعبئة للأكواب أو المصاصات التي تختارها.'],
+    ['المنتجات والمواصفات', 'قارن أحجام المنتجات ورموز الأصناف وخيارات الأغطية المتوافقة.'],
+    ['دعم الطلبات', 'أكد الحد الأدنى للكميات والعينات ومدة الإنتاج وتفاصيل التسليم قبل الطلب.'],
+  ],
+}[language];
+const quickLinks = [
   [nav.home[0], 'home'],
-  [nav.product[0], 'architecture:products'],
-  [nav.custom?.[0], 'architecture:custom-packaging'],
-  [nav.applications?.[0], 'architecture:applications'],
+  [nav.about[0], 'architecture:about'],
   [nav.certifications?.[0], 'architecture:quality'],
   [nav.resources?.[0], 'architecture:resources'],
-  [nav.about[0], 'architecture:about'],
   [ui.requestQuote, 'architecture:contact'],
 ].map(([label, contentKey]) => {
   const entry = localizedEntry(language, contentKey);
   return { label: label || entry.title, route: entry.route };
 });
+const serviceLinks = ['architecture:products', 'architecture:custom-packaging', 'architecture:applications'].map((contentKey) => {
+  const entry = localizedEntry(language, contentKey);
+  const labels = { 'architecture:products': nav.product?.[0], 'architecture:custom-packaging': nav.custom?.[0], 'architecture:applications': nav.applications?.[0] };
+  return { label: labels[contentKey] || entry.title, route: entry.route };
+});
 ---
 <footer>
   <div class="container footer-inner">
-    <div class="footer-brand">
-      <img src="/media/corncomp-logo.png" width="111" height="104" alt="Corncomp">
-      <div class="social-links" aria-label={ui.socialMediaLabel}>
-        <a href="https://www.facebook.com/profile.php?id=61592477933421" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.instagram.com/zxh_0927" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.linkedin.com/in/sam-zhou-431ab9424/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://wa.me/6581603123" target="_blank" rel="noopener">WhatsApp</a>
+    <div class="footer-brand" id="footer-company">
+      <img {...homeImages['brand-logo']} sizes="90px" width="111" height="104" alt="Corncomp" loading="lazy" decoding="async">
+      <p>{copy.intro}</p>
+      <div class="footer-certificates">
+        {certificateLinks.map(({ label, scope }) => <a href={routeFor(language, 'architecture:quality') + '#documents'} title={scope} aria-label={label + ': ' + scope}>{label}</a>)}
       </div>
     </div>
-    <div class="footer-address">
-      <strong>{ui.addressHeading}</strong>
-      <p>No.2 Building, No.3 Wanquanhe Road, Xiapu Street,<br>Beilun District, Ningbo City, Zhejiang Province, China</p>
-      <a href="tel:008657486961222">Tel: 0086-574-86961222</a>
-      <a href="https://wa.me/6581603123">WhatsApp: +65 8160 3123</a>
-      <a href="https://wa.me/8613806632002">WhatsApp: +86 138 0663 2002</a>
-      <a href="mailto:inquiry@corn-comp.com">inquiry@corn-comp.com</a>
-    </div>
     <nav aria-label={ui.footerNavigationLabel}>
-      {footerLinks.map(({ label, route }) => <a href={route}>{label}</a>)}
+      <h2>{copy.quick}</h2>
+      {quickLinks.map(({ label, route }) => <a href={route}>{label}</a>)}
       <a href={nav.blog[1]}>{nav.blog[0]}</a>
     </nav>
+    <nav aria-label={copy.services}>
+      <h2>{copy.services}</h2>
+      {serviceLinks.map(({ label, route }) => <a href={route}>{label}</a>)}
+    </nav>
+    <div class="footer-contact">
+      <h2>{copy.contact}</h2>
+      <div class="footer-contact-item"><span>{copy.email}</span><a class="footer-email" href="mailto:zhous6850@gmail.com">zhous6850@gmail.com</a></div>
+      <address class="footer-contact-item"><span>{ui.addressHeading}</span><p>No.2 Building, No.3 Wanquanhe Road, Xiapu Street,<br>Beilun District, Ningbo City, Zhejiang Province, China</p></address>
+      <div class="footer-contact-item"><span>{copy.phone}</span><a href="tel:008657486961222"><bdi>0086-574-86961222</bdi></a></div>
+      <div class="footer-whatsapp"><a href="https://wa.me/6581603123">WhatsApp: <bdi>+65 8160 3123</bdi></a><a href="https://wa.me/8613806632002">WhatsApp: <bdi>+86 138 0663 2002</bdi></a></div>
+      <div class="social-links" aria-label={ui.socialMediaLabel}>
+        <a href="https://www.facebook.com/profile.php?id=61592477933421" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><img src="/media/icons/facebook-f.svg" width="20" height="20" alt="" loading="lazy" decoding="async"></a>
+        <a href="https://www.instagram.com/zxh_0927" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><img src="/media/icons/instagram.svg" width="20" height="20" alt="" loading="lazy" decoding="async"></a>
+        <a href="https://www.linkedin.com/in/sam-zhou-431ab9424/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><img src="/media/icons/linkedin-in.svg" width="20" height="20" alt="" loading="lazy" decoding="async"></a>
+        <a href="https://wa.me/6581603123" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><img src="/media/icons/whatsapp.svg" width="20" height="20" alt="" loading="lazy" decoding="async"></a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-support" id="footer-support">
+    {supportTopics.map(([title, text]) => <div data-support-topic><h2>{title}</h2><p>{text}</p></div>)}
   </div>
   <div class="container footer-bottom">
     <span>{ui.copyrightLabel}</span>
@@ -51,23 +108,46 @@ const footerLinks = [
 <a class="floating-contact" href={routeFor(language, 'architecture:contact')}>{ui.contactUs}</a>
 
 <style>
-  footer { padding: 56px 0; background: var(--corncomp-deep-green); color: #fff; }
-  .footer-inner { display: grid; grid-template-columns: .8fr 1.4fr .8fr; align-items: start; gap: 50px; }
-  .footer-brand img { width: 90px; height: 84px; object-fit: contain; filter: brightness(0) invert(1); }
-  strong { font-size: 1.1rem; letter-spacing: .01em; }
-  p { max-width: 440px; margin: 10px 0 0; color: rgba(255, 255, 255, .7); }
-  .social-links { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 22px; }
-  .footer-address { display: grid; gap: 8px; }
-  .footer-address p { margin: 8px 0; line-height: 1.6; }
-  nav { display: flex; flex-direction: column; gap: 12px; font-size: .82rem; font-weight: 700; }
-  a { color: rgba(255, 255, 255, .84); text-decoration: none; }
+  footer { padding: 64px 0 24px; background: var(--corncomp-deep-green); color: #fff; }
+  .footer-inner { display: grid; grid-template-columns: 1.25fr .72fr .9fr 1.4fr; align-items: start; gap: 40px; }
+  .footer-inner > * { min-width: 0; }
+  .footer-brand img { width: 90px; height: 84px; object-fit: contain; filter: url(#corncomp-navigation-logo); }
+  .footer-brand p { max-width: 300px; margin-top: 20px; }
+  .footer-certificates { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 22px; font-size: .75rem; letter-spacing: .04em; }
+  .footer-certificates a { color: #b0c2b6; }
+  .footer-certificates a:hover, .footer-certificates a:focus-visible { color: #fff; }
+  h2 { margin: 10px 0 18px; color: #fff; font-size: .85rem; font-weight: 700; line-height: 1.5; letter-spacing: .08em; }
+  p { margin: 0; color: #c2d0c6; font-size: .9rem; line-height: 1.8; }
+  .social-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  .social-links a { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #7d9887; border-radius: 50%; }
+  .social-links img { width: 20px; height: 20px; object-fit: contain; filter: brightness(0) invert(1); opacity: .85; }
+  .social-links a:hover { background: var(--corncomp-green); border-color: #c1deb0; }
+  .social-links a:hover img { opacity: 1; }
+  .social-links a:focus-visible { outline: 3px solid #c1deb0; outline-offset: 4px; }
+  .social-links a:active { opacity: .75; }
+  .footer-contact { display: grid; gap: 18px; }
+  .footer-contact h2 { margin-bottom: 0; }
+  .footer-contact-item { display: grid; gap: 7px; font-style: normal; }
+  .footer-contact-item > span { color: #b0c2b6; font-size: .72rem; letter-spacing: .06em; }
+  .footer-contact-item a { font-size: .9rem; }
+  .footer-contact-item .footer-email { font-size: 1rem; }
+  .footer-whatsapp { display: grid; gap: 8px; font-size: .85rem; }
+  nav { display: flex; flex-direction: column; gap: 15px; font-size: .9rem; font-weight: 400; }
+  nav h2 { margin-bottom: 3px; }
+  a { color: #dce6df; text-decoration: none; line-height: 1.5; }
   a:hover, a:focus-visible { color: white; text-decoration: underline; text-underline-offset: 5px; }
-  .footer-bottom { margin-top: 42px; padding-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-top: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.72); font-size: .8rem; }
+  .footer-support { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; margin-top: 40px; padding-block: 24px; border-block: 1px solid rgba(255,255,255,.2); }
+  .footer-support > div { min-width: 0; padding-inline-start: 16px; border-inline-start: 1px solid rgba(255,255,255,.25); }
+  .footer-support h2 { margin: 0 0 10px; font-size: .8rem; font-weight: 700; letter-spacing: .015em; }
+  .footer-support p { font-size: .83rem; line-height: 1.7; }
+  .footer-bottom { margin-top: 24px; padding-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: #b0c2b6; font-size: .78rem; line-height: 1.6; }
   .analytics-settings { padding: 0; border: 0; background: transparent; color: rgba(255,255,255,.84); cursor: pointer; font-size: inherit; text-decoration: underline; text-underline-offset: 4px; }
   .analytics-settings:hover, .analytics-settings:focus-visible { color: #fff; }
   .floating-whatsapp, .floating-contact { position: fixed; right: 20px; z-index: 40; padding: 12px 18px; border-radius: 999px; color: #fff; font-size: .82rem; font-weight: 800; text-decoration: none; box-shadow: 0 5px 18px rgba(18,56,35,.22); }
-  .floating-whatsapp { bottom: 76px; background: #168942; }
+  .floating-whatsapp { bottom: 76px; background: #147b3b; }
   .floating-contact { bottom: 20px; background: var(--corncomp-green); }
-  @media (max-width: 800px) { footer { padding: 42px 0; } .footer-inner { grid-template-columns: 1fr; gap: 34px; } nav { flex-flow: row wrap; } }
+  @media (max-width: 1000px) { .footer-inner { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px 32px; } }
+  @media (max-width: 600px) { footer { padding-top: 42px; }.footer-inner { gap: 32px 24px; }.footer-brand,.footer-contact { grid-column: 1 / -1; }.footer-brand p { max-width: 440px; }nav { gap: 14px; }h2 { letter-spacing: .03em; } }
   @media (max-width: 600px) { .footer-bottom { align-items: flex-start; flex-direction: column; } .floating-whatsapp, .floating-contact { right: 12px; padding: 11px 14px; font-size: .74rem; } }
+  @media (max-width: 700px) { .footer-support { grid-template-columns: 1fr; gap: 22px; }.footer-support h2 { margin-bottom: 6px; } }
 </style>

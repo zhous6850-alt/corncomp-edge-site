@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FoodCategoryPreview from '../../../components/FoodCategoryPreview.astro';
+import { FOOD_CATEGORY_PREVIEWS } from '../../../data/food-category-preview.mjs';
+export function getStaticPaths() { return Object.keys(FOOD_CATEGORY_PREVIEWS).map(category=>({params:{category}})); }
+const {category}=Astro.params;
+---
+<BaseLayout title={`${FOOD_CATEGORY_PREVIEWS[category].title} — Design Preview | Corncomp`} pathname={`/products/food-boxes-containers/${category}/`} bodyClass="architecture-site"><FoodCategoryPreview category={category}/></BaseLayout>

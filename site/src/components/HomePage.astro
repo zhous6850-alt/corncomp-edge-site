@@ -1,27 +1,58 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CustomerLogos from './CustomerLogos.astro';
+import HomeProductCatalogue from './HomeProductCatalogue.astro';
+import HomeSourcingQuestions from './HomeSourcingQuestions.astro';
+import HomeCertificates from './HomeCertificates.astro';
+import HomeTradeShows from './HomeTradeShows.astro';
 import { routeFor } from '../lib/localization.mjs';
+import homeImages from '../data/home-images.json';
 
 const { language, content, ui } = Astro.props;
-const productImages = [
-  { src: '/media/wp/261--2026-07-25-100620.png', width: 348, height: 493 },
-  { src: '/media/wp/164--2026-07-14-133106.png', width: 655, height: 715 },
-  { src: '/media/wp/107--2026-07-14-101008.png', width: 520, height: 364 },
-];
+const factoryFactLabels = {
+  en: ['Company area', 'Factory area', 'Production lines'],
+  zh: ['公司总面积', '厂房面积', '生产线'],
+  fr: ['Surface du site', 'Surface de l’usine', 'Lignes de production'],
+  es: ['Superficie total', 'Superficie de fábrica', 'Líneas de producción'],
+  de: ['Unternehmensgelände', 'Fabrikfläche', 'Produktionslinien'],
+  ar: ['مساحة الشركة', 'مساحة المصنع', 'خطوط الإنتاج'],
+}[language];
+const emphasis = { en: 'Paper Food Packaging', fr: 'alimentaires en papier', es: 'de papel', ar: 'ورقية', zh: '纸质食品包装', de: 'aus Papier' }[language];
+const [headingStart, headingEnd] = content.hero.heading.split(emphasis);
+const displayHeadingStart = language === 'de' ? headingStart.trim().replace('verpackungen', '\u00adverpackungen') : headingStart.trim();
+const factoryAlt = {
+  en: 'Corncomp factory exterior and entrance in Ningbo, China',
+  fr: 'Façade et entrée de l’usine Corncomp à Ningbo, en Chine',
+  es: 'Exterior y entrada de la fábrica Corncomp en Ningbo, China',
+  ar: 'واجهة مصنع Corncomp ومدخله في نينغبو، الصين',
+  zh: '中国宁波遇米生物厂房外观与入口',
+  de: 'Außenansicht und Eingang des Corncomp-Werks in Ningbo, China',
+}[language];
 ---
-<BaseLayout title={content.title} description={content.description} language={language} pathname={content.route} bodyClass="home-v2">
+<BaseLayout title={content.title} description={content.description} language={language} pathname={content.route} bodyClass="home-v2" headerOverlay>
+  <Fragment slot="head">
+    <link rel="preload" as="image" media="(max-width: 480px)" href={homeImages.heroMobile.src} imagesrcset={homeImages.heroMobile.srcset} imagesizes="508px" fetchpriority="high" />
+    <link rel="preload" as="image" media="not all and (max-width: 480px)" href={homeImages.hero.src} imagesrcset={homeImages.hero.srcset} imagesizes="(max-width: 700px) 960px, 100vw" fetchpriority="high" />
+  </Fragment>
   <section class="home-hero">
-    <div class="home-hero-media"><img src="/media/embedded/c97a5896-corncomp-homepage-hero-drink-compressed-copy.jpg.webp" alt={content.hero.imageAlt} width="1920" height="1080" fetchpriority="high" decoding="async"></div>
-    <div class="content-shell home-hero-content"><p class="eyebrow">{content.hero.eyebrow}</p><h1>{content.hero.heading}</h1><p class="home-hero-copy">{content.hero.text}</p><div class="hero-actions"><a class="button-primary" href={routeFor(language, content.hero.primaryKey)}>{content.hero.primaryLabel}</a><a class="button-secondary" href={routeFor(language, content.hero.secondaryKey)}>{content.hero.secondaryLabel}</a></div></div>
+    <div class="home-hero-media"><picture><source media="(max-width: 480px)" type="image/webp" srcset={homeImages.heroMobile.srcset} sizes="508px" width={homeImages.heroMobile.width} height={homeImages.heroMobile.height} /><img {...homeImages.hero} sizes="(max-width: 700px) 960px, 100vw" alt={factoryAlt} width="1702" height="1276" fetchpriority="high" decoding="async"></picture></div>
+    <div class="content-shell home-hero-content"><p class="eyebrow">{content.hero.eyebrow}</p><h1 aria-label={content.hero.heading}><span class="home-hero-line">{displayHeadingStart}</span><span class="home-hero-emphasis">{emphasis}</span>{headingEnd.trim() && <span class="home-hero-tail">{headingEnd.trim()}</span>}</h1><p class="home-hero-copy">{content.hero.text}</p><div class="hero-actions"><a class="button-primary" href={routeFor(language, content.hero.secondaryKey)}>{content.hero.secondaryLabel}<span aria-hidden="true"> →</span></a><a class="home-hero-product-link" href={routeFor(language, content.hero.primaryKey)}>{content.hero.primaryLabel}<span aria-hidden="true"> ↗</span></a></div></div>
   </section>
 
   <section class="content-shell home-proof" aria-label={content.proofLabel}>{content.proof.map(([value, label]) => <div><strong>{value}</strong><span>{label}</span></div>)}</section>
 
-  <section class="content-shell home-section"><div class="section-heading split-heading"><div><p class="eyebrow">{content.productIntro.eyebrow}</p><h2 set:html={content.productIntro.heading} /></div><p>{content.productIntro.text}</p></div><div class="home-product-grid">{content.productPathways.map(([contentKey, title, text], index) => <a class="home-product-card" href={routeFor(language, contentKey)}><img {...productImages[index]} alt="" loading="lazy" decoding="async"><div><p class="eyebrow">{ui.productGroup}</p><h3>{title}</h3><p>{text}</p><span>{ui.viewProductFamilies} →</span></div></a>)}</div></section>
+  <CustomerLogos language={language} />
 
-  <section class="home-factory"><div class="content-shell home-factory-grid"><div class="home-factory-media"><img src="/media/embedded/be53f20b-facility-showcase-1.jpg" width="2560" height="1746" alt={content.factory.imageAlt} loading="lazy" decoding="async"></div><div class="home-factory-copy"><p class="eyebrow">{content.factory.eyebrow}</p><h2>{content.factory.heading}</h2><p>{content.factory.text}</p><ul>{content.factory.bullets.map((item) => <li>{item}</li>)}</ul><a class="button-primary" href={routeFor(language, content.factory.contentKey)}>{content.factory.label}</a></div></div></section>
+  <HomeProductCatalogue language={language} ui={ui} />
 
-  <section class="content-shell home-section home-pathways"><div class="section-heading"><p class="eyebrow">{content.programs.eyebrow}</p><h2>{content.programs.heading}</h2></div><div class="architecture-grid">{content.programs.cards.map(([contentKey, title, text], index) => <a class="architecture-card" href={routeFor(language, contentKey)}><span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></a>)}</div></section>
+  <section class="home-factory" id="our-factory"><div class="content-shell home-factory-grid"><div class="home-factory-media"><img src="/media/wp/293-facility-photo-new.webp" width="1920" height="1079" alt={content.factory.imageAlt} loading="lazy" decoding="async"></div><div class="home-factory-copy"><h2>{content.factory.heading}</h2><p>{content.factory.text}</p><dl class="home-factory-facts">{['8,000 m²', '6,800 m²', '60'].map((value, index) => <div><dt>{factoryFactLabels[index]}</dt><dd dir="ltr">{value}</dd></div>)}</dl><a class="button-primary" href={routeFor(language, content.factory.contentKey)}>{content.factory.label}</a></div></div></section>
 
-  <section class="content-shell home-cta"><div><p class="eyebrow">{content.cta.eyebrow}</p><h2>{content.cta.heading}</h2><p>{content.cta.text}</p></div><a class="button-primary" href={routeFor(language, content.cta.contentKey)}>{content.cta.label}</a></section>
+  <HomeCertificates language={language}/>
+
+  <HomeTradeShows language={language}/>
+
+  <HomeSourcingQuestions language={language} />
+
+
+  <section class="home-cta" id="packaging-enquiry" aria-labelledby="packaging-enquiry-heading"><div class="content-shell home-cta-inner"><h2 id="packaging-enquiry-heading">{content.cta.heading}</h2><p>{content.cta.text}</p><div class="home-cta-actions"><a class="button-primary" href={routeFor(language, content.cta.contentKey)}>{content.cta.label}</a><a class="home-cta-products" href={routeFor(language, content.hero.primaryKey)}>{content.hero.primaryLabel}<span aria-hidden="true"> ↗</span></a></div></div></section>
 </BaseLayout>

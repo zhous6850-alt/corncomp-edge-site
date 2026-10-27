@@ -17,7 +17,6 @@ export const REDIRECTS = new Map([
   ...Object.keys(PRODUCT_CATEGORY_BY_SLUG).map((slug) => [`/product/${slug}/`, canonicalProductRoute(slug)]),
   ...Object.entries(DUPLICATE_PRODUCT_ALIASES).map(([source, target]) => [`/product/${source}/`, canonicalProductRoute(target)]),
   ...localizedRedirects(),
-  ['/faq/', '/resources/'],
   ['/case-studies/', '/about/'],
   ['/category/company-industry/', '/blog/'],
   ['/category/company-industry-fr/', '/fr/blog/'],
@@ -51,22 +50,42 @@ function escapeHtml(value) {
   return value.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 }
 
+function suspiciousName(name) {
+  return name.length > 80 || /https?:\/\/|www\.|(?:bonus|бонус).*(?:usd|eur)|(?:usd|eur).*(?:bonus|бонус)/iu.test(name);
+}
+
+async function verifiedHuman(data, request, env) {
+  const token = field(data, 'cf-turnstile-response');
+  if (!token || !env.TURNSTILE_SECRET_KEY) return false;
+  const body = new URLSearchParams({ secret: env.TURNSTILE_SECRET_KEY, response: token });
+  const remoteip = request.headers.get('CF-Connecting-IP');
+  if (remoteip) body.set('remoteip', remoteip);
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body });
+  if (!response.ok) return false;
+  const result = await response.json();
+  return result.success === true;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.hostname === 'www.corn-comp.com') {
-      url.hostname = 'corn-comp.com';
-      return Response.redirect(url, 301);
-    }
+    const publicHost = url.hostname === 'corn-comp.com' || url.hostname === 'www.corn-comp.com';
+    const canonicalOriginRequired = publicHost && (url.protocol === 'http:' || url.hostname === 'www.corn-comp.com');
     let decodedPath = url.pathname;
     try { decodedPath = decodeURI(decodedPath); } catch {}
     let normalizedPath = url.pathname;
     try { normalizedPath = normalizeLocalizedRoute(url.pathname); } catch {}
     const redirect = REDIRECTS.get(decodedPath) || REDIRECTS.get(normalizedPath);
-    if (redirect) {
-      const destination = new URL(redirect, url.origin);
+    if (redirect || canonicalOriginRequired) {
+      const destination = new URL(redirect || url.href, url.origin);
+      if (publicHost) {
+        destination.protocol = 'https:';
+        destination.hostname = 'corn-comp.com';
+        destination.port = '';
+      }
       destination.search = url.search;
-      return Response.redirect(destination, 301);
+      const status = canonicalOriginRequired && !['GET', 'HEAD'].includes(request.method) ? 308 : 301;
+      return Response.redirect(destination, status);
     }
     if (url.pathname !== '/api/inquiry') return env.ASSETS.fetch(request);
     if (request.method !== 'POST') return json({ ok: false, error: 'Method not allowed' }, 405);
@@ -86,6 +105,7 @@ export default {
     const sourcePath = field(data, 'sourcePath').slice(0, 1000);
     const message = field(data, 'message').slice(0, 5000);
     if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ ok: false, error: 'Please enter a valid name and email.' }, 400);
+    if (suspiciousName(name) || !await verifiedHuman(data, request, env)) return json({ ok: false, error: 'Unable to verify this inquiry.' }, 400);
 
     const source = request.headers.get('referer') || 'Unknown page';
     const context = [
@@ -110,7 +130,11 @@ export default {
         html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p>${context.map(([label, value]) => `<p><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</p>`).join('')}<p><strong>Page:</strong> ${escapeHtml(source)}</p><p>${escapeHtml(message || 'No message provided').replace(/\n/g, '<br>')}</p>`,
       }),
     });
-    if (!emailResponse.ok) return json({ ok: false, error: 'Unable to send inquiry.' }, 502);
+    if (!emailResponse.ok) {
+      const providerError = await emailResponse.json().catch(() => ({}));
+      console.error('Inquiry email rejected', JSON.stringify({ status: emailResponse.status, code: String(providerError.name || '').replace(/[^a-z_]/gi, '').slice(0, 80) }));
+      return json({ ok: false, error: 'Unable to send inquiry.' }, 502);
+    }
     if ((request.headers.get('content-type') || '').includes('application/json')) return json({ ok: true });
     let pagePath = '/contact/';
     try {

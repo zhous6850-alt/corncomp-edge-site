@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FoodCategoryPreview from '../../../components/FoodCategoryPreview.astro';
+import {BAGASSE_CATEGORY_PREVIEWS} from '../../../data/bagasse-category-preview.mjs';
+export function getStaticPaths(){return Object.keys(BAGASSE_CATEGORY_PREVIEWS).map(category=>({params:{category}}));}
+const {category}=Astro.params;
+---
+<BaseLayout title={`${BAGASSE_CATEGORY_PREVIEWS[category].title} — Design Preview | Corncomp`} pathname={`/products/bagasse/${category}/`} bodyClass="architecture-site"><FoodCategoryPreview category={category} configs={BAGASSE_CATEGORY_PREVIEWS} group="bagasse" groupTitle="Bagasse Tableware" previewRoot="/design-preview/bagasse" groupHref="/design-preview/bagasse/"/></BaseLayout>

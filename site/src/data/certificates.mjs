@@ -5,7 +5,7 @@ const CORNCOMP = 'Ningbo Corncomp Tech Co., Ltd.';
 export const COMPANY_CERTIFICATES = [
   {
     key: 'iso-9001', group: 'company',
-    title: { en: 'ISO 9001:2015', fr: 'ISO 9001:2015', es: 'ISO 9001:2015', ar: 'ISO 9001:2015' },
+    title: { en: 'ISO 9001:2015', fr: 'ISO 9001:2015', es: 'ISO 9001:2015', ar: 'ISO 9001:2015', zh: 'ISO 9001:2015', de: 'ISO 9001:2015' },
     holder: CORNCOMP, certificateNumber: '01526Q60104R001',
     standard: 'ISO 9001:2015',
     scope: {
@@ -13,12 +13,14 @@ export const COMPANY_CERTIFICATES = [
       fr: 'Système de management de la qualité pour la R&D et la fabrication des produits alimentaires en papier et des couvercles énumérés sur le certificat (exportation uniquement).',
       es: 'Sistema de gestión de calidad para I+D y fabricación de los productos de papel alimentario y tapas indicados en el certificado (solo exportación).',
       ar: 'نظام إدارة الجودة للبحث والتطوير وتصنيع المنتجات الورقية الغذائية والأغطية المدرجة في الشهادة (للتصدير فقط).',
+      zh: '证书上列出的食品级纸张和盖子产品的研发和生产质量管理体系（仅出口）。',
+      de: 'Qualitätsmanagementsystem für Forschung, Entwicklung und Herstellung der im Zertifikat aufgeführten Lebensmittelverpackungen aus Papier und Deckelprodukte (nur Export).',
     },
     validUntil: '2029-04-27', imageKey: 'certificate:iso',
   },
   {
     key: 'fsc-coc', group: 'company',
-    title: { en: 'FSC Chain of Custody', fr: 'Chaîne de contrôle FSC', es: 'Cadena de custodia FSC', ar: 'سلسلة الحيازة FSC' },
+    title: { en: 'FSC Chain of Custody', fr: 'Chaîne de contrôle FSC', es: 'Cadena de custodia FSC', ar: 'سلسلة الحيازة FSC', zh: '保管链', de: 'FSC-Chain-of-Custody' },
     holder: CORNCOMP, certificateNumber: 'RINA-COC-001953',
     standard: 'FSC-STD-40-004 V3-1; FSC-STD-50-001',
     scope: {
@@ -26,12 +28,14 @@ export const COMPANY_CERTIFICATES = [
       fr: 'Chaîne de contrôle pour les groupes de papiers d’emballage et de produits de restauration en papier figurant sur le certificat ; les allégations par article nécessitent des documents de vente justificatifs.',
       es: 'Cadena de custodia para los grupos de papel de envolver y productos de papel para restauración indicados en el certificado; las declaraciones por artículo requieren documentos de venta.',
       ar: 'سلسلة الحيازة لمجموعات ورق التغليف والمنتجات الورقية لخدمات الطعام المدرجة في الشهادة؛ وتتطلب المطالبات الخاصة بكل صنف مستندات بيع داعمة.',
+      zh: '证书上列出的纸质包装和纸质餐饮服务产品组的保管链；个别项目索赔需要证明销售文件。',
+      de: 'Produktkettenzertifizierung für die im Zertifikat aufgeführten Verpackungspapiere und Gastronomieprodukte aus Papier; Aussagen zu einzelnen Artikeln erfordern entsprechende Verkaufsunterlagen.',
     },
     validUntil: '2027-09-08', imageKey: 'certificate:fsc',
   },
   {
     key: 'bpi-straws', group: 'company',
-    title: { en: 'BPI Product Certificate', fr: 'Certificat de produit BPI', es: 'Certificado de producto BPI', ar: 'شهادة منتج BPI' },
+    title: { en: 'BPI Product Certificate', fr: 'Certificat de produit BPI', es: 'Certificado de producto BPI', ar: 'شهادة منتج BPI', zh: '产品合格证', de: 'BPI-Produktzertifikat' },
     holder: CORNCOMP, certificateNumber: '10529571-1',
     standard: 'ASTM D6400',
     scope: {
@@ -39,12 +43,14 @@ export const COMPANY_CERTIFICATES = [
       fr: 'Pailles en papier imprimées d’un grammage maximal de 352 g/m² ; ce certificat ne couvre pas tous les produits Corncomp.',
       es: 'Pajitas de papel impresas con gramaje máximo de 352 g/m²; este certificado no cubre todos los productos Corncomp.',
       ar: 'ماصات ورقية مطبوعة بوزن أقصى 352 g/m²؛ ولا تشمل هذه الشهادة جميع منتجات كورنكومب.',
+      zh: '最大克重352 g/m ²的印刷纸吸管；本证书不适用于所有Corncomp产品。',
+      de: 'Bedruckte Papierstrohhalme mit einem maximalen Flächengewicht von 352 g/m²; dieses Zertifikat gilt nicht für jedes Corncomp-Produkt.',
     },
     validUntil: '2027-09-30', imageKey: 'certificate:bpi',
   },
   {
     key: 'brcgs-packaging', group: 'company',
-    title: { en: 'BRCGS Packaging Materials', fr: 'BRCGS Matériaux d’emballage', es: 'BRCGS Materiales de embalaje', ar: 'BRCGS لمواد التغليف' },
+    title: { en: 'BRCGS Packaging Materials', fr: 'BRCGS Matériaux d’emballage', es: 'BRCGS Materiales de embalaje', ar: 'BRCGS لمواد التغليف', zh: 'BRCGS包装材料', de: 'BRCGS-Verpackungsmaterialien' },
     holder: CORNCOMP, certificateNumber: 'CN24/00006923',
     standard: 'BRCGS Global Standard for Packaging Materials, Issue 7',
     scope: {
@@ -52,6 +58,8 @@ export const COMPANY_CERTIFICATES = [
       fr: 'Procédés du site pour les emballages en papier destinés au contact alimentaire et les couvercles PET énumérés sur le certificat ; grade B obtenu.',
       es: 'Procesos de la planta para los envases de papel de contacto alimentario y tapas PET indicados en el certificado; grado B obtenido.',
       ar: 'عمليات المنشأة الخاصة بالتغليف الورقي الملامس للأغذية وأغطية PET المدرجة في الشهادة؛ بدرجة B.',
+      zh: '证书上所列的纸质食品接触包装和PET盖的现场工艺；达到B级。',
+      de: 'Standortprozesse für die im Zertifikat aufgeführten Lebensmittelkontaktverpackungen aus Papier und PET-Deckel; Bewertung B erreicht.',
     },
     validUntil: '2027-08-05', imageKey: 'certificate:brcgs',
   },
@@ -60,7 +68,7 @@ export const COMPANY_CERTIFICATES = [
 export const SUPPLY_CHAIN_DOCUMENTS = [
   {
     key: 'din-resin-7w0517', group: 'supplyChain',
-    title: { en: 'DIN CERTCO material registration', fr: 'Enregistrement de matériau DIN CERTCO', es: 'Registro de material DIN CERTCO', ar: 'تسجيل مادة DIN CERTCO' },
+    title: { en: 'DIN CERTCO material registration', fr: 'Enregistrement de matériau DIN CERTCO', es: 'Registro de material DIN CERTCO', ar: 'تسجيل مادة DIN CERTCO', zh: 'DIN CERTCO材料注册', de: 'DIN-CERTCO-Materialregistrierung' },
     holder: 'Hangzhou POLYFUL Advanced Material Co., Ltd.', certificateNumber: '7W0517',
     standard: 'DIN EN 13432:2000-12',
     scope: {
@@ -68,13 +76,15 @@ export const SUPPLY_CHAIN_DOCUMENTS = [
       fr: 'Résine modifiée biodégradable enregistrée comme matériau compostable ; ce document ne certifie pas les pailles en papier Corncomp.',
       es: 'Resina modificada biodegradable registrada como material compostable; no certifica las pajitas de papel Corncomp.',
       ar: 'راتنج معدل قابل للتحلل الحيوي مسجل كمادة قابلة للتسميد؛ ولا يمثل شهادة لماصات كورنكومب الورقية.',
+      zh: '可生物降解改性树脂注册为可堆肥材料；不是Corncomp纸吸管的认证。',
+      de: 'Biologisch abbaubares modifiziertes Harz, das als kompostierbares Material registriert ist; keine Zertifizierung von Corncomp-Papierstrohhalmen.',
     },
     validUntil: '2028-01-31', imageKey: null,
     documentUrl: '/documents/certificates/din-straw-material-7w0517.pdf',
   },
   {
     key: 'din-kraft-container-7p1802', group: 'supplyChain',
-    title: { en: 'DIN CERTCO kraft food container', fr: 'Contenant alimentaire kraft DIN CERTCO', es: 'Envase alimentario kraft DIN CERTCO', ar: 'حاوية طعام من ورق الكرافت DIN CERTCO' },
+    title: { en: 'DIN CERTCO kraft food container', fr: 'Contenant alimentaire kraft DIN CERTCO', es: 'Envase alimentario kraft DIN CERTCO', ar: 'حاوية طعام من ورق الكرافت DIN CERTCO', zh: 'DIN CERTCO牛皮纸食品容器', de: 'DIN-CERTCO-Lebensmittelbehälter aus Kraftpapier' },
     holder: 'Ningbo Millionpack Co., Ltd.', certificateNumber: '7P1802',
     standard: 'DIN EN 13432:2000-12; ASTM D6400:2023-03',
     scope: {
@@ -82,6 +92,8 @@ export const SUPPLY_CHAIN_DOCUMENTS = [
       fr: 'Spécification du contenant alimentaire en papier kraft naturel figurant dans l’annexe du certificat ; pas toutes les boîtes alimentaires Corncomp.',
       es: 'Especificación del envase alimentario de papel kraft natural del anexo del certificado; no todas las cajas alimentarias Corncomp.',
       ar: 'مواصفة حاوية الطعام المصنوعة من ورق الكرافت الطبيعي الواردة في ملحق الشهادة؛ ولا تشمل جميع علب الطعام من كورنكومب.',
+      zh: '证书附件中的天然牛皮纸食品容器规格；不是每个Corncomp食品盒。',
+      de: 'Spezifikation für Lebensmittelbehälter aus naturbraunem Kraftpapier im Zertifikatsanhang; gilt nicht für jede Corncomp-Lebensmittelbox.',
     },
     validUntil: '2028-10-31', imageKey: null,
     documentUrl: '/documents/certificates/din-kraft-food-container-7p1802.pdf',

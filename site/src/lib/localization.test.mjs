@@ -22,17 +22,17 @@ import {
   uiFor,
 } from './localization.mjs';
 
-test('inventory contains exactly 85 stable unique English keys in source order', () => {
+test('inventory contains exactly 147 stable unique English keys in source order', () => {
   const inventory = englishInventory();
-  assert.equal(inventory.length, 85);
-  assert.equal(new Set(inventory.map(({ contentKey }) => contentKey)).size, 85);
+  assert.equal(inventory.length, 147);
+  assert.equal(new Set(inventory.map(({ contentKey }) => contentKey)).size, 147);
   assert.deepEqual(Object.fromEntries(['home', 'architecture', 'product', 'post'].map((type) => [
     type, inventory.filter((item) => item.type === type).length,
-  ])), { home: 1, architecture: 35, product: 44, post: 5 });
+  ])), { home: 1, architecture: 46, product: 95, post: 5 });
   assert.equal(inventory[0], ENGLISH_HOME);
-  assert.deepEqual(inventory.slice(1, 36).map(({ route }) => route), ARCHITECTURE_PAGES.map(({ route }) => route));
-  assert.ok(inventory.slice(36, 80).every(({ route }) => route?.startsWith('/products/')));
-  assert.ok(inventory.slice(80).every(({ type }) => type === 'post'));
+  assert.deepEqual(inventory.slice(1, 47).map(({ route }) => route), ARCHITECTURE_PAGES.map(({ route }) => route));
+  assert.ok(inventory.slice(47, 142).every(({ route }) => route?.startsWith('/products/')));
+  assert.ok(inventory.slice(142).every(({ type }) => type === 'post'));
 });
 
 test('stable keys do not depend on language or featured media', () => {
@@ -67,22 +67,59 @@ test('source hashes detect translatable English changes but ignore featured medi
 });
 
 test('completed locales expose routes while missing keys return null', () => {
-  assert.deepEqual(SUPPORTED_LANGUAGES, ['en', 'fr', 'es', 'ar']);
-  for (const language of ['fr', 'es', 'ar']) {
+  assert.deepEqual(SUPPORTED_LANGUAGES, ['en', 'fr', 'es', 'ar', 'zh', 'de']);
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) {
     assert.equal(localizedEntry(language, 'missing'), null);
     assert.equal(routeFor(language, 'missing'), null);
   }
   assert.equal(routeFor('en', 'home'), '/');
   assert.equal(contentKeyFromRoute('/'), 'home');
   assert.equal(contentKeyFromRoute('/not-an-active-page/'), null);
-  assert.deepEqual(alternateGroup('home'), [{ language: 'en', route: '/' }, { language: 'fr', route: '/fr/' }, { language: 'es', route: '/es/' }, { language: 'ar', route: '/ar/' }]);
-  assert.equal(allLocalizedEntries().length, 340);
+  assert.deepEqual(alternateGroup('home'), [{ language: 'en', route: '/' }, { language: 'fr', route: '/fr/' }, { language: 'es', route: '/es/' }, { language: 'ar', route: '/ar/' }, { language: 'zh', route: '/zh/' }, { language: 'de', route: '/de/' }]);
+  assert.equal(allLocalizedEntries().length, 882);
   assert.deepEqual([...localizedRedirects()].filter(([route]) => route.startsWith('/fr/')), [[
     '/fr/corncomp-pailles-en-papier-et-emballages-alimentaires-biodegradables/', '/fr/',
   ]]);
   assert.equal(uiFor('en').menu, 'Menu');
-  assert.throws(() => localeData('de'), /Unsupported locale/);
-  assert.throws(() => localizedEntry('de', 'home'), /Unsupported locale/);
+  assert.throws(() => localeData('it'), /Unsupported locale/);
+  assert.throws(() => localizedEntry('it', 'home'), /Unsupported locale/);
+});
+
+test('Simplified Chinese covers every active English key with current source hashes', () => {
+  const expected = englishInventory();
+  const locale = localeData('zh');
+  assert.deepEqual(locale._meta, { language: 'zh', sourceLanguage: 'en', synchronizedOn: '2026-10-06' });
+  assert.equal(Object.keys(locale.content).length, 147);
+  for (const source of expected) {
+    const entry = locale.content[source.contentKey];
+    assert.ok(entry, source.contentKey);
+    assert.equal(entry.sourceHash, sourceHash(source), source.contentKey);
+    for (const field of ['route', 'title', 'description']) assert.ok(entry[field]?.trim(), `${source.contentKey}:${field}`);
+  }
+  assertLocaleContract(locale);
+  assertLocaleHasNoEnglishPlaceholders('zh', [
+    'Request a quote', 'Explore products', 'Built for B2B sourcing',
+    'Ordering questions', 'Contact Us', 'Analytics settings',
+  ]);
+});
+
+test('German covers every active English key with current source hashes', () => {
+  const expected = englishInventory();
+  const locale = localeData('de');
+  assert.ok(SUPPORTED_LANGUAGES.includes('de'));
+  assert.deepEqual(locale._meta, { language: 'de', sourceLanguage: 'en', synchronizedOn: '2026-10-06' });
+  assert.equal(Object.keys(locale.content).length, 147);
+  for (const source of expected) {
+    const entry = locale.content[source.contentKey];
+    assert.ok(entry, source.contentKey);
+    assert.equal(entry.sourceHash, sourceHash(source), source.contentKey);
+    for (const field of ['route', 'title', 'description']) assert.ok(entry[field]?.trim(), `${source.contentKey}:${field}`);
+  }
+  assertLocaleContract(locale);
+  assertLocaleHasNoEnglishPlaceholders('de', [
+    'Request a quote', 'Explore products', 'Built for B2B sourcing',
+    'Ordering questions', 'Contact Us', 'Analytics settings',
+  ]);
 });
 
 test('locale and content lookups reject inherited object properties', () => {
@@ -161,7 +198,7 @@ function assertLocaleHasNoEnglishPlaceholders(language, phrases) {
 test('French covers every active English key with current source hashes', () => {
   const expected = englishInventory();
   const locale = localeData('fr');
-  assert.equal(Object.keys(locale.content).length, 85);
+  assert.equal(Object.keys(locale.content).length, 147);
   for (const source of expected) {
     const entry = locale.content[source.contentKey];
     assert.ok(entry, source.contentKey);
@@ -261,7 +298,7 @@ test('French specification display values translate source cells without changin
 test('Spanish covers every active English key with current source hashes', () => {
   const expected = englishInventory();
   const locale = localeData('es');
-  assert.equal(Object.keys(locale.content).length, 85);
+  assert.equal(Object.keys(locale.content).length, 147);
   for (const source of expected) {
     const entry = locale.content[source.contentKey];
     assert.ok(entry, source.contentKey);
@@ -383,7 +420,7 @@ function assertSpanishSpecificationValues(locale) {
   }
   const neutralCell = /^(?:[\d\s.,×x()/"]|mm|ml|oz|g|pcs|ctn|&quot;|&#8243;)+$/;
   for (const source of cells) {
-    if (/^CC[\dA-Z.-]+$/.test(source) || source === 'PLA' || neutralCell.test(source)) {
+    if (/^CC[\dA-Z.-]+$/.test(source) || source === 'PLA' || source === 'MYPLABAG' || neutralCell.test(source)) {
       assert.ok(!Object.hasOwn(values, source), `Language-neutral cell must stay shared: ${source}`);
     } else assert.ok(values[source]?.trim(), `Missing Spanish specification value: ${source}`);
   }
@@ -422,7 +459,7 @@ test('Spanish mutations reject missing display maps, changed quantities and unre
 test('Arabic covers every active English key with canonical routes', () => {
   const expected = englishInventory();
   const locale = localeData('ar');
-  assert.equal(Object.keys(locale.content).length, 85);
+  assert.equal(Object.keys(locale.content).length, 147);
   for (const source of expected) {
     const entry = locale.content[source.contentKey];
     assert.ok(entry, source.contentKey);
@@ -547,7 +584,7 @@ function assertArabicSpecificationValues(locale) {
   }
   const neutralCell = /^(?:[\d\s.,×x()/"]|mm|ml|oz|g|pcs|ctn|&quot;|&#8243;)+$/;
   for (const source of cells) {
-    if (/^CC[\dA-Z.-]+$/.test(source) || source === 'PLA' || neutralCell.test(source)) {
+    if (/^CC[\dA-Z.-]+$/.test(source) || source === 'PLA' || source === 'MYPLABAG' || neutralCell.test(source)) {
       assert.ok(!Object.hasOwn(values, source), `Language-neutral cell must stay shared: ${source}`);
     } else assert.ok(values[source]?.trim(), `Missing Arabic specification value: ${source}`);
   }
@@ -594,9 +631,9 @@ test('Arabic locale outputs use the existing RTL direction contract', () => {
 test('final synchronized locales have current English hashes and dated editorial entries', () => {
   const sources = englishInventory();
 
-  for (const language of ['fr', 'es', 'ar']) {
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) {
     const locale = localeData(language);
-    assert.equal(Object.keys(locale.content).length, 85, `${language}:entry count`);
+    assert.equal(Object.keys(locale.content).length, 147, `${language}:entry count`);
 
     for (const source of sources) {
       const entry = locale.content[source.contentKey];
@@ -608,10 +645,10 @@ test('final synchronized locales have current English hashes and dated editorial
     }
   }
 });
-test('architecture editorial labels are explicitly localized for all four languages', () => {
+test('architecture editorial labels are explicitly localized for every supported language', () => {
   assert.equal(typeof visualLocalization.architectureLabelsFor, 'function');
   const english = visualLocalization.architectureLabelsFor('en');
-  for (const language of ['fr', 'es', 'ar']) {
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) {
     const labels = visualLocalization.architectureLabelsFor(language);
     for (const key of ['featuredGuide', 'remainingGuides', 'latestArticles', 'allArticles', 'factoryEvidence']) {
       assert.ok(labels[key]?.trim(), `${language}:${key}`);

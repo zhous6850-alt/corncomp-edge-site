@@ -1,10 +1,13 @@
 import { alternateGroup, contentKeyFromRoute, normalizeLocalizedRoute, routeFor } from './localization.mjs';
+import { applicationContext, applicationRoute } from './application-localization.mjs';
 
 export const languageHomes = {
+  zh: '/zh/',
   en: '/',
   fr: '/fr/corncomp-pailles-en-papier-et-emballages-alimentaires-biodegradables/',
   es: '/es/corncomp-pajitas-de-papel-y-envases-de-alimentos-sostenibles/',
   ar: '/ar/corncomp-%d9%85%d8%b5%d8%a7%d8%b5%d8%a7%d8%aa-%d9%88%d8%b1%d9%82%d9%8a%d8%a9-%d9%88%d8%b9%d8%a8%d9%88%d8%a7%d8%aa-%d8%a3%d8%ba%d8%b0%d9%8a%d8%a9-%d9%85%d8%b3%d8%aa%d8%af%d8%a7%d9%85%d8%a9/',
+  de: '/de/',
 };
 
 export const blogArchives = [
@@ -12,20 +15,26 @@ export const blogArchives = [
   { language: 'fr', route: '/fr/blog/' },
   { language: 'es', route: '/es/blog/' },
   { language: 'ar', route: '/ar/blog/' },
+  { language: 'zh', route: '/zh/blog/' },
+  { language: 'de', route: '/de/blog/' },
 ];
 
 const navigation = {
+  zh: { home: ['首页', '/zh/'], about: ['关于我们', '/zh/about/'], product: ['产品', '/zh/products/'], custom: ['定制包装', '/zh/custom-packaging/'], applications: ['应用场景', '/zh/applications/'], certifications: ['质量与认证', '/zh/quality/'], resources: ['资源', '/zh/resources/'], blog: ['博客', '/zh/blog/'], contact: ['获取报价', '/zh/contact/'] },
   en: { home: ['Home', '/'], about: ['About', '/about/'], product: ['Products', '/products/'], custom: ['Custom Packaging', '/custom-packaging/'], applications: ['Applications', '/applications/'], resources: ['Resources', '/resources/'], certifications: ['Quality', '/quality/'], cases: ['Case Studies', '/case-studies/'], blog: ['Blog', '/blog/'], faq: ['FAQ', '/faq/'], contact: ['Request a Quote', '/contact/'] },
   fr: { home: ['Accueil', languageHomes.fr], about: ['À propos', '/fr/a-propos-de-corncomp-fabricant-d-emballages-papier-biodegradables/'], product: ['Produits', '/fr/produits/'], certifications: ['Certifications', '/fr/certifications-corncomp/'], cases: ['Études de cas', '/fr/la-confiance-des-grandes-marques-etudes-de-cas-corncomp/'], blog: ['Blog', '/fr/blog/'], faq: ['FAQ', '/fr/faq-corncomp/'], contact: ['Contact', '/fr/contactez-nous/'] },
   es: { home: ['Inicio', languageHomes.es], about: ['Sobre nosotros', '/es/sobre-corncomp-fabricante-de-envases-de-papel-biodegradables/'], product: ['Productos', '/es/productos/'], certifications: ['Certificaciones', '/es/certificaciones-de-corncomp/'], cases: ['Casos de estudio', '/es/la-confianza-de-las-marcas-globales-casos-de-estudio-de-corncomp/'], blog: ['Blog', '/es/blog/'], faq: ['Preguntas frecuentes', '/es/preguntas-frecuentes-corncomp/'], contact: ['Contacto', '/es/contactenos/'] },
   ar: { home: ['الرئيسية', languageHomes.ar], about: ['من نحن', '/ar/%d8%b9%d9%86-corncomp-%d8%a7%d9%84%d8%b4%d8%b1%d9%83%d8%a9/'], product: ['المنتجات', '/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D9%84%D9%84%D8%AC%D9%85%D9%84%D8%A9-%D9%88%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%B7%D9%84%D8%A8/'], certifications: ['الشهادات', '/ar/%d8%b4%d9%87%d8%a7%d8%af%d8%a7%d8%aa-corncomp/'], cases: ['دراسات الحالة', '/ar/%d8%af%d8%b1%d8%a7%d8%b3%d8%a7%d8%aa-%d8%ad%d8%a7%d9%84%d8%a9-corncomp/'], blog: ['المدونة', '/ar/blog/'], faq: ['الأسئلة الشائعة', '/ar/%d8%a7%d9%84%d8%a3%d8%b3%d8%a6%d9%84%d8%a9-%d8%a7%d9%84%d8%b4%d8%a7%d8%a6%d8%b9%d8%a9-corncomp/'], contact: ['اتصل بنا', '/ar/%d8%a7%d8%aa%d8%b5%d9%84-%d8%a8%d9%86%d8%a7/'] },
+  de: { home: ['Startseite', '/de/'], about: ['Über uns', '/de/about/'], product: ['Produkte', '/de/products/'], custom: ['Individuelle Verpackungen', '/de/custom-packaging/'], applications: ['Anwendungen', '/de/applications/'], certifications: ['Qualität', '/de/quality/'], resources: ['Ressourcen', '/de/resources/'], blog: ['Blog', '/de/blog/'], contact: ['Angebot anfordern', '/de/contact/'] },
 };
 
 const resourceLabels = {
+  zh: ['资源', '指南'],
   en: ['Resources', 'Guides'],
   fr: ['Ressources', 'Guides'],
   es: ['Recursos', 'Guías'],
   ar: ['الموارد', 'الأدلة'],
+  de: ['Ressourcen', 'Leitfäden'],
 };
 
 for (const [language, [label, guidesLabel]] of Object.entries(resourceLabels)) {
@@ -36,10 +45,12 @@ for (const [language, [label, guidesLabel]] of Object.entries(resourceLabels)) {
 }
 
 export const categoryIdsByLanguage = {
+  zh: [],
   en: [35, 20, 25, 52, 60, 59, 61, 64, 45],
   fr: [236, 232, 234, 240, 244, 242, 246, 248, 238],
   es: [188, 184, 186, 192, 196, 194, 198, 200, 190],
   ar: [203, 207, 209, 211, 217, 205, 215, 219, 213],
+  de: [],
 };
 
 export function navigationFor(language = 'en') {
@@ -47,6 +58,8 @@ export function navigationFor(language = 'en') {
 }
 
 export function pageAlternates(pathname) {
+  const application = applicationContext(pathname);
+  if (application) return ['en', 'fr', 'es', 'ar', 'zh', 'de'].map((language) => ({ language, route: applicationRoute(language, application.scene) }));
   const normalized = normalizeLocalizedRoute(pathname);
   if (blogArchives.some(({ route }) => route === normalized)) return blogArchives;
   const contentKey = contentKeyFromRoute(normalized);

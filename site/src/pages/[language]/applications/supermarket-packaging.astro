@@ -1,0 +1,7 @@
+---
+import PublishedApplication from '../../../components/PublishedApplication.astro';
+export function getStaticPaths() {
+  return ['fr', 'es', 'ar', 'zh', 'de'].map((language) => ({ params: { language } }));
+}
+---
+<PublishedApplication scene="supermarket-packaging"/>

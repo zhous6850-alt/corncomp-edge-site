@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { VISUAL_MEDIA, CONTENT_MEDIA } from '../data/visual-media.mjs';
 import { COMPANY_CERTIFICATES, SUPPLY_CHAIN_DOCUMENTS } from '../data/certificates.mjs';
 
-const LANGUAGES = ['en', 'fr', 'es', 'ar'];
+const LANGUAGES = ['en', 'fr', 'es', 'ar', 'zh', 'de'];
 const EVIDENCE = new Set(['product', 'factory', 'certificate', 'application', 'decorative']);
 const mediaByKey = new Map(VISUAL_MEDIA.map((entry) => [entry.key, entry]));
 

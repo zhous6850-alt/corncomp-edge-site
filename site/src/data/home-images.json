@@ -1,0 +1,116 @@
+{
+  "hero": {
+    "src": "/media/optimized/corncomp-factory-exterior.jpg.3fa4a9f73879-1702.webp",
+    "srcset": "/media/optimized/corncomp-factory-exterior.jpg.3fa4a9f73879-640.webp 640w, /media/optimized/corncomp-factory-exterior.jpg.3fa4a9f73879-960.webp 960w, /media/optimized/corncomp-factory-exterior.jpg.3fa4a9f73879-1280.webp 1280w, /media/optimized/corncomp-factory-exterior.jpg.3fa4a9f73879-1702.webp 1702w"
+  },
+  "customer:starbucks": {
+    "src": "/media/optimized/customers/starbucks.png.97e3fd01e0e5-87.webp",
+    "srcset": "/media/optimized/customers/starbucks.png.97e3fd01e0e5-87.webp 87w"
+  },
+  "brand-logo": {
+    "src": "/media/optimized/corncomp-logo.png.21f86e04239e-222.webp",
+    "srcset": "/media/optimized/corncomp-logo.png.21f86e04239e-111.webp 111w, /media/optimized/corncomp-logo.png.21f86e04239e-222.webp 222w"
+  },
+  "customer:disney": {
+    "src": "/media/optimized/customers/disney.png.6abb098b9562-240.webp",
+    "srcset": "/media/optimized/customers/disney.png.6abb098b9562-240.webp 240w"
+  },
+  "customer:dorfin": {
+    "src": "/media/optimized/customers/dorfin.png.eec12f59e451-240.webp",
+    "srcset": "/media/optimized/customers/dorfin.png.eec12f59e451-240.webp 240w"
+  },
+  "customer:metro": {
+    "src": "/media/optimized/customers/metro.png.0c1b91c08200-240.webp",
+    "srcset": "/media/optimized/customers/metro.png.0c1b91c08200-240.webp 240w"
+  },
+  "customer:bunzl": {
+    "src": "/media/optimized/customers/bunzl.png.1718fd66045d-240.webp",
+    "srcset": "/media/optimized/customers/bunzl.png.1718fd66045d-240.webp 240w"
+  },
+  "customer:marubeni": {
+    "src": "/media/optimized/customers/marubeni.png.242899f29ff9-240.webp",
+    "srcset": "/media/optimized/customers/marubeni.png.242899f29ff9-240.webp 240w"
+  },
+  "customer:first-pack": {
+    "src": "/media/optimized/customers/first-pack.png.69131e555632-240.webp",
+    "srcset": "/media/optimized/customers/first-pack.png.69131e555632-240.webp 240w"
+  },
+  "customer:gude": {
+    "src": "/media/optimized/customers/gude.png.074a6df511ec-240.webp",
+    "srcset": "/media/optimized/customers/gude.png.074a6df511ec-240.webp 240w"
+  },
+  "customer:brenta": {
+    "src": "/media/optimized/customers/brenta.png.997f89116b6d-240.webp",
+    "srcset": "/media/optimized/customers/brenta.png.997f89116b6d-240.webp 240w"
+  },
+  "trade-show:1": {
+    "src": "/media/optimized/trade-shows/corncomp-exhibition-1.webp.2f6e5658dfba-1200.webp",
+    "srcset": "/media/optimized/trade-shows/corncomp-exhibition-1.webp.2f6e5658dfba-400.webp 400w, /media/optimized/trade-shows/corncomp-exhibition-1.webp.2f6e5658dfba-800.webp 800w, /media/optimized/trade-shows/corncomp-exhibition-1.webp.2f6e5658dfba-1200.webp 1200w"
+  },
+  "trade-show:2": {
+    "src": "/media/optimized/trade-shows/corncomp-exhibition-2.webp.5128211ad691-1200.webp",
+    "srcset": "/media/optimized/trade-shows/corncomp-exhibition-2.webp.5128211ad691-400.webp 400w, /media/optimized/trade-shows/corncomp-exhibition-2.webp.5128211ad691-800.webp 800w, /media/optimized/trade-shows/corncomp-exhibition-2.webp.5128211ad691-1200.webp 1200w"
+  },
+  "trade-show:3": {
+    "src": "/media/optimized/trade-shows/corncomp-exhibition-3.webp.bd78a96f743a-1200.webp",
+    "srcset": "/media/optimized/trade-shows/corncomp-exhibition-3.webp.bd78a96f743a-400.webp 400w, /media/optimized/trade-shows/corncomp-exhibition-3.webp.bd78a96f743a-800.webp 800w, /media/optimized/trade-shows/corncomp-exhibition-3.webp.bd78a96f743a-1200.webp 1200w"
+  },
+  "trade-show:4": {
+    "src": "/media/optimized/trade-shows/corncomp-exhibition-4.webp.18da21ff5a2b-1200.webp",
+    "srcset": "/media/optimized/trade-shows/corncomp-exhibition-4.webp.18da21ff5a2b-400.webp 400w, /media/optimized/trade-shows/corncomp-exhibition-4.webp.18da21ff5a2b-800.webp 800w, /media/optimized/trade-shows/corncomp-exhibition-4.webp.18da21ff5a2b-1200.webp 1200w"
+  },
+  "trade-show:5": {
+    "src": "/media/optimized/trade-shows/corncomp-exhibition-5.webp.1c198614aa67-1200.webp",
+    "srcset": "/media/optimized/trade-shows/corncomp-exhibition-5.webp.1c198614aa67-400.webp 400w, /media/optimized/trade-shows/corncomp-exhibition-5.webp.1c198614aa67-800.webp 800w, /media/optimized/trade-shows/corncomp-exhibition-5.webp.1c198614aa67-1200.webp 1200w"
+  },
+  "trade-show:6": {
+    "src": "/media/optimized/trade-shows/corncomp-exhibition-6.webp.5501faec3044-1200.webp",
+    "srcset": "/media/optimized/trade-shows/corncomp-exhibition-6.webp.5501faec3044-400.webp 400w, /media/optimized/trade-shows/corncomp-exhibition-6.webp.5501faec3044-800.webp 800w, /media/optimized/trade-shows/corncomp-exhibition-6.webp.5501faec3044-1200.webp 1200w"
+  },
+  "v1/cups": {
+    "src": "/media/optimized/generated/home-lifestyle-v1/cups.webp.864bfd4a583d-600.webp",
+    "srcset": "/media/optimized/generated/home-lifestyle-v1/cups.webp.864bfd4a583d-240.webp 240w, /media/optimized/generated/home-lifestyle-v1/cups.webp.864bfd4a583d-400.webp 400w, /media/optimized/generated/home-lifestyle-v1/cups.webp.864bfd4a583d-600.webp 600w, /media/optimized/generated/home-lifestyle-v1/cups.webp.864bfd4a583d-800.webp 800w, /media/optimized/generated/home-lifestyle-v1/cups.webp.864bfd4a583d-1200.webp 1200w"
+  },
+  "v2/bowls": {
+    "src": "/media/optimized/generated/home-lifestyle-v2/bowls.webp.59ba45e563d1-600.webp",
+    "srcset": "/media/optimized/generated/home-lifestyle-v2/bowls.webp.59ba45e563d1-240.webp 240w, /media/optimized/generated/home-lifestyle-v2/bowls.webp.59ba45e563d1-400.webp 400w, /media/optimized/generated/home-lifestyle-v2/bowls.webp.59ba45e563d1-600.webp 600w, /media/optimized/generated/home-lifestyle-v2/bowls.webp.59ba45e563d1-800.webp 800w, /media/optimized/generated/home-lifestyle-v2/bowls.webp.59ba45e563d1-1200.webp 1200w"
+  },
+  "v1/icecream": {
+    "src": "/media/optimized/generated/home-lifestyle-v1/icecream.webp.7fdd1c14dbb6-600.webp",
+    "srcset": "/media/optimized/generated/home-lifestyle-v1/icecream.webp.7fdd1c14dbb6-240.webp 240w, /media/optimized/generated/home-lifestyle-v1/icecream.webp.7fdd1c14dbb6-400.webp 400w, /media/optimized/generated/home-lifestyle-v1/icecream.webp.7fdd1c14dbb6-600.webp 600w, /media/optimized/generated/home-lifestyle-v1/icecream.webp.7fdd1c14dbb6-800.webp 800w, /media/optimized/generated/home-lifestyle-v1/icecream.webp.7fdd1c14dbb6-1200.webp 1200w"
+  },
+  "v2/boxes": {
+    "src": "/media/optimized/generated/home-lifestyle-v2/boxes.webp.c7c47029d023-600.webp",
+    "srcset": "/media/optimized/generated/home-lifestyle-v2/boxes.webp.c7c47029d023-240.webp 240w, /media/optimized/generated/home-lifestyle-v2/boxes.webp.c7c47029d023-400.webp 400w, /media/optimized/generated/home-lifestyle-v2/boxes.webp.c7c47029d023-600.webp 600w, /media/optimized/generated/home-lifestyle-v2/boxes.webp.c7c47029d023-800.webp 800w, /media/optimized/generated/home-lifestyle-v2/boxes.webp.c7c47029d023-1200.webp 1200w"
+  },
+  "v1/straws": {
+    "src": "/media/optimized/generated/home-lifestyle-v1/straws.webp.2fd8084d4743-600.webp",
+    "srcset": "/media/optimized/generated/home-lifestyle-v1/straws.webp.2fd8084d4743-240.webp 240w, /media/optimized/generated/home-lifestyle-v1/straws.webp.2fd8084d4743-400.webp 400w, /media/optimized/generated/home-lifestyle-v1/straws.webp.2fd8084d4743-600.webp 600w, /media/optimized/generated/home-lifestyle-v1/straws.webp.2fd8084d4743-800.webp 800w, /media/optimized/generated/home-lifestyle-v1/straws.webp.2fd8084d4743-1200.webp 1200w"
+  },
+  "v2/tableware": {
+    "src": "/media/optimized/generated/home-lifestyle-v2/tableware.webp.768729271d94-600.webp",
+    "srcset": "/media/optimized/generated/home-lifestyle-v2/tableware.webp.768729271d94-240.webp 240w, /media/optimized/generated/home-lifestyle-v2/tableware.webp.768729271d94-400.webp 400w, /media/optimized/generated/home-lifestyle-v2/tableware.webp.768729271d94-600.webp 600w, /media/optimized/generated/home-lifestyle-v2/tableware.webp.768729271d94-800.webp 800w, /media/optimized/generated/home-lifestyle-v2/tableware.webp.768729271d94-1200.webp 1200w"
+  },
+  "certificate:iso-9001": {
+    "src": "/media/optimized/wp/289-certificate-1.webp.255dc8ebfb8b-400.webp",
+    "srcset": "/media/optimized/wp/289-certificate-1.webp.255dc8ebfb8b-200.webp 200w, /media/optimized/wp/289-certificate-1.webp.255dc8ebfb8b-320.webp 320w, /media/optimized/wp/289-certificate-1.webp.255dc8ebfb8b-400.webp 400w, /media/optimized/wp/289-certificate-1.webp.255dc8ebfb8b-640.webp 640w"
+  },
+  "certificate:fsc-coc": {
+    "src": "/media/optimized/wp/290-certificate-fsc-scaled.webp.8703ea30ccbf-400.webp",
+    "srcset": "/media/optimized/wp/290-certificate-fsc-scaled.webp.8703ea30ccbf-200.webp 200w, /media/optimized/wp/290-certificate-fsc-scaled.webp.8703ea30ccbf-320.webp 320w, /media/optimized/wp/290-certificate-fsc-scaled.webp.8703ea30ccbf-400.webp 400w, /media/optimized/wp/290-certificate-fsc-scaled.webp.8703ea30ccbf-640.webp 640w"
+  },
+  "certificate:bpi-straws": {
+    "src": "/media/optimized/wp/291-certificate-3.webp.551091a3e791-400.webp",
+    "srcset": "/media/optimized/wp/291-certificate-3.webp.551091a3e791-200.webp 200w, /media/optimized/wp/291-certificate-3.webp.551091a3e791-320.webp 320w, /media/optimized/wp/291-certificate-3.webp.551091a3e791-400.webp 400w, /media/optimized/wp/291-certificate-3.webp.551091a3e791-640.webp 640w"
+  },
+  "certificate:brcgs-packaging": {
+    "src": "/media/optimized/wp/315-corncomp-brc-certificate.webp.425d133eb95c-400.webp",
+    "srcset": "/media/optimized/wp/315-corncomp-brc-certificate.webp.425d133eb95c-200.webp 200w, /media/optimized/wp/315-corncomp-brc-certificate.webp.425d133eb95c-320.webp 320w, /media/optimized/wp/315-corncomp-brc-certificate.webp.425d133eb95c-400.webp 400w, /media/optimized/wp/315-corncomp-brc-certificate.webp.425d133eb95c-640.webp 640w"
+  },
+  "heroMobile": {
+    "src": "/media/optimized/corncomp-factory-mobile.c876027c2985-900.webp",
+    "srcset": "/media/optimized/corncomp-factory-mobile.c876027c2985-540.webp 540w, /media/optimized/corncomp-factory-mobile.c876027c2985-720.webp 720w, /media/optimized/corncomp-factory-mobile.c876027c2985-900.webp 900w",
+    "width": 900,
+    "height": 1276
+  }
+}

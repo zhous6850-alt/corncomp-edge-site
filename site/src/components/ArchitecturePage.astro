@@ -1,5 +1,8 @@
 ---
+import '../styles/contact-quote-preview.css';
+import { CONTACT_DESIGN_LABELS } from '../data/contact-design-labels.mjs';
 import PageHero from './PageHero.astro';
+import ProductsOverview from './ProductsOverview.astro';
 import EditorialCard from './EditorialCard.astro';
 import ResponsiveMedia from './ResponsiveMedia.astro';
 import CertificateGallery from './CertificateGallery.astro';
@@ -7,10 +10,12 @@ import { mediaFor, mediaListFor } from '../lib/visual-media.mjs';
 import { companyCertificates, supplyChainDocuments } from '../data/certificates.mjs';
 import { contentText } from '../lib/content-routes.mjs';
 import { contentKeyForArchitecture, localizedEntry, routeFor, architectureLabelsFor } from '../lib/localization.mjs';
-import { PRODUCT_GROUPS, mediaKeyForArchitecture } from '../lib/site-architecture.mjs';
+import { mediaKeyForArchitecture } from '../lib/site-architecture.mjs';
 
-const { source, page, language, ui, contactRoute, labels, recentPosts = [] } = Astro.props;
+const { source, page, language, ui, contactRoute, labels, recentPosts = [], contactDesign = false } = Astro.props;
 const { homeLabel, rangeLabel, sentLabel, nameLabel, emailLabel, companyLabel, countryLabel, phoneLabel, quantityLabel, productLabel, skuLabel, categoryFormLabel, requirementsLabel, sendLabel, preparedLabel, reviewedLabel, sourcesLabel, officialLabel } = labels;
+const contactCopy = CONTACT_DESIGN_LABELS[language];
+const requiredNote = {en:'* Required fields',zh:'* 为必填项',fr:'* Champs obligatoires',es:'* Campos obligatorios',de:'* Pflichtfelder',ar:'* حقول مطلوبة'}[language];
 const visualLabels = architectureLabelsFor(language);
 const visibleTitle = contentText;
 const media = mediaFor(mediaKeyForArchitecture(source), language);
@@ -18,26 +23,34 @@ const quality = source.route === '/quality/';
 const about = source.route.startsWith('/about/');
 const resources = source.kind === 'resources';
 const localizedArchitecture = (route) => localizedEntry(language, contentKeyForArchitecture({ route }));
+const linkedRoute = (index) => localizedArchitecture(source.links[index].route)?.route || page.links[index].route;
 const linkedMedia = (index) => source.links[index].route === '/contact/' ? null : mediaFor(mediaKeyForArchitecture({ route: source.links[index].route }), language);
 const factoryPage = localizedEntry(language, 'architecture:about/factory');
 const factoryMedia = mediaListFor('architecture:about/factory', language);
 const companyMedia = [mediaFor('architecture:products', language), ...factoryMedia];
 const blogRoute = language === 'en' ? '/blog/' : `/${language}/blog/`;
+const feedback = {
+  en: ['Your inquiry has been sent. We will contact you soon.', 'Unable to send. Please check the verification and try again.', 'Sending…', 'Close'],
+  zh: ['询盘已发送成功，我们会尽快联系您。', '发送失败，请检查验证码后重试。', '正在发送…', '关闭'],
+  fr: ['Votre demande a été envoyée. Nous vous contacterons bientôt.', 'Échec de l’envoi. Vérifiez la validation et réessayez.', 'Envoi en cours…', 'Fermer'],
+  es: ['Su consulta se ha enviado. Nos pondremos en contacto pronto.', 'No se pudo enviar. Compruebe la verificación e inténtelo de nuevo.', 'Enviando…', 'Cerrar'],
+  ar: ['تم إرسال استفسارك بنجاح. سنتواصل معك قريبًا.', 'تعذر الإرسال. يرجى التحقق وإعادة المحاولة.', 'جارٍ الإرسال…', 'إغلاق'],
+  de: ['Ihre Anfrage wurde gesendet. Wir melden uns in Kürze.', 'Senden fehlgeschlagen. Bitte prüfen Sie die Verifizierung und versuchen Sie es erneut.', 'Wird gesendet…', 'Schließen'],
+}[language];
 ---
-{source.kind === 'contact' ? <section class="content-shell architecture-page contact-page">
-  <PageHero eyebrow={ui.contactUs} title={visibleTitle(page.title)} intro={page.intro} />
+{source.kind === 'contact' ? <section class:list={['content-shell architecture-page contact-page', {'quote-redesign':contactDesign}]}>
+  {contactDesign ? <header class="quote-heading"><nav class="quote-crumb" aria-label="Breadcrumb"><a href={routeFor(language, 'home')}>{homeLabel}</a><span aria-hidden="true">/</span><span>{visibleTitle(page.title)}</span></nav><p>{ui.requestQuote}</p><h1>{contactCopy.title1}<br/>{contactCopy.title2}</h1><div>{contactCopy.intro1}{' '}<br/>{contactCopy.intro2}</div></header> : <PageHero eyebrow={ui.contactUs} title={visibleTitle(page.title)} intro={page.intro} />}
+  <div id="inquiry-toast" class="inquiry-toast" role="status" aria-live="polite" hidden data-success={feedback[0]} data-error={feedback[1]} data-sending={feedback[2]}><span></span><button type="button" aria-label={feedback[3]}>×</button></div>
   <div class="contact-layout">
-    <div class="contact-support"><ResponsiveMedia media={media} eager /><div class="contact-direct"><a href="mailto:inquiry@corn-comp.com">inquiry@corn-comp.com</a><span>+86 574 8696 1222</span></div></div>
-    <div class="inquiry-panel"><p id="inquiry-sent" class="inquiry-success" role="status">{sentLabel}</p><form class="corncomp-inquiry-form" action="/api/inquiry" method="post"><div class="form-grid"><label>{nameLabel}<input name="name" autocomplete="name" required></label><label>{emailLabel}<input name="email" type="email" autocomplete="email" required></label><label>{companyLabel}<input name="company" autocomplete="organization" required></label><label>{countryLabel}<input name="country" autocomplete="country-name" required></label><label>{phoneLabel}<input name="phone" autocomplete="tel"></label><label>{quantityLabel}<input name="quantity" inputmode="numeric"></label><label class="form-wide">{productLabel}<input name="productName"></label><label>{skuLabel}<input name="productSku"></label><label>{categoryFormLabel}<input name="category"></label><label class="form-wide">{requirementsLabel}<textarea name="message" rows="6" required></textarea></label></div><input type="hidden" name="sourcePath"><label class="honeypot" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label><button class="button-primary" type="submit">{sendLabel}</button></form></div>
+    {contactDesign ? <aside class="contact-support quote-support"><div class="support-title"><span class="support-rule" aria-hidden="true"></span><h2>{contactCopy.supportTitle}</h2><p>{contactCopy.supportText}</p></div><div class="direct-options"><div class="contact-text"><span>{contactCopy.email}</span><strong>zhous6850@gmail.com</strong></div><a href="https://wa.me/6581603123"><span>{contactCopy.chatPrompt}</span><strong>{contactCopy.chat}</strong><b aria-hidden="true">↗</b></a><div class="contact-text"><span>{contactCopy.phone}</span><strong>+86 574 8696 1222</strong></div></div><div class="next-steps"><h3>{contactCopy.next}</h3><ol><li><span>01</span><div><h4>{contactCopy.step1}</h4><p>{contactCopy.step1Text}</p></div></li><li><span>02</span><div><h4>{contactCopy.step2}</h4><p>{contactCopy.step2Text}</p></div></li><li><span>03</span><div><h4>{contactCopy.step3}</h4><p>{contactCopy.step3Text}</p></div></li></ol></div></aside> : <div class="contact-support"><ResponsiveMedia media={media} eager /><div class="contact-direct"><a href="mailto:zhous6850@gmail.com">zhous6850@gmail.com</a><span>+86 574 8696 1222</span></div></div>}
+    <div class="inquiry-panel">{contactDesign&&<div class="form-intro"><h2>{contactCopy.formTitle}</h2><p>{contactCopy.formText}</p></div>}<p id="inquiry-sent" class="inquiry-success" role="status">{sentLabel}</p><form class="corncomp-inquiry-form" action="/api/inquiry" method="post"><p class="required-note">{requiredNote}</p><div class="form-grid">{contactDesign&&<h3 id="contact-details" class="form-section-title">{contactCopy.contactTitle}</h3>}<label><span>{nameLabel}<span class="required-mark" aria-hidden="true"> *</span></span><input name="name" autocomplete="name" required></label><label><span>{emailLabel}<span class="required-mark" aria-hidden="true"> *</span></span><input name="email" type="email" autocomplete="email" required></label><label><span>{companyLabel}<span class="required-mark" aria-hidden="true"> *</span></span><input name="company" autocomplete="organization" required></label><label><span>{countryLabel}<span class="required-mark" aria-hidden="true"> *</span></span><input name="country" autocomplete="country-name" required></label><label>{phoneLabel}<input name="phone" autocomplete="tel"></label><label>{quantityLabel}<input name="quantity" inputmode="numeric"></label>{contactDesign&&<h3 id="packaging-details" class="form-section-title packaging-section-title">{contactCopy.packagingTitle}</h3>}<label class:list={['form-wide',{'selected-product':contactDesign}]}>{productLabel}<input name="productName"></label><label>{skuLabel}<input name="productSku"></label><label>{categoryFormLabel}<input name="category"></label><label class="form-wide"><span>{requirementsLabel}<span class="required-mark" aria-hidden="true"> *</span></span><textarea name="message" rows="6" required></textarea></label></div><input type="hidden" name="sourcePath"><label class="honeypot" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label><div class="cf-turnstile" data-sitekey="0x4AAAAAAFR8Uz-WseWno-sx"></div><button class="button-primary" type="submit">{sendLabel}</button></form></div>
   </div>
-  <script is:inline>(() => { const form = document.querySelector('.corncomp-inquiry-form'); if (!form) return; const params = new URLSearchParams(window.location.search); const values = { productName: params.get('product'), productSku: params.get('sku'), category: params.get('category'), sourcePath: params.get('source') || document.referrer || window.location.pathname }; for (const [name, value] of Object.entries(values)) if (value && form.elements[name]) form.elements[name].value = value; if (params.get('sent') === '1') document.getElementById('inquiry-sent')?.classList.add('is-visible'); })();</script>
-</section> : source.kind === 'products' ? <section class="content-shell architecture-page">
-  <PageHero eyebrow={rangeLabel} title={visibleTitle(page.title)} intro={page.intro} media={media} />
-  <div class="architecture-grid product-group-grid">{PRODUCT_GROUPS.map((group) => {
-    const item = localizedArchitecture(group.route);
-    return <EditorialCard title={visibleTitle(item.title)} text={item.intro} href={item.route} media={mediaFor(mediaKeyForArchitecture(group), language)} label={ui.productGroup} />;
-  })}</div><section class="buying-guidance"><div class="architecture-grid">{page.sections.map((section) => <article class="architecture-card"><h2>{section.title}</h2><p>{section.text}</p></article>)}</div><a class="button-primary" href={contactRoute}>{ui.requestQuote}</a></section>
-</section> : <section class="content-shell architecture-page">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>
+    import { initializeInquiryForm } from '../lib/inquiry-form.mjs';
+    initializeInquiryForm(document.querySelector('.corncomp-inquiry-form'), document.getElementById('inquiry-toast'));
+  </script>
+</section> : source.kind === 'products' ? <ProductsOverview language={language} ui={ui} /> : <section class="content-shell architecture-page">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href={routeFor(language, 'home')}>{homeLabel}</a><span>/</span><span>{visibleTitle(page.title)}</span></nav>
   <PageHero eyebrow={visibleTitle(page.title)} title={visibleTitle(page.title)} intro={page.intro} media={quality ? null : media} />
   {source.kind === 'guide' && <p class="guide-meta">{preparedLabel}{' '}{page.preparedBy} <span aria-hidden="true">·</span> {reviewedLabel}{' '}{page.reviewedLabel}</p>}
@@ -47,11 +60,11 @@ const blogRoute = language === 'en' ? '/blog/' : `/${language}/blog/`;
     <CertificateGallery supplyChain={supplyChainDocuments(language)} language={language} />
   </>}
   {resources ? <>
-    <section class="featured-guide"><p class="eyebrow">{visualLabels.featuredGuide}</p><EditorialCard title={visibleTitle(page.links[0].title)} text={page.links[0].text} href={page.links[0].route} media={linkedMedia(0)} /></section>
-    <section class="remaining-guides"><h2>{visualLabels.remainingGuides}</h2><div class="architecture-grid editorial-card-grid">{page.links.slice(1).map((item, index) => <EditorialCard title={visibleTitle(item.title)} text={item.text} href={item.route} media={linkedMedia(index + 1)} />)}</div></section>
+    <section class="featured-guide"><p class="eyebrow">{visualLabels.featuredGuide}</p><EditorialCard title={visibleTitle(page.links[0].title)} text={page.links[0].text} href={linkedRoute(0)} media={linkedMedia(0)} /></section>
+    <section class="remaining-guides"><h2>{visualLabels.remainingGuides}</h2><div class="architecture-grid editorial-card-grid">{page.links.slice(1).map((item, index) => <EditorialCard title={visibleTitle(item.title)} text={item.text} href={linkedRoute(index + 1)} media={linkedMedia(index + 1)} />)}</div></section>
     <section class="latest-articles"><div class="section-heading"><h2>{visualLabels.latestArticles}</h2><a class="text-link" href={blogRoute}>{visualLabels.allArticles}</a></div><div class="architecture-grid">{recentPosts.map(({ source: post, entry }) => <EditorialCard title={visibleTitle(entry.title)} text={entry.description} href={entry.route} media={mediaFor(post.contentKey, language)} />)}</div></section>
-  </> : !about && page.links.length > 0 && <div class="architecture-grid linked-page-grid editorial-card-grid">{page.links.map((item, index) => <EditorialCard title={visibleTitle(item.title)} text={item.text} href={item.route} media={linkedMedia(index)} />)}</div>}
+  </> : !about && page.links.length > 0 && <div class="architecture-grid linked-page-grid editorial-card-grid">{page.links.map((item, index) => <EditorialCard title={visibleTitle(item.title)} text={item.text} href={linkedRoute(index)} media={linkedMedia(index)} />)}</div>}
   {about ? <div class="company-evidence">{page.sections.map((section, index) => <section class:list={['evidence-split', { 'evidence-split--reverse': index % 2 === 1 }]}><ResponsiveMedia media={source.route === '/about/' ? companyMedia[index % companyMedia.length] : factoryMedia[index % factoryMedia.length]} /><div><h2>{section.title}</h2><p>{section.text}</p></div></section>)}</div> : <div class:list={['architecture-grid', 'content-section-grid', { 'has-links': page.links.length > 0 }]}>{page.sections.map((section) => <article class="architecture-card"><h2>{section.title}</h2><p>{section.text}</p></article>)}</div>}
-  {about && page.links.length > 0 && <div class="architecture-grid linked-page-grid editorial-card-grid">{page.links.map((item, index) => <EditorialCard title={visibleTitle(item.title)} text={item.text} href={item.route} media={linkedMedia(index)} />)}</div>}
+  {about && page.links.length > 0 && <div class="architecture-grid linked-page-grid editorial-card-grid">{page.links.map((item, index) => <EditorialCard title={visibleTitle(item.title)} text={item.text} href={linkedRoute(index)} media={linkedMedia(index)} />)}</div>}
   {page.table && <section class="guide-table-section" aria-label={page.table.caption}><div class="guide-table-scroll"><table class="guide-table"><caption>{page.table.caption}</caption><thead><tr>{page.table.headers.map((header) => <th scope="col">{header}</th>)}</tr></thead><tbody>{page.table.rows.map((row) => <tr>{row.map((cell, i) => i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody></table></div></section>}{page.sources?.length > 0 && <section class="guide-sources"><p class="eyebrow">{sourcesLabel}</p><h2>{officialLabel}</h2><p>{page.sourceIntro}</p><ul>{page.sources.map((item) => <li><a href={item.url} target="_blank" rel="noopener noreferrer">{visibleTitle(item.title)}</a></li>)}</ul></section>}<section class="architecture-cta"><div><p class="eyebrow">{ui.requestQuote}</p><h2>{visibleTitle(page.title)}</h2><p>{page.description}</p></div><a class="button-primary" href={`${contactRoute}?source=${encodeURIComponent(page.route)}`}>{ui.requestQuote}</a></section>
 </section>}

@@ -1,4 +1,4 @@
-const LANGUAGES = new Set(['es', 'fr', 'ar']);
+const LANGUAGES = new Set(['es', 'fr', 'ar', 'zh', 'de']);
 
 export function languageFromPath(pathname) {
   const prefix = pathname.split('/').filter(Boolean)[0];

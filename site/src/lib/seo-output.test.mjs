@@ -19,9 +19,9 @@ test('all canonical pages retain production social URLs, organization email, sch
     const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
     assert.ok(Array.isArray(schemas), route);
     assert.equal(schemas.filter((node) => node['@type'] === 'Organization').length, 1, route);
-    assert.equal(schemas[0].email, 'inquiry@corn-comp.com', route);
+    assert.equal(schemas[0].email, 'zhous6850@gmail.com', route);
     assert.equal(schemas[0]['@id'], 'https://corn-comp.com/#organization', route);
-    assert.ok(html.includes('mailto:inquiry@corn-comp.com'), route);
+    assert.ok(html.includes('mailto:zhous6850@gmail.com'), route);
     assert.ok(html.includes('G-R1SHNYEBN8'), route);
     assert.doesNotMatch(html, /<script[^>]+src="https:\/\/www\.googletagmanager\.com/, route);
   }
@@ -29,7 +29,7 @@ test('all canonical pages retain production social URLs, organization email, sch
 
 test('all blog article identities, original schema images, canonical URLs and alternates survive the redesign', async () => {
   for (const post of englishInventory().filter(({ type }) => type === 'post')) {
-    for (const language of ['en', 'fr', 'es', 'ar']) {
+    for (const language of ['en', 'fr', 'es', 'ar', 'zh', 'de']) {
       const entry = localizedEntry(language, post.contentKey);
       const html = await readFile(new URL(`../../dist/${entry.route.slice(1)}index.html`, import.meta.url), 'utf8');
       const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
@@ -41,7 +41,10 @@ test('all blog article identities, original schema images, canonical URLs and al
       assert.deepEqual(article.publisher, { '@id': 'https://corn-comp.com/#organization' });
       assert.equal(article.dateModified, entry.dateModified || entry.reviewedDate);
       assert.ok(html.includes(`rel="canonical" href="https://corn-comp.com${normalizeLocalizedRoute(entry.route)}"`));
-      for (const alternate of ['en', 'fr', 'es', 'ar']) assert.ok(html.includes(`hreflang="${alternate}" href="https://corn-comp.com${normalizeLocalizedRoute(routeFor(alternate, post.contentKey))}"`));
+      for (const alternate of ['en', 'fr', 'es', 'ar', 'zh', 'de']) {
+        const hreflang = alternate === 'zh' ? 'zh-CN' : alternate;
+        assert.ok(html.includes(`hreflang="${hreflang}" href="https://corn-comp.com${normalizeLocalizedRoute(routeFor(alternate, post.contentKey))}"`));
+      }
       assert.ok(html.includes(`hreflang="x-default" href="https://corn-comp.com${post.route}"`));
     }
   }
@@ -53,7 +56,10 @@ test('sitemap includes localized archives and excludes retired commerce pages', 
   const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   const expectedRoutes = [
     ...allLocalizedEntries().map(({ route }) => normalizeLocalizedRoute(route)),
-    '/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/',
+    '/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/', '/zh/blog/',
+    '/applications/supermarket-packaging/',
+    '/faq/',
+    ...['fr', 'es', 'ar', 'zh', 'de'].map((language) => '/' + language + '/applications/supermarket-packaging/'),
   ];
   assert.equal(locations.length, expectedRoutes.length);
   assert.equal(new Set(locations).size, locations.length);
@@ -63,7 +69,7 @@ test('sitemap includes localized archives and excludes retired commerce pages', 
   assert.match(xml, /https:\/\/corn-comp\.com\/products\/cups-bowls\/paper-cups\/single-wall-white-cardboard-paper-cup\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/applications\/fast-food-packaging\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/resources\/guides\/paper-cup-sizes\//);
-  for (const language of ['fr', 'es', 'ar']) assert.doesNotMatch(xml, new RegExp(`https://corn-comp\\.com/${language}/shop/`));
+  for (const language of ['fr', 'es', 'ar', 'zh', 'de']) assert.doesNotMatch(xml, new RegExp(`https://corn-comp\\.com/${language}/shop/`));
   assert.match(xml, /https:\/\/corn-comp\.com\/es\/blog\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/ar\/%D[89]/);
   assert.doesNotMatch(xml, /%[0-9a-f]*[a-f][0-9a-f]*/);
@@ -84,7 +90,7 @@ test('robots advertises the production sitemap', async () => {
 test('visual product pages preserve all item identifiers, original schema images and contextual quote parameters', async () => {
   for (const product of englishInventory().filter((item) => item.type === 'product')) {
     const { itemCodes } = extractProductFacts(product);
-    for (const language of ['en', 'fr', 'es', 'ar']) {
+    for (const language of ['en', 'fr', 'es', 'ar', 'zh', 'de']) {
       const route = routeFor(language, product.contentKey);
       const html = await readFile(new URL(`../../dist/${route.slice(1)}index.html`, import.meta.url), 'utf8');
       const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);

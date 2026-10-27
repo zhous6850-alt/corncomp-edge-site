@@ -1,0 +1,99 @@
+---
+const { language } = Astro.props;
+const copy = {
+  en: {
+    heading: 'Your sourcing questions, answered',
+    intro: 'Minimum quantities, production timing, samples and the documents behind your product.',
+    cards: [
+      ['What is the minimum order?', 'Usually 30,000 units per item, or 50,000 for custom printing. The minimum for your chosen product, size and packing format is confirmed in the quotation.'],
+      ['How long does production take?', 'Usually around 30 days after order confirmation. Artwork, sample approval and the production schedule can affect timing. Shipping time is additional.'],
+      ['Can I get samples first?', 'Yes. Send the item code, size, intended food or drink and delivery destination. We will confirm availability, sample or customisation charges and courier costs before dispatch.'],
+      ['Which certificates cover my product?', 'For example, the displayed BPI certificate covers printed paper straws up to 352 g/m², not every product. Ask us for the documents covering your exact item and manufacturer.'],
+    ],
+    cta: 'View all FAQs',
+  },
+  zh: {
+    heading: '采购常见问题，先看具体答案',
+    intro: '起订量、生产周期、样品和产品文件，下单前先了解。',
+    cards: [
+      ['起订量是多少？', '常规每款通常 30,000 件，定制印刷通常 50,000 件。具体产品、尺寸和包装方式对应的起订量会在报价中确认。'],
+      ['生产需要多久？', '订单确认后通常约 30 天。设计稿、样品批准及生产排期可能影响时间；运输时间另计。'],
+      ['大货下单前能拿样品吗？', '可以。请提供货号、尺寸、用途和收货目的地。寄出前会告知样品是否有货，以及样品、定制和快递费用。'],
+      ['哪些证书适用于我的产品？', '例如展示的 BPI 证书适用于克重不超过 352 g/m² 的印刷纸吸管，并非所有产品。请按具体货号和制造商索取适用文件。'],
+    ],
+    cta: '查看全部常见问题（英文）',
+  },
+  fr: {
+    heading: 'Les réponses à vos questions d’achat',
+    intro: 'Quantités minimales, délais de production, échantillons et documents produit.',
+    cards: [
+      ['Quel est le minimum de commande ?', 'Généralement 30 000 unités par article, ou 50 000 avec impression personnalisée. Le minimum applicable au produit, au format et au conditionnement est confirmé dans le devis.'],
+      ['Quel est le délai de production ?', 'Environ 30 jours après confirmation de la commande. Les fichiers graphiques, la validation des échantillons et le planning peuvent modifier ce délai. Le transport est en supplément de temps.'],
+      ['Puis-je recevoir des échantillons ?', 'Oui. Indiquez la référence, les dimensions, l’aliment ou la boisson et la destination. Disponibilité, frais d’échantillons ou de personnalisation et transport express sont confirmés avant envoi.'],
+      ['Quels certificats couvrent mon produit ?', 'Par exemple, le certificat BPI présenté couvre les pailles en papier imprimées jusqu’à 352 g/m², pas tous les produits. Demandez les documents de votre article et de son fabricant.'],
+    ],
+    cta: 'Voir toutes les FAQ (anglais)',
+  },
+  es: {
+    heading: 'Respuestas a sus preguntas de compra',
+    intro: 'Pedidos mínimos, plazos de producción, muestras y documentación del producto.',
+    cards: [
+      ['¿Cuál es el pedido mínimo?', 'Normalmente 30.000 unidades por artículo, o 50.000 con impresión personalizada. El mínimo para el producto, tamaño y embalaje elegidos se confirma en el presupuesto.'],
+      ['¿Cuánto tarda la producción?', 'Normalmente unos 30 días tras confirmar el pedido. Los archivos de diseño, la aprobación de muestras y la planificación pueden afectar al plazo. El transporte requiere tiempo adicional.'],
+      ['¿Puedo recibir muestras primero?', 'Sí. Envíe la referencia, tamaño, alimento o bebida y destino. Confirmaremos disponibilidad, costes de muestras o personalización y mensajería antes del envío.'],
+      ['¿Qué certificados cubren mi producto?', 'Por ejemplo, el certificado BPI mostrado cubre pajitas de papel impresas de hasta 352 g/m², no todos los productos. Solicite los documentos de su artículo y fabricante concretos.'],
+    ],
+    cta: 'Ver todas las FAQ (inglés)',
+  },
+  ar: {
+    heading: 'إجابات عن أسئلتك قبل الشراء',
+    intro: 'الحد الأدنى للطلب ومدة الإنتاج والعينات ووثائق المنتج.',
+    cards: [
+      ['ما الحد الأدنى للطلب؟', 'عادةً 30,000 قطعة لكل صنف، أو 50,000 للطباعة المخصصة. يُؤكّد الحد الأدنى للمنتج والحجم وطريقة التعبئة المختارة في عرض السعر.'],
+      ['كم تستغرق مدة الإنتاج؟', 'عادةً نحو 30 يوماً بعد تأكيد الطلب. قد تؤثر ملفات التصميم واعتماد العينات وجدول الإنتاج في المدة. وقت الشحن إضافي.'],
+      ['هل يمكن الحصول على عينات أولاً؟', 'نعم. أرسل رمز الصنف والحجم ونوع الطعام أو الشراب والوجهة. نؤكد التوفر ورسوم العينات أو التخصيص وتكاليف البريد السريع قبل الإرسال.'],
+      ['ما الشهادات التي تغطي منتجي؟', 'مثلاً، تغطي شهادة BPI المعروضة المصاصات الورقية المطبوعة حتى 352 g/m²، وليس كل المنتجات. اطلب الوثائق الخاصة بالصنف والمصنّع المحددين.'],
+    ],
+    cta: 'جميع الأسئلة الشائعة بالإنجليزية',
+  },
+  de: {
+    heading: 'Antworten auf Ihre Einkaufsfragen',
+    intro: 'Mindestmengen, Produktionszeiten, Muster und Produktunterlagen.',
+    cards: [
+      ['Wie hoch ist die Mindestbestellmenge?', 'Üblicherweise 30.000 Stück je Artikel oder 50.000 bei individuellem Druck. Die Mindestmenge für Produkt, Größe und Verpackung wird im Angebot bestätigt.'],
+      ['Wie lange dauert die Produktion?', 'Üblicherweise etwa 30 Tage nach Auftragsbestätigung. Druckdaten, Musterfreigabe und Produktionsplanung können den Zeitraum beeinflussen. Die Versandzeit kommt hinzu.'],
+      ['Kann ich vorab Muster erhalten?', 'Ja. Nennen Sie Artikelnummer, Größe, Lebensmittel oder Getränk und Lieferziel. Verfügbarkeit, Muster- oder Anpassungskosten und Kurierkosten werden vor dem Versand bestätigt.'],
+      ['Welche Zertifikate gelten für mein Produkt?', 'Das gezeigte BPI-Zertifikat gilt beispielsweise für bedruckte Papierstrohhalme bis 352 g/m², nicht für alle Produkte. Fragen Sie nach Unterlagen für Ihren Artikel und dessen Hersteller.'],
+    ],
+    cta: 'Alle FAQ ansehen (Englisch)',
+  },
+}[language];
+---
+<section class="home-sourcing" id="sourcing-questions" aria-labelledby="sourcing-heading">
+  <div class="content-shell home-sourcing-inner">
+    <div class="home-sourcing-heading"><div><h2 id="sourcing-heading">{copy.heading}</h2><p>{copy.intro}</p></div><a class="home-sourcing-all" href="/faq/">{copy.cta}<span aria-hidden="true"> ↗</span></a></div>
+    <div class="home-sourcing-grid">{copy.cards.map(([question, answer]) => <article><h3>{question}</h3><p>{answer}</p></article>)}</div>
+  </div>
+</section>
+<style>
+  .home-sourcing { background: var(--corncomp-paper); scroll-margin-top: 116px; }
+  .home-sourcing-inner { padding-block: 40px; }
+  .home-sourcing-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+  .home-sourcing h2 { margin: 0; color: var(--corncomp-deep-green); font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.2; letter-spacing: -.025em; text-wrap: pretty; }
+  .home-sourcing-heading p { margin: 10px 0 0; color: var(--corncomp-muted); font-size: .9rem; line-height: 1.6; }
+  .home-sourcing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+  .home-sourcing article { min-width: 0; padding-block: 18px; border-top: 1px solid var(--corncomp-line); }
+  .home-sourcing h3 { margin: 0 0 8px; color: var(--corncomp-deep-green); font-size: 1rem; line-height: 1.4; text-wrap: pretty; }
+  .home-sourcing article p { margin: 0; color: var(--corncomp-muted); font-size: .9rem; line-height: 1.6; text-wrap: pretty; }
+  .home-sourcing-all { display: inline-block; font-size: .8rem; font-weight: 700; color: var(--corncomp-green); text-underline-offset: 4px; }
+  .home-sourcing-all { flex: none; padding-block: 12px; }
+  .home-sourcing a:hover { color: var(--corncomp-deep-green); }
+  .home-sourcing a:focus-visible { outline: 3px solid #72a87d; outline-offset: 4px; }
+  .home-sourcing a:active { opacity: .75; }
+  @media (max-width: 760px) {
+    .home-sourcing-inner { padding-block: 32px; }
+    .home-sourcing-heading { align-items: start; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .home-sourcing-grid { grid-template-columns: 1fr; }
+    .home-sourcing article { padding-block: 16px; }
+  }
+</style>

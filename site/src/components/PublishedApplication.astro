@@ -1,0 +1,11 @@
+---
+import Overview from '../pages/applications/index.astro';
+import Supermarket from './SupermarketPreview.astro';
+import Takeaway from './TakeawayPreview.astro';
+import Restaurant from './RestaurantPreview.astro';
+import FastFood from './FastFoodPreview.astro';
+import Dessert from './DessertPreview.astro';
+const { scene = '' } = Astro.props;
+const Component = { '': Overview, 'supermarket-packaging': Supermarket, 'takeaway-packaging': Takeaway, 'restaurant-packaging': Restaurant, 'fast-food-packaging': FastFood, 'ice-cream-dessert-packaging': Dessert }[scene];
+---
+<Component preview={false}/>
