@@ -1,4 +1,7 @@
 {
+  "Packaging Resources": "包装资料",
+  "Double-wall kraft paper cup from the Corncomp catalogue": "Corncomp 目录中的双层牛皮纸杯",
+  "Corncomp production workshop": "Corncomp 生产车间",
   "Breadcrumb": "面包屑导航",
   "Home": "首页",
   "Quality & certifications": "质量与认证",
@@ -320,5 +323,7 @@
   "Quality & product documentation": "质量与产品文件",
   "Packaging resources": "包装资料",
   "Paper cups": "纸杯",
-  "Paper Cups": "纸杯"
+  "Paper Cups": "纸杯",
+  "Verify FSC certificate": "核验 FSC 证书",
+  "Verify Corncomp BPI products": "核验 Corncomp 的 BPI 产品"
 }

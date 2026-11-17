@@ -77,14 +77,14 @@ test('localizes relative, root-relative, absolute and reviewed alias links by st
   const [reviewedAlias, reviewedTarget] = [...localizedRedirects()].find(([source]) => source.startsWith('/fr/'));
   const html = [
     '<a href="/products/">Root</a>',
-    '<a href="https://corn-comp.com/resources/guides/paper-cup-sizes/?from=body#sizes">Absolute</a>',
+    '<a href="https://corn-comp.com/quality/?from=body#sizes">Absolute</a>',
     '<a href="../../../products/cups-bowls/paper-cups/">Relative</a>',
     `<a href="${reviewedAlias}">Alias</a>`,
   ].join('');
   const localized = localizeInternalLinks(html, 'fr', '/resources/guides/food-packaging-certifications/');
 
   assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:products')}"`));
-  assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:resources/guides/paper-cup-sizes')}\\?from=body#sizes"`));
+  assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:quality')}\\?from=body#sizes"`));
   assert.match(localized, new RegExp(`href="${routeFor('fr', 'architecture:products/cups-bowls/paper-cups')}"`));
   assert.match(localized, new RegExp(`href="${reviewedTarget}"`));
 });

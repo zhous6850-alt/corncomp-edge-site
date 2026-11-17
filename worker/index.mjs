@@ -1,3 +1,5 @@
+import { corncompClarityAssets } from './clarity-consent.mjs';
+import {readInquiryProducts} from '../site/src/lib/inquiry-products.mjs';
 import {
   DUPLICATE_PRODUCT_ALIASES,
   LEGACY_PAGE_REDIRECTS,
@@ -6,8 +8,8 @@ import {
 } from '../site/src/lib/site-architecture.mjs';
 import { localizedRedirects, localizedShopRedirects, normalizeLocalizedRoute } from '../site/src/lib/localization.mjs';
 
-const RECIPIENT = 'zhous6850@gmail.com';
-const SENDER = 'Corncomp <inquiry@corn-comp.com>';
+const RECIPIENT = 'sam.zhou@corn-comp.com';
+const SENDER = 'Corncomp <sam.zhou@corn-comp.com>';
 export const REDIRECTS = new Map([
   ['/cart/', '/products/'],
   ['/checkout/', '/products/'],
@@ -87,7 +89,7 @@ export default {
       const status = canonicalOriginRequired && !['GET', 'HEAD'].includes(request.method) ? 308 : 301;
       return Response.redirect(destination, status);
     }
-    if (url.pathname !== '/api/inquiry') return env.ASSETS.fetch(request);
+    if (url.pathname !== '/api/inquiry') return corncompClarityAssets(request, env);
     if (request.method !== 'POST') return json({ ok: false, error: 'Method not allowed' }, 405);
 
     const data = await inquiryData(request);
@@ -98,23 +100,21 @@ export default {
     const phone = field(data, 'phone').slice(0, 100);
     const company = field(data, 'company').slice(0, 200);
     const country = field(data, 'country').slice(0, 100);
-    const productName = field(data, 'productName').slice(0, 300);
-    const productSku = field(data, 'productSku').slice(0, 100);
-    const category = field(data, 'category').slice(0, 200);
-    const quantity = field(data, 'quantity').slice(0, 100);
     const sourcePath = field(data, 'sourcePath').slice(0, 1000);
     const message = field(data, 'message').slice(0, 5000);
     if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ ok: false, error: 'Please enter a valid name and email.' }, 400);
+    let products;
+    try { products=readInquiryProducts(data); } catch { return json({ok:false,error:'Please check the product list.'},400); }
     if (suspiciousName(name) || !await verifiedHuman(data, request, env)) return json({ ok: false, error: 'Unable to verify this inquiry.' }, 400);
 
     const source = request.headers.get('referer') || 'Unknown page';
     const context = [
       ['Company', company],
       ['Country', country],
-      ['Product', productName],
-      ['SKU', productSku],
-      ['Category', category],
-      ['Quantity', quantity],
+      ...products.flatMap((product,index)=>[
+        ['Product '+(index+1),product.productName],['SKU '+(index+1),product.productSku],
+        ['Category '+(index+1),product.category],['Quantity '+(index+1),product.quantity],
+      ]),
       ['Source path', sourcePath],
     ].filter(([, value]) => value);
     const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n${context.map(([label, value]) => `${label}: ${value}`).join('\n')}\nPage: ${source}\n\n${message || 'No message provided'}`;

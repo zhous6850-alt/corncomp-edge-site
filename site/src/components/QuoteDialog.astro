@@ -29,6 +29,7 @@ const copy={
     let opener:HTMLAnchorElement;
     let form:HTMLFormElement;
     let pending:Promise<void>;
+    let preparation:Promise<[string,typeof import('../lib/inquiry-form.mjs')]>;
     let widgetId:string;
     let scrollY=0;
     let bodyStyle='';
@@ -40,14 +41,22 @@ const copy={
       script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=corncompTurnstileLoaded';
       script.async=true;script.onerror=()=>{clearTimeout(timer);script.remove();reject(new Error('Verification unavailable'));};document.head.append(script);
     });
+    const prepare=()=>preparation ||= Promise.all([
+        fetch(dialog.dataset.contactPath,{credentials:'same-origin',signal:AbortSignal.timeout(20000)}).then(response=>{
+          if(!response.ok)throw new Error('Form unavailable');
+          return response.text();
+        }),
+        import('../lib/inquiry-form.mjs'),
+      ]).catch(reason=>{preparation=null;throw reason;});
+    const warmup=(event:Event)=>{
+      const anchor=(event.target as Element).closest<HTMLAnchorElement>('a[href]');
+      if(anchor && isQuoteLink({href:anchor.href,bypass:anchor.hasAttribute('data-contact-page')},{origin:location.origin,contactPath:dialog.dataset.contactPath}))void prepare().catch(()=>{});
+    };
+    for(const event of ['pointerover','focusin','pointerdown'])document.addEventListener(event,warmup,{passive:true});
     const load=async()=>{
       loading.hidden=false;error.hidden=true;mount.hidden=true;
-      const [response,{initializeInquiryForm}]=await Promise.all([
-        fetch(dialog.dataset.contactPath,{credentials:'same-origin',signal:AbortSignal.timeout(20000)}),
-        import('../lib/inquiry-form.mjs'),
-      ]);
-      if(!response.ok)throw new Error('Form unavailable');
-      const page=new DOMParser().parseFromString(await response.text(),'text/html');
+      const [html,{initializeInquiryForm}]=await prepare();
+      const page=new DOMParser().parseFromString(html,'text/html');
       const panel=page.querySelector('.inquiry-panel');
       const notice=page.querySelector<HTMLElement>('#inquiry-toast');
       if(!panel || !notice)throw new Error('Form unavailable');
@@ -59,11 +68,12 @@ const copy={
       initializeInquiryForm(form,feedback,{params:new URLSearchParams(),sourcePath:window.location.pathname,resetVerification:()=>{if(widgetId)(window as any).turnstile?.reset(widgetId);}});
       const submit=form.querySelector<HTMLButtonElement>('[type=submit]');
       submit.disabled=true;
-      await verification();
-      const widget=form.querySelector<HTMLElement>('.cf-turnstile');
-      widgetId=(window as any).turnstile.render(widget,{sitekey:widget.dataset.sitekey,theme:'light',size:window.innerWidth<380?'compact':'normal'});
-      submit.disabled=false;
       loading.hidden=true;mount.hidden=false;
+      void verification().then(()=>{
+        const widget=form.querySelector<HTMLElement>('.cf-turnstile');
+        widgetId=(window as any).turnstile.render(widget,{sitekey:widget.dataset.sitekey,theme:'light',size:window.innerWidth<380?'compact':'normal'});
+        submit.disabled=false;
+      }).catch(()=>{error.hidden=false;});
     };
     document.addEventListener('click',async(event)=>{
       if(event.defaultPrevented || event.button!==0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)return;
@@ -76,10 +86,10 @@ const copy={
       document.body.style.position='fixed';document.body.style.top=-scrollY+'px';document.body.style.width='100%';
       dialog.showModal();
       try {
-        if(!pending)pending=load().catch(reason=>{pending=null;mount.replaceChildren();form=null;loading.hidden=true;error.hidden=false;throw reason;});
+        if(!pending)pending=load().catch(reason=>{pending=null;preparation=null;mount.replaceChildren();form=null;loading.hidden=true;error.hidden=false;throw reason;});
         await pending;
         const url=new URL(anchor.href);
-        applyQuoteContext(form.elements,url.searchParams,window.location.pathname);
+        applyQuoteContext(form,url.searchParams,window.location.pathname);
         if(dialog.open)form.querySelector<HTMLInputElement>('input[name=name]')?.focus({preventScroll:true});
       } catch { /* The localized error and ordinary contact link remain available. */ }
     });

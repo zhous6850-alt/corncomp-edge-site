@@ -1,0 +1,47 @@
+---
+import { englishInventory, routeFor } from '../lib/localization.mjs';
+import { saladBowlRows, saladLidRows, SALAD_COMPARISON_LABELS } from '../data/salad-bowl-comparison.mjs';
+const { language, page }=Astro.props;
+const t=SALAD_COMPARISON_LABELS[language];
+const records=englishInventory(),bowls=saladBowlRows(records),lids=saladLidRows(records);
+const productRoute=slug=>routeFor(language,`product:${slug}`);
+const enquiry=row=>routeFor(language,'architecture:contact')+'?'+new URLSearchParams({product:`${row.capacity} mL ${page.title} — ${t.choose}`,sku:`${row.kraft} / ${row.white}`,category:page.title,source:page.route});
+const printQuote=routeFor(language,'architecture:contact')+'?'+new URLSearchParams({product:t.printProduct,category:page.title,source:page.route});
+---
+<section id="salad-specifications" class="salad-comparison" aria-labelledby="salad-comparison-title">
+  <header><h2 id="salad-comparison-title">{t.title}</h2><p>{t.intro}</p></header>
+  <p class="scroll-hint" id="bowl-scroll-hint">{t.scroll}</p>
+  <div class="table-scroll" role="region" aria-labelledby="salad-comparison-title" aria-describedby="bowl-scroll-hint" tabindex="0">
+    <table class="bowl-comparison-table">
+      <caption>{t.capacityNote}</caption>
+      <thead><tr>{t.headers.map(label=><th scope="col">{label}</th>)}</tr></thead>
+      <tbody>{bowls.map(row=><tr>
+        <th scope="row"><bdi>{row.capacity}</bdi></th>
+        <td><a class="item-code" href={productRoute('kraft-paper-bowl')}><bdi>{row.kraft}</bdi></a></td>
+        <td><a class="item-code" href={productRoute('cardboard-bamboo-bowl')}><bdi>{row.white}</bdi></a></td>
+        <td><bdi>{row.top} × {row.bottom} × {row.height}</bdi></td>
+        <td><bdi>{row.carton}</bdi></td>
+        <td><a class="size-quote" href={enquiry(row)}>{t.quote} <span aria-hidden="true">↗</span></a></td>
+      </tr>)}</tbody>
+    </table>
+  </div>
+  <div class="lid-comparison">
+    <h3 id="salad-lid-comparison-title">{t.lidsTitle}</h3><p>{t.lidsIntro}</p>
+    <div class="table-scroll" role="region" aria-labelledby="salad-lid-comparison-title" aria-describedby="bowl-scroll-hint" tabindex="0">
+      <table class="lid-comparison-table">
+        <thead><tr>{t.lidHeaders.map(label=><th scope="col">{label}</th>)}</tr></thead>
+        <tbody>{lids.map(lid=><tr>
+          <th scope="row">{lid.material==='paper'?t.paper:lid.material}</th>
+          {[150,185].map(diameter=><td>{lid.options.filter(option=>option.diameter===diameter).map(option=><div class="lid-reference">{lid.material==='paper'&&<small>{option.code.startsWith('CC01CB')?t.white:t.kraft}</small>}<bdi class="item-code">{option.code}</bdi><bdi class="lid-weight">{option.weight} g</bdi></div>)}</td>)}
+          <td><a href={productRoute(lid.slug)}>{t.details} <span aria-hidden="true">↗</span></a></td>
+        </tr>)}</tbody>
+      </table>
+    </div>
+    <p class="fit-note">{t.fit}</p>
+  </div>
+  <div class="printing-enquiry"><div><h3>{t.printTitle}</h3><p>{t.printText}</p><p class="order-terms">{t.terms}</p></div><a class="print-quote" href={printQuote}>{t.printCta} <span aria-hidden="true">↗</span></a></div>
+</section>
+<style>
+  .salad-comparison{padding:40px 0 20px;color:#1c3927;scroll-margin-top:130px}.salad-comparison header{max-width:850px}.salad-comparison h2{font-size:clamp(28px,3vw,36px);letter-spacing:-.03em;line-height:1.15;margin:0 0 16px}.salad-comparison h3{font-size:clamp(24px,2.5vw,30px);letter-spacing:-.025em;line-height:1.2;margin:0 0 12px}.salad-comparison p{font-size:15px;line-height:1.65;color:#617065;margin:0 0 18px}.salad-comparison .scroll-hint{font-size:12px;margin:0 0 8px}.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;max-width:100%;border:1px solid #dce3da;background:#fff}.table-scroll:focus-visible,a:focus-visible{outline:3px solid #71935e;outline-offset:3px}table{width:100%;border-collapse:collapse;font-size:14px;text-align:start}.bowl-comparison-table{min-width:900px}.lid-comparison-table{min-width:740px}caption{caption-side:bottom;text-align:start;padding:16px 20px;font-size:13px;line-height:1.6;color:#617065;background:#f7f9f4}th,td{padding:17px 18px;border-bottom:1px solid #dce3da;text-align:start;vertical-align:middle}thead th{font-size:12px;line-height:1.45;background:#edf1e7;font-weight:700}tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}.bowl-comparison-table tbody th{font-size:24px;letter-spacing:-.025em;font-weight:600}.item-code{font-family:ui-monospace,monospace;font-size:13px;white-space:nowrap}a{color:inherit;text-underline-offset:4px}.size-quote{display:inline-flex;gap:12px;align-items:center;font-weight:700;font-size:12px;line-height:1.5}.lid-comparison{padding-top:38px}.lid-reference{padding:6px 0}.lid-reference small{display:block;font-size:11px;color:#617065;margin-bottom:4px}.lid-weight{display:block;font-size:12px;color:#617065;margin-top:4px}.salad-comparison .fit-note{font-size:13px;padding:16px 20px;background:#edf1e7;border-inline-start:3px solid #71935e;margin:14px 0 0}.printing-enquiry{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;padding:32px 0 16px;border-bottom:1px solid #dce3da}.printing-enquiry>div{max-width:850px}.salad-comparison .order-terms{font-size:13px;margin-bottom:0}.print-quote{display:inline-flex;align-items:center;gap:28px;background:#1c3927;color:#fffdf8;padding:16px 20px;font-size:14px;font-weight:700;line-height:1.4;text-decoration:none}.print-quote:hover,.size-quote:hover{text-decoration:underline}
+  @media(max-width:680px){.salad-comparison{padding-top:30px}.printing-enquiry{grid-template-columns:1fr;gap:20px}.print-quote{justify-self:start}th,td{padding:15px}.salad-comparison p{font-size:14px}.lid-comparison{padding-top:30px}}
+</style>

@@ -1,6 +1,7 @@
 ---
 const { preview = true } = Astro.props;
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCoverSamples from './BlogCoverSamples.astro';
 import ResponsiveMedia from './ResponsiveMedia.astro';
 import { companyCertificates } from '../data/certificates.mjs';
 const certificateImages = ['brcgs-packaging','fsc-coc','iso-9001','bpi-straws'].map(key=>companyCertificates('en').find(item=>item.key===key));
@@ -8,7 +9,7 @@ import mediaInventory from '../data/media.json';
 import { englishInventory } from '../lib/localization.mjs';
 import { contentText, contentDescription } from '../lib/content-routes.mjs';
 const posts = englishInventory().filter(post=>post.type==='post');
-const topic = (post) => post.slug.includes('laws')||post.slug.includes('directive') ? 'Regulations' : post.slug.includes('pla-vs') ? 'Materials' : 'Certifications';
+const topic = (post) => post.slug === 'canada-anti-dumping-paper-food-packaging'||post.slug.includes('laws')||post.slug.includes('directive') ? 'Regulations' : post.slug.includes('pla-vs') ? 'Materials' : 'Certifications';
 const postMedia = (post) => {
   const image=post.featuredMedia;
   if(!image)return null;
@@ -34,7 +35,7 @@ const schema = [
       <div class="archive-heading"><h2 id="articles-title">Browse the journal.</h2><span>{posts.length} articles</span></div>
       <div class="filter-bar" role="group" aria-label="Filter articles by topic">{['All articles','Regulations','Certifications','Materials'].map((label,index)=><button type="button" data-filter={index===0?'all':label} aria-pressed={index===0?'true':'false'}>{label}</button>)}</div>
       <p class="result-count" aria-live="polite" data-one="article" data-many="articles">{posts.length} articles</p>
-      <div class="story-list">{posts.map(post=><article class="story" data-topic={topic(post)}><a class="story-image" href={post.route} aria-label={contentText(post.title)}>{post.slug==='how-to-verify-supplier-sustainability-certifications' ? <div class="certificate-montage" aria-hidden="true">{certificateImages.map(certificate=><div><img src={certificate.image.src} width={certificate.image.width} height={certificate.image.height} alt="" loading="lazy" decoding="async"/><span>{certificate.standard.startsWith('FSC') ? 'FSC' : certificate.key==='brcgs-packaging' ? 'BRCGS' : certificate.key==='bpi-straws' ? 'BPI' : 'ISO 9001'}</span></div>)}</div> : <ResponsiveMedia media={postMedia(post)}/>}</a><div class="story-copy"><p class="topic">{topic(post)}</p><h3><a href={post.route}>{contentText(post.title)}</a></h3><p class="story-summary">{contentDescription(post)}</p><a class="read-link" href={post.route}>Read the article <span aria-hidden="true">↗</span></a></div></article>)}</div>
+      <div class="story-list">{posts.map(post=><article class="story" data-topic={topic(post)}><a class="story-image" href={post.route} aria-label={contentText(post.title)}>{post.slug==='how-to-verify-supplier-sustainability-certifications' ? <div class="certificate-montage" aria-hidden="true">{certificateImages.map(certificate=><div><img src={certificate.image.src} width={certificate.image.width} height={certificate.image.height} alt="" loading="lazy" decoding="async"/><span>{certificate.standard.startsWith('FSC') ? 'FSC' : certificate.key==='brcgs-packaging' ? 'BRCGS' : certificate.key==='bpi-straws' ? 'BPI' : 'ISO 9001'}</span></div>)}</div> : ['bpi-vs-fsc-certification', 'pla-vs-bagasse-vs-fsc-paper', 'eu-single-use-plastics-directive-explained', 'us-state-plastic-packaging-laws-explained'].includes(post.slug) ? <BlogCoverSamples slug={post.slug}/> : <ResponsiveMedia media={postMedia(post)}/>}</a><div class="story-copy"><p class="topic">{topic(post)}</p><h3><a href={post.route}>{contentText(post.title)}</a></h3><p class="story-summary">{contentDescription(post)}</p><a class="read-link" href={post.route}>Read the article <span aria-hidden="true">↗</span></a></div></article>)}</div>
     </section>
   </div>
 </div>

@@ -46,6 +46,7 @@ const schema = [
           <div class="certificate-copy"><p class="scope-label">{groups[record.key]}</p><h3>{record.title}</h3><p class="scope-summary">{record.scope}</p><div class="document-reference"><span>Certificate no.</span><strong>{record.certificateNumber}</strong></div><p class="document-date">Document expiry <time datetime={record.validUntil}>{record.validUntil}</time></p><details><summary>Holder & standard</summary><dl><div><dt>Holder</dt><dd>{record.holder}</dd></div><div><dt>Standard</dt><dd>{record.standard}</dd></div></dl></details></div>
         </article>)}
       </div>
+      <p class="document-note"><a href="https://search.fsc.org/">Verify FSC certificate</a> · <a href="https://products.bpiworld.org/companies/ningbo-corncomp-tech-co-ltd">Verify Corncomp BPI products</a></p>
       <p class="document-note">Dates are those stated in the displayed documents. Confirm current validity and the exact order scope before relying on a claim.</p>
     </section>
 

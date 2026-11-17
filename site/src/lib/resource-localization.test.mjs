@@ -20,12 +20,9 @@ test('all resource translation dictionaries cover the complete reviewed string c
     assert.equal(localizeResourceSchema({'@type':'Article',headline:'Read the scope. Match the product.'},language,result.heading).headline,result.heading);
   }
 });
-test('all thirty published resource-family pages use the approved layouts and localized destinations',async()=>{
+test('published quality and blog pages use the approved layouts and localized destinations',async()=>{
   const paths = [
     ['architecture:quality','quality-preview'],
-    ['architecture:resources','resources-preview'],
-    ['architecture:resources/guides/paper-cup-sizes','size-guide'],
-    ['architecture:resources/guides/food-packaging-certifications','cert-guide'],
     ['blog','blog-preview'],
   ];
   for(const language of ['en','fr','es','ar','zh','de'])for(const [key,marker] of paths){

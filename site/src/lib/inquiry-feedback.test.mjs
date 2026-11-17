@@ -5,7 +5,7 @@ import { runInNewContext } from 'node:vm';
 
 const script = '(' + initializeInquiryForm.toString() + ')(document.querySelector(), document.getElementById())';
 
-function page(fetch, {search='', referrer=''} = {}) {
+function page(fetch, {search='', referrer='',productsController=null,token='valid-token'} = {}) {
   const handlers = {};
   const timers = [];
   const button = { disabled: false, textContent: 'Send inquiry' };
@@ -26,8 +26,8 @@ function page(fetch, {search='', referrer=''} = {}) {
   };
   const location = { search, pathname: '/contact/', href: 'https://example.com/contact/' };
   runInNewContext(script, {
-    URLSearchParams, fetch,
-    FormData: class { *[Symbol.iterator]() { yield ['name', 'Buyer']; yield ['cf-turnstile-response', 'valid-token']; } },
+    URLSearchParams, fetch, initializeInquiryProducts:()=>productsController,
+    FormData: class { *[Symbol.iterator]() { yield ['name', 'Buyer']; if(token)yield ['cf-turnstile-response', token]; } },
     setTimeout: (callback, delay) => { timers.push({ callback, delay }); return timers.length; }, clearTimeout() {},
     window: { location, turnstile: { reset: () => { widgetResets++; } }, dispatchEvent() {} },
     CustomEvent: class {},
@@ -45,6 +45,20 @@ test('shared form prefills product context and preserves explicit source before 
   assert.equal(p.elements.category.value,'Cups');assert.equal(p.elements.sourcePath.value,'/products/cup/');
   assert.equal(page(()=>{},{referrer:'/previous/'}).elements.sourcePath.value,'/previous/');
   assert.equal(page(()=>{}).elements.sourcePath.value,'/contact/');
+});
+
+test('multi-product requests preserve the list on failure and clear the draft only after success',async()=>{
+  const products=[{productName:'Cup',productSku:'C1',quantity:'1000'},{productName:'Bowl',productSku:'B1',quantity:'2000'}];
+  let cleared=0;
+  const controller={append(){},serialize:()=>products,clear:()=>cleared++};
+  let payload;
+  const failed=page(async(url,options)=>{payload=JSON.parse(options.body);return {ok:false,json:async()=>({ok:false})};},{productsController:controller});
+  await failed.submit();
+  assert.deepEqual(payload.products,products);
+  assert.equal(cleared,0);
+  const success=page(async()=>({ok:true,json:async()=>({ok:true})}),{productsController:controller});
+  await success.submit();
+  assert.equal(cleared,1);
 });
 
 test('sends once in place and shows a dismissible success toast only after confirmation', async () => {
@@ -89,4 +103,12 @@ for (const [name, response] of [
   assert.equal(p.message.textContent, 'Please retry');
   assert.equal(p.notice.hidden, false);
   assert.equal(p.timers.length, 0);
+});
+
+
+test('missing verification never posts, resets, or clears a multi-product draft',async()=>{
+ let calls=0,clears=0;
+ const p=page(async()=>{calls++;return {ok:true,json:async()=>({ok:true})};},{token:'',productsController:{append(){},serialize:()=>[{productName:'Bowl',quantity:'5000'}],clear(){clears++;}}});
+ await p.submit();
+ assert.equal(calls,0);assert.equal(clears,0);assert.equal(p.effects().resets,0);assert.equal(p.effects().widgetResets,0);assert.equal(p.button.disabled,false);assert.equal(p.notice.hidden,false);assert.match(p.message.textContent,/verification/i);
 });

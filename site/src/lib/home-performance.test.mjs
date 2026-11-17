@@ -12,8 +12,8 @@ test('home requests a small-screen source and mutually exclusive responsive imag
  assert.equal((home.match(/imagesrcset=/g)||[]).length,2);
  assert.ok(layout.indexOf('<slot name="head"')<layout.indexOf('<style is:inline'));
 });
-test('original factory area, image alt, desktop source and motion styling remain',()=>{
- assert.ok(home.includes('6,800 m²'));
+test('confirmed workshop fact, image alt, desktop source and motion styling remain',()=>{
+ assert.ok(home.includes('claims.area'));
  assert.ok(home.includes('alt={factoryAlt}'));
  assert.ok(home.includes('{...homeImages.hero}'));
  const css=readFileSync(new URL('../styles/global.css',import.meta.url),'utf8');

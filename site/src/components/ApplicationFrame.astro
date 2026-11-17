@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { parseFragment, serialize } from 'parse5';
+const { embedded = false, namespace = '', ...layout } = Astro.props;
+let embeddedHtml = '';
+if (embedded) {
+  const fragment = parseFragment(await Astro.slots.render('default'));
+  function visit(node) {
+    const attrs = node.attrs || [];
+    for (const attr of attrs) {
+      if (attr.name === 'id') attr.value = namespace + '-' + attr.value;
+      if (attr.name === 'href' && attr.value.startsWith('#')) attr.value = '#' + namespace + '-' + attr.value.slice(1);
+      if (['aria-labelledby','aria-describedby','for'].includes(attr.name)) attr.value = attr.value.split(' ').map(id => namespace + '-' + id).join(' ');
+    }
+    if (node.tagName === 'img') {
+      node.attrs = attrs.filter(attr => !['loading','fetchpriority'].includes(attr.name));
+      node.attrs.push({ name: 'loading', value: 'lazy' });
+    }
+    node.childNodes = (node.childNodes || []).filter(child => !(child.attrs || []).some(attr => attr.name === 'class' && attr.value.split(' ').includes('crumb')));
+    for (const child of node.childNodes) visit(child);
+  }
+  visit(fragment);
+  embeddedHtml = serialize(fragment);
+}
+---
+{embedded ? <Fragment set:html={embeddedHtml}/> : <BaseLayout {...layout}><slot/></BaseLayout>}

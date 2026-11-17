@@ -3,16 +3,6 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { englishInventory } from './localization.mjs';
 
-test('size guide preview preserves checklist, references and readable navigation',async()=>{
-  const html=await readFile(new URL('../../dist/design-preview/paper-cup-sizes/index.html',import.meta.url),'utf8');
-  assert.equal((html.match(/<h1\b/g)||[]).length,1);
-  for(const id of ['volume','measurements','construction','lids','checklist','sources'])assert.ok(html.includes('id="'+id+'"'));
-  for(const value of ['Rim diameter','Base diameter','Unit and carton packing','food.ec.europa.eu','www.fda.gov','https://corn-comp.com/resources/guides/paper-cup-sizes/'])assert.ok(html.includes(value),value);
-  assert.match(html,/<th scope="row"/);
-  const formal=await readFile(new URL('../../dist/resources/guides/paper-cup-sizes/index.html',import.meta.url),'utf8');
-  assert.match(formal,/class="size-guide"/);
-  assert.doesNotMatch(formal,/DESIGN PREVIEW|href="\/design-preview/);
-});
 test('blog preview retains all posts and accessible topic controls',async()=>{
   const html=await readFile(new URL('../../dist/design-preview/blog/index.html',import.meta.url),'utf8');
   assert.equal((html.match(/<h1\b/g)||[]).length,1);

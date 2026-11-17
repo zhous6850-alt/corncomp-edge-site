@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Takeaway from './TakeawayPreview.astro';
+import Restaurant from './RestaurantPreview.astro';
+import FastFood from './FastFoodPreview.astro';
+import Dessert from './DessertPreview.astro';
+import Supermarket from './SupermarketPreview.astro';
+const scenes = [
+  ['takeaway','Takeaway & Delivery',Takeaway],
+  ['restaurant','Restaurant & Foodservice',Restaurant],
+  ['fast-food','Fast Food',FastFood],
+  ['dessert','Ice Cream & Dessert',Dessert],
+  ['supermarket','Supermarket',Supermarket],
+];
+const schema = {'@context':'https://schema.org','@type':'WebPage',name:'Packaging for every setting. Made for the way you serve.',url:'https://corn-comp.com/applications/',about:{'@id':'https://corn-comp.com/#organization'}};
+---
+<BaseLayout title="Packaging by Application | Corncomp" description="Explore packaging for delivery, foodservice, fast food, desserts and supermarket fresh food." pathname="/applications/" bodyClass="architecture-site" structuredData={schema}>
+  <div class="applications-long">
+    <header class="application-hero" id="top">
+      <p class="eyebrow">CORNCOMP / PACKAGING IN PRACTICE</p>
+      <h1>Packaging for every setting.<br/><span>Made for the way you serve.</span></h1>
+      <p>Start with what you serve.<br/>Find the formats that fit the way you prepare, present and deliver it.</p>
+      <nav class="scene-index" aria-label="Packaging applications">{scenes.map(([id,label]) => <a href={'#'+id}>{label}<span aria-hidden="true"> ↓</span></a>)}</nav>
+    </header>
+    {scenes.map(([id,label,Component]) => <section id={id} data-application-scene={id} aria-labelledby={id+'-title'} class="application-section">
+      <div class="scene-title"><h2 id={id+'-title'}>{label}</h2><a href="#top" aria-label="Applications">↑</a></div>
+      <Component preview={false} embedded namespace={id}/>
+    </section>)}
+  </div>
+</BaseLayout>
+<style>
+ .applications-long{color:var(--corncomp-deep-green)}
+ .application-hero{max-width:1400px;margin:auto;padding:64px 48px 44px}
+ .application-hero h1{font-size:clamp(36px,4.8vw,68px);line-height:1.08;letter-spacing:-.04em;margin:0 0 24px}
+ .application-hero h1 span{color:#718466}
+ .application-hero>p:not(.eyebrow){font-size:17px;line-height:1.8;color:var(--corncomp-muted)}
+ .scene-index{display:flex;gap:12px 24px;flex-wrap:wrap;margin-top:32px;padding-block:22px;border-block:1px solid var(--corncomp-line)}
+ .scene-index a{font-weight:700;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:5px;gap:8px}
+ .application-section{scroll-margin-top:0;padding-block:24px 52px;border-bottom:1px solid var(--corncomp-line)}
+ .application-section:nth-of-type(even){background:#edf1e7}
+ .scene-title{max-width:1400px;margin:auto;padding:16px 48px 0;display:flex;justify-content:space-between;align-items:center;gap:24px}
+ .scene-title h2{font-size:clamp(24px,2.8vw,36px);margin:0}
+ .scene-title a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;text-decoration:none}
+ a:focus-visible{outline:3px solid #7b945e;outline-offset:4px}
+ .applications-long :global([id]){scroll-margin-top:0}
+ @media(max-width:650px){.application-hero{padding:36px 20px 24px}.scene-title{padding:12px 20px 0}.application-section{padding-block:16px 24px}.scene-index{gap:8px 18px}.scene-index a{font-size:14px}}
+</style>

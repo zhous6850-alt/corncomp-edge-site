@@ -1,5 +1,8 @@
 ---
 import ResponsiveMedia from './ResponsiveMedia.astro';
+import SaladBowlComparison from './SaladBowlComparison.astro';
+import PaperCupComparison from './PaperCupComparison.astro';
+import SoupCupComparison from './SoupCupComparison.astro';
 import { englishInventory, localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
 import { contentText } from '../lib/content-routes.mjs';
 import { CATEGORY_PREVIEWS, previewSections } from '../data/category-preview.mjs';
@@ -28,6 +31,9 @@ const siblings = Object.keys(CATEGORY_PREVIEWS).filter((slug) => slug !== catego
   <header class="category-intro"><div><p class="eyebrow">{contentText(group.title)}</p><h1>{contentText(page.title)}</h1><p class="category-tagline">{language === 'en' ? config.subtitle : t.select}</p><p class="intro-copy">{language === 'en' ? config.intro : page.intro}</p><a class="primary-link" href={`#${sections[0].id}`}>{t.browse} <span>↓</span></a></div><aside class="range-index" aria-label={t.range}><p>{t.range}</p>{sections.map((section) => <a href={`#${section.id}`}><span>{section.title}</span><small>{section.products.length} {section.id === 'accessories' ? t.components : t.series} ↗</small></a>)}<a href="#ordering"><span>{t.ordering}</span><small>↗</small></a></aside></header>
   <nav class="category-tabs" aria-label={t.range}>{sections.map((section) => <a href={`#${section.id}`}>{section.title}<sup>{section.products.length}</sup></a>)}<a href={quote}>{ui.requestQuote} ↗</a></nav>
   {sections.map((section,index) => <section id={section.id} class:list={['product-section',{accessories:section.id==='accessories'}]}><div class="section-heading"><div><p class="eyebrow">{section.id==='accessories' ? t.complete : t.select}</p><h2>{section.title}</h2></div><p>{section.intro}</p></div><div class:list={['series-grid',{'two-series':section.products.length===2,'one-series':section.products.length===1}]}>{section.products.map((item) => <article class="series-card"><a class="series-image" href={routeFor(language,item.contentKey)}><ResponsiveMedia media={media(item)} eager={index===0} /></a><div class="series-info"><h3><a href={routeFor(language,item.contentKey)}>{contentText(localizedEntry(language,item.contentKey).title)}</a></h3><a class="details-link" href={routeFor(language,item.contentKey)}>{t.details}<span>↗</span></a></div></article>)}</div></section>)}
+  {category === 'salad-bowls' && <SaladBowlComparison language={language} page={page} />}
+  {category === 'paper-cups' && <PaperCupComparison language={language} page={page} />}
+  {category === 'soup-cups' && <SoupCupComparison language={language} page={page} />}
   <section id="ordering" class="ordering"><div class="ordering-lead"><p class="eyebrow">{t.ordering}</p><h2>{t.orderTitle}</h2><p>{t.orderIntro}</p><a href={quote}>{ui.requestQuote}<span>↗</span></a></div><div class="ordering-steps">{[1,2,3].map((n) => <article><span>0{n}</span><div><h3>{t[`step${n}`]}</h3><p>{t[`step${n}Text`]}</p></div></article>)}<details><summary>{t.confirm}</summary><p>{t.terms}</p></details></div></section>
   <nav class="sibling-links" aria-label={t.more}><span>{t.more}</span>{siblings.map((sibling) => <a href={sibling.route}>{contentText(sibling.title)} ↗</a>)}</nav>
 </div>

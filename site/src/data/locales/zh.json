@@ -69,7 +69,9 @@
       "Lid size": "盖尺寸（mm）",
       "Base size": "底盒尺寸（mm）",
       "Window size": "窗口尺寸（mm）",
-      "Pattern": "图案"
+      "Pattern": "图案",
+      "Cone Height": "筒身高度",
+      "Sauce Compartment Height": "酱料槽高度"
     },
     "specificationValues": {
       "50pcs × 20 shrink packs": "50 件 × 20 件热缩封装",
@@ -128,6 +130,7 @@
     }
   },
   "content": {
+    "post:canada-anti-dumping-paper-food-packaging": {"route":"/zh/canada-anti-dumping-paper-food-packaging/","title":"加拿大食品包装反倾销税：Corncomp 的三地生产方案","description":"比较中国、柬埔寨和加拿大的纸质食品包装生产方案，下单前核查加拿大贸易救济税费。","alt":"红枫叶纸艺背景上的透明盖牛皮纸沙拉碗","bodyHtml":"<p><strong>Corncomp 是一家在中国、柬埔寨和加拿大设有工厂的中国纸质食品包装制造商。三地工厂均可生产纸杯、纸质沙拉碗和纸吸管。</strong> 加拿大买家可按生产地分别询价，比较交期和到岸成本。进口方案可能涉及贸易救济税费时，也可以询问加拿大本地生产的报价。</p><h2>采购前应核对哪些加拿大措施？</h2><p>加拿大边境服务局（CBSA）对原产于中国或从中国出口的特定纸板杯及容器开展调查，对中国特定热成型模塑纤维餐具另列现行措施。下单前应核对最新进度和具体产品定义。 <a href=\"https://cbsa-asfc.gc.ca/sima-lmsi/i-e/pcc2026/pcc2026-ni-eng.html\">CBSA · Paperboard Cups and Containers</a> · <a href=\"https://cbsa-asfc.gc.ca/sima-lmsi/mif-mev/tmft-eng.html\">CBSA · Thermoformed Molded Fibre Tableware</a></p><p>可降解或可堆肥声明应以成品证据为依据。请加拿大报关行根据成品结构、原产地和出口地核对税费适用性。现行措施范围不明确时，可查阅 CBSA 的范围裁定程序。 <a href=\"https://cbsa-asfc.gc.ca/sima-lmsi/sp-pp-eng.html\">CBSA · Scope proceedings</a></p><h2>如何比较三地工厂？</h2><table><thead><tr><th scope=\"col\">生产地</th><th scope=\"col\">订购前核对事项</th></tr></thead><tbody><tr><th scope=\"row\">中国</th><td>确认 SKU、涂层或内衬及拟议出口商，请报关行核查适用措施和税费风险。</td></tr><tr><th scope=\"row\">柬埔寨</th><td>询问柬埔寨工厂实际生产的报价，核对当地制造工序和可提供的原产地文件。</td></tr><tr><th scope=\"row\">加拿大</th><td>索取同款成品的本地生产报价，确认规格、交期和送仓费用。</td></tr></tbody></table><h2>如何询价？</h2><p>提供 SKU 或照片、尺寸或容量、材料及内衬、用途、数量、加拿大送货地址和目标交期。要求按工厂分别报价。加拿大进口商负责申报适用的 SIMA 税费。 <a href=\"https://cbsa-asfc.gc.ca/sima-lmsi/self-auto-eng.html\">CBSA · SIMA duties</a> · <a href=\"/zh/contact/\">向 Corncomp 询价</a></p>","sourceHash":"431d67b5a734523262ffd58da0f89b60289c0bf9fdfd8c2ceaec35f589c77061","dateModified":"2026-11-11"},
     "home": {
       "route": "/zh/",
       "aliases": [
@@ -135,11 +138,11 @@
       ],
       "title": "纸质食品包装制造商|Corncomp",
       "description": "Corncomp 为批发商和定制包装项目生产杯子、碗、食品盒、纸吸管和餐饮用品。",
-      "sourceHash": "13dee1655c015fd669f9236b15ecf354c3ebb361680655cf8058b3ace03a12ee",
+      "sourceHash": "34ef931ec976da6b1f2aabd46cbb59154fa2ec5128b0630281480c3e062b9ab7",
       "hero": {
         "imageAlt": "用于饮料服务的 Corncomp 纸质食品容器",
         "eyebrow": "纸包装制造商中国宁波",
-        "heading": "可生物降解的纸质食品包装",
+        "heading": "始于2018年的纸质食品包装制造商",
         "text": "为经销商和餐饮集团提供杯子、碗、食品盒和纸吸管，支持定制印刷。",
         "primaryLabel": "查看产品",
         "primaryKey": "architecture:products",
@@ -148,20 +151,20 @@
       },
       "proof": [
         [
-          "8,000平方米",
-          "制造中心"
+          "8,000 m²",
+          "公司总面积"
         ],
         [
-          "6,800平方米",
-          "符合GMP标准的无尘车间"
+          "6,800 m²",
+          "准GMP食品标准无尘车间"
         ],
         [
           "60",
           "生产线"
         ],
         [
-          "25亿",
-          "纸吸管年产能"
+          "25亿根",
+          "公司提供的纸吸管年产能"
         ]
       ],
       "proofLabel": "制造数据",
@@ -191,7 +194,7 @@
         "imageAlt": "宁波遇米生物车间内的生产设备",
         "eyebrow": "宁波制造基地",
         "heading": "我们的宁波工厂",
-        "text": "遇米生物于 2018 年在宁波成立，主要生产纸吸管、纸杯和纸碗。公司总面积 8,000㎡，其中厂房面积 6,800㎡。",
+        "text": "遇米于2018年在宁波成立。 公司总面积为8,000平方米，其中约6,800平方米为全封闭清洁（无尘）车间；公司资料原文表述为“准GMP食品标准”。",
         "bullets": [
           "直吸管、可弯吸管及斜口纸吸管",
           "纸杯、牛皮纸碗和白卡纸碗",
@@ -348,9 +351,9 @@
     "architecture:products/cups-bowls/salad-bowls": {
       "route": "/zh/products/cups-bowls/salad-bowls/",
       "title": "沙拉碗",
-      "description": "牛皮纸和白色纸碗，配有兼容的纸质、PLA、PP 和 PET 盖选项。",
-      "sourceHash": "f12c05980bb1a31c4e906d022ab2eacb95a50b8c0876f0439041376ce449407f",
-      "intro": "牛皮纸和白色纸碗，配有兼容的纸质、PLA、PP 和 PET 盖选项。",
+      "description": "比较500–1500 mL标称容量的牛皮纸与白卡纸沙拉碗，查看具体货号尺寸及纸质、PLA、PP和PET盖子选项。",
+      "sourceHash": "185c3584428e24a95dc4d00f3c0413c392d56930a24f57384cf1a58b60704bde",
+      "intro": "比较500–1500 mL标称容量的牛皮纸与白卡纸沙拉碗，查看具体货号尺寸及纸质、PLA、PP和PET盖子选项。",
       "sections": [
         {
           "title": "专业采购信息",
@@ -655,14 +658,14 @@
     },
     "architecture:custom-packaging": {
       "route": "/zh/custom-packaging/",
-      "title": "食品包装个性化印刷",
-      "description": "借助 Corncomp 的设计审核、取样、生产和出口支持，准备您的印刷杯子、吸管和食品包装。",
+      "title": "定制印刷食品包装",
+      "description": "准备定制纸杯、纸吸管及食品包装的规格、图稿、样品和采购需求。",
       "sourceHash": "8f6b5e1809c9c8f5d38cda5339435c9b63ad38a3ffd12669a70152ee837f9aef",
       "intro": "从格式、尺寸、数量、设计、包装方法和目的地开始。 Corncomp 在确认可行性、价格、所需样品和生产计划之前会审查规格。",
       "sections": [
         {
           "title": "1. 定义产品",
-          "text": "在开始设计之前，请确认所需的格式、目录尺寸、食品联系我们结构和预期用途。"
+          "text": "在开始设计之前，请确认所需的格式、目录尺寸、食品接触结构和预期用途。"
         },
         {
           "title": "2. 审查设计和样品",
@@ -689,7 +692,7 @@
     "architecture:custom-packaging/custom-printed-paper-cups": {
       "route": "/zh/custom-packaging/custom-printed-paper-cups/",
       "title": "定制印刷纸杯",
-      "description": "适合批发商、自有品牌和餐厅项目的印刷纸杯。",
+      "description": "面向批发、自有品牌与餐饮采购的定制印刷纸杯；确认杯型、尺寸、图稿与包装要求。",
       "sourceHash": "f8d71eea6aa16de75cf122a3d4fddde8c6c63845d7f32c540a237f0eee99c38b",
       "intro": "首先选择纸杯的结构和尺寸。然后提交数量、设计、印刷要求、包装和目的地供审核。",
       "sections": [
@@ -699,7 +702,7 @@
         },
         {
           "title": "检查纸杯和盖子组件",
-          "text": "音量不够。请确认您选择的商品所需的确切轮圈直径、高度以及盖子或配件。"
+          "text": "仅凭容量不足以确认适配。请确认您选择的商品所需的确切轮圈直径、高度以及盖子或配件。"
         },
         {
           "title": "准备打印文件",
@@ -721,17 +724,17 @@
     },
     "architecture:custom-packaging/custom-paper-straws": {
       "route": "/zh/custom-packaging/custom-paper-straws/",
-      "title": "个性化纸吸管",
-      "description": "纸吸管有印刷、颜色、尺寸、包装和包装选项。",
+      "title": "定制纸吸管",
+      "description": "按具体项目确认纸吸管尺寸、图案、印刷、独立包装与装箱要求。",
       "sourceHash": "9d897f7e10705ceb3dd320f9a4e9cebd3f5fdba9eec78dd1d44c22a5019ae110",
       "intro": "选择直径、长度、颜色、设计和包裹类型。生产前确认最终规格和认证要求。",
       "sections": [
         {
-          "title": "调整大小即可饮用",
+          "title": "按饮品选择尺寸",
           "text": "根据饮料、盖子开口、纸杯的高度和预期的饮用方法检查直径和长度。"
         },
         {
-          "title": "选择演示文稿",
+          "title": "确认图案与包装",
           "text": "定义设计的颜色、条纹或方向以及单独的包装纸和外包装。"
         },
         {
@@ -1248,7 +1251,7 @@
       "route": "/zh/about/",
       "title": "关于Corncomp",
       "description": "了解 Corncomp、其宁波工厂及其出口食品包装项目。",
-      "sourceHash": "e69cc8773f60843b9430e064aec849f81b20a54a2b5e4fb22d34dd90e51df9d8",
+      "sourceHash": "84b63951b0fa1ff5fd676de91d908086acac4a70b7c33794cb858f7953aff2dd",
       "intro": "Corncomp 为经销商、餐饮集团和定制项目开发和供应纸质食品包装，并由中国宁波提供生产和出口支持。",
       "sections": [
         {
@@ -1257,7 +1260,7 @@
         },
         {
           "title": "制造中心",
-          "text": "Corncomp申报工厂面积8000平方米，拥有6800平方米符合GMP标准的无尘车间，60条生产线。"
+          "text": "公司总面积为8,000平方米，其中约6,800平方米为全封闭清洁（无尘）车间；公司资料原文表述为“准GMP食品标准”。"
         },
         {
           "title": "出口支持按规格",
@@ -1284,20 +1287,20 @@
       "route": "/zh/about/factory/",
       "title": "工厂及生产",
       "description": "查看 Corncomp 的制造能力、生产流程和质量控制责任。",
-      "sourceHash": "d6448db2927befcd69249b4aea37b43b07d228e048c79597025b29f4a3b266da",
+      "sourceHash": "422747e4736eb65f2f8f51953778bec64d89dd56b2cf2233cd2763fad8459381",
       "intro": "查询工厂信息、流程和生产能力。然后确认订单的线路、材料和文件。",
       "sections": [
         {
-          "title": "8,000 平方米的制造工厂",
-          "text": "该基地位于宁波，拥有8000平方米的工厂，拥有6800平方米符合GMP标准的无尘车间。"
+          "title": "公司总面积 / 准GMP食品标准无尘车间",
+          "text": "公司总面积为8,000平方米，其中约6,800平方米为全封闭清洁（无尘）车间；公司资料原文表述为“准GMP食品标准”。 车间术语依据公司资料，数字由公司于2026年11月2日确认。“准GMP”描述公司资料所述的车间标准，并非第三方GMP认证；纸吸管年产能不等于实际年度产量，也不保证具体订单的可用产能。"
         },
         {
           "title": "60条生产线",
-          "text": "产能涵盖纸吸管和各种规格的纸质食品包装。必须针对所选项目和日历进行确认。"
+          "text": "公司提供的宁波厂区生产线数量为60条，涵盖纸张准备、印刷、分切、成型与包装等工序。"
         },
         {
-          "title": "每年25亿根纸吸管",
-          "text": "申报的年产能相当于整个工厂。它不保证任何尺寸、印刷或交货日期的可用性。"
+          "title": "公司提供的纸吸管年产能",
+          "text": "公司提供的纸吸管年产能为25亿根。具体规格、数量与交付时间对应的可用产能须逐单确认；该数字不代表实际年度产量。"
         },
         {
           "title": "生产前控制",
@@ -1450,12 +1453,12 @@
       "route": "/zh/products/food-boxes-containers/cone-fry-packaging/frite-cone-black/",
       "title": "黑色炸薯条甜筒，3 种尺寸",
       "description": "用于炸薯条的黑色甜筒，具有三种尺寸，适用于食品摊位、柜台、电影院和餐饮场所。索取样品和条件。",
-      "sourceHash": "4f1986b222aa561ca53bc3d32cad4ff65ac869aec831d250ecffa1ac8f45a5b4",
+      "sourceHash": "b9440c82f4a7dcfe4c1653c3e53aa5eaf19c47d327763be212f72a9a393cd16a",
       "summary": "Corncomp 的黑色法式炸薯条让您可以用一只手握住的紧凑形式提供土豆、洋葱圈和其他干零食。其黑色饰面呈现出简单而现代的外观。",
       "specificationHeading": "目录规格",
-      "comparisonHtml": "<h3>应用和尺寸</h3><p>共有三种尺寸，适合不同的份量。该锥体用于移动食品摊、外卖柜台、电影院、节日和餐饮，搭配炸薯条、洋葱圈和类似的干零食。</p>",
+      "comparisonHtml": "<h3>应用和尺寸</h3><p>共有三种尺寸，适合不同的份量。该锥体用于移动食品摊、外卖柜台、电影院、节日和餐饮，搭配炸薯条、洋葱圈和类似的干零食。</p><p>酱料槽高度指槽底到槽口的垂直高度；薯条筒宽度指最宽部位的宽度。尺寸不代表酱料容量或防漏性能。</p>",
       "orderingHeading": "订购前的疑问",
-      "faq": "<h3>有哪些尺寸？</h3><p>标明了三种尺寸，正面高度分别为145mm、165mm和230mm。</p><h3>可以打印吗？</h3><p>可能有打印选项。确认每个订单的设计、材料、最小订单和截止日期。</p><h3>有牛皮纸选项吗？</h3><p>是的，请参阅<a href=\"/zh/product/cono-de-papas-fritas-kraft/\">用于炸薯条的天然牛皮纸甜筒</a>.</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>; <a href=\"/zh/contactenos/\">联系Corncomp</a>.</p>",
+      "faq": "<h3>有哪些尺寸？</h3><p>标明了三种尺寸，筒身高度分别为145mm、165mm和230mm。</p><h3>可以打印吗？</h3><p>可能有打印选项。确认每个订单的设计、材料、最小订单和截止日期。</p><h3>有牛皮纸选项吗？</h3><p>是的，请参阅<a href=\"/zh/product/cono-de-papas-fritas-kraft/\">用于炸薯条的天然牛皮纸甜筒</a>.</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>; <a href=\"/zh/contactenos/\">联系Corncomp</a>.</p>",
       "documentScope": "Corncomp 可以提供有关 ISO 9001 质量管理、BRCGS 包装材料、FSC 监管链和 BSCI amfori 的公司和设施文件。这些文件描述了公司系统、设施或监管链；他们本身并不能认证所有产品。必须确认其对特定零件编号、材料、标签和订单的应用。",
       "orderTerms": "确认所选商品和订单的样品、印刷选项、材料、最小订单和交货时间。",
       "alt": "黑色炸薯条甜筒，3 种尺寸"
@@ -1464,12 +1467,12 @@
       "route": "/zh/products/food-boxes-containers/cone-fry-packaging/frite-cone-kraft/",
       "title": "用于炸薯条的牛皮纸甜筒，3 种尺寸",
       "description": "三种尺寸的天然牛皮纸甜筒，适用于食品摊、柜台、电影院和餐饮场所的炸薯条。索取样品和条件。",
-      "sourceHash": "c190912cdc28bc90391b53e58ec135c9c97f18bfeb0b7f240327b80e0baeec6b",
+      "sourceHash": "29c25bbf287ee9ad5352b306686f8837f2a742d395db45d4398bcada4d22b309",
       "summary": "Corncomp 的天然牛皮纸甜筒可让您在不占用空间的情况下盛放炸薯条、洋葱圈和其他干零食。其圆锥形形状使其易于用一只手握住。",
       "specificationHeading": "目录规格",
-      "comparisonHtml": "<h3>介绍和使用</h3><p>天然牛皮纸饰面与休闲食品的呈现相匹配。流动小吃摊、柜台、电影院、节日和餐饮中的不同份量有三种尺寸。</p>",
+      "comparisonHtml": "<h3>介绍和使用</h3><p>天然牛皮纸饰面与休闲食品的呈现相匹配。流动小吃摊、柜台、电影院、节日和餐饮中的不同份量有三种尺寸。</p><p>酱料槽高度指槽底到槽口的垂直高度；薯条筒宽度指最宽部位的宽度。尺寸不代表酱料容量或防漏性能。</p>",
       "orderingHeading": "订购前的疑问",
-      "faq": "<h3>有哪些尺寸？</h3><p>标明了三种尺寸，正面高度分别为145mm、165mm和230mm。</p><h3>可以打印吗？</h3><p>可能有打印选项。确认每个订单的设计、材料、最小订单和截止日期。</p><h3>还有其他颜色吗？</h3><p>是的，请参阅<a href=\"/zh/product/cono-para-patatas-fritas-negro/\">炸薯条用黑锥体</a>.</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>; <a href=\"/zh/contactenos/\">联系Corncomp</a>.</p>",
+      "faq": "<h3>有哪些尺寸？</h3><p>标明了三种尺寸，筒身高度分别为145mm、165mm和230mm。</p><h3>可以打印吗？</h3><p>可能有打印选项。确认每个订单的设计、材料、最小订单和截止日期。</p><h3>还有其他颜色吗？</h3><p>是的，请参阅<a href=\"/zh/product/cono-para-patatas-fritas-negro/\">炸薯条用黑锥体</a>.</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>; <a href=\"/zh/contactenos/\">联系Corncomp</a>.</p>",
       "documentScope": "Corncomp 可以提供有关 ISO 9001 质量管理、BRCGS 包装材料、FSC 监管链和 BSCI amfori 的公司和设施文件。这些文件描述了公司系统、设施或监管链；他们本身并不能认证所有产品。必须确认其对特定零件编号、材料、标签和订单的应用。",
       "orderTerms": "确认所选商品和订单的样品、印刷选项、材料、最小订单和交货时间。",
       "alt": "用于炸薯条的牛皮纸甜筒，3 种尺寸"
@@ -1568,10 +1571,10 @@
       "route": "/zh/products/cups-bowls/paper-cups/double-wall-white-cardboard-paper-cup/",
       "title": "白卡纸双层纸杯",
       "description": "双层纸杯，两层白纸板，有240ml至600ml 5种尺寸。可定制印刷。索取样品和条件。",
-      "sourceHash": "167dea5c9a66c827a0fa8bb6a486b099265e8e6ba7bf22234087c4c3dc72dee9",
+      "sourceHash": "3c5a7cbbbf70082247234875ae6e831d879097dbfa446b8099c4c0c2037d8ae9",
       "summary": "Corncomp的双层纸杯采用两层白纸板，有从240ml到600ml的五种尺寸可供选择。光滑的白色表面支持餐饮、外卖和配送的定制打印。",
       "specificationHeading": "目录规格",
-      "comparisonHtml": "<h3>订购并打印</h3><p>订购前与 Corncomp 选择产能并确认印刷、包装、样品、最小订单量和截止日期。</p>",
+      "comparisonHtml": "<h3>订购并打印</h3><p>订购前与 Corncomp 选择产能并确认印刷、包装、样品、最小订单量和截止日期。</p><p>Corncomp 确认：CC01DCUP12 和 CC01DCUP12K 的杯口直径均为 80 mm，可配 Corncomp 现有产品范围内所有 80 mm 杯盖。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>有哪些尺寸？</h3><p>从 240ml 到 600ml 有五种尺寸。</p><h3>印刷可以定制吗？</h3><p>是的。发送尺寸、数量和设计详细信息以索取报价。</p>",
       "documentScope": "您可以查阅特定订单的公司和制造系统文档。必须确认其对所请求的项目和规格的应用。",
@@ -1767,13 +1770,13 @@
       "route": "/zh/products/foodservice-supplies/paper-straws/bendy/",
       "title": "弯曲柔性纸吸管",
       "description": "柔软吸管，带有灵活的折叠和波浪印花。每包500个，每箱10包。",
-      "sourceHash": "a6730958c2e756dca357e24b7e5e5583b62bd7a6dad336d88e1fb0cd39a4fe4f",
+      "sourceHash": "ca7b7ed5439ac4028bf4e1385f21a1267197d2303677c442e82989ca278c0221",
       "summary": "Corncomp 的 Bendy 纸吸管具有灵活的折叠功能，易于弯曲，并具有波浪图案的印花，适用于饮料和便携式包装。",
       "specificationHeading": "目录规格",
       "comparisonHtml": "<h3>设计与使用</h3><p>手风琴折叠允许折叠吸管。波浪印花为咖啡馆和酒吧的饮料和展示提供了装饰性展示。它与 Corncomp 的其他印花吸管线在同一个宁波车间生产。</p><p>Corncomp 供应该产品及其<a href=\"/zh/productos/\">纸质包装目录</a>欧洲、美国、澳大利亚和东南亚的经销商和餐厅品牌。咨询<a href=\"/zh/contactenos/\">购买问题</a>和<a href=\"/zh/envases-personalizados/\">OEM/ODM 计划</a>处理最小订单、截止日期和制造示例。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>Bendy 指定的是形状还是图案？</h3><p>两者：它具有灵活的手风琴褶皱和波浪印花。</p><h3>它们是如何包装的？</h3><p>每包 500 根吸管，每箱 10 包。</p><h3>我可以打印我的徽标吗？</h3><p>是的，Corncomp 为至少 50,000 件的批量订单提供定制印刷。</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>.</p>",
-      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 20230123-01，合格的印刷纸吸管重量高达 152 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
+      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 10529571-1，合格的印刷纸吸管重量高达 352 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
       "orderTerms": "每盒包含 10 包 500 根吸管。 50,000 件以上的批量订单可印刷徽标；与团队核实详细信息。",
       "alt": "弯曲柔性纸吸管"
     },
@@ -1781,13 +1784,13 @@
       "route": "/zh/products/foodservice-supplies/paper-straws/sharp-edge/",
       "title": "锋利边缘尖头纸吸管",
       "description": "带尖头的锋利边缘纸吸管，每箱 500 包和 10 包。索取产品信息。",
-      "sourceHash": "a09d05f1fb2ec2fe410e8ee9660ee7c46e7fc847d259fe55ba60db6c13fde6d1",
+      "sourceHash": "dc1f50b48e967b600451e537903be46b23c51588d12665df1a0db7804a00a3fd",
       "summary": "Corncomp 的 Sharp Edge 纸吸管是直的，有一个尖头，适用于餐饮和随身饮料。",
       "specificationHeading": "目录规格",
       "comparisonHtml": "<h3>设计与制造</h3><p>锋利边缘是指尖端，而不是冲压件。该吸管是在 Corncomp 位于宁波的车间生产的，并为批量订单提供徽标印刷。</p><p>Corncomp 供应该产品及其<a href=\"/zh/productos/\">纸质包装目录</a>欧洲、美国、澳大利亚和东南亚的经销商和餐厅品牌。咨询<a href=\"/zh/contactenos/\">购买问题</a>和<a href=\"/zh/envases-personalizados/\">OEM/ODM 计划</a>处理最小订单、截止日期和制造示例。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>锐边指的是什么？</h3><p>吸管的尖端，而不是印刷设计。</p><h3>它们是如何包装的？</h3><p>每包 500 根吸管，每箱 10 包。</p><h3>有定制印刷吗？</h3><p>是的，Corncomp 为至少 50,000 件的批量订单提供徽标打印。</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>.</p>",
-      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 20230123-01，合格的印刷纸吸管重量高达 152 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
+      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 10529571-1，合格的印刷纸吸管重量高达 352 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
       "orderTerms": "每包500支吸管包装，每箱10包。定制印刷起订量为50,000份；与团队核实详细信息。",
       "alt": "锋利边缘尖头纸吸管"
     },
@@ -1795,13 +1798,13 @@
       "route": "/zh/products/foodservice-supplies/paper-straws/solid-colors-with-bamboo-fiber-wooden-fiber/",
       "title": "竹纤维或木纤维的素色纸吸管",
       "description": "竹纤维或木纤维纸吸管，有 10 种纯色。每包500个，每盒10包。",
-      "sourceHash": "15e987698974e11514bf4dfb47e8d44ec178f4d4452b0d69add1cb31997547b6",
+      "sourceHash": "0a395eff66cd1440afce019cfbfdd7aeb5a8a8d174bde20a85e3c240a4013aa4",
       "summary": "Corncomp 的普通纸吸管含有竹纤维或木纤维，有十种颜色可供选择，以匹配饮料菜单或品牌颜色。",
       "specificationHeading": "目录规格",
       "comparisonHtml": "<h3>材料、设计和使用</h3><p>纸浆包括竹纤维或木纤维。光滑的表面呈现出简单的外观，不会与其他品牌元素竞争。咖啡馆、酒吧和饮料品牌可以为其季节性菜单、品牌或经营场所选择颜色。它与其他吸管是在同一个宁波车间生产的。</p><p>Corncomp 供应该产品及其<a href=\"/zh/productos/\">纸质包装目录</a>欧洲、美国、澳大利亚和东南亚的经销商和餐厅品牌。咨询<a href=\"/zh/contactenos/\">购买问题</a>和<a href=\"/zh/envases-personalizados/\">OEM/ODM 计划</a>处理最小订单、截止日期和制造示例。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>它是由什么制成的？</h3><p>由纸浆添加竹纤维或木纤维制成。</p><h3>有多少种颜色？</h3><p>十种纯色，从黑色和白色到粉色和黄色。</p><h3>它们是如何包装的？</h3><p>每包 500 根吸管，每箱 10 包。</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>.</p>",
-      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 20230123-01，合格的印刷纸吸管重量高达 152 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
+      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 10529571-1，合格的印刷纸吸管重量高达 352 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
       "orderTerms": "提供十种纯色。包装为每包500个，每箱10包。",
       "alt": "竹纤维或木纤维的素色纸吸管"
     },
@@ -1809,13 +1812,13 @@
       "route": "/zh/products/foodservice-supplies/paper-straws/stripe-colors-2/",
       "title": "冷色调条纹纸吸管",
       "description": "条纹吸管有十种冷色调，包括黑色、灰色、蓝色、绿色、金色和黄色。每包 500 件。",
-      "sourceHash": "76baf6a49ec1f3022dc3a475c7754b4c1275c2ace32fe11423667e58ba4bcb57",
+      "sourceHash": "08154d62fa03c89ad648f7cc97cbb8dd584ec127d185d8316e8a3abf9f59fed9",
       "summary": "Corncomp 的条纹吸管有十种炫酷色调，包括黑色、灰色、金色、蓝色和绿色，适合咖啡馆和酒吧饮料以及简单的品牌展示。",
       "specificationHeading": "目录规格",
       "comparisonHtml": "<h3>设计与使用</h3><p>经典条纹印花适合软饮料和鸡尾酒。吸管有十种颜色，包括黑色、灰色、海军蓝和草绿色，可让您将吸管与您的品牌、装饰或季节相匹配。该系列使用与暖色调系列相同的纸张和相同的包装，每包500个，每箱10包。</p><p>Corncomp 供应该产品及其<a href=\"/zh/productos/\">纸质包装目录</a>欧洲、美国、澳大利亚和东南亚的经销商和餐厅品牌。咨询<a href=\"/zh/contactenos/\">购买问题</a>和<a href=\"/zh/envases-personalizados/\">OEM/ODM 计划</a>处理最小订单、截止日期和制造示例。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>它包括哪些颜色？</h3><p>黑色、灰色、蓝色和绿色以及金色和黄色等冷色调。</p><h3>它们是如何包装的？</h3><p>每包 500 根吸管，每箱 10 包。</p><h3>有暖色调吗？</h3><p>是的。单独的暖色调范围包括橙色、红色和粉色。</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>.</p>",
-      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 20230123-01，合格的印刷纸吸管重量高达 152 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
+      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 10529571-1，合格的印刷纸吸管重量高达 352 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
       "orderTerms": "包装为500支吸管，每箱10包。",
       "alt": "冷色调条纹纸吸管"
     },
@@ -1823,13 +1826,13 @@
       "route": "/zh/products/foodservice-supplies/paper-straws/stripe-colors/",
       "title": "暖色调条纹纸吸管",
       "description": "条纹吸管有九种暖色调，包括橙色、红色、粉色和紫色。每包500个，每盒10包。",
-      "sourceHash": "132d380ce6bfeaa66a7cbc835b91d290f28108214f070b2cd3820a91e33aa972",
+      "sourceHash": "d34c5a2afd0cd4d32a87763db83057a54b48abaa2e736d4fedd5a1410efa24dc",
       "summary": "Corncomp 的条纹纸吸管有九种暖色调可供选择，包括橙色、红色、粉色和紫色，适用于果汁饮料、甜点和庆祝活动。",
       "specificationHeading": "目录规格",
       "comparisonHtml": "<h3>设计与使用</h3><p>经典的条纹印花可与奶昔、冰沙、鸡尾酒和甜点饮料搭配。从深红色到浅粉色的九种颜色，让甜品店、冰沙店和派对供应商可以根据他们的菜单、促销活动或品牌进行选择。 Corncomp 在其宁波车间将这些吸管打印在纸上。该系列辅以黑色、灰色、蓝色和绿色的冷色调。</p><p>Corncomp 供应该产品及其<a href=\"/zh/productos/\">纸质包装目录</a>欧洲、美国、澳大利亚和东南亚的经销商和餐厅品牌。咨询<a href=\"/zh/contactenos/\">购买问题</a>和<a href=\"/zh/envases-personalizados/\">OEM/ODM 计划</a>处理最小订单、截止日期和制造示例。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>它包括哪些颜色？</h3><p>橙色、红色、粉色和紫色等暖色调。</p><h3>它们是如何包装的？</h3><p>每包 500 根吸管，每箱 10 包。</p><h3>有冷色调吗？</h3><p>是的。单独的冷色调范围包括黑色、灰色、蓝色和绿色。</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>.</p>",
-      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 20230123-01，合格的印刷纸吸管重量高达 152 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
+      "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 10529571-1，合格的印刷纸吸管重量高达 352 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
       "orderTerms": "包装为500支吸管，每箱10包。",
       "alt": "暖色调条纹纸吸管"
     },
@@ -2014,10 +2017,10 @@
       "route": "/zh/us-state-plastic-packaging-laws-explained/",
       "title": "美国塑料包装州法律：买家指南",
       "description": "美国包装采购核对：EPR 可以涵盖纸包装；PFAS 及产品限制需按目的地、构造和用途判断。",
-      "sourceHash": "f73d534d22dfea510f9d00f99fea975778e24c56142c50198de1396829054080",
+      "sourceHash": "63bde9f0232aad88708c03759be104c7104fc8065833d902e54ee0ec2baac90d",
       "dateModified": "2026-10-27",
       "alt": "美国国会大厦和包装立法",
-      "bodyHtml": "<p><small>资料核对日期：2026-10-27</small></p>\n<p>纸包装并不自动排除在美国包装法规之外。采购前应核对销售目的地、完整产品构造，以及承担法律责任的企业。本指南列出食品包装采购需要核对的事项，并非完整的各州法规清单。</p>\n<h2>EPR 可以涵盖纸包装，而非仅限塑料</h2>\n<p>俄勒冈州的《回收现代化法》涵盖包装、纸张及餐饮服务用品，并设有豁免规定。责任生产者须核对注册、申报和费用义务。马里兰州也有包装与纸制品生产者责任制度。纸材或 FSC 声明本身不能证明 EPR 豁免，须按目的地定义及责任主体规则判断。</p>\n<h2>按成品构造核对 PFAS 要求</h2>\n<p>华盛顿州限制在特定纸质及植物纤维食品包装中有意添加 PFAS，并要求制造商留存合规证明。因此，仅说明基材是纸还不足以证明合规。应核对涂层、处理剂、油墨和成品，并索取适用于目的地的文件。</p>\n<p>FDA 另说明，部分用于纸及纸板防油剂的 PFAS 食品接触通报因相关用途被放弃，于 2025 年 1 月失效。联邦食品接触要求与州级限制应分别核对。</p>\n<h2>核对产品限制及订单文件</h2>\n<p>泡沫餐盒、吸管、餐具等可能受目的地的产品限制或发放规则约束。不能假定换成 PLA、CPLA、甘蔗渣或 FSC 认证纤维就能使所有产品在各地自动合法。出货前须核对具体品类及现行州与地方要求。</p>\n<h2>采购核对清单</h2>\n<ol><li>列出目的地州及地方市场、产品形式和预期食品接触条件。</li><li>识别责任生产者，核对 EPR 申报、费用及豁免。</li><li>确认完整材料构造，索取适用的食品接触、化学及其他合规文件。</li><li>将 FSC 或可堆肥声明与证书持有人、范围、产品和规格逐项匹配；ISO 9001 或 BRCGS 的体系/场所认证不等于每个 SKU 自动合规。</li><li>记录核对所用的官方来源、日期及产品规格。</li></ol>\n<p>Corncomp 质量页说明公司、供应链与产品证据的区别。请针对具体产品和目的地索取文件；目录及通用证书清单不能代替订单级合规判断。 <a href=\"/zh/quality/\">质量与认证范围</a> · <a href=\"/zh/contact/\">索取指定产品文件</a></p>\n<h2>官方来源</h2>\n<ul><li><a href=\"https://www.oregon.gov/deq/recycling/Pages/Producers-of-Covered-Products.aspx\">Oregon DEQ — Recycling Modernization Act</a></li><li><a href=\"https://mde.maryland.gov/programs/land/WasteManagement/Pages/ProducerResponsibility.aspx\">Maryland MDE — Packaging and Paper Products</a></li><li><a href=\"https://www.ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/toxics-in-packaging-law/pfas-in-food-packaging\">Washington Ecology — PFAS in Food Packaging</a></li><li><a href=\"https://www.fda.gov/food/process-contaminants-food/authorized-uses-pfas-food-contact-applications\">FDA — PFAS in Food Contact Applications</a></li></ul>\n<p><em>本文仅供一般采购参考，不构成法律意见。订单批准前，请由责任合规团队核对实际产品与销售市场要求。</em></p>",
+      "bodyHtml": "<p>先确定目的州。按州核对 EPR 覆盖的包装和责任主体，再按成品结构核查 PFAS 限制。</p><p><a href=\"https://www.oregon.gov/deq/recycling/Pages/Producers-of-Covered-Products.aspx\">Oregon DEQ</a> · <a href=\"https://mde.maryland.gov/programs/land/WasteManagement/Pages/ProducerResponsibility.aspx\">Maryland MDE</a> · <a href=\"https://www.ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/toxics-in-packaging-law/pfas-in-food-packaging\">Washington Ecology</a></p><p><small>资料核对日期：2026-10-27</small></p>\n<p>纸包装并不自动排除在美国包装法规之外。采购前应核对销售目的地、完整产品构造，以及承担法律责任的企业。本指南列出食品包装采购需要核对的事项，并非完整的各州法规清单。</p>\n<h2>EPR 可以涵盖纸包装，而非仅限塑料</h2>\n<p>俄勒冈州的《回收现代化法》涵盖包装、纸张及餐饮服务用品，并设有豁免规定。责任生产者须核对注册、申报和费用义务。马里兰州也有包装与纸制品生产者责任制度。纸材或 FSC 声明本身不能证明 EPR 豁免，须按目的地定义及责任主体规则判断。</p>\n<h2>按成品构造核对 PFAS 要求</h2>\n<p>华盛顿州限制在特定纸质及植物纤维食品包装中有意添加 PFAS，并要求制造商留存合规证明。因此，仅说明基材是纸还不足以证明合规。应核对涂层、处理剂、油墨和成品，并索取适用于目的地的文件。</p>\n<p>FDA 另说明，部分用于纸及纸板防油剂的 PFAS 食品接触通报因相关用途被放弃，于 2025 年 1 月失效。联邦食品接触要求与州级限制应分别核对。</p>\n<h2>核对产品限制及订单文件</h2>\n<p>泡沫餐盒、吸管、餐具等可能受目的地的产品限制或发放规则约束。不能假定换成 PLA、CPLA、甘蔗渣或 FSC 认证纤维就能使所有产品在各地自动合法。出货前须核对具体品类及现行州与地方要求。</p>\n<h2>采购核对清单</h2>\n<ol><li>列出目的地州及地方市场、产品形式和预期食品接触条件。</li><li>识别责任生产者，核对 EPR 申报、费用及豁免。</li><li>确认完整材料构造，索取适用的食品接触、化学及其他合规文件。</li><li>将 FSC 或可堆肥声明与证书持有人、范围、产品和规格逐项匹配；ISO 9001 或 BRCGS 的体系/场所认证不等于每个 SKU 自动合规。</li><li>记录核对所用的官方来源、日期及产品规格。</li></ol>\n<p>Corncomp 质量页说明公司、供应链与产品证据的区别。请针对具体产品和目的地索取文件；目录及通用证书清单不能代替订单级合规判断。 <a href=\"/zh/quality/\">质量与认证范围</a> · <a href=\"/zh/contact/\">索取指定产品文件</a></p>\n<h2>官方来源</h2>\n<ul><li><a href=\"https://www.oregon.gov/deq/recycling/Pages/Producers-of-Covered-Products.aspx\">Oregon DEQ — Recycling Modernization Act</a></li><li><a href=\"https://mde.maryland.gov/programs/land/WasteManagement/Pages/ProducerResponsibility.aspx\">Maryland MDE — Packaging and Paper Products</a></li><li><a href=\"https://www.ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/toxics-in-packaging-law/pfas-in-food-packaging\">Washington Ecology — PFAS in Food Packaging</a></li><li><a href=\"https://www.fda.gov/food/process-contaminants-food/authorized-uses-pfas-food-contact-applications\">FDA — PFAS in Food Contact Applications</a></li></ul>\n<p><em>本文仅供一般采购参考，不构成法律意见。订单批准前，请由责任合规团队核对实际产品与销售市场要求。</em></p>",
       "reviewedDate": "2026-10-27",
       "reviewedLabel": "资料核对日期：2026-10-27"
     },
@@ -2025,37 +2028,37 @@
       "route": "/zh/how-to-verify-supplier-sustainability-certifications/",
       "title": "如何检查包装供应商的可持续发展证书",
       "description": "在信任供应商的可持续发展声明之前，如何在其官方数据库中检查 FSC、BPI 和 BRC 证书。",
-      "sourceHash": "00fbf89e209b9f542d729d21cc272cfd3189534037b8bb99c73bf1a65769361b",
+      "sourceHash": "d0350c4f22064cf3c60a1b7799437ee2137045b16ffdd099876dc012dcafac06",
       "dateModified": "2026-09-24",
       "alt": "供应商认证文件审核",
-      "bodyHtml": "<p>即使没有获得证书，也可以轻松展示认证标志。 FSC、BPI 和 BRC 维护公共数据库，以便买家可以检查供应商的声明。这些是应该进行的验证。</p>\n<h2>FSC 监管链</h2>\n<p><img decoding=\"async\" src=\"/media/wp/616-verifying-certification-documents.jpg\" alt=\"放大镜查看文件，展示供应商证书核验过程\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>按控股公司名称或证书代码（格式为 FSC-C######）搜索 FSC 证书公共数据库。审查四项信息：状态必须表明它是当前的、未过期、暂停或撤回；获得认证的公司必须与供应商的企业名称相匹配，而不仅仅是其商号；范围必须涵盖实际的产品类别；并须注明发证机构。一种材料的证书不能延伸到另一种材料。</p>\n<p>仅仅因为一家公司拥有 FSC 证书并不意味着其所有产品都经过认证。数据库中列出的范围界定了声明。</p>\n<h2>BPI 可堆肥性认证</h2>\n<p>BPI 维护一个产品数据库，其中按制造商和认证参考号列出每个认证项目。由于 BPI 认证特定的成品，因此请查找确切的产品或零件编号，而不仅仅是制造商。公司可能有一些经过认证的项目，但其整个目录都满足要求。</p>\n<h2>BRC 包装材料全球标准</h2>\n<p>BRC 证书（现为 BRCGS）在官方 BRCGS 目录中进行验证，其中包括数量、等级、审核类型和有效期。证书必须有效。在预定审核后定期更新；旧营销材料上的过期编号并不能证明当前的合规性。</p>\n<h2>警告标志</h2>\n<ul><li>未出现在发行机构数据库中的数字：是捏造声明的最直接标志。</li><li>当前商业材料中继续引用的过期或废弃证书。</li><li>产权公司与开具发票的实体之间的差异。</li><li>用于支持不同产品的材料或类别的有效范围。</li><li>拒绝提供文件。供应商必须能够提供适用于所请求的产品或材料的证书。最好有公众号（如果有），但并非所有产品记录都发布在供应商的网站上。</li></ul>\n<h2>清单</h2>\n<table><thead><tr><th>测试</th><th>为什么这很重要</th><th>需要什么要求</th><th>公司信息</th></tr></thead><tbody>\n<tr><td>当前证书</td><td>过期、暂停或撤销的协议并不能证明当前的合规性。</td><td>当前数量和状态。</td><td><a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a></td></tr>\n<tr><td>认证公司匹配</td><td>企业名称可能会掩盖持有该证书的法人实体。</td><td>证书上显示的公司完整名称。</td><td><a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>（备注公司名称）/<a href=\"/zh/sobre-corncomp/\">关于Corncomp</a></td></tr>\n<tr><td>产品或材料对应的范围</td><td>证书并不延伸至其他材料或产品。</td><td>范围描述与其参考或规范相关联。</td><td><a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>（适用性矩阵）</td></tr>\n<tr><td>与申报对应的设施</td><td>它可以让您确认经审核的中心生产订单。</td><td>与证书相关的认证中心地址。</td><td><a href=\"/zh/sobre-corncomp/fabrica/\">工厂及生产</a></td></tr>\n<tr><td>可根据要求提供文档</td><td>并非所有产品记录都会在网络上发布。</td><td>特定于订单的认证文档。</td><td><a href=\"/zh/contactenos/\">联系Corncomp</a></td></tr>\n</tbody></table>\n<p>您需要规格文档吗？<a href=\"/zh/contactenos/\">联系Corncomp</a>.</p>\n<h2>购买前检查</h2>\n<p><img decoding=\"async\" src=\"/media/wp/617-certificate-document.jpg\" alt=\"纸质证书，展示供应商可持续性证明文件\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>每个证书的验证需要几分钟的时间，并且应该在第一个订单之前完成。如果与提供商的关系继续存在，请定期重复：证书过期并需要续订。两年前获得认证的提供商可能不再获得认证。</p>\n<p>网站上有Corncomp公众号、标准和验证链接。<a href=\"/zh/certificaciones-de-corncomp/\">认证</a>以方便咨询。请直接向团队索取未发布的特定于订单的文档。要了解每个认证验证的内容，请参阅<a href=\"/zh/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/\">BPI 和 FSC</a>;要将陈述与材料联系起来，请参阅<a href=\"/zh/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/\">PLA、甘蔗渣和 FSC 纸</a>。面对以下法规，该范围具有特殊的相关性：<a href=\"/zh/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/\">欧洲一次性塑料指令</a>和<a href=\"/zh/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/\">美国塑料包装州法</a>.</p>"
+      "bodyHtml": "<p>先到发证机构目录核对企业或工厂、有效状态和认证范围，再确认采购的成品或声明是否在范围内。</p><p><a href=\"https://search.fsc.org/\">FSC Search</a> · <a href=\"https://products.bpiworld.org/\">BPI Product Catalog</a> · <a href=\"https://directory.brcgs.com/\">BRCGS Directory</a></p><p>即使没有获得证书，也可以轻松展示认证标志。 FSC、BPI 和 BRC 维护公共数据库，以便买家可以检查供应商的声明。这些是应该进行的验证。</p>\n<h2>FSC 监管链</h2>\n<p><img decoding=\"async\" src=\"/media/wp/616-verifying-certification-documents.jpg\" alt=\"放大镜查看文件，展示供应商证书核验过程\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>按控股公司名称或证书代码（格式为 FSC-C######）搜索 FSC 证书公共数据库。审查四项信息：状态必须表明它是当前的、未过期、暂停或撤回；获得认证的公司必须与供应商的企业名称相匹配，而不仅仅是其商号；范围必须涵盖实际的产品类别；并须注明发证机构。一种材料的证书不能延伸到另一种材料。</p>\n<p>仅仅因为一家公司拥有 FSC 证书并不意味着其所有产品都经过认证。数据库中列出的范围界定了声明。</p>\n<h2>BPI 可堆肥性认证</h2>\n<p>BPI 维护一个产品数据库，其中按制造商和认证参考号列出每个认证项目。由于 BPI 认证特定的成品，因此请查找确切的产品或零件编号，而不仅仅是制造商。公司可能有一些经过认证的项目，但其整个目录都满足要求。</p>\n<h2>BRC 包装材料全球标准</h2>\n<p>BRC 证书（现为 BRCGS）在官方 BRCGS 目录中进行验证，其中包括数量、等级、审核类型和有效期。证书必须有效。在预定审核后定期更新；旧营销材料上的过期编号并不能证明当前的合规性。</p>\n<h2>警告标志</h2>\n<ul><li>未出现在发行机构数据库中的数字：是捏造声明的最直接标志。</li><li>当前商业材料中继续引用的过期或废弃证书。</li><li>产权公司与开具发票的实体之间的差异。</li><li>用于支持不同产品的材料或类别的有效范围。</li><li>拒绝提供文件。供应商必须能够提供适用于所请求的产品或材料的证书。最好有公众号（如果有），但并非所有产品记录都发布在供应商的网站上。</li></ul>\n<h2>清单</h2>\n<table><thead><tr><th>测试</th><th>为什么这很重要</th><th>需要什么要求</th><th>公司信息</th></tr></thead><tbody>\n<tr><td>当前证书</td><td>过期、暂停或撤销的协议并不能证明当前的合规性。</td><td>当前数量和状态。</td><td><a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a></td></tr>\n<tr><td>认证公司匹配</td><td>企业名称可能会掩盖持有该证书的法人实体。</td><td>证书上显示的公司完整名称。</td><td><a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>（备注公司名称）/<a href=\"/zh/sobre-corncomp/\">关于Corncomp</a></td></tr>\n<tr><td>产品或材料对应的范围</td><td>证书并不延伸至其他材料或产品。</td><td>范围描述与其参考或规范相关联。</td><td><a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>（适用性矩阵）</td></tr>\n<tr><td>与申报对应的设施</td><td>它可以让您确认经审核的中心生产订单。</td><td>与证书相关的认证中心地址。</td><td><a href=\"/zh/sobre-corncomp/fabrica/\">工厂及生产</a></td></tr>\n<tr><td>可根据要求提供文档</td><td>并非所有产品记录都会在网络上发布。</td><td>特定于订单的认证文档。</td><td><a href=\"/zh/contactenos/\">联系Corncomp</a></td></tr>\n</tbody></table>\n<p>您需要规格文档吗？<a href=\"/zh/contactenos/\">联系Corncomp</a>.</p>\n<h2>购买前检查</h2>\n<p><img decoding=\"async\" src=\"/media/wp/617-certificate-document.jpg\" alt=\"纸质证书，展示供应商可持续性证明文件\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>每个证书的验证需要几分钟的时间，并且应该在第一个订单之前完成。如果与提供商的关系继续存在，请定期重复：证书过期并需要续订。两年前获得认证的提供商可能不再获得认证。</p>\n<p>网站上有Corncomp公众号、标准和验证链接。<a href=\"/zh/certificaciones-de-corncomp/\">认证</a>以方便咨询。请直接向团队索取未发布的特定于订单的文档。要了解每个认证验证的内容，请参阅<a href=\"/zh/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/\">BPI 和 FSC</a>;要将陈述与材料联系起来，请参阅<a href=\"/zh/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/\">PLA、甘蔗渣和 FSC 纸</a>。面对以下法规，该范围具有特殊的相关性：<a href=\"/zh/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/\">欧洲一次性塑料指令</a>和<a href=\"/zh/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/\">美国塑料包装州法</a>.</p>"
     },
     "post:eu-single-use-plastics-directive-explained": {
       "route": "/zh/eu-single-use-plastics-directive-explained/",
       "title": "欧洲一次性塑料指令：包装买家指南",
       "description": "欧洲一次性塑料指令和 PPWR 对餐厅包装买家意味着什么以及需要审查哪些认证。",
-      "sourceHash": "c4f3cea004e232e2d8f21700f6f7e18487b80b3beb7273e4694a0a684484576e",
-      "dateModified": "2026-09-24",
+      "sourceHash": "43ad0f85b4de9dc8d173d99e4ccd27dcee3b608d72802d403b8a3f3f8fcee4ee",
+      "dateModified": "2026-11-02",
       "alt": "布鲁塞尔欧洲议会前的欧洲旗帜",
-      "bodyHtml": "<p>关于一次性塑料的欧洲指令经常出现在采购查询中。大部分的混乱涉及其生效后的变化以及随后添加的包装标准。</p>\n<p><img decoding=\"async\" src=\"/media/wp/618-eu-flag-at-the-european-parliament-brussels.jpg\" alt=\"布鲁塞尔欧洲议会前的欧盟旗帜，代表包装法规\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<h2>该指令禁止什么</h2>\n<p>(EU) 2019/904 指令自 2021 年 7 月 3 日起在成员国实施。该指令禁止在有可用的非塑料替代品的情况下将某些一次性塑料产品投放市场：餐具、盘子、吸管、搅拌器、棉签、气球棒、可氧化降解塑料和发泡聚苯乙烯 (EPS) 容器和杯子。</p>\n<p>被禁止的类别直接影响传统塑料吸管和餐具以及 EPS 容器的欧盟销售。但可堆肥材料并不自动脱离塑料的定义。该指令认为塑料是一种化学改性聚合物，即使它是生物或可生物降解来源的。欧盟委员会关于指令 (EU) 2019/904 的指导包括可生物降解和生物基塑料，例如 PLA，因此它们不会自动免除禁令。只有未经化学改性的天然聚合物，例如未层压的纸和类似的未涂层纤维，包括未经处理的甘蔗渣，不属于该定义范围。实际上，未涂布的纸和甘蔗渣通常不在禁令范围内。 PLA 组件以及任何塑料或 PLA 涂层或纸张或甘蔗渣上的涂层必须逐个产品进行评估。仅将基础材料呈现为可堆肥是不够的。请参阅中的定义<a href=\"https://ec.europa.eu/commission/presscorner/detail/en/qanda_21_2709\" rel=\"nofollow noopener\" target=\"_blank\">欧盟委员会对该指令的指导</a>.</p>\n<h2>包装和包装废物法规，PPWR</h2>\n<p>(EU) 2025/40 法规于 2025 年 2 月 11 日生效，并根据第 71 条于 2026 年 8 月 12 日开始在所有 27 个成员国普遍适用。它取代了已有近 30 年历史的包装指令 94/62/EC。作为一项法规，它是统一适用的，无需单独转化为国家法律。然而，这些义务并非全部从该日期开始：包括主要可回收性规则在内的一些义务是在几年后才纳入的。</p>\n<h3>要求自 2026 年 8 月 12 日起适用</h3>\n<ul>\n<li>PFAS 限制，第 5 条：单独非聚合 PFAS 物质含量超过 25 ppb、非聚合 PFAS 总量超过 250 ppb 或总氟（包括聚合 PFAS）超过 50 ppm 的食品接触包装不得上市。自2026年8月12日起适用，之前库存没有宽限期。</li>\n<li>有害物质限量：自通用之日起，铅、镉、汞和六价铬的总量限制为 100 mg/kg。</li>\n<li>EPR 生产者登记册，第 44 条：每个成员国必须维护国家登记册，生产者必须在首次将包装或包装产品投放市场的地点进行登记。时间表和程序并未在 2026 年 8 月 12 日通过单一欧洲门户网站得到解决。<a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32025R0040\" target=\"_blank\" rel=\"nofollow noopener\">第 44 条（1）</a>给予成员国自根据第 44（14）条通过的第一个实施法案生效后 18 个月的时间来创建 PPWR 所需的登记册。与此同时，现有的国家 EPR 标准可能会继续适用。确认每个目的地有效的程序和截止日期。</li>\n<li>一般授权代表，第 17 条：生产商可以（但没有义务）通过书面授权任命一名在欧盟设立的代表，负责某些包装合规任务以及与市场监督的合作。一项任命可以涵盖所有 27 个成员国。它是一个一般性的可选条款，与具体的EPR代表不同。</li>\n<li>EPR 授权代表，第 45(3) 条：在欧盟设立的生产商如果在其他成员国销售包装但在当地没有设立机构，则必须在每个成员国任命一名 EPR 代表。对于非欧盟生产商，大多数独立的合规部门概述都将此义务作为每个成员国可以施加的选项；少数人将其描述为普遍义务。从第三方供应商处购买的人应确认每个目的地的具体规则，而不是假设整个欧盟都有单一的响应。</li>\n</ul>\n<h3>2026 年 8 月 12 日之后的要求</h3>\n<ul>\n<li>可回收性设计，第 6(2)(a) 条：包装必须允许将所得材料作为能够替代原始材料的二次原材料进行回收。它自 2030 年 1 月 1 日起或设定回收设计标准的授权法案生效后 24 个月起适用，以较晚者为准。该法案必须在 2028 年 1 月 1 日之前通过。该法案不会在 2026 年开始普遍适用。</li>\n<li>可回收性程度和70%阈值，第6条和附件二：自2030年1月1日起，包装按可回收性分类。那些未达到至少 C 级（根据附件 II 方法约 70% 可回收）的产品被视为不可回收，不能在欧盟销售。从 2038 年 1 月 1 日起，只录取 A/B 成绩。</li>\n<li>大规模回收，第 6(2)(b) 条：另一个后续条件要求包装实际上被大规模收集、分类和回收。它从 2035 年 1 月 1 日或相应实施法案颁布后五年起适用，以较晚者为准。</li>\n<li>回收成分和最小化：从 2030 年开始，塑料包装的回收成分最低限度以及限制电子商务包装中的空白空间等规则也开始纳入。</li>\n</ul>\n<p>PPWR 还限制一次性塑料的特定形式：销售点的结块薄膜、单独份量的调味品、小型酒店盥洗用品以及酒店、酒吧和餐馆消费的食品和饮料的包装。对于可堆肥包装，需要工业堆肥标准；成员国可以在已经存在堆肥基础设施的地方实行可堆肥格式。</p>\n<p><em>上述文章和日期反映了已发布的法规文本和委员会的指导。一些引用的授权和实施法案，例如第 6 条第(4)款中的法案，在起草文本时尚未最终确定，因此细节可能会不断变化。与您自己的合规顾问确认当前要求。</em></p>\n<h2>购买包装的后果</h2>\n<p>对于那些已经购买纸质、PLA 或甘蔗渣包装的人来说，监管指南强化了这些选择：这些类别不属于传统的塑料禁令，并且符合 PPWR 可堆肥性和可回收性要求。采购问题是文件记录：验证可堆肥性声明是否具有公认的认证，美国框架中的 BPI/ASTM D6400 或欧洲框架中的 EN 13432，并且木纤维具有合法的监管链，例如 FSC。如果您也在美国销售，请参阅<a href=\"/zh/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/\">国家塑料包装法</a>了解他们不同的 EPR、PFAS 和聚苯乙烯规则。</p>\n<p>欧洲对食品接触包装中 PFAS 的要求也正在收紧。与任何供应商（包括 Corncomp）确认材料已进行相应的测试和记录。</p>\n<p><img decoding=\"async\" src=\"/media/wp/603-compostable-paper-cup-and-food-box-packaging.jpg\" alt=\"可堆肥纸杯和食品盒，展示欧洲可堆肥和可回收包装类别\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<h2>运往欧盟的包装审查认证</h2>\n<ul><li>木纤维材料的 FSC 监管链：纸张、牛皮纸和纸板。</li><li>PLA 和甘蔗渣的 BPI 可堆肥性 (ASTM D6400) 或同等 EN 13432 可堆肥性认证。</li><li>食品联系我们合规性文件：EU AP 2002、FDA 或 LFGB，具体取决于市场。</li><li>ISO 9001:2015 或同等质量管理认证。</li></ul>\n<p>的页面为<a href=\"/zh/certificaciones-de-corncomp/\">认证</a>按产品总结了 Corncomp 公共记录和适应症。向团队索取特定于订单的文件。的比较<a href=\"/zh/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/\">PLA、甘蔗渣和 FSC 纸</a>按材料解释陈述；指南<a href=\"/zh/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/\">检查供应商的认证</a>解释如何检查它们。</p>\n<p><em>本文总结公开监管信息，仅供一般参考，不构成法律建议。在决定购买之前，请与您自己的合规顾问或欧洲主管机构确认当前要求。</em></p>"
+      "bodyHtml": "<p>PLA 吸管应核对禁售类别及适用例外。带塑料内衬的纸饮料杯应核对杯类标识及目的成员国要求。</p><p><a href=\"https://eur-lex.europa.eu/eli/dir/2019/904/oj/eng\">Directive (EU) 2019/904</a></p><p>纸、PLA 和甘蔗浆是材料名称，不是欧盟包装法规的自动豁免条件。应从成品的聚合物成分、涂层或内衬、预期用途和法定产品类别入手。可堆肥性本身不能决定一次性塑料指令是否适用。</p>\n<p><time datetime=\"2026-11-02\">资料核验日期：2026年11月2日。核验范围：SUP 材料分类与 PPWR 概览；不代表某一具体产品或目的地市场已获合规批准。</time></p>\n<h2>哪些产品被禁，哪些属于受监管范围？</h2>\n<p>指令 (EU) 2019/904 针对全部或部分由塑料制成的特定一次性产品。第5条和附件B部分禁止所列产品投放市场，包括塑料餐具、餐盘、吸管、搅拌棒，以及所列发泡聚苯乙烯食品和饮料容器、饮料杯等，具体例外以法规为准。相关市场禁限措施自2021年7月3日起实施。 <a href=\"https://eur-lex.europa.eu/eli/dir/2019/904/oj/eng\">[1]</a></p>\n<p>落入指令范围不等于一律禁止。带塑料内衬的纸质饮料杯可能适用饮料杯的标识等义务，但不能因此认定它与塑料餐盘适用相同的第5条禁令。应按产品类别和目的地成员国的实施规则核对。 <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026XC04813\">[2]</a></p>\n<h2>如何判断 PLA、纸和甘蔗浆</h2>\n<p>PLA：生物基或可生物降解的塑料不自动豁免。可堆肥证书不能让 PLA 吸管免于一次性塑料吸管的限制。材料来自可再生资源，也不能替代产品分类判断。 <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026XC04813\">[2]</a></p>\n<p>纸和甘蔗浆：如果成品完全由未经化学改性的天然聚合物构成，且没有使其落入塑料定义的塑料成分，可能不属于 SUP 塑料产品范围。应核实实际成分，不能只凭“纸”“纤维”或“甘蔗浆”名称作结论。 <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026XC04813\">[2]</a></p>\n<p>涂层或内衬产品：纸或甘蔗浆上的塑料阻隔层可能使一次性成品落入指令范围。PE、PLA 及其他阻隔层须按实际成分和作用判断；不能因涂层被称为“水性”就认定其不含塑料。确认塑料成分后，还须核对产品类别及对应措施，不能把所有涂层产品一概判为禁售或豁免。 <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026XC04813\">[2]</a></p>\n<h2>PPWR 是另一项合规核对</h2>\n<p>条例 (EU) 2025/40 自2026年8月12日起一般适用，各项要求分阶段实施。不受某项 SUP 禁令限制，不等于已符合 PPWR。应按产品和目的地核对适用的物质、包装、信息及生产者责任要求。可堆肥性不是可回收性的通用替代方案，单凭证书也不能证明符合整部条例。 <a href=\"https://environment.ec.europa.eu/news/new-eu-rules-packaging-enter-application-2026-08-11_en\">[3]</a></p>\n<h2>采购方需要核验什么</h2>\n<p>记录货号、完整材料结构、涂层、配套部件、食品和使用条件、目的地及适用产品类别。食品接触证据应对应欧盟要求，包括条例 (EC) No 1935/2004，以及适用的材料专项和成员国要求。美国 FDA 相关声明不能替代欧盟食品接触证据。 <a href=\"https://food.ec.europa.eu/food-safety/chemical-safety/food-contact-materials/legislation_en\">[4]</a></p>\n<p>如作可堆肥声明，应将成品与相关标准、认证范围及当地收运处理条件匹配。BPI/ASTM D6400 不能与 EN 13432 相关证据互换。FSC 支持适用的来源声明，不证明 SUP 豁免、可堆肥性或食品接触适用性。Corncomp 提供的文件也必须与拟采购的具体订单逐项核对。 <a href=\"/zh/quality/\">[5]</a></p>\n<h2>官方来源与产品文件</h2>\n<ol><li><a href=\"https://eur-lex.europa.eu/eli/dir/2019/904/oj/eng\">Directive (EU) 2019/904</a></li><li><a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026XC04813\">Commission guidelines C/2026/4813</a></li><li><a href=\"https://environment.ec.europa.eu/news/new-eu-rules-packaging-enter-application-2026-08-11_en\">European Commission: PPWR application</a></li><li><a href=\"https://food.ec.europa.eu/food-safety/chemical-safety/food-contact-materials/legislation_en\">European Commission: food-contact legislation</a></li><li><a href=\"/zh/quality/\">Corncomp: Quality</a></li></ol>"
     },
     "post:bpi-vs-fsc-certification": {
       "route": "/zh/bpi-vs-fsc-certification/",
       "title": "BPI 和 FSC 认证：各自验证的内容",
       "description": "BPI 和 FSC 验证不同的属性：可堆肥性和材料的来源。了解其范围以及如何检查供应商的声明。",
-      "sourceHash": "c25ffeb4e7c811f40506e77d16db4c37f4a51320ed20ca21326b96cde41f9c2c",
-      "dateModified": "2026-09-24",
+      "sourceHash": "05aa9b318ea88b943c0d2fbd7e565d554c653a56aebc76347f47e13ab467be29",
+      "dateModified": "2026-11-02",
       "alt": "负责任管理的森林和 FSC 原产地认证",
-      "bodyHtml": "<p>FSC 和 BPI 经常出现在包装声明中。很容易将它们解释为相同的环境保证，但每个认证都验证不同的属性，并且没有一个可以替代另一个。</p>\n<h2>FSC 认证内容</h2>\n<p><img decoding=\"async\" src=\"/media/wp/614-forest-and-mountains---responsible-forestry.jpg\" alt=\"森林与山脉的航拍景观，展示符合 FSC 要求的负责任森林管理\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>FSC（森林管理委员会）指的是材料的来源，而不是其处置。验证纸张或牛皮纸产品中的木纤维可以通过供应链追溯到负责任管理的森林。 FSC 产销监管链认证遵循从森林到成品的可追溯性，包括材料经过的所有点。</p>\n<p>作为采购标准，FSC 适用于木纤维材料：纸张、牛皮板和纸板。它不能证明可堆肥性，也不对应于并非来自森林纤维的塑料、PLA 或甘蔗渣。</p>\n<h2>BPI 认证的内容</h2>\n<p><img decoding=\"async\" src=\"/media/wp/615-compost-soil---industrial-composting.jpg\" alt=\"一把堆肥土，展示 BPI/ASTM D6400 认证下的工业堆肥\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>BPI（生物降解产品研究所）重点关注产品被丢弃后会发生什么，而不是材料的来源。认证产品根据 ASTM D6400（针对塑料和 PLA 等植物材料）或 ASTM D6868（针对涂层纸和纤维产品）进行测试。这些测试证实了在受管理的工业堆肥设施中在规定的时间范围内的分解，并且没有有毒废物。</p>\n<p>BPI 专指工业堆肥。大多数经过认证的产品不会在家用堆肥机中分解。认证必须对应于成品和组装产品，而不仅仅是其原材料。</p>\n<h2>FSC与BPI的比较</h2>\n<table><thead><tr><th>尺寸</th><th>森林管理委员会</th><th>BPI</th></tr></thead><tbody>\n<tr><td>它验证什么</td><td>负责任的森林起源</td><td>工业可堆肥性</td></tr>\n<tr><td>它适用于什么？</td><td>仅木纤维：纸、牛皮纸和纸板</td><td>塑料、PLA、甘蔗渣和铜版纸</td></tr>\n<tr><td>参考标准</td><td>FSC 监管链</td><td>ASTM D6400/D6868</td></tr>\n<tr><td>什么不认可</td><td>可堆肥性</td><td>原料产地</td></tr>\n</tbody></table>\n<h2>为什么购买时很重要</h2>\n<p>当供应商将 FSC 和 BPI 归因于同一产品时，他们可能会描述两种不同的组件，例如 FSC 声明的牛皮纸盒和 BPI 认证的 PLA 窗户，或者做出不成立的声明。 FSC 不适用于木材以外的材料。将这两个标签视为可互换的可能会导致可持续性声明无法向客户或监管机构证明是合理的。</p>\n<p>FSC 证书可以在颁发机构的公共登记处进行验证。 BPI 维护一个可搜索的数据库，其中包含制造商认证的产品和许可证号。我们的指南<a href=\"/zh/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/\">验证供应商的证书</a>解释检查和警告标志。</p>\n<p>Corncomp 的产品系列反映了这一区别：FSC 声明仅出现在纸张、牛皮纸和纸板产品上，而 PLA 和甘蔗渣产品则带有 BPI 可堆肥认证。验证码和链接位于注册页面上。<a href=\"/zh/certificaciones-de-corncomp/\">认证</a>。要比较其实际用途，请参见<a href=\"/zh/pla-vs-bagazo-vs-papel-fsc-como-elegir-el-material-de-envase-compostable-adecuado/\">PLA、甘蔗渣和 FSC 纸</a>。随着监管收紧，这两个标签变得越来越重要。看看它与的关系<a href=\"/zh/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/\">欧洲一次性塑料指令</a>和<a href=\"/zh/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/\">美国塑料包装州法</a>.</p>"
+      "bodyHtml": "<p>FSC 关注林源材料的产销监管链，核对证书范围和销售文件声明。BPI 关注可堆肥性，核对成品及适用认证方案。</p><p><a href=\"https://search.fsc.org/\">FSC Search</a> · <a href=\"https://products.bpiworld.org/\">BPI Product Catalog</a></p><p>FSC 和 BPI 回答的是不同问题。FSC 声明涉及林源材料的来源与产销监管链；BPI 认证涉及特定认证方案下的可堆肥性。两者不能互相替代。</p>\n<h2>FSC 验证什么</h2>\n<p>采购纸包装时，应核对供应商的产销监管链范围，以及销售文件上的 FSC 声明。FSC 100%、FSC Mix 和 FSC Recycled 含义不同；有 FSC 标签不等于全部纤维都直接来自认证森林。FSC 不证明可堆肥性，也不证明食品接触适用性。</p>\n<h2>BPI 验证什么</h2>\n<p>应核对官方列明的产品与认证方案，不能仅凭 PLA、甘蔗浆等材料名称认定产品获证。工业堆肥认证不等于家庭堆肥认证。BPI 另有家庭堆肥认证方案，须按具体产品单独核验。树脂或部件的证书也不能自动证明整个组装包装获证。</p>\n<h2>同一产品能否同时具有两类声明？</h2>\n<p>可以，前提是每项声明都有独立证据。纸制品可以具有适用的 FSC 来源声明，同时取得另一项可堆肥认证。两份证据都应与同一成品及其材料结构相符，不能用其中一份代替另一份。</p>\n<h2>Corncomp 展示证书的具体范围</h2>\n<p>两份展示文件的持有人均为 Ningbo Corncomp Tech Co., Ltd.。FSC 证书 RINA-COC-001953 涉及证书列明的纸质包装及纸质餐饮用品产品组，文件所示到期日为 2027-09-08。具体订单的 FSC 声明还需要相应销售文件支持。</p>\n<p>BPI 证书 10529571-1 依据 ASTM D6400，适用于最大克重 352 g/m² 的印刷纸吸管，文件所示到期日为 2027-09-30。它不证明 Corncomp 所有纸杯、PLA 制品或甘蔗浆产品均获得 BPI 认证。BPI 企业名录使用编号 10529571，与完整证书文件编号有所区别。 这份证书仅涉及工业堆肥，不证明这些纸吸管具有家庭堆肥认证。</p>\n<h2>下单前如何核验</h2>\n<p>查阅 Quality 页面中的原始文件、FSC 官方查询系统及 Corncomp 的 BPI 官方清单。将持有人、当前状态、货号、材料、涂层、印刷及尺寸与订单逐项匹配。文件上的到期日期不能单独证明当前名录状态；当地堆肥设施是否接收该产品也应另行确认。</p>\n<ul><li><a href=\"/zh/quality/\">原始证书与适用范围</a></li><li><a href=\"https://search.fsc.org/\">核验 FSC 证书</a></li><li><a href=\"https://products.bpiworld.org/companies/ningbo-corncomp-tech-co-ltd\">核验 Corncomp 的 BPI 产品</a></li><li><a href=\"https://bpiworld.org/compostability-certification\">认证方案说明</a></li></ul>"
     },
     "post:pla-vs-bagasse-vs-fsc-paper": {
       "route": "/zh/pla-vs-bagasse-vs-fsc-paper/",
       "title": "PLA、甘蔗渣或 FSC 纸：如何选择可堆肥包装材料",
       "description": "比较 PLA、甘蔗渣和 FSC 认证纸张：耐热性、认证和在可堆肥食品包装中的应用。",
-      "sourceHash": "3db7b89438a7f22f7454b0f74846b3b634845d34c111519cdbce70661af4f995",
+      "sourceHash": "81bc70e9e8baf0dc1948cab8eb2a1bcfe4cb0730a7f01279d58b6d84c9247634",
       "dateModified": "2026-09-24",
       "alt": "用于 FSC 木纤维供应的可持续管理森林",
-      "bodyHtml": "<p>在更换塑料包装时，餐饮品牌经常将PLA、甘蔗渣和FSC认证的纸张进行比较。选择必须与产品相适应：不合适的材料可能会因湿度而软化、受热而变形或导致可堆肥性声明站不住脚。</p>\n<h2>FSC 认证牛皮纸和纸板</h2>\n<p><img decoding=\"async\" src=\"/media/wp/613-sustainably-managed-forest---fsc-wood-fiber-sourcing.jpg\" alt=\"可持续管理的松林，展示具有 FSC 监管链的木纤维来源\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>FSC 适用于来自负责任管理森林的木纤维材料，例如牛皮纸、纸板和纸板。对于纸质吸管、杯子、碗和盒子来说，这是正确的说法；咨询<a href=\"/zh/productos/cajas-y-envases/cajas-de-papel-para-alimentos/\">FSC认证食品盒</a>和<a href=\"/zh/productos/vasos-y-cuencos/cuencos-para-ensaladas/\">FSC认证纸碗</a>由Corncomp。在这三种选择中，它是唯一具有可追溯的监管链保证的选择：每件经过认证的产品都可以追溯到其森林来源。</p>\n<p>FSC 纸本身的防潮和防油脂性能较差。未涂层纸板遇​​热液体或油腻食物会迅速软化。因此，大多数纸质餐饮容器都涂有或与由另一种材料制成的盖子或窗口结合。</p>\n<p>一些模压牛皮纸容器，例如 Corncomp 的天然牛皮纸食品容器系列，还通过相关制造实体宁波万盛包装有限公司获得了 DIN CERTCO 工业可堆肥性认证，符合 DIN EN 13432 和 ASTM D6400 标准。该认证是对 FSC 监管链的补充，而不是取代它。</p>\n<h2>PLA：聚乳酸</h2>\n<p>PLA 是一种从发酵植物淀粉（通常是玉米）中获得的生物塑料。它是三种材料中最透明的，而不仅仅是半透明的，用于制作要显示内容物的盖子、窗户和冷饮杯。</p>\n<p>它的局限性在于热量：它在相对较低的温度下会软化，因此不适合热汤、咖啡或刚从油炸锅中出来的食物。它可以在工业中堆肥，但不能在家里堆肥；它需要一个商业设施才能按预期分解。在垃圾填埋场中，它的表现更像传统塑料。 Corncomp 提供<a href=\"/zh/product/tapa-de-pla-para-cuenco-de-ensalada/\">PLA帽</a>用于沙拉碗和耐热结晶 PLA 选项<a href=\"/zh/product/cubiertos-de-cpla/\">CPLA餐具</a>.</p>\n<h2>甘蔗渣：甘蔗纤维</h2>\n<p>甘蔗渣是用榨汁后剩下的甘蔗浆模制而成的。利用农业副产品而不是使用原始材料。它具有天然的刚性，并且比 PLA 更耐热，因此它经常用于汤杯、热食碗和外卖容器，这些容器在面对蒸汽和热液体时必须保持其形状。</p>\n<p>甘蔗渣可在与 PLA 相同的 BPI/ASTM D6400 框架中进行堆肥。 Corncomp 在该框架内提供 BPI 认证的甘蔗渣产品；认证的申请取决于产品规格。由于甘蔗渣不是木纤维，因此没有 FSC 认证，尽管这两个标签在商业材料中经常被混淆。 Corncomp 的甘蔗渣汤杯系列是其系列的一部分<a href=\"/zh/productos/vasos-y-cuencos/\">沙拉碗和纸杯或汤碗</a>.</p>\n<h2>材质对比</h2>\n<table><thead><tr><th>材料</th><th>经常使用</th><th>面对热和油脂时的行为</th><th>可堆肥性</th><th>通常的认证途径</th></tr></thead><tbody>\n<tr><td>FSC纸/牛皮纸</td><td>吸管、杯子、盒子和品牌印刷</td><td>低的;需要涂层</td><td>FSC 本身并不对可堆肥性进行认证。某些模制容器，例如天然牛皮纸食品容器，具有独立的 DIN CERTCO 认证。</td><td>特定规格的 FSC 和 DIN CERTCO 监管链</td></tr>\n<tr><td>PLA</td><td>透明盖子、窗户和冷饮杯</td><td>低的</td><td>可工业堆肥，不可在家中堆肥</td><td>用于认证具体产品的 BPI 可堆肥 (ASTM D6400)</td></tr>\n<tr><td>渣</td><td>热汤杯、碗和外卖容器</td><td>高的</td><td>在与 PLA 相同的 BPI/ASTM D6400 框架下可进行工业堆肥</td><td>用于认证具体产品的 BPI 可堆肥 (ASTM D6400)</td></tr>\n</tbody></table>\n<p>认证的应用因产品和规格而异。请参阅验证页面上的验证号码和链接。<a href=\"/zh/certificaciones-de-corncomp/\">认证</a>.</p>\n<h2>将材料混合在同一个容器中</h2>\n<p><img decoding=\"async\" src=\"/media/wp/603-compostable-paper-cup-and-food-box-packaging.jpg\" alt=\"可堆肥纸杯和食品盒，展示多种材料组合包装\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>很少有餐饮品牌在所有尺寸都使用单一材料。通常将经过 FSC 认证的牛皮纸盒与 PLA 窗口结合起来展示内容物，或者将甘蔗渣汤杯与经过 FSC 认证的纸盖结合起来。根据其功能选择每个组件通常可以提高包装的可用性，并允许您更精确地检查其可持续性声明。</p>\n<p>要区分认证声明，请参阅<a href=\"/zh/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/\">BPI 和 FSC</a>;在信任他们之前，请检查<a href=\"/zh/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/\">如何验证供应商的证书</a>.</p>\n<p>Corncomp 内部生产纸吸管，并供应某些 PLA 和甘蔗渣产品，包括产品认证涵盖的规格。制造来源和认证申请因产品而异，必须确认以供订购时参考。咨询<a href=\"/zh/productos/\">目录</a>以及验证号码和链接<a href=\"/zh/certificaciones-de-corncomp/\">认证</a>。对于最小订单、截止日期和自定义打印，请查看<a href=\"/zh/contactenos/\">购买问题</a>。如果您在受监管的市场上销售，我们的指南<a href=\"/zh/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/\">欧洲一次性塑料指令</a>和<a href=\"/zh/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/\">美国各州法律</a>他们解释了哪些材料受到影响。</p>\n<p>您需要帮助选择材料吗？<a href=\"/zh/envases-personalizados/\">告诉我们您需要什么产品和应用</a>任何一个<a href=\"/zh/contactenos/\">直接联系Corncomp</a>接受指导。</p>"
+      "bodyHtml": "<p>热外卖托盘可评估甘蔗渣模塑，盒和杯可评估纸板，冷饮透明盖可评估 PLA。按成品确认耐热、耐油和防潮性能。FSC 涉及纤维来源，可堆肥声明需另查成品证据及当地处理条件。</p><p><a href=\"https://search.fsc.org/\">FSC Search</a> · <a href=\"https://products.bpiworld.org/\">BPI Product Catalog</a></p><p>在更换塑料包装时，餐饮品牌经常将PLA、甘蔗渣和FSC认证的纸张进行比较。选择必须与产品相适应：不合适的材料可能会因湿度而软化、受热而变形或导致可堆肥性声明站不住脚。</p>\n<h2>FSC 认证牛皮纸和纸板</h2>\n<p><img decoding=\"async\" src=\"/media/wp/613-sustainably-managed-forest---fsc-wood-fiber-sourcing.jpg\" alt=\"可持续管理的松林，展示具有 FSC 监管链的木纤维来源\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>FSC 适用于来自负责任管理森林的木纤维材料，例如牛皮纸、纸板和纸板。对于纸质吸管、杯子、碗和盒子来说，这是正确的说法；咨询<a href=\"/zh/productos/cajas-y-envases/cajas-de-papel-para-alimentos/\">FSC认证食品盒</a>和<a href=\"/zh/productos/vasos-y-cuencos/cuencos-para-ensaladas/\">FSC认证纸碗</a>由Corncomp。在这三种选择中，它是唯一具有可追溯的监管链保证的选择：每件经过认证的产品都可以追溯到其森林来源。</p>\n<p>FSC 纸本身的防潮和防油脂性能较差。未涂层纸板遇​​热液体或油腻食物会迅速软化。因此，大多数纸质餐饮容器都涂有或与由另一种材料制成的盖子或窗口结合。</p>\n<p>一些模压牛皮纸容器，例如 Corncomp 的天然牛皮纸食品容器系列，还通过相关制造实体宁波万盛包装有限公司获得了 DIN CERTCO 工业可堆肥性认证，符合 DIN EN 13432 和 ASTM D6400 标准。该认证是对 FSC 监管链的补充，而不是取代它。</p>\n<h2>PLA：聚乳酸</h2>\n<p>PLA 是一种从发酵植物淀粉（通常是玉米）中获得的生物塑料。它是三种材料中最透明的，而不仅仅是半透明的，用于制作要显示内容物的盖子、窗户和冷饮杯。</p>\n<p>它的局限性在于热量：它在相对较低的温度下会软化，因此不适合热汤、咖啡或刚从油炸锅中出来的食物。它可以在工业中堆肥，但不能在家里堆肥；它需要一个商业设施才能按预期分解。在垃圾填埋场中，它的表现更像传统塑料。 Corncomp 提供<a href=\"/zh/product/tapa-de-pla-para-cuenco-de-ensalada/\">PLA帽</a>用于沙拉碗和耐热结晶 PLA 选项<a href=\"/zh/product/cubiertos-de-cpla/\">CPLA餐具</a>.</p>\n<h2>甘蔗渣：甘蔗纤维</h2>\n<p>甘蔗渣是用榨汁后剩下的甘蔗浆模制而成的。利用农业副产品而不是使用原始材料。它具有天然的刚性，并且比 PLA 更耐热，因此它经常用于汤杯、热食碗和外卖容器，这些容器在面对蒸汽和热液体时必须保持其形状。</p>\n<p>甘蔗渣可在与 PLA 相同的 BPI/ASTM D6400 框架中进行堆肥。 Corncomp 在该框架内提供 BPI 认证的甘蔗渣产品；认证的申请取决于产品规格。由于甘蔗渣不是木纤维，因此没有 FSC 认证，尽管这两个标签在商业材料中经常被混淆。 Corncomp 的甘蔗渣汤杯系列是其系列的一部分<a href=\"/zh/productos/vasos-y-cuencos/\">沙拉碗和纸杯或汤碗</a>.</p>\n<h2>材质对比</h2>\n<table><thead><tr><th>材料</th><th>经常使用</th><th>面对热和油脂时的行为</th><th>可堆肥性</th><th>通常的认证途径</th></tr></thead><tbody>\n<tr><td>FSC纸/牛皮纸</td><td>吸管、杯子、盒子和品牌印刷</td><td>低的;需要涂层</td><td>FSC 本身并不对可堆肥性进行认证。某些模制容器，例如天然牛皮纸食品容器，具有独立的 DIN CERTCO 认证。</td><td>特定规格的 FSC 和 DIN CERTCO 监管链</td></tr>\n<tr><td>PLA</td><td>透明盖子、窗户和冷饮杯</td><td>低的</td><td>可工业堆肥，不可在家中堆肥</td><td>用于认证具体产品的 BPI 可堆肥 (ASTM D6400)</td></tr>\n<tr><td>渣</td><td>热汤杯、碗和外卖容器</td><td>高的</td><td>在与 PLA 相同的 BPI/ASTM D6400 框架下可进行工业堆肥</td><td>用于认证具体产品的 BPI 可堆肥 (ASTM D6400)</td></tr>\n</tbody></table>\n<p>认证的应用因产品和规格而异。请参阅验证页面上的验证号码和链接。<a href=\"/zh/certificaciones-de-corncomp/\">认证</a>.</p>\n<h2>将材料混合在同一个容器中</h2>\n<p><img decoding=\"async\" src=\"/media/wp/603-compostable-paper-cup-and-food-box-packaging.jpg\" alt=\"可堆肥纸杯和食品盒，展示多种材料组合包装\" style=\"width:100%;height:auto;border-radius:6px;margin:10px 0;\" /></p>\n<p>很少有餐饮品牌在所有尺寸都使用单一材料。通常将经过 FSC 认证的牛皮纸盒与 PLA 窗口结合起来展示内容物，或者将甘蔗渣汤杯与经过 FSC 认证的纸盖结合起来。根据其功能选择每个组件通常可以提高包装的可用性，并允许您更精确地检查其可持续性声明。</p>\n<p>要区分认证声明，请参阅<a href=\"/zh/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/\">BPI 和 FSC</a>;在信任他们之前，请检查<a href=\"/zh/como-verificar-que-las-certificaciones-de-sostenibilidad-de-un-proveedor-de-envases-son-autenticas/\">如何验证供应商的证书</a>.</p>\n<p>Corncomp 内部生产纸吸管，并供应某些 PLA 和甘蔗渣产品，包括产品认证涵盖的规格。制造来源和认证申请因产品而异，必须确认以供订购时参考。咨询<a href=\"/zh/productos/\">目录</a>以及验证号码和链接<a href=\"/zh/certificaciones-de-corncomp/\">认证</a>。对于最小订单、截止日期和自定义打印，请查看<a href=\"/zh/contactenos/\">购买问题</a>。如果您在受监管的市场上销售，我们的指南<a href=\"/zh/directiva-europea-sobre-plasticos-de-un-solo-uso-que-significa-para-los-compradores-de-envases/\">欧洲一次性塑料指令</a>和<a href=\"/zh/leyes-estatales-de-ee-uu-sobre-envases-de-plastico/\">美国各州法律</a>他们解释了哪些材料受到影响。</p>\n<p>您需要帮助选择材料吗？<a href=\"/zh/envases-personalizados/\">告诉我们您需要什么产品和应用</a>任何一个<a href=\"/zh/contactenos/\">直接联系Corncomp</a>接受指导。</p>"
     },
     "architecture:products/bagasse": {
       "route": "/zh/products/bagasse/",
@@ -2978,10 +2981,10 @@
       "route": "/zh/products/cups-bowls/paper-cups/double-wall-kraft-paper-cup/",
       "title": "牛皮纸双层杯",
       "description": "牛皮纸双层杯. 查看产品册中的款式、型号与规格，并按所选产品询价。",
-      "sourceHash": "8c411637602881e409e74354cba8bc2329b92f47fd757c6b23ec47c508fde739",
+      "sourceHash": "41a63070c92a2e34023f524f01e18b3703a97b1da97e1b6cc360c19691b05cab",
       "summary": "牛皮纸双层杯. 以下规格来自 Corncomp 产品册。请根据型号选择尺寸，并在订购前确认适用条件。",
       "specificationHeading": "产品册规格",
-      "comparisonHtml": "<p>查看产品册中的款式、型号与规格，并按所选产品询价。</p>",
+      "comparisonHtml": "<p>查看产品册中的款式、型号与规格，并按所选产品询价。</p><p>Corncomp 确认：CC01DCUP12 和 CC01DCUP12K 的杯口直径均为 80 mm，可配 Corncomp 现有产品范围内所有 80 mm 杯盖。</p>",
       "orderingHeading": "订购信息",
       "faq": "<p>请提供型号、数量、印刷、包装和目的地要求，以确认报价、最低订量与交期。</p>",
       "documentScope": "请确认所选材料、涂层及订单适用的食品接触或环保文件。产品册展示不代表所有产品拥有相同认证。",

@@ -1,11 +1,12 @@
 import { canonicalUrl } from '../lib/routes.mjs';
 import { allLocalizedEntries, normalizeLocalizedRoute } from '../lib/localization.mjs';
+import { blogArchives } from '../lib/site-config.mjs';
 
 export const prerender = true;
 
 const routes = [
   ...allLocalizedEntries().map(({ route }) => normalizeLocalizedRoute(route)),
-  '/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/', '/zh/blog/',
+  ...blogArchives.map(({ route }) => route),
   '/applications/supermarket-packaging/',
   '/faq/',
   ...['fr', 'es', 'ar', 'zh', 'de'].map((language) => '/' + language + '/applications/supermarket-packaging/'),

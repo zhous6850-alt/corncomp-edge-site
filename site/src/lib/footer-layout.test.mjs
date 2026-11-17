@@ -11,8 +11,8 @@ test('shared footer groups navigation separately from business contact details i
       const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0] || '';
       assert.equal((footer.match(/<nav\b/g) || []).length, 2, `${language}: two navigation groups`);
       assert.match(footer, /<address\b/);
-      assert.match(footer, /href="mailto:zhous6850@gmail.com"/);
-      assert.match(footer, />zhous6850@gmail.com<\/a>/);
+      assert.match(footer, /href="mailto:sam.zhou@corn-comp.com"/);
+      assert.match(footer, />sam.zhou@corn-comp.com<\/a>/);
       assert.doesNotMatch(footer, /inquiry@corn-comp\.com/);
       assert.match(footer, /data-analytics-settings/);
       const social = footer.match(/<div[^>]*class="social-links"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';

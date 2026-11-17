@@ -2,6 +2,8 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import QuoteDialog from '../components/QuoteDialog.astro';
+import { RETIRED_GUIDE_KEYS, removeRetiredGuideLinks } from '../lib/retired-guides.mjs';
+import { SUPPORTED_LANGUAGES } from '../lib/localization.mjs';
 import { routeFor } from '../lib/localization.mjs';
 import globalCss from '../styles/global.css?raw';
 import { canonicalUrl, documentDirection } from '../lib/routes.mjs';
@@ -18,14 +20,16 @@ const language = resource?.language || localApplication?.language || sourceLangu
 const pathname = resource?.route || localApplication?.route || sourcePath;
 const title = resource ? resourceText(sourceTitle,language) : localApplication ? applicationText(sourceTitle, language) : sourceTitle;
 const description = resource ? resourceText(sourceDescription,language) : localApplication ? applicationText(sourceDescription, language) : sourceDescription;
-const resourceContent = resource ? localizeResourceHtml(await Astro.slots.render('default'),language) : null;
-const applicationContent = localApplication ? localizeApplicationHtml(await Astro.slots.render('default'), language) : null;
+const retiredRoutes = new Set([...SUPPORTED_LANGUAGES.flatMap(code => [...RETIRED_GUIDE_KEYS].map(key => routeFor(code, key))), ...['resources', 'paper-cup-sizes', 'custom-cup-guide', 'certification-guide'].map(slug => '/design-preview/' + slug + '/')]);
+const pageContent = removeRetiredGuideLinks(await Astro.slots.render('default'), retiredRoutes);
+const resourceContent = resource ? localizeResourceHtml(pageContent,language) : null;
+const applicationContent = localApplication ? localizeApplicationHtml(pageContent, language) : null;
 const structuredData = resource ? localizeResourceSchema(sourceSchemas,language,resourceContent.heading) : localApplication ? localizeApplicationSchema(sourceSchemas, language, applicationContent.heading) : sourceSchemas;
 const canonical = canonicalUrl(pathname);
 const socialImage = new URL(image, 'https://corn-comp.com').href;
 const alternates = pageAlternates(pathname);
 const organization = {
-  '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://corn-comp.com/#organization', name: 'Corncomp', url: 'https://corn-comp.com', email: 'zhous6850@gmail.com', telephone: '+86-574-86961222',
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://corn-comp.com/#organization', name: 'Corncomp', url: 'https://corn-comp.com', email: 'sam.zhou@corn-comp.com', telephone: '+86-574-86961222',
   logo: 'https://corn-comp.com/media/corncomp-logo.png',
   address: { '@type': 'PostalAddress', streetAddress: 'No.2 Building, No.3 Wanquanhe Road, Xiapu Street, Beilun District', addressLocality: 'Ningbo', addressRegion: 'Zhejiang', addressCountry: 'CN' },
   sameAs: ['https://www.facebook.com/profile.php?id=61592477933421', 'https://www.instagram.com/zxh_0927', 'https://www.linkedin.com/in/sam-zhou-431ab9424/'],
@@ -72,7 +76,7 @@ const languageTag = (code) => code === 'zh' ? 'zh-CN' : code;
   </head>
   <body class={bodyClass}>
     <Header language={language} overlay={headerOverlay} />
-    <main>{resourceContent ? <Fragment set:html={resourceContent.html} /> : applicationContent ? <Fragment set:html={applicationContent.html} /> : <slot />}</main>
+    <main>{resourceContent ? <Fragment set:html={resourceContent.html} /> : applicationContent ? <Fragment set:html={applicationContent.html} /> : <Fragment set:html={pageContent} />}</main>
     {resource && <style is:global>
       html[dir="rtl"] main table { text-align: right; }
       html[dir="rtl"] main .verification-steps { border-left: 0; border-right: 1px solid #c2ceba; padding-left: 0; padding-right: 28px; }

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {routeFor,SUPPORTED_LANGUAGES} from './localization.mjs';
-test('contact forms visibly mark exactly the five required fields in every language',async()=>{
+test('contact forms require only name, email and message in every language',async()=>{
  for(const language of SUPPORTED_LANGUAGES){
   const html=await readFile(new URL(`../../dist${routeFor(language,'architecture:contact')}index.html`,import.meta.url),'utf8');
   const form=html.match(/<form\b[^>]*corncomp-inquiry-form[\s\S]*?<\/form>/)[0];
@@ -15,7 +15,7 @@ test('contact forms visibly mark exactly the five required fields in every langu
    assert.equal(marker,required,`${language}:${field[1]}: visible marker matches validation`);
    if(marker)marked.push(field[1]);
   }
-  assert.deepEqual(marked,['name','email','company','country','message']);
+  assert.deepEqual(marked,['name','email','message']);
   assert.ok(form.includes('required-note'));
  }
 });

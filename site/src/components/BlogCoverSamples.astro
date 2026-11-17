@@ -1,0 +1,5 @@
+---
+const { slug } = Astro.props;
+const cover = slug === 'us-state-plastic-packaging-laws-explained' ? 'blog-us-packaging' : slug === 'eu-single-use-plastics-directive-explained' ? 'blog-eu-packaging' : slug === 'bpi-vs-fsc-certification' ? 'blog-bpi-fsc' : 'blog-packaging-materials';
+---
+<img src={`/media/about/${cover}.webp`} width="1440" height="810" alt="" loading="lazy" decoding="async" />

@@ -35,6 +35,9 @@ test('every rebuilt internal link and image resolves to a local output in every 
     for (const [, source] of html.matchAll(/<img\b[^>]*src="([^"]+)"/g)) {
       if (source.startsWith('/') && !routeExists(source.split(/[?#]/)[0])) broken.push(`${file.pathname}: image ${source}`);
     }
+    for (const [, source] of html.matchAll(/<script\b[^>]*src="([^"]+)"/g)) {
+      if (source.startsWith('/') && !routeExists(source.split(/[?#]/)[0])) broken.push(`${file.pathname}: script ${source}`);
+    }
   }
   assert.deepEqual(broken, []);
 });

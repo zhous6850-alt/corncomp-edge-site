@@ -19,9 +19,9 @@ test('all canonical pages retain production social URLs, organization email, sch
     const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
     assert.ok(Array.isArray(schemas), route);
     assert.equal(schemas.filter((node) => node['@type'] === 'Organization').length, 1, route);
-    assert.equal(schemas[0].email, 'zhous6850@gmail.com', route);
+    assert.equal(schemas[0].email, 'sam.zhou@corn-comp.com', route);
     assert.equal(schemas[0]['@id'], 'https://corn-comp.com/#organization', route);
-    assert.ok(html.includes('mailto:zhous6850@gmail.com'), route);
+    assert.ok(html.includes('mailto:sam.zhou@corn-comp.com'), route);
     assert.ok(html.includes('G-R1SHNYEBN8'), route);
     assert.doesNotMatch(html, /<script[^>]+src="https:\/\/www\.googletagmanager\.com/, route);
   }
@@ -39,7 +39,9 @@ test('all blog article identities, original schema images, canonical URLs and al
       assert.equal(article.image, `https://corn-comp.com${post.featuredMedia.localPath}`);
       assert.deepEqual(article.author, { '@id': 'https://corn-comp.com/#organization' });
       assert.deepEqual(article.publisher, { '@id': 'https://corn-comp.com/#organization' });
-      assert.equal(article.dateModified, entry.dateModified || entry.reviewedDate);
+      assert.equal(article.datePublished, post.datePublished);
+      assert.equal(article.dateModified, post.dateModified);
+      assert.match(article.dateModified, /^\d{4}-\d{2}-\d{2}$/);
       assert.ok(html.includes(`rel="canonical" href="https://corn-comp.com${normalizeLocalizedRoute(entry.route)}"`));
       for (const alternate of ['en', 'fr', 'es', 'ar', 'zh', 'de']) {
         const hreflang = alternate === 'zh' ? 'zh-CN' : alternate;
@@ -56,7 +58,7 @@ test('sitemap includes localized archives and excludes retired commerce pages', 
   const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   const expectedRoutes = [
     ...allLocalizedEntries().map(({ route }) => normalizeLocalizedRoute(route)),
-    '/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/', '/zh/blog/',
+    '/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/', '/zh/blog/', '/de/blog/',
     '/applications/supermarket-packaging/',
     '/faq/',
     ...['fr', 'es', 'ar', 'zh', 'de'].map((language) => '/' + language + '/applications/supermarket-packaging/'),
@@ -68,7 +70,6 @@ test('sitemap includes localized archives and excludes retired commerce pages', 
   assert.match(xml, /https:\/\/corn-comp\.com\/products\/cups-bowls\/paper-cups\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/products\/cups-bowls\/paper-cups\/single-wall-white-cardboard-paper-cup\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/applications\/fast-food-packaging\//);
-  assert.match(xml, /https:\/\/corn-comp\.com\/resources\/guides\/paper-cup-sizes\//);
   for (const language of ['fr', 'es', 'ar', 'zh', 'de']) assert.doesNotMatch(xml, new RegExp(`https://corn-comp\\.com/${language}/shop/`));
   assert.match(xml, /https:\/\/corn-comp\.com\/es\/blog\//);
   assert.match(xml, /https:\/\/corn-comp\.com\/ar\/%D[89]/);

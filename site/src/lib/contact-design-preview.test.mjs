@@ -19,8 +19,8 @@ test('contact design preview preserves the inquiry contract without factory illu
  assert.ok(contacts.includes('+86 574 8696 1222'));
  const form=html.match(/<form\b[^>]*corncomp-inquiry-form[\s\S]*?<\/form>/)[0];
  assert.ok(form.includes('action="/api/inquiry" method="post"'));
- assert.deepEqual([...form.matchAll(/<(?:input|textarea)\b[^>]*name="([^"]+)"/g)].map(m=>m[1]),['name','email','company','country','phone','quantity','productName','productSku','category','message','sourcePath','website']);
- assert.equal((form.match(/class="required-mark"/g)||[]).length,5);
+ assert.deepEqual([...form.matchAll(/<(?:input|textarea)\b[^>]*name="([^"]+)"/g)].map(m=>m[1]),['name','email','company','country','phone','productName','productSku','quantity','category','message','sourcePath','website']);
+ assert.equal((form.match(/class="required-mark"/g)||[]).length,3);
  assert.ok(form.includes('data-sitekey="0x4AAAAAAFR8Uz-WseWno-sx"'));
  assert.ok(form.includes('id="contact-details"'));
  assert.ok(form.includes('id="packaging-details"'));

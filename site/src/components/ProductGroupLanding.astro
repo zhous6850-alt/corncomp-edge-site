@@ -1,5 +1,6 @@
 ---
 import ResponsiveMedia from './ResponsiveMedia.astro';
+import { SALAD_PARENT_SUMMARIES } from '../data/salad-bowl-comparison.mjs';
 import { englishInventory, localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
 import { contentText } from '../lib/content-routes.mjs';
 import { PRODUCT_CATEGORIES, categoryForProduct } from '../lib/site-architecture.mjs';
@@ -22,7 +23,7 @@ const ranges=categories.map((category)=>{
  const product=products.find((item)=>item.slug===preferred[category.slug])||products.find((item)=>!/lid|sleeve/.test(item.slug))||products[0];
  const image=product.featuredMedia;
  const dimensions=mediaInventory.find((asset)=>asset.id===image.id).media_details;
- return {slug:category.slug,title:contentText(entry.title),intro:servicePreview&&serviceIntros[category.slug]||entry.intro,href:preview&&group==='bagasse'?`/design-preview/bagasse/${category.slug}/`:preview&&group==='foodservice-supplies'?`/design-preview/service/${category.slug}/`:preview&&group==='cups-bowls'?`/design-preview/${category.slug}/`:preview&&group==='food-boxes-containers'&&FOOD_CATEGORY_PREVIEWS[category.slug]?`/design-preview/food/${category.slug}/`:entry.route, media:{src:image.localPath,width:dimensions.width,height:dimensions.height,alt:localizedEntry(language,product.contentKey).alt||image.alt,fit:'contain',position:'center',evidence:'product'}};
+ return {slug:category.slug,title:contentText(entry.title),intro:category.slug==='salad-bowls'?SALAD_PARENT_SUMMARIES[language]:servicePreview&&serviceIntros[category.slug]||entry.intro,href:preview&&group==='bagasse'?`/design-preview/bagasse/${category.slug}/`:preview&&group==='foodservice-supplies'?`/design-preview/service/${category.slug}/`:preview&&group==='cups-bowls'?`/design-preview/${category.slug}/`:preview&&group==='food-boxes-containers'&&FOOD_CATEGORY_PREVIEWS[category.slug]?`/design-preview/food/${category.slug}/`:entry.route+(category.slug==='salad-bowls'?'#salad-specifications':''), media:{src:image.localPath,width:dimensions.width,height:dimensions.height,alt:localizedEntry(language,product.contentKey).alt||image.alt,fit:'contain',position:'center',evidence:'product'}};
 });
 const chapters=group==='food-boxes-containers'?[
  {id:'meals',title:'For meals & takeaway',intro:'Trays, food pails and meal boxes. Start with the format.',slugs:['paper-trays','square-food-boxes','round-food-boxes','menu-boxes']},

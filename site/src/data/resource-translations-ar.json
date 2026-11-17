@@ -1,4 +1,7 @@
 {
+  "Packaging Resources": "موارد التغليف",
+  "Double-wall kraft paper cup from the Corncomp catalogue": "كوب ورقي كرافت مزدوج الجدار من كتالوج Corncomp",
+  "Corncomp production workshop": "ورشة إنتاج Corncomp",
   "Breadcrumb": "مسار التنقل",
   "Home": "الرئيسية",
   "Quality & certifications": "الجودة والشهادات",
@@ -320,5 +323,7 @@
   "Quality & product documentation": "الجودة ومستندات المنتجات",
   "Packaging resources": "موارد التغليف",
   "Paper cups": "الأكواب الورقية",
-  "Paper Cups": "الأكواب الورقية"
+  "Paper Cups": "الأكواب الورقية",
+  "Verify FSC certificate": "التحقق من شهادة FSC",
+  "Verify Corncomp BPI products": "التحقق من منتجات Corncomp المعتمدة لدى BPI"
 }

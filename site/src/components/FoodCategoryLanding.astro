@@ -1,5 +1,7 @@
 ---
 import ResponsiveMedia from './ResponsiveMedia.astro';
+import StrawProcurement from './StrawProcurement.astro';
+import {SECONDARY_SELECTION_NOTES} from '../data/secondary-selection-notes.mjs';
 import { englishInventory, localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
 import { contentText } from '../lib/content-routes.mjs';
 import { FOOD_CATEGORY_PREVIEWS } from '../data/food-category-preview.mjs';
@@ -9,6 +11,7 @@ import { SERVICE_SECTION_LABELS } from '../data/service-landing-labels.mjs';
 import mediaInventory from '../data/media.json';
 const { category, page, language, configs=FOOD_CATEGORY_PREVIEWS, groupSlug='food-boxes-containers' }=Astro.props;
 const config=configs[category];
+const selectionNote=groupSlug==='food-boxes-containers' ? SECONDARY_SELECTION_NOTES[language]?.[category] : null;
 const ui=uiFor(language);
 const t={...cupLandingLabels(language),...(language==='en'?{
  browse:'Explore formats',orderTitle:'From your menu to your packaging.',orderIntro:'Share the format, dimensions and quantity you need. We’ll review the specification with you.',
@@ -37,10 +40,13 @@ const media=item=>{
  <header class="category-intro"><div><p class="eyebrow">{contentText(group.title)}</p><h1>{contentText(page.title)}</h1><p class="food-tagline">{language==='en'?config.subtitle:t.select}</p><p class="intro-copy">{language==='en'?config.intro:page.intro}</p><a class="primary-link" href={`#${sections[0].id}`}>{t.browse} <span>↓</span></a></div><aside class="range-index" aria-label="On this page"><p>{t.range}</p>{sections.map(section=><a href={`#${section.id}`}><span>{section.title}</span><small>{section.products.length} {t.series} ↗</small></a>)}<a href="#ordering"><span>{t.ordering}</span><small>↗</small></a></aside></header>
  <nav class="category-tabs" aria-label="Product formats">{sections.map(section=><a href={`#${section.id}`}>{section.title}<sup>{section.products.length}</sup></a>)}<a href={quote}>{ui.requestQuote} ↗</a></nav>
  {sections.map((section,index)=><section id={section.id} class="product-section"><div class="section-heading"><div><p class="eyebrow">{t.select}</p><h2>{section.title}</h2></div><p>{section.intro}</p></div><div class:list={['series-grid',{'two-series':[2,4].includes(section.products.length),'one-series':section.products.length===1}]}>{section.products.map(item=><article class="series-card"><a class="series-image" href={routeFor(language,item.contentKey)}><ResponsiveMedia media={media(item)} eager={index===0}/></a><div class="series-info"><h3><a href={routeFor(language,item.contentKey)}>{contentText(localizedEntry(language,item.contentKey).title)}</a></h3><a class="details-link" href={routeFor(language,item.contentKey)}>{t.details} <span>↗</span></a></div></article>)}</div></section>)}
+ {groupSlug==='foodservice-supplies' && category==='paper-straws' && <StrawProcurement language={language} page={page} />}
+ {selectionNote && <section id="selection-note" class="selection-note" aria-labelledby="selection-note-title"><h2 id="selection-note-title">{selectionNote.title}</h2>{selectionNote.text.map(text=><p>{text}</p>)}<a href={quote}>{ui.requestQuote} ↗</a></section>}
  <section id="ordering" class="ordering food-ordering"><div class="ordering-lead"><p class="eyebrow">{t.ordering}</p><h2>{t.orderTitle}</h2><p>{t.orderIntro}</p><a href={quote}>{ui.requestQuote} <span>↗</span></a></div><div class="ordering-steps">{[1,2,3].map(n=><article><span>0{n}</span><div><h3>{t[`step${n}`]}</h3><p>{t[`step${n}Text`]}</p></div></article>)}<details><summary>{t.confirm}</summary><p>{t.terms}</p></details></div></section>
  <nav class="sibling-links" aria-label={t.more}><span>{t.more}</span><a href={group.route}>{contentText(group.title)} ↗</a><a href={nextPage.route}>{contentText(nextPage.title)} ↗</a></nav>
 </div>
 <style>
+ .selection-note{margin:28px 0;padding:28px;border:1px solid #dce3da;background:#f7f9f4;scroll-margin-top:125px}.selection-note h2{font-size:clamp(24px,2.5vw,30px);line-height:1.25;margin:0 0 16px}.selection-note p{font-size:15px;line-height:1.75;color:#617065;max-width:1000px;margin:0 0 16px}.selection-note a{font-size:14px;font-weight:700;text-underline-offset:4px}
   .category-preview{--forest:#1c3927;--muted:#617065;--line:#dce3da;max-width:1320px;margin:auto;padding:0 36px 64px;color:var(--forest)}.preview-note{background:#e9efdf;color:#35503b;text-align:center;font-size:12px;letter-spacing:.06em;padding:8px 16px}.trail{display:flex;flex-wrap:wrap;gap:10px;font-size:14px;color:var(--muted);padding:26px 0}.trail a{text-decoration:none}
   .category-intro{display:grid;grid-template-columns:1.5fr 1fr;gap:72px;padding:24px 0 40px;align-items:center}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;margin:0 0 14px}.category-intro h1{font-size:clamp(38px,4.4vw,62px);line-height:1.05;letter-spacing:-.04em;margin:0}.category-intro h1 span{display:block;font-size:.62em;line-height:1.2;color:#587253;margin-top:12px}.intro-copy{font-size:17px;line-height:1.65;max-width:570px;color:var(--muted);margin:22px 0}.primary-link{display:inline-flex;gap:36px;padding:14px 20px;background:var(--forest);color:#fffdf8;text-decoration:none;font-weight:700;font-size:15px}
   .range-index{border-top:1px solid var(--forest)}.range-index>p{font-size:11px;letter-spacing:.14em;margin:18px 0 4px;color:var(--muted)}.range-index>a{display:flex;gap:20px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:18px 0;text-decoration:none;font-size:18px}.range-index small{font-size:12px;color:var(--muted);white-space:nowrap}.category-tabs{display:flex;flex-wrap:wrap;gap:28px;align-items:center;border-block:1px solid var(--line);padding:19px 0;font-size:14px;font-weight:700}.category-tabs a{text-decoration:none}.category-tabs a:last-child{margin-inline-start:auto}.category-tabs sup{color:#75866e;font-size:10px;margin-left:6px}

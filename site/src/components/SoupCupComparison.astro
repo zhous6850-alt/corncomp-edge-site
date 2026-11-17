@@ -1,0 +1,26 @@
+---
+import {englishInventory,localizedEntry,routeFor} from '../lib/localization.mjs';
+import {contentText} from '../lib/content-routes.mjs';
+import {soupCupRanges,soupLidRanges,SOUP_LABELS} from '../data/soup-cup-comparison.mjs';
+const {language,page}=Astro.props;
+const t=SOUP_LABELS[language],records=englishInventory();
+const cups=soupCupRanges(records),lids=soupLidRanges(records);
+const title=slug=>contentText(localizedEntry(language,`product:${slug}`).title);
+const route=slug=>routeFor(language,`product:${slug}`);
+const quote=(slug,row)=>routeFor(language,'architecture:contact')+'?'+new URLSearchParams({product:`${row.capacity} oz ${title(slug)}`,sku:row.code,category:page.title,source:page.route});
+---
+<section id="soup-cup-comparison" class="soup-cup-comparison" aria-labelledby="soup-comparison-title">
+ <header><h2 id="soup-comparison-title">{t.title}</h2><p>{t.intro}</p></header>
+ <p id="soup-scroll-hint" class="scroll-hint">{t.scroll}</p>
+ {cups.map((range,index)=><details class="cup-range" open={index===0}>
+  <summary>{title(range.slug)}</summary>
+  <p class="source-link"><a href={route(range.slug)}>{t.source} ↗</a></p>
+  <div class="table-scroll" role="region" aria-label={title(range.slug)} aria-describedby="soup-scroll-hint" tabindex="0"><table class="soup-cup-table"><caption>{t.capacityNote}</caption><thead><tr>{t.headers.map(label=><th scope="col">{label}</th>)}</tr></thead><tbody>{range.rows.map(row=><tr><th scope="row"><bdi>{row.capacity}</bdi></th><td><a href={route(range.slug)}><bdi>{row.code}</bdi></a></td><td><bdi>{row.top} × {row.bottom} × {row.height}</bdi></td><td><bdi>{row.carton}</bdi></td><td><a class="cup-quote" href={quote(range.slug,row)}>{t.quote} ↗</a></td></tr>)}</tbody></table></div>
+ </details>)}
+ <div class="component-section"><h3 id="soup-lids-title">{t.lidsTitle}</h3><p>{t.lidsIntro}</p><div class="table-scroll" role="region" aria-labelledby="soup-lids-title" aria-describedby="soup-scroll-hint" tabindex="0"><table class="soup-lid-table"><thead><tr>{t.lidHeaders.map(label=><th scope="col">{label}</th>)}</tr></thead><tbody>{lids.map(range=><tr><th scope="row">{title(range.slug)}</th>{range.rows.map(row=><td><bdi>{row.code}</bdi>{row.weight!==null&&<small><bdi>{row.weight} g</bdi></small>}</td>)}<td><a href={route(range.slug)}>{t.lidDetails} ↗</a></td></tr>)}</tbody></table></div><p class="fit-note">{t.fit}</p></div>
+ <div class="use-conditions"><h3>{t.useTitle}</h3><p>{t.useIntro}</p><dl>{t.conditions.map(([label,description])=><div><dt>{label}</dt><dd>{description}</dd></div>)}</dl><a href={routeFor(language,'architecture:quality')}>{t.quality} ↗</a><p class="order-terms">{t.terms}</p></div>
+</section>
+<style>
+ .soup-cup-comparison{padding:40px 0 20px;color:#1c3927;scroll-margin-top:130px}header{max-width:950px}h2{font-size:clamp(28px,3vw,36px);letter-spacing:-.03em;line-height:1.15;margin:0 0 16px}h3{font-size:clamp(24px,2.5vw,30px);line-height:1.2;margin:0 0 12px}p{font-size:15px;line-height:1.65;color:#617065;margin:0 0 18px}.scroll-hint{font-size:12px;margin-bottom:8px}.cup-range{border-block-end:1px solid #dce3da;padding:20px 0}.cup-range summary{cursor:pointer;font-size:20px;font-weight:700;line-height:1.4}.source-link{font-size:13px;margin:14px 0}.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;max-width:100%;border:1px solid #dce3da;background:#fff}.table-scroll:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #71935e;outline-offset:3px}table{width:100%;border-collapse:collapse;font-size:14px;text-align:start}.soup-cup-table{min-width:850px}.soup-lid-table{min-width:800px}caption{caption-side:bottom;text-align:start;padding:16px 20px;font-size:13px;line-height:1.6;color:#617065;background:#f7f9f4}th,td{padding:17px 18px;border-bottom:1px solid #dce3da;text-align:start;vertical-align:middle;line-height:1.5}thead th{font-size:12px;background:#edf1e7}tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}td bdi{white-space:nowrap}small{display:block;color:#617065;margin-top:5px}a{color:inherit;text-underline-offset:4px}.cup-quote{font-weight:700;font-size:12px}.component-section{padding-top:36px}.fit-note{font-size:13px;padding:16px 20px;background:#edf1e7;border-inline-start:3px solid #71935e;margin:24px 0}.use-conditions{padding:12px 0 24px;border-bottom:1px solid #dce3da}dl{margin:24px 0}dl>div{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:16px 0;border-top:1px solid #dce3da}dt{font-weight:700}dd{margin:0;color:#617065;line-height:1.6}.order-terms{font-size:13px;margin-top:20px}
+ @media(max-width:680px){.soup-cup-comparison{padding-top:30px}p{font-size:14px}th,td{padding:15px}dl>div{grid-template-columns:1fr;gap:8px}.component-section{padding-top:30px}}
+</style>

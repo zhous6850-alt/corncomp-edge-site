@@ -1,4 +1,7 @@
 {
+  "Packaging Resources": "Verpackungswissen",
+  "Double-wall kraft paper cup from the Corncomp catalogue": "Doppelwandiger Kraftpapierbecher aus dem Corncomp-Katalog",
+  "Corncomp production workshop": "Corncomp Produktionshalle",
   "Breadcrumb": "Brotkrümelnavigation",
   "Home": "Startseite",
   "Quality & certifications": "Qualität & Zertifizierungen",
@@ -320,5 +323,7 @@
   "Quality & product documentation": "Qualitäts- & Produktunterlagen",
   "Packaging resources": "Wissenswertes zu Verpackungen",
   "Paper cups": "Papierbecher",
-  "Paper Cups": "Papierbecher"
+  "Paper Cups": "Papierbecher",
+  "Verify FSC certificate": "FSC-Zertifikat prüfen",
+  "Verify Corncomp BPI products": "BPI-Produkte von Corncomp prüfen"
 }

@@ -1,0 +1,87 @@
+// Scope from supplied company-profile excerpt; figures confirmed by Corncomp on 2026-11-02.
+export const COMPANY_CLAIMS={
+  "en": {
+    "companyArea": "8,000 m²",
+    "area": "6,800 m²",
+    "lines": "60",
+    "capacity": "2.5 billion",
+    "companyLabel": "Total company area",
+    "label": "GMP-standard clean workshop",
+    "linesLabel": "Production lines",
+    "capacityLabel": "Company-reported annual paper-straw capacity",
+    "statement": "Corncomp reports a total company area of 8,000 m², including an approximately 6,800 m² fully enclosed clean workshop. Company materials describe the workshop with reference to GMP food-production standards.",
+    "source": "Facility terminology follows the company profile; figures were confirmed by Corncomp on 2 November 2026. The GMP wording describes the company’s workshop standard, not a third-party GMP certificate. Annual paper-straw capacity is not actual annual output or guaranteed availability for a specific order.",
+    "production": "Corncomp reports 60 production lines at its Ningbo site, covering paper preparation, printing, cutting, forming and packing.",
+    "capacityNote": "Corncomp reports annual paper-straw capacity of 2.5 billion pieces. Confirm capacity available for the selected specification, quantity and schedule; this is not a statement of actual annual output."
+  },
+  "fr": {
+    "companyArea": "8 000 m²",
+    "area": "6 800 m²",
+    "lines": "60",
+    "capacity": "2,5 milliards",
+    "companyLabel": "Surface totale du site",
+    "label": "Atelier propre de référence GMP",
+    "linesLabel": "Lignes de production",
+    "capacityLabel": "Capacité annuelle de pailles déclarée par l’entreprise",
+    "statement": "Corncomp indique une surface totale de 8 000 m², dont un atelier propre entièrement fermé d’environ 6 800 m². Les documents de l’entreprise décrivent cet atelier en référence aux bonnes pratiques GMP de production alimentaire.",
+    "source": "La description suit le profil de l’entreprise ; Corncomp a confirmé les chiffres le 2 novembre 2026. La référence GMP décrit le standard déclaré de l’atelier, pas un certificat GMP tiers. La capacité annuelle de pailles ne représente ni la production réalisée ni la disponibilité garantie par commande.",
+    "production": "Corncomp indique 60 lignes de production à Ningbo, couvrant préparation du papier, impression, découpe, formage et emballage.",
+    "capacityNote": "Corncomp indique une capacité annuelle de 2,5 milliards de pailles en papier. Confirmez la capacité disponible selon spécification, quantité et calendrier ; ce chiffre ne représente pas la production annuelle réalisée."
+  },
+  "es": {
+    "companyArea": "8.000 m²",
+    "area": "6.800 m²",
+    "lines": "60",
+    "capacity": "2.500 millones",
+    "companyLabel": "Superficie total de la empresa",
+    "label": "Taller limpio de referencia GMP",
+    "linesLabel": "Líneas de producción",
+    "capacityLabel": "Capacidad anual de pajitas declarada por la empresa",
+    "statement": "Corncomp declara una superficie total de 8.000 m², incluido un taller limpio totalmente cerrado de aproximadamente 6.800 m². Los materiales de la empresa describen el taller con referencia a las prácticas GMP de producción alimentaria.",
+    "source": "La descripción procede del perfil de la empresa; Corncomp confirmó las cifras el 2 de noviembre de 2026. La referencia GMP describe el estándar declarado del taller, no un certificado GMP de terceros. La capacidad anual de pajitas no es producción realizada ni disponibilidad garantizada por pedido.",
+    "production": "Corncomp declara 60 líneas de producción en Ningbo para preparación del papel, impresión, corte, formado y empaquetado.",
+    "capacityNote": "Corncomp declara una capacidad anual de 2.500 millones de pajitas de papel. Confirme disponibilidad según especificación, cantidad y plazo; la cifra no representa producción anual realizada."
+  },
+  "ar": {
+    "companyArea": "8 000 m²",
+    "area": "6 800 m²",
+    "lines": "60",
+    "capacity": "2.5 مليار",
+    "companyLabel": "المساحة الإجمالية للشركة",
+    "label": "ورشة نظيفة وفق مرجعية GMP",
+    "linesLabel": "خطوط الإنتاج",
+    "capacityLabel": "الطاقة السنوية للماصات الورقية حسب الشركة",
+    "statement": "تذكر Corncomp مساحة إجمالية للشركة تبلغ 8 000 م² تشمل ورشة نظيفة مغلقة بالكامل بمساحة تقارب 6 800 م². تصف مواد الشركة الورشة بالرجوع إلى ممارسات GMP للإنتاج الغذائي.",
+    "source": "تستند المصطلحات إلى ملف الشركة، وأكدت Corncomp الأرقام في 2 نوفمبر 2026. تشير صياغة GMP إلى معيار الورشة الموصوف من الشركة، وليست شهادة GMP من طرف ثالث. الطاقة السنوية للماصات ليست الإنتاج الفعلي ولا تضمن التوفر لطلب محدد.",
+    "production": "تذكر Corncomp وجود 60 خط إنتاج في نينغبو لتجهيز الورق والطباعة والقص والتشكيل والتعبئة.",
+    "capacityNote": "تذكر Corncomp طاقة سنوية تبلغ 2.5 مليار ماصة ورقية. أكد الطاقة المتاحة حسب المواصفة والكمية والموعد؛ الرقم لا يمثل الإنتاج السنوي الفعلي."
+  },
+  "zh": {
+    "companyArea": "8,000 m²",
+    "area": "6,800 m²",
+    "lines": "60",
+    "capacity": "25亿根",
+    "companyLabel": "公司总面积",
+    "label": "准GMP食品标准无尘车间",
+    "linesLabel": "生产线",
+    "capacityLabel": "公司提供的纸吸管年产能",
+    "statement": "公司总面积为8,000平方米，其中约6,800平方米为全封闭清洁（无尘）车间；公司资料原文表述为“准GMP食品标准”。",
+    "source": "车间术语依据公司资料，数字由公司于2026年11月2日确认。“准GMP”描述公司资料所述的车间标准，并非第三方GMP认证；纸吸管年产能不等于实际年度产量，也不保证具体订单的可用产能。",
+    "production": "公司提供的宁波厂区生产线数量为60条，涵盖纸张准备、印刷、分切、成型与包装等工序。",
+    "capacityNote": "公司提供的纸吸管年产能为25亿根。具体规格、数量与交付时间对应的可用产能须逐单确认；该数字不代表实际年度产量。"
+  },
+  "de": {
+    "companyArea": "8.000 m²",
+    "area": "6.800 m²",
+    "lines": "60",
+    "capacity": "2,5 Milliarden",
+    "companyLabel": "Gesamtfläche des Unternehmens",
+    "label": "Saubere Werkstatt mit GMP-Bezug",
+    "linesLabel": "Produktionslinien",
+    "capacityLabel": "Vom Unternehmen angegebene jährliche Papierstrohhalmkapazität",
+    "statement": "Corncomp gibt eine Gesamtfläche von 8.000 m² an, einschließlich einer vollständig geschlossenen sauberen Werkstatt von etwa 6.800 m². Unternehmensunterlagen beschreiben die Werkstatt mit Bezug auf GMP-Praktiken für die Lebensmittelproduktion.",
+    "source": "Die Beschreibung folgt dem Unternehmensprofil; Corncomp bestätigte die Zahlen am 2. November 2026. Der GMP-Bezug beschreibt den angegebenen Werkstattstandard, kein GMP-Zertifikat Dritter. Jährliche Papierstrohhalmkapazität ist weder tatsächliche Jahresproduktion noch garantierte Verfügbarkeit je Auftrag.",
+    "production": "Corncomp gibt für Ningbo 60 Produktionslinien für Papiervorbereitung, Druck, Zuschnitt, Formgebung und Verpackung an.",
+    "capacityNote": "Corncomp gibt eine Jahreskapazität von 2,5 Milliarden Papierstrohhalmen an. Verfügbarkeit nach Spezifikation, Menge und Termin bestätigen; die Zahl ist keine tatsächliche Jahresproduktion."
+  }
+};

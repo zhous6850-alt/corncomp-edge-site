@@ -4,9 +4,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import QualityPage from '../components/QualityPage.astro';
 import AboutCompanyPreview from '../components/AboutCompanyPreview.astro';
 import FactoryPage from '../components/FactoryPage.astro';
-import ResourcesPage from '../components/ResourcesPage.astro';
-import PaperCupSizesPage from '../components/PaperCupSizesPage.astro';
-import CertificationGuidePage from '../components/CertificationGuidePage.astro';
 import BlogPage from '../components/BlogPage.astro';
 import PublishedApplication from '../components/PublishedApplication.astro';
 import HomePage from '../components/HomePage.astro';
@@ -39,7 +36,7 @@ const publishedCustomKeys = new Set(['home','architecture:resources/guides/food-
 const archiveRoutes = [['en', 'blog', '/blog/'], ['fr', 'blog', '/fr/blog/'], ['es', 'blog', '/es/blog/'], ['ar', 'blog', '/ar/blog/'], ['zh', 'blog', '/zh/blog/'], ['de', 'blog', '/de/blog/']];
 
 const { language = 'en', contentKey, archive } = Astro.props;
-const ResourceRedesign = contentKey === 'architecture:about' ? AboutCompanyPreview : language === 'en' && contentKey === 'architecture:about/factory' ? FactoryPage : archive === 'blog' ? BlogPage : ({'architecture:quality':QualityPage,'architecture:resources':ResourcesPage,'architecture:resources/guides/paper-cup-sizes':PaperCupSizesPage,'architecture:resources/guides/food-packaging-certifications':CertificationGuidePage})[contentKey];
+const ResourceRedesign = contentKey === 'architecture:about' ? AboutCompanyPreview : language === 'en' && contentKey === 'architecture:about/factory' ? FactoryPage : archive === 'blog' ? BlogPage : ({'architecture:quality':QualityPage})[contentKey];
 const inventory = englishInventory();
 const source = contentKey ? inventory.find((item) => item.contentKey === contentKey) : null;
 const entry = contentKey ? localizedEntry(language, contentKey) : null;
@@ -96,7 +93,7 @@ const breadcrumbs = entry ? [[homeLabel, routeFor(language, 'home')], ...(produc
 const breadcrumbSchema = breadcrumbs.length > 1 ? { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: breadcrumbs.map(([name, route], index) => ({ '@type': 'ListItem', position: index + 1, name: contentText(name), item: `https://corn-comp.com${route}` })) } : null;
 const productSchema = product ? { '@context': 'https://schema.org', '@type': 'Product', name: contentText(entry.title), url: `https://corn-comp.com${entry.route}`, image: product.featuredMedia ? new URL(product.featuredMedia.localPath, 'https://corn-comp.com').href : undefined, description: localized ? entry.description : contentDescription(product), category: categoryPage.title, brand: { '@type': 'Brand', name: 'Corncomp' }, sku: itemCodes.length === 1 ? itemCodes[0] : undefined, additionalProperty: itemCodes.map((value) => ({ '@type': 'PropertyValue', name: 'Item number', value })) } : null;
 const listingSchema = architectureCategory ? { '@context': 'https://schema.org', '@type': 'ItemList', name: contentText(page.title), itemListElement: architectureProducts.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: contentText(localizedEntry(language, item.contentKey).title), url: `https://corn-comp.com${routeFor(language, item.contentKey)}` })) } : null;
-const articleSchema = post || architecture?.kind === 'guide' ? { '@context': 'https://schema.org', '@type': 'Article', name: contentText(entry.title), headline: contentText(entry.title), description: entry.description, mainEntityOfPage: `https://corn-comp.com${entry.route}`, image: post?.featuredMedia ? new URL(post.featuredMedia.localPath, 'https://corn-comp.com').href : undefined, dateModified: entry.dateModified || entry.reviewedDate, author: { '@id': 'https://corn-comp.com/#organization' }, publisher: { '@id': 'https://corn-comp.com/#organization' } } : null;
+const articleSchema = post || architecture?.kind === 'guide' ? { '@context': 'https://schema.org', '@type': 'Article', name: contentText(entry.title), headline: contentText(entry.title), description: entry.description, mainEntityOfPage: `https://corn-comp.com${entry.route}`, image: post?.featuredMedia ? new URL(post.featuredMedia.localPath, 'https://corn-comp.com').href : undefined, datePublished: post?.datePublished, dateModified: post ? post.dateModified : entry.dateModified || entry.reviewedDate, author: { '@id': 'https://corn-comp.com/#organization' }, publisher: { '@id': 'https://corn-comp.com/#organization' } } : null;
 const webPageSchema = architecture && !listingSchema && !articleSchema ? { '@context': 'https://schema.org', '@type': 'WebPage', name: architecture.kind === 'contact' ? `${CONTACT_DESIGN_LABELS[language].title1} ${CONTACT_DESIGN_LABELS[language].title2}` : architecture.kind === 'products' ? PRODUCT_DIRECTORY_TITLES[language] : contentText(page.title), url: `https://corn-comp.com${page.route}`, description: page.description } : null;
 if (architecture?.kind === 'contact') {
   const contactUrl = `https://corn-comp.com${page.route}`;

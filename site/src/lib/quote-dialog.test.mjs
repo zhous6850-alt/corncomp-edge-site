@@ -11,6 +11,17 @@ test('quote and contact links open the dialog while the fallback still opens the
   assert.equal(isQuoteLink({href:'https://other.example/zh/contact/',text:'获取报价'},context),false);
   assert.equal(isQuoteLink({href:'/products/',text:'获取报价'},context),false);
 });
+
+test('product quote actions append through the shared controller instead of overwriting fields',()=>{
+  const calls=[];
+  let saves=0;
+  const form={elements:{sourcePath:{value:''}},inquiryProducts:{append:params=>calls.push(params.get('sku')),save:()=>saves++}};
+  applyQuoteContext(form,new URLSearchParams('product=Cup&sku=C1'),'/cup/');
+  applyQuoteContext(form,new URLSearchParams('product=Bowl&sku=B1'),'/bowl/');
+  assert.deepEqual(calls,['C1','B1']);
+  assert.equal(form.elements.sourcePath.value,'/bowl/');
+  assert.equal(saves,2);
+});
 test('quote context carries product information but reopening a general quote preserves input',()=>{
   const fields=Object.fromEntries(['productName','productSku','category','sourcePath'].map(name=>[name,{value:''}]));
   applyQuoteContext(fields,new URLSearchParams('product=Cup&sku=CC01&category=Cups'),'/products/cup/');

@@ -1,3 +1,4 @@
+import {COMPANY_CLAIMS} from '../data/company-claims.mjs';
 import { createHash } from 'node:crypto';
 import records from '../data/records.json' with { type: 'json' };
 import fr from '../data/locales/fr.json' with { type: 'json' };
@@ -5,6 +6,7 @@ import es from '../data/locales/es.json' with { type: 'json' };
 import ar from '../data/locales/ar.json' with { type: 'json' };
 import zh from '../data/locales/zh.json' with { type: 'json' };
 import de from '../data/locales/de.json' with { type: 'json' };
+import { RETIRED_GUIDE_KEYS } from './retired-guides.mjs';
 import { ARCHITECTURE_PAGES, PRODUCT_CATEGORY_BY_SLUG, canonicalProductRoute } from './site-architecture.mjs';
 
 export const SUPPORTED_LANGUAGES = ['en', 'fr', 'es', 'ar', 'zh', 'de'];
@@ -40,19 +42,14 @@ export const ENGLISH_HOME = {
   hero: {
     imageAlt: 'Corncomp paper food packaging in beverage service',
     eyebrow: 'Paper packaging manufacturer · Ningbo, China',
-    heading: 'Biodegradable Paper Food Packaging',
+    heading: 'Paper Food Packaging Manufacturer Since 2018',
     text: 'Cups, bowls, food boxes and paper straws for distributors and restaurant groups, with custom printing available.',
     primaryLabel: 'Explore products',
     primaryKey: 'architecture:products',
     secondaryLabel: 'Request a quote',
     secondaryKey: 'architecture:contact',
   },
-  proof: [
-    ['8,000 m²', 'Manufacturing base'],
-    ['6,800 m²', 'GMP-standard dust-free workshop'],
-    ['60', 'Production lines'],
-    ['2.5 billion', 'Annual paper straw capacity'],
-  ],
+  proof: [[COMPANY_CLAIMS.en.companyArea,COMPANY_CLAIMS.en.companyLabel],[COMPANY_CLAIMS.en.area,COMPANY_CLAIMS.en.label],[COMPANY_CLAIMS.en.lines,COMPANY_CLAIMS.en.linesLabel],[COMPANY_CLAIMS.en.capacity,COMPANY_CLAIMS.en.capacityLabel]],
   proofLabel: 'Manufacturing overview',
   productIntro: {
     eyebrow: 'Product architecture',
@@ -68,7 +65,7 @@ export const ENGLISH_HOME = {
     imageAlt: 'Production machinery inside the Corncomp workshop in Ningbo',
     eyebrow: 'Our Ningbo factory',
     heading: 'Our Ningbo Factory',
-    text: 'Founded in 2018, Corncomp manufactures paper straws, cups and bowls in Ningbo, China. Our company premises cover 8,000 m², including 6,800 m² of factory space.',
+    text: 'Founded in 2018, Corncomp manufactures paper straws, cups and bowls in Ningbo, China. '+COMPANY_CLAIMS.en.statement,
     bullets: ['Straight, bendable and angled paper straws', 'Paper cups and kraft or white paper bowls', 'Printing, slitting, die-cutting and forming', 'Product wrapping and carton packing'],
     label: 'Explore our factory',
     contentKey: 'architecture:about/factory',
@@ -168,7 +165,7 @@ export function localizedShopRedirects() {
 }
 
 export function allLocalizedEntries() {
-  return SUPPORTED_LANGUAGES.flatMap((language) => englishInventory().flatMap((source) => {
+  return SUPPORTED_LANGUAGES.flatMap((language) => englishInventory().filter(source => !RETIRED_GUIDE_KEYS.has(source.contentKey)).flatMap((source) => {
     const entry = localizedEntry(language, source.contentKey);
     return entry ? [{ language, contentKey: source.contentKey, ...entry }] : [];
   }));

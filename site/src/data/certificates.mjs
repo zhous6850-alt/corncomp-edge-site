@@ -20,7 +20,7 @@ export const COMPANY_CERTIFICATES = [
   },
   {
     key: 'fsc-coc', group: 'company',
-    title: { en: 'FSC Chain of Custody', fr: 'Chaîne de contrôle FSC', es: 'Cadena de custodia FSC', ar: 'سلسلة الحيازة FSC', zh: '保管链', de: 'FSC-Chain-of-Custody' },
+    title: { en: 'FSC Chain of Custody', fr: 'Chaîne de contrôle FSC', es: 'Cadena de custodia FSC', ar: 'سلسلة الحيازة FSC', zh: 'FSC 产销监管链', de: 'FSC-Chain-of-Custody' },
     holder: CORNCOMP, certificateNumber: 'RINA-COC-001953',
     standard: 'FSC-STD-40-004 V3-1; FSC-STD-50-001',
     scope: {
@@ -28,14 +28,14 @@ export const COMPANY_CERTIFICATES = [
       fr: 'Chaîne de contrôle pour les groupes de papiers d’emballage et de produits de restauration en papier figurant sur le certificat ; les allégations par article nécessitent des documents de vente justificatifs.',
       es: 'Cadena de custodia para los grupos de papel de envolver y productos de papel para restauración indicados en el certificado; las declaraciones por artículo requieren documentos de venta.',
       ar: 'سلسلة الحيازة لمجموعات ورق التغليف والمنتجات الورقية لخدمات الطعام المدرجة في الشهادة؛ وتتطلب المطالبات الخاصة بكل صنف مستندات بيع داعمة.',
-      zh: '证书上列出的纸质包装和纸质餐饮服务产品组的保管链；个别项目索赔需要证明销售文件。',
+      zh: '证书所列纸质包装及纸质餐饮用品产品组的产销监管链；具体产品的 FSC 声明须有相应销售文件支持。',
       de: 'Produktkettenzertifizierung für die im Zertifikat aufgeführten Verpackungspapiere und Gastronomieprodukte aus Papier; Aussagen zu einzelnen Artikeln erfordern entsprechende Verkaufsunterlagen.',
     },
     validUntil: '2027-09-08', imageKey: 'certificate:fsc',
   },
   {
     key: 'bpi-straws', group: 'company',
-    title: { en: 'BPI Product Certificate', fr: 'Certificat de produit BPI', es: 'Certificado de producto BPI', ar: 'شهادة منتج BPI', zh: '产品合格证', de: 'BPI-Produktzertifikat' },
+    title: { en: 'BPI Product Certificate', fr: 'Certificat de produit BPI', es: 'Certificado de producto BPI', ar: 'شهادة منتج BPI', zh: 'BPI 产品认证', de: 'BPI-Produktzertifikat' },
     holder: CORNCOMP, certificateNumber: '10529571-1',
     standard: 'ASTM D6400',
     scope: {
@@ -43,7 +43,7 @@ export const COMPANY_CERTIFICATES = [
       fr: 'Pailles en papier imprimées d’un grammage maximal de 352 g/m² ; ce certificat ne couvre pas tous les produits Corncomp.',
       es: 'Pajitas de papel impresas con gramaje máximo de 352 g/m²; este certificado no cubre todos los productos Corncomp.',
       ar: 'ماصات ورقية مطبوعة بوزن أقصى 352 g/m²؛ ولا تشمل هذه الشهادة جميع منتجات كورنكومب.',
-      zh: '最大克重352 g/m ²的印刷纸吸管；本证书不适用于所有Corncomp产品。',
+      zh: '最大克重 352 g/m² 的印刷纸吸管；本证书不适用于所有Corncomp产品。',
       de: 'Bedruckte Papierstrohhalme mit einem maximalen Flächengewicht von 352 g/m²; dieses Zertifikat gilt nicht für jedes Corncomp-Produkt.',
     },
     validUntil: '2027-09-30', imageKey: 'certificate:bpi',

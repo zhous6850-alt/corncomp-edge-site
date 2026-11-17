@@ -1,0 +1,28 @@
+---
+import { MAX_INQUIRY_PRODUCTS } from '../lib/inquiry-products.mjs';
+const {language,productLabel,skuLabel,quantityLabel,categoryLabel}=Astro.props;
+const [item,add,remove,limit]={
+  en:['Product','Add another product','Remove product','This inquiry can include up to 50 products.'],
+  zh:['产品','再添加一个产品','删除产品','一份询价最多可包含 50 个产品。'],
+  fr:['Produit','Ajouter un produit','Supprimer le produit','Cette demande peut contenir jusqu’à 50 produits.'],
+  es:['Producto','Añadir otro producto','Eliminar producto','Esta consulta puede incluir hasta 50 productos.'],
+  de:['Produkt','Weiteres Produkt hinzufügen','Produkt entfernen','Diese Anfrage kann bis zu 50 Produkte enthalten.'],
+  ar:['المنتج','إضافة منتج آخر','إزالة المنتج','يمكن أن يتضمن هذا الاستفسار ما يصل إلى 50 منتجًا.'],
+}[language];
+---
+<div class="inquiry-products form-wide" data-inquiry-products data-item-label={item} data-remove-label={remove} data-limit-label={limit} data-product-limit={MAX_INQUIRY_PRODUCTS}>
+  <div data-product-rows>
+    <fieldset class="inquiry-product" data-product-row>
+      <legend data-product-number>{item} 1</legend>
+      <div class="inquiry-product-fields">
+        <label class="product-name">{productLabel}<input name="productName" maxlength="300"></label>
+        <label>{skuLabel}<input name="productSku" maxlength="100"></label>
+        <label>{quantityLabel}<input name="quantity" maxlength="100"></label>
+        <label class="product-name">{categoryLabel}<input name="category" maxlength="200"></label>
+      </div>
+      <button type="button" class="inquiry-product-remove" data-remove-product>{remove}</button>
+    </fieldset>
+  </div>
+  <button type="button" class="inquiry-product-add" data-add-product><span aria-hidden="true">＋</span> {add}</button>
+  <p class="inquiry-product-status" data-product-status role="status" aria-live="polite"></p>
+</div>

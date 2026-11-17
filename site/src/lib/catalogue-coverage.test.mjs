@@ -1,3 +1,4 @@
+import { RETIRED_GUIDE_KEYS } from './retired-guides.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -70,9 +71,9 @@ test('new products retain every structured specification row across all six lang
  }
 });
 
-test('every pre-expansion canonical URL still has a built page',async()=>{
+test('every retained pre-expansion canonical URL still has a built page',async()=>{
  const baseline=JSON.parse(await readFile(new URL('../../../docs/qa/catalogue-route-baseline.json',import.meta.url),'utf8'));
- for(const entry of baseline.entries){
+ for(const entry of baseline.entries.filter(entry => !RETIRED_GUIDE_KEYS.has(entry.contentKey))){
   assert.equal(localizedEntry(entry.language,entry.contentKey)?.route,entry.route,entry.contentKey);
   assert.ok((await readFile(new URL(`../../dist/${entry.route.slice(1)}index.html`,import.meta.url),'utf8')).includes('<html'),entry.route);
  }

@@ -5,18 +5,14 @@ import HomeProductCatalogue from './HomeProductCatalogue.astro';
 import HomeSourcingQuestions from './HomeSourcingQuestions.astro';
 import HomeCertificates from './HomeCertificates.astro';
 import HomeTradeShows from './HomeTradeShows.astro';
+import HomeHeroVideo from './HomeHeroVideo.astro';
 import { routeFor } from '../lib/localization.mjs';
+import {COMPANY_CLAIMS} from '../data/company-claims.mjs';
 import homeImages from '../data/home-images.json';
 
 const { language, content, ui } = Astro.props;
-const factoryFactLabels = {
-  en: ['Company area', 'Factory area', 'Production lines'],
-  zh: ['公司总面积', '厂房面积', '生产线'],
-  fr: ['Surface du site', 'Surface de l’usine', 'Lignes de production'],
-  es: ['Superficie total', 'Superficie de fábrica', 'Líneas de producción'],
-  de: ['Unternehmensgelände', 'Fabrikfläche', 'Produktionslinien'],
-  ar: ['مساحة الشركة', 'مساحة المصنع', 'خطوط الإنتاج'],
-}[language];
+const claims=COMPANY_CLAIMS[language];
+const factoryFactLabels=[claims.companyLabel,claims.label,claims.linesLabel];
 const emphasis = { en: 'Paper Food Packaging', fr: 'alimentaires en papier', es: 'de papel', ar: 'ورقية', zh: '纸质食品包装', de: 'aus Papier' }[language];
 const [headingStart, headingEnd] = content.hero.heading.split(emphasis);
 const displayHeadingStart = language === 'de' ? headingStart.trim().replace('verpackungen', '\u00adverpackungen') : headingStart.trim();
@@ -35,7 +31,7 @@ const factoryAlt = {
     <link rel="preload" as="image" media="not all and (max-width: 480px)" href={homeImages.hero.src} imagesrcset={homeImages.hero.srcset} imagesizes="(max-width: 700px) 960px, 100vw" fetchpriority="high" />
   </Fragment>
   <section class="home-hero">
-    <div class="home-hero-media"><picture><source media="(max-width: 480px)" type="image/webp" srcset={homeImages.heroMobile.srcset} sizes="508px" width={homeImages.heroMobile.width} height={homeImages.heroMobile.height} /><img {...homeImages.hero} sizes="(max-width: 700px) 960px, 100vw" alt={factoryAlt} width="1702" height="1276" fetchpriority="high" decoding="async"></picture></div>
+    <div class="home-hero-media"><picture><source media="(max-width: 480px)" type="image/webp" srcset={homeImages.heroMobile.srcset} sizes="508px" width={homeImages.heroMobile.width} height={homeImages.heroMobile.height} /><img {...homeImages.hero} sizes="(max-width: 700px) 960px, 100vw" alt={factoryAlt} width="1702" height="1276" fetchpriority="high" decoding="async"></picture><HomeHeroVideo language={language} /></div>
     <div class="content-shell home-hero-content"><p class="eyebrow">{content.hero.eyebrow}</p><h1 aria-label={content.hero.heading}><span class="home-hero-line">{displayHeadingStart}</span><span class="home-hero-emphasis">{emphasis}</span>{headingEnd.trim() && <span class="home-hero-tail">{headingEnd.trim()}</span>}</h1><p class="home-hero-copy">{content.hero.text}</p><div class="hero-actions"><a class="button-primary" href={routeFor(language, content.hero.secondaryKey)}>{content.hero.secondaryLabel}<span aria-hidden="true"> →</span></a><a class="home-hero-product-link" href={routeFor(language, content.hero.primaryKey)}>{content.hero.primaryLabel}<span aria-hidden="true"> ↗</span></a></div></div>
   </section>
 
@@ -45,7 +41,7 @@ const factoryAlt = {
 
   <HomeProductCatalogue language={language} ui={ui} />
 
-  <section class="home-factory" id="our-factory"><div class="content-shell home-factory-grid"><div class="home-factory-media"><img src="/media/wp/293-facility-photo-new.webp" width="1920" height="1079" alt={content.factory.imageAlt} loading="lazy" decoding="async"></div><div class="home-factory-copy"><h2>{content.factory.heading}</h2><p>{content.factory.text}</p><dl class="home-factory-facts">{['8,000 m²', '6,800 m²', '60'].map((value, index) => <div><dt>{factoryFactLabels[index]}</dt><dd dir="ltr">{value}</dd></div>)}</dl><a class="button-primary" href={routeFor(language, content.factory.contentKey)}>{content.factory.label}</a></div></div></section>
+  <section class="home-factory" id="our-factory"><div class="content-shell home-factory-grid"><div class="home-factory-media"><img src="/media/wp/293-facility-photo-new.webp" width="1920" height="1079" alt={content.factory.imageAlt} loading="lazy" decoding="async"></div><div class="home-factory-copy"><h2>{content.factory.heading}</h2><p>{content.factory.text}</p><p class="facility-source">{claims.source}</p><dl class="home-factory-facts">{[claims.companyArea,claims.area,claims.lines].map((value, index) => <div><dt>{factoryFactLabels[index]}</dt><dd dir="ltr">{value}</dd></div>)}</dl><a class="button-primary" href={routeFor(language, content.factory.contentKey)}>{content.factory.label}</a></div></div></section>
 
   <HomeCertificates language={language}/>
 

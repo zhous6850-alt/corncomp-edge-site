@@ -94,7 +94,7 @@ test('rejects inquiry submissions when Turnstile verification fails', async () =
   }
 });
 
-test('sends a valid contextual inquiry through Resend from inquiry@corn-comp.com', async () => {
+test('sends a valid contextual inquiry through Resend from sam.zhou@corn-comp.com', async () => {
   const originalFetch = globalThis.fetch;
   let call;
   globalThis.fetch = async (url, options) => {
@@ -115,8 +115,8 @@ test('sends a valid contextual inquiry through Resend from inquiry@corn-comp.com
     assert.equal(response.status, 200);
     assert.equal(call.url, 'https://api.resend.com/emails');
     assert.equal(call.options.headers.authorization, 'Bearer re_test');
-    assert.equal(message.from, 'Corncomp <inquiry@corn-comp.com>');
-    assert.deepEqual(message.to, ['zhous6850@gmail.com']);
+    assert.equal(message.from, 'Corncomp <sam.zhou@corn-comp.com>');
+    assert.deepEqual(message.to, ['sam.zhou@corn-comp.com']);
     assert.equal(message.reply_to, 'buyer@example.com');
     assert.match(message.text, /Need bowls/);
     assert.match(message.text, /Buyer Co/);

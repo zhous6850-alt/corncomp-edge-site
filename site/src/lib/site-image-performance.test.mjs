@@ -15,7 +15,7 @@ function images(html) {
   return result;
 }
 test('product, application, editorial and company pages offer responsive downloads in every language', async () => {
-  for (const route of ['products/cups-bowls/paper-cups/', 'applications/takeaway-packaging/', 'resources/', 'resources/guides/paper-cup-sizes/', 'about/']) {
+  for (const route of ['products/cups-bowls/paper-cups/', 'applications/takeaway-packaging/', 'about/']) {
     for (const language of ['', 'zh/', 'de/']) {
       const html = await readFile(new URL(`../../dist/${language}${route}index.html`, import.meta.url), 'utf8');
       const responsive = images(html).filter((image) => image.srcset?.includes('/media/optimized/site/'));

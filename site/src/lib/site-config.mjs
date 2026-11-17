@@ -37,10 +37,10 @@ const resourceLabels = {
   de: ['Ressourcen', 'Leitfäden'],
 };
 
-for (const [language, [label, guidesLabel]] of Object.entries(resourceLabels)) {
-  const route = routeFor(language, 'architecture:resources');
-  const resources = navigation[language].resources || [label, route];
-  resources.children = [[guidesLabel, route], navigation[language].blog];
+for (const [language, [label]] of Object.entries(resourceLabels)) {
+  const route = navigation[language].blog[1];
+  const resources = [label, route];
+  resources.children = [navigation[language].blog];
   navigation[language].resources = resources;
 }
 

@@ -1,3 +1,4 @@
+import {COMPANY_CLAIMS} from './company-claims.mjs';
 // Columns: English source, French, Spanish, Arabic, Chinese, German.
 const rows = [
   ['Our team', 'Notre équipe', 'Nuestro equipo', 'فريقنا', '我们的团队', 'Unser Team'],
@@ -175,6 +176,10 @@ const rows = [
 
 export const ABOUT_TRANSLATIONS = Object.fromEntries(
   ['fr', 'es', 'ar', 'zh', 'de'].map((language, index) => [
-    language, Object.fromEntries(rows.map(([source, ...values]) => [source, values[index]])),
+    language, {...Object.fromEntries(rows.map(([source, ...values]) => [source, values[index]])),
+      ["Ningbo Corncomp Tech Co., Ltd. develops and manufactures paper straws and paper tableware for distributors and foodservice businesses. Corncomp reports a total company area of 8,000 m², including an approximately 6,800 m² fully enclosed clean workshop. Company materials describe the workshop with reference to GMP food-production standards."]: {"fr":"Ningbo Corncomp Tech Co., Ltd. développe et fabrique des pailles et de la vaisselle en papier pour les distributeurs et les entreprises de restauration.","es":"Ningbo Corncomp Tech Co., Ltd. desarrolla y fabrica pajitas y vajilla de papel para distribuidores y empresas de restauración.","ar":"تطوّر شركة Ningbo Corncomp Tech Co., Ltd. الماصات وأدوات المائدة الورقية وتصنّعها للموزعين وشركات خدمات الطعام.","zh":"宁波遇米生物科技有限公司面向经销商和餐饮企业，研发、生产纸吸管与纸质餐具。","de":"Ningbo Corncomp Tech Co., Ltd. entwickelt und produziert Papierstrohhalme und Papiergeschirr für Händler und Gastronomiebetriebe."}[language]+' '+COMPANY_CLAIMS[language].statement,
+      [COMPANY_CLAIMS.en.production]: COMPANY_CLAIMS[language].production,
+      [COMPANY_CLAIMS.en.source]: COMPANY_CLAIMS[language].source,
+      [COMPANY_CLAIMS.en.label]: COMPANY_CLAIMS[language].label},
   ]),
 );

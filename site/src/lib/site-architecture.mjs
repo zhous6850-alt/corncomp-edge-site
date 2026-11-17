@@ -10,7 +10,7 @@ export const PRODUCT_GROUPS = [
 
 export const PRODUCT_CATEGORIES = [
   { group: 'cups-bowls', slug: 'paper-cups', title: 'Paper Cups', description: 'Paper cups and matching accessories for wholesale beverage service, custom printing and private-label supply.' },
-  { group: 'cups-bowls', slug: 'salad-bowls', title: 'Salad Bowls', description: 'Kraft and white paper bowls with matching paper, PLA, PP and PET lid options.' },
+  { group: 'cups-bowls', slug: 'salad-bowls', title: 'Salad Bowls', description: 'Compare kraft and white paper salad bowls in nominal capacities of 500–1500 mL, with item dimensions and paper, PLA, PP and PET lid options.' },
   { group: 'cups-bowls', slug: 'soup-cups', title: 'Soup Cups', description: 'Paper soup cups and matching lids in multiple sizes for hot food and takeaway service.' },
   { group: 'cups-bowls', slug: 'ice-cream-cups', title: 'Ice Cream Cups', description: 'Paper ice cream cups in six catalogue sizes for dessert shops, distributors and custom programs.' },
   { group: 'food-boxes-containers', slug: 'paper-food-boxes', title: 'Paper Food Boxes', description: 'Meal boxes, food pails and handled paper containers for prepared food and takeaway programs.' },
@@ -288,13 +288,13 @@ export const ARCHITECTURE_PAGES = [
   }),
   page('/about/', 'trust', 'About Corncomp', 'Learn about Corncomp, its Ningbo manufacturing base and export food packaging programs.', 'Corncomp develops and supplies paper food packaging for distributors, restaurant groups and custom programs, with production and export support based in Ningbo, China.', [
     { title: 'Foodservice focus', text: 'The catalogue covers paper cups, bowls, food boxes, paper straws, cutlery and paper plates.' },
-    { title: 'Manufacturing base', text: 'Corncomp states an 8,000 m² manufacturing base, including a 6,800 m² GMP-standard dust-free workshop and 60 production lines.' },
+    { title: 'Manufacturing base', text: 'Corncomp reports a total company area of 8,000 m², including an approximately 6,800 m² fully enclosed clean workshop. Company materials describe the workshop with reference to GMP food-production standards.' },
     { title: 'Specification-led export support', text: 'Product, artwork, packing, destination and document requirements are reviewed together for wholesale and private-label programs.' },
   ], [link('Factory & Manufacturing', '/about/factory/', 'Review facility and production context.'), link('Quality & Certifications', '/quality/', 'Understand document scope and verification.')]),
   page('/about/factory/', 'trust', 'Factory & Manufacturing', 'See Corncomp manufacturing capabilities, production workflow and quality-control responsibilities.', 'Review the factory, process and capacity evidence behind the products, then confirm the line, material and documentation relevant to your order.', [
-    { title: '8,000 m² manufacturing base', text: 'The site presents an 8,000 m² base in Ningbo, including a 6,800 m² GMP-standard dust-free workshop.' },
-    { title: '60 production lines', text: 'Production capacity spans paper straws and multiple paper food packaging formats. Capacity must still be confirmed for the selected item and timing.' },
-    { title: '2.5 billion paper straws annually', text: 'This stated annual paper-straw capacity is a factory-level figure, not a promise for every size, print or delivery window.' },
+    { title: 'Total company area and clean workshop', text: "Corncomp reports a total company area of 8,000 m², including an approximately 6,800 m² fully enclosed clean workshop. Company materials describe the workshop with reference to GMP food-production standards. Facility terminology follows the company profile; figures were confirmed by Corncomp on 2 November 2026. The GMP wording describes the company’s workshop standard, not a third-party GMP certificate. Annual paper-straw capacity is not actual annual output or guaranteed availability for a specific order." },
+    { title: '60 production lines', text: "Corncomp reports 60 production lines at its Ningbo site, covering paper preparation, printing, cutting, forming and packing." },
+    { title: 'Company-reported annual paper-straw capacity', text: "Corncomp reports annual paper-straw capacity of 2.5 billion pieces. Confirm capacity available for the selected specification, quantity and schedule; this is not a statement of actual annual output." },
     { title: 'Production release controls', text: 'Final specification, artwork, sample, packing and documentation are confirmed before mass production.' },
   ], [link('Browse Products', '/products/', 'Choose a catalogue item or product family.'), link('Request a Quote', '/contact/', 'Send quantity, destination and timing.')]),
   page('/quality/', 'trust', 'Quality & Certifications', 'Review Corncomp quality systems, company certificates and product-document verification guidance.', 'Use this page to identify available documentation and its scope. Confirm the exact certificate or test report needed for the selected item before ordering.', [

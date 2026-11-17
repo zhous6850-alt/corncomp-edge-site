@@ -22,6 +22,7 @@ const homeRoute = routeFor(language, 'home');
 const productsRoute = routeFor(language, 'architecture:products');
 const contactRoute = routeFor(language, 'architecture:contact');
 const applicationRoutes = ['takeaway-packaging','restaurant-packaging','fast-food-packaging','ice-cream-dessert-packaging'];
+const applicationAnchors = ['takeaway','restaurant','fast-food','dessert','supermarket'];
 const applicationLabels = {
   en: ['Takeaway & Delivery','Restaurant & Foodservice','Fast Food','Ice Cream & Dessert','Supermarket'],
   zh: ['外卖配送','餐饮服务','快餐','冰淇淋与甜品','超市零售'],
@@ -32,7 +33,7 @@ const applicationLabels = {
 }[language];
 const applicationLinks = applicationLabels.map((label, index) => ({
   label,
-  route: Astro.url.pathname.startsWith('/design-preview/') ? '/design-preview/applications/' + (applicationRoutes[index] || 'supermarket-packaging') + '/' : applicationRoute(language, applicationRoutes[index] || 'supermarket-packaging'),
+  route: Astro.url.pathname.startsWith('/design-preview/') ? '/design-preview/applications/' + (applicationRoutes[index] || 'supermarket-packaging') + '/' : applicationRoute(language) + '#' + applicationAnchors[index],
 }));
 const primaryLinks = [
   ['custom', 'architecture:custom-packaging'],
@@ -42,7 +43,7 @@ const primaryLinks = [
   ['about', 'architecture:about'],
 ].map(([navKey, contentKey]) => {
   const entry = localizedEntry(language, contentKey);
-  return { key: navKey, label: nav[navKey]?.[0] || entry.title, route: entry.route };
+  return { key: navKey, label: nav[navKey]?.[0] || entry.title, route: navKey === 'resources' ? nav.resources[1] : entry.route };
 });
 const productGroups = PRODUCT_GROUPS.map((group) => {
   const contentKey = `architecture:${group.route.replace(/^\/+|\/+$/g, '')}`;

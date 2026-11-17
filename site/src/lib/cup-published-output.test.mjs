@@ -4,6 +4,18 @@ import { readFile } from 'node:fs/promises';
 import { englishInventory, SUPPORTED_LANGUAGES, routeFor } from './localization.mjs';
 import { categoryForProduct } from './site-architecture.mjs';
 
+test('soup cup products and lids appear before their detailed comparison in every language',async()=>{
+  for(const language of SUPPORTED_LANGUAGES) {
+    const route=routeFor(language,'architecture:products/cups-bowls/soup-cups');
+    const html=await readFile(new URL('../../dist'+route+'index.html',import.meta.url),'utf8');
+    const cups=html.indexOf('id="cups"');
+    const lids=html.indexOf('id="accessories"');
+    const comparison=html.indexOf('id="soup-cup-comparison"');
+    const ordering=html.indexOf('id="ordering"');
+    assert.ok(cups>=0&&cups<lids&&lids<comparison&&comparison<ordering,language);
+  }
+});
+
 test('approved cup landing pages publish on canonical routes in all six languages', async () => {
   for (const language of SUPPORTED_LANGUAGES) {
     const groupRoute = routeFor(language, 'architecture:products/cups-bowls');

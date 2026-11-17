@@ -1,0 +1,11 @@
+---
+import {CUSTOM_WORKFLOW} from '../data/custom-workflow.mjs';
+import {routeFor} from '../lib/localization.mjs';
+const {language='en',route,title}=Astro.props;
+const t=CUSTOM_WORKFLOW[language];
+const enquiry=routeFor(language,'architecture:contact')+'?'+new URLSearchParams({product:title,category:title,source:route});
+---
+<section id="custom-workflow" class="custom-workflow" aria-labelledby="custom-workflow-title"><h2 id="custom-workflow-title">{t.title}</h2><p>{t.intro}</p><ol>{t.steps.map(([heading,text])=><li><h3>{heading}</h3><p>{text}</p></li>)}</ol><p class="scope-note">{t.scope}</p><div class="workflow-links"><a href={enquiry}>{t.quote} ↗</a><a href={routeFor(language,'architecture:quality')}>{t.quality} ↗</a></div></section>
+<style>
+ .custom-workflow{padding:48px 0;color:#1c3927;scroll-margin-top:120px}.custom-workflow h2{font-size:clamp(28px,3vw,38px);line-height:1.2;margin:0 0 18px}.custom-workflow p{font-size:15px;line-height:1.75;color:#617065;max-width:1000px;margin:0 0 18px}ol{list-style:none;padding:0;margin:28px 0;display:grid;grid-template-columns:1fr 1fr;gap:28px 36px}li{border-top:1px solid #dce3da;padding-top:20px;min-width:0}h3{font-size:21px;line-height:1.35;margin:0 0 12px}.scope-note{padding:20px;background:#edf1e7;border-inline-start:3px solid #71935e}.workflow-links{display:flex;flex-wrap:wrap;gap:24px}a{color:inherit;font-size:14px;font-weight:700;text-underline-offset:4px}a:focus-visible{outline:3px solid #71935e;outline-offset:4px}@media(max-width:650px){ol{grid-template-columns:1fr;gap:18px}.custom-workflow{padding:32px 0}}
+</style>
