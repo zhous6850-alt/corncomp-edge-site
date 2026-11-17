@@ -15,6 +15,6 @@ export function previewSections(category, inventory) {
   if (category === 'salad-bowls') cups.sort((a, b) => (a.slug === 'kraft-paper-bowl' ? -1 : b.slug === 'kraft-paper-bowl' ? 1 : 0));
   return [
     ...config.sections.map(([id, title, intro]) => ({ id, title, intro, products: category === 'paper-cups' ? cups.filter((item) => item.slug.startsWith(id)) : cups })),
-    { id: 'accessories', title: config.accessory, intro: 'Review the available components. Confirm the selected cup-and-lid fit before ordering.', products: accessories },
+    { id: 'accessories', title: config.accessory, intro: category === 'salad-bowls' ? 'Review the available components. Confirm the selected bowl-and-lid fit before ordering.' : 'Review the available components. Confirm the selected cup-and-lid fit before ordering.', products: accessories },
   ];
 }

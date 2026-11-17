@@ -4,13 +4,13 @@ import { FAQ_GROUPS } from '../data/faq.mjs';
 const { preview = true } = Astro.props;
 const schema = [
   {'@context':'https://schema.org','@type':'FAQPage',name:'Frequently asked questions.',url:'https://corn-comp.com/faq/',mainEntity:FAQ_GROUPS.flatMap(group=>group.items).map(item=>({'@type':'Question',name:item.question,acceptedAnswer:{'@type':'Answer',text:item.answer}}))},
-  {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[['Home','/'],['Resources','/resources/'],['FAQ','/faq/']].map(([name,route],index)=>({'@type':'ListItem',position:index+1,name,item:'https://corn-comp.com'+route}))},
+  {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[['Home','/'],['FAQ','/faq/']].map(([name,route],index)=>({'@type':'ListItem',position:index+1,name,item:'https://corn-comp.com'+route}))},
 ];
 ---
 <BaseLayout title={preview ? 'FAQ | Design Preview | Corncomp' : 'Frequently Asked Questions | Corncomp'} description="Answers about minimum orders, samples, custom printing, materials, certifications and international delivery. Confirm terms for your selected product." pathname="/faq/" bodyClass="architecture-site" structuredData={schema}>
   {preview && <div class="preview-note">DESIGN PREVIEW · FAQ 问答页 · 正式站未修改</div>}
   <main class="faq-page">
-    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/resources/">Resources</a><span>/</span><span>FAQ</span></nav>
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>FAQ</span></nav>
     <header class="faq-hero"><p class="eyebrow">CORNCOMP / BUYER SUPPORT</p><h1>Frequently asked<br/><span>questions.</span></h1><p>Practical answers about ordering, custom printing and choosing packaging for your business.</p></header>
     <div class="faq-layout">
       <aside class="topic-sidebar"><nav aria-label="FAQ topics"><p>Browse by topic</p>{FAQ_GROUPS.map(group=><a href={'#'+group.id}>{group.title}<span aria-hidden="true">↘</span></a>)}</nav><div class="quotation-note"><h2>Before you order</h2><p>Final specifications, minimum quantities, timing and commercial terms are confirmed in your quotation and order.</p></div></aside>

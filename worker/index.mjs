@@ -6,7 +6,7 @@ import {
   PRODUCT_CATEGORY_BY_SLUG,
   canonicalProductRoute,
 } from '../site/src/lib/site-architecture.mjs';
-import { localizedRedirects, localizedShopRedirects, normalizeLocalizedRoute } from '../site/src/lib/localization.mjs';
+import { localizedRedirects, localizedShopRedirects, normalizeLocalizedRoute, retiredGuideRedirects } from '../site/src/lib/localization.mjs';
 
 const RECIPIENT = 'sam.zhou@corn-comp.com';
 const SENDER = 'Corncomp <sam.zhou@corn-comp.com>';
@@ -19,6 +19,7 @@ export const REDIRECTS = new Map([
   ...Object.keys(PRODUCT_CATEGORY_BY_SLUG).map((slug) => [`/product/${slug}/`, canonicalProductRoute(slug)]),
   ...Object.entries(DUPLICATE_PRODUCT_ALIASES).map(([source, target]) => [`/product/${source}/`, canonicalProductRoute(target)]),
   ...localizedRedirects(),
+  ...retiredGuideRedirects(),
   ['/case-studies/', '/about/'],
   ['/category/company-industry/', '/blog/'],
   ['/category/company-industry-fr/', '/fr/blog/'],
@@ -88,6 +89,9 @@ export default {
       destination.search = url.search;
       const status = canonicalOriginRequired && !['GET', 'HEAD'].includes(request.method) ? 308 : 301;
       return Response.redirect(destination, status);
+    }
+    if (['/404', '/404/', '/404.html'].includes(url.pathname)) {
+      return env.ASSETS.fetch(new Request(new URL('/__corncomp-not-found__/', url.origin), request));
     }
     if (url.pathname !== '/api/inquiry') return corncompClarityAssets(request, env);
     if (request.method !== 'POST') return json({ ok: false, error: 'Method not allowed' }, 405);
