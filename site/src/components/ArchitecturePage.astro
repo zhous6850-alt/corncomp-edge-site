@@ -25,7 +25,14 @@ const quality = source.route === '/quality/';
 const about = source.route.startsWith('/about/');
 const resources = source.kind === 'resources';
 const localizedArchitecture = (route) => localizedEntry(language, contentKeyForArchitecture({ route }));
-const linkedRoute = (index) => localizedArchitecture(source.links[index].route)?.route || page.links[index].route;
+const linkedRoute = (index) => {
+  const sourceRoute = source.links[index].route;
+  const hashAt = sourceRoute.indexOf('#');
+  const path = hashAt < 0 ? sourceRoute : sourceRoute.slice(0, hashAt);
+  const hash = hashAt < 0 ? '' : sourceRoute.slice(hashAt);
+  const localized = localizedArchitecture(path)?.route;
+  return localized ? localized + hash : page.links[index].route;
+};
 const linkedMedia = (index) => source.links[index].route === '/contact/' ? null : mediaFor(mediaKeyForArchitecture({ route: source.links[index].route }), language);
 const factoryPage = localizedEntry(language, 'architecture:about/factory');
 const factoryMedia = mediaListFor('architecture:about/factory', language);

@@ -6,7 +6,7 @@ import es from '../data/locales/es.json' with { type: 'json' };
 import ar from '../data/locales/ar.json' with { type: 'json' };
 import zh from '../data/locales/zh.json' with { type: 'json' };
 import de from '../data/locales/de.json' with { type: 'json' };
-import { RETIRED_GUIDE_KEYS } from './retired-guides.mjs';
+import { RETIRED_GUIDE_KEYS, RETIRED_GUIDE_SUCCESSORS } from './retired-guides.mjs';
 import { ARCHITECTURE_PAGES, PRODUCT_CATEGORY_BY_SLUG, canonicalProductRoute } from './site-architecture.mjs';
 
 export const SUPPORTED_LANGUAGES = ['en', 'fr', 'es', 'ar', 'zh', 'de'];
@@ -200,6 +200,16 @@ export function localizedRedirects() {
     if (redirects.has(target)) throw new Error(`Redirect chain through ${target}`);
   }
   return redirects;
+}
+
+export function retiredGuideRedirects() {
+  const map = new Map();
+  for (const language of SUPPORTED_LANGUAGES) for (const [key, successor] of Object.entries(RETIRED_GUIDE_SUCCESSORS)) {
+    const source = routeFor(language, key);
+    const target = successor ? routeFor(language, successor) : (language === 'en' ? '/blog/' : `/${language}/blog/`);
+    if (source && target) map.set(normalizeLocalizedRoute(source), normalizeLocalizedRoute(target));
+  }
+  return map;
 }
 
 export function uiFor(language) {

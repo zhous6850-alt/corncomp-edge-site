@@ -692,7 +692,7 @@
       "route": "/zh/custom-packaging/custom-printed-paper-cups/",
       "title": "定制印刷纸杯",
       "description": "面向批发、自有品牌与餐饮采购的定制印刷纸杯；确认杯型、尺寸、图稿与包装要求。",
-      "sourceHash": "f8d71eea6aa16de75cf122a3d4fddde8c6c63845d7f32c540a237f0eee99c38b",
+      "sourceHash": "6e8366f5942863335d027af98795e395708c6c6d732b6e92bb42696a113c9074",
       "intro": "首先选择纸杯的结构和尺寸。然后提交数量、设计、印刷要求、包装和目的地供审核。",
       "sections": [
         {
@@ -938,7 +938,7 @@
       "route": "/zh/resources/",
       "title": "食品包装资源",
       "description": "关于纸杯尺寸、个性化印刷、证书审查、材料和食品包装采购的实用指南。",
-      "sourceHash": "7ba306bdf2e5c97872fba62796a0c46a29e43db90e5879ea039adca5b8a8fbb6",
+      "sourceHash": "5bc108a9e5a87f59379ef5ee02db10840da83574ffa95744181d5ef7cf62e9d8",
       "intro": "在索取样品或报价之前，请使用这些指南来准备规格、比较选项并澄清您的问题。",
       "sections": [
         {
@@ -1323,7 +1323,7 @@
       "route": "/zh/quality/",
       "title": "质量和认证",
       "description": "查阅 Corncomp 的质量体系、公司证书和产品文件验证指南。",
-      "sourceHash": "27a33434730592c7ae21da1e5278002e435dd72480d5c926c0c091a8e757b633",
+      "sourceHash": "955d561be106048ae108e9acc50a6743434599de814858bfff723a248ca1e2d9",
       "intro": "确定可用的文档及其范围。订购前，请确认您所选产品所需的证书或测试报告。",
       "sections": [
         {

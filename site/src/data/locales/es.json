@@ -692,7 +692,7 @@
       "route": "/es/envases-personalizados/vasos-de-papel-impresos/",
       "title": "Vasos de papel con impresión personalizada",
       "description": "Vasos de papel impresos para mayoristas, marcas propias y programas de restauración.",
-      "sourceHash": "f8d71eea6aa16de75cf122a3d4fddde8c6c63845d7f32c540a237f0eee99c38b",
+      "sourceHash": "6e8366f5942863335d027af98795e395708c6c6d732b6e92bb42696a113c9074",
       "intro": "Elija primero la estructura y el tamaño del vaso. Después envíe la cantidad, el diseño, los requisitos de impresión, el embalaje y el destino para su revisión.",
       "sections": [
         {
@@ -938,7 +938,7 @@
       "route": "/es/recursos/",
       "title": "Recursos sobre envases alimentarios",
       "description": "Guías prácticas de tamaños de vasos, impresión personalizada, revisión de certificados, materiales y compra de envases alimentarios.",
-      "sourceHash": "7ba306bdf2e5c97872fba62796a0c46a29e43db90e5879ea039adca5b8a8fbb6",
+      "sourceHash": "5bc108a9e5a87f59379ef5ee02db10840da83574ffa95744181d5ef7cf62e9d8",
       "intro": "Utilice estas guías para preparar especificaciones, comparar opciones y concretar sus preguntas antes de solicitar muestras o presupuestos.",
       "sections": [
         {
@@ -1323,7 +1323,7 @@
       "route": "/es/certificaciones-de-corncomp/",
       "title": "Calidad y certificaciones",
       "description": "Consulte los sistemas de calidad, los certificados de empresa y la guía de verificación documental de productos de Corncomp.",
-      "sourceHash": "27a33434730592c7ae21da1e5278002e435dd72480d5c926c0c091a8e757b633",
+      "sourceHash": "955d561be106048ae108e9acc50a6743434599de814858bfff723a248ca1e2d9",
       "intro": "Identifique la documentación disponible y su alcance. Antes de pedir, confirme el certificado o informe de ensayo necesario para el artículo elegido.",
       "sections": [
         {
