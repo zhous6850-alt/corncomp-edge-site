@@ -504,9 +504,9 @@
     "architecture:products/food-boxes-containers/burger-boxes": {
       "route": "/zh/products/food-boxes-containers/burger-boxes/",
       "title": "汉堡盒",
-      "description": "卡夫汉堡盒有五种目录尺寸，适用于快餐和外卖服务。",
+      "description": "牛皮纸汉堡盒有五种目录尺寸，适用于快餐店和外卖包装。",
       "sourceHash": "98141890d947eaa1295fcc0bd18fc24fd82b0bd8f1ec75cac1d1db00bf395939",
-      "intro": "卡夫汉堡盒有五种目录尺寸，适用于快餐和外卖服务。",
+      "intro": "牛皮纸汉堡盒有五种目录尺寸，适用于快餐店和外卖包装。",
       "sections": [
         {
           "title": "专业采购信息",
@@ -525,10 +525,10 @@
     },
     "architecture:products/food-boxes-containers/wrap-boxes": {
       "route": "/zh/products/food-boxes-containers/wrap-boxes/",
-      "title": "包装盒和盖子",
-      "description": "用于存放墨西哥卷饼、卷饼和用手食用的食物的盒子和开盖。",
+      "title": "卷饼盒与套筒",
+      "description": "用于墨西哥卷饼、卷饼及手持餐食的卷饼盒和开放式套筒。",
       "sourceHash": "969ae7939e0bb06819b5b388ed8cfc45c12aee88d10647084a001973a8b3f4eb",
-      "intro": "用于存放墨西哥卷饼、卷饼和用手食用的食物的盒子和开盖。",
+      "intro": "用于墨西哥卷饼、卷饼及手持餐食的卷饼盒和开放式套筒。",
       "sections": [
         {
           "title": "专业采购信息",
@@ -569,10 +569,10 @@
     },
     "architecture:products/food-boxes-containers/cone-fry-packaging": {
       "route": "/zh/products/food-boxes-containers/cone-fry-packaging/",
-      "title": "油炸食品的锥筒和容器",
-      "description": "用于盛放薯片、零食和街头小吃的纸筒和拉链杯。",
+      "title": "薯条锥筒与封口杯",
+      "description": "用于盛放薯条、零食和街头小吃的纸锥筒，以及顶部封闭的薯条杯。",
       "sourceHash": "e3cad5f2bfbc1ff6193eddfc3bb292450c057a8c1c524f5d9d291f135aff1789",
-      "intro": "用于盛放薯片、零食和街头小吃的纸筒和拉链杯。",
+      "intro": "用于盛放薯条、零食和街头小吃的纸锥筒，以及顶部封闭的薯条杯。",
       "sections": [
         {
           "title": "专业采购信息",
@@ -1535,15 +1535,15 @@
     "product:ripple-natural-kraft-paper-cup-horizon-style": {
       "route": "/zh/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-horizon-style/",
       "title": "水平波浪壁牛皮纸杯",
-      "description": "天然牛皮纸杯，横向波纹，有120ml至600ml 6种尺寸。索取样品并确认最小订单量和截止日期。",
+      "description": "天然牛皮纸杯，横向波纹，有120ml至600ml 6种尺寸。索取样品并确认最小订单量和交期。",
       "sourceHash": "90109274e4bb38c5985b111a572744171aa6086a757a6df9af4ec35d9bf0fd33",
-      "summary": "Corncomp 纸杯具有天然牛皮纸外壁和水平波纹。从 120 毫升到 600 毫升有六种尺寸。查看样品、印刷、最小订单、截止日期和订单文档。",
+      "summary": "Corncomp 纸杯具有天然牛皮纸外壁和水平波纹。从 120 毫升到 600 毫升有六种尺寸。查看样品、印刷、最小订单、交期和订单文档。",
       "specificationHeading": "目录规格",
       "comparisonHtml": "<h3>水平波纹</h3><p>水平纹理将这种纸杯与其他纸杯区分开来<a href=\"/zh/product/vaso-de-papel-kraft-ondulado-vertical/\">垂直波浪版本</a>。根据所需的外观选择饰面，并在生产前确认所有规格。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>我该如何选择格式？</h3><p>将尺寸和纹理与其他波浪墙版本进行比较。查看全系列纸杯或将您的规格发送至 Corncomp。</p><p>参见：<a href=\"/zh/productos/vasos-y-cuencos/vasos-de-papel/\">纸杯系列</a>.</p>",
       "documentScope": "可根据要求提供文档；确认您对订单的申请。",
-      "orderTerms": "索取报价时请注明型号、数量和印刷要求。 Corncomp 将确认样品可用性、最小订单量、截止日期、设计要求和适用文件。",
+      "orderTerms": "索取报价时请注明型号、数量和印刷要求。 Corncomp 将确认样品可用性、最小订单量、交期、设计要求和适用文件。",
       "alt": "水平波浪壁牛皮纸杯",
       "aliases": [
         "/zh/产品/natural-kraft-horizo​​n-style-wavy-wall-paper-cup/"
@@ -1552,15 +1552,15 @@
     "product:ripple-natural-kraft-paper-cup-vertical-style": {
       "route": "/zh/products/cups-bowls/paper-cups/ripple-natural-kraft-paper-cup-vertical-style/",
       "title": "垂直波浪壁牛皮纸杯",
-      "description": "天然牛皮纸杯，垂直波纹，有120ml至600ml 6种尺寸。索取样品并确认最小订单量和截止日期。",
+      "description": "天然牛皮纸杯，垂直波纹，有120ml至600ml 6种尺寸。索取样品并确认最小订单量和交期。",
       "sourceHash": "6f5a8cec916711227bdfd861e1b006d920d74e16bd26b34cbf5fca9b5fa3ffce",
-      "summary": "Corncomp 纸杯具有天然牛皮纸外壁和垂直波纹。从 120 毫升到 600 毫升有六种尺寸。请参阅样品、印刷、最小订单、截止日期和订单文档。",
+      "summary": "Corncomp 纸杯具有天然牛皮纸外壁和垂直波纹。从 120 毫升到 600 毫升有六种尺寸。请参阅样品、印刷、最小订单、交期和订单文档。",
       "specificationHeading": "目录规格",
       "comparisonHtml": "<h3>垂直波纹</h3><p>垂直纹理使该纸杯与其他纸杯区分开来<a href=\"/zh/product/vaso-de-papel-kraft-ondulado-horizontal/\">带水平波纹的版本</a>。根据所需的外观选择饰面，并在生产前确认所有规格。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>我该如何选择格式？</h3><p>将尺寸和纹理与其他波浪墙版本进行比较。查看全系列纸杯或将您的规格发送至 Corncomp。</p><p>参见：<a href=\"/zh/productos/vasos-y-cuencos/vasos-de-papel/\">纸杯系列</a>.</p>",
       "documentScope": "可根据要求提供文档；确认您对订单的申请。",
-      "orderTerms": "索取报价时请注明型号、数量和印刷要求。 Corncomp 将确认样品可用性、最小订单量、截止日期、设计要求和适用文件。",
+      "orderTerms": "索取报价时请注明型号、数量和印刷要求。 Corncomp 将确认样品可用性、最小订单量、交期、设计要求和适用文件。",
       "alt": "垂直波浪壁牛皮纸杯",
       "aliases": [
         "/zh/product/ripple-wall-paper-cup-vertical-style-kraft-natural/"
@@ -1697,8 +1697,8 @@
     },
     "product:natural-kraft-hamburger-box": {
       "route": "/zh/products/food-boxes-containers/burger-boxes/natural-kraft-hamburger-box/",
-      "title": "卡夫汉堡盒，5 种尺寸",
-      "description": "卡夫汉堡盒有五种尺寸。比较每箱的尺寸和数量，并索取样品和印刷信息。",
+      "title": "牛皮纸汉堡盒，5 种尺寸",
+      "description": "牛皮纸汉堡盒有五种尺寸。可比较各尺寸与每箱数量，并索取样品和印刷信息。",
       "sourceHash": "5e231e5c7a079bb20f3fe45b5cb898d09b51b46d3727babde40e8023e9a09798",
       "summary": "Corncomp 提供五种尺寸的牛皮纸汉堡盒，用于容纳汉堡、三明治和其他外卖食品。带铰链盖的天然牛皮纸盒将食物封闭起来；每箱的数量显示在表中。",
       "specificationHeading": "目录规格",
@@ -1707,7 +1707,7 @@
       "faq": "<h3>有哪些尺寸？</h3><p>共有五种尺寸，从 105 x 105 x 85 毫米到 180 x 165 x 75 毫米。</p><h3>我可以索取样品吗？</h3><p>是的。使用联系页面发送您想要比较的参考资料。</p><h3>它们可以打印吗？</h3><p>请咨询 Corncomp，了解打印选项、设计要求、最小订单以及所选参考和订单的交货时间。</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>; <a href=\"/zh/contactenos/\">联系Corncomp</a>; <a href=\"/zh/productos/cajas-y-envases/\">汉堡包、卷饼和三明治的包装</a>.</p>",
       "documentScope": "公司或设施文件可在认证页面上找到。在使用认证声明之前，请与 Corncomp 确认所需的产品、材料、标签和订购范围。",
       "orderTerms": "打印选项、最小订单和交货时间取决于所选的项目、设计和订单。",
-      "alt": "卡夫汉堡盒，5 种尺寸"
+      "alt": "牛皮纸汉堡盒，5 种尺寸"
     },
     "product:natural-kraft-menu-box": {
       "route": "/zh/products/food-boxes-containers/paper-food-boxes/natural-kraft-menu-box/",
@@ -1925,15 +1925,15 @@
     "product:paper-lid": {
       "route": "/zh/products/cups-bowls/salad-bowls/paper-lid/",
       "title": "沙拉碗纸盖，4 种款式",
-      "description": "牛皮纸和纸板系列的纸封面，尺寸分别为 150 毫米和 185 毫米。请参阅目录重量。",
+      "description": "牛皮纸与白卡系列的沙拉碗纸盖，上口径分别为 150 毫米和 185 毫米，目录列有克重。请按碗的货号确认搭配。",
       "sourceHash": "b1f4fe500f27c93549d7d84d4520b9499f450e305a01ee68f49e4fc4b5fab66d",
-      "summary": "沙拉碗的纸盖有四种型号：牛皮纸和纸板系列，尺寸较大，有 150 毫米和 185 毫米。使用参考来选择所选碗的盖子。",
+      "summary": "沙拉碗的纸盖有四种型号：牛皮纸和纸板系列，上口径分别为 150 毫米和 185 毫米。请用货号为所选的碗搭配盖子。",
       "specificationHeading": "目录规格",
-      "comparisonHtml": "<p>将 150 毫米和 185 毫米纸盖与 Corncomp 的牛皮纸碗和白纸板碗进行比较。订购前请确认确切的组合和可用的材料文档。</p>",
+      "comparisonHtml": "<p>将 150 毫米和 185 毫米纸盖与 Corncomp 的牛皮纸碗和白纸板碗进行比较。订购前请确认确切的组合和可用的材料文档。亦可查看<a href=\"/zh/products/cups-bowls/salad-bowls/\">沙拉碗</a>产品系列。</p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>如何选择参考？</h3><p>使用表中的参考和尺寸，并要求 Corncomp 确认订单规格。</p><h3>有证明文件和材料吗？</h3><p>咨询<a href=\"/zh/certificaciones-de-corncomp/\">认证页面</a>并索取适用于该商品、材料、标签和订单的文件。</p><h3>起订量和交期是多少？</h3><p>每个单品的起订量为 30,000 件，定制印刷订单为每个单品 50,000 件。交期为订单确认后约 30 天。</p><p>参见：<a href=\"/zh/product/cuenco-de-papel-kraft/\">牛皮纸碗，6 种尺寸</a>; <a href=\"/zh/product/cuenco-de-carton-blanco/\">白色纸板碗，6 种尺寸</a>.</p>",
       "documentScope": "查看认证页面上的公司和工厂文件，并确认哪些文件适用于所选项目、材料、标签和订单。",
-      "orderTerms": "最小数量和截止日期取决于订单，而不是由目录设定。请求所选参考的报价。",
+      "orderTerms": "最小数量和交期取决于订单，而不是由目录设定。请求所选参考的报价。",
       "alt": "沙拉碗纸盖，4 种款式"
     },
     "product:pla-lid": {
