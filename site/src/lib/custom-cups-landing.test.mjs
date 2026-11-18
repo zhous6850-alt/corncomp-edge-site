@@ -47,5 +47,6 @@ test('visible custom-cup FAQ matches the FAQPage JSON-LD word for word', async (
   assert.deepEqual(visible, faq.mainEntity.map((item) => [item.name, item.acceptedAnswer.text]));
   assert.equal(visible.at(-1)[0], 'Which sleeve fits my cup?');
   assert.match(visible.at(-1)[1], /8oz single-wall paper cups/);
-  assert.match(visible.at(-1)[1], /12, 16 and 20oz single-wall paper cups \(240, 360, 480 and 600 ml\)/);
+  assert.match(visible.at(-1)[1], /12, 16 and 20oz single-wall paper cups/);
+  assert.doesNotMatch(visible.at(-1)[1], /240|360|480|600/);
 });

@@ -685,7 +685,7 @@
     },
     "architecture:custom-packaging/custom-printed-paper-cups": {
       "route": "/de/custom-packaging/custom-printed-paper-cups/",
-      "title": "Custom Paper Cups",
+      "title": "Individuelle Pappbecher mit Druck",
       "description": "Bedruckte Papierbecher für Großhandel, Vertriebsmarken und Catering.",
       "intro": "Wählen Sie zuerst die Struktur des Bechers und seine Abmessungen aus, übermitteln Sie dann die Menge, die Grafikdateien, die Druckanforderungen, die Verpackung und den Bestimmungsort.",
       "sourceHash": "6e8366f5942863335d027af98795e395708c6c6d732b6e92bb42696a113c9074",

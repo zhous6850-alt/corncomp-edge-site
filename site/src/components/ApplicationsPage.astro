@@ -5,6 +5,12 @@ import Restaurant from './RestaurantPreview.astro';
 import FastFood from './FastFoodPreview.astro';
 import Dessert from './DessertPreview.astro';
 import Supermarket from './SupermarketPreview.astro';
+import { applicationContext, applicationRoute } from '../lib/application-localization.mjs';
+import { localizedEntry } from '../lib/localization.mjs';
+const localLanguage = applicationContext(Astro.url.pathname)?.language;
+const restaurantLink = localLanguage && localLanguage !== 'en'
+  ? { href: applicationRoute(localLanguage, 'restaurant-packaging'), title: localizedEntry(localLanguage, 'architecture:applications/restaurant-packaging').title }
+  : null;
 const scenes = [
   ['takeaway','Takeaway & Delivery',Takeaway],
   ['restaurant','Restaurant & Foodservice',Restaurant],
@@ -25,6 +31,7 @@ const schema = {'@context':'https://schema.org','@type':'WebPage',name:'Packagin
     {scenes.map(([id,label,Component]) => <section id={id} data-application-scene={id} aria-labelledby={id+'-title'} class="application-section">
       <div class="scene-title"><h2 id={id+'-title'}>{label}</h2><a href="#top" aria-label="Applications">↑</a></div>
       <Component preview={false} embedded namespace={id}/>
+      {id === 'restaurant' && restaurantLink && <div class="scene-title"><a href={restaurantLink.href}>{restaurantLink.title}</a></div>}
     </section>)}
   </div>
 </BaseLayout>
