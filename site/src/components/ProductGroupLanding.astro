@@ -31,6 +31,9 @@ const chapters=group==='food-boxes-containers'?[
  {id:'display',title:'For slices & fresh selections',intro:'Explore the sushi, salad and pizza-slice formats.',slugs:['sushi-boxes','salad-boxes','pizza-slice-boxes']},
 ].map((chapter,index)=>({...chapter,title:foodLabels.chapters[index][0],intro:foodLabels.chapters[index][1],ranges:chapter.slugs.map(slug=>ranges.find(range=>range.slug===slug))})):[{id:'all-formats',title:null,intro:null,ranges}];
 const jumps=chapters.length>1?chapters.map(chapter=>({href:'#'+chapter.id,title:chapter.title})):ranges.map((range,index)=>({href:'#range-'+index,title:range.title}));
+const paperFoodBoxes = language === 'ar' && group === 'food-boxes-containers'
+  ? localizedEntry(language, 'architecture:products/food-boxes-containers/paper-food-boxes')
+  : null;
 const quote=`${routeFor(language,'architecture:contact')}?${new URLSearchParams({category:page.title,source:page.route})}`;
 ---
 {preview && <div class="preview-strip">DESIGN PREVIEW · {page.title} · 正式站未修改</div>}
@@ -39,6 +42,7 @@ const quote=`${routeFor(language,'architecture:contact')}?${new URLSearchParams(
  <header class="group-heading"><p class="kicker">{ui.productGroup}</p><div class="group-title"><h1>{contentText(page.title)}</h1>{group==='cups-bowls'&&<p class="group-tagline">{t.serving}</p>}</div><div class="heading-bottom"><p>{servicePreview?'Paper straws, cutlery, plates and bags. Explore the product range, then review the specifications for your order.':page.intro}</p><a href="/media/wp/231-corncomp-catalogue.pdf">{t.catalogue} ↗</a></div></header>
  <nav class="quick-nav" aria-label={t.browse}>{jumps.map((jump,index)=><a href={jump.href}><span>{String(index+1).padStart(2,'0')}</span>{jump.title}<b>↓</b></a>)}</nav>
  {chapters.map(chapter=><section id={chapter.id} class="range-chapter">{chapter.title&&<header class="chapter-heading"><h2>{chapter.title}</h2><p>{chapter.intro}</p></header>}<div class:list={['range-grid',{'many-ranges':chapter.ranges.length>6}]} aria-label={chapter.title||t.browse}>{chapter.ranges.map((range,index)=><article id={chapters.length>1?range.slug:`range-${index}`} class="range-card"><a class="range-picture" href={range.href} aria-label={range.title}><ResponsiveMedia media={range.media} eager={index<2&&chapter===chapters[0]}/></a><div class="range-copy"><h2><a href={range.href}>{range.title}</a></h2><p class="description">{range.intro}</p><a class="explore" href={range.href}>{t.browse}<span>↗</span></a></div></article>)}</div></section>)}
+ {paperFoodBoxes && <p><a href={routeFor(language, 'architecture:products/food-boxes-containers/paper-food-boxes')}>{contentText(paperFoodBoxes.title)}</a></p>}
  <aside class="custom-band"><div><p class="kicker">{t.customLink}</p><h2>{t.customTitle}</h2><p>{t.customIntro}</p></div><div class="custom-actions"><a class="quote" href={quote}>{ui.requestQuote} ↗</a><a href={routeFor(language,'architecture:custom-packaging')}>{t.customLink} ↗</a></div></aside>
 </div>
 <style>
