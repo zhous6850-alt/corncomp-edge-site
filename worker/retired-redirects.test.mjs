@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import worker, { REDIRECTS } from './index.mjs';
-import { allLocalizedEntries, normalizeLocalizedRoute, retiredGuideRedirects } from '../site/src/lib/localization.mjs';
+import { allLocalizedEntries, normalizeLocalizedRoute, retiredGuideRedirects, routeFor, SUPPORTED_LANGUAGES } from '../site/src/lib/localization.mjs';
 import { RETIRED_GUIDE_KEYS } from '../site/src/lib/retired-guides.mjs';
 
 const assets = { ASSETS: { fetch: async () => new Response('page', { status: 200 }) } };
@@ -14,7 +14,7 @@ test('retired guide URLs redirect in one hop and keep the query string', async (
   assert.equal(retired.size, 24);
   for (const [source, target] of retired) {
     assert.equal(REDIRECTS.get(source), target, source);
-    assert.ok(published.has(target) || blogArchives.has(target), target);
+    assert.ok(published.has(new URL(target, 'https://corn-comp.com').pathname) || blogArchives.has(target), target);
     assert.equal(REDIRECTS.has(target), false, 'redirect chain: ' + target);
     const expected = new URL(target, 'https://corn-comp.com');
     expected.search = '?utm_source=preview';
@@ -28,7 +28,7 @@ test('retired guide URLs redirect in one hop and keep the query string', async (
   }
   const http = await worker.fetch(new Request('http://corn-comp.com/resources/guides/paper-cup-sizes/'), assets);
   assert.equal(http.status, 301);
-  assert.equal(http.headers.get('location'), 'https://corn-comp.com/products/cups-bowls/paper-cups/');
+  assert.equal(http.headers.get('location'), 'https://corn-comp.com/products/cups-bowls/paper-cups/#paper-cup-sizes');
 });
 
 test('faq stays off the redirect list and retired targets are not redirect sources', async () => {
@@ -41,4 +41,16 @@ test('faq stays off the redirect list and retired targets are not redirect sourc
   const faq = await worker.fetch(new Request('https://corn-comp.com/faq/'), assets);
   assert.ok(faq.status < 300 || faq.status >= 400, String(faq.status));
   assert.equal(RETIRED_GUIDE_KEYS.size, 4);
+});
+
+test('all six retired size guides retain their specification fragment and query', async () => {
+  for (const language of SUPPORTED_LANGUAGES) {
+    const source = routeFor(language, 'architecture:resources/guides/paper-cup-sizes');
+    const target = routeFor(language, 'architecture:products/cups-bowls/paper-cups');
+    for (const method of ['GET', 'HEAD']) {
+      const response = await worker.fetch(new Request('https://corn-comp.com' + source + '?utm_source=guide', { method }), assets);
+      assert.equal(response.status, 301);
+      assert.equal(response.headers.get('location'), new URL(target + '?utm_source=guide#paper-cup-sizes', 'https://corn-comp.com').href);
+    }
+  }
 });

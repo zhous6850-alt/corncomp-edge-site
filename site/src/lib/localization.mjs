@@ -207,7 +207,7 @@ export function retiredGuideRedirects() {
   for (const language of SUPPORTED_LANGUAGES) for (const [key, successor] of Object.entries(RETIRED_GUIDE_SUCCESSORS)) {
     const source = routeFor(language, key);
     const target = successor ? routeFor(language, successor) : (language === 'en' ? '/blog/' : `/${language}/blog/`);
-    if (source && target) map.set(normalizeLocalizedRoute(source), normalizeLocalizedRoute(target));
+    if (source && target) map.set(normalizeLocalizedRoute(source), normalizeLocalizedRoute(target) + (key === 'architecture:resources/guides/paper-cup-sizes' ? '#paper-cup-sizes' : ''));
   }
   return map;
 }
