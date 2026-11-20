@@ -7,7 +7,9 @@ export const BPI_STRAW_LISTING={
 };
 export function strawProcurementRows(records){
  return SERVICE_CATEGORY_PREVIEWS['paper-straws'].sections.flatMap(section=>section.slugs).map(slug=>{
-  const table=extractProductFacts(records.find(record=>record.slug===slug)).tables[0];
+  const record=records.find(record=>record.slug===slug);
+  // Keep the category comparison on its reviewed source during English-only product updates.
+  const table=extractProductFacts({...record,...record.localizedSource}).tables[0];
   const value=table.headers[0]==='Attribute'?table.rows.find(row=>row[0]==='Packaging')[1]:table.rows[0][table.headers.indexOf('PCS/CTN')];
   const [perPack,packs]=value.match(/\d+/g).map(Number);
   return {slug,perPack,packs,total:perPack*packs};

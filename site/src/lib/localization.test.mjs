@@ -3,7 +3,7 @@ import test from 'node:test';
 import * as visualLocalization from './localization.mjs';
 import { documentDirection } from './routes.mjs';
 import { ARCHITECTURE_PAGES } from './site-architecture.mjs';
-import { extractProductFacts, localizedProductBody, assertFactParity, factTokens } from './product-facts.mjs';
+import { extractProductFacts, localizedProductBody, assertFactParity, factTokens, productForLanguage } from './product-facts.mjs';
 import {
   SUPPORTED_LANGUAGES,
   ENGLISH_HOME,
@@ -172,11 +172,12 @@ function assertLocaleContract(locale, sources = englishInventory()) {
       for (const field of ['summary', 'specificationHeading', 'comparisonHtml', 'orderingHeading', 'faq', 'documentScope', 'orderTerms', 'alt']) {
         nonempty(entry[field], `${key}:${field}`);
       }
-      const facts = extractProductFacts(source);
+      const localizedSource = productForLanguage(source, locale._meta.language);
+      const facts = extractProductFacts(localizedSource);
       for (const header of facts.tables.flatMap(({ headers }) => headers)) {
         nonempty(locale.ui.specificationHeaders?.[header], `ui.specificationHeaders:${header}`);
       }
-      assertFactParity(source, localizedProductBody(entry, facts, locale.ui));
+      assertFactParity(localizedSource, localizedProductBody(entry, facts, locale.ui));
     } else if (source.type === 'post') {
       nonempty(entry.bodyHtml, `${key}:bodyHtml`);
       for (const image of entry.bodyHtml.matchAll(/<img\b[^>]*>/g)) {
@@ -281,7 +282,7 @@ test('French specification display values translate source cells without changin
   const values = localeData('fr').ui.specificationValues;
   assert.ok(values && Object.keys(values).length, 'French specificationValues must cover prose cells');
   const cells = new Set(englishInventory().filter(({ type }) => type === 'product')
-    .flatMap((source) => extractProductFacts(source).tables.flatMap(({ rows }) => rows.flat())));
+    .flatMap((source) => extractProductFacts(productForLanguage(source, 'fr')).tables.flatMap(({ rows }) => rows.flat())));
   for (const [source, translated] of Object.entries(values)) {
     assert.ok(cells.has(source), `Unknown specification cell: ${source}`);
     assert.ok(typeof translated === 'string' && translated.trim(), source);
@@ -412,7 +413,7 @@ function assertSpanishSpecificationValues(locale) {
   const values = locale.ui.specificationValues;
   assert.ok(values && Object.keys(values).length, 'Spanish specificationValues must cover prose cells');
   const cells = new Set(englishInventory().filter(({ type }) => type === 'product')
-    .flatMap((source) => extractProductFacts(source).tables.flatMap(({ rows }) => rows.flat())));
+    .flatMap((source) => extractProductFacts(productForLanguage(source, 'es')).tables.flatMap(({ rows }) => rows.flat())));
   for (const [source, translated] of Object.entries(values)) {
     assert.ok(cells.has(source), `Unknown specification cell: ${source}`);
     assert.ok(typeof translated === 'string' && translated.trim(), source);
@@ -576,7 +577,7 @@ function assertArabicSpecificationValues(locale) {
   const values = locale.ui.specificationValues;
   assert.ok(values && Object.keys(values).length, 'Arabic specificationValues must cover prose cells');
   const cells = new Set(englishInventory().filter(({ type }) => type === 'product')
-    .flatMap((source) => extractProductFacts(source).tables.flatMap(({ rows }) => rows.flat())));
+    .flatMap((source) => extractProductFacts(productForLanguage(source, 'ar')).tables.flatMap(({ rows }) => rows.flat())));
   for (const [source, translated] of Object.entries(values)) {
     assert.ok(cells.has(source), `Unknown specification cell: ${source}`);
     assert.ok(typeof translated === 'string' && translated.trim(), source);

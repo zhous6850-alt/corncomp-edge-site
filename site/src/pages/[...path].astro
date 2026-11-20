@@ -23,7 +23,7 @@ import { PRODUCT_DIRECTORY_TITLES } from '../data/product-directory.mjs';
 import { mediaFor, mediaListFor } from '../lib/visual-media.mjs';
 import { contentDescription, contentPath, contentText, contentTitle, localizeInternalLinks, normalizeBodyHeadings } from '../lib/content-routes.mjs';
 import { allLocalizedEntries, blogLabelsFor, contentKeyForArchitecture, englishInventory, localizedEntry, routeFor, uiFor } from '../lib/localization.mjs';
-import { extractProductFacts, localizedProductBody } from '../lib/product-facts.mjs';
+import { extractProductFacts, localizedProductBody, productForLanguage } from '../lib/product-facts.mjs';
 import { PRODUCT_CATEGORIES, PRODUCT_GROUPS, categoryForProduct } from '../lib/site-architecture.mjs';
 
 export function getStaticPaths() {
@@ -82,7 +82,7 @@ const evidenceText = {
   de: { title: 'Unternehmensdokumente und Artikelumfang', context: 'Die Bilder zeigen die Produktfamilie und das Umfeld der Corncomp-Anlage. Unternehmenszertifikate belegen keine Zertifizierung dieses Artikels. Bestätigen Sie die Dokumente für das gewählte Material und die Bestellung.', link: 'Unternehmensdokumente prüfen' },
 }[language];
 const relatedProducts = product ? inventory.filter((item) => item.type === 'product' && item.contentKey !== product.contentKey && categoryForProduct(item.slug)?.slug === productCategory.slug).slice(0, 4) : [];
-const facts = product ? extractProductFacts(product) : null;
+const facts = product ? extractProductFacts(productForLanguage(product, language)) : null;
 const displayFacts = facts ? { ...facts, tables: facts.tables.map(({ headers, rows }) => ({ headers, rows: rows.map((row) => row.map((cell) => ui.specificationValues?.[cell] || cell)) })) } : null;
 const productHtml = product ? (localized ? localizedProductBody(entry, displayFacts, ui) : product.body) : '';
 const bodyHtml = product ? normalizeBodyHeadings(localizeInternalLinks(productHtml, language, entry.route)) : post ? normalizeBodyHeadings(localizeInternalLinks(localized ? entry.bodyHtml : post.body, language, entry.route)) : '';
