@@ -8,7 +8,7 @@ import { validateVisualMedia } from './visual-media.mjs';
 import { VISUAL_MEDIA } from '../data/visual-media.mjs';
 import { COMPANY_CERTIFICATES } from '../data/certificates.mjs';
 import { SUPPORTED_LANGUAGES, allLocalizedEntries, englishInventory, localizedEntry, routeFor, uiFor } from './localization.mjs';
-import { assertFactParity } from './product-facts.mjs';
+import { assertFactParity, productForLanguage } from './product-facts.mjs';
 import { canonicalUrl } from './routes.mjs';
 import { contentText, localizeInternalLinks, normalizeBodyHeadings } from './content-routes.mjs';
 import records from '../data/records.json' with { type: 'json' };
@@ -352,7 +352,7 @@ test('all product primary and related images reserve space and retain localized 
   for (const product of englishInventory().filter((item) => item.type === 'product')) {
     for (const language of SUPPORTED_LANGUAGES) {
       const html = await readBuiltRoute(routeFor(language, product.contentKey));
-      assert.doesNotThrow(() => assertFactParity(product, html), `${language}:${product.slug}:facts`);
+      assert.doesNotThrow(() => assertFactParity(productForLanguage(product, language), html), `${language}:${product.slug}:facts`);
       assert.equal((html.match(/<table\b/g) || []).length, (product.body.match(/<table\b/g) || []).length, `${language}:${product.slug}:catalogue tables`);
       const lead = html.match(/<figure class="featured-media product-media">[\s\S]*?<\/figure>/)?.[0] || '';
       const image = lead.match(/<img\b[^>]*>/)?.[0] || '';

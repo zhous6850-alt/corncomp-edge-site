@@ -22,6 +22,10 @@ export function assertFactParity(sourceRecord, localizedHtml) {
 const blocks = (html, tag) => [...html.matchAll(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'gi'))].map((match) => match[1]);
 const cellText = (html) => html.replace(/<[^>]+>/g, '').trim();
 
+// English-only updates can retain the reviewed source for existing translations.
+export const productForLanguage = (record, language) =>
+  language !== 'en' && record.localizedSource ? { ...record, ...record.localizedSource } : record;
+
 export function extractProductFacts(record) {
   const tables = blocks(record.body, 'table').map((table) => {
     const heads = blocks(table, 'thead');
