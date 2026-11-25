@@ -267,11 +267,11 @@ test('French localized links resolve to French entries and preserve guide eviden
   const routes = new Set(Object.values(locale.content).map(({ route }) => route));
   for (const source of englishInventory()) {
     const entry = locale.content[source.contentKey];
-    for (const link of entry.links || []) assert.ok(routes.has(link.route), `${source.contentKey}:${link.route}`);
+    for (const link of entry.links || []) assert.ok(routes.has(link.route.split('#')[0]), `${source.contentKey}:${link.route}`);
     for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
       for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
         if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
-        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+        assert.ok(routes.has(href.split('#')[0]), `${source.contentKey}:${href}`);
       }
     }
     if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));
@@ -380,11 +380,11 @@ function assertSpanishLinks(locale) {
   for (const source of englishInventory()) {
     const entry = locale.content[source.contentKey];
     assert.ok(entry, source.contentKey);
-    for (const link of entry.links || []) assert.ok(routes.has(link.route), `${source.contentKey}:${link.route}`);
+    for (const link of entry.links || []) assert.ok(routes.has(link.route.split('#')[0]), `${source.contentKey}:${link.route}`);
     for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
       for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
         if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
-        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+        assert.ok(routes.has(href.split('#')[0]), `${source.contentKey}:${href}`);
       }
     }
     if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));
@@ -544,11 +544,11 @@ function assertArabicLinks(locale) {
   for (const source of englishInventory()) {
     const entry = locale.content[source.contentKey];
     assert.ok(entry, source.contentKey);
-    for (const link of entry.links || []) assert.ok(routes.has(link.route), `${source.contentKey}:${link.route}`);
+    for (const link of entry.links || []) assert.ok(routes.has(link.route.split('#')[0]), `${source.contentKey}:${link.route}`);
     for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
       for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
         if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
-        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+        assert.ok(routes.has(href.split('#')[0]), `${source.contentKey}:${href}`);
       }
     }
     if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));

@@ -659,7 +659,7 @@
       "route": "/es/envases-personalizados/",
       "title": "Envases alimentarios con impresión personalizada",
       "description": "Prepare sus vasos, pajitas y envases alimentarios impresos con revisión del diseño, muestras, producción y apoyo a la exportación de Corncomp.",
-      "sourceHash": "8f6b5e1809c9c8f5d38cda5339435c9b63ad38a3ffd12669a70152ee837f9aef",
+      "sourceHash": "47afd86640b0d2c5ff1242941e1cd14466b8c8cc9d7709efcbf4567ff000d312",
       "intro": "Empiece por el formato, el tamaño, la cantidad, el diseño, el método de embalaje y el destino. Corncomp revisa la especificación antes de confirmar viabilidad, precio, muestras necesarias y calendario de producción.",
       "sections": [
         {
@@ -685,6 +685,11 @@
           "title": "Pajitas de papel personalizadas",
           "route": "/es/envases-personalizados/pajitas-de-papel-personalizadas/",
           "text": "Defina diámetro, longitud, impresión, envoltura y embalaje."
+        },
+        {
+          "title": "Cuencos para ensaladas con impresión personalizada",
+          "route": "/es/productos/vasos-y-cuencos/cuencos-para-ensaladas/#salad-specifications",
+          "text": "Empiece por los seis tamaños indicados y envíe después el diseño, la tapa elegida y la cantidad."
         }
       ]
     },
@@ -692,7 +697,7 @@
       "route": "/es/envases-personalizados/vasos-de-papel-impresos/",
       "title": "Vasos de papel con impresión personalizada",
       "description": "Vasos de papel impresos para mayoristas, marcas propias y programas de restauración.",
-      "sourceHash": "6e8366f5942863335d027af98795e395708c6c6d732b6e92bb42696a113c9074",
+      "sourceHash": "63ac2537614e7216b5350c4e48a66cab3793afcd30304d44fcb472a5ac020e7f",
       "intro": "Elija primero la estructura y el tamaño del vaso. Después envíe la cantidad, el diseño, los requisitos de impresión, el embalaje y el destino para su revisión.",
       "sections": [
         {
@@ -718,6 +723,11 @@
           "title": "Guía de tamaños de vasos de papel",
           "route": "/es/recursos/guias/tamanos-de-vasos-de-papel/",
           "text": "Compruebe las medidas que afectan al ajuste."
+        },
+        {
+          "title": "Consulte la tabla de tamaños de las tapas de café de PLA",
+          "route": "/es/productos/vasos-y-cuencos/vasos-de-papel/#paper-cup-lids-title",
+          "text": "Compruebe los tamaños de tapa indicados antes de imprimir."
         }
       ]
     },
@@ -1985,7 +1995,7 @@
       "sourceHash": "52b0e8fec67b99faf31e33a06cb34869b961e60517ac35e34d0937ed63db2cd0",
       "summary": "El cuenco de cartón blanco tiene seis tamaños con diámetros superiores de 150 mm y 185 mm. El catálogo lo identifica como cuenco de cartón y no acredita contenido de fibra de bambú. Se indica disponibilidad de impresión personalizada.",
       "specificationHeading": "Especificaciones del catálogo",
-      "comparisonHtml": "<p>La gama de cuencos de papel blanco tiene alturas de 50 a 84 mm. Compare diámetro y referencia con el <a href=\"/es/product/cuenco-de-papel-kraft/\">cuenco kraft</a> y la tapa de ensaladera elegida antes de pedir.</p>",
+      "comparisonHtml": "<p>La gama de cuencos de papel blanco tiene alturas de 50 a 84 mm. Compare diámetro y referencia con el <a href=\"/es/product/cuenco-de-papel-kraft/\">cuenco kraft</a> y la tapa de ensaladera elegida antes de pedir.</p><p><a href=\"/es/productos/vasos-y-cuencos/cuencos-para-ensaladas/#salad-specifications\">Comparar los seis tamaños de cuencos para ensaladas</a></p>",
       "orderingHeading": "Preguntas antes de realizar el pedido",
       "faq": "<h3>¿Cómo elijo la referencia?</h3><p>Utilice la referencia y las dimensiones de la tabla y pida a Corncomp que confirme la especificación del pedido.</p><h3>¿Hay documentos de certificación y material?</h3><p>Consulte la <a href=\"/es/certificaciones-de-corncomp/\">página de certificaciones</a> y solicite los documentos aplicables al artículo, material, etiquetado y pedido.</p><h3>¿Cuál es la cantidad mínima y el plazo de entrega?</h3><p>El pedido mínimo es de 30 000 unidades por artículo, o 50 000 unidades por artículo para pedidos con impresión personalizada. El plazo de entrega es de unos 30 días desde la confirmación del pedido.</p>",
       "documentScope": "Consulte los documentos de empresa e instalaciones en la página de certificaciones y confirme cuáles corresponden al artículo, material, etiquetado y pedido elegidos.",
@@ -2002,7 +2012,7 @@
       "sourceHash": "ba1a4a1de73bc3ebb2c6ca3af1e79be85c63fc60144b69d29ce683c8722d2d42",
       "summary": "La gama de cuencos de papel kraft de Corncomp tiene seis tamaños con diámetros superiores de 150 mm y 185 mm. Utilice las dimensiones y referencias para comparar opciones para ensaladas y otros alimentos preparados. El catálogo indica 300 unidades por caja para cada tamaño.",
       "specificationHeading": "Especificaciones del catálogo",
-      "comparisonHtml": "<p>El cuenco kraft de 150 mm tiene alturas de 50, 60 y 79 mm. El de 185 mm tiene opciones de 60, 70 y 84 mm. Las tapas se presentan por separado en <a href=\"/es/product/tapa-de-pet-para-cuenco-de-ensalada/\">PET</a>, <a href=\"/es/product/tapa-de-pp-para-cuenco-de-ensalada/\">PP</a>, <a href=\"/es/product/tapa-de-pla-para-cuenco-de-ensalada/\">PLA</a> y <a href=\"/es/product/tapa-de-papel-para-cuenco-de-ensalada/\">papel</a>. Confirme el conjunto de cuenco y tapa con las referencias solicitadas.</p>",
+      "comparisonHtml": "<p>El cuenco kraft de 150 mm tiene alturas de 50, 60 y 79 mm. El de 185 mm tiene opciones de 60, 70 y 84 mm. Las tapas se presentan por separado en <a href=\"/es/product/tapa-de-pet-para-cuenco-de-ensalada/\">PET</a>, <a href=\"/es/product/tapa-de-pp-para-cuenco-de-ensalada/\">PP</a>, <a href=\"/es/product/tapa-de-pla-para-cuenco-de-ensalada/\">PLA</a> y <a href=\"/es/product/tapa-de-papel-para-cuenco-de-ensalada/\">papel</a>. Confirme el conjunto de cuenco y tapa con las referencias solicitadas.</p><p><a href=\"/es/productos/vasos-y-cuencos/cuencos-para-ensaladas/#salad-specifications\">Comparar los seis tamaños de cuencos para ensaladas</a></p>",
       "orderingHeading": "Preguntas antes de realizar el pedido",
       "faq": "<h3>¿Puedo elegir un cuenco blanco?</h3><p>El <a href=\"/es/product/cuenco-de-carton-blanco/\">cuenco de cartón blanco</a> se ofrece en las mismas seis dimensiones.</p><h3>¿Hay documentos de certificación y material?</h3><p>Consulte la <a href=\"/es/certificaciones-de-corncomp/\">página de certificaciones</a> y solicite los documentos aplicables al artículo, material, etiquetado y pedido.</p><h3>¿Cuál es la cantidad mínima y el plazo de entrega?</h3><p>El pedido mínimo es de 30 000 unidades por artículo, o 50 000 unidades por artículo para pedidos con impresión personalizada. El plazo de entrega es de unos 30 días desde la confirmación del pedido.</p>",
       "documentScope": "Consulte los documentos de empresa e instalaciones en la página de certificaciones y confirme cuáles corresponden al artículo, material, etiquetado y pedido elegidos.",

@@ -655,7 +655,7 @@
       "title": "Lebensmittelverpackungen auf Ihre Marke gedruckt",
       "description": "Bereiten Sie Ihre Becher, Strohhalme und Lebensmittelverpackungen vor, die mit Corncomp gedruckt werden: Grafikdateien, Proben, Produktion und Exportunterstützung.",
       "intro": "Beginnen Sie mit Format, Abmessungen, Menge, visuellem Druck, Verpackung und Zielort. Corncomp überprüft diese Spezifikationen, bevor er die Machbarkeit, den Preis, die erforderlichen Proben und den Produktionsplan bestätigt.",
-      "sourceHash": "8f6b5e1809c9c8f5d38cda5339435c9b63ad38a3ffd12669a70152ee837f9aef",
+      "sourceHash": "47afd86640b0d2c5ff1242941e1cd14466b8c8cc9d7709efcbf4567ff000d312",
       "sections": [
         {
           "title": "1. Setzprodukt",
@@ -680,6 +680,11 @@
           "title": "Custom Paper Strohhalme",
           "route": "/de/custom-packaging/custom-paper-straws/",
           "text": "Durchmesser, Länge, Druck, Einzelverpackung und Verpackung angeben."
+        },
+        {
+          "title": "Individuell bedruckte Salatschalen",
+          "route": "/de/products/cups-bowls/salad-bowls/#salad-specifications",
+          "text": "Beginnen Sie mit den sechs aufgeführten Größen und teilen Sie anschließend Druckmotiv, Deckelwahl und Menge mit."
         }
       ]
     },
@@ -688,7 +693,7 @@
       "title": "Individuelle Pappbecher mit Druck",
       "description": "Bedruckte Papierbecher für Großhandel, Vertriebsmarken und Catering.",
       "intro": "Wählen Sie zuerst die Struktur des Bechers und seine Abmessungen aus, übermitteln Sie dann die Menge, die Grafikdateien, die Druckanforderungen, die Verpackung und den Bestimmungsort.",
-      "sourceHash": "6e8366f5942863335d027af98795e395708c6c6d732b6e92bb42696a113c9074",
+      "sourceHash": "63ac2537614e7216b5350c4e48a66cab3793afcd30304d44fcb472a5ac020e7f",
       "sections": [
         {
           "title": "Wählen Sie die Struktur der Tasse",
@@ -713,6 +718,11 @@
           "title": "Größenangaben für den Papierbecher",
           "route": "/de/resources/guides/paper-cup-sizes/",
           "text": "Überprüfen Sie die Dimensionen, die die Kompatibilität bestimmen."
+        },
+        {
+          "title": "Größentabelle der PLA-Kaffee-Deckel ansehen",
+          "route": "/de/products/cups-bowls/paper-cups/#paper-cup-lids-title",
+          "text": "Prüfen Sie die aufgeführten Deckelgrößen vor dem Druck."
         }
       ]
     },
@@ -1968,7 +1978,7 @@
       "sourceHash": "52b0e8fec67b99faf31e33a06cb34869b961e60517ac35e34d0937ed63db2cd0",
       "summary": "Diese Schale ist in sechs Größen mit oberem Durchmesser von 150 mm oder 185 mm erhältlich. Der Katalog identifiziert sich als Pappschale, ohne das Vorhandensein von Bambusfasern festzustellen. Custom Printing wird als verfügbar angezeigt.",
       "specificationHeading": "Spezifikationen des Katalogs",
-      "comparisonHtml": "<p>Der weiße Bereich hat Höhen von 50 bis 84 mm. Vergleichen Sie Durchmesser und Referenz mit dem <a href=\"/de/products/kraft-paper-bowl/\">Kraftbehälter</a> und den Salatdeckel vor der Bestellung ausgewählt.</p>",
+      "comparisonHtml": "<p>Der weiße Bereich hat Höhen von 50 bis 84 mm. Vergleichen Sie Durchmesser und Referenz mit dem <a href=\"/de/products/kraft-paper-bowl/\">Kraftbehälter</a> und den Salatdeckel vor der Bestellung ausgewählt.</p><p><a href=\"/de/products/cups-bowls/salad-bowls/#salad-specifications\">Alle sechs Salatschalengrößen vergleichen</a></p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Wie hoch sind Mindestbestellmenge und Lieferzeit?</strong> Die Mindestbestellmenge beträgt 30 000 Stück pro Artikel bzw. 50 000 Stück pro Artikel bei Aufträgen mit individuellem Druck. Die Lieferzeit beträgt etwa 30 Tage nach Auftragsbestätigung.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
@@ -1982,7 +1992,7 @@
       "sourceHash": "ba1a4a1de73bc3ebb2c6ca3af1e79be85c63fc60144b69d29ce683c8722d2d42",
       "summary": "Die Corncomp Kraft Bowl-Serie hat sechs Größen mit Durchmessern von 150 mm und 185 mm für Salate und andere zubereitete Lebensmittel. Jede Größe wird mit 300 Stück pro Karton angegeben.",
       "specificationHeading": "Spezifikationen des Katalogs",
-      "comparisonHtml": "<p>Die 150-mm-Schüssel existiert in Höhen von 50, 60 und 79 mm; die 185-mm-Schüssel in Höhen von 60, 70 und 84 mm. Die Deckel sind separat in <a href=\"/de/products/pet-lid/\">PET</a>, <a href=\"/de/products/pp-lid/\">PP</a>, <a href=\"/de/products/pla-lid/\">PLA</a> und <a href=\"/de/products/paper-lid/\">Papier</a>Bestätigen Sie die Assoziation mit den bestellten Referenzen.</p>",
+      "comparisonHtml": "<p>Die 150-mm-Schüssel existiert in Höhen von 50, 60 und 79 mm; die 185-mm-Schüssel in Höhen von 60, 70 und 84 mm. Die Deckel sind separat in <a href=\"/de/products/pet-lid/\">PET</a>, <a href=\"/de/products/pp-lid/\">PP</a>, <a href=\"/de/products/pla-lid/\">PLA</a> und <a href=\"/de/products/paper-lid/\">Papier</a>Bestätigen Sie die Assoziation mit den bestellten Referenzen.</p><p><a href=\"/de/products/cups-bowls/salad-bowls/#salad-specifications\">Alle sechs Salatschalengrößen vergleichen</a></p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Gibt es eine weiße Schüssel?</strong> Die <a href=\"/de/products/cardboard-bamboo-bowl/\">weiße Kartonschale</a> wird in den gleichen sechs Dimensionen vorgeschlagen.</p><p><strong>Wie hoch sind Mindestbestellmenge und Lieferzeit?</strong> Die Mindestbestellmenge beträgt 30 000 Stück pro Artikel bzw. 50 000 Stück pro Artikel bei Aufträgen mit individuellem Druck. Die Lieferzeit beträgt etwa 30 Tage nach Auftragsbestätigung.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",

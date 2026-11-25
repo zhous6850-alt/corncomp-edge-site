@@ -662,7 +662,7 @@
       "title": "Emballages alimentaires imprimés à votre marque",
       "description": "Préparez vos gobelets, pailles et emballages alimentaires imprimés avec Corncomp : fichiers graphiques, échantillons, production et accompagnement à l’export.",
       "intro": "Commencez par le format, les dimensions, la quantité, le visuel d’impression, le conditionnement et la destination. Corncomp étudie ces spécifications avant de confirmer la faisabilité, le prix, les échantillons nécessaires et le calendrier de production.",
-      "sourceHash": "8f6b5e1809c9c8f5d38cda5339435c9b63ad38a3ffd12669a70152ee837f9aef",
+      "sourceHash": "47afd86640b0d2c5ff1242941e1cd14466b8c8cc9d7709efcbf4567ff000d312",
       "sections": [
         {
           "title": "1. Définir le produit",
@@ -687,6 +687,11 @@
           "title": "Pailles en papier personnalisées",
           "route": "/fr/emballages-personnalises/pailles-papier-personnalisees/",
           "text": "Précisez le diamètre, la longueur, l’impression, l’emballage individuel et le conditionnement."
+        },
+        {
+          "title": "Bols à salade à impression personnalisée",
+          "route": "/fr/produits/gobelets-bols/bols-salade/#salad-specifications",
+          "text": "Partez des six formats indiqués, puis transmettez le visuel, le choix de couvercle et la quantité."
         }
       ]
     },
@@ -695,7 +700,7 @@
       "title": "Gobelets en papier personnalisés",
       "description": "Gobelets en papier imprimés pour la vente en gros, les marques de distributeur et la restauration.",
       "intro": "Choisissez d’abord la structure du gobelet et ses dimensions, puis transmettez la quantité, les fichiers graphiques, les exigences d’impression, le conditionnement et la destination.",
-      "sourceHash": "6e8366f5942863335d027af98795e395708c6c6d732b6e92bb42696a113c9074",
+      "sourceHash": "63ac2537614e7216b5350c4e48a66cab3793afcd30304d44fcb472a5ac020e7f",
       "sections": [
         {
           "title": "Choisir la structure du gobelet",
@@ -720,6 +725,11 @@
           "title": "Guide des dimensions des gobelets en papier",
           "route": "/fr/ressources/guides/dimensions-gobelets-papier/",
           "text": "Vérifiez les dimensions qui déterminent la compatibilité."
+        },
+        {
+          "title": "Voir le tableau des tailles des couvercles à café en PLA",
+          "route": "/fr/produits/gobelets-bols/gobelets-papier/#paper-cup-lids-title",
+          "text": "Vérifiez les tailles de couvercles indiquées avant l’impression."
         }
       ]
     },
@@ -1975,7 +1985,7 @@
       "sourceHash": "52b0e8fec67b99faf31e33a06cb34869b961e60517ac35e34d0937ed63db2cd0",
       "summary": "Ce bol est proposé en six formats avec des diamètres supérieurs de 150 mm et 185 mm. Le catalogue l’identifie comme un bol en carton, sans établir la présence de fibres de bambou. L’impression personnalisée est indiquée comme disponible.",
       "specificationHeading": "Spécifications du catalogue",
-      "comparisonHtml": "<p>La gamme blanche présente des hauteurs de 50 à 84 mm. Comparez le diamètre et la référence avec le <a href=\"/fr/produits/bol-papier-kraft/\">bol kraft</a> et le couvercle de salade choisi avant de commander.</p>",
+      "comparisonHtml": "<p>La gamme blanche présente des hauteurs de 50 à 84 mm. Comparez le diamètre et la référence avec le <a href=\"/fr/produits/bol-papier-kraft/\">bol kraft</a> et le couvercle de salade choisi avant de commander.</p><p><a href=\"/fr/produits/gobelets-bols/bols-salade/#salad-specifications\">Comparer les six formats de bols à salade</a></p>",
       "orderingHeading": "Questions avant commande",
       "faq": "<p><strong>Comment choisir la bonne référence ?</strong> Utilisez la référence et les dimensions du tableau, puis faites confirmer les spécifications commandées par Corncomp.</p><p><strong>Quels sont la quantité minimale et le délai ?</strong> La quantité minimale est de 30 000 pièces par référence, ou 50 000 pièces par référence pour les commandes avec impression personnalisée. Le délai est d’environ 30 jours après confirmation de la commande.</p>",
       "documentScope": "Les documents pertinents de l’entreprise et de l’usine sont présentés sur la page des certifications Corncomp. Demandez lesquels couvrent la référence, la matière, le marquage et la commande choisis.",
@@ -1989,7 +1999,7 @@
       "sourceHash": "ba1a4a1de73bc3ebb2c6ca3af1e79be85c63fc60144b69d29ce683c8722d2d42",
       "summary": "La gamme de bols kraft Corncomp compte six formats avec des diamètres supérieurs de 150 mm et 185 mm pour salades et autres aliments préparés. Chaque format est indiqué à 300 pièces par carton.",
       "specificationHeading": "Spécifications du catalogue",
-      "comparisonHtml": "<p>Le bol de 150 mm existe en hauteurs de 50, 60 et 79 mm ; celui de 185 mm en hauteurs de 60, 70 et 84 mm. Les couvercles sont présentés séparément en <a href=\"/fr/produits/couvercle-pet-bol-salade/\">PET</a>, <a href=\"/fr/produits/couvercle-pp-bol-salade/\">PP</a>, <a href=\"/fr/produits/couvercle-pla-bol-salade/\">PLA</a> et <a href=\"/fr/produits/couvercle-papier-bol-salade/\">papier</a>. Confirmez l’association avec les références commandées.</p>",
+      "comparisonHtml": "<p>Le bol de 150 mm existe en hauteurs de 50, 60 et 79 mm ; celui de 185 mm en hauteurs de 60, 70 et 84 mm. Les couvercles sont présentés séparément en <a href=\"/fr/produits/couvercle-pet-bol-salade/\">PET</a>, <a href=\"/fr/produits/couvercle-pp-bol-salade/\">PP</a>, <a href=\"/fr/produits/couvercle-pla-bol-salade/\">PLA</a> et <a href=\"/fr/produits/couvercle-papier-bol-salade/\">papier</a>. Confirmez l’association avec les références commandées.</p><p><a href=\"/fr/produits/gobelets-bols/bols-salade/#salad-specifications\">Comparer les six formats de bols à salade</a></p>",
       "orderingHeading": "Questions avant commande",
       "faq": "<p><strong>Existe-t-il un bol blanc ?</strong> Le <a href=\"/fr/produits/bol-carton-blanc/\">bol en carton blanc</a> est proposé dans les six mêmes dimensions.</p><p><strong>Quels sont la quantité minimale et le délai ?</strong> La quantité minimale est de 30 000 pièces par référence, ou 50 000 pièces par référence pour les commandes avec impression personnalisée. Le délai est d’environ 30 jours après confirmation de la commande.</p>",
       "documentScope": "Les documents pertinents de l’entreprise et de l’usine sont présentés sur la page des certifications Corncomp. Demandez lesquels couvrent la référence, la matière, le marquage et la commande choisis.",

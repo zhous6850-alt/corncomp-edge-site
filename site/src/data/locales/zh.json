@@ -659,7 +659,7 @@
       "route": "/zh/custom-packaging/",
       "title": "定制印刷食品包装",
       "description": "准备定制纸杯、纸吸管及食品包装的规格、图稿、样品和采购需求。",
-      "sourceHash": "8f6b5e1809c9c8f5d38cda5339435c9b63ad38a3ffd12669a70152ee837f9aef",
+      "sourceHash": "47afd86640b0d2c5ff1242941e1cd14466b8c8cc9d7709efcbf4567ff000d312",
       "intro": "从格式、尺寸、数量、设计、包装方法和目的地开始。 Corncomp 在确认可行性、价格、所需样品和生产计划之前会审查规格。",
       "sections": [
         {
@@ -685,6 +685,11 @@
           "title": "个性化纸吸管",
           "route": "/zh/envases-personalizados/pajitas-de-papel-personalizadas/",
           "text": "定义直径、长度、印刷、包装和包装。"
+        },
+        {
+          "title": "定制印刷沙拉碗",
+          "route": "/zh/products/cups-bowls/salad-bowls/#salad-specifications",
+          "text": "先从列出的六种尺寸开始，再提供图稿、盖子选择和数量。"
         }
       ]
     },
@@ -692,7 +697,7 @@
       "route": "/zh/custom-packaging/custom-printed-paper-cups/",
       "title": "定制印刷纸杯",
       "description": "面向批发、自有品牌与餐饮采购的定制印刷纸杯；确认杯型、尺寸、图稿与包装要求。",
-      "sourceHash": "6e8366f5942863335d027af98795e395708c6c6d732b6e92bb42696a113c9074",
+      "sourceHash": "63ac2537614e7216b5350c4e48a66cab3793afcd30304d44fcb472a5ac020e7f",
       "intro": "首先选择纸杯的结构和尺寸。然后提交数量、设计、印刷要求、包装和目的地供审核。",
       "sections": [
         {
@@ -718,6 +723,11 @@
           "title": "纸杯尺寸指南",
           "route": "/zh/resources/guides/paper-cup-sizes/",
           "text": "检查影响贴合度的测量值。"
+        },
+        {
+          "title": "查看 PLA 咖啡盖尺寸表",
+          "route": "/zh/products/cups-bowls/paper-cups/#paper-cup-lids-title",
+          "text": "印刷前核对表中列出的盖子尺寸。"
         }
       ]
     },
@@ -1985,7 +1995,7 @@
       "sourceHash": "52b0e8fec67b99faf31e33a06cb34869b961e60517ac35e34d0937ed63db2cd0",
       "summary": "白卡纸碗有六个尺寸，顶部直径为150mm和185mm。该目录将其标识为纸板碗，但未注明其竹纤维含量。已指示自定义打印可用性。",
       "specificationHeading": "目录规格",
-      "comparisonHtml": "<p>白色纸碗的高度范围为 50 至 84 毫米。将直径和参考值与<a href=\"/zh/product/cuenco-de-papel-kraft/\">牛皮纸碗</a>以及订购前选择的沙拉碗盖。</p>",
+      "comparisonHtml": "<p>白色纸碗的高度范围为 50 至 84 毫米。将直径和参考值与<a href=\"/zh/product/cuenco-de-papel-kraft/\">牛皮纸碗</a>以及订购前选择的沙拉碗盖。</p><p><a href=\"/zh/products/cups-bowls/salad-bowls/#salad-specifications\">比较全部六种沙拉碗尺寸</a></p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>如何选择参考？</h3><p>使用表中的参考和尺寸，并要求 Corncomp 确认订单规格。</p><h3>有证明文件和材料吗？</h3><p>咨询<a href=\"/zh/certificaciones-de-corncomp/\">认证页面</a>并索取适用于该商品、材料、标签和订单的文件。</p><h3>起订量和交期是多少？</h3><p>每个单品的起订量为 30,000 件，定制印刷订单为每个单品 50,000 件。交期为订单确认后约 30 天。</p>",
       "documentScope": "查看认证页面上的公司和工厂文件，并确认哪些文件适用于所选项目、材料、标签和订单。",
@@ -2002,7 +2012,7 @@
       "sourceHash": "ba1a4a1de73bc3ebb2c6ca3af1e79be85c63fc60144b69d29ce683c8722d2d42",
       "summary": "Corncomp 的牛皮纸碗系列有六种尺寸，顶部直径为 150 毫米和 185 毫米。使用尺寸和参考来比较沙拉和其他预制食品的选择。目录显示每种尺寸每盒 300 件。",
       "specificationHeading": "目录规格",
-      "comparisonHtml": "<p>150毫米牛皮纸碗的高度有50、60和79毫米。 185mm 有 60、70 和 84mm 选项。上限单独呈现在<a href=\"/zh/product/tapa-de-pet-para-cuenco-de-ensalada/\">宠物</a>, <a href=\"/zh/product/tapa-de-pp-para-cuenco-de-ensalada/\">聚丙烯</a>, <a href=\"/zh/product/tapa-de-pla-para-cuenco-de-ensalada/\">PLA</a>和<a href=\"/zh/product/tapa-de-papel-para-cuenco-de-ensalada/\">纸</a>。根据要求的参考资料确认碗和盖的组装。</p>",
+      "comparisonHtml": "<p>150毫米牛皮纸碗的高度有50、60和79毫米。 185mm 有 60、70 和 84mm 选项。上限单独呈现在<a href=\"/zh/product/tapa-de-pet-para-cuenco-de-ensalada/\">宠物</a>, <a href=\"/zh/product/tapa-de-pp-para-cuenco-de-ensalada/\">聚丙烯</a>, <a href=\"/zh/product/tapa-de-pla-para-cuenco-de-ensalada/\">PLA</a>和<a href=\"/zh/product/tapa-de-papel-para-cuenco-de-ensalada/\">纸</a>。根据要求的参考资料确认碗和盖的组装。</p><p><a href=\"/zh/products/cups-bowls/salad-bowls/#salad-specifications\">比较全部六种沙拉碗尺寸</a></p>",
       "orderingHeading": "订购前的疑问",
       "faq": "<h3>我可以选择白色的碗吗？</h3><p>他<a href=\"/zh/product/cuenco-de-carton-blanco/\">白色纸板碗</a>它具有相同的六个维度。</p><h3>有证明文件和材料吗？</h3><p>咨询<a href=\"/zh/certificaciones-de-corncomp/\">认证页面</a>并索取适用于该商品、材料、标签和订单的文件。</p><h3>起订量和交期是多少？</h3><p>每个单品的起订量为 30,000 件，定制印刷订单为每个单品 50,000 件。交期为订单确认后约 30 天。</p>",
       "documentScope": "查看认证页面上的公司和工厂文件，并确认哪些文件适用于所选项目、材料、标签和订单。",
