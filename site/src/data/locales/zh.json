@@ -111,6 +111,7 @@
       "Bendy (wave-inspired print, stock design)": "Bendy（波浪印刷、目录设计）",
       "Packaging": "包装",
       "500 pcs/pack, 10 packs/carton": "500个/包，10包/箱",
+      "Bare (unwrapped): 500 pcs/pack, 10 packs/carton (5,000 pcs/carton). Individually wrapped: 250 pcs/pack, 20 packs/carton (5,000 pcs/carton).": "散装（未独立包装）：500个/包，10包/箱（5,000个/箱）。独立包装：250个/包，20包/箱（5,000个/箱）。",
       "30,000 units (standard product)": "30,000台（标准品）",
       "Tip Style": "端部类型",
       "Pointed tip": "尖头",
@@ -1790,15 +1791,15 @@
     "product:sharp-edge": {
       "route": "/zh/products/foodservice-supplies/paper-straws/sharp-edge/",
       "title": "锋利边缘尖头纸吸管",
-      "description": "带尖头的锋利边缘纸吸管，每箱 500 包和 10 包。索取产品信息。",
-      "sourceHash": "dc1f50b48e967b600451e537903be46b23c51588d12665df1a0db7804a00a3fd",
+      "description": "带尖头的锋利边缘纸吸管。散装（未独立包装）：每包500支，每箱10包（每箱5,000支）。独立包装：每包250支，每箱20包（每箱5,000支）。索取产品信息。",
+      "sourceHash": "da45d39e12d3fbf5d8ae931bcfc7dbaf7ecae73b4a9b4c8af6649b94959fb57a",
       "summary": "Corncomp 的 Sharp Edge 纸吸管是直的，有一个尖头，适用于餐饮和随身饮料。",
       "specificationHeading": "目录规格",
       "comparisonHtml": "<h3>设计与制造</h3><p>锋利边缘是指尖端，而不是冲压件。该吸管是在 Corncomp 位于宁波的车间生产的，并为批量订单提供徽标印刷。</p><p>Corncomp 供应该产品及其<a href=\"/zh/productos/\">纸质包装目录</a>欧洲、美国、澳大利亚和东南亚的经销商和餐厅品牌。咨询<a href=\"/zh/contactenos/\">购买问题</a>和<a href=\"/zh/envases-personalizados/\">OEM/ODM 计划</a>处理最小订单、截止日期和制造示例。</p>",
       "orderingHeading": "订购前的疑问",
-      "faq": "<h3>锐边指的是什么？</h3><p>吸管的尖端，而不是印刷设计。</p><h3>它们是如何包装的？</h3><p>每包 500 根吸管，每箱 10 包。</p><h3>有定制印刷吗？</h3><p>是的，Corncomp 为至少 50,000 件的批量订单提供徽标打印。</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>.</p>",
+      "faq": "<h3>锐边指的是什么？</h3><p>吸管的尖端，而不是印刷设计。</p><h3>它们是如何包装的？</h3><p>散装（未独立包装）：每包500支，每箱10包（每箱5,000支）。独立包装：每包250支，每箱20包（每箱5,000支）。</p><h3>有定制印刷吗？</h3><p>是的，Corncomp 为至少 50,000 件的批量订单提供徽标打印。</p><p>参见：<a href=\"/zh/certificaciones-de-corncomp/\">认证证书</a>.</p>",
       "documentScope": "ISO 9001:2015 质量管理体系，证书 01SJQ0010480001，由 RINA Services S.p.A. 颁发。 BRCGS 包装材料，证书 CN24/00006923，B 级，由 SGS United Kingdom Ltd 颁发。 Corncomp 持有 FSC 产销监管链证书 RINA-COC-001953。请确认您的订单是否包含 FSC 认证材料和适用的 FSC 声明。 Corncomp 拥有 BPI 认证的可堆肥状态，编号为 10529571-1，合格的印刷纸吸管重量高达 352 克/平方米，并通过了用于商业和工业堆肥的 ASTM D6400 认证。确认订购产品的规格在认证范围内。 amfori BSCI 审核文件可根据要求提供。请参阅认证页面上的完整范围和验证链接。",
-      "orderTerms": "每包500支吸管包装，每箱10包。定制印刷起订量为50,000份；与团队核实详细信息。",
+      "orderTerms": "散装（未独立包装）：每包500支，每箱10包（每箱5,000支）。独立包装：每包250支，每箱20包（每箱5,000支）。定制印刷起订量为50,000份；与团队核实详细信息。",
       "alt": "锋利边缘尖头纸吸管"
     },
     "product:solid-colors-with-bamboo-fiber-wooden-fiber": {
