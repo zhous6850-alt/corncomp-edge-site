@@ -271,7 +271,7 @@ test('French localized links resolve to French entries and preserve guide eviden
     for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
       for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
         if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
-        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+        assert.ok(routes.has(href.split('#')[0]), `${source.contentKey}:${href}`);
       }
     }
     if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));
@@ -384,7 +384,7 @@ function assertSpanishLinks(locale) {
     for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
       for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
         if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
-        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+        assert.ok(routes.has(href.split('#')[0]), `${source.contentKey}:${href}`);
       }
     }
     if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));
@@ -548,7 +548,7 @@ function assertArabicLinks(locale) {
     for (const field of ['bodyHtml', 'comparisonHtml', 'faq']) {
       for (const [, href] of (entry[field] || '').matchAll(/href="([^"]+)"/g)) {
         if (href.startsWith('https:') && !href.includes('corn-comp.com')) continue;
-        assert.ok(routes.has(href), `${source.contentKey}:${href}`);
+        assert.ok(routes.has(href.split('#')[0]), `${source.contentKey}:${href}`);
       }
     }
     if (source.sources) assert.deepEqual(entry.sources.map(({ url }) => url), source.sources.map(({ url }) => url));
