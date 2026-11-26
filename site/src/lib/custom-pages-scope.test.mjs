@@ -17,12 +17,22 @@ test('the straws page stays on the previous three-link service and omits the cup
   assert.doesNotMatch(page, /Which sleeve fits my cup\?/);
 });
 
-test('locale custom pages do not receive the English cup FAQ or MOQ section', async () => {
-  for (const language of ['zh', 'fr', 'es', 'de', 'ar']) {
+test('all custom cup languages retain specification tables, MOQ and ten localized FAQs', async () => {
+  for (const language of ['en', 'zh', 'fr', 'es', 'de', 'ar']) {
     const page = await html(routeFor(language, 'architecture:custom-packaging/custom-printed-paper-cups'));
-    assert.doesNotMatch(page, /Which paper cups can be custom printed\?/);
-    assert.doesNotMatch(page, /id="moq"/);
-    assert.doesNotMatch(page, /Which sleeve fits my cup\?/);
+    for (const id of ['sizes', 'lids-sleeves', 'documents', 'moq', 'faq']) assert.ok(page.includes(`id="${id}"`), `${language}: ${id}`);
+    assert.equal((page.match(/<table\b/g) || []).length, 4, language);
+    assert.equal((page.match(/class="faq-item"/g) || []).length, 10, language);
+    const schemas = JSON.parse(page.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
+    const faq = schemas.find(node => node['@type'] === 'FAQPage');
+    assert.equal(faq.mainEntity.length, 10, language);
+    if (language !== 'en') {
+      assert.doesNotMatch(page, /Which paper cups can be custom printed\?/);
+      assert.doesNotMatch(page, /Which sleeve fits my cup\?/);
+      assert.notEqual(faq.mainEntity[0].acceptedAnswer.text, 'Custom printing is currently available for our kraft paper cups (single wall, double wall and ripple wall) and for our white cardboard single and double wall cups. If you are considering another cup material or style, please ask us first.');
+    }
+    const straws = await html(routeFor(language, 'architecture:custom-packaging/custom-paper-straws'));
+    for (const id of ['sizes', 'lids-sleeves', 'documents', 'moq', 'faq']) assert.equal(straws.includes(`id="${id}"`), false, `${language}: straw ${id}`);
   }
 });
 

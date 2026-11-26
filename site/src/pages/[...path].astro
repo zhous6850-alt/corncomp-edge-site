@@ -1,9 +1,12 @@
 ---
 import { CONTACT_DESIGN_LABELS } from '../data/contact-design-labels.mjs';
+import { blogCoverPath } from '../lib/blog-media.mjs';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import QualityPage from '../components/QualityPage.astro';
 import AboutCompanyPreview from '../components/AboutCompanyPreview.astro';
 import FactoryPage from '../components/FactoryPage.astro';
+import CustomPackagingOverview from '../components/CustomPackagingOverview.astro';
+import CustomPackagingService from '../components/CustomPackagingService.astro';
 import BlogPage from '../components/BlogPage.astro';
 import PublishedApplication from '../components/PublishedApplication.astro';
 import HomePage from '../components/HomePage.astro';
@@ -36,7 +39,7 @@ const publishedCustomKeys = new Set(['home','architecture:quality','architecture
 const archiveRoutes = [['en', 'blog', '/blog/'], ['fr', 'blog', '/fr/blog/'], ['es', 'blog', '/es/blog/'], ['ar', 'blog', '/ar/blog/'], ['zh', 'blog', '/zh/blog/'], ['de', 'blog', '/de/blog/']];
 
 const { language = 'en', contentKey, archive } = Astro.props;
-const ResourceRedesign = contentKey === 'architecture:about' ? AboutCompanyPreview : language === 'en' && contentKey === 'architecture:about/factory' ? FactoryPage : archive === 'blog' ? BlogPage : ({'architecture:quality':QualityPage})[contentKey];
+const ResourceRedesign = contentKey === 'architecture:about' ? AboutCompanyPreview : contentKey === 'architecture:about/factory' ? FactoryPage : archive === 'blog' ? BlogPage : ({'architecture:quality':QualityPage})[contentKey];
 const inventory = englishInventory();
 const source = contentKey ? inventory.find((item) => item.contentKey === contentKey) : null;
 const entry = contentKey ? localizedEntry(language, contentKey) : null;
@@ -93,7 +96,7 @@ const breadcrumbs = entry ? [[homeLabel, routeFor(language, 'home')], ...(produc
 const breadcrumbSchema = breadcrumbs.length > 1 ? { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: breadcrumbs.map(([name, route], index) => ({ '@type': 'ListItem', position: index + 1, name: contentText(name), item: `https://corn-comp.com${route}` })) } : null;
 const productSchema = product ? { '@context': 'https://schema.org', '@type': 'Product', name: contentText(entry.title), url: `https://corn-comp.com${entry.route}`, image: product.featuredMedia ? new URL(product.featuredMedia.localPath, 'https://corn-comp.com').href : undefined, description: localized ? entry.description : contentDescription(product), category: categoryPage.title, brand: { '@type': 'Brand', name: 'Corncomp' }, sku: itemCodes.length === 1 ? itemCodes[0] : undefined, additionalProperty: itemCodes.map((value) => ({ '@type': 'PropertyValue', name: 'Item number', value })) } : null;
 const listingSchema = architectureCategory ? { '@context': 'https://schema.org', '@type': 'ItemList', name: contentText(page.title), itemListElement: architectureProducts.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: contentText(localizedEntry(language, item.contentKey).title), url: `https://corn-comp.com${routeFor(language, item.contentKey)}` })) } : null;
-const articleSchema = post || architecture?.kind === 'guide' ? { '@context': 'https://schema.org', '@type': 'Article', name: contentText(entry.title), headline: contentText(entry.title), description: entry.description, mainEntityOfPage: `https://corn-comp.com${entry.route}`, image: post?.featuredMedia ? new URL(post.featuredMedia.localPath, 'https://corn-comp.com').href : undefined, datePublished: post?.datePublished, dateModified: post ? post.dateModified : entry.dateModified || entry.reviewedDate, author: { '@id': 'https://corn-comp.com/#organization' }, publisher: { '@id': 'https://corn-comp.com/#organization' } } : null;
+const articleSchema = post || architecture?.kind === 'guide' ? { '@context': 'https://schema.org', '@type': 'Article', name: contentText(entry.title), headline: contentText(entry.title), description: entry.description, mainEntityOfPage: `https://corn-comp.com${entry.route}`, image: post?.featuredMedia ? new URL(blogCoverPath(post), 'https://corn-comp.com').href : undefined, datePublished: post?.datePublished, dateModified: post ? post.dateModified : entry.dateModified || entry.reviewedDate, author: { '@id': 'https://corn-comp.com/#organization' }, publisher: { '@id': 'https://corn-comp.com/#organization' } } : null;
 const webPageSchema = architecture && !listingSchema && !articleSchema ? { '@context': 'https://schema.org', '@type': 'WebPage', name: architecture.kind === 'contact' ? `${CONTACT_DESIGN_LABELS[language].title1} ${CONTACT_DESIGN_LABELS[language].title2}` : architecture.kind === 'products' ? PRODUCT_DIRECTORY_TITLES[language] : contentText(page.title), url: `https://corn-comp.com${page.route}`, description: page.description } : null;
 if (architecture?.kind === 'contact') {
   const contactUrl = `https://corn-comp.com${page.route}`;
@@ -110,7 +113,7 @@ const structuredData = [productSchema, listingSchema, articleSchema, webPageSche
 const pageTitle = entry ? (localized ? `${entry.title} | Corncomp` : source.type === 'architecture' ? `${source.title} | Corncomp` : contentTitle(source)) : `${archive === 'shop' ? productsLabel : blogLabel} | Corncomp`;
 const pageDescription = entry ? (localized ? entry.description : source.description || contentDescription(source)) : archive === 'shop' ? `${productsLabel} Corncomp` : `${blogLabel} Corncomp`;
 const pagePath = entry?.route || archiveRoutes.find(([lang, kind]) => lang === language && kind === archive)?.[2];
-const pageImage = product?.featuredMedia?.localPath || post?.featuredMedia?.localPath;
+const pageImage = product?.featuredMedia?.localPath || (post ? blogCoverPath(post) : undefined);
 const archivePosts = archive === 'blog' ? inventory.filter((item) => item.type === 'post').map((item) => ({ source: item, entry: localizedEntry(language, item.contentKey) })) : [];
 const relatedPosts = post ? inventory.filter((item) => item.type === 'post' && item.contentKey !== post.contentKey).slice(0, 3).map((item) => ({ source: item, entry: localizedEntry(language, item.contentKey) })) : [];
 const blogLabels = { ...blogLabelsFor(language), title: blogLabel, insight: insightLabel };
@@ -118,7 +121,7 @@ const archiveCategories = archive === 'shop' ? PRODUCT_CATEGORIES.map((item) => 
 const recentPosts = architecture?.kind === 'resources' ? inventory.filter((item) => item.type === 'post').slice(0, 3).map((item) => ({ source: item, entry: localizedEntry(language, item.contentKey) })) : [];
 const visibleTitle = (value) => contentText(value);
 ---
-{ResourceRedesign ? <ResourceRedesign preview={false} /> : contentKey?.startsWith('architecture:applications') ? <PublishedApplication scene={contentKey.replace('architecture:applications', '').replace(/^\//, '')} /> : source?.type === 'home' ? <HomePage language={language} content={entry} ui={ui} /> : entry ? (
+{contentKey === 'architecture:custom-packaging' ? <CustomPackagingOverview language={language} /> : contentKey?.startsWith('architecture:custom-packaging/') ? <CustomPackagingService language={language} service={contentKey.split('/').at(-1)} /> : ResourceRedesign ? <ResourceRedesign preview={false} /> : contentKey?.startsWith('architecture:applications') ? <PublishedApplication scene={contentKey.replace('architecture:applications', '').replace(/^\//, '')} /> : source?.type === 'home' ? <HomePage language={language} content={entry} ui={ui} /> : entry ? (
   <BaseLayout title={pageTitle} description={pageDescription} language={language} pathname={entry.route} image={pageImage} structuredData={structuredData} bodyClass={architecture || product ? 'architecture-site' : ''} ogType={post || architecture?.kind === 'guide' ? 'article' : 'website'}>
     {product ? <article class="content-shell content-product architecture-product">
       <nav class="breadcrumbs" aria-label="Breadcrumb">{breadcrumbs.map(([name, route], i) => <>{i > 0 && <span>/</span>}{i === breadcrumbs.length - 1 ? <span>{visibleTitle(name)}</span> : <a href={route}>{visibleTitle(name)}</a>}</>)}</nav>

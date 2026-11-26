@@ -32,5 +32,5 @@ test('quality preview keeps certificate scope, original documents and separate s
   assert.equal(new Set(sources).size, sources.length, 'no repeated images');
   const formal = await readFile(new URL('../../dist/quality/index.html', import.meta.url), 'utf8');
   assert.match(formal, /class="quality-preview"/, 'approved layout is published');
-  assert.doesNotMatch(formal, /DESIGN PREVIEW|href="[^"]*\.pdf/);
+  assert.doesNotMatch(formal.match(/<main>[\s\S]*?<\/main>/)[0], /DESIGN PREVIEW|href="[^"]*\.pdf/);
 });

@@ -1,3 +1,4 @@
+import {faqAlternates} from '../lib/faq-routes.mjs';
 import { canonicalUrl } from '../lib/routes.mjs';
 import { allLocalizedEntries, normalizeLocalizedRoute } from '../lib/localization.mjs';
 import { blogArchives } from '../lib/site-config.mjs';
@@ -8,7 +9,7 @@ const routes = [
   ...allLocalizedEntries().map(({ route }) => normalizeLocalizedRoute(route)),
   ...blogArchives.map(({ route }) => route),
   '/applications/supermarket-packaging/',
-  '/faq/',
+  ...faqAlternates.map(({route})=>route),
   ...['fr', 'es', 'ar', 'zh', 'de'].map((language) => '/' + language + '/applications/supermarket-packaging/'),
 ];
 const escapeXml = (value) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');

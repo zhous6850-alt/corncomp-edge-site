@@ -38,6 +38,6 @@ test('published quality and blog pages use the approved layouts and localized de
       assert.ok(html.includes('dir="'+(language==='ar'?'rtl':'ltr')+'"'),route);
       if(language==='zh')assert.doesNotMatch(main,/食品联系我们|与文章对应|标题和中心/);
     }
-    if(key==='architecture:quality')assert.doesNotMatch(html,/href="[^"]*\.pdf/);
+    if(key==='architecture:quality')assert.doesNotMatch(html.match(/<main>[\s\S]*?<\/main>/)[0],/href="[^"]*\.pdf/);
   }
 });

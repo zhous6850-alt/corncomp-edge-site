@@ -1,3 +1,4 @@
+import { faqAlternates, isFaqRoute, faqRoute } from './faq-routes.mjs';
 import { alternateGroup, contentKeyFromRoute, normalizeLocalizedRoute, routeFor } from './localization.mjs';
 import { applicationContext, applicationRoute } from './application-localization.mjs';
 
@@ -27,6 +28,19 @@ const navigation = {
   ar: { home: ['الرئيسية', languageHomes.ar], about: ['من نحن', '/ar/%d8%b9%d9%86-corncomp-%d8%a7%d9%84%d8%b4%d8%b1%d9%83%d8%a9/'], product: ['المنتجات', '/ar/%D8%B9%D8%A8%D9%88%D8%A7%D8%AA-%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-%D9%88%D8%B1%D9%82%D9%8A%D8%A9-%D9%84%D9%84%D8%AC%D9%85%D9%84%D8%A9-%D9%88%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9-%D8%AD%D8%B3%D8%A8-%D8%A7%D9%84%D8%B7%D9%84%D8%A8/'], certifications: ['الشهادات', '/ar/%d8%b4%d9%87%d8%a7%d8%af%d8%a7%d8%aa-corncomp/'], cases: ['دراسات الحالة', '/ar/%d8%af%d8%b1%d8%a7%d8%b3%d8%a7%d8%aa-%d8%ad%d8%a7%d9%84%d8%a9-corncomp/'], blog: ['المدونة', '/ar/blog/'], faq: ['الأسئلة الشائعة', '/ar/%d8%a7%d9%84%d8%a3%d8%b3%d8%a6%d9%84%d8%a9-%d8%a7%d9%84%d8%b4%d8%a7%d8%a6%d8%b9%d8%a9-corncomp/'], contact: ['اتصل بنا', '/ar/%d8%a7%d8%aa%d8%b5%d9%84-%d8%a8%d9%86%d8%a7/'] },
   de: { home: ['Startseite', '/de/'], about: ['Über uns', '/de/about/'], product: ['Produkte', '/de/products/'], custom: ['Individuelle Verpackungen', '/de/custom-packaging/'], applications: ['Anwendungen', '/de/applications/'], certifications: ['Qualität', '/de/quality/'], resources: ['Ressourcen', '/de/resources/'], blog: ['Blog', '/de/blog/'], contact: ['Angebot anfordern', '/de/contact/'] },
 };
+
+// Navigation labels are shorter than full page titles in translated layouts.
+for (const [language, [custom, applications, faq]] of Object.entries({
+ fr: ['Emballages sur mesure','Applications','FAQ'],
+ es: ['Envases personalizados','Aplicaciones','Preguntas frecuentes'],
+ ar: ['تغليف مخصص','الاستخدامات','الأسئلة الشائعة'],
+ zh: ['定制包装','应用场景','常见问题'],
+ de: ['Individuelle Verpackungen','Anwendungen','FAQ'],
+})) {
+ navigation[language].custom=[custom,routeFor(language,'architecture:custom-packaging')];
+ navigation[language].applications=[applications,routeFor(language,'architecture:applications')];
+ navigation[language].faq=[faq,faqRoute(language)];
+}
 
 const resourceLabels = {
   zh: ['资源', '指南'],
@@ -58,6 +72,7 @@ export function navigationFor(language = 'en') {
 }
 
 export function pageAlternates(pathname) {
+  if (isFaqRoute(pathname)) return faqAlternates;
   const application = applicationContext(pathname);
   if (application) return ['en', 'fr', 'es', 'ar', 'zh', 'de'].map((language) => ({ language, route: applicationRoute(language, application.scene) }));
   const normalized = normalizeLocalizedRoute(pathname);

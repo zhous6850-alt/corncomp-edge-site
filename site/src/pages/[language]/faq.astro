@@ -1,0 +1,5 @@
+---
+import FaqPage from '../../components/FaqPage.astro';
+export function getStaticPaths(){return ['fr','es','ar','zh','de'].map(language=>({params:{language}}));}
+---
+<FaqPage preview={false} />

@@ -27,7 +27,7 @@ test('all canonical pages retain production social URLs, organization email, sch
   }
 });
 
-test('all blog article identities, original schema images, canonical URLs and alternates survive the redesign', async () => {
+test('all blog article identities, displayed cover images, canonical URLs and alternates survive the redesign', async () => {
   for (const post of englishInventory().filter(({ type }) => type === 'post')) {
     for (const language of ['en', 'fr', 'es', 'ar', 'zh', 'de']) {
       const entry = localizedEntry(language, post.contentKey);
@@ -36,7 +36,9 @@ test('all blog article identities, original schema images, canonical URLs and al
       const article = schemas.find((node) => node['@type'] === 'Article');
       assert.equal(article.headline, contentText(entry.title));
       assert.equal(article.mainEntityOfPage, `https://corn-comp.com${entry.route}`);
-      assert.equal(article.image, `https://corn-comp.com${post.featuredMedia.localPath}`);
+      const visibleCover = html.match(/<figure class="blog-article__cover"[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"/)?.[1];
+      assert.equal(article.image, 'https://corn-comp.com'+visibleCover);
+      assert.ok(html.includes('property="og:image" content="'+article.image+'"'));
       assert.deepEqual(article.author, { '@id': 'https://corn-comp.com/#organization' });
       assert.deepEqual(article.publisher, { '@id': 'https://corn-comp.com/#organization' });
       assert.equal(article.datePublished, post.datePublished);
@@ -60,7 +62,7 @@ test('sitemap includes localized archives and excludes retired commerce pages', 
     ...allLocalizedEntries().map(({ route }) => normalizeLocalizedRoute(route)),
     '/blog/', '/fr/blog/', '/es/blog/', '/ar/blog/', '/zh/blog/', '/de/blog/',
     '/applications/supermarket-packaging/',
-    '/faq/',
+    ...['en','fr','es','ar','zh','de'].map(language=>(language==='en'?'':'/'+language)+'/faq/'),
     ...['fr', 'es', 'ar', 'zh', 'de'].map((language) => '/' + language + '/applications/supermarket-packaging/'),
   ];
   assert.equal(locations.length, expectedRoutes.length);

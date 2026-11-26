@@ -6,16 +6,21 @@ import es from '../data/resource-translations-es.json' with { type: 'json' };
 import ar from '../data/resource-translations-ar.json' with { type: 'json' };
 import zh from '../data/resource-translations-zh.json' with { type: 'json' };
 import de from '../data/resource-translations-de.json' with { type: 'json' };
+import { faqRoute, isFaqRoute } from './faq-routes.mjs';
+import { FAQ_TRANSLATIONS } from '../data/faq-translations.mjs';
+import { CUSTOM_TRANSLATIONS } from '../data/custom-translations.mjs';
+import { FACTORY_TRANSLATIONS } from '../data/factory-translations.mjs';
 import { ABOUT_TRANSLATIONS } from '../data/about-translations.mjs';
 
-export const RESOURCE_KEYS = ['architecture:about','architecture:quality','architecture:resources','architecture:resources/guides/paper-cup-sizes','architecture:resources/guides/food-packaging-certifications'];
+export const RESOURCE_KEYS = ['architecture:custom-packaging','architecture:custom-packaging/custom-printed-paper-cups','architecture:custom-packaging/custom-paper-straws','architecture:about/factory','architecture:about','architecture:quality','architecture:resources','architecture:resources/guides/paper-cup-sizes','architecture:resources/guides/food-packaging-certifications'];
 const dictionaries = {fr,es,ar,zh,de};
 const normalize = value => contentText(value).trim().replace(/\s+/g,' ');
-const translations = Object.fromEntries(Object.entries(dictionaries).map(([language,dictionary])=>[language,new Map(Object.entries({...dictionary,...ABOUT_TRANSLATIONS[language]}).map(([source,target])=>[normalize(source),target]))]));
+const translations = Object.fromEntries(Object.entries(dictionaries).map(([language,dictionary])=>[language,new Map(Object.entries({...CUSTOM_TRANSLATIONS[language],...FACTORY_TRANSLATIONS[language],...FAQ_TRANSLATIONS[language],...dictionary,...ABOUT_TRANSLATIONS[language]}).map(([source,target])=>[normalize(source),target]))]));
 export function resourceText(value, language) {
   return translations[language]?.get(normalize(value)) || value;
 }
 const contexts = new Map(Object.keys(dictionaries).flatMap(language=>[
+  [faqRoute(language),{language,key:'faq',route:faqRoute(language)}],
   ...RESOURCE_KEYS.map(key=>[normalizeLocalizedRoute(routeFor(language,key)),{language,key,route:routeFor(language,key)}]),
   ['/'+language+'/blog/',{language,key:'blog',route:'/'+language+'/blog/'}],
 ]));
@@ -24,12 +29,14 @@ export function resourceUrl(value, language) {
   const url = new URL(value,'https://corn-comp.com');
   if(url.origin !== 'https://corn-comp.com') return value;
   const key = contentKeyFromRoute(url.pathname);
-  if (url.pathname === '/blog/') url.pathname='/'+language+'/blog/';
+  if (isFaqRoute(url.pathname)) url.pathname=faqRoute(language);
+  else if (url.pathname === '/blog/') url.pathname='/'+language+'/blog/';
   else if(key) url.pathname=routeFor(language,key) || url.pathname;
   for(const name of ['source']) {
     const original=url.searchParams.get(name);
     const sourceKey=original&&contentKeyFromRoute(original);
-    if(sourceKey)url.searchParams.set(name,routeFor(language,sourceKey));
+    if(isFaqRoute(original))url.searchParams.set(name,faqRoute(language));
+    else if(sourceKey)url.searchParams.set(name,routeFor(language,sourceKey));
   }
   for(const field of ['category','product'])if(url.searchParams.has(field))url.searchParams.set(field,resourceText(url.searchParams.get(field),language));
   return value.startsWith('https://') ? url.href : url.pathname+url.search+url.hash;

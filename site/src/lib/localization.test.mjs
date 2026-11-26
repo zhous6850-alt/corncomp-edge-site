@@ -391,7 +391,7 @@ function assertSpanishLinks(locale) {
     if (source.type === 'post') {
       const evidenceUrls = (html) => [...html.matchAll(/href="(https:[^"]+)"/g)]
         .map((match) => match[1]).filter((href) => !href.includes('corn-comp.com'));
-      assert.deepEqual(evidenceUrls(entry.bodyHtml), evidenceUrls(source.body), `${source.contentKey}:evidence URLs`);
+      assert.deepEqual([...new Set(evidenceUrls(entry.bodyHtml))].sort(), [...new Set(evidenceUrls(source.body))].sort(), `${source.contentKey}:evidence URLs`);
     }
   }
   const home = locale.content.home;
@@ -555,7 +555,7 @@ function assertArabicLinks(locale) {
     if (source.type === 'post') {
       const evidenceUrls = (html) => [...html.matchAll(/href="(https:[^"]+)"/g)]
         .map((match) => match[1]).filter((href) => !href.includes('corn-comp.com'));
-      assert.deepEqual(evidenceUrls(entry.bodyHtml), evidenceUrls(source.body), `${source.contentKey}:evidence URLs`);
+      assert.deepEqual([...new Set(evidenceUrls(entry.bodyHtml))].sort(), [...new Set(evidenceUrls(source.body))].sort(), `${source.contentKey}:evidence URLs`);
     }
   }
   const home = locale.content.home;

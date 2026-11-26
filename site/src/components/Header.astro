@@ -1,4 +1,5 @@
 ---
+import {faqRoute,isFaqRoute} from '../lib/faq-routes.mjs';
 import homeImages from '../data/home-images.json';
 import { navigationFor } from '../lib/site-config.mjs';
 import { PRODUCT_CATEGORIES, PRODUCT_GROUPS } from '../lib/site-architecture.mjs';
@@ -11,7 +12,7 @@ const ui = uiFor(language);
 const languages = [['en', 'English'], ['fr', 'Français'], ['es', 'Español'], ['ar', 'العربية'], ['zh', '简体中文'], ['de', 'Deutsch']];
 const currentContentKey = contentKeyFromRoute(Astro.url.pathname);
 const currentApplication = applicationContext(Astro.url.pathname);
-const languageRoute = (code) => currentApplication
+const languageRoute = (code) => isFaqRoute(Astro.url.pathname) ? faqRoute(code) : currentApplication
   ? applicationRoute(code, currentApplication.scene)
   : currentContentKey
   ? routeFor(code, currentContentKey)
@@ -92,7 +93,7 @@ const productGroups = PRODUCT_GROUPS.map((group) => {
           <summary>{item.label}</summary>
           <div class="nav-submenu resources-submenu">
             {nav.resources.children.map(([label, route]) => <a href={route}>{label}</a>)}
-            <a href={Astro.url.pathname.startsWith('/design-preview/') ? '/design-preview/faq/' : '/faq/'}>FAQ</a>
+            <a href={Astro.url.pathname.startsWith('/design-preview/') ? '/design-preview/faq/' : faqRoute(language)}>{nav.faq?.[0] || ({zh:'常见问题',de:'FAQ'})[language] || 'FAQ'}</a>
           </div>
         </details>
       ) : item.key === 'applications' ? (

@@ -7,16 +7,17 @@ import { englishInventory, localizedEntry, routeFor, uiFor } from '../lib/locali
 import { contentText } from '../lib/content-routes.mjs';
 import { CATEGORY_PREVIEWS, previewSections } from '../data/category-preview.mjs';
 import { cupLandingLabels } from '../data/cup-landing-labels.mjs';
+import { cupCategoryCopy } from '../data/cup-category-translations.mjs';
 import mediaInventory from '../data/media.json';
 const { category, page, language } = Astro.props;
 const t = cupLandingLabels(language);
 const ui = uiFor(language);
-const config = CATEGORY_PREVIEWS[category];
+const [compareLabel,sizeLabel]=({en:['Compare all sizes','Size table'],zh:['比较所有尺寸','尺寸表'],fr:['Comparer toutes les dimensions','Tableau des dimensions'],es:['Comparar todos los tamaños','Tabla de medidas'],de:['Alle Größen vergleichen','Maßtabelle'],ar:['مقارنة جميع المقاسات','جدول المقاسات']})[language];
+const copy = cupCategoryCopy(category, language);
 const group = localizedEntry(language, 'architecture:products/cups-bowls');
 const sections = previewSections(category, englishInventory()).map((section) => ({
   ...section,
-  title: language === 'en' ? section.title : section.id === 'accessories' ? t.lids : ({'single-wall':t.single,'double-wall':t.double,ripple:t.ripple}[section.id] || t.select),
-  intro: language === 'en' ? section.intro : section.id === 'accessories' ? t.fit : t.sectionIntro,
+  ...(copy.sections[section.id] || {}),
 }));
 const quote = `${routeFor(language, 'architecture:contact')}?${new URLSearchParams({ category: page.title, source: page.route })}`;
 const media = (item) => {
@@ -28,8 +29,8 @@ const siblings = Object.keys(CATEGORY_PREVIEWS).filter((slug) => slug !== catego
 ---
 <div class="category-preview">
   <nav class="trail" aria-label="Breadcrumb"><a href={routeFor(language,'home')}>{t.home}</a><span>/</span><a href={routeFor(language,'architecture:products')}>{t.products}</a><span>/</span><a href={group.route}>{contentText(group.title)}</a><span>/ {contentText(page.title)}</span></nav>
-  <header class="category-intro"><div><p class="eyebrow">{contentText(group.title)}</p><h1>{contentText(page.title)}</h1><p class="category-tagline">{language === 'en' ? config.subtitle : t.select}</p><p class="intro-copy">{language === 'en' ? config.intro : page.intro}</p><a class="primary-link" href={`#${sections[0].id}`}>{t.browse} <span>↓</span></a></div><aside class="range-index" aria-label={t.range}><p>{t.range}</p>{sections.map((section) => <a href={`#${section.id}`}><span>{section.title}</span><small>{section.products.length} {section.id === 'accessories' ? t.components : t.series} ↗</small></a>)}{category==='salad-bowls' && language==='en' && <a href="#salad-specifications"><span>Compare all sizes</span><small>Size table ↓</small></a>}<a href="#ordering"><span>{t.ordering}</span><small>↗</small></a></aside></header>
-  <nav class="category-tabs" aria-label={t.range}>{sections.map((section) => <a href={`#${section.id}`}>{section.title}<sup>{section.products.length}</sup></a>)}{category==='salad-bowls' && language==='en' && <a href="#salad-specifications">Compare all sizes</a>}<a href={quote}>{ui.requestQuote} ↗</a></nav>
+  <header class="category-intro"><div><p class="eyebrow">{contentText(group.title)}</p><h1>{contentText(page.title)}</h1><p class="category-tagline">{copy.subtitle}</p><p class="intro-copy">{copy.intro}</p><a class="primary-link" href={`#${sections[0].id}`}>{t.browse} <span>↓</span></a></div><aside class="range-index" aria-label={t.range}><p>{t.range}</p>{sections.map((section) => <a href={`#${section.id}`}><span>{section.title}</span><small>{section.products.length} {section.id === 'accessories' ? t.components : t.series} ↗</small></a>)}{category==='salad-bowls' && <a href="#salad-specifications"><span>{compareLabel}</span><small>{sizeLabel} ↓</small></a>}<a href="#ordering"><span>{t.ordering}</span><small>↗</small></a></aside></header>
+  <nav class="category-tabs" aria-label={t.range}>{sections.map((section) => <a href={`#${section.id}`}>{section.title}<sup>{section.products.length}</sup></a>)}{category==='salad-bowls' && <a href="#salad-specifications">{compareLabel}</a>}<a href={quote}>{ui.requestQuote} ↗</a></nav>
   {sections.map((section,index) => <section id={section.id} class:list={['product-section',{accessories:section.id==='accessories'}]}><div class="section-heading"><div><p class="eyebrow">{section.id==='accessories' ? t.complete : t.select}</p><h2>{section.title}</h2></div><p>{section.intro}</p></div><div class:list={['series-grid',{'two-series':section.products.length===2,'one-series':section.products.length===1}]}>{section.products.map((item) => <article class="series-card"><a class="series-image" href={routeFor(language,item.contentKey)}><ResponsiveMedia media={media(item)} eager={index===0} /></a><div class="series-info"><h3><a href={routeFor(language,item.contentKey)}>{contentText(localizedEntry(language,item.contentKey).title)}</a></h3><a class="details-link" href={routeFor(language,item.contentKey)}>{t.details}<span>↗</span></a></div></article>)}</div></section>)}
   {category === 'salad-bowls' && <SaladBowlComparison language={language} page={page} />}
   {category === 'paper-cups' && <PaperCupComparison language={language} page={page} />}

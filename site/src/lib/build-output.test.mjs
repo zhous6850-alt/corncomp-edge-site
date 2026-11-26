@@ -552,12 +552,12 @@ test('buyer and company page families render assigned media in every language', 
         assert.match(html, /corncomp-team-archive\.webp/);
         continue;
       }
-      if (language === 'en' && key === 'custom-packaging') {
+      if (key === 'custom-packaging') {
         assert.match(html, /class="studio-hero"/);
         assert.match(html, /custom-straws-forest-preview.png/);
         assert.equal((html.match(/class="brand-stamp"/g) || []).length, 2);
-        assert.ok(html.includes('href="/custom-packaging/custom-printed-paper-cups/"'));
-        assert.ok(html.includes('href="/custom-packaging/custom-paper-straws/"'));
+        assert.ok(html.includes('href="'+routeFor(language,'architecture:custom-packaging/custom-printed-paper-cups')+'"'));
+        assert.ok(html.includes('href="'+routeFor(language,'architecture:custom-packaging/custom-paper-straws')+'"'));
         continue;
       }
       if (key === 'applications') {
@@ -648,7 +648,7 @@ test('the Quality page uses lazy decorative cards and omits unassigned media', a
   const brief = html.match(/<section id="product-brief"[\s\S]*?<\/section>/)?.[0] || '';
   assert.match(brief, /Request product documents/);
   assert.doesNotMatch(brief, /<img\b/);
-  assert.doesNotMatch(html, /href="[^"]*\.pdf/);
+  assert.doesNotMatch(html.match(/<main>[\s\S]*?<\/main>/)[0], /href="[^"]*\.pdf/);
 });
 
 test('the Quality editorial cards retain two desktop columns', async () => {

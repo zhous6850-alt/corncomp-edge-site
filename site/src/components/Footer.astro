@@ -103,6 +103,7 @@ const serviceLinks = ['architecture:products', 'architecture:custom-packaging', 
     <button type="button" class="analytics-settings" data-analytics-settings>{ui.analyticsSettings}</button>
   </div>
 </footer>
+<a class="floating-catalogue" href="/downloads/corncomp-catalogue.pdf" download="Corncomp Catalogue.pdf">{{ en: 'Download Catalogue', zh: '下载产品目录', de: 'Katalog herunterladen', fr: 'Télécharger le catalogue', es: 'Descargar catálogo', ar: 'تحميل الكتالوج' }[language]}</a>
 <a class="floating-whatsapp" href="https://wa.me/6581603123?text=Hello%20I%20would%20like%20to%20inquire%20about%20paper%20packaging%20products" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
 <a class="floating-contact" href={routeFor(language, 'architecture:contact')}>{ui.contactUs}</a>
 
@@ -142,11 +143,12 @@ const serviceLinks = ['architecture:products', 'architecture:custom-packaging', 
   .footer-bottom { margin-top: 24px; padding-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: #b0c2b6; font-size: .78rem; line-height: 1.6; }
   .analytics-settings { padding: 0; border: 0; background: transparent; color: rgba(255,255,255,.84); cursor: pointer; font-size: inherit; text-decoration: underline; text-underline-offset: 4px; }
   .analytics-settings:hover, .analytics-settings:focus-visible { color: #fff; }
-  .floating-whatsapp, .floating-contact { position: fixed; right: 20px; z-index: 40; padding: 12px 18px; border-radius: 999px; color: #fff; font-size: .82rem; font-weight: 800; text-decoration: none; box-shadow: 0 5px 18px rgba(18,56,35,.22); }
+  .floating-catalogue, .floating-whatsapp, .floating-contact { position: fixed; right: 20px; z-index: 40; padding: 12px 18px; border-radius: 999px; color: #fff; font-size: .82rem; font-weight: 800; text-decoration: none; box-shadow: 0 5px 18px rgba(18,56,35,.22); }
+  .floating-catalogue { bottom: 132px; background: var(--corncomp-green); }
   .floating-whatsapp { bottom: 76px; background: #147b3b; }
   .floating-contact { bottom: 20px; background: var(--corncomp-green); }
   @media (max-width: 1000px) { .footer-inner { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px 32px; } }
   @media (max-width: 600px) { footer { padding-top: 42px; }.footer-inner { gap: 32px 24px; }.footer-brand,.footer-contact { grid-column: 1 / -1; }.footer-brand p { max-width: 440px; }nav { gap: 14px; }h2 { letter-spacing: .03em; } }
-  @media (max-width: 600px) { .footer-bottom { align-items: flex-start; flex-direction: column; } .floating-whatsapp, .floating-contact { right: 12px; padding: 11px 14px; font-size: .74rem; } }
+  @media (max-width: 600px) { .footer-bottom { align-items: flex-start; flex-direction: column; } .floating-catalogue, .floating-whatsapp, .floating-contact { right: 12px; padding: 11px 14px; font-size: .74rem; } }
   @media (max-width: 700px) { .footer-support { grid-template-columns: 1fr; gap: 22px; }.footer-support h2 { margin-bottom: 6px; } }
 </style>

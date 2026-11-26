@@ -1,4 +1,5 @@
 ---
+import { blogCoverPath } from '../lib/blog-media.mjs';
 import EditorialCard from './EditorialCard.astro';
 import ResponsiveMedia from './ResponsiveMedia.astro';
 import mediaInventory from '../data/media.json';
@@ -6,12 +7,8 @@ import { contentText } from '../lib/content-routes.mjs';
 
 const { source, entry, bodyHtml, language, breadcrumbs, relatedPosts, labels } = Astro.props;
 const postMedia = (post, localized, fit = 'contain') => {
-  if (post.slug === 'bpi-vs-fsc-certification' || post.slug === 'pla-vs-bagasse-vs-fsc-paper') {
-    const cover = post.slug === 'bpi-vs-fsc-certification' ? 'blog-bpi-fsc' : 'blog-packaging-materials';
-    return { src: `/media/about/${cover}.webp`, width: 1440, height: 810, alt: '', fit, position: 'center', evidence: 'application' };
-  }
-  if (post.slug === 'eu-single-use-plastics-directive-explained') return { src: '/media/about/blog-eu-packaging.webp', width: 1440, height: 810, alt: '', fit, position: 'center', evidence: 'application' };
-  if (post.slug === 'us-state-plastic-packaging-laws-explained') return { src: '/media/about/blog-us-packaging.webp', width: 1440, height: 810, alt: '', fit, position: 'center', evidence: 'application' };
+  const path = blogCoverPath(post);
+  if (path && path !== post.featuredMedia?.localPath) return {src:path,width:path.endsWith('.svg')?1600:1440,height:path.endsWith('.svg')?900:810,alt:path.endsWith('.svg')?'BRCGS / FSC / ISO 9001 / BPI':'',fit,position:'center',evidence:path.endsWith('.svg')?'certificate':'application'};
   const image = post.featuredMedia;
   if (!image) return null;
   if (post.id === 337) return { src: '/media/about/corncomp-certificate-preview.svg', width: 1600, height: 900, alt: 'BRCGS / FSC / ISO 9001 / BPI', fit: 'contain', position: 'center', evidence: 'certificate' };
