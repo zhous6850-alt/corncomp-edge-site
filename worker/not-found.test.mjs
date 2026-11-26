@@ -25,3 +25,10 @@ test('the built 404 page is noindex and has no canonical', () => {
   assert.match(html, /<meta name="robots" content="noindex">/);
   assert.doesNotMatch(html, /rel="canonical"/);
 });
+
+test('production and preview assets both serve the built styled 404 page',()=>{
+ for(const name of ['wrangler.jsonc','wrangler.preview.jsonc']){
+  const config=JSON.parse(readFileSync(new URL('../'+name,import.meta.url),'utf8'));
+  assert.equal(config.assets.not_found_handling,'404-page',name);
+ }
+});
