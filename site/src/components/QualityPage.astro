@@ -18,7 +18,7 @@ const schema = [
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://corn-comp.com/' }, { '@type': 'ListItem', position: 2, name: 'Quality & certifications', item: 'https://corn-comp.com/quality/' }] },
 ];
 ---
-<BaseLayout title={preview ? 'Quality & Certifications - Design Preview | Corncomp' : 'Quality & Certifications | Corncomp'} description="Review Corncomp certificates, their scope and original documents. Match product and material evidence to your order." pathname="/quality/" bodyClass="architecture-site" structuredData={schema} image={records[0].image.src}>
+<BaseLayout title={preview ? 'Quality & Certifications - Design Preview | Corncomp' : 'Quality & Certificates: ISO 9001, BRCGS, FSC, BPI | Corncomp'} description="Corncomp company certificates: ISO 9001:2015, BRCGS Packaging Materials and FSC Chain of Custody, plus BPI for listed printed paper straws. Check scopes." pathname="/quality/" bodyClass="architecture-site" structuredData={schema} image={records[0].image.src}>
   {preview && <div class="preview-note">DESIGN PREVIEW · 质量与认证页 · 正式站未修改</div>}
   <div class="quality-preview">
     <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Quality & certifications</span></nav>
@@ -43,10 +43,10 @@ const schema = [
       <div class="certificate-grid">
         {records.map((record) => <article class="quality-certificate">
           <a class="document-thumb" href={record.image.src} data-certificate data-title={record.title} aria-label={'Enlarge original certificate: ' + record.title}><ResponsiveMedia media={record.image}/><span>View original <b aria-hidden="true">↗</b></span></a>
-          <div class="certificate-copy"><p class="scope-label">{groups[record.key]}</p><h3>{record.title}</h3><p class="scope-summary">{record.scope}</p><div class="document-reference"><span>Certificate no.</span><strong>{record.certificateNumber}</strong></div><p class="document-date">Document expiry <time datetime={record.validUntil}>{record.validUntil}</time></p><details><summary>Holder & standard</summary><dl><div><dt>Holder</dt><dd>{record.holder}</dd></div><div><dt>Standard</dt><dd>{record.standard}</dd></div></dl></details></div>
+          <div class="certificate-copy"><p class="scope-label">{groups[record.key]}</p><h3>{record.title}</h3><p class="scope-summary">{record.scope}</p><div class="document-reference"><span>Certificate no.</span><strong>{record.certificateNumber}</strong></div>{record.validFrom && <p class="document-date">Effective <time datetime={record.validFrom}>{record.validFrom}</time></p>}<p class="document-date">Document expiry <time datetime={record.validUntil}>{record.validUntil}</time></p><details><summary>Holder & standard</summary><dl><div><dt>Holder</dt><dd>{record.holder}</dd></div><div><dt>Standard</dt><dd>{record.standard}</dd></div>{record.issuer && <div><dt>Certification body</dt><dd>{record.issuer}</dd></div>}</dl></details></div>
         </article>)}
       </div>
-      <p class="document-note"><a href="https://search.fsc.org/">Verify FSC certificate</a> · <a href="https://products.bpiworld.org/companies/ningbo-corncomp-tech-co-ltd">Verify Corncomp BPI products</a></p>
+      <p class="document-note"><a href="https://cx.cnca.cn/">Verify ISO 9001 certificate 01526Q60104R001 (CNCA database)</a> · <a href="https://www.wit-int.com/">WIT Assessment</a> · <a href="https://search.fsc.org/">Verify FSC certificate</a> · <a href="https://products.bpiworld.org/companies/ningbo-corncomp-tech-co-ltd">Verify Corncomp BPI products</a></p>
       <p class="document-note">Dates are those stated in the displayed documents. Confirm current validity and the exact order scope before relying on a claim.</p>
     </section>
 
