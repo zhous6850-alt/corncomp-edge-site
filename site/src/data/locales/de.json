@@ -1392,7 +1392,7 @@
       "comparisonHtml": "<p>Geben Sie die genaue Referenz und die Abmessungen an, um eine Stichprobe oder Schätzung anzufordern. Corncomp wird das Format und die Details der Bestellung vor der Produktion bestätigen.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Gibt es eine andere Form?</strong> Siehe<a href=\"/de/products/round-paper-plate/\">Rundpapierplatte</a>.</p>",
-      "documentScope": "Corncomp verfügt über ISO 9001 Qualitätsmanagementdokumente und BRCGS Verpackungsmaterialien. Zertifikat BRCGS CN24/00006923 ist Level B und wurde von SGS United Kingdom Ltd ausgestellt. Corncomp besitzt auch das FSC RINA-COC-001953 Kontrollkettenzertifikat; OIOS amfori Dokumente sind auf Anfrage erhältlich. Diese Dokumente betreffen das Unternehmen, das Managementsystem oder die Fabrik. Ihre Anwendbarkeit auf diese Platte oder Bestellung muss vor dem Kauf bestätigt werden. FSC-Ansprüche und -Markierungen sind nur nach Überprüfung des Materials und des Umfangs der Bestellung verfügbar.",
+      "documentScope": "Corncomp verfügt über ISO 9001 Qualitätsmanagementdokumente und BRCGS Verpackungsmaterialien. Zertifikat BRCGS CN24/00006923 ist Level B und wurde von SGS United Kingdom Ltd ausgestellt. Corncomp besitzt auch das FSC-Produktkettenzertifikat (Chain of Custody) RINA-COC-001953; amfori BSCI-Dokumente sind auf Anfrage erhältlich. Diese Dokumente betreffen das Unternehmen, das Managementsystem oder die Fabrik. Ihre Anwendbarkeit auf diese Platte oder Bestellung muss vor dem Kauf bestätigt werden. FSC-Ansprüche und -Markierungen sind nur nach Überprüfung des Materials und des Umfangs der Bestellung verfügbar.",
       "orderTerms": "Jeder Karton enthält 1 000 Platten. Bestätigen Sie die Mindestmenge, Zeit, Druckoptionen, anwendbare Dokumente und andere Anforderungen für jede Anwendung.",
       "alt": "Ovale Papierteller auf weißem Hintergrund"
     },
@@ -1421,7 +1421,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Was sind die Dimensionen?</strong> 170 x 170 x 130 mm.</p><p><strong>Was ist die Konditionierung?</strong> 50 Stück pro Plastikbeutel, vier Beutel pro Karton oder 200 Kisten.</p><p><strong>Ist das Fenster transparent?</strong> Ja, das PLA-Fenster zeigt den Pizza-Teil.</p>",
       "documentScope": "Corncomp kann auf Anfrage relevante Firmen- und Fabrikdokumente zur Verfügung stellen. Vor dem Kauf bestätigen Sie die Zertifizierungs-, Material-, Kennzeichnungs- und Bestellanforderungen für das ausgewählte Produkt.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Kraftbox für Pizza mit transparentem PLA Fenster"
     },
     "product:natural-kraft-closed-snack-cup": {
@@ -1435,22 +1435,22 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Formate sind verfügbar?</strong> Höhen von 117 mm, 140 mm und 160 mm, mit einem Boden von 60 mm für alle drei Versionen.</p><p><strong>Wie viele Gläser enthält ein Karton?</strong> Das Blatt zeigt 1000 Stück pro Karton für jedes Format.</p>",
       "documentScope": "Corncomp kann auf Anfrage relevante Firmen- und Fabrikdokumente zur Verfügung stellen. Vor dem Kauf bestätigen Sie die Zertifizierungs-, Material-, Kennzeichnungs- und Bestellanforderungen für das ausgewählte Produkt.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Naturkraftgebratener Topf mit Top-Verschluss"
     },
     "product:cardboard-open-wrap-cup": {
       "route": "/de/products/cardboard-open-wrap-cup/",
-      "title": "Burrito-Halter aus Kraftpapier, 4 Größen",
+      "title": "Wrap- und Burrito-Halter aus Kraftpapier, 4 Größen",
       "description": "Offene Burrito-Halter aus Naturkraftpapier in vier Größen, randvoll ca. 360–630 ml, Karton 250–320 g/m², Boden 60 mm. Für Wraps, Burritos, Pommes und Hot Dogs.",
       "sourceHash": "1ce7cfed039edef5032ea964989d4f33f07087916ba0bf82dc2b8a41cc4ae310",
       "summary": "Dieser offene Halter aus Naturkraftpapier eignet sich für Wraps, Burritos, Pommes frites, Hot Dogs und andere Speisen zum Mitnehmen. Dank niedriger Vorderseite und höherer Rückseite bleibt das Essen im kompakten Format sichtbar und gut zugänglich. Das Kartongewicht ist von 250 bis 320 g/m² wählbar.",
       "specificationHeading": "Spezifikationen des Katalogs",
       "comparisonHtml": "<p>Ungefähres Randvollvolumen, berechnet mit 60 mm Boden, 90 mm Randdurchmesser und dem Mittel aus vorderer und hinterer Höhe: CC01OWC100K ca. 360 ml; CC01OWC5.5K ca. 430 ml; CC01OWC135K ca. 510 ml; CC01OWC160K ca. 630 ml. Es handelt sich um Schätzwerte, nicht um gemessene Füllmengen; prüfen Sie ein Muster mit Ihrem Produkt.</p><p>Das Kartongewicht ist von 250 bis 320 g/m² wählbar. Corncomp kann FSC-Dokumente zur Produktkette (Chain of Custody) bereitstellen; ob FSC-Material und -Kennzeichnung für Ihre Bestellung gelten, ist zu bestätigen.</p><p>Die vier Formate eignen sich für Catering-Trucks, Take-Out-Schalter, Cafés, Festivals und Caterer. Verwenden Sie sie für Burritos und Tortilla-Wraps, Pommes frites und andere trockene Snacks, Hot Dogs oder Paninis. Das Kraft-Finish sorgt für eine schlichte Präsentation.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
-      "faq": "<p><strong>Was sind die Dimensionen?</strong> Vier Größen mit Vorder- / Hinterhöhen von 60/100mm bis 120/160mm und einem 60mm Hintergrund.</p><p><strong>Ist Drucken möglich?</strong> Optionen können verfügbar sein. Bestätigen Sie die visuelle, Material, Mindestmenge und Zeit für jede Bestellung.</p>",
-      "documentScope": "Corncomp kann Informationen zu ISO 9001 Qualitätsmanagement, BRCGS Packaging Materials, der FSC und amfori OIOS Kontrollkette bereitstellen. Diese Dokumente betreffen das Unternehmen, die Fabrik oder die Rückverfolgbarkeitssysteme; sie zertifizieren nicht allein jedes Produkt. Bestätigen Sie ihre Anwendbarkeit auf Referenz, Material, Kennzeichnung und Kontrolle.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
-      "alt": "Offenes Gehäuse in natürlicher Kraft mit Pommes frites"
+      "faq": "<p><strong>Was sind die Dimensionen?</strong> Vier Größen mit Vorder- / Hinterhöhen von 60/100mm bis 120/160mm und einem 60mm Boden.</p><p><strong>Ist Drucken möglich?</strong> Optionen können verfügbar sein. Bestätigen Sie die visuelle, Material, Mindestmenge und Zeit für jede Bestellung.</p>",
+      "documentScope": "Corncomp kann Informationen zu ISO 9001 Qualitätsmanagement, BRCGS Packaging Materials, zur FSC-Produktkette (Chain of Custody) und zu amfori BSCI bereitstellen. Diese Dokumente betreffen das Unternehmen, die Fabrik oder die Rückverfolgbarkeitssysteme; sie zertifizieren nicht allein jedes Produkt. Bestätigen Sie ihre Anwendbarkeit auf Referenz, Material, Kennzeichnung und Kontrolle.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
+      "alt": "Offener Burrito-Halter aus Kraftpapier mit Pommes frites"
     },
     "product:frite-cone-black": {
       "route": "/de/products/frite-cone-black/",
@@ -1462,8 +1462,8 @@
       "comparisonHtml": "<p>Drei Formate erlauben es, die Portion anzupassen. Sie sind für Catering-Trucks, Take-Out-Schalter, Kinos, Festivals und Caterer bestimmt.</p><p>Die Höhe des Saucenfachs wird senkrecht vom Boden bis zum Rand gemessen. Die Tütenbreite wird an der breitesten Stelle gemessen. Die Maße belegen weder Saucenvolumen noch Dichtheit.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Höhen werden vorgeschlagen?</strong> Die Tütenhöhen sind 145mm, 165mm und 230mm.</p><p><strong>Können wir den Kegel drucken?</strong> Optionen können verfügbar sein; bestätigen Sie die visuelle, Material, Mindestmenge und Verzögerung.</p><p><strong>Gibt es eine Kraft-Version?</strong> Siehe <a href=\"/de/products/frite-cone-kraft/\">gebratener Naturkraftkegel</a>.</p>",
-      "documentScope": "Corncomp kann Informationen zu ISO 9001 Qualitätsmanagement, BRCGS Packaging Materials, der FSC und amfori OIOS Kontrollkette bereitstellen. Diese Dokumente betreffen das Unternehmen, die Fabrik oder die Rückverfolgbarkeitssysteme; sie zertifizieren nicht allein jedes Produkt. Bestätigen Sie ihre Anwendbarkeit auf Referenz, Material, Kennzeichnung und Kontrolle.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "documentScope": "Corncomp kann Informationen zu ISO 9001 Qualitätsmanagement, BRCGS Packaging Materials, zur FSC-Produktkette (Chain of Custody) und zu amfori BSCI bereitstellen. Diese Dokumente betreffen das Unternehmen, die Fabrik oder die Rückverfolgbarkeitssysteme; sie zertifizieren nicht allein jedes Produkt. Bestätigen Sie ihre Anwendbarkeit auf Referenz, Material, Kennzeichnung und Kontrolle.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Schwarzer Kornett in Papier mit Pommes frites auf weißem Hintergrund"
     },
     "product:frite-cone-kraft": {
@@ -1476,8 +1476,8 @@
       "comparisonHtml": "<p>Je nach Teil sind drei Formate verfügbar. Das Kraft Finish eignet sich für eine natürliche Präsentation für Catering Trucks, Take-Out Theken, Kinos, Festivals und Caterer.</p><p>Die Höhe des Saucenfachs wird senkrecht vom Boden bis zum Rand gemessen. Die Tütenbreite wird an der breitesten Stelle gemessen. Die Maße belegen weder Saucenvolumen noch Dichtheit.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Höhen werden vorgeschlagen?</strong> Die Tütenhöhen sind 145mm, 165mm und 230mm.</p><p><strong>Können wir den Kegel drucken?</strong> Optionen können verfügbar sein; bestätigen Sie die visuelle, Material, Mindestmenge und Verzögerung.</p><p><strong>Gibt es eine andere Farbe?</strong> Siehe <a href=\"/de/products/frite-cone-black/\">gebratener Schwarzkegel</a>.</p>",
-      "documentScope": "Corncomp kann Informationen zu ISO 9001 Qualitätsmanagement, BRCGS Packaging Materials, der FSC und amfori OIOS Kontrollkette bereitstellen. Diese Dokumente betreffen das Unternehmen, die Fabrik oder die Rückverfolgbarkeitssysteme; sie zertifizieren nicht allein jedes Produkt. Bestätigen Sie ihre Anwendbarkeit auf Referenz, Material, Kennzeichnung und Kontrolle.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "documentScope": "Corncomp kann Informationen zu ISO 9001 Qualitätsmanagement, BRCGS Packaging Materials, zur FSC-Produktkette (Chain of Custody) und zu amfori BSCI bereitstellen. Diese Dokumente betreffen das Unternehmen, die Fabrik oder die Rückverfolgbarkeitssysteme; sie zertifizieren nicht allein jedes Produkt. Bestätigen Sie ihre Anwendbarkeit auf Referenz, Material, Kennzeichnung und Kontrolle.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Naturkraftpapierkornett mit Pommes frites auf weißem Hintergrund"
     },
     "product:black-white-cardboard-sushi-box-pla-window": {
@@ -1491,7 +1491,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie viele Formate sind verfügbar?</strong> Neun Boxgrößen, jeweils mit den entsprechenden Fensterabmessungen.</p><p><strong>Sind beide Farben verfügbar?</strong> Die Produktinformationen zeigen schwarz-weiße Kartonversionen mit PLA-Fenster.</p>",
       "documentScope": "Corncomp kann auf Anfrage relevante Firmen- und Fabrikdokumente zur Verfügung stellen. Vor dem Kauf bestätigen Sie die Zertifizierungs-, Material-, Kennzeichnungs- und Bestellanforderungen für das ausgewählte Produkt.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Schwarz-weiße Sushi-Boxen aus Pappe mit transparenten PLA-Fenstern"
     },
     "product:corrugated-board-cup-sleeve-8-12-16-20oz": {
@@ -1575,7 +1575,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Formate sind verfügbar?</strong> Fünf Formate von 240ml bis 600ml.</p><p><strong>Können wir die Becher drucken?</strong> Ja. Übertragen Sie Dimensionen, Mengen und Grafikdateien, um ein Angebot zu erhalten.</p>",
       "documentScope": "Unternehmensdokumente und Fertigungssysteme können für einen bestimmten Auftrag geprüft werden. Ihre Anwendbarkeit muss für den Artikel und die bestellten Spezifikationen bestätigt werden.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Weiße Tasse mit hellbraunem Getränk auf weißem Hintergrund gefüllt"
     },
     "product:single-wall-white-cardboard-paper-cup": {
@@ -1589,7 +1589,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Formate sind verfügbar?</strong> Sieben Formate von 120ml bis 600ml.</p><p><strong>Können wir die Becher drucken?</strong> Ja. Übertragen Sie Dimensionen, Mengen und Grafikdateien, um ein Angebot zu erhalten.</p>",
       "documentScope": "Unternehmensdokumente und Fertigungssysteme können für einen bestimmten Auftrag geprüft werden. Ihre Anwendbarkeit muss für den Artikel und die bestellten Spezifikationen bestätigt werden.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Weiße Tasse mit hellbraunem Getränk auf weißem Hintergrund gefüllt"
     },
     "product:kraft-colour-ice-cream-cup": {
@@ -1603,7 +1603,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Was sind die Mindestmengen und -fristen?</strong> Bitten Sie um ein Angebot für die ausgewählte Referenz; Diese Regelungen hängen von der Reihenfolge ab und sind nicht durch den Katalog festgelegt.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Kraftfarbene Eisbecher in sechs Größen"
     },
     "product:cpla-cutlery": {
@@ -1617,7 +1617,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Was sind die Mindestmengen und -fristen?</strong> Bitten Sie um ein Angebot für die ausgewählte Referenz; Diese Regelungen hängen von der Reihenfolge ab und sind nicht durch den Katalog festgelegt.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Gabel, Messer und Löffel aus CPLA"
     },
     "product:wooden-bamboo-cutlery": {
@@ -1631,7 +1631,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Was sind die Mindestmengen und -fristen?</strong> Bitten Sie um ein Angebot für die ausgewählte Referenz; Diese Regelungen hängen von der Reihenfolge ab und sind nicht durch den Katalog festgelegt.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Holzgabeln, Messer und Löffel von 140 mm und 160 mm"
     },
     "product:kraft-paper-box-pet-window": {
@@ -1645,7 +1645,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Höhen stehen zur Verfügung?</strong> 45 mm, 48 mm, 50 mm und 66 mm.</p><p><strong>Welches Fenster wird verwendet?</strong> Das Blatt zeigt ein PET-Fenster an.</p><p><strong>Was ist die Konditionierung?</strong> 200 Sätze pro Karton für jedes Format.</p>",
       "documentScope": "Corncomp kann auf Anfrage relevante Firmen- und Fabrikdokumente zur Verfügung stellen. Vor dem Kauf bestätigen Sie die Zertifizierungs-, Material-, Kennzeichnungs- und Bestellanforderungen für das ausgewählte Produkt.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Kraftpapier-Lebensmittelbox mit transparentem PET-Fenster"
     },
     "product:kraft-paper-salad-box-pla-window": {
@@ -1659,7 +1659,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie viele Formate sind verfügbar?</strong> Vier, mit Höhen von 48 mm bis 64 mm.</p><p><strong>Welches Fenster wird verwendet?</strong> Das Blatt zeigt ein Fenster in PLA an.</p><p><strong>Was ist die Konditionierung?</strong> 300 Stück pro Karton für jedes Format.</p>",
       "documentScope": "Corncomp kann auf Anfrage relevante Firmen- und Fabrikdokumente zur Verfügung stellen. Vor dem Kauf bestätigen Sie die Zertifizierungs-, Material-, Kennzeichnungs- und Bestellanforderungen für das ausgewählte Produkt.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Kraft Salatbox mit transparentem PLA Fenster"
     },
     "product:cardboard-wrap-box-pla-window": {
@@ -1673,7 +1673,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Dimensionen werden vorgeschlagen?</strong> 150 x 95 x 53 mm und 150 x 140 x 53 mm.</p><p><strong>Was ist die Konditionierung?</strong> CC01WRAP9SW: 600 Stück pro Karton. CC01WRAP140W: 1000 Stück pro Karton.</p><p><strong>Welches Fenster wird verwendet?</strong> Die Karte zeigt die PLA an.</p>",
       "documentScope": "Corncomp kann auf Anfrage relevante Firmen- und Fabrikdokumente zur Verfügung stellen. Vor dem Kauf bestätigen Sie die Zertifizierungs-, Material-, Kennzeichnungs- und Bestellanforderungen für das ausgewählte Produkt.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Kartonverpackung mit transparentem PLA-Fenster"
     },
     "product:natural-kraft-sandwich-box-pla-window": {
@@ -1687,7 +1687,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie viele Formate gibt es im Katalog?</strong> Vier Referenzen mit ihren Dimensionen.</p><p><strong>Welches Fenster wird verwendet?</strong> Die Karte zeigt die PLA an.</p><p><strong>Was ist die Konditionierung?</strong> Jede Größe ist mit 500 Stück in einer Plastiktüte verpackt.</p>",
       "documentScope": "Corncomp kann auf Anfrage relevante Firmen- und Fabrikdokumente zur Verfügung stellen. Vor dem Kauf bestätigen Sie die Zertifizierungs-, Material-, Kennzeichnungs- und Bestellanforderungen für das ausgewählte Produkt.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Natural Power Sandwich Box mit transparentem PLA Fenster"
     },
     "product:natural-kraft-hamburger-box": {
@@ -1701,7 +1701,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Dimensionen werden vorgeschlagen?</strong> Fünf Formate, 105 x 105 x 85mm bis 180 x 165 x 75mm.</p><p><strong>Können wir Proben vergleichen?</strong> Ja, geben Sie die Referenzen in Ihrer Bewerbung an.</p><p><strong>Können wir die Boxen drucken?</strong> Bestätigen Sie die erforderlichen Optionen, Dateien, Mindestmenge und Zeitrahmen.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Natürliche offene und geschlossene Kraft Burger Box"
     },
     "product:natural-kraft-menu-box": {
@@ -1715,7 +1715,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Welche Formate sind verfügbar?</strong> Sieben Formate, darunter eine kompakte Minibox und mehrere größere Formate.</p><p><strong>Können wir Proben vergleichen?</strong> Ja, geben Sie die gewünschten Referenzen in Ihrer Anwendung an.</p><p><strong>Ist Drucken möglich?</strong> Bestätigen Sie die erforderlichen Optionen, Dateien, Mindestmenge und Zeitrahmen für die ausgewählte Referenz.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Natural Power Lunch Box offen und geschlossen"
     },
     "product:doner-box": {
@@ -1743,7 +1743,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Worum geht es bei Anse?</strong> Der Katalog zeigt einen Metallgriff an.</p><p><strong>Welche Höhen werden vorgeschlagen?</strong> 85mm, 101mm und 110mm.</p><p><strong>Können wir um Muster oder einen Druck bitten?</strong> Ja. Geben Sie die Referenz an; Druck, Mindestmenge und Frist werden für die Bestellung bestätigt.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Weiße Karton-Lebensmittelbox mit Metallgriff"
     },
     "product:kraft-square-food-bow-pp-handle": {
@@ -1757,7 +1757,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Worum geht es bei Anse?</strong> Das Modell ist eine quadratische Kraft-Food-Box mit PP-Griff.</p><p><strong>Welche Höhen werden vorgeschlagen?</strong> Vier Größen von 63mm bis 110mm.</p><p><strong>Können wir um Muster oder einen Druck bitten?</strong> Ja. Geben Sie die Referenz an; Druck, Mindestmenge und Frist werden für die Bestellung bestätigt.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Natural Power Food Box mit PP Klappgriff"
     },
     "product:bendy": {
@@ -1770,7 +1770,7 @@
       "comparisonHtml": "<p>Das Design schmückt die Getränke und Displays der Cafés und Bars. Dieser Strohhalm wird in der gleichen Ningbo-Werkstatt wie andere Corncomp-gedruckte Strohhalme hergestellt. Es eignet sich für Getränkeservices, die eine flexible Option wünschen.</p><p>Corncomp liefert dieses Produkt und seinen Papierverpackungskatalog an Distributoren und Restaurantmarken in Europa, den USA, Australien und Südostasien.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Bezeichnet Bendy eine Form oder ein Muster?</strong> Beides: ein flexibles Akkordeongelenk, das es ermöglicht, den Strohhalm zu falten, und ein von den Wellen inspirierter Eindruck.</p><p><strong>Können wir sein Logo drucken?</strong> Ja, kontaktieren Sie das Team, um Ihre Bestellung in großen Mengen anzugeben.</p>",
-      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC RINA-COC-001953 Kontrollkettenzertifikat; bestätigen, ob das FSC zertifizierte Material und der entsprechende Anspruch in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable in Fußnote 10529571-1 für Papierstrohhalme von in Frage kommendem Papier bis 352 g/m2, zertifiziert nach ASTM D6400 für die kommerzielle und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. OIOS amforori Audit-Dokumente sind auf Anfrage erhältlich.",
+      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC-Produktkettenzertifikat (Chain of Custody) RINA-COC-001953; bestätigen Sie, ob FSC-zertifiziertes Material und die entsprechende FSC-Angabe in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable unter der Referenz 10529571-1 für entsprechend qualifizierte bedruckte Papierstrohhalme bis 352 g/m², zertifiziert nach ASTM D6400 für die gewerbliche und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. amfori BSCI-Auditdokumente sind auf Anfrage erhältlich.",
       "orderTerms": "Jeder Karton enthält 10 Packungen mit 500 Strohhalmen. Der benutzerdefinierte Druck eines Logos ist im Großhandel mit einer Mindestmenge von 50 000 Stück erhältlich.",
       "alt": "Flexibles Stroh in Marineblau, Blaugrün und Weißpapier mit Fächermustern"
     },
@@ -1784,7 +1784,7 @@
       "comparisonHtml": "<p>Hergestellt in der Corncomp-Werkstatt von Ningbo, zeichnet es sich durch die Form seiner Spitze aus.</p><p>Corncomp liefert dieses Produkt und seinen Papierverpackungskatalog an Distributoren und Restaurantmarken in Europa, den USA, Australien und Südostasien.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Was bedeutet Sharp Edge?</strong> Dieser Name bezieht sich auf die Spitze des Strohs, nicht auf ein gedrucktes Muster.</p><p><strong>Können wir den Druck anpassen?</strong> Ja, kontaktieren Sie Corncomp für Großhandelsbestelldetails.</p>",
-      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC RINA-COC-001953 Kontrollkettenzertifikat; bestätigen, ob das FSC zertifizierte Material und der entsprechende Anspruch in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable in Fußnote 10529571-1 für Papierstrohhalme von in Frage kommendem Papier bis 352 g/m2, zertifiziert nach ASTM D6400 für die kommerzielle und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. OIOS amforori Audit-Dokumente sind auf Anfrage erhältlich.",
+      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC-Produktkettenzertifikat (Chain of Custody) RINA-COC-001953; bestätigen Sie, ob FSC-zertifiziertes Material und die entsprechende FSC-Angabe in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable unter der Referenz 10529571-1 für entsprechend qualifizierte bedruckte Papierstrohhalme bis 352 g/m², zertifiziert nach ASTM D6400 für die gewerbliche und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. amfori BSCI-Auditdokumente sind auf Anfrage erhältlich.",
       "orderTerms": "Lose (unverpackte) Strohhalme: 500 Stück pro Packung, 10 Packungen pro Karton (5 000 Stück/Karton). Einzeln verpackte Strohhalme: 250 Stück pro Packung, 20 Packungen pro Karton (5 000 Stück/Karton). Der benutzerdefinierte Druck eines Logos ist im Großhandel mit einer Mindestmenge von 50 000 Stück erhältlich.",
       "alt": "Weiße, graue und grüne Papierstrohhalme mit spitzen Enden"
     },
@@ -1798,7 +1798,7 @@
       "comparisonHtml": "<p>Papierhalbstoff umfasst Bambus- oder Holzfasern. Das schlichte Finish eignet sich für Kaffees, Bars und Getränkemarken, die eine einfache Farbe wünschen, die zum Ort, zum saisonalen Menü oder zu ihrer visuellen Identität passt. Dieses Sortiment wird in der gleichen Ningbo-Werkstatt wie andere Strohhalme hergestellt.</p><p>Corncomp liefert dieses Produkt und seinen Papierverpackungskatalog an Distributoren und Restaurantmarken in Europa, den USA, Australien und Südostasien.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie ist die Zusammensetzung?</strong> Papierhalbstoff mit Zusatz von Bambus- oder Holzfasern.</p><p><strong>Welche Farben werden vorgeschlagen?</strong> Zehn einfache Farben, mit neutralen Tönen wie Schwarz und Weiß und hellen Tönen wie Rosa und Gelb.</p>",
-      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC RINA-COC-001953 Kontrollkettenzertifikat; bestätigen, ob das FSC zertifizierte Material und der entsprechende Anspruch in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable in Fußnote 10529571-1 für Papierstrohhalme von in Frage kommendem Papier bis 352 g/m2, zertifiziert nach ASTM D6400 für die kommerzielle und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. OIOS amforori Audit-Dokumente sind auf Anfrage erhältlich.",
+      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC-Produktkettenzertifikat (Chain of Custody) RINA-COC-001953; bestätigen Sie, ob FSC-zertifiziertes Material und die entsprechende FSC-Angabe in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable unter der Referenz 10529571-1 für entsprechend qualifizierte bedruckte Papierstrohhalme bis 352 g/m², zertifiziert nach ASTM D6400 für die gewerbliche und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. amfori BSCI-Auditdokumente sind auf Anfrage erhältlich.",
       "orderTerms": "Verpackung: 500 Strohhalme pro Packung und 10 Packungen pro Packung.",
       "alt": "Schwarze, rosafarbene, orangefarbene, grüne, gelbe, braune und weiße Papierstrohhalme"
     },
@@ -1812,7 +1812,7 @@
       "comparisonHtml": "<p>Schwarze, graue, blaue und grüne Töne sowie Gold und Gelb ermöglichen die Kombination von Stroh mit der Marke, dem Dekor oder dem saisonalen Sortiment. Diese Version verwendet das gleiche Papier wie der gestreifte Bereich der warmen Töne.</p><p>Corncomp liefert dieses Produkt und seinen Papierverpackungskatalog an Distributoren und Restaurantmarken in Europa, den USA, Australien und Südostasien.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Gibt es heiße Töne?</strong> Ja, <a href=\"/de/products/stripe-colors/\">Reihe von warmen Tönen</a> Dazu gehören Orange, Rot und Rosa.</p>",
-      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC RINA-COC-001953 Kontrollkettenzertifikat; bestätigen, ob das FSC zertifizierte Material und der entsprechende Anspruch in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable in Fußnote 10529571-1 für Papierstrohhalme von in Frage kommendem Papier bis 352 g/m2, zertifiziert nach ASTM D6400 für die kommerzielle und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. OIOS amforori Audit-Dokumente sind auf Anfrage erhältlich.",
+      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC-Produktkettenzertifikat (Chain of Custody) RINA-COC-001953; bestätigen Sie, ob FSC-zertifiziertes Material und die entsprechende FSC-Angabe in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable unter der Referenz 10529571-1 für entsprechend qualifizierte bedruckte Papierstrohhalme bis 352 g/m², zertifiziert nach ASTM D6400 für die gewerbliche und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. amfori BSCI-Auditdokumente sind auf Anfrage erhältlich.",
       "orderTerms": "Verpackung: 500 Strohhalme pro Packung und 10 Packungen pro Packung.",
       "alt": "Papierstrohhalme auf weißem Hintergrund mit schwarzen, grauen, blauen, blaugrünen, grünen und gelben Streifen"
     },
@@ -1826,7 +1826,7 @@
       "comparisonHtml": "<p>Gedruckt auf Papier in der Ningbo-Werkstatt, begleitet dieses Sortiment Milchshakes, Smoothies, Cocktails und Dessertgetränke. Die Schattierungen reichen von dunkelrot bis hellrosa, passen Strohhalme zu saisonalen Promotions und Markenidentität.</p><p>Corncomp liefert dieses Produkt und seinen Papierverpackungskatalog an Distributoren und Restaurantmarken in Europa, den USA, Australien und Südostasien.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Gibt es kalte Töne?</strong> Ja, <a href=\"/de/products/stripe-colors-2/\">Anzahl der Kalttöne</a> Schwarz, Grau, Blau und Grün.</p>",
-      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC RINA-COC-001953 Kontrollkettenzertifikat; bestätigen, ob das FSC zertifizierte Material und der entsprechende Anspruch in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable in Fußnote 10529571-1 für Papierstrohhalme von in Frage kommendem Papier bis 352 g/m2, zertifiziert nach ASTM D6400 für die kommerzielle und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. OIOS amforori Audit-Dokumente sind auf Anfrage erhältlich.",
+      "documentScope": "ISO 9001:2015, Qualitätsmanagementsystem: Zertifikat 01526Q60104R001, ausgestellt von Hangzhou WIT Assessment Co., Ltd. an Ningbo Corncomp Tech Co., Ltd., gültig bis 2029-04-27. BRCGS Packaging Materials: Zertifikat CN24/00006923, Level B, ausgestellt von SGS United Kingdom Ltd. Corncomp hält das FSC-Produktkettenzertifikat (Chain of Custody) RINA-COC-001953; bestätigen Sie, ob FSC-zertifiziertes Material und die entsprechende FSC-Angabe in Ihrer Bestellung enthalten sind. Corncomp hat den Status BPI Certified Compostable unter der Referenz 10529571-1 für entsprechend qualifizierte bedruckte Papierstrohhalme bis 352 g/m², zertifiziert nach ASTM D6400 für die gewerbliche und industrielle Kompostierung. Bestätigen Sie, dass die bestellten Spezifikationen in den zertifizierten Anwendungsbereich fallen. amfori BSCI-Auditdokumente sind auf Anfrage erhältlich.",
       "orderTerms": "Verpackung: 500 Strohhalme pro Packung und 10 Packungen pro Packung.",
       "alt": "Papierstrohhalme auf weißem Hintergrund mit orangefarbenen, roten, rosafarbenen und violetten Streifen"
     },
@@ -1925,7 +1925,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Wie hoch sind Mindestbestellmenge und Lieferzeit?</strong> Bitte kontaktieren Sie uns, um die Mindestbestellmenge und Lieferzeit für den gewählten Deckel zu bestätigen. Deckel werden in der Regel unbedruckt geliefert. Bei besonderen Druckwünschen kontaktieren Sie uns bitte, um die Machbarkeit und Bestellbedingungen zu klären.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Papierumschläge für Salatschalen, Kraft- und Kartonserien"
     },
     "product:pla-lid": {
@@ -1939,7 +1939,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Wie hoch sind Mindestbestellmenge und Lieferzeit?</strong> Bitte kontaktieren Sie uns, um die Mindestbestellmenge und Lieferzeit für den gewählten Deckel zu bestätigen. Deckel werden in der Regel unbedruckt geliefert. Bei besonderen Druckwünschen kontaktieren Sie uns bitte, um die Machbarkeit und Bestellbedingungen zu klären.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "PLA Abdeckungen für 150 und 185 mm Salatschalen"
     },
     "product:pp-lid": {
@@ -1953,7 +1953,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Wie hoch sind Mindestbestellmenge und Lieferzeit?</strong> Bitte kontaktieren Sie uns, um die Mindestbestellmenge und Lieferzeit für den gewählten Deckel zu bestätigen. Deckel werden in der Regel unbedruckt geliefert. Bei besonderen Druckwünschen kontaktieren Sie uns bitte, um die Machbarkeit und Bestellbedingungen zu klären.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "PP-Abdeckungen für 150- und 185-mm-Salatschalen"
     },
     "product:pet-lid": {
@@ -1967,7 +1967,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Wie hoch sind Mindestbestellmenge und Lieferzeit?</strong> Bitte kontaktieren Sie uns, um die Mindestbestellmenge und Lieferzeit für den gewählten Deckel zu bestätigen. Deckel werden in der Regel unbedruckt geliefert. Bei besonderen Druckwünschen kontaktieren Sie uns bitte, um die Machbarkeit und Bestellbedingungen zu klären.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Transparente PET-Abdeckungen für 150 mm und 185 mm Salatschalen"
     },
     "product:cardboard-bamboo-bowl": {
@@ -1981,7 +1981,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Wie wählt man die richtige Referenz aus?</strong> Verwenden Sie die Tabelle Referenz und Abmessungen, dann bestätigen Sie die von Corncomp bestellten Spezifikationen.</p><p><strong>Wie hoch sind Mindestbestellmenge und Lieferzeit?</strong> Die Mindestbestellmenge beträgt 30 000 Stück pro Artikel bzw. 50 000 Stück pro Artikel bei Aufträgen mit individuellem Druck. Die Lieferzeit beträgt etwa 30 Tage nach Auftragsbestätigung.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Weiße Kartonsalatschale, 150 mm und 185 mm im Katalog"
     },
     "product:kraft-paper-bowl": {
@@ -1995,7 +1995,7 @@
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Gibt es eine weiße Schüssel?</strong> Die <a href=\"/de/products/cardboard-bamboo-bowl/\">weiße Kartonschale</a> wird in den gleichen sechs Dimensionen vorgeschlagen.</p><p><strong>Wie hoch sind Mindestbestellmenge und Lieferzeit?</strong> Die Mindestbestellmenge beträgt 30 000 Stück pro Artikel bzw. 50 000 Stück pro Artikel bei Aufträgen mit individuellem Druck. Die Lieferzeit beträgt etwa 30 Tage nach Auftragsbestätigung.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
+      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und der Bestellung ab.",
       "alt": "Kraftpapierschale mit Salat, Größe 150 und 185 mm im Katalog"
     },
     "post:us-state-plastic-packaging-laws-explained": {
