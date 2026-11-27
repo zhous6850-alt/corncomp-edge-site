@@ -2052,8 +2052,8 @@
     },
     "post:bpi-vs-fsc-certification": {
       "route": "/es/que-es-la-certificacion-bpi-en-que-se-diferencia-de-la-certificacion-fsc/",
-      "title": "Certificación BPI y FSC: qué verifica cada una",
-      "description": "BPI y FSC verifican propiedades distintas: compostabilidad y origen del material. Conozca sus alcances y cómo comprobar las declaraciones del proveedor.",
+      "title": "Certificación BPI: qué es y su diferencia con FSC",
+      "description": "La certificación BPI verifica la compostabilidad del producto terminado y FSC, el origen de la fibra. Vea qué cubre cada una y cómo comprobarlas.",
       "sourceHash": "05aa9b318ea88b943c0d2fbd7e565d554c653a56aebc76347f47e13ab467be29",
       "dateModified": "2026-11-02",
       "alt": "Bosque gestionado responsablemente y certificación de origen FSC",
@@ -2478,8 +2478,8 @@
     "product:white-cardboard-food-box": {
       "route": "/es/products/food-boxes-containers/square-food-boxes/white-cardboard-food-box/",
       "title": "Cajas cuadradas de cartón blanco",
-      "description": "Cajas cuadradas de cartón blanco. Consulte los modelos, referencias y dimensiones del catálogo y solicite presupuesto para su selección.",
-      "sourceHash": "edbcb62d685f70417d95f306bce1e0b37d45a77203d0aa999b865b504a95898a",
+      "description": "Cajas cuadradas de cartón blanco en cuatro tamaños (CC01PAIL8 a CC01PAIL32), de 63 a 110 mm de alto y boca de 70 × 55 a 113 × 93 mm. Pida presupuesto.",
+      "sourceHash": "b6523faf5e8eabc90d6789a2bcc38b81aff9142826119e4f945f0e78b93fbad1",
       "summary": "Cajas cuadradas de cartón blanco. Las especificaciones siguientes proceden del catálogo Corncomp. Elija la referencia y confirme las condiciones de uso antes de pedir.",
       "specificationHeading": "Especificaciones del catálogo",
       "comparisonHtml": "<p>Consulte los modelos, referencias y dimensiones del catálogo y solicite presupuesto para su selección.</p>",
@@ -2613,8 +2613,8 @@
     "product:kraft-wrap-box-pla-window": {
       "route": "/es/products/food-boxes-containers/wrap-boxes/kraft-wrap-box-pla-window/",
       "title": "Cajas kraft para wraps con ventana PLA",
-      "description": "Cajas kraft para wraps con ventana PLA. Consulte los modelos, referencias y dimensiones del catálogo y solicite presupuesto para su selección.",
-      "sourceHash": "08cfc9f44f40fbe7e59a12745108ce996c591fc6b3800d12f4eff755f3c68030",
+      "description": "Cajas kraft para wraps con ventana PLA en dos tamaños: 150 × 95 × 53 mm y 150 × 140 × 53 mm (CC01WRAP95, CC01WRAP140). Compare el catálogo y pida presupuesto.",
+      "sourceHash": "51c13485c09187814e7bab70d9afbc12515d9245d557439eb43ea25b62c4f400",
       "summary": "Cajas kraft para wraps con ventana PLA. Las especificaciones siguientes proceden del catálogo Corncomp. Elija la referencia y confirme las condiciones de uso antes de pedir.",
       "specificationHeading": "Especificaciones del catálogo",
       "comparisonHtml": "<p>Consulte los modelos, referencias y dimensiones del catálogo y solicite presupuesto para su selección.</p>",
