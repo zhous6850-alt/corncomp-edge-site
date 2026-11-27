@@ -686,7 +686,7 @@
           "text": "Struktur des Bechers, Abmessungen, Sicht und Verpackung angeben."
         },
         {
-          "title": "Custom Paper Strohhalme",
+          "title": "Individuelle Papierstrohhalme",
           "route": "/de/custom-packaging/custom-paper-straws/",
           "text": "Durchmesser, Länge, Druck, Einzelverpackung und Verpackung angeben."
         }
@@ -727,7 +727,7 @@
     },
     "architecture:custom-packaging/custom-paper-straws": {
       "route": "/de/custom-packaging/custom-paper-straws/",
-      "title": "Custom Paper Strohhalme",
+      "title": "Individuelle Papierstrohhalme",
       "description": "Papierstrohhalme mit Optionen für Druck, Farbe, Abmessungen, individuelle Verpackung und Verpackung.",
       "intro": "Wählen Sie Durchmesser, Länge, Farbe, visuelle und individuelle Verpackung und bestätigen Sie dann die Zertifizierungsspezifikationen und -anforderungen vor der Produktion.",
       "sourceHash": "9d897f7e10705ceb3dd320f9a4e9cebd3f5fdba9eec78dd1d44c22a5019ae110",
@@ -1440,12 +1440,12 @@
     },
     "product:cardboard-open-wrap-cup": {
       "route": "/de/products/cardboard-open-wrap-cup/",
-      "title": "Burrito Kraft Gehäuse, 4 Formate",
-      "description": "Dieser offene Fall in Naturkraftpapier begrüßt Wraps, Burritos, Pommes Frites, Hot Dogs und andere Lebensmittel zum Mitnehmen.",
-      "sourceHash": "6dfe068d0f6e47b6894a6a9fa7e14177cae4774a4efe07474e41358931e283e5",
-      "summary": "Dieser offene Fall in Naturkraftpapier begrüßt Wraps, Burritos, Pommes Frites, Hot Dogs und andere Lebensmittel zum Mitnehmen. Die untere Front und die obere Rückseite lassen das Essen in einem kompakten Format sichtbar und zugänglich.",
+      "title": "Burrito-Halter aus Kraftpapier, 4 Größen",
+      "description": "Offene Burrito-Halter aus Naturkraftpapier in vier Größen, randvoll ca. 360–630 ml, Karton 250–320 g/m², Boden 60 mm. Für Wraps, Burritos, Pommes und Hot Dogs.",
+      "sourceHash": "1ce7cfed039edef5032ea964989d4f33f07087916ba0bf82dc2b8a41cc4ae310",
+      "summary": "Dieser offene Halter aus Naturkraftpapier eignet sich für Wraps, Burritos, Pommes frites, Hot Dogs und andere Speisen zum Mitnehmen. Dank niedriger Vorderseite und höherer Rückseite bleibt das Essen im kompakten Format sichtbar und gut zugänglich. Das Kartongewicht ist von 250 bis 320 g/m² wählbar.",
       "specificationHeading": "Spezifikationen des Katalogs",
-      "comparisonHtml": "<p>Die vier Formate eignen sich für Catering-Trucks, Take-Out-Schalter, Cafés, Festivals und Caterer. Verwenden Sie sie für Burritos und Tortilla-Wraps, Pommes Frites und andere trockene Snacks, Hot Dogs oder Paninis. Das Kraft Finish bietet eine einfache Präsentation.</p>",
+      "comparisonHtml": "<p>Ungefähres Randvollvolumen, berechnet mit 60 mm Boden, 90 mm Randdurchmesser und dem Mittel aus vorderer und hinterer Höhe: CC01OWC100K ca. 360 ml; CC01OWC5.5K ca. 430 ml; CC01OWC135K ca. 510 ml; CC01OWC160K ca. 630 ml. Es handelt sich um Schätzwerte, nicht um gemessene Füllmengen; prüfen Sie ein Muster mit Ihrem Produkt.</p><p>Das Kartongewicht ist von 250 bis 320 g/m² wählbar. Corncomp kann FSC-Dokumente zur Produktkette (Chain of Custody) bereitstellen; ob FSC-Material und -Kennzeichnung für Ihre Bestellung gelten, ist zu bestätigen.</p><p>Die vier Formate eignen sich für Catering-Trucks, Take-Out-Schalter, Cafés, Festivals und Caterer. Verwenden Sie sie für Burritos und Tortilla-Wraps, Pommes frites und andere trockene Snacks, Hot Dogs oder Paninis. Das Kraft-Finish sorgt für eine schlichte Präsentation.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
       "faq": "<p><strong>Was sind die Dimensionen?</strong> Vier Größen mit Vorder- / Hinterhöhen von 60/100mm bis 120/160mm und einem 60mm Hintergrund.</p><p><strong>Ist Drucken möglich?</strong> Optionen können verfügbar sein. Bestätigen Sie die visuelle, Material, Mindestmenge und Zeit für jede Bestellung.</p>",
       "documentScope": "Corncomp kann Informationen zu ISO 9001 Qualitätsmanagement, BRCGS Packaging Materials, der FSC und amfori OIOS Kontrollkette bereitstellen. Diese Dokumente betreffen das Unternehmen, die Fabrik oder die Rückverfolgbarkeitssysteme; sie zertifizieren nicht allein jedes Produkt. Bestätigen Sie ihre Anwendbarkeit auf Referenz, Material, Kennzeichnung und Kontrolle.",
@@ -3048,11 +3048,11 @@
     "product:white-open-wrap-cup": {
       "route": "/de/products/food-boxes-containers/wrap-boxes/white-open-wrap-cup/",
       "title": "Offene Wrapbecher aus weißem Karton",
-      "description": "Offene Wrapbecher aus weißem Karton. Vergleichen Sie Modelle, Artikelnummern und Maße aus dem Katalog und fragen Sie Ihre Auswahl an.",
-      "sourceHash": "8d39b8bd869875b78a46354482ae9ac400ef970c4f424de10683d681e1dab3f3",
-      "summary": "Offene Wrapbecher aus weißem Karton. Die folgenden Angaben stammen aus dem Corncomp-Katalog. Wählen Sie die Artikelnummer und bestätigen Sie die Einsatzbedingungen vor der Bestellung.",
+      "description": "Offene Wrapbecher aus Karton in vier Größen, randvoll ca. 360–630 ml, Boden 60 mm, Karton 250–320 g/m². Maße vergleichen und Angebot anfragen.",
+      "sourceHash": "04a03a9e8de47f3c7b9f99510e570d6ea8b2ceb87decc4deebe83fc028107c9c",
+      "summary": "Offene Wrapbecher aus weißem Karton mit niedriger Vorder- und hoher Rückseite; das Kartongewicht ist von 250 bis 320 g/m² wählbar. Die folgenden Angaben stammen aus dem Corncomp-Katalog. Wählen Sie die Artikelnummer und bestätigen Sie die Einsatzbedingungen vor der Bestellung.",
       "specificationHeading": "Katalogspezifikationen",
-      "comparisonHtml": "<p>Vergleichen Sie Modelle, Artikelnummern und Maße aus dem Katalog und fragen Sie Ihre Auswahl an.</p>",
+      "comparisonHtml": "<p>Ungefähres Randvollvolumen, berechnet mit 60 mm Boden, 90 mm Randdurchmesser und dem Mittel aus vorderer und hinterer Höhe: CC01OWC100 ca. 360 ml; CC01OWC5.5 ca. 430 ml; CC01OWC135 ca. 510 ml; CC01OWC160 ca. 630 ml. Es handelt sich um Schätzwerte, nicht um gemessene Füllmengen; prüfen Sie ein Muster mit Ihrem Produkt.</p><p>Das Kartongewicht ist von 250 bis 320 g/m² wählbar. Corncomp kann FSC-Dokumente zur Produktkette (Chain of Custody) bereitstellen; ob FSC-Material und -Kennzeichnung für Ihre Bestellung gelten, ist zu bestätigen.</p><p>Vergleichen Sie Modelle, Artikelnummern und Maße aus dem Katalog und fragen Sie Ihre Auswahl an.</p>",
       "orderingHeading": "Bestellinformationen",
       "faq": "<p>Nennen Sie Artikel, Menge, Druck, Verpackung und Zielort, um Preis, Mindestmenge und Lieferzeit zu bestätigen.</p>",
       "documentScope": "Bestätigen Sie die für Material und Bestellung geltenden Lebensmittelkontakt- und Umweltdokumente. Zertifikate gelten nicht automatisch für alle Artikel.",
