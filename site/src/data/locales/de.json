@@ -485,9 +485,9 @@
     },
     "architecture:products/food-boxes-containers/salad-boxes": {
       "route": "/de/products/food-boxes-containers/salad-boxes/",
-      "title": "Salatkisten",
-      "description": "Kraftpapiersalatboxen mit transparentem Fenster, um frische Lebensmittel zu präsentieren.",
-      "intro": "Kraftpapiersalatboxen mit transparentem Fenster, um frische Lebensmittel zu präsentieren.",
+      "title": "Salatboxen mit Fenster",
+      "description": "Salatboxen aus Kraftpapier und weißem Karton mit transparentem PLA- oder PET-Fenster, um frische Lebensmittel zu präsentieren. Modelle und Maße vergleichen.",
+      "intro": "Salatboxen aus Kraftpapier und weißem Karton mit transparentem PLA- oder PET-Fenster, um frische Lebensmittel zu präsentieren. Modelle und Maße vergleichen.",
       "sourceHash": "1e0077159372b1ae2abed7dba926f8341f682b5870cb54b278d40500c2daa4c7",
       "sections": [
         {
@@ -595,9 +595,9 @@
     },
     "architecture:products/foodservice-supplies/paper-straws": {
       "route": "/de/products/foodservice-supplies/paper-straws/",
-      "title": "Bedruckte Papierstrohhalme",
-      "description": "Standard- und kundenspezifische Papierstrohhalme mit individuellen Verpackungs-, Druck- und Durchmesseroptionen.",
-      "intro": "Standard- und kundenspezifische Papierstrohhalme mit individuellen Verpackungs-, Druck- und Durchmesseroptionen.",
+      "title": "Papierstrohhalme: Standard und bedruckt",
+      "description": "Papierstrohhalme in Standard- und kundenspezifischen Ausführungen mit Optionen für Verpackung, Druck und Durchmesser. Artikelnummern und Maße vergleichen.",
+      "intro": "Papierstrohhalme in Standard- und kundenspezifischen Ausführungen mit Optionen für Verpackung, Druck und Durchmesser. Artikelnummern und Maße vergleichen.",
       "sourceHash": "9fa0c8774c61b037e469f3f6883b20e18364f6e3d567c8b5fb26c5418a628998",
       "sections": [
         {
@@ -1720,17 +1720,17 @@
     },
     "product:doner-box": {
       "route": "/de/products/doner-box/",
-      "title": "Papier Kebab Box, 2 Formate",
-      "description": "Diese Kebab-Box hat einen aufgeweiteten Körper und einen runden Boden. Zwei Formate sind für Kebab Döner, Wraps und ähnliche Portionen zum Mitnehmen verfügbar.",
-      "sourceHash": "60d1f32d72115aa687b2c4727f863d2a161109b4cf31605575e210d1465c50ab",
-      "summary": "Diese Kebab-Box hat einen aufgeweiteten Körper und einen runden Boden. Zwei Formate sind für Kebab Döner, Wraps und ähnliche Portionen zum Mitnehmen verfügbar.",
+      "title": "Dönerbox aus Papier, 2 Größen",
+      "description": "Dönerbox aus Papier in zwei Größen (CC01RD16DR, CC01RD26DR). Offset- oder Flexodruck, Mindestmenge ab 30 000 Stück, Lieferzeit ca. ein Monat.",
+      "sourceHash": "0a631e24459d7e2e53839eca75edae9ade0e7d151a926843590314e7eb3418cb",
+      "summary": "Diese Dönerbox aus Papier hat einen konischen Körper und einen runden Boden. Zwei Größen sind für Döner, Wraps und ähnliche Portionen zum Mitnehmen erhältlich.",
       "specificationHeading": "Spezifikationen des Katalogs",
       "comparisonHtml": "<p>Vergleichen Sie die obere Öffnung, den Boden und die Höhe mit dem Abschnitt. Fragen Sie nach Proben, um Passform und Präsentation vor der Bestellung zu überprüfen.</p>",
       "orderingHeading": "Fragen vor der Bestellung",
-      "faq": "<p><strong>Welche Höhen werden vorgeschlagen?</strong> 100mm und 95mm.</p><p><strong>Wie frage ich nach einer Probe?</strong> Geben Sie CC01RD16DR oder CC01RD26DR in Ihrer Anwendung an.</p><p><strong>Können wir die Box drucken?</strong> Bestätigen Sie die erforderlichen Optionen, Dateien, Mindestmenge und Zeitrahmen.</p>",
+      "faq": "<p><strong>Welche Höhen werden vorgeschlagen?</strong> 100mm und 95mm.</p><p><strong>Wie frage ich nach einer Probe?</strong> Geben Sie CC01RD16DR oder CC01RD26DR in Ihrer Anfrage an.</p><p><strong>Können wir die Box drucken?</strong> Ja, im Offset- oder Flexodruck. Die Mindestmenge beträgt 30 000 Stück für Standardboxen und 50 000 Stück für individuelle Aufträge; die Lieferzeit beträgt ca. einen Monat.</p>",
       "documentScope": "Die relevanten Firmen- und Fabrikdokumente werden auf der Corncomp-Zertifizierungsseite präsentiert. Fragen Sie, welche die ausgewählte Referenz, Material, Markierung und Kontrolle abdecken.",
-      "orderTerms": "Bestätigen Sie mit Corncomp die Muster, Druckmöglichkeiten, Material, Mindestmenge, Zeit und Anforderungen der Bestellung. Diese Modalitäten hängen von der Referenz, den Grafikdateien und dem Befehl ab.",
-      "alt": "Papierbedruckte Kebab-Box mit rundem Boden"
+      "orderTerms": "Standard-Mindestmenge: 30 000 Stück; individuelle Aufträge: 50 000 Stück. Bedruckung im Offset- oder Flexodruck. Lieferzeit ca. ein Monat. Bestätigen Sie mit Corncomp Muster, Grafikdateien und die gewählte Artikelnummer.",
+      "alt": "Bedruckte Dönerbox aus Papier mit rundem Boden"
     },
     "product:white-cardboard-box-wire-handle": {
       "route": "/de/products/white-cardboard-box-wire-handle/",
@@ -2463,9 +2463,9 @@
     "product:white-cardboard-food-box": {
       "route": "/de/products/food-boxes-containers/square-food-boxes/white-cardboard-food-box/",
       "title": "Quadratische Speiseboxen aus weißem Karton",
-      "description": "Weiße Karton-Speiseboxen in vier Größen (CC01PAIL8 bis CC01PAIL32), 63–110 mm hoch, Öffnung 70 × 55 bis 113 × 93 mm. Maße vergleichen, Angebot anfragen.",
-      "sourceHash": "b6523faf5e8eabc90d6789a2bcc38b81aff9142826119e4f945f0e78b93fbad1",
-      "summary": "Quadratische Speiseboxen aus weißem Karton. Die folgenden Angaben stammen aus dem Corncomp-Katalog. Wählen Sie die Artikelnummer und bestätigen Sie die Einsatzbedingungen vor der Bestellung.",
+      "description": "Weiße Karton-Speiseboxen mit Faltdeckel, ohne separaten Deckel verschließbar. Vier Größen (CC01PAIL8 bis CC01PAIL32), 63–110 mm hoch.",
+      "sourceHash": "b7fdb8bf5e7ea4a40312880da9cf981a726922315f14dea80c9bd65d5b400292",
+      "summary": "Quadratische Speiseboxen aus weißem Karton mit Faltdeckel: Die oberen Laschen werden umgeklappt und rasten ein, ein separater Deckel ist nicht nötig. Die folgenden Angaben stammen aus dem Corncomp-Katalog. Wählen Sie die Artikelnummer und bestätigen Sie die Einsatzbedingungen vor der Bestellung.",
       "specificationHeading": "Katalogspezifikationen",
       "comparisonHtml": "<p>Vergleichen Sie Modelle, Artikelnummern und Maße aus dem Katalog und fragen Sie Ihre Auswahl an.</p>",
       "orderingHeading": "Bestellinformationen",
