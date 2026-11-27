@@ -2478,8 +2478,8 @@
     "product:white-cardboard-food-box": {
       "route": "/zh/products/food-boxes-containers/square-food-boxes/white-cardboard-food-box/",
       "title": "白卡方形食品盒",
-      "description": "白卡方形食品盒. 查看产品册中的款式、型号与规格，并按所选产品询价。",
-      "sourceHash": "edbcb62d685f70417d95f306bce1e0b37d45a77203d0aa999b865b504a95898a",
+      "description": "白卡方形食品盒，四种规格（CC01PAIL8 至 CC01PAIL32），高 63–110 mm，口部 70 × 55 至 113 × 93 mm。对比规格并询价。",
+      "sourceHash": "b6523faf5e8eabc90d6789a2bcc38b81aff9142826119e4f945f0e78b93fbad1",
       "summary": "白卡方形食品盒. 以下规格来自 Corncomp 产品册。请根据型号选择尺寸，并在订购前确认适用条件。",
       "specificationHeading": "产品册规格",
       "comparisonHtml": "<p>查看产品册中的款式、型号与规格，并按所选产品询价。</p>",
@@ -2613,8 +2613,8 @@
     "product:kraft-wrap-box-pla-window": {
       "route": "/zh/products/food-boxes-containers/wrap-boxes/kraft-wrap-box-pla-window/",
       "title": "牛皮纸 PLA 窗卷饼盒",
-      "description": "牛皮纸 PLA 窗卷饼盒. 查看产品册中的款式、型号与规格，并按所选产品询价。",
-      "sourceHash": "08cfc9f44f40fbe7e59a12745108ce996c591fc6b3800d12f4eff755f3c68030",
+      "description": "牛皮纸 PLA 窗卷饼盒，两种规格：150 × 95 × 53 mm 和 150 × 140 × 53 mm（CC01WRAP95、CC01WRAP140）。对比产品册规格并询价。",
+      "sourceHash": "51c13485c09187814e7bab70d9afbc12515d9245d557439eb43ea25b62c4f400",
       "summary": "牛皮纸 PLA 窗卷饼盒. 以下规格来自 Corncomp 产品册。请根据型号选择尺寸，并在订购前确认适用条件。",
       "specificationHeading": "产品册规格",
       "comparisonHtml": "<p>查看产品册中的款式、型号与规格，并按所选产品询价。</p>",
